@@ -1,0 +1,41 @@
+name: Football Scraper Daily
+
+# Exécution automatique tous les jours à 01h UTC
+on:
+ # schedule:
+   # - cron: '0 1 * * *'
+  workflow_dispatch:  # Permet de lancer manuellement
+
+jobs:
+  scrape-football:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Installer Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # 3️⃣ Installer les dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests beautifulsoup4
+
+      # 4️⃣ Exécuter le script
+      - name: Run football scraper
+        run: python l.py
+
+      # 5️⃣ Commit et push des fichiers JSON générés
+      - name: Commit and push results
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/football/leagues/*.json
+          git commit -m "Update football JSONs [ci skip]" || echo "No changes to commit"
+          git push

@@ -27,7 +27,7 @@ LEAGUES = {
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
 # === PÉRIODE FIXE ===
-START_DATE = datetime(2025, 26, 12, tzinfo=timezone.utc)
+START_DATE = datetime(2025, 12, 26, tzinfo=timezone.utc)
 END_DATE = datetime.now(timezone.utc)
 
 # =============================

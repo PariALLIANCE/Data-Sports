@@ -1,0 +1,41 @@
+name: Football Update Daily
+
+# ✅ Déclenchement automatique tous les jours à 01h UTC
+on:
+  schedule:
+    - cron: '0 1 * * *' # Tous les jours à 01:00 UTC
+  workflow_dispatch:     # Permet de lancer manuellement
+
+jobs:
+  update-football:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Configurer Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3️⃣ Installer dépendances si nécessaire
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      # 4️⃣ Lancer le script update.py
+      - name: Run update script
+        run: python update.py
+
+      # 5️⃣ Commit & push des fichiers mis à jour
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🤖 Mise à jour des matchs et stats"
+          branch: main
+          file_pattern: "data/football/leagues/*.json"
+          push_options: "--force"

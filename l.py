@@ -26,12 +26,12 @@ LEAGUES = {
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
-# === PÉRIODE FIXE ===
+# === PÉRIODE ===
 START_DATE = datetime(2025, 12, 26, tzinfo=timezone.utc)
 END_DATE = datetime.now(timezone.utc)
 
 # =============================
-# 🔍 FONCTION STATS PAR GAMEID
+# 🔍 STATS PAR GAMEID
 # =============================
 
 def get_match_stats(game_id):
@@ -56,11 +56,12 @@ def get_match_stats(game_id):
         for row in stat_rows:
             name_tag = row.find("span", class_="OkRBU")
             values = row.find_all("span", class_="bLeWt")
+
             if name_tag and len(values) >= 2:
-                stats[name_tag.text.strip()] = (
-                    values[0].text.strip(),
-                    values[1].text.strip()
-                )
+                stats[name_tag.text.strip()] = {
+                    "home": values[0].text.strip(),
+                    "away": values[1].text.strip()
+                }
 
         time.sleep(0.8)
         return stats
@@ -113,6 +114,7 @@ for league_name, league_info in LEAGUES.items():
                     team2 = teams[1].text.strip()
                     score = score_tag.text.strip()
 
+                    # Match non joué
                     if score.lower() == "v":
                         continue
 
@@ -123,11 +125,16 @@ for league_name, league_info in LEAGUES.items():
 
                     game_id = match_id_match.group(1)
 
-                    if game_id in all_matches:
-                        continue
-
+                    # 🔁 Récupération systématique des stats
                     stats = get_match_stats(game_id)
 
+                    # 🔄 Mise à jour si le match existe déjà
+                    if game_id in all_matches:
+                        if not all_matches[game_id].get("stats") and stats:
+                            all_matches[game_id]["stats"] = stats
+                        continue
+
+                    # 🆕 Nouveau match
                     all_matches[game_id] = {
                         "gameId": game_id,
                         "date": date_text,

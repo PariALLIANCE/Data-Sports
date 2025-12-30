@@ -1,0 +1,40 @@
+name: Football Games of Day
+
+# Déclenchement automatique tous les jours à 07h UTC
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Pour lancement manuel
+
+jobs:
+  fetch-games-of-day:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Configurer Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3️⃣ Installer les dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      # 4️⃣ Lancer le script games_of_day
+      - name: Run update script
+        run: python games_of_day.py
+
+      # 5️⃣ Commit & push les fichiers mis à jour
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🤖 Mise à jour games_of_day.json"
+          branch: main
+          file_pattern: "data/football/games_of_day.json"

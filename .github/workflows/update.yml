@@ -3,7 +3,7 @@ name: Football Update Daily
 # ✅ Déclenchement automatique tous les jours à 01h UTC
 on:
   schedule:
-    - cron: '0 1 * * *' # Tous les jours à 01:00 UTC
+    - cron: '0 2 * * *' # Tous les jours à 01:00 UTC
   workflow_dispatch:     # Permet de lancer manuellement
 
 jobs:

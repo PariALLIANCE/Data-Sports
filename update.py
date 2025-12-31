@@ -16,9 +16,24 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES (LIMITÉES) ===
 LEAGUES = {
-    "Premier League": {"id": "eng.1", "json": "England_Premier_League.json"},
-    "LaLiga": {"id": "esp.1", "json": "Spain_Laliga.json"}
+    "Premier League": {
+        "id": "eng.1",
+        "json": "England_Premier_League.json"
+    },
+    "LaLiga": {
+        "id": "esp.1",
+        "json": "Spain_Laliga.json"
+    },
+    "Bundesliga": {
+        "id": "ger.1",
+        "json": "Germany_Bundesliga.json"
+    },
+    "Argentina - Primera Nacional": {
+        "id": "arg.2",
+        "json": "Argentina_Primera_Nacional.json"
+    }
 }
+
 
 # === DATES : AVANT-HIER & HIER ===
 dates_to_fetch = [

@@ -39,6 +39,14 @@ LEAGUES = {
     "Belgium - Jupiler Pro League": {
         "id": "bel.1",
         "json": "Belgium_Jupiler_Pro_League.json"
+    },
+    "Brazil - Serie A": {
+        "id": "bra.1",
+        "json": "Brazil_Serie_A.json"
+    },
+    "Brazil - Serie B": {
+        "id": "bra.2",
+        "json": "Brazil_Serie_B.json"
     }
 }
 

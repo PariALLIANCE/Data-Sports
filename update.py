@@ -47,8 +47,17 @@ LEAGUES = {
     "Brazil - Serie B": {
         "id": "bra.2",
         "json": "Brazil_Serie_B.json"
+    },
+    "Chile - Primera Division": {
+        "id": "chi.1",
+        "json": "Chile_Primera_Division.json"
+    },
+    "China - Super League": {
+        "id": "chn.1",
+        "json": "China_Super_League.json"
     }
 }
+
 
 
 # === DATES : AVANT-HIER & HIER ===

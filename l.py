@@ -16,15 +16,16 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES ===
 LEAGUES = {
-    "Brazil - Serie A": {
-        "id": "bra.1",
-        "json": "Brazil_Serie_A.json"
+    "Chile - Primera Division": {
+        "id": "chi.1",
+        "json": "Chile_Primera_Division.json"
     },
-    "Brazil - Serie B": {
-        "id": "bra.2",
-        "json": "Brazil_Serie_B.json"
+    "China - Super League": {
+        "id": "chn.1",
+        "json": "China_Super_League.json"
     }
 }
+
 
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"

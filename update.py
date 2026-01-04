@@ -16,11 +16,6 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES (LIMITÉES) ===
 LEAGUES = {
-    "Premier LeagueLEAGUES = {
-    "Premier League": {
-        "id": "eng.1",
-        "json": "England_Premier_League.json"
-    },
     "LaLiga": {
         "id": "esp.1",
         "json": "Spain_Laliga.json"
@@ -28,6 +23,14 @@ LEAGUES = {
     "Bundesliga": {
         "id": "ger.1",
         "json": "Germany_Bundesliga.json"
+    },
+    "France - Ligue 1": {
+        "id": "fra.1",
+        "json": "France_Ligue_1.json"
+    },
+    "Greece - Super League 1": {
+        "id": "gre.1",
+        "json": "Greece_Super_League_1.json"
     },
     "Argentina - Primera Nacional": {
         "id": "arg.2",

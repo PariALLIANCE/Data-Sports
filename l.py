@@ -15,10 +15,17 @@ OUTPUT_DIR = "data/football/leagues"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES ===
-{
-  "Mexico_Liga_MX": { "id": "mex.1", "json": "Mexico_Liga_MX.json" },
-  "Netherlands_Eredivisie": { "id": "ned.1", "json": "Netherlands_Eredivisie.json" }
+LEAGUES = {
+    "Mexico_Liga_MX": {
+        "id": "mex.1",
+        "json": "Mexico_Liga_MX.json"
+    },
+    "Netherlands_Eredivisie": {
+        "id": "ned.1",
+        "json": "Netherlands_Eredivisie.json"
+    }
 }
+
 
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"

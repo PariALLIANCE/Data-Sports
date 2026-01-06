@@ -16,58 +16,78 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES (LIMITÉES) ===
 LEAGUES = {
-    "LaLiga": {
-        "id": "esp.1",
-        "json": "Spain_Laliga.json"
-    },
-    "Bundesliga": {
-        "id": "ger.1",
-        "json": "Germany_Bundesliga.json"
-    },
-    "France - Ligue 1": {
-        "id": "fra.1",
-        "json": "France_Ligue_1.json"
-    },
-    "Greece - Super League 1": {
-        "id": "gre.1",
-        "json": "Greece_Super_League_1.json"
-    },
-    "Argentina - Primera Nacional": {
-        "id": "arg.2",
-        "json": "Argentina_Primera_Nacional.json"
-    },
-    "Austria - Bundesliga": {
-        "id": "aut.1",
-        "json": "Austria_Bundesliga.json"
-    },
-    "Belgium - Jupiler Pro League": {
-        "id": "bel.1",
-        "json": "Belgium_Jupiler_Pro_League.json"
-    },
-    "Brazil - Serie A": {
-        "id": "bra.1",
-        "json": "Brazil_Serie_A.json"
-    },
-    "Brazil - Serie B": {
-        "id": "bra.2",
-        "json": "Brazil_Serie_B.json"
-    },
-    "Chile - Primera Division": {
-        "id": "chi.1",
-        "json": "Chile_Primera_Division.json"
-    },
-    "China - Super League": {
-        "id": "chn.1",
-        "json": "China_Super_League.json"
-    },
-    "Colombia - Primera A": {
-        "id": "col.1",
-        "json": "Colombia_Primera_A.json"
-    },
-    "England - National League": {
-        "id": "eng.5",
-        "json": "England_National_League.json"
-    }
+  "Argentina_Primera_Nacional": {
+    "id": "arg.2",
+    "json": "Argentina_Primera_Nacional.json"
+  },
+  "Austria_Bundesliga": {
+    "id": "aut.1",
+    "json": "Austria_Bundesliga.json"
+  },
+  "Belgium_Jupiler_Pro_League": {
+    "id": "bel.1",
+    "json": "Belgium_Jupiler_Pro_League.json"
+  },
+  "Brazil_Serie_A": {
+    "id": "bra.1",
+    "json": "Brazil_Serie_A.json"
+  },
+  "Brazil_Serie_B": {
+    "id": "bra.2",
+    "json": "Brazil_Serie_B.json"
+  },
+  "Chile_Primera_Division": {
+    "id": "chi.1",
+    "json": "Chile_Primera_Division.json"
+  },
+  "China_Super_League": {
+    "id": "chn.1",
+    "json": "China_Super_League.json"
+  },
+  "Colombia_Primera_A": {
+    "id": "col.1",
+    "json": "Colombia_Primera_A.json"
+  },
+  "England_National_League": {
+    "id": "eng.5",
+    "json": "England_National_League.json"
+  },
+  "England_Premier_League": {
+    "id": "eng.1",
+    "json": "England_Premier_League.json"
+  },
+  "France_Ligue_1": {
+    "id": "fra.1",
+    "json": "France_Ligue_1.json"
+  },
+  "Germany_Bundesliga": {
+    "id": "ger.1",
+    "json": "Germany_Bundesliga.json"
+  },
+  "Greece_Super_League_1": {
+    "id": "gre.1",
+    "json": "Greece_Super_League_1.json"
+  },
+  "Italy_Serie_A": {
+    "id": "ita.1",
+    "json": "Italy_Serie_A.json"
+  },
+  "Japan_J1_League": {
+    "id": "jpn.1",
+    "json": "Japan_J1_League.json"
+  },
+  "Mexico_Liga_MX": {
+    "id": "mex.1",
+    "json": "Mexico_Liga_MX.json"
+  },
+  "Netherlands_Eredivisie": {
+    "id": "ned.1",
+    "json": "Netherlands_Eredivisie.json"
+  },
+  "Spain_LaLiga": {
+    "id": "esp.1",
+    "json": "Spain_LaLiga.json"
+  }
 }
 
 

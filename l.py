@@ -16,13 +16,13 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES ===
 LEAGUES = {
-  "Paraguay_Division_Profesional": {
-    "id": "par.1",
-    "json": "Paraguay_Division_Profesional.json"
+  "Portugal_Primeira_Liga": {
+    "id": "por.1",
+    "json": "Portugal_Primeira_Liga.json"
   },
-  "Peru_Primera_Division": {
-    "id": "per.1",
-    "json": "Peru_Primera_Division.json"
+  "Romania_Liga_I": {
+    "id": "rou.1",
+    "json": "Romania_Liga_I.json"
   }
 }
 

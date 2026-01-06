@@ -84,6 +84,14 @@ LEAGUES = {
     "id": "ned.1",
     "json": "Netherlands_Eredivisie.json"
   },
+  "Paraguay_Division_Profesional": {
+    "id": "par.1",
+    "json": "Paraguay_Division_Profesional.json"
+  },
+  "Peru_Primera_Division": {
+    "id": "per.1",
+    "json": "Peru_Primera_Division.json"
+  },
   "Spain_LaLiga": {
     "id": "esp.1",
     "json": "Spain_LaLiga.json"

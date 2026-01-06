@@ -92,6 +92,14 @@ LEAGUES = {
     "id": "per.1",
     "json": "Peru_Primera_Division.json"
   },
+  "Portugal_Primeira_Liga": {
+    "id": "por.1",
+    "json": "Portugal_Primeira_Liga.json"
+  },
+  "Romania_Liga_I": {
+    "id": "rou.1",
+    "json": "Romania_Liga_I.json"
+  },
   "Spain_LaLiga": {
     "id": "esp.1",
     "json": "Spain_LaLiga.json"

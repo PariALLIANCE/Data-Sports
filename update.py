@@ -56,6 +56,10 @@ LEAGUES = {
     "id": "eng.1",
     "json": "England_Premier_League.json"
   },
+  "FIFA_Club_World_Cup": {
+    "id": "fifa.cwc",
+    "json": "FIFA_Club_World_Cup.json"
+  },
   "France_Ligue_1": {
     "id": "fra.1",
     "json": "France_Ligue_1.json"
@@ -127,6 +131,10 @@ LEAGUES = {
   "UEFA_Champions_League": {
     "id": "uefa.champions",
     "json": "UEFA_Champions_League.json"
+  },
+  "UEFA_Europa_League": {
+    "id": "uefa.europa",
+    "json": "UEFA_Europa_League.json"
   },
   "USA_Major_League_Soccer": {
     "id": "usa.1",

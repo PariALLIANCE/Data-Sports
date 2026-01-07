@@ -119,6 +119,14 @@ LEAGUES = {
   "Switzerland_Super_League": {
     "id": "sui.1",
     "json": "Switzerland_Super_League.json"
+  },
+  "Turkey_Super_Lig": {
+    "id": "tur.1",
+    "json": "Turkey_Super_Lig.json"
+  },
+  "USA_Major_League_Soccer": {
+    "id": "usa.1",
+    "json": "USA_Major_League_Soccer.json"
   }
 }
 

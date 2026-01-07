@@ -100,6 +100,14 @@ LEAGUES = {
     "id": "rou.1",
     "json": "Romania_Liga_I.json"
   },
+  "Russia_Premier_League": {
+    "id": "rus.1",
+    "json": "Russia_Premier_League.json"
+  },
+  "Saudi_Arabia_Pro_League": {
+    "id": "ksa.1",
+    "json": "Saudi_Arabia_Pro_League.json"
+  },
   "Spain_LaLiga": {
     "id": "esp.1",
     "json": "Spain_LaLiga.json"

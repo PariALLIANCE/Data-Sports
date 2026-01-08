@@ -112,7 +112,7 @@ LEAGUES = {
     "id": "ksa.1",
     "json": "Saudi_Arabia_Pro_League.json"
   },
-  "Spain_LaLiga": {
+  "Spain_Laliga": {
     "id": "esp.1",
     "json": "Spain_LaLiga.json"
   },

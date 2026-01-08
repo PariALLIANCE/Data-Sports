@@ -114,7 +114,7 @@ LEAGUES = {
   },
   "Spain_Laliga": {
     "id": "esp.1",
-    "json": "Spain_LaLiga.json"
+    "json": "Spain_Laliga.json"
   },
   "Sweden_Allsvenskan": {
     "id": "swe.1",

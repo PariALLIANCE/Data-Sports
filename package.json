@@ -1,19 +1,21 @@
 {
   "name": "@jonnhy225/sports-data",
-  "version": "1.1.4",
-  "description": "Bibliothèque JS pour lister les ligues de football disponibles à partir de fichiers JSON",
+  "version": "1.1.5",
+  "description": "Football historical matches dataset with helper functions (last results per league)",
   "type": "module",
   "main": "src/index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "test": "node src/index.js"
+  "exports": {
+    ".": "./src/index.js"
   },
   "keywords": [
     "football",
     "soccer",
-    "data",
+    "sports-data",
+    "matches",
     "leagues",
-    "json"
+    "json",
+    "betting",
+    "ai"
   ],
   "author": "Jonnhy Billions",
   "license": "MIT",

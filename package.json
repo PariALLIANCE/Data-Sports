@@ -1,11 +1,15 @@
 {
   "name": "@jonnhy225/sports-data",
   "version": "1.1.5",
-  "description": "Football historical matches dataset with helper functions (last results per league)",
+  "description": "Football historical matches dataset with helpers (last results per league)",
   "type": "module",
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PariALLIANCE/Data-Sports.git"
   },
   "keywords": [
     "football",
@@ -13,15 +17,12 @@
     "sports-data",
     "matches",
     "leagues",
-    "json",
-    "betting",
-    "ai"
+    "json"
   ],
   "author": "Jonnhy Billions",
   "license": "MIT",
   "files": [
     "src/",
-    "data/football/leagues/",
-    "data/football/league-ids.json"
+    "data/football/leagues/"
   ]
 }

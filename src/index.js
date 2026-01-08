@@ -1,103 +1,71 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// data/football/leagues/index.js
 
-/* ===== Résolution chemins ESM ===== */
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import fs from "fs";
+import path from "path";
 
-/* ===== Dossiers ===== */
-const leaguesDir = path.resolve(__dirname, '../data/football/leagues');
-const leagueIdsPath = path.resolve(__dirname, '../data/football/league-ids.json');
+/**
+ * Registre minimal des ligues
+ */
+export const LEAGUES = {
+  England_Premier_League: "England_Premier_League.json",
+  Spain_Laliga: "Spain_Laliga.json",
+  Germany_Bundesliga: "Germany_Bundesliga.json",
+  Argentina_Primera_Nacional: "Argentina_Primera_Nacional.json",
+  Austria_Bundesliga: "Austria_Bundesliga.json",
+  Belgium_Jupiler_Pro_League: "Belgium_Jupiler_Pro_League.json",
+  Brazil_Serie_A: "Brazil_Serie_A.json",
+  Brazil_Serie_B: "Brazil_Serie_B.json",
+  Chile_Primera_Division: "Chile_Primera_Division.json",
+  China_Super_League: "China_Super_League.json",
+  Colombia_Primera_A: "Colombia_Primera_A.json",
+  England_National_League: "England_National_League.json",
+  France_Ligue_1: "France_Ligue_1.json",
+  Greece_Super_League_1: "Greece_Super_League_1.json",
+  Italy_Serie_A: "Italy_Serie_A.json",
+  Japan_J1_League: "Japan_J1_League.json",
+  Mexico_Liga_MX: "Mexico_Liga_MX.json",
+  Netherlands_Eredivisie: "Netherlands_Eredivisie.json",
+  Paraguay_Division_Profesional: "Paraguay_Division_Profesional.json",
+  Peru_Primera_Division: "Peru_Primera_Division.json",
+  Portugal_Primeira_Liga: "Portugal_Primeira_Liga.json",
+  Romania_Liga_I: "Romania_Liga_I.json",
+  Russia_Premier_League: "Russia_Premier_League.json",
+  Saudi_Arabia_Pro_League: "Saudi_Arabia_Pro_League.json",
+  Sweden_Allsvenskan: "Sweden_Allsvenskan.json",
+  Switzerland_Super_League: "Switzerland_Super_League.json",
+  Turkey_Super_Lig: "Turkey_Super_Lig.json",
+  USA_Major_League_Soccer: "USA_Major_League_Soccer.json",
+  Venezuela_Primera_Division: "Venezuela_Primera_Division.json",
+  UEFA_Champions_League: "UEFA_Champions_League.json",
+  UEFA_Europa_League: "UEFA_Europa_League.json",
+  FIFA_Club_World_Cup: "FIFA_Club_World_Cup.json"
+};
 
-/* ===== Utils ===== */
-function readJSON(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-}
+const BASE_PATH = "data/football/leagues";
 
-/* =========================================================
-   1️⃣ Lister les ligues disponibles (nom + id ESPN)
-   ========================================================= */
-export function listLeagues() {
-  if (!fs.existsSync(leagueIdsPath)) {
-    throw new Error('league-ids.json introuvable');
-  }
+/**
+ * Retourne les 15 derniers matchs joués d'une ligue
+ */
+export function getLastMatches(
+  leagueKey,
+  { limit = 15, includeStats = true } = {}
+) {
+  const file = LEAGUES[leagueKey];
+  if (!file) throw new Error("Ligue inconnue");
 
-  const leagueIds = readJSON(leagueIdsPath);
+  const filePath = path.join(BASE_PATH, file);
+  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  return Object.entries(leagueIds).map(([name, data]) => ({
-    name,
-    id: data.id
-  }));
-}
+  const playedMatches = data
+    .filter(
+      m =>
+        m.score &&
+        m.score !== "-" &&
+        !m.score.toLowerCase().includes("vs")
+    )
+    .slice(-limit);
 
-/* =========================================================
-   2️⃣ Récupérer les N derniers matchs d’une ligue
-      ⚠️ Ici on suppose que le serveur connaît le mapping
-      entre id et fichier JSON réel côté serveur.
-   ========================================================= */
-export function getLastMatches(leagueId, n = 5) {
-  // Mapping interne côté serveur
-  const leagueFiles = {
-    'eng.1': 'England_Premier_League.json',
-    'esp.1': 'Spain_Laliga.json',
-    'ger.1': 'bundesliga.json',
-    'arg.2': 'Argentina_Primera_Nacional.json',
-    'aut.1': 'Austria_Bundesliga.json',
-    'bel.1': 'Belgium_Jupiler_Pro_League.json',
-    'bra.1': 'Brazil_Serie_A.json',
-    'bra.2': 'Brazil_Serie_B.json',
-    'chi.1': 'Chile_Primera_Division.json',
-    'chn.1': 'China_Super_League.json',
-    'col.1': 'Colombia_Primera_A.json',
-    'eng.5': 'England_National_League.json',
-    'fra.1': 'France_Ligue_1.json',
-    'gre.1': 'Greece_Super_League_1.json',
-    'ita.1': 'Italy_Serie_A.json',
-    'jpn.1': 'Japan_J1_League.json',
-    'mex.1': 'Mexico_Liga_MX.json',
-    'ned.1': 'Netherlands_Eredivisie.json',
-    'par.1': 'Paraguay_Division_Profesional.json',
-    'per.1': 'Peru_Primera_Division.json',
-    'por.1': 'Portugal_Primeira_Liga.json',
-    'rou.1': 'Romania_Liga_I.json',
-    'rus.1': 'Russia_Premier_League.json',
-    'ksa.1': 'Saudi_Arabia_Pro_League.json',
-    'swe.1': 'Sweden_Allsvenskan.json',
-    'sui.1': 'Switzerland_Super_League.json',
-    'tur.1': 'Turkey_Super_Lig.json',
-    'usa.1': 'USA_Major_League_Soccer.json',
-    'ven.1': 'Venezuela_Primera_Division.json',
-    'uefa.champions': 'UEFA_Champions_League.json',
-    'uefa.europa': 'UEFA_Europa_League.json',
-    'fifa.cwc': 'FIFA_Club_World_Cup.json'
-  };
+  if (includeStats) return playedMatches;
 
-  const fileName = leagueFiles[leagueId];
-  if (!fileName) {
-    throw new Error(`Aucun fichier trouvé pour l'id ${leagueId}`);
-  }
-
-  const filePath = path.join(leaguesDir, fileName);
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`Fichier JSON introuvable côté serveur : ${fileName}`);
-  }
-
-  const matches = readJSON(filePath);
-  if (!Array.isArray(matches)) {
-    throw new Error('Format JSON invalide (attendu: tableau)');
-  }
-
-  return matches.slice(-n).reverse(); // les derniers n matchs
-}
-
-/* =========================================================
-   🔧 Test direct en CLI
-   ========================================================= */
-if (process.argv[1] === __filename) {
-  console.log('\n📋 Ligues disponibles :');
-  console.table(listLeagues());
-
-  console.log('\n⚽ 3 derniers matchs – Premier League');
-  console.table(getLastMatches('eng.1', 3));
+  return playedMatches.map(({ stats, ...rest }) => rest);
 }

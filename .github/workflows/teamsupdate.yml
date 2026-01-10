@@ -1,0 +1,45 @@
+name: Football Teams Scraper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape-teams:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout complet du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Setup Python 3.12
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # 3️⃣ Installer les dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests beautifulsoup4
+
+      # 4️⃣ 🔥 Rebase AVANT toute écriture
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      # 5️⃣ Exécution du scraper teams.py
+      - name: Run teams scraper
+        run: python teams.py
+
+      # 6️⃣ Commit & push des résultats
+      - name: Commit and push results
+        run: |
+          git add data/football/teams/football_teams.json
+          git commit -m "Update football teams JSON" || echo "No changes to commit"
+          git push origin main

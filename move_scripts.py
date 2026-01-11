@@ -1,34 +1,19 @@
-name: Move Python Scripts to Folder
+import os
+import shutil
 
-on:
-  workflow_dispatch: # Permet de lancer manuellement
+# Chemin racine du dépôt (le dossier courant)
+ROOT_DIR = os.getcwd()
+SCRIPTS_DIR = os.path.join(ROOT_DIR, "scripts")
 
-jobs:
-  move-scripts:
-    runs-on: ubuntu-latest
+# Créer le dossier scripts s'il n'existe pas
+os.makedirs(SCRIPTS_DIR, exist_ok=True)
 
-    steps:
-      # 1️⃣ Checkout complet du dépôt
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+# Lister tous les fichiers à la racine
+for file_name in os.listdir(ROOT_DIR):
+    file_path = os.path.join(ROOT_DIR, file_name)
 
-      # 2️⃣ Setup Python
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      # 3️⃣ Exécuter le script de déplacement
-      - name: Move Python scripts
-        run: python move_scripts.py
-
-      # 4️⃣ Commit & push des changements
-      - name: Commit & push changes
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts/*.py
-          git commit -m "📂 Déplacer les scripts Python dans scripts/" || echo "Rien à commit"
-          git push origin main
+    # Déplacer uniquement les fichiers .py (sauf celui-ci si besoin)
+    if file_name.endswith(".py") and file_name != "move_scripts.py":  # nom du script actuel
+        dest_path = os.path.join(SCRIPTS_DIR, file_name)
+        shutil.move(file_path, dest_path)
+        print(f"✅ {file_name} déplacé vers {SCRIPTS_DIR}")

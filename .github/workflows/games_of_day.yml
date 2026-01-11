@@ -14,6 +14,8 @@ jobs:
       # 1️⃣ Récupérer le repo
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # 2️⃣ Configurer Python
       - name: Setup Python
@@ -27,11 +29,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      # 4️⃣ Lancer le script games_of_day
-      - name: Run update script
-        run: python games_of_day.py
+      # 4️⃣ 🔥 Rebase AVANT d'exécuter le script
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
 
-      # 5️⃣ Commit & push les fichiers mis à jour
+      # 5️⃣ Lancer le script games_of_day depuis le dossier scripts
+      - name: Run update script
+        run: python scripts/games_of_day.py
+
+      # 6️⃣ Commit & push les fichiers mis à jour
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

@@ -82,17 +82,22 @@ for league_name, league_code in LEAGUES.items():
 
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
-        date_text = date_title.text.strip() if date_title else today_utc.strftime("%b %d, %Y")
-
-        match_date_obj = parse_espn_date(date_text)
-        if not match_date_obj:
-            continue  # Ignore si date non reconnue
-
-        # ⚡ On ne garde que les matchs de la date du jour
-        if match_date_obj.strftime("%Y%m%d") != today_str:
-            continue
+        table_date_text = date_title.text.strip() if date_title else today_utc.strftime("%b %d, %Y")
 
         for row in table.select("tbody > tr.Table__TR"):
+            # ⚡ Récupère la date exacte du match depuis data-date si disponible
+            date_attr = row.get("data-date")  # format ISO : "2026-01-11T12:30Z"
+            if date_attr:
+                try:
+                    match_date_obj = datetime.fromisoformat(date_attr.replace("Z", "+00:00")).date()
+                except ValueError:
+                    match_date_obj = parse_espn_date(table_date_text)
+            else:
+                match_date_obj = parse_espn_date(table_date_text)
+
+            if not match_date_obj or match_date_obj.strftime("%Y%m%d") != today_str:
+                continue  # Ignore les matchs qui ne sont pas du jour
+
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
             score_tag = row.select_one("a.AnchorLink.at")
 

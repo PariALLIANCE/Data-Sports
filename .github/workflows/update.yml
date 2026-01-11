@@ -1,9 +1,9 @@
 name: Football Update Daily
 
-# ✅ Déclenchement automatique tous les jours à 01h UTC
+# ✅ Déclenchement automatique tous les jours à 00h UTC
 on:
   schedule:
-    - cron: '0 0 * * *' # Tous les jours à 01:00 UTC
+    - cron: '0 0 * * *' # Tous les jours à 00:00 UTC
   workflow_dispatch:     # Permet de lancer manuellement
 
 jobs:
@@ -14,6 +14,8 @@ jobs:
       # 1️⃣ Récupérer le repo
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # 2️⃣ Configurer Python
       - name: Setup Python
@@ -27,11 +29,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      # 4️⃣ Lancer le script update.py
-      - name: Run update script
-        run: python update.py
+      # 4️⃣ 🔥 Rebase AVANT d'exécuter le script
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
 
-      # 5️⃣ Commit & push des fichiers mis à jour
+      # 5️⃣ Lancer le script update.py depuis le dossier scripts
+      - name: Run update script
+        run: python scripts/update.py
+
+      # 6️⃣ Commit & push des fichiers mis à jour
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

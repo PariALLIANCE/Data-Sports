@@ -28,6 +28,7 @@ LEAGUES = {
 
 # === DATE DU JOUR ===
 today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 # === CONTENEUR DES MATCHS DU JOUR ===
 games_of_day = {}
@@ -83,6 +84,10 @@ for league_name, league_code in LEAGUES.items():
                 continue
 
             game_id = match_id.group(1)
+
+            # ⚡ Filtre : ne garder que les matchs du jour
+            if date_text_iso != today_iso:
+                continue
 
             games_of_day[game_id] = {
                 "gameId": game_id,

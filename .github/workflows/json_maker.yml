@@ -31,12 +31,11 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-
           git pull --rebase origin main
 
-      # 5️⃣ Exécution du scraper
+      # 5️⃣ Exécution du scraper depuis le dossier scripts
       - name: Run football scraper
-        run: python l.py
+        run: python scripts/l.py
 
       # 6️⃣ Commit & push
       - name: Commit and push results

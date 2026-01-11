@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from datetime import datetime, timezone
 import re
 import os
 import time
@@ -51,25 +50,13 @@ LEAGUES = {
     "FIFA_Club_World_Cup": "fifa.cwc"
 }
 
-# === DATE DU JOUR ===
-today_utc = datetime.now(timezone.utc)
-today_str = today_utc.strftime("%Y%m%d")
-
-# === CONTENEUR DES MATCHS DU JOUR ===
 games_of_day = {}
-
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
-# Fonction utilitaire pour parser différentes dates ESPN
-def parse_espn_date(date_text):
-    for fmt in ("%a, %b %d, %Y", "%b %d, %Y", "%Y-%m-%d"):
-        try:
-            return datetime.strptime(date_text, fmt).date()
-        except ValueError:
-            continue
-    return None
+# Date du jour pour l'URL (format ESPN)
+from datetime import datetime, timezone
+today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 
-# === SCRAPING DES MATCHS ===
 for league_name, league_code in LEAGUES.items():
     print(f"📅 Récupération {league_name} ({today_str})")
 
@@ -81,23 +68,7 @@ for league_name, league_code in LEAGUES.items():
         continue
 
     for table in soup.select("div.ResponsiveTable"):
-        date_title = table.select_one("div.Table__Title")
-        table_date_text = date_title.text.strip() if date_title else today_utc.strftime("%b %d, %Y")
-
         for row in table.select("tbody > tr.Table__TR"):
-            # ⚡ Récupère la date exacte du match depuis data-date si disponible
-            date_attr = row.get("data-date")  # format ISO : "2026-01-11T12:30Z"
-            if date_attr:
-                try:
-                    match_date_obj = datetime.fromisoformat(date_attr.replace("Z", "+00:00")).date()
-                except ValueError:
-                    match_date_obj = parse_espn_date(table_date_text)
-            else:
-                match_date_obj = parse_espn_date(table_date_text)
-
-            if not match_date_obj or match_date_obj.strftime("%Y%m%d") != today_str:
-                continue  # Ignore les matchs qui ne sont pas du jour
-
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
             score_tag = row.select_one("a.AnchorLink.at")
 
@@ -118,7 +89,6 @@ for league_name, league_code in LEAGUES.items():
 
             games_of_day[game_id] = {
                 "gameId": game_id,
-                "date": match_date_obj.strftime("%Y-%m-%d"),
                 "league": league_name,
                 "team1": teams[0].text.strip(),
                 "team2": teams[1].text.strip(),
@@ -128,8 +98,8 @@ for league_name, league_code in LEAGUES.items():
 
             time.sleep(0.5)  # Respect du site
 
-# === ÉCRITURE DU JSON ===
+# Écriture JSON
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs du jour sauvegardés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs non joués sauvegardés dans {OUTPUT_FILE}")

@@ -1,9 +1,9 @@
 name: Football Games of Day
 
-# Déclenchement automatique tous les jours à 00h UTC
 on:
-  #schedule:
-    #- cron: '0 6 * * *'
+  # Déclenchement automatique tous les jours à 00h30 UTC
+  schedule:
+    - cron: '30 0 * * *'
   workflow_dispatch: # Pour lancement manuel
 
 jobs:

@@ -14,41 +14,47 @@ HEADERS = {
 # === DOSSIER DE SORTIE ===
 OUTPUT_DIR = "data/football"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "game-of-day.json")
+
+# === FICHIER DES ÉQUIPES ===
+TEAMS_FILE = os.path.join(OUTPUT_DIR, "teams", "football_teams.json")
+with open(TEAMS_FILE, "r", encoding="utf-8") as f:
+    TEAMS_DATA = json.load(f)
 
 # === LIGUES ===
 LEAGUES = {
-    "England_Premier_League": { "id": "eng.1", "json": "England_Premier_League.json" },
-    "Spain_Laliga": { "id": "esp.1", "json": "Spain_Laliga.json" },
-    "Germany_Bundesliga": { "id": "ger.1", "json": "Germany_Bundesliga.json" },
-    "Argentina_Primera_Nacional": { "id": "arg.2", "json": "Argentina_Primera_Nacional.json" },
-    "Austria_Bundesliga": { "id": "aut.1", "json": "Austria_Bundesliga.json" },
-    "Belgium_Jupiler_Pro_League": { "id": "bel.1", "json": "Belgium_Jupiler_Pro_League.json" },
-    "Brazil_Serie_A": { "id": "bra.1", "json": "Brazil_Serie_A.json" },
-    "Brazil_Serie_B": { "id": "bra.2", "json": "Brazil_Serie_B.json" },
-    "Chile_Primera_Division": { "id": "chi.1", "json": "Chile_Primera_Division.json" },
-    "China_Super_League": { "id": "chn.1", "json": "China_Super_League.json" },
-    "Colombia_Primera_A": { "id": "col.1", "json": "Colombia_Primera_A.json" },
-    "England_National_League": { "id": "eng.5", "json": "England_National_League.json" },
-    "France_Ligue_1": { "id": "fra.1", "json": "France_Ligue_1.json" },
-    "Greece_Super_League_1": { "id": "gre.1", "json": "Greece_Super_League_1.json" },
-    "Italy_Serie_A": { "id": "ita.1", "json": "Italy_Serie_A.json" },
-    "Japan_J1_League": { "id": "jpn.1", "json": "Japan_J1_League.json" },
-    "Mexico_Liga_MX": { "id": "mex.1", "json": "Mexico_Liga_MX.json" },
-    "Netherlands_Eredivisie": { "id": "ned.1", "json": "Netherlands_Eredivisie.json" },
-    "Paraguay_Division_Profesional": { "id": "par.1", "json": "Paraguay_Division_Profesional.json" },
-    "Peru_Primera_Division": { "id": "per.1", "json": "Peru_Primera_Division.json" },
-    "Portugal_Primeira_Liga": { "id": "por.1", "json": "Portugal_Primeira_Liga.json" },
-    "Romania_Liga_I": { "id": "rou.1", "json": "Romania_Liga_I.json" },
-    "Russia_Premier_League": { "id": "rus.1", "json": "Russia_Premier_League.json" },
-    "Saudi_Arabia_Pro_League": { "id": "ksa.1", "json": "Saudi_Arabia_Pro_League.json" },
-    "Sweden_Allsvenskan": { "id": "swe.1", "json": "Sweden_Allsvenskan.json" },
-    "Switzerland_Super_League": { "id": "sui.1", "json": "Switzerland_Super_League.json" },
-    "Turkey_Super_Lig": { "id": "tur.1", "json": "Turkey_Super_Lig.json" },
-    "USA_Major_League_Soccer": { "id": "usa.1", "json": "USA_Major_League_Soccer.json" },
-    "Venezuela_Primera_Division": { "id": "ven.1", "json": "Venezuela_Primera_Division.json" },
-    "UEFA_Champions_League": { "id": "uefa.champions", "json": "UEFA_Champions_League.json" },
-    "UEFA_Europa_League": { "id": "uefa.europa", "json": "UEFA_Europa_League.json" },
-    "FIFA_Club_World_Cup": { "id": "fifa.cwc", "json": "FIFA_Club_World_Cup.json" }
+    "England_Premier_League": { "id": "eng.1" },
+    "Spain_Laliga": { "id": "esp.1" },
+    "Germany_Bundesliga": { "id": "ger.1" },
+    "Argentina_Primera_Nacional": { "id": "arg.2" },
+    "Austria_Bundesliga": { "id": "aut.1" },
+    "Belgium_Jupiler_Pro_League": { "id": "bel.1" },
+    "Brazil_Serie_A": { "id": "bra.1" },
+    "Brazil_Serie_B": { "id": "bra.2" },
+    "Chile_Primera_Division": { "id": "chi.1" },
+    "China_Super_League": { "id": "chn.1" },
+    "Colombia_Primera_A": { "id": "col.1" },
+    "England_National_League": { "id": "eng.5" },
+    "France_Ligue_1": { "id": "fra.1" },
+    "Greece_Super_League_1": { "id": "gre.1" },
+    "Italy_Serie_A": { "id": "ita.1" },
+    "Japan_J1_League": { "id": "jpn.1" },
+    "Mexico_Liga_MX": { "id": "mex.1" },
+    "Netherlands_Eredivisie": { "id": "ned.1" },
+    "Paraguay_Division_Profesional": { "id": "par.1" },
+    "Peru_Primera_Division": { "id": "per.1" },
+    "Portugal_Primeira_Liga": { "id": "por.1" },
+    "Romania_Liga_I": { "id": "rou.1" },
+    "Russia_Premier_League": { "id": "rus.1" },
+    "Saudi_Arabia_Pro_League": { "id": "ksa.1" },
+    "Sweden_Allsvenskan": { "id": "swe.1" },
+    "Switzerland_Super_League": { "id": "sui.1" },
+    "Turkey_Super_Lig": { "id": "tur.1" },
+    "USA_Major_League_Soccer": { "id": "usa.1" },
+    "Venezuela_Primera_Division": { "id": "ven.1" },
+    "UEFA_Champions_League": { "id": "uefa.champions" },
+    "UEFA_Europa_League": { "id": "uefa.europa" },
+    "FIFA_Club_World_Cup": { "id": "fifa.cwc" }
 }
 
 # === DATE DU JOUR ===
@@ -65,9 +71,20 @@ def convert_date_to_iso(date_text):
     except Exception:
         return date_text
 
+# === FONCTION POUR TROUVER LE LOGO ===
+def get_team_logo(league_name, team_name):
+    teams = TEAMS_DATA.get(league_name, [])
+    for t in teams:
+        if t["team"].lower() == team_name.lower():
+            return t["logo"]
+    return None
+
+# === CONTENEUR GLOBAL ===
+all_games = {}
+
+# === SCRAPING PAR LIGUE ===
 for league_name, league_info in LEAGUES.items():
     print(f"📅 Récupération {league_name} ({today_str})")
-    games_of_day = {}
 
     try:
         res = requests.get(
@@ -102,25 +119,28 @@ for league_name, league_info in LEAGUES.items():
 
             game_id = match_id.group(1)
 
-            # ⚡ Filtre : uniquement les matchs du jour
             if date_text_iso != today_iso:
                 continue
 
-            games_of_day[game_id] = {
+            team1_name = teams[0].text.strip()
+            team2_name = teams[1].text.strip()
+
+            all_games[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
                 "league": league_name,
-                "team1": teams[0].text.strip(),
-                "team2": teams[1].text.strip(),
+                "team1": team1_name,
+                "team1_logo": get_team_logo(league_name, team1_name),
+                "team2": team2_name,
+                "team2_logo": get_team_logo(league_name, team2_name),
                 "score": score,
                 "match_url": "https://www.espn.com" + score_tag["href"]
             }
 
             time.sleep(0.5)
 
-    # === ÉCRITURE DU JSON PAR LIGUE ===
-    output_file = os.path.join(OUTPUT_DIR, league_info["json"])
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
+# === ÉCRITURE DU JSON GLOBAL ===
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(list(all_games.values()), f, indent=2, ensure_ascii=False)
 
-    print(f"💾 {len(games_of_day)} matchs sauvegardés dans {output_file}")
+print(f"\n💾 {len(all_games)} matchs du jour sauvegardés dans {OUTPUT_FILE}")

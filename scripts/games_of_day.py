@@ -34,6 +34,17 @@ games_of_day = {}
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
+# === FONCTION DE CONVERSION DE DATE ===
+def convert_date_to_iso(date_text):
+    """
+    Convertit une date type 'Saturday, January 17, 2026' en 'YYYY-MM-DD'
+    """
+    try:
+        date_obj = datetime.strptime(date_text, "%A, %B %d, %Y")
+        return date_obj.strftime("%Y-%m-%d")
+    except Exception:
+        return date_text  # fallback si format inattendu
+
 for league_name, league_code in LEAGUES.items():
     print(f"📅 Récupération {league_name} ({today_str})")
     try:
@@ -50,6 +61,9 @@ for league_name, league_code in LEAGUES.items():
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
         date_text = date_title.text.strip() if date_title else today_str
+
+        # ⚡ Conversion de la date en format ISO
+        date_text_iso = convert_date_to_iso(date_text)
 
         for row in table.select("tbody > tr.Table__TR"):
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
@@ -72,7 +86,7 @@ for league_name, league_code in LEAGUES.items():
 
             games_of_day[game_id] = {
                 "gameId": game_id,
-                "date": date_text,
+                "date": date_text_iso,
                 "league": league_name,
                 "team1": teams[0].text.strip(),
                 "team2": teams[1].text.strip(),

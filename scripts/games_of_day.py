@@ -15,24 +15,61 @@ OUTPUT_DIR = "data/football"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "games_of_day.json")
 
-# === LIGUES LIMITÉES ===
+# === LIGUES COMPLÈTES ===
 LEAGUES = {
-    "Premier League": "eng.1",
-    "LaLiga": "esp.1",
-    "Bundesliga": "ger.1",
-    "Argentina - Primera Nacional": "arg.2",
-    "Austria - Bundesliga": "aut.1",
-    "Belgium - Jupiler Pro League": "bel.1"
+    "England_Premier_League": "eng.1",
+    "Spain_Laliga": "esp.1",
+    "Germany_Bundesliga": "ger.1",
+    "Argentina_Primera_Nacional": "arg.2",
+    "Austria_Bundesliga": "aut.1",
+    "Belgium_Jupiler_Pro_League": "bel.1",
+    "Brazil_Serie_A": "bra.1",
+    "Brazil_Serie_B": "bra.2",
+    "Chile_Primera_Division": "chi.1",
+    "China_Super_League": "chn.1",
+    "Colombia_Primera_A": "col.1",
+    "England_National_League": "eng.5",
+    "France_Ligue_1": "fra.1",
+    "Greece_Super_League_1": "gre.1",
+    "Italy_Serie_A": "ita.1",
+    "Japan_J1_League": "jpn.1",
+    "Mexico_Liga_MX": "mex.1",
+    "Netherlands_Eredivisie": "ned.1",
+    "Paraguay_Division_Profesional": "par.1",
+    "Peru_Primera_Division": "per.1",
+    "Portugal_Primeira_Liga": "por.1",
+    "Romania_Liga_I": "rou.1",
+    "Russia_Premier_League": "rus.1",
+    "Saudi_Arabia_Pro_League": "ksa.1",
+    "Sweden_Allsvenskan": "swe.1",
+    "Switzerland_Super_League": "sui.1",
+    "Turkey_Super_Lig": "tur.1",
+    "USA_Major_League_Soccer": "usa.1",
+    "Venezuela_Primera_Division": "ven.1",
+    "UEFA_Champions_League": "uefa.champions",
+    "UEFA_Europa_League": "uefa.europa",
+    "FIFA_Club_World_Cup": "fifa.cwc"
 }
 
 # === DATE DU JOUR ===
-today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+today_utc = datetime.now(timezone.utc)
+today_str = today_utc.strftime("%Y%m%d")
 
 # === CONTENEUR DES MATCHS DU JOUR ===
 games_of_day = {}
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
+# Fonction utilitaire pour parser différentes dates ESPN
+def parse_espn_date(date_text):
+    for fmt in ("%a, %b %d, %Y", "%b %d, %Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(date_text, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+# === SCRAPING DES MATCHS ===
 for league_name, league_code in LEAGUES.items():
     print(f"📅 Récupération {league_name} ({today_str})")
 
@@ -45,7 +82,15 @@ for league_name, league_code in LEAGUES.items():
 
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
-        date_text = date_title.text.strip() if date_title else today_str
+        date_text = date_title.text.strip() if date_title else today_utc.strftime("%b %d, %Y")
+
+        match_date_obj = parse_espn_date(date_text)
+        if not match_date_obj:
+            continue  # Ignore si date non reconnue
+
+        # ⚡ On ne garde que les matchs de la date du jour
+        if match_date_obj.strftime("%Y%m%d") != today_str:
+            continue
 
         for row in table.select("tbody > tr.Table__TR"):
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
@@ -68,7 +113,7 @@ for league_name, league_code in LEAGUES.items():
 
             games_of_day[game_id] = {
                 "gameId": game_id,
-                "date": date_text,
+                "date": match_date_obj.strftime("%Y-%m-%d"),
                 "league": league_name,
                 "team1": teams[0].text.strip(),
                 "team2": teams[1].text.strip(),

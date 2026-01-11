@@ -36,9 +36,9 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
 
-      # 5️⃣ Exécution du scraper teams.py
+      # 5️⃣ Exécution du scraper depuis le dossier scripts
       - name: Run teams scraper
-        run: python teams.py
+        run: python scripts/teams.py
 
       # 6️⃣ Commit & push des résultats
       - name: Commit and push results

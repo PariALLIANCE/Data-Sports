@@ -14,81 +14,43 @@ HEADERS = {
 # === DOSSIER DE SORTIE ===
 OUTPUT_DIR = "data/football"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "game-of-day.json")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "games_of_day.json")
 
-# === FICHIER DES ÉQUIPES ===
-TEAMS_FILE = os.path.join(OUTPUT_DIR, "teams", "football_teams.json")
-with open(TEAMS_FILE, "r", encoding="utf-8") as f:
-    TEAMS_DATA = json.load(f)
-
-# === LIGUES ===
+# === LIGUES LIMITÉES ===
 LEAGUES = {
-    "England_Premier_League": { "id": "eng.1" },
-    "Spain_Laliga": { "id": "esp.1" },
-    "Germany_Bundesliga": { "id": "ger.1" },
-    "Argentina_Primera_Nacional": { "id": "arg.2" },
-    "Austria_Bundesliga": { "id": "aut.1" },
-    "Belgium_Jupiler_Pro_League": { "id": "bel.1" },
-    "Brazil_Serie_A": { "id": "bra.1" },
-    "Brazil_Serie_B": { "id": "bra.2" },
-    "Chile_Primera_Division": { "id": "chi.1" },
-    "China_Super_League": { "id": "chn.1" },
-    "Colombia_Primera_A": { "id": "col.1" },
-    "England_National_League": { "id": "eng.5" },
-    "France_Ligue_1": { "id": "fra.1" },
-    "Greece_Super_League_1": { "id": "gre.1" },
-    "Italy_Serie_A": { "id": "ita.1" },
-    "Japan_J1_League": { "id": "jpn.1" },
-    "Mexico_Liga_MX": { "id": "mex.1" },
-    "Netherlands_Eredivisie": { "id": "ned.1" },
-    "Paraguay_Division_Profesional": { "id": "par.1" },
-    "Peru_Primera_Division": { "id": "per.1" },
-    "Portugal_Primeira_Liga": { "id": "por.1" },
-    "Romania_Liga_I": { "id": "rou.1" },
-    "Russia_Premier_League": { "id": "rus.1" },
-    "Saudi_Arabia_Pro_League": { "id": "ksa.1" },
-    "Sweden_Allsvenskan": { "id": "swe.1" },
-    "Switzerland_Super_League": { "id": "sui.1" },
-    "Turkey_Super_Lig": { "id": "tur.1" },
-    "USA_Major_League_Soccer": { "id": "usa.1" },
-    "Venezuela_Primera_Division": { "id": "ven.1" },
-    "UEFA_Champions_League": { "id": "uefa.champions" },
-    "UEFA_Europa_League": { "id": "uefa.europa" },
-    "FIFA_Club_World_Cup": { "id": "fifa.cwc" }
+    "Premier League": "eng.1",
+    "LaLiga": "esp.1",
+    "Bundesliga": "ger.1",
+    "Argentina - Primera Nacional": "arg.2",
+    "Austria - Bundesliga": "aut.1",
+    "Belgium - Jupiler Pro League": "bel.1"
 }
 
 # === DATE DU JOUR ===
 today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+# === CONTENEUR DES MATCHS DU JOUR ===
+games_of_day = {}
+
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
 # === FONCTION DE CONVERSION DE DATE ===
 def convert_date_to_iso(date_text):
+    """
+    Convertit une date type 'Saturday, January 17, 2026' en 'YYYY-MM-DD'
+    """
     try:
         date_obj = datetime.strptime(date_text, "%A, %B %d, %Y")
         return date_obj.strftime("%Y-%m-%d")
     except Exception:
-        return date_text
+        return date_text  # fallback si format inattendu
 
-# === FONCTION POUR TROUVER LE LOGO ===
-def get_team_logo(league_name, team_name):
-    teams = TEAMS_DATA.get(league_name, [])
-    for t in teams:
-        if t["team"].lower() == team_name.lower():
-            return t["logo"]
-    return None
-
-# === CONTENEUR GLOBAL ===
-all_games = {}
-
-# === SCRAPING PAR LIGUE ===
-for league_name, league_info in LEAGUES.items():
+for league_name, league_code in LEAGUES.items():
     print(f"📅 Récupération {league_name} ({today_str})")
-
     try:
         res = requests.get(
-            BASE_URL.format(date=today_str, league=league_info["id"]),
+            BASE_URL.format(date=today_str, league=league_code),
             headers=HEADERS,
             timeout=15
         )
@@ -100,6 +62,8 @@ for league_name, league_info in LEAGUES.items():
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
         date_text = date_title.text.strip() if date_title else today_str
+
+        # ⚡ Conversion de la date en format ISO
         date_text_iso = convert_date_to_iso(date_text)
 
         for row in table.select("tbody > tr.Table__TR"):
@@ -110,6 +74,8 @@ for league_name, league_info in LEAGUES.items():
                 continue
 
             score = score_tag.text.strip()
+
+            # ⚡ Match non joué uniquement
             if score.lower() != "v":
                 continue
 
@@ -119,28 +85,24 @@ for league_name, league_info in LEAGUES.items():
 
             game_id = match_id.group(1)
 
+            # ⚡ Filtre : ne garder que les matchs du jour
             if date_text_iso != today_iso:
                 continue
 
-            team1_name = teams[0].text.strip()
-            team2_name = teams[1].text.strip()
-
-            all_games[game_id] = {
+            games_of_day[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
                 "league": league_name,
-                "team1": team1_name,
-                "team1_logo": get_team_logo(league_name, team1_name),
-                "team2": team2_name,
-                "team2_logo": get_team_logo(league_name, team2_name),
+                "team1": teams[0].text.strip(),
+                "team2": teams[1].text.strip(),
                 "score": score,
                 "match_url": "https://www.espn.com" + score_tag["href"]
             }
 
-            time.sleep(0.5)
+            time.sleep(0.5)  # Respect du site
 
-# === ÉCRITURE DU JSON GLOBAL ===
+# === ÉCRITURE DU JSON ===
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    json.dump(list(all_games.values()), f, indent=2, ensure_ascii=False)
+    json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(all_games)} matchs du jour sauvegardés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs du jour sauvegardés dans {OUTPUT_FILE}")

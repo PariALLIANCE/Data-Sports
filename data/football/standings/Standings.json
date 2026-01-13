@@ -370,14 +370,14 @@
             "position": 7,
             "name": "Celta Vigo",
             "stats": {
-                "GP": 18,
-                "W": 6,
+                "GP": 19,
+                "W": 7,
                 "D": 8,
                 "L": 4,
-                "F": 24,
+                "F": 25,
                 "A": 20,
-                "GD": 4,
-                "P": 26
+                "GD": 5,
+                "P": 29
             }
         },
         {
@@ -468,13 +468,13 @@
             "position": 14,
             "name": "Sevilla",
             "stats": {
-                "GP": 18,
+                "GP": 19,
                 "W": 6,
                 "D": 2,
-                "L": 10,
+                "L": 11,
                 "F": 24,
-                "A": 29,
-                "GD": -5,
+                "A": 30,
+                "GD": -6,
                 "P": 20
             }
         },
@@ -3852,6 +3852,20 @@
         },
         {
             "position": 4,
+            "name": "Juventus",
+            "stats": {
+                "GP": 20,
+                "W": 11,
+                "D": 6,
+                "L": 3,
+                "F": 32,
+                "A": 16,
+                "GD": 16,
+                "P": 39
+            }
+        },
+        {
+            "position": 5,
             "name": "AS Roma",
             "stats": {
                 "GP": 20,
@@ -3862,20 +3876,6 @@
                 "A": 12,
                 "GD": 12,
                 "P": 39
-            }
-        },
-        {
-            "position": 5,
-            "name": "Juventus",
-            "stats": {
-                "GP": 19,
-                "W": 10,
-                "D": 6,
-                "L": 3,
-                "F": 27,
-                "A": 16,
-                "GD": 11,
-                "P": 36
             }
         },
         {
@@ -3980,13 +3980,13 @@
             "position": 13,
             "name": "Cremonese",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 5,
                 "D": 7,
-                "L": 7,
+                "L": 8,
                 "F": 20,
-                "A": 23,
-                "GD": -3,
+                "A": 28,
+                "GD": -8,
                 "P": 22
             }
         },
@@ -4006,20 +4006,34 @@
         },
         {
             "position": 15,
-            "name": "Cagliari",
+            "name": "Genoa",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 4,
                 "D": 7,
-                "L": 8,
-                "F": 21,
-                "A": 27,
-                "GD": -6,
+                "L": 9,
+                "F": 22,
+                "A": 29,
+                "GD": -7,
                 "P": 19
             }
         },
         {
             "position": 16,
+            "name": "Cagliari",
+            "stats": {
+                "GP": 20,
+                "W": 4,
+                "D": 7,
+                "L": 9,
+                "F": 21,
+                "A": 30,
+                "GD": -9,
+                "P": 19
+            }
+        },
+        {
+            "position": 17,
             "name": "Lecce",
             "stats": {
                 "GP": 19,
@@ -4030,20 +4044,6 @@
                 "A": 27,
                 "GD": -14,
                 "P": 17
-            }
-        },
-        {
-            "position": 17,
-            "name": "Genoa",
-            "stats": {
-                "GP": 19,
-                "W": 3,
-                "D": 7,
-                "L": 9,
-                "F": 19,
-                "A": 29,
-                "GD": -10,
-                "P": 16
             }
         },
         {
@@ -4416,7 +4416,7 @@
         },
         {
             "position": 4,
-            "name": "León",
+            "name": "Tigres UANL",
             "stats": {
                 "GP": 1,
                 "W": 1,
@@ -4430,6 +4430,20 @@
         },
         {
             "position": 5,
+            "name": "León",
+            "stats": {
+                "GP": 1,
+                "W": 1,
+                "D": 0,
+                "L": 0,
+                "F": 2,
+                "A": 1,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 6,
             "name": "Toluca",
             "stats": {
                 "GP": 1,
@@ -4443,7 +4457,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Atlas",
             "stats": {
                 "GP": 1,
@@ -4457,7 +4471,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Querétaro",
             "stats": {
                 "GP": 1,
@@ -4471,7 +4485,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Pumas UNAM",
             "stats": {
                 "GP": 1,
@@ -4485,7 +4499,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "América",
             "stats": {
                 "GP": 1,
@@ -4499,7 +4513,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "Tijuana",
             "stats": {
                 "GP": 1,
@@ -4513,36 +4527,22 @@
             }
         },
         {
-            "position": 11,
-            "name": "Atlético de San Luis",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
             "position": 12,
-            "name": "Tigres UANL",
+            "name": "Cruz Azul",
             "stats": {
-                "GP": 0,
+                "GP": 1,
                 "W": 0,
                 "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
+                "L": 1,
+                "F": 1,
+                "A": 2,
+                "GD": -1,
                 "P": 0
             }
         },
         {
             "position": 13,
-            "name": "Cruz Azul",
+            "name": "Atlético de San Luis",
             "stats": {
                 "GP": 1,
                 "W": 0,
@@ -6014,27 +6014,27 @@
             "position": 1,
             "name": "Al Hilal",
             "stats": {
-                "GP": 13,
-                "W": 11,
+                "GP": 14,
+                "W": 12,
                 "D": 2,
                 "L": 0,
-                "F": 35,
-                "A": 12,
-                "GD": 23,
-                "P": 35
+                "F": 38,
+                "A": 13,
+                "GD": 25,
+                "P": 38
             }
         },
         {
             "position": 2,
             "name": "Al Nassr",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 10,
                 "D": 1,
-                "L": 2,
-                "F": 38,
-                "A": 12,
-                "GD": 26,
+                "L": 3,
+                "F": 39,
+                "A": 15,
+                "GD": 24,
                 "P": 31
             }
         },
@@ -6098,18 +6098,32 @@
             "position": 7,
             "name": "Al Ettifaq",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 6,
                 "D": 4,
-                "L": 3,
-                "F": 23,
-                "A": 23,
-                "GD": 0,
+                "L": 4,
+                "F": 24,
+                "A": 25,
+                "GD": -1,
                 "P": 22
             }
         },
         {
             "position": 8,
+            "name": "Al Khaleej",
+            "stats": {
+                "GP": 14,
+                "W": 6,
+                "D": 3,
+                "L": 5,
+                "F": 32,
+                "A": 22,
+                "GD": 10,
+                "P": 21
+            }
+        },
+        {
+            "position": 9,
             "name": "Neom SC",
             "stats": {
                 "GP": 13,
@@ -6120,20 +6134,6 @@
                 "A": 20,
                 "GD": -2,
                 "P": 20
-            }
-        },
-        {
-            "position": 9,
-            "name": "Al Khaleej",
-            "stats": {
-                "GP": 13,
-                "W": 5,
-                "D": 3,
-                "L": 5,
-                "F": 30,
-                "A": 21,
-                "GD": 9,
-                "P": 18
             }
         },
         {
@@ -6152,6 +6152,20 @@
         },
         {
             "position": 11,
+            "name": "Al Hazem",
+            "stats": {
+                "GP": 14,
+                "W": 4,
+                "D": 4,
+                "L": 6,
+                "F": 14,
+                "A": 22,
+                "GD": -8,
+                "P": 16
+            }
+        },
+        {
+            "position": 12,
             "name": "Al Fayha",
             "stats": {
                 "GP": 13,
@@ -6160,20 +6174,6 @@
                 "L": 6,
                 "F": 12,
                 "A": 21,
-                "GD": -9,
-                "P": 13
-            }
-        },
-        {
-            "position": 12,
-            "name": "Al Hazem",
-            "stats": {
-                "GP": 13,
-                "W": 3,
-                "D": 4,
-                "L": 6,
-                "F": 11,
-                "A": 20,
                 "GD": -9,
                 "P": 13
             }
@@ -6252,13 +6252,13 @@
             "position": 18,
             "name": "Al Najma",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 0,
                 "D": 2,
-                "L": 11,
-                "F": 13,
-                "A": 29,
-                "GD": -16,
+                "L": 12,
+                "F": 15,
+                "A": 32,
+                "GD": -17,
                 "P": 2
             }
         }

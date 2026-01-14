@@ -1,27 +1,5 @@
 [
   {
-    "gameId": "746870",
-    "date": "2026-01-14",
-    "league": "Germany_Bundesliga",
-    "team1": "VfL Wolfsburg",
-    "team1_id": "138",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/138.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/138",
-    "team2": "St. Pauli",
-    "team2_id": "270",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/270.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/270",
-    "score": "v",
-    "odds": {
-      "moneyline": {
-        "home": 1.29,
-        "away": 12.0,
-        "draw": 4.9
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746870"
-  },
-  {
     "gameId": "746864",
     "date": "2026-01-14",
     "league": "Germany_Bundesliga",
@@ -36,12 +14,16 @@
     "score": "v",
     "odds": {
       "moneyline": {
-        "home": 9.5,
-        "away": 1.21,
-        "draw": 6.5
+        "home": 7.5,
+        "away": 1.56,
+        "draw": 3.35
+      },
+      "key_players": {
+        "top_scorers": [],
+        "most_assists": []
       }
     },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746864/bayern-munich-fc-cologne"
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/746864"
   },
   {
     "gameId": "746865",
@@ -58,12 +40,16 @@
     "score": "v",
     "odds": {
       "moneyline": {
-        "home": 1.8,
-        "away": 4.1,
-        "draw": 3.6
+        "home": 1.01,
+        "away": 41.0,
+        "draw": 18.0
+      },
+      "key_players": {
+        "top_scorers": [],
+        "most_assists": []
       }
     },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746865/sc-freiburg-rb-leipzig"
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/746865"
   },
   {
     "gameId": "746862",
@@ -80,34 +66,16 @@
     "score": "v",
     "odds": {
       "moneyline": {
-        "home": 1.87,
-        "away": 3.6,
-        "draw": 3.7
+        "home": 1.07,
+        "away": 76.0,
+        "draw": 91.0
+      },
+      "key_players": {
+        "top_scorers": [],
+        "most_assists": []
       }
     },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746862/borussia-monchengladbach-tsg-hoffenheim"
-  },
-  {
-    "gameId": "736937",
-    "date": "2026-01-14",
-    "league": "Italy_Serie_A",
-    "team1": "Napoli",
-    "team1_id": "114",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/114",
-    "team2": "Parma",
-    "team2_id": "115",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/115",
-    "score": "v",
-    "odds": {
-      "moneyline": {
-        "home": 1.36,
-        "away": 12.0,
-        "draw": 3.95
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/736937"
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/746862"
   },
   {
     "gameId": "736940",
@@ -124,12 +92,16 @@
     "score": "v",
     "odds": {
       "moneyline": {
-        "home": 1.15,
+        "home": 1.43,
         "away": 15.0,
-        "draw": 7.0
+        "draw": 3.3
+      },
+      "key_players": {
+        "top_scorers": [],
+        "most_assists": []
       }
     },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/736940/lecce-internazionale"
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/736940"
   },
   {
     "gameId": "401840827",
@@ -148,7 +120,25 @@
       "moneyline": {
         "home": 1.35,
         "away": 8.0,
-        "draw": 5.25
+        "draw": 5.0
+      },
+      "key_players": {
+        "top_scorers": [
+          {
+            "name": "A Palavecino",
+            "raw_stats": "Midfielder\nMatches: 1\nGoals: 1"
+          },
+          {
+            "name": "U Djurdjevic",
+            "raw_stats": "Forward\nMatches: 1\nGoals: 1"
+          }
+        ],
+        "most_assists": [
+          {
+            "name": "A Morales",
+            "raw_stats": "Midfielder\nMatches: 1\nAssists: 1"
+          }
+        ]
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401840827/atlas-cruz-azul"
@@ -171,6 +161,20 @@
         "home": 2.75,
         "away": 2.55,
         "draw": 3.25
+      },
+      "key_players": {
+        "top_scorers": [
+          {
+            "name": "M Coronel",
+            "raw_stats": "Midfielder\nMatches: 1\nGoals: 1"
+          }
+        ],
+        "most_assists": [
+          {
+            "name": "J Unjanque",
+            "raw_stats": "Midfielder\nMatches: 1\nAssists: 1"
+          }
+        ]
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401840830/tijuana-queretaro"
@@ -193,6 +197,20 @@
         "home": 1.43,
         "away": 7.0,
         "draw": 4.7
+      },
+      "key_players": {
+        "top_scorers": [
+          {
+            "name": "João Pedro",
+            "raw_stats": "Forward\nMatches: 1\nGoals: 1"
+          }
+        ],
+        "most_assists": [
+          {
+            "name": "B Galdames",
+            "raw_stats": "Midfielder\nMatches: 1\nAssists: 1"
+          }
+        ]
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401840829/atletico-de-san-luis-america"
@@ -214,7 +232,25 @@
       "moneyline": {
         "home": 1.67,
         "away": 5.25,
-        "draw": 3.75
+        "draw": 3.65
+      },
+      "key_players": {
+        "top_scorers": [
+          {
+            "name": "M Flores",
+            "raw_stats": "Midfielder\nMatches: 1\nGoals: 2"
+          },
+          {
+            "name": "A Carrasquilla",
+            "raw_stats": "Midfielder\nMatches: 1\nGoals: 1"
+          }
+        ],
+        "most_assists": [
+          {
+            "name": "A Gignac",
+            "raw_stats": "Forward\nMatches: 1\nAssists: 1"
+          }
+        ]
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401840831/pumas-unam-tigres-uanl"
@@ -237,52 +273,30 @@
         "home": 1.21,
         "away": 10.5,
         "draw": 7.5
+      },
+      "key_players": {
+        "top_scorers": [
+          {
+            "name": "Helinho",
+            "raw_stats": "Forward\nMatches: 1\nGoals: 1"
+          },
+          {
+            "name": "L Di Yorio",
+            "raw_stats": "Forward\nMatches: 1\nGoals: 1"
+          }
+        ],
+        "most_assists": [
+          {
+            "name": "S Simón",
+            "raw_stats": "Midfielder\nMatches: 1\nAssists: 1"
+          },
+          {
+            "name": "F Villalba",
+            "raw_stats": "Midfielder\nMatches: 1\nAssists: 1"
+          }
+        ]
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401840832/santos-toluca"
-  },
-  {
-    "gameId": "756032",
-    "date": "2026-01-14",
-    "league": "Saudi_Arabia_Pro_League",
-    "team1": "Al Ahli",
-    "team1_id": "8346",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8346.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/8346",
-    "team2": "Al Taawoun",
-    "team2_id": "18459",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18459.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/18459",
-    "score": "v",
-    "odds": {
-      "moneyline": {
-        "home": 1.65,
-        "away": 5.75,
-        "draw": 3.3
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/756032"
-  },
-  {
-    "gameId": "756033",
-    "date": "2026-01-14",
-    "league": "Saudi_Arabia_Pro_League",
-    "team1": "Al Shabab",
-    "team1_id": "793",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/793.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/793",
-    "team2": "Neom SC",
-    "team2_id": "130899",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/130899.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/130899",
-    "score": "v",
-    "odds": {
-      "moneyline": {
-        "home": 2.45,
-        "away": 3.15,
-        "draw": 2.8
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/756033"
   }
 ]

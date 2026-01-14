@@ -64,24 +64,40 @@ BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+
 # === CONVERSION DATE TEXTE → ISO ===
 def convert_date_to_iso(date_text):
     """
-    Convertit : 'Saturday, January 17, 2026' → '2026-01-17'
+    'Saturday, January 17, 2026' → '2026-01-17'
     """
     try:
         date_obj = datetime.strptime(date_text, "%A, %B %d, %Y")
         return date_obj.strftime("%Y-%m-%d")
-    except Exception:
+    except:
         return date_text
 
 
-# === EXTRACTION DES COTES MONEYLINE PAR INDEX ===
+# === CONVERSION COTES US → DECIMALES ===
+def us_to_decimal(odds):
+    """
+    Convertit une cote US (-140, +220…) en cote décimale.
+    """
+    if not odds:
+        return None
+    try:
+        odds = odds.replace("+", "").strip()
+        odds = int(odds)
+
+        if odds > 0:
+            return round(1 + (odds / 100), 2)
+        else:
+            return round(1 + (100 / abs(odds)), 2)
+    except:
+        return None
+
+
+# === EXTRACTION DES COTES MONEYLINE EN DECIMAL ===
 def extract_ml_by_index(match_url):
-    """
-    Récupère les cotes MoneyLine (home / away / draw) depuis la page du match ESPN.
-    Les valeurs sont insérées telles quelles dans le JSON.
-    """
     try:
         res = requests.get(match_url, headers=HEADERS, timeout=15)
         soup = BeautifulSoup(res.text, "html.parser")
@@ -94,14 +110,14 @@ def extract_ml_by_index(match_url):
             val = cell.find("div", class_="FTMw")
             return val.text.strip() if val else None
 
-        home_ml = get_value(odds_cells[1])   # 2ème
-        away_ml = get_value(odds_cells[5])   # 6ème
-        draw_ml = get_value(odds_cells[9])   # 10ème
+        home_us = get_value(odds_cells[1])   # 2ème
+        away_us = get_value(odds_cells[5])   # 6ème
+        draw_us = get_value(odds_cells[9])   # 10ème
 
         return {
-            "home": home_ml,
-            "away": away_ml,
-            "draw": draw_ml
+            "home": us_to_decimal(home_us),
+            "away": us_to_decimal(away_us),
+            "draw": us_to_decimal(draw_us)
         }
 
     except Exception as e:
@@ -126,6 +142,7 @@ for league, teams in football_teams.items():
 
 print(f"✅ {len(teams_index)} ligues chargées depuis football_teams.json")
 
+
 # === CONTENEUR DES MATCHS ===
 games_of_day = {}
 
@@ -149,7 +166,7 @@ for league_name, league_code in LEAGUES.items():
         date_text = date_title.text.strip() if date_title else today_str
         date_text_iso = convert_date_to_iso(date_text)
 
-        # ⚡ Uniquement les matchs du jour
+        # On garde uniquement les matchs du jour
         if date_text_iso != today_iso:
             continue
 
@@ -162,7 +179,7 @@ for league_name, league_code in LEAGUES.items():
 
             score = score_tag.text.strip()
 
-            # ⚡ Uniquement les matchs non joués
+            # Uniquement les matchs non joués
             if score.lower() != "v":
                 continue
 
@@ -183,9 +200,9 @@ for league_name, league_code in LEAGUES.items():
 
             match_url = "https://www.espn.com" + score_tag["href"]
 
-            # === RÉCUPÉRATION DES COTES ===
+            # === RÉCUPÉRATION DES COTES EN DÉCIMAL ===
             ml_odds = extract_ml_by_index(match_url)
-            time.sleep(1)  # pause dédiée au scraping des cotes
+            time.sleep(1)
 
             games_of_day[game_id] = {
                 "gameId": game_id,
@@ -206,7 +223,7 @@ for league_name, league_code in LEAGUES.items():
 
                 "score": score,
 
-                # 🔥 AJOUT DES COTES ICI, JUSTE APRÈS SCORE, SANS CHANGER LA STRUCTURE
+                # COTES MONEYLINE EN DÉCIMAL
                 "odds": {
                     "moneyline": ml_odds
                 },
@@ -214,11 +231,11 @@ for league_name, league_code in LEAGUES.items():
                 "match_url": match_url
             }
 
-            time.sleep(0.5)  # Respect du site
+            time.sleep(0.5)
 
 
 # === ÉCRITURE DU JSON FINAL ===
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs enrichis avec cotes ML sauvegardés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec cotes décimales dans {OUTPUT_FILE}")

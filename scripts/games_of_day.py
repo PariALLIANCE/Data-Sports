@@ -6,13 +6,13 @@ import re
 import os
 import time
 
-# === HEADERS ===
+# ================= HEADERS =================
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
     "Accept-Language": "en-US,en;q=0.9",
 }
 
-# === DOSSIERS ===
+# ================= DOSSIERS =================
 BASE_DIR = "data/football"
 TEAMS_DIR = os.path.join(BASE_DIR, "teams")
 OUTPUT_DIR = BASE_DIR
@@ -22,7 +22,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "games_of_day.json")
 TEAMS_FILE = os.path.join(TEAMS_DIR, "football_teams.json")
 
-# === LIGUES LIMITÉES ===
+# ================= LIGUES =================
 LEAGUES = {
     "England_Premier_League": "eng.1",
     "Spain_Laliga": "esp.1",
@@ -60,16 +60,12 @@ LEAGUES = {
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
-# === DATE DU JOUR ===
+# ================= DATE =================
 today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-
-# === CONVERSION DATE TEXTE → ISO ===
+# ================= UTILITAIRES =================
 def convert_date_to_iso(date_text):
-    """
-    'Saturday, January 17, 2026' → '2026-01-17'
-    """
     try:
         date_obj = datetime.strptime(date_text, "%A, %B %d, %Y")
         return date_obj.strftime("%Y-%m-%d")
@@ -77,17 +73,12 @@ def convert_date_to_iso(date_text):
         return date_text
 
 
-# === CONVERSION COTES US → DECIMALES ===
 def us_to_decimal(odds):
-    """
-    Convertit une cote US (-140, +220…) en cote décimale.
-    """
     if not odds:
         return None
     try:
         odds = odds.replace("+", "").strip()
         odds = int(odds)
-
         if odds > 0:
             return round(1 + (odds / 100), 2)
         else:
@@ -96,7 +87,7 @@ def us_to_decimal(odds):
         return None
 
 
-# === EXTRACTION DES COTES MONEYLINE EN DECIMAL ===
+# ================= EXTRACTION COTES =================
 def extract_ml_by_index(match_url):
     try:
         res = requests.get(match_url, headers=HEADERS, timeout=15)
@@ -110,45 +101,87 @@ def extract_ml_by_index(match_url):
             val = cell.find("div", class_="FTMw")
             return val.text.strip() if val else None
 
-        home_us = get_value(odds_cells[1])   # 2ème
-        away_us = get_value(odds_cells[5])   # 6ème
-        draw_us = get_value(odds_cells[9])   # 10ème
+        home_us = get_value(odds_cells[1])
+        away_us = get_value(odds_cells[5])
+        draw_us = get_value(odds_cells[9])
 
         return {
             "home": us_to_decimal(home_us),
             "away": us_to_decimal(away_us),
             "draw": us_to_decimal(draw_us)
         }
-
     except Exception as e:
         print(f"⚠️ Erreur récupération cotes ML : {e}")
         return None
 
 
-# === CHARGEMENT DES ÉQUIPES ===
+# ================= JOUEURS CLÉS =================
+def parse_players(section):
+    players = []
+    athletes = section.find_all("a", class_="Athlete")
+
+    for a in athletes:
+        name_tag = a.find("span", class_="Athlete__PlayerName")
+        stats_tag = a.find("div", class_="Athlete__Stats")
+
+        name = name_tag.get_text(strip=True) if name_tag else None
+        stats_block = stats_tag.get_text("\n", strip=True) if stats_tag else None
+
+        if name:
+            players.append({
+                "name": name,
+                "raw_stats": stats_block
+            })
+    return players
+
+
+def extract_top_scorers_and_assists(match_url):
+    try:
+        res = requests.get(match_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(res.text, "html.parser")
+
+        top_scorers_header = soup.find("h3", string="Top Scorers")
+        most_assists_header = soup.find("h3", string="Most Assists")
+
+        if not top_scorers_header or not most_assists_header:
+            return {"top_scorers": [], "most_assists": []}
+
+        top_scorers_section = top_scorers_header.find_parent("section", class_="Card")
+        most_assists_section = most_assists_header.find_parent("section", class_="Card")
+
+        top_scorers = parse_players(top_scorers_section) if top_scorers_section else []
+        most_assists = parse_players(most_assists_section) if most_assists_section else []
+
+        return {
+            "top_scorers": top_scorers,
+            "most_assists": most_assists
+        }
+
+    except Exception as e:
+        print(f"⚠️ Erreur récupération joueurs clés : {e}")
+        return {"top_scorers": [], "most_assists": []}
+
+
+# ================= CHARGEMENT DES ÉQUIPES =================
 if not os.path.exists(TEAMS_FILE):
     raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
 
 with open(TEAMS_FILE, "r", encoding="utf-8") as f:
     football_teams = json.load(f)
 
-# === INDEX RAPIDE : league -> team_name -> data ===
 teams_index = {}
 for league, teams in football_teams.items():
     teams_index[league] = {}
     for t in teams:
-        name_key = t["team"].strip().lower()
-        teams_index[league][name_key] = t
+        teams_index[league][t["team"].strip().lower()] = t
 
-print(f"✅ {len(teams_index)} ligues chargées depuis football_teams.json")
+print(f"✅ {len(teams_index)} ligues chargées")
 
-
-# === CONTENEUR DES MATCHS ===
+# ================= SCRAPING PRINCIPAL =================
 games_of_day = {}
 
-# === SCRAPING PRINCIPAL ===
 for league_name, league_code in LEAGUES.items():
-    print(f"📅 Récupération {league_name} ({today_str})")
+    print(f"📅 {league_name}")
 
     try:
         res = requests.get(
@@ -156,7 +189,7 @@ for league_name, league_code in LEAGUES.items():
             headers=HEADERS,
             timeout=15
         )
-        soup = BeautifulSoup(res.content, "html.parser")
+        soup = BeautifulSoup(res.text, "html.parser")
     except Exception as e:
         print(f"⚠️ Erreur réseau {league_name}: {e}")
         continue
@@ -166,7 +199,6 @@ for league_name, league_code in LEAGUES.items():
         date_text = date_title.text.strip() if date_title else today_str
         date_text_iso = convert_date_to_iso(date_text)
 
-        # On garde uniquement les matchs du jour
         if date_text_iso != today_iso:
             continue
 
@@ -178,30 +210,28 @@ for league_name, league_code in LEAGUES.items():
                 continue
 
             score = score_tag.text.strip()
-
-            # Uniquement les matchs non joués
             if score.lower() != "v":
                 continue
 
             match_id = re.search(r"gameId/(\d+)", score_tag["href"])
             if not match_id:
                 continue
-
             game_id = match_id.group(1)
 
             team1_name = teams[0].text.strip()
             team2_name = teams[1].text.strip()
 
-            t1_key = team1_name.lower()
-            t2_key = team2_name.lower()
-
-            team1_data = teams_index.get(league_name, {}).get(t1_key, {})
-            team2_data = teams_index.get(league_name, {}).get(t2_key, {})
+            team1_data = teams_index.get(league_name, {}).get(team1_name.lower(), {})
+            team2_data = teams_index.get(league_name, {}).get(team2_name.lower(), {})
 
             match_url = "https://www.espn.com" + score_tag["href"]
 
-            # === RÉCUPÉRATION DES COTES EN DÉCIMAL ===
+            # Cotes
             ml_odds = extract_ml_by_index(match_url)
+            time.sleep(1)
+
+            # Joueurs clés
+            key_players = extract_top_scorers_and_assists(match_url)
             time.sleep(1)
 
             games_of_day[game_id] = {
@@ -223,9 +253,12 @@ for league_name, league_code in LEAGUES.items():
 
                 "score": score,
 
-                # COTES MONEYLINE EN DÉCIMAL
                 "odds": {
-                    "moneyline": ml_odds
+                    "moneyline": ml_odds,
+                    "key_players": {
+                        "top_scorers": key_players.get("top_scorers", []),
+                        "most_assists": key_players.get("most_assists", [])
+                    }
                 },
 
                 "match_url": match_url
@@ -233,9 +266,8 @@ for league_name, league_code in LEAGUES.items():
 
             time.sleep(0.5)
 
-
-# === ÉCRITURE DU JSON FINAL ===
+# ================= SAUVEGARDE =================
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec cotes décimales dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec cotes + joueurs clés dans {OUTPUT_FILE}")

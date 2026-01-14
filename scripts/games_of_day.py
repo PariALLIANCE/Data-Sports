@@ -8,7 +8,8 @@ import time
 
 # === HEADERS ===
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "Accept-Language": "en-US,en;q=0.9",
 }
 
 # === DOSSIERS ===
@@ -75,6 +76,39 @@ def convert_date_to_iso(date_text):
         return date_text
 
 
+# === EXTRACTION DES COTES MONEYLINE PAR INDEX ===
+def extract_ml_by_index(match_url):
+    """
+    Récupère les cotes MoneyLine (home / away / draw) depuis la page du match ESPN.
+    Les valeurs sont insérées telles quelles dans le JSON.
+    """
+    try:
+        res = requests.get(match_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(res.text, "html.parser")
+
+        odds_cells = soup.find_all("div", {"data-testid": "OddsCell"})
+        if len(odds_cells) < 10:
+            return None
+
+        def get_value(cell):
+            val = cell.find("div", class_="FTMw")
+            return val.text.strip() if val else None
+
+        home_ml = get_value(odds_cells[1])   # 2ème
+        away_ml = get_value(odds_cells[5])   # 6ème
+        draw_ml = get_value(odds_cells[9])   # 10ème
+
+        return {
+            "home": home_ml,
+            "away": away_ml,
+            "draw": draw_ml
+        }
+
+    except Exception as e:
+        print(f"⚠️ Erreur récupération cotes ML : {e}")
+        return None
+
+
 # === CHARGEMENT DES ÉQUIPES ===
 if not os.path.exists(TEAMS_FILE):
     raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
@@ -115,7 +149,7 @@ for league_name, league_code in LEAGUES.items():
         date_text = date_title.text.strip() if date_title else today_str
         date_text_iso = convert_date_to_iso(date_text)
 
-        # ⚡ On ne garde que les matchs du jour
+        # ⚡ Uniquement les matchs du jour
         if date_text_iso != today_iso:
             continue
 
@@ -147,6 +181,12 @@ for league_name, league_code in LEAGUES.items():
             team1_data = teams_index.get(league_name, {}).get(t1_key, {})
             team2_data = teams_index.get(league_name, {}).get(t2_key, {})
 
+            match_url = "https://www.espn.com" + score_tag["href"]
+
+            # === RÉCUPÉRATION DES COTES ===
+            ml_odds = extract_ml_by_index(match_url)
+            time.sleep(1)  # pause dédiée au scraping des cotes
+
             games_of_day[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
@@ -165,13 +205,20 @@ for league_name, league_code in LEAGUES.items():
                 if team2_data.get("team_id") else None,
 
                 "score": score,
-                "match_url": "https://www.espn.com" + score_tag["href"]
+
+                # 🔥 AJOUT DES COTES ICI, JUSTE APRÈS SCORE, SANS CHANGER LA STRUCTURE
+                "odds": {
+                    "moneyline": ml_odds
+                },
+
+                "match_url": match_url
             }
 
             time.sleep(0.5)  # Respect du site
+
 
 # === ÉCRITURE DU JSON FINAL ===
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs enrichis sauvegardés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs enrichis avec cotes ML sauvegardés dans {OUTPUT_FILE}")

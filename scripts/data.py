@@ -5,7 +5,7 @@ from datetime import datetime
 # ========= CHEMINS =========
 GAMES_FILE = "data/football/games_of_day.json"
 STANDINGS_FILE = "data/football/standings/Standings.json"
-LEAGUES_DIR = "data/football/league"
+LEAGUES_DIR = "data/football/leagues"
 OUTPUT_DIR = "data/football/predictions"
 # ===========================
 

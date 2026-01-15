@@ -15,6 +15,7 @@ HEADERS = {
 # ================= DOSSIERS =================
 BASE_DIR = "data/football"
 TEAMS_DIR = os.path.join(BASE_DIR, "teams")
+LEAGUES_DIR = os.path.join(BASE_DIR, "leagues")
 OUTPUT_DIR = BASE_DIR
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -72,7 +73,6 @@ def convert_date_to_iso(date_text):
     except:
         return date_text
 
-
 def us_to_decimal(odds):
     if not odds:
         return None
@@ -86,6 +86,33 @@ def us_to_decimal(odds):
     except:
         return None
 
+# ================= FORMES RÉCENTES =================
+def normalize_team_name(name):
+    return name.lower().strip() if name else ""
+
+def load_league_history(league_name):
+    league_file = os.path.join(LEAGUES_DIR, f"{league_name}.json")
+    if not os.path.exists(league_file):
+        print(f"⚠️ Historique ligue introuvable : {league_file}")
+        return []
+    with open(league_file, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def extract_recent_matches(team_name, league_matches, limit=7):
+    team_norm = normalize_team_name(team_name)
+    team_games = []
+
+    for match in league_matches:
+        t1 = normalize_team_name(match.get("team1", ""))
+        t2 = normalize_team_name(match.get("team2", ""))
+
+        if team_norm == t1 or team_norm == t2:
+            match_copy = dict(match)
+            match_copy["date"] = convert_date_to_iso(match_copy.get("date", ""))
+            team_games.append(match_copy)
+
+    team_games.sort(key=lambda x: x.get("date", ""), reverse=True)
+    return team_games[:limit]
 
 # ================= EXTRACTION COTES =================
 def extract_ml_by_index(match_url):
@@ -114,7 +141,6 @@ def extract_ml_by_index(match_url):
         print(f"⚠️ Erreur récupération cotes ML : {e}")
         return None
 
-
 # ================= JOUEURS CLÉS =================
 def parse_players(section):
     players = []
@@ -133,7 +159,6 @@ def parse_players(section):
                 "raw_stats": stats_block
             })
     return players
-
 
 def extract_top_scorers_and_assists(match_url):
     try:
@@ -161,7 +186,6 @@ def extract_top_scorers_and_assists(match_url):
         print(f"⚠️ Erreur récupération joueurs clés : {e}")
         return {"top_scorers": [], "most_assists": []}
 
-
 # ================= CHARGEMENT DES ÉQUIPES =================
 if not os.path.exists(TEAMS_FILE):
     raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
@@ -179,6 +203,7 @@ print(f"✅ {len(teams_index)} ligues chargées")
 
 # ================= SCRAPING PRINCIPAL =================
 games_of_day = {}
+league_history_cache = {}
 
 for league_name, league_code in LEAGUES.items():
     print(f"📅 {league_name}")
@@ -193,6 +218,11 @@ for league_name, league_code in LEAGUES.items():
     except Exception as e:
         print(f"⚠️ Erreur réseau {league_name}: {e}")
         continue
+
+    if league_name not in league_history_cache:
+        league_history_cache[league_name] = load_league_history(league_name)
+
+    league_history = league_history_cache[league_name]
 
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
@@ -234,6 +264,10 @@ for league_name, league_code in LEAGUES.items():
             key_players = extract_top_scorers_and_assists(match_url)
             time.sleep(1)
 
+            # 🔥 Forme récente intégrée directement
+            recent_team1 = extract_recent_matches(team1_name, league_history)
+            recent_team2 = extract_recent_matches(team2_name, league_history)
+
             games_of_day[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
@@ -253,6 +287,17 @@ for league_name, league_code in LEAGUES.items():
 
                 "score": score,
 
+                "recent_form": {
+                    "match1": {
+                        "team": team1_name,
+                        "last_matches": recent_team1
+                    },
+                    "match2": {
+                        "team": team2_name,
+                        "last_matches": recent_team2
+                    }
+                },
+
                 "odds": {
                     "moneyline": ml_odds,
                     "key_players": {
@@ -270,4 +315,4 @@ for league_name, league_code in LEAGUES.items():
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec cotes + joueurs clés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + cotes + joueurs clés dans {OUTPUT_FILE}")

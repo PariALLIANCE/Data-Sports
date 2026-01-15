@@ -42,5 +42,5 @@ jobs:
         with:
           commit_message: "🤖 Génération stats football avec classements"
           branch: main
-          file_pattern: "football/data/stats_football-*.json"
+          file_pattern: "football/data/prédictions/stats_football-*.json"
           push_options: "--force"

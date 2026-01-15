@@ -35,6 +35,17 @@ def normalize_team_name(name):
     return name.lower().strip()
 
 
+# Conversion date ESPN → datetime
+def parse_match_date(date_str):
+    """
+    Exemple ESPN : 'Sunday, February 12, 2023'
+    """
+    try:
+        return datetime.strptime(date_str, "%A, %B %d, %Y")
+    except Exception:
+        return None
+
+
 def load_league_matches(league):
     league_file = os.path.join(LEAGUES_DIR, f"{league}.json")
     if not os.path.exists(league_file):
@@ -44,16 +55,42 @@ def load_league_matches(league):
 
 
 def extract_last_matches(team_name, league_matches, limit=7):
+    """
+    - Trie tous les matchs par date décroissante
+    - Parcourt du plus récent au plus ancien
+    - Garde uniquement ceux où l'équipe apparaît
+    - S'arrête dès qu'on atteint la limite
+    """
     team_norm = normalize_team_name(team_name)
-    team_games = []
 
+    # 1. Ajout de la date parsée
+    dated_matches = []
     for match in league_matches:
+        match_date = parse_match_date(match.get("date", ""))
+        if match_date:
+            match["_parsed_date"] = match_date
+            dated_matches.append(match)
+
+    # 2. Tri du plus récent au plus ancien
+    dated_matches.sort(key=lambda x: x["_parsed_date"], reverse=True)
+
+    # 3. Filtrage par équipe
+    team_games = []
+    for match in dated_matches:
         t1 = normalize_team_name(match.get("team1", ""))
         t2 = normalize_team_name(match.get("team2", ""))
+
         if team_norm == t1 or team_norm == t2:
             team_games.append(match)
 
-    return team_games[-limit:]
+        if len(team_games) >= limit:
+            break
+
+    # 4. Nettoyage de la clé interne
+    for match in team_games:
+        match.pop("_parsed_date", None)
+
+    return team_games
 
 
 def main():
@@ -107,7 +144,7 @@ def main():
     save_json(output_file, result)
 
     print("===================================")
-    print(f"✅ FICHIER CRÉÉ AVEC SUCCÈS")
+    print("✅ FICHIER CRÉÉ AVEC SUCCÈS")
     print(f"📍 Emplacement : {output_file}")
     print(f"📊 Matchs traités : {len(result)}")
     print("===================================")

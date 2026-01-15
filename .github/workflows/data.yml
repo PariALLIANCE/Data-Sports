@@ -31,16 +31,22 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
 
-      # 5️⃣ Lancer ton script data.py depuis scripts
+      # 5️⃣ S'assurer que le dossier predictions existe pour Git
+      - name: Ensure predictions folder exists
+        run: |
+          mkdir -p data/football/predictions
+          touch data/football/predictions/.gitkeep
+
+      # 6️⃣ Lancer le script data.py depuis scripts
       - name: Run data script
         run: |
           python scripts/data.py
 
-      # 6️⃣ Commit & push des fichiers générés
+      # 7️⃣ Commit & push des fichiers générés
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "🤖 Génération stats football avec classements"
           branch: main
-          file_pattern: "data/football/prédictions/stats_football-*.json"
+          file_pattern: "data/football/predictions/stats_football-*.json"
           push_options: "--force"

@@ -1,0 +1,46 @@
+name: Génération stats football (manuel)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Cloner le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Installer Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3️⃣ Installer dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      # 4️⃣ 🔥 Rebase AVANT d'exécuter le script
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      # 5️⃣ Lancer ton script data.py depuis scripts
+      - name: Run data script
+        run: |
+          python scripts/data.py
+
+      # 6️⃣ Commit & push des fichiers générés
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🤖 Génération stats football avec classements"
+          branch: main
+          file_pattern: "football/data/stats_football-*.json"
+          push_options: "--force"

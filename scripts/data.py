@@ -5,7 +5,7 @@ from datetime import datetime
 # ========= CHEMINS =========
 GAMES_FILE = "data/football/games_of_day.json"
 STANDINGS_FILE = "data/football/standings/Standings.json"
-LEAGUES_DIR = "data/football/leagues"
+LEAGUES_DIR = "data/football/leagues"   # <-- CORRECTION ICI
 OUTPUT_DIR = "data/football/predictions"
 # ===========================
 
@@ -35,17 +35,6 @@ def normalize_team_name(name):
     return name.lower().strip()
 
 
-# Conversion date ESPN → datetime
-def parse_match_date(date_str):
-    """
-    Exemple ESPN : 'Sunday, February 12, 2023'
-    """
-    try:
-        return datetime.strptime(date_str, "%A, %B %d, %Y")
-    except Exception:
-        return None
-
-
 def load_league_matches(league):
     league_file = os.path.join(LEAGUES_DIR, f"{league}.json")
     if not os.path.exists(league_file):
@@ -54,42 +43,22 @@ def load_league_matches(league):
     return load_json(league_file)
 
 
-def extract_last_matches(team_name, league_matches, limit=7):
+def extract_team_matches(team_name, league_matches):
     """
-    - Trie tous les matchs par date décroissante
-    - Parcourt du plus récent au plus ancien
-    - Garde uniquement ceux où l'équipe apparaît
-    - S'arrête dès qu'on atteint la limite
+    Récupère tous les matchs où figure l'équipe dans team1 ou team2.
+    Aucun tri, aucun parsing de date, on respecte l’ordre naturel du fichier.
     """
     team_norm = normalize_team_name(team_name)
-
-    # 1. Ajout de la date parsée
-    dated_matches = []
-    for match in league_matches:
-        match_date = parse_match_date(match.get("date", ""))
-        if match_date:
-            match["_parsed_date"] = match_date
-            dated_matches.append(match)
-
-    # 2. Tri du plus récent au plus ancien
-    dated_matches.sort(key=lambda x: x["_parsed_date"], reverse=True)
-
-    # 3. Filtrage par équipe
     team_games = []
-    for match in dated_matches:
+
+    for match in league_matches:
         t1 = normalize_team_name(match.get("team1", ""))
         t2 = normalize_team_name(match.get("team2", ""))
 
         if team_norm == t1 or team_norm == t2:
             team_games.append(match)
 
-        if len(team_games) >= limit:
-            break
-
-    # 4. Nettoyage de la clé interne
-    for match in team_games:
-        match.pop("_parsed_date", None)
-
+    print(f"⚽ {team_name} → {len(team_games)} matchs trouvés")
     return team_games
 
 
@@ -117,20 +86,20 @@ def main():
         team1 = match.get("team1")
         team2 = match.get("team2")
 
-        last_team1 = extract_last_matches(team1, league_matches)
-        last_team2 = extract_last_matches(team2, league_matches)
+        team1_matches = extract_team_matches(team1, league_matches)
+        team2_matches = extract_team_matches(team2, league_matches)
 
         enriched_match = {
             **match,
             "league_standings": league_standings,
-            "recent_form": {
+            "history": {
                 "team1": {
                     "name": team1,
-                    "last_7_matches": last_team1
+                    "all_matches": team1_matches
                 },
                 "team2": {
                     "name": team2,
-                    "last_7_matches": last_team2
+                    "all_matches": team2_matches
                 }
             }
         }

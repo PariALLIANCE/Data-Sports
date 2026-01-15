@@ -1,28 +1,51 @@
-name: Analyse Football GPT-OSS 120B
+name: Football Predictions GPT-OSS 120B
 
 on:
-  workflow_dispatch: # Exécution manuelle depuis l'onglet Actions
+  # Déclenchement automatique tous les jours à 01h UTC
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch: # Pour lancement manuel
 
 jobs:
-  analyse-matchs:
+  run-football-predictions:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Récupérer le repo
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
+      # 2️⃣ Configurer Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
+      # 3️⃣ Installer les dépendances
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run football prediction script
-        env:
-          Groq1: ${{ secrets.Groq1 }} # Ta clé Groq API
+      # 4️⃣ 🔥 Rebase AVANT d'exécuter le script
+      - name: Sync with remote main
         run: |
-          python scripts/prédictions-football.py
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      # 5️⃣ Lancer le script de prédictions
+      - name: Run football predictions script
+        env:
+          Groq1: ${{ secrets.Groq1 }} # API GroqCloud
+        run: python scripts/prédictions-football.py
+
+      # 6️⃣ Commit & push les fichiers mis à jour
+      - name: Commit & push prediction JSON
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🤖 Mise à jour des prédictions football"
+          branch: main
+          file_pattern: "data/football/predictions/predictions-*.json"

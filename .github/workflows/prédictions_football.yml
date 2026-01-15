@@ -1,0 +1,28 @@
+name: Analyse Football GPT-OSS 120B
+
+on:
+  workflow_dispatch: # Exécution manuelle depuis l'onglet Actions
+
+jobs:
+  analyse-matchs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run football prediction script
+        env:
+          Groq1: ${{ secrets.Groq1 }} # Ta clé Groq API
+        run: |
+          python scripts/prédictions-football.py

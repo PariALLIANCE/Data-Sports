@@ -6,7 +6,7 @@ from datetime import datetime
 GAMES_FILE = "data/football/games_of_day.json"
 STANDINGS_FILE = "data/football/standings/Standings.json"
 LEAGUES_DIR = "data/football/league"
-OUTPUT_DIR = "data/football/prédictions"
+OUTPUT_DIR = "data/football/predictions"
 # ===========================
 
 

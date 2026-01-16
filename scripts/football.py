@@ -16,13 +16,11 @@ TEMPERATURE = 0.4
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # ===========================================
 
-
 def load_json(path):
     if not os.path.exists(path):
         raise FileNotFoundError(f"Fichier introuvable : {path}")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def save_json(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -30,11 +28,8 @@ def save_json(path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"💾 Fichier sauvegardé : {os.path.abspath(path)}")
 
-
+# ----------------- ANCIEN PROMPT -----------------
 def build_prompt(match):
-    """
-    Construit un prompt propre pour GPT-OSS à partir de la structure complète du match.
-    """
     return f"""
 Tu es un analyste football professionnel spécialisé dans la data et la prédiction sportive.
 
@@ -60,6 +55,55 @@ Données du match :
 {json.dumps(match, indent=2, ensure_ascii=False)}
 """
 
+# ----------------- NOUVEAU PROMPT STRUCTURÉ -----------------
+def build_structured_prompt(match):
+    return f"""
+Tu es un analyste football professionnel spécialisé dans les pronostics sportifs. Analyse ce match en profondeur à partir de toutes les données disponibles :
+
+- Forme récente des équipes
+- Confrontations directes (H2H)
+- Statistiques clés et tendances
+- Impact des joueurs clés
+- Cotes et probabilités implicites
+- Classements détaillés
+
+Tâches à réaliser :
+
+1️⃣ Fournis **une seule prédiction textuelle humaine**, parmi les options suivantes :
+
+- Victoire {match['team1']}
+- Victoire {match['team2']}
+- Victoire {match['team1']} ou Nul
+- Victoire {match['team2']} ou Nul
+- Total +1.5 buts
+- Total -3.5 buts
+- Les deux équipes marquent Oui
+- Les deux équipes marquent Non
+- Total corners +7.5
+- Total corners -10.5
+
+2️⃣ Tu peux combiner si les données le justifient :
+- Résultat principal + total de buts
+- Résultat principal + total de corners
+- Double chance + total de buts
+
+3️⃣ Justifie la prédiction de manière détaillée : tactique, forme récente, H2H, joueurs clés, cotes.
+
+4️⃣ Fournis **une partie JSON stricte** à la fin :
+- `prediction_textuelle` : la prédiction humaine complète
+- `confidence` : entier 0–100 reflétant la fiabilité
+
+⚠️ Important : La partie JSON doit **uniquement contenir** `prediction_textuelle` et `confidence`. Ne pas inclure d'autres champs comme goals_total, btts ou corners_total.
+
+Exemple attendu :
+{{
+    "prediction_textuelle": "Victoire probable de {match['team1']}",
+    "confidence": 87
+}}
+
+Données du match :
+{json.dumps(match, indent=2, ensure_ascii=False)}
+"""
 
 def call_gpt_oss(prompt):
     headers = {
@@ -94,7 +138,6 @@ def call_gpt_oss(prompt):
     data = response.json()
     return data["choices"][0]["message"]["content"]
 
-
 def main():
     if not API_KEY:
         raise ValueError("❌ La clé API GROQ1 n’est pas définie dans l’environnement.")
@@ -109,7 +152,8 @@ def main():
     for i, match in enumerate(games, start=1):
         print(f"\n⚽ Analyse du match {i}/{len(games)} : {match.get('team1')} vs {match.get('team2')}")
 
-        prompt = build_prompt(match)
+        # Utilisation du nouveau prompt structuré
+        prompt = build_structured_prompt(match)
 
         try:
             analysis = call_gpt_oss(prompt)
@@ -117,10 +161,8 @@ def main():
             print(e)
             analysis = "Analyse indisponible (erreur API)."
 
-        # Injection de l’analyse dans la structure existante
         enriched_match = dict(match)
         enriched_match["Analyse"] = analysis
-
         results.append(enriched_match)
 
     print(f"\n📝 Sauvegarde des prédictions dans : {output_file}")
@@ -132,7 +174,6 @@ def main():
     print(f"🧠 Modèle utilisé : {MODEL_ID}")
     print(f"🧾 Max tokens : {MAX_TOKENS}")
     print("====================================")
-
 
 if __name__ == "__main__":
     main()

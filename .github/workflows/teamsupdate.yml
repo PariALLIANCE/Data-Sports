@@ -3,7 +3,7 @@ name: Football Teams Scraper
 on:
   workflow_dispatch:
   schedule:
-    # Tous les jours à 00:00 UTC
+    # Tous les jours à 00:30 UTC
     - cron: '30 0 * * *'
 
 jobs:

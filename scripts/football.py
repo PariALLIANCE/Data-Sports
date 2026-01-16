@@ -2,9 +2,11 @@ import os
 import json
 import requests
 from datetime import datetime
+import re
+import time
 
 # ================== CONFIG ==================
-API_KEY = os.getenv("GROQ1")  # Clé API stockée dans la variable d’environnement GROQ1
+API_KEY = os.getenv("GROQ1")
 MODEL_ID = "openai/gpt-oss-120b"
 
 INPUT_FILE = "data/football/games_of_day.json"
@@ -12,6 +14,8 @@ OUTPUT_DIR = "data/football/predictions"
 
 MAX_TOKENS = 4000
 TEMPERATURE = 0.4
+RETRY_DELAY = 5      # secondes avant de réessayer
+MAX_RETRIES = 15     # nombre maximal de tentatives
 
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # ===========================================
@@ -28,34 +32,6 @@ def save_json(path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"💾 Fichier sauvegardé : {os.path.abspath(path)}")
 
-# ----------------- ANCIEN PROMPT -----------------
-def build_prompt(match):
-    return f"""
-Tu es un analyste football professionnel spécialisé dans la data et la prédiction sportive.
-
-Analyse ce match en profondeur en te basant uniquement sur les données fournies :
-- Forme récente des deux équipes (résultats, buts marqués/encaissés, dynamique)
-- Statistiques clés (possession, tirs cadrés, occasions, corners, discipline)
-- Confrontation de styles
-- Impact des joueurs clés
-- Lecture des cotes (moneyline)
-
-Puis fournis :
-1. Une analyse tactique détaillée
-2. Une analyse statistique comparative
-3. Les forces/faiblesses de chaque équipe
-4. Le scénario de match le plus probable
-5. Une prédiction finale claire (1, X, 2) avec justification
-6. Une estimation du nombre de buts (+1.5 / -3.5)
-7. Probabilité que les deux équipes marquent (Oui / Non)
-
-Réponds uniquement en texte, pas en JSON.
-
-Données du match :
-{json.dumps(match, indent=2, ensure_ascii=False)}
-"""
-
-# ----------------- NOUVEAU PROMPT STRUCTURÉ -----------------
 def build_structured_prompt(match):
     return f"""
 Tu es un analyste football professionnel spécialisé dans les pronostics sportifs. Analyse ce match en profondeur à partir de toutes les données disponibles :
@@ -92,8 +68,7 @@ Tâches à réaliser :
 4️⃣ Fournis **une partie JSON stricte** à la fin :
 - `prediction_textuelle` : la prédiction humaine complète
 - `confidence` : entier 0–100 reflétant la fiabilité
-
-⚠️ Important : La partie JSON doit **uniquement contenir** `prediction_textuelle` et `confidence`. Ne pas inclure d'autres champs comme goals_total, btts ou corners_total.
+⚠️ Important : La partie JSON doit **uniquement contenir** `prediction_textuelle` et `confidence`.
 
 Exemple attendu :
 {{
@@ -110,33 +85,43 @@ def call_gpt_oss(prompt):
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
-
     payload = {
         "model": MODEL_ID,
         "messages": [
-            {
-                "role": "system",
-                "content": (
-                    "Tu es un expert en analyse football, orienté data science et pronostics. "
-                    "Tes réponses doivent être professionnelles, détaillées, structurées et exploitables."
-                )
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
+            {"role": "system", "content": (
+                "Tu es un expert en analyse football, orienté data science et pronostics. "
+                "Tes réponses doivent être professionnelles, détaillées, structurées et exploitables."
+            )},
+            {"role": "user", "content": prompt}
         ],
         "temperature": TEMPERATURE,
         "max_tokens": MAX_TOKENS
     }
 
-    response = requests.post(GROQ_URL, headers=headers, json=payload, timeout=120)
+    retries = 0
+    while retries < MAX_RETRIES:
+        try:
+            response = requests.post(GROQ_URL, headers=headers, json=payload, timeout=120)
+            if response.status_code == 200:
+                data = response.json()
+                return data["choices"][0]["message"]["content"]
+            else:
+                raise Exception(f"❌ Erreur API ({response.status_code}) : {response.text}")
+        except Exception as e:
+            retries += 1
+            print(f"{e}\n🔄 Tentative {retries}/{MAX_RETRIES} dans {RETRY_DELAY}s...")
+            time.sleep(RETRY_DELAY)
 
-    if response.status_code != 200:
-        raise Exception(f"❌ Erreur API Groq / GPT-OSS : {response.text}")
+    raise Exception("❌ Échec répété de l'API après plusieurs tentatives.")
 
-    data = response.json()
-    return data["choices"][0]["message"]["content"]
+def extract_json_from_response(text):
+    match = re.search(r"\{(?:.|\s)*\}", text)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            return None
+    return None
 
 def main():
     if not API_KEY:
@@ -152,17 +137,24 @@ def main():
     for i, match in enumerate(games, start=1):
         print(f"\n⚽ Analyse du match {i}/{len(games)} : {match.get('team1')} vs {match.get('team2')}")
 
-        # Utilisation du nouveau prompt structuré
         prompt = build_structured_prompt(match)
 
         try:
-            analysis = call_gpt_oss(prompt)
+            analysis_text = call_gpt_oss(prompt)
         except Exception as e:
             print(e)
-            analysis = "Analyse indisponible (erreur API)."
+            analysis_text = "Analyse indisponible (erreur API)."
 
         enriched_match = dict(match)
-        enriched_match["Analyse"] = analysis
+        enriched_match["Analyse"] = analysis_text
+
+        prediction_json = extract_json_from_response(analysis_text)
+        if prediction_json:
+            prediction_json["model_id"] = MODEL_ID
+            enriched_match["Prediction_JSON"] = prediction_json
+        else:
+            enriched_match["Prediction_JSON"] = {"error": "JSON non trouvé", "model_id": MODEL_ID}
+
         results.append(enriched_match)
 
     print(f"\n📝 Sauvegarde des prédictions dans : {output_file}")

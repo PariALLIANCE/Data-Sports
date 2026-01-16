@@ -680,14 +680,14 @@
             "position": 9,
             "name": "1. FC Union Berlin",
             "stats": {
-                "GP": 16,
+                "GP": 17,
                 "W": 6,
-                "D": 4,
+                "D": 5,
                 "L": 6,
-                "F": 22,
-                "A": 25,
+                "F": 23,
+                "A": 26,
                 "GD": -3,
-                "P": 22
+                "P": 23
             }
         },
         {
@@ -764,14 +764,14 @@
             "position": 15,
             "name": "FC Augsburg",
             "stats": {
-                "GP": 16,
+                "GP": 17,
                 "W": 4,
-                "D": 2,
+                "D": 3,
                 "L": 10,
-                "F": 17,
-                "A": 32,
+                "F": 18,
+                "A": 33,
                 "GD": -15,
-                "P": 14
+                "P": 15
             }
         },
         {
@@ -3826,14 +3826,14 @@
             "position": 2,
             "name": "AC Milan",
             "stats": {
-                "GP": 19,
-                "W": 11,
+                "GP": 20,
+                "W": 12,
                 "D": 7,
                 "L": 1,
-                "F": 30,
-                "A": 15,
-                "GD": 15,
-                "P": 40
+                "F": 33,
+                "A": 16,
+                "GD": 17,
+                "P": 43
             }
         },
         {
@@ -3882,13 +3882,13 @@
             "position": 6,
             "name": "Como",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 9,
                 "D": 7,
-                "L": 3,
-                "F": 27,
-                "A": 13,
-                "GD": 14,
+                "L": 4,
+                "F": 28,
+                "A": 16,
+                "GD": 12,
                 "P": 34
             }
         },
@@ -3908,6 +3908,20 @@
         },
         {
             "position": 8,
+            "name": "Bologna",
+            "stats": {
+                "GP": 20,
+                "W": 8,
+                "D": 6,
+                "L": 6,
+                "F": 29,
+                "A": 22,
+                "GD": 7,
+                "P": 30
+            }
+        },
+        {
+            "position": 9,
             "name": "Lazio",
             "stats": {
                 "GP": 20,
@@ -3918,20 +3932,6 @@
                 "A": 16,
                 "GD": 5,
                 "P": 28
-            }
-        },
-        {
-            "position": 9,
-            "name": "Bologna",
-            "stats": {
-                "GP": 19,
-                "W": 7,
-                "D": 6,
-                "L": 6,
-                "F": 26,
-                "A": 20,
-                "GD": 6,
-                "P": 27
             }
         },
         {
@@ -4062,20 +4062,6 @@
         },
         {
             "position": 19,
-            "name": "Hellas Verona",
-            "stats": {
-                "GP": 19,
-                "W": 2,
-                "D": 7,
-                "L": 10,
-                "F": 15,
-                "A": 31,
-                "GD": -16,
-                "P": 13
-            }
-        },
-        {
-            "position": 20,
             "name": "Pisa",
             "stats": {
                 "GP": 20,
@@ -4085,6 +4071,20 @@
                 "F": 15,
                 "A": 30,
                 "GD": -15,
+                "P": 13
+            }
+        },
+        {
+            "position": 20,
+            "name": "Hellas Verona",
+            "stats": {
+                "GP": 20,
+                "W": 2,
+                "D": 7,
+                "L": 11,
+                "F": 17,
+                "A": 34,
+                "GD": -17,
                 "P": 13
             }
         }
@@ -4374,6 +4374,20 @@
     "Mexico_Liga_MX": [
         {
             "position": 1,
+            "name": "Toluca",
+            "stats": {
+                "GP": 2,
+                "W": 2,
+                "D": 0,
+                "L": 0,
+                "F": 4,
+                "A": 1,
+                "GD": 3,
+                "P": 6
+            }
+        },
+        {
+            "position": 2,
             "name": "Guadalajara",
             "stats": {
                 "GP": 2,
@@ -4387,7 +4401,63 @@
             }
         },
         {
-            "position": 2,
+            "position": 3,
+            "name": "Tijuana",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 2,
+                "A": 1,
+                "GD": 1,
+                "P": 4
+            }
+        },
+        {
+            "position": 4,
+            "name": "Pumas UNAM",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 2,
+                "A": 1,
+                "GD": 1,
+                "P": 4
+            }
+        },
+        {
+            "position": 5,
+            "name": "Atlético de San Luis",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 6,
+            "name": "Cruz Azul",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 7,
             "name": "Monterrey",
             "stats": {
                 "GP": 2,
@@ -4401,49 +4471,7 @@
             }
         },
         {
-            "position": 3,
-            "name": "Tigres UANL",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 2,
-                "A": 1,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 4,
-            "name": "Toluca",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 1,
-                "A": 0,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 5,
-            "name": "Atlas",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 1,
-                "A": 0,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 6,
+            "position": 8,
             "name": "Necaxa",
             "stats": {
                 "GP": 2,
@@ -4457,7 +4485,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 9,
             "name": "León",
             "stats": {
                 "GP": 2,
@@ -4471,7 +4499,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 10,
             "name": "FC Juarez",
             "stats": {
                 "GP": 2,
@@ -4485,7 +4513,21 @@
             }
         },
         {
-            "position": 9,
+            "position": 11,
+            "name": "Tigres UANL",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 2,
+                "A": 2,
+                "GD": 0,
+                "P": 3
+            }
+        },
+        {
+            "position": 12,
             "name": "Puebla",
             "stats": {
                 "GP": 2,
@@ -4499,7 +4541,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 13,
             "name": "Pachuca",
             "stats": {
                 "GP": 2,
@@ -4513,87 +4555,45 @@
             }
         },
         {
-            "position": 11,
-            "name": "Querétaro",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 1,
-                "A": 1,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
-            "position": 12,
-            "name": "Pumas UNAM",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 1,
-                "A": 1,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
-            "position": 13,
-            "name": "América",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
             "position": 14,
-            "name": "Tijuana",
+            "name": "Atlas",
             "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 1
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 1,
+                "A": 2,
+                "GD": -1,
+                "P": 3
             }
         },
         {
             "position": 15,
-            "name": "Cruz Azul",
+            "name": "Querétaro",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 0,
-                "D": 0,
+                "D": 1,
                 "L": 1,
-                "F": 1,
-                "A": 2,
+                "F": 2,
+                "A": 3,
                 "GD": -1,
-                "P": 0
+                "P": 1
             }
         },
         {
             "position": 16,
-            "name": "Atlético de San Luis",
+            "name": "América",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 0,
-                "D": 0,
+                "D": 1,
                 "L": 1,
-                "F": 1,
+                "F": 0,
                 "A": 2,
-                "GD": -1,
-                "P": 0
+                "GD": -2,
+                "P": 1
             }
         },
         {
@@ -4614,13 +4614,13 @@
             "position": 18,
             "name": "Santos",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 0,
                 "D": 0,
-                "L": 1,
-                "F": 1,
-                "A": 3,
-                "GD": -2,
+                "L": 2,
+                "F": 2,
+                "A": 6,
+                "GD": -4,
                 "P": 0
             }
         }

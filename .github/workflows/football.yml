@@ -1,0 +1,50 @@
+name: Football Games of Day
+
+on:
+  workflow_dispatch:   # Lancement uniquement manuel depuis GitHub
+
+jobs:
+  football-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Configurer Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3️⃣ Installer les dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      # 4️⃣ 🔥 Synchronisation avec la branche main avant exécution
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      # 5️⃣ Lancer le script football.py depuis le dossier scripts
+      - name: Run football analysis script
+        env:
+          GROQ1: ${{ secrets.GROQ1 }}
+        run: |
+          python scripts/football.py
+
+      # 6️⃣ Commit & push des fichiers générés
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "🤖 Analyse IA football (GPT-OSS) – génération manuelle"
+          branch: main
+          file_pattern: |
+            data/football/predictions/*.json

@@ -114,6 +114,23 @@ def extract_recent_matches(team_name, league_matches, limit=7):
     team_games.sort(key=lambda x: x.get("date", ""), reverse=True)
     return team_games[:limit]
 
+def extract_h2h_matches(team1_name, team2_name, league_matches, limit=7):
+    t1_norm = normalize_team_name(team1_name)
+    t2_norm = normalize_team_name(team2_name)
+    h2h_games = []
+
+    for match in league_matches:
+        m_t1 = normalize_team_name(match.get("team1", ""))
+        m_t2 = normalize_team_name(match.get("team2", ""))
+
+        if (t1_norm == m_t1 and t2_norm == m_t2) or (t1_norm == m_t2 and t2_norm == m_t1):
+            match_copy = dict(match)
+            match_copy["date"] = convert_date_to_iso(match_copy.get("date", ""))
+            h2h_games.append(match_copy)
+
+    h2h_games.sort(key=lambda x: x.get("date", ""), reverse=True)
+    return h2h_games[:limit]
+
 # ================= EXTRACTION COTES =================
 def extract_ml_by_index(match_url):
     try:
@@ -264,9 +281,12 @@ for league_name, league_code in LEAGUES.items():
             key_players = extract_top_scorers_and_assists(match_url)
             time.sleep(1)
 
-            # 🔥 Forme récente intégrée directement
+            # Forme récente
             recent_team1 = extract_recent_matches(team1_name, league_history)
             recent_team2 = extract_recent_matches(team2_name, league_history)
+
+            # H2H
+            h2h_matches = extract_h2h_matches(team1_name, team2_name, league_history)
 
             games_of_day[game_id] = {
                 "gameId": game_id,
@@ -298,6 +318,8 @@ for league_name, league_code in LEAGUES.items():
                     }
                 },
 
+                "h2h": h2h_matches,
+
                 "odds": {
                     "moneyline": ml_odds,
                     "key_players": {
@@ -315,4 +337,4 @@ for league_name, league_code in LEAGUES.items():
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + cotes + joueurs clés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + joueurs clés dans {OUTPUT_FILE}")

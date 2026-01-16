@@ -16,6 +16,7 @@ HEADERS = {
 BASE_DIR = "data/football"
 TEAMS_DIR = os.path.join(BASE_DIR, "teams")
 LEAGUES_DIR = os.path.join(BASE_DIR, "leagues")
+STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
 OUTPUT_DIR = BASE_DIR
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -86,10 +87,10 @@ def us_to_decimal(odds):
     except:
         return None
 
-# ================= FORMES RÉCENTES =================
 def normalize_team_name(name):
     return name.lower().strip() if name else ""
 
+# ================= FORMES RÉCENTES =================
 def load_league_history(league_name):
     league_file = os.path.join(LEAGUES_DIR, f"{league_name}.json")
     if not os.path.exists(league_file):
@@ -218,6 +219,18 @@ for league, teams in football_teams.items():
 
 print(f"✅ {len(teams_index)} ligues chargées")
 
+# ================= CHARGEMENT DES STANDINGS =================
+STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
+if os.path.exists(STANDINGS_FILE):
+    with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
+        standings_data = json.load(f)
+else:
+    standings_data = {}
+    print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
+
+def get_league_standing(league_name):
+    return standings_data.get(league_name, [])
+
 # ================= SCRAPING PRINCIPAL =================
 games_of_day = {}
 league_history_cache = {}
@@ -240,6 +253,7 @@ for league_name, league_code in LEAGUES.items():
         league_history_cache[league_name] = load_league_history(league_name)
 
     league_history = league_history_cache[league_name]
+    league_standing = get_league_standing(league_name)  # 🔹 Classement complet
 
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
@@ -296,14 +310,12 @@ for league_name, league_code in LEAGUES.items():
                 "team1": team1_name,
                 "team1_id": team1_data.get("team_id"),
                 "team1_logo": team1_data.get("logo"),
-                "team1_url": f"https://www.espn.com/soccer/team/_/id/{team1_data.get('team_id')}"
-                if team1_data.get("team_id") else None,
+                "team1_url": f"https://www.espn.com/soccer/team/_/id/{team1_data.get('team_id')}" if team1_data.get("team_id") else None,
 
                 "team2": team2_name,
                 "team2_id": team2_data.get("team_id"),
                 "team2_logo": team2_data.get("logo"),
-                "team2_url": f"https://www.espn.com/soccer/team/_/id/{team2_data.get('team_id')}"
-                if team2_data.get("team_id") else None,
+                "team2_url": f"https://www.espn.com/soccer/team/_/id/{team2_data.get('team_id')}" if team2_data.get("team_id") else None,
 
                 "score": score,
 
@@ -328,7 +340,10 @@ for league_name, league_code in LEAGUES.items():
                     }
                 },
 
-                "match_url": match_url
+                "match_url": match_url,
+
+                # 🔹 classement complet de la ligue
+                "league_standing": league_standing
             }
 
             time.sleep(0.5)
@@ -337,4 +352,4 @@ for league_name, league_code in LEAGUES.items():
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + joueurs clés dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + joueurs clés + classement complet dans {OUTPUT_FILE}")

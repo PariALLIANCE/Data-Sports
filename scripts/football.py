@@ -6,7 +6,8 @@ import re
 import time
 
 # ================== CONFIG ==================
-API_KEY = os.getenv("GROQ1")
+API_KEY_1 = os.getenv("GROQ1")
+API_KEY_2 = os.getenv("GROQ2")
 MODEL_ID = "openai/gpt-oss-120b"
 
 INPUT_FILE = "data/football/games_of_day.json"
@@ -14,8 +15,8 @@ OUTPUT_DIR = "data/football/predictions"
 
 MAX_TOKENS = 4000
 TEMPERATURE = 0.4
-RETRY_DELAY = 5      # secondes avant de réessayer
-MAX_RETRIES = 15     # nombre maximal de tentatives
+RETRY_DELAY = 5
+MAX_RETRIES = 15
 
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # ===========================================
@@ -58,7 +59,7 @@ Tâches à réaliser :
 - Total corners +7.5
 - Total corners -10.5
 
-2️⃣ Tu peux combiner si les données le justifient :
+2️⃣ Tu peux combiner si les données le justifient, **mais seulement si les deux éléments que tu veux combiner sont très fiables** selon les statistiques et la forme récente :
 - Résultat principal + total de buts
 - Résultat principal + total de corners
 - Double chance + total de buts
@@ -80,9 +81,17 @@ Données du match :
 {json.dumps(match, indent=2, ensure_ascii=False)}
 """
 
+# ===================== Appel API avec alternateur =====================
+
+api_toggle = 0  # 0 = GROQ1, 1 = GROQ2
+
 def call_gpt_oss(prompt):
+    global api_toggle
+    api_key = API_KEY_1 if api_toggle == 0 else API_KEY_2
+    api_toggle = 1 - api_toggle  # alterne pour la prochaine requête
+
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
     payload = {
@@ -114,6 +123,8 @@ def call_gpt_oss(prompt):
 
     raise Exception("❌ Échec répété de l'API après plusieurs tentatives.")
 
+# ===================== Extraction JSON =====================
+
 def extract_json_from_response(text):
     match = re.search(r"\{(?:.|\s)*\}", text)
     if match:
@@ -123,9 +134,11 @@ def extract_json_from_response(text):
             return None
     return None
 
+# ===================== Main =====================
+
 def main():
-    if not API_KEY:
-        raise ValueError("❌ La clé API GROQ1 n’est pas définie dans l’environnement.")
+    if not API_KEY_1 or not API_KEY_2:
+        raise ValueError("❌ Les clés API GROQ1 et GROQ2 doivent être définies dans l’environnement.")
 
     print("📂 Chargement des matchs...")
     games = load_json(INPUT_FILE)
@@ -136,7 +149,6 @@ def main():
 
     for i, match in enumerate(games, start=1):
         print(f"\n⚽ Analyse du match {i}/{len(games)} : {match.get('team1')} vs {match.get('team2')}")
-
         prompt = build_structured_prompt(match)
 
         try:

@@ -1,1739 +1,5 @@
 [
   {
-    "gameId": "748337",
-    "date": "2026-01-16",
-    "league": "Spain_Laliga",
-    "team1": "Espanyol",
-    "team1_id": "88",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/88",
-    "team2": "Girona",
-    "team2_id": "9812",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9812.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/9812",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Espanyol",
-        "last_matches": [
-          {
-            "gameId": "748328",
-            "date": "2026-01-11",
-            "team1": "Levante",
-            "team2": "Espanyol",
-            "score": "1 - 1",
-            "title": "Levante VS Espanyol",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748328/espanyol-levante",
-            "stats": {
-              "Possession": {
-                "home": "49.4%",
-                "away": "50.6%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "19"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "748319",
-            "date": "2026-01-03",
-            "team1": "Espanyol",
-            "team2": "Barcelona",
-            "score": "0 - 2",
-            "title": "Espanyol VS Barcelona",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748319/barcelona-espanyol",
-            "stats": {
-              "Possession": {
-                "home": "31.2%",
-                "away": "68.8%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "748304",
-            "date": "2025-12-22",
-            "team1": "Athletic Club",
-            "team2": "Espanyol",
-            "score": "1 - 2",
-            "title": "Athletic Club VS Espanyol",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748304/espanyol-athletic-club",
-            "stats": {
-              "Possession": {
-                "home": "65.6%",
-                "away": "34.4%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "748301",
-            "date": "2025-12-13",
-            "team1": "Getafe",
-            "team2": "Espanyol",
-            "score": "0 - 1",
-            "title": "Getafe VS Espanyol",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748301/espanyol-getafe",
-            "stats": {
-              "Possession": {
-                "home": "55.9%",
-                "away": "44.1%"
-              },
-              "Shots on Goal": {
-                "home": "1",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "748284",
-            "date": "2025-12-07",
-            "team1": "Espanyol",
-            "team2": "Rayo Vallecano",
-            "score": "1 - 0",
-            "title": "Espanyol VS Rayo Vallecano",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748284/rayo-vallecano-espanyol",
-            "stats": {
-              "Possession": {
-                "home": "36.4%",
-                "away": "63.6%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "6"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "748281",
-            "date": "2025-11-30",
-            "team1": "Celta Vigo",
-            "team2": "Espanyol",
-            "score": "0 - 1",
-            "title": "Celta Vigo VS Espanyol",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748281/espanyol-celta-vigo",
-            "stats": {
-              "Possession": {
-                "home": "60.5%",
-                "away": "39.5%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "748265",
-            "date": "2025-11-24",
-            "team1": "Espanyol",
-            "team2": "Sevilla",
-            "score": "2 - 1",
-            "title": "Espanyol VS Sevilla",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748265/sevilla-espanyol",
-            "stats": {
-              "Possession": {
-                "home": "33%",
-                "away": "67%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "22"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "13"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "3"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Girona",
-        "last_matches": [
-          {
-            "gameId": "748329",
-            "date": "2026-01-10",
-            "team1": "Girona",
-            "team2": "Osasuna",
-            "score": "1 - 0",
-            "title": "Girona VS Osasuna",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748329/osasuna-girona",
-            "stats": {
-              "Possession": {
-                "home": "46.3%",
-                "away": "53.7%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "6"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "748318",
-            "date": "2026-01-04",
-            "team1": "Mallorca",
-            "team2": "Girona",
-            "score": "1 - 2",
-            "title": "Mallorca VS Girona",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748318/girona-mallorca",
-            "stats": {
-              "Possession": {
-                "home": "48.9%",
-                "away": "51.1%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "748309",
-            "date": "2025-12-21",
-            "team1": "Girona",
-            "team2": "Atlético Madrid",
-            "score": "0 - 3",
-            "title": "Girona VS Atlético Madrid",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748309/atletico-madrid-girona",
-            "stats": {
-              "Possession": {
-                "home": "50.8%",
-                "away": "49.2%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "748294",
-            "date": "2025-12-12",
-            "team1": "Real Sociedad",
-            "team2": "Girona",
-            "score": "1 - 2",
-            "title": "Real Sociedad VS Girona",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748294/girona-real-sociedad",
-            "stats": {
-              "Possession": {
-                "home": "47.1%",
-                "away": "52.9%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "748285",
-            "date": "2025-12-07",
-            "team1": "Elche",
-            "team2": "Girona",
-            "score": "3 - 0",
-            "title": "Elche VS Girona",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748285/girona-elche",
-            "stats": {
-              "Possession": {
-                "home": "57.7%",
-                "away": "42.3%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "748279",
-            "date": "2025-11-30",
-            "team1": "Girona",
-            "team2": "Real Madrid",
-            "score": "1 - 1",
-            "title": "Girona VS Real Madrid",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748279/real-madrid-girona",
-            "stats": {
-              "Possession": {
-                "home": "40.4%",
-                "away": "59.6%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "25"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "748268",
-            "date": "2025-11-23",
-            "team1": "Real Betis",
-            "team2": "Girona",
-            "score": "1 - 1",
-            "title": "Real Betis VS Girona",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/748268/girona-real-betis",
-            "stats": {
-              "Possession": {
-                "home": "54.2%",
-                "away": "45.8%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "23",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "0"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "6"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.91,
-        "away": 4.4,
-        "draw": 3.4
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "P Milla",
-            "raw_stats": "Midfielder\nMatches: 17\nGoals: 6"
-          },
-          {
-            "name": "R Fernández",
-            "raw_stats": "Forward\nMatches: 19\nGoals: 4"
-          },
-          {
-            "name": "C Romero",
-            "raw_stats": "Defender\nMatches: 18\nGoals: 4"
-          },
-          {
-            "name": "V Vanat",
-            "raw_stats": "Forward\nMatches: 16\nGoals: 5"
-          },
-          {
-            "name": "V Tsygankov",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 4"
-          },
-          {
-            "name": "A Ounahi",
-            "raw_stats": "Midfielder\nMatches: 10\nGoals: 3"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "E Expósito",
-            "raw_stats": "Midfielder\nMatches: 18\nAssists: 5"
-          },
-          {
-            "name": "T Dolan",
-            "raw_stats": "Forward\nMatches: 18\nAssists: 3"
-          },
-          {
-            "name": "O El Hilali",
-            "raw_stats": "Defender\nMatches: 19\nAssists: 2"
-          },
-          {
-            "name": "B Gil",
-            "raw_stats": "Forward\nMatches: 16\nAssists: 3"
-          },
-          {
-            "name": "Á Moreno",
-            "raw_stats": "Defender\nMatches: 18\nAssists: 2"
-          },
-          {
-            "name": "V Tsygankov",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 2"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/748337/girona-espanyol"
-  },
-  {
-    "gameId": "746872",
-    "date": "2026-01-16",
-    "league": "Germany_Bundesliga",
-    "team1": "Werder Bremen",
-    "team1_id": "137",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/137.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/137",
-    "team2": "Eintracht Frankfurt",
-    "team2_id": "125",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/125",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Werder Bremen",
-        "last_matches": [
-          {
-            "gameId": "746868",
-            "date": "2026-01-13",
-            "team1": "Borussia Dortmund",
-            "team2": "Werder Bremen",
-            "score": "3 - 0",
-            "title": "Borussia Dortmund VS Werder Bremen",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746868/werder-bremen-borussia-dortmund",
-            "stats": {
-              "Possession": {
-                "home": "45.6%",
-                "away": "54.4%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746851",
-            "date": "2025-12-20",
-            "team1": "FC Augsburg",
-            "team2": "Werder Bremen",
-            "score": "0 - 0",
-            "title": "FC Augsburg VS Werder Bremen",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746851/werder-bremen-fc-augsburg",
-            "stats": {
-              "Possession": {
-                "home": "52.9%",
-                "away": "47.1%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "11"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "746843",
-            "date": "2025-12-14",
-            "team1": "Werder Bremen",
-            "team2": "VfB Stuttgart",
-            "score": "0 - 4",
-            "title": "Werder Bremen VS VfB Stuttgart",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746843/vfb-stuttgart-werder-bremen",
-            "stats": {
-              "Possession": {
-                "home": "37.8%",
-                "away": "62.2%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "12"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "24"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "9"
-              },
-              "Saves": {
-                "home": "8",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746826",
-            "date": "2025-12-07",
-            "team1": "Hamburg SV",
-            "team2": "Werder Bremen",
-            "score": "3 - 2",
-            "title": "Hamburg SV VS Werder Bremen",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746826/werder-bremen-hamburg-sv",
-            "stats": {
-              "Possession": {
-                "home": "54%",
-                "away": "46%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "6"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746820",
-            "date": "2025-11-29",
-            "team1": "Werder Bremen",
-            "team2": "FC Cologne",
-            "score": "1 - 1",
-            "title": "Werder Bremen VS FC Cologne",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746820/fc-cologne-werder-bremen",
-            "stats": {
-              "Possession": {
-                "home": "48.8%",
-                "away": "51.2%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "0"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746811",
-            "date": "2025-11-23",
-            "team1": "RB Leipzig",
-            "team2": "Werder Bremen",
-            "score": "2 - 0",
-            "title": "RB Leipzig VS Werder Bremen",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746811/werder-bremen-rb-leipzig",
-            "stats": {
-              "Possession": {
-                "home": "52.2%",
-                "away": "47.8%"
-              },
-              "Shots on Goal": {
-                "home": "13",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "22",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "13",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "10"
-              }
-            }
-          },
-          {
-            "gameId": "746804",
-            "date": "2025-11-07",
-            "team1": "Werder Bremen",
-            "team2": "VfL Wolfsburg",
-            "score": "2 - 1",
-            "title": "Werder Bremen VS VfL Wolfsburg",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746804/vfl-wolfsburg-werder-bremen",
-            "stats": {
-              "Possession": {
-                "home": "59.6%",
-                "away": "40.4%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "20",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "13",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "5"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Eintracht Frankfurt",
-        "last_matches": [
-          {
-            "gameId": "746863",
-            "date": "2026-01-13",
-            "team1": "VfB Stuttgart",
-            "team2": "Eintracht Frankfurt",
-            "score": "3 - 2",
-            "title": "VfB Stuttgart VS Eintracht Frankfurt",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746863/eintracht-frankfurt-vfb-stuttgart",
-            "stats": {
-              "Possession": {
-                "home": "58.2%",
-                "away": "41.8%"
-              },
-              "Shots on Goal": {
-                "home": "11",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "20",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "10",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "8"
-              }
-            }
-          },
-          {
-            "gameId": "746859",
-            "date": "2026-01-09",
-            "team1": "Eintracht Frankfurt",
-            "team2": "Borussia Dortmund",
-            "score": "3 - 3",
-            "title": "Eintracht Frankfurt VS Borussia Dortmund",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746859/borussia-dortmund-eintracht-frankfurt",
-            "stats": {
-              "Possession": {
-                "home": "39.6%",
-                "away": "60.4%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746852",
-            "date": "2025-12-20",
-            "team1": "Hamburg SV",
-            "team2": "Eintracht Frankfurt",
-            "score": "1 - 1",
-            "title": "Hamburg SV VS Eintracht Frankfurt",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746852/eintracht-frankfurt-hamburg-sv",
-            "stats": {
-              "Possession": {
-                "home": "40.3%",
-                "away": "59.7%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746841",
-            "date": "2025-12-13",
-            "team1": "Eintracht Frankfurt",
-            "team2": "FC Augsburg",
-            "score": "1 - 0",
-            "title": "Eintracht Frankfurt VS FC Augsburg",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746841/fc-augsburg-eintracht-frankfurt",
-            "stats": {
-              "Possession": {
-                "home": "51.2%",
-                "away": "48.8%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746829",
-            "date": "2025-12-06",
-            "team1": "RB Leipzig",
-            "team2": "Eintracht Frankfurt",
-            "score": "6 - 0",
-            "title": "RB Leipzig VS Eintracht Frankfurt",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746829/eintracht-frankfurt-rb-leipzig",
-            "stats": {
-              "Possession": {
-                "home": "51.6%",
-                "away": "48.4%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "0"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746822",
-            "date": "2025-11-30",
-            "team1": "Eintracht Frankfurt",
-            "team2": "VfL Wolfsburg",
-            "score": "1 - 1",
-            "title": "Eintracht Frankfurt VS VfL Wolfsburg",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746822/vfl-wolfsburg-eintracht-frankfurt",
-            "stats": {
-              "Possession": {
-                "home": "54.4%",
-                "away": "45.6%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "14",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746809",
-            "date": "2025-11-22",
-            "team1": "FC Cologne",
-            "team2": "Eintracht Frankfurt",
-            "score": "3 - 4",
-            "title": "FC Cologne VS Eintracht Frankfurt",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746809/eintracht-frankfurt-fc-cologne",
-            "stats": {
-              "Possession": {
-                "home": "46.5%",
-                "away": "53.5%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 2.55,
-        "away": 2.45,
-        "draw": 3.45
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "J Stage",
-            "raw_stats": "Midfielder\nMatches: 14\nGoals: 5"
-          },
-          {
-            "name": "J Njinmah",
-            "raw_stats": "Forward\nMatches: 15\nGoals: 3"
-          },
-          {
-            "name": "S Mbangula",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 3"
-          },
-          {
-            "name": "J Burkardt",
-            "raw_stats": "Forward\nMatches: 10\nGoals: 8"
-          },
-          {
-            "name": "C Uzun",
-            "raw_stats": "Midfielder\nMatches: 12\nGoals: 6"
-          },
-          {
-            "name": "R Doan",
-            "raw_stats": "Midfielder\nMatches: 17\nGoals: 4"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "R Schmid",
-            "raw_stats": "Midfielder\nMatches: 16\nAssists: 4"
-          },
-          {
-            "name": "Y Sugawara",
-            "raw_stats": "Defender\nMatches: 15\nAssists: 3"
-          },
-          {
-            "name": "V Boniface",
-            "raw_stats": "Forward\nMatches: 11\nAssists: 2"
-          },
-          {
-            "name": "F Chaïbi",
-            "raw_stats": "Midfielder\nMatches: 13\nAssists: 6"
-          },
-          {
-            "name": "R Doan",
-            "raw_stats": "Midfielder\nMatches: 17\nAssists: 5"
-          },
-          {
-            "name": "N Brown",
-            "raw_stats": "Defender\nMatches: 16\nAssists: 3"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746872/eintracht-frankfurt-werder-bremen"
-  },
-  {
-    "gameId": "742694",
-    "date": "2026-01-16",
-    "league": "Belgium_Jupiler_Pro_League",
-    "team1": "Club Brugge",
-    "team1_id": "570",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/570",
-    "team2": "RAAL La Louvière",
-    "team2_id": "131235",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131235.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/131235",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Club Brugge",
-        "last_matches": [
-          {
-            "gameId": "742690",
-            "date": "2025-12-26",
-            "team1": "Racing Genk",
-            "team2": "Club Brugge",
-            "score": "3 - 5",
-            "title": "Racing Genk VS Club Brugge",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742690/club-brugge-racing-genk",
-            "stats": {
-              "Possession": {
-                "home": "53.1%",
-                "away": "46.9%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "22",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "9",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "742679",
-            "date": "2025-12-21",
-            "team1": "Club Brugge",
-            "team2": "KAA Gent",
-            "score": "2 - 1",
-            "title": "Club Brugge VS KAA Gent",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742679/kaa-gent-club-brugge",
-            "stats": {
-              "Possession": {
-                "home": "72.3%",
-                "away": "27.7%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "22",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "10",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "742674",
-            "date": "2025-12-14",
-            "team1": "Dender",
-            "team2": "Club Brugge",
-            "score": "1 - 5",
-            "title": "Dender VS Club Brugge",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742674/club-brugge-dender",
-            "stats": {
-              "Possession": {
-                "home": "38.4%",
-                "away": "61.6%"
-              },
-              "Shots on Goal": {
-                "home": "1",
-                "away": "9"
-              },
-              "Shot Attempts": {
-                "home": "6",
-                "away": "23"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "0",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "742663",
-            "date": "2025-12-06",
-            "team1": "Sint-Truidense",
-            "team2": "Club Brugge",
-            "score": "3 - 2",
-            "title": "Sint-Truidense VS Club Brugge",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742663/club-brugge-sint-truidense",
-            "stats": {
-              "Possession": {
-                "home": "43.8%",
-                "away": "56.2%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "19"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "742655",
-            "date": "2025-11-30",
-            "team1": "Club Brugge",
-            "team2": "Antwerp",
-            "score": "0 - 1",
-            "title": "Club Brugge VS Antwerp",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742655/antwerp-club-brugge",
-            "stats": {
-              "Possession": {
-                "home": "75.5%",
-                "away": "24.5%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "27",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "9",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "742647",
-            "date": "2025-11-22",
-            "team1": "Club Brugge",
-            "team2": "Royal Charleroi SC",
-            "score": "1 - 0",
-            "title": "Club Brugge VS Royal Charleroi SC",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742647/royal-charleroi-sc-club-brugge",
-            "stats": {
-              "Possession": {
-                "home": "60.9%",
-                "away": "39.1%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "11"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "742640",
-            "date": "2025-11-09",
-            "team1": "Anderlecht",
-            "team2": "Club Brugge",
-            "score": "1 - 0",
-            "title": "Anderlecht VS Club Brugge",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742640/club-brugge-anderlecht",
-            "stats": {
-              "Possession": {
-                "home": "41.3%",
-                "away": "58.7%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "3"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "RAAL La Louvière",
-        "last_matches": [
-          {
-            "gameId": "742687",
-            "date": "2025-12-27",
-            "team1": "RAAL La Louvière",
-            "team2": "Oud-Heverlee Leuven",
-            "score": "0 - 0",
-            "title": "RAAL La Louvière VS Oud-Heverlee Leuven",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742687/oud-heverlee-leuven-raal-la-louviere",
-            "stats": {
-              "Possession": {
-                "home": "52.1%",
-                "away": "47.9%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "13",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "7"
-              }
-            }
-          },
-          {
-            "gameId": "742680",
-            "date": "2025-12-20",
-            "team1": "KVC Westerlo",
-            "team2": "RAAL La Louvière",
-            "score": "2 - 1",
-            "title": "KVC Westerlo VS RAAL La Louvière",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742680/raal-la-louviere-kvc-westerlo",
-            "stats": {
-              "Possession": {
-                "home": "59.1%",
-                "away": "40.9%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "742677",
-            "date": "2025-12-13",
-            "team1": "Zulte-Waregem",
-            "team2": "RAAL La Louvière",
-            "score": "2 - 2",
-            "title": "Zulte-Waregem VS RAAL La Louvière",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742677/raal-la-louviere-zulte-waregem",
-            "stats": {
-              "Possession": {
-                "home": "70.7%",
-                "away": "29.3%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "742664",
-            "date": "2025-12-05",
-            "team1": "RAAL La Louvière",
-            "team2": "Dender",
-            "score": "1 - 2",
-            "title": "RAAL La Louvière VS Dender",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742664/dender-raal-la-louviere",
-            "stats": {
-              "Possession": {
-                "home": "50.3%",
-                "away": "49.7%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "742660",
-            "date": "2025-11-29",
-            "team1": "Royal Charleroi SC",
-            "team2": "RAAL La Louvière",
-            "score": "0 - 0",
-            "title": "Royal Charleroi SC VS RAAL La Louvière",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742660/raal-la-louviere-royal-charleroi-sc",
-            "stats": {
-              "Possession": {
-                "home": "63.8%",
-                "away": "36.2%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "5"
-              }
-            }
-          },
-          {
-            "gameId": "742651",
-            "date": "2025-11-23",
-            "team1": "RAAL La Louvière",
-            "team2": "Anderlecht",
-            "score": "0 - 1",
-            "title": "RAAL La Louvière VS Anderlecht",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742651/anderlecht-raal-la-louviere",
-            "stats": {
-              "Possession": {
-                "home": "37%",
-                "away": "63%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "20"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "742639",
-            "date": "2025-11-08",
-            "team1": "Antwerp",
-            "team2": "RAAL La Louvière",
-            "score": "3 - 1",
-            "title": "Antwerp VS RAAL La Louvière",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/742639/raal-la-louviere-antwerp",
-            "stats": {
-              "Possession": {
-                "home": "68.9%",
-                "away": "31.1%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.29,
-        "away": 8.5,
-        "draw": 5.75
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "C Tzolis",
-            "raw_stats": "Forward\nMatches: 18\nGoals: 7"
-          },
-          {
-            "name": "R Vermant",
-            "raw_stats": "Forward\nMatches: 16\nGoals: 6"
-          },
-          {
-            "name": "N Tresoldi",
-            "raw_stats": "Forward\nMatches: 20\nGoals: 5"
-          },
-          {
-            "name": "P Fall",
-            "raw_stats": "Forward\nMatches: 11\nGoals: 3"
-          },
-          {
-            "name": "J Afriyie",
-            "raw_stats": "Forward\nMatches: 16\nGoals: 2"
-          },
-          {
-            "name": "J Liongola",
-            "raw_stats": "Midfielder\nMatches: 17\nGoals: 1"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "C Tzolis",
-            "raw_stats": "Forward\nMatches: 18\nAssists: 9"
-          },
-          {
-            "name": "C Forbs",
-            "raw_stats": "Forward\nMatches: 18\nAssists: 3"
-          },
-          {
-            "name": "M Diakhon",
-            "raw_stats": "Forward\nMatches: 11\nAssists: 3"
-          },
-          {
-            "name": "J Ito",
-            "raw_stats": "Midfielder\nMatches: 19\nAssists: 1"
-          },
-          {
-            "name": "S Lahssaini",
-            "raw_stats": "Midfielder\nMatches: 17\nAssists: 1"
-          },
-          {
-            "name": "J Liongola",
-            "raw_stats": "Midfielder\nMatches: 17\nAssists: 1"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/742694/raal-la-louviere-club-brugge"
-  },
-  {
     "gameId": "401843152",
     "date": "2026-01-16",
     "league": "Colombia_Primera_A",
@@ -2248,11 +514,83 @@
         ]
       }
     },
+    "h2h": [
+      {
+        "gameId": "750686",
+        "date": "2025-09-14",
+        "team1": "Deportivo Pereira",
+        "team2": "Llaneros",
+        "score": "0 - 0",
+        "title": "Deportivo Pereira VS Llaneros",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/750686/llaneros-deportivo-pereira",
+        "stats": {
+          "Possession": {
+            "home": "52.6%",
+            "away": "47.4%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "2"
+          },
+          "Shot Attempts": {
+            "home": "13",
+            "away": "7"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "8",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "5"
+          }
+        }
+      },
+      {
+        "gameId": "730418",
+        "date": "2025-04-01",
+        "team1": "Llaneros",
+        "team2": "Deportivo Pereira",
+        "score": "2 - 1",
+        "title": "Llaneros VS Deportivo Pereira",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/730418/deportivo-pereira-llaneros",
+        "stats": {
+          "Possession": {
+            "home": "46.6%",
+            "away": "53.4%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "4"
+          },
+          "Shot Attempts": {
+            "home": "16",
+            "away": "13"
+          },
+          "Yellow Cards": {
+            "home": "0",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "5",
+            "away": "7"
+          },
+          "Saves": {
+            "home": "3",
+            "away": "3"
+          }
+        }
+      }
+    ],
     "odds": {
       "moneyline": {
-        "home": 2.45,
-        "away": 2.65,
-        "draw": 3.25
+        "home": 2.95,
+        "away": 2.3,
+        "draw": 3.2
       },
       "key_players": {
         "top_scorers": [],
@@ -2776,11 +1114,153 @@
         ]
       }
     },
+    "h2h": [
+      {
+        "gameId": "750613",
+        "date": "2025-07-27",
+        "team1": "Fortaleza CEIF",
+        "team2": "Alianza FC",
+        "score": "2 - 2",
+        "title": "Fortaleza CEIF VS Alianza FC",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/750613/alianza-fc-fortaleza-ceif",
+        "stats": {
+          "Possession": {
+            "home": "49%",
+            "away": "51%"
+          },
+          "Shots on Goal": {
+            "home": "4",
+            "away": "3"
+          },
+          "Shot Attempts": {
+            "home": "9",
+            "away": "7"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "7",
+            "away": "3"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "2"
+          }
+        }
+      },
+      {
+        "gameId": "730341",
+        "date": "2025-03-26",
+        "team1": "Alianza FC",
+        "team2": "Fortaleza CEIF",
+        "score": "0 - 0",
+        "title": "Alianza FC VS Fortaleza CEIF",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/730341/fortaleza-ceif-alianza-fc",
+        "stats": {
+          "Possession": {
+            "home": "54.3%",
+            "away": "45.7%"
+          },
+          "Shots on Goal": {
+            "home": "7",
+            "away": "0"
+          },
+          "Shot Attempts": {
+            "home": "24",
+            "away": "2"
+          },
+          "Yellow Cards": {
+            "home": "5",
+            "away": "0"
+          },
+          "Corner Kicks": {
+            "home": "7",
+            "away": "1"
+          },
+          "Saves": {
+            "home": "0",
+            "away": "7"
+          }
+        }
+      },
+      {
+        "gameId": "714296",
+        "date": "2024-09-08",
+        "team1": "Alianza FC",
+        "team2": "Fortaleza CEIF",
+        "score": "1 - 1",
+        "title": "Alianza FC VS Fortaleza CEIF",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/714296/fortaleza-ceif-alianza-fc",
+        "stats": {
+          "Possession": {
+            "home": "43.5%",
+            "away": "56.5%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "3"
+          },
+          "Shot Attempts": {
+            "home": "15",
+            "away": "13"
+          },
+          "Yellow Cards": {
+            "home": "3",
+            "away": "7"
+          },
+          "Corner Kicks": {
+            "home": "7",
+            "away": "1"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "4"
+          }
+        }
+      },
+      {
+        "gameId": "693666",
+        "date": "2024-02-28",
+        "team1": "Fortaleza CEIF",
+        "team2": "Alianza FC",
+        "score": "1 - 2",
+        "title": "Fortaleza CEIF VS Alianza FC",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/693666/alianza-fc-fortaleza-ceif",
+        "stats": {
+          "Possession": {
+            "home": "67.8%",
+            "away": "32.2%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "4"
+          },
+          "Shot Attempts": {
+            "home": "22",
+            "away": "6"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "13",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "2"
+          }
+        }
+      }
+    ],
     "odds": {
       "moneyline": {
         "home": 2.05,
-        "away": 3.55,
-        "draw": 3.1
+        "away": 3.65,
+        "draw": 3.05
       },
       "key_players": {
         "top_scorers": [],
@@ -2788,1740 +1268,6 @@
       }
     },
     "match_url": "https://www.espn.com/soccer/match/_/gameId/401843153/alianza-fc-fortaleza-ceif"
-  },
-  {
-    "gameId": "746568",
-    "date": "2026-01-16",
-    "league": "France_Ligue_1",
-    "team1": "AS Monaco",
-    "team1_id": "174",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/174",
-    "team2": "Lorient",
-    "team2_id": "273",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/273.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/273",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "AS Monaco",
-        "last_matches": [
-          {
-            "gameId": "746561",
-            "date": "2026-01-03",
-            "team1": "AS Monaco",
-            "team2": "Lyon",
-            "score": "1 - 3",
-            "title": "AS Monaco VS Lyon",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746561/lyon-as-monaco",
-            "stats": {
-              "Possession": {
-                "home": "44.5%",
-                "away": "55.5%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "9"
-              },
-              "Shot Attempts": {
-                "home": "6",
-                "away": "13"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746555",
-            "date": "2025-12-14",
-            "team1": "Marseille",
-            "team2": "AS Monaco",
-            "score": "1 - 0",
-            "title": "Marseille VS AS Monaco",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746555/as-monaco-marseille",
-            "stats": {
-              "Possession": {
-                "home": "57.8%",
-                "away": "42.2%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "18"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "746541",
-            "date": "2025-12-05",
-            "team1": "Brest",
-            "team2": "AS Monaco",
-            "score": "1 - 0",
-            "title": "Brest VS AS Monaco",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746541/as-monaco-brest",
-            "stats": {
-              "Possession": {
-                "home": "40.1%",
-                "away": "59.9%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746535",
-            "date": "2025-11-29",
-            "team1": "AS Monaco",
-            "team2": "Paris Saint-Germain",
-            "score": "1 - 0",
-            "title": "AS Monaco VS Paris Saint-Germain",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746535/paris-saint-germain-as-monaco",
-            "stats": {
-              "Possession": {
-                "home": "43.2%",
-                "away": "56.8%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "17"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746527",
-            "date": "2025-11-22",
-            "team1": "Stade Rennais",
-            "team2": "AS Monaco",
-            "score": "4 - 1",
-            "title": "Stade Rennais VS AS Monaco",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746527/as-monaco-stade-rennais",
-            "stats": {
-              "Possession": {
-                "home": "50.3%",
-                "away": "49.7%"
-              },
-              "Shots on Goal": {
-                "home": "9",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "13"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746517",
-            "date": "2025-11-08",
-            "team1": "AS Monaco",
-            "team2": "Lens",
-            "score": "1 - 4",
-            "title": "AS Monaco VS Lens",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746517/lens-as-monaco",
-            "stats": {
-              "Possession": {
-                "home": "50.3%",
-                "away": "49.7%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "12"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "20"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "7",
-                "away": "5"
-              }
-            }
-          },
-          {
-            "gameId": "746506",
-            "date": "2025-11-01",
-            "team1": "AS Monaco",
-            "team2": "Paris FC",
-            "score": "0 - 1",
-            "title": "AS Monaco VS Paris FC",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746506/paris-fc-as-monaco",
-            "stats": {
-              "Possession": {
-                "home": "55.1%",
-                "away": "44.9%"
-              },
-              "Shots on Goal": {
-                "home": "1",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "3"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Lorient",
-        "last_matches": [
-          {
-            "gameId": "746559",
-            "date": "2026-01-04",
-            "team1": "Lorient",
-            "team2": "Metz",
-            "score": "1 - 1",
-            "title": "Lorient VS Metz",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746559/metz-lorient",
-            "stats": {
-              "Possession": {
-                "home": "42.7%",
-                "away": "57.3%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746549",
-            "date": "2025-12-14",
-            "team1": "Strasbourg",
-            "team2": "Lorient",
-            "score": "0 - 0",
-            "title": "Strasbourg VS Lorient",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746549/lorient-strasbourg",
-            "stats": {
-              "Possession": {
-                "home": "62.5%",
-                "away": "37.5%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "11",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746542",
-            "date": "2025-12-07",
-            "team1": "Lorient",
-            "team2": "Lyon",
-            "score": "1 - 0",
-            "title": "Lorient VS Lyon",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746542/lyon-lorient",
-            "stats": {
-              "Possession": {
-                "home": "39.9%",
-                "away": "60.1%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "5"
-              }
-            }
-          },
-          {
-            "gameId": "746533",
-            "date": "2025-11-30",
-            "team1": "Lorient",
-            "team2": "Nice",
-            "score": "3 - 1",
-            "title": "Lorient VS Nice",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746533/nice-lorient",
-            "stats": {
-              "Possession": {
-                "home": "43.1%",
-                "away": "56.9%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746520",
-            "date": "2025-11-23",
-            "team1": "Nantes",
-            "team2": "Lorient",
-            "score": "1 - 1",
-            "title": "Nantes VS Lorient",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746520/lorient-nantes",
-            "stats": {
-              "Possession": {
-                "home": "55.8%",
-                "away": "44.2%"
-              },
-              "Shots on Goal": {
-                "home": "1",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "746515",
-            "date": "2025-11-09",
-            "team1": "Lorient",
-            "team2": "Toulouse",
-            "score": "1 - 1",
-            "title": "Lorient VS Toulouse",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746515/toulouse-lorient",
-            "stats": {
-              "Possession": {
-                "home": "49.5%",
-                "away": "50.5%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746504",
-            "date": "2025-11-02",
-            "team1": "Lens",
-            "team2": "Lorient",
-            "score": "3 - 0",
-            "title": "Lens VS Lorient",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746504/lorient-lens",
-            "stats": {
-              "Possession": {
-                "home": "58.2%",
-                "away": "41.8%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.65,
-        "away": 4.9,
-        "draw": 4.3
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "A Fati",
-            "raw_stats": "Forward\nMatches: 10\nGoals: 5"
-          },
-          {
-            "name": "F Balogun",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 4"
-          },
-          {
-            "name": "M Akliouche",
-            "raw_stats": "Midfielder\nMatches: 16\nGoals: 3"
-          },
-          {
-            "name": "P Pagis",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 5"
-          },
-          {
-            "name": "S Soumano",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 4"
-          },
-          {
-            "name": "T Aiyegun",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 3"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "K Ouattara",
-            "raw_stats": "Defender\nMatches: 11\nAssists: 3"
-          },
-          {
-            "name": "L Camara",
-            "raw_stats": "Midfielder\nMatches: 9\nAssists: 3"
-          },
-          {
-            "name": "M Akliouche",
-            "raw_stats": "Midfielder\nMatches: 16\nAssists: 2"
-          },
-          {
-            "name": "A Kouassi",
-            "raw_stats": "Defender\nMatches: 16\nAssists: 3"
-          },
-          {
-            "name": "S Soumano",
-            "raw_stats": "Forward\nMatches: 17\nAssists: 2"
-          },
-          {
-            "name": "M Bamba",
-            "raw_stats": "Forward\nMatches: 15\nAssists: 2"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746568/lorient-as-monaco"
-  },
-  {
-    "gameId": "746570",
-    "date": "2026-01-16",
-    "league": "France_Ligue_1",
-    "team1": "Paris Saint-Germain",
-    "team1_id": "160",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/160",
-    "team2": "Lille",
-    "team2_id": "166",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/166",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Paris Saint-Germain",
-        "last_matches": [
-          {
-            "gameId": "746563",
-            "date": "2026-01-04",
-            "team1": "Paris Saint-Germain",
-            "team2": "Paris FC",
-            "score": "2 - 1",
-            "title": "Paris Saint-Germain VS Paris FC",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746563/paris-fc-paris-saint-germain",
-            "stats": {
-              "Possession": {
-                "home": "69.9%",
-                "away": "30.1%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "20",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746552",
-            "date": "2025-12-13",
-            "team1": "Metz",
-            "team2": "Paris Saint-Germain",
-            "score": "2 - 3",
-            "title": "Metz VS Paris Saint-Germain",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746552/paris-saint-germain-metz",
-            "stats": {
-              "Possession": {
-                "home": "41%",
-                "away": "59%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "9"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746543",
-            "date": "2025-12-06",
-            "team1": "Paris Saint-Germain",
-            "team2": "Stade Rennais",
-            "score": "5 - 0",
-            "title": "Paris Saint-Germain VS Stade Rennais",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746543/stade-rennais-paris-saint-germain",
-            "stats": {
-              "Possession": {
-                "home": "66.4%",
-                "away": "33.6%"
-              },
-              "Shots on Goal": {
-                "home": "9",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "20",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746535",
-            "date": "2025-11-29",
-            "team1": "AS Monaco",
-            "team2": "Paris Saint-Germain",
-            "score": "1 - 0",
-            "title": "AS Monaco VS Paris Saint-Germain",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746535/paris-saint-germain-as-monaco",
-            "stats": {
-              "Possession": {
-                "home": "43.2%",
-                "away": "56.8%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "17"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "746522",
-            "date": "2025-11-22",
-            "team1": "Paris Saint-Germain",
-            "team2": "Le Havre AC",
-            "score": "3 - 0",
-            "title": "Paris Saint-Germain VS Le Havre AC",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746522/le-havre-ac-paris-saint-germain",
-            "stats": {
-              "Possession": {
-                "home": "65.2%",
-                "away": "34.8%"
-              },
-              "Shots on Goal": {
-                "home": "11",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "31",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "8"
-              }
-            }
-          },
-          {
-            "gameId": "746514",
-            "date": "2025-11-09",
-            "team1": "Lyon",
-            "team2": "Paris Saint-Germain",
-            "score": "2 - 3",
-            "title": "Lyon VS Paris Saint-Germain",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746514/paris-saint-germain-lyon",
-            "stats": {
-              "Possession": {
-                "home": "27.8%",
-                "away": "72.2%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "746508",
-            "date": "2025-11-01",
-            "team1": "Paris Saint-Germain",
-            "team2": "Nice",
-            "score": "1 - 0",
-            "title": "Paris Saint-Germain VS Nice",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746508/nice-paris-saint-germain",
-            "stats": {
-              "Possession": {
-                "home": "76.5%",
-                "away": "23.5%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "28",
-                "away": "5"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "11",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "7"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Lille",
-        "last_matches": [
-          {
-            "gameId": "746558",
-            "date": "2026-01-03",
-            "team1": "Lille",
-            "team2": "Stade Rennais",
-            "score": "0 - 2",
-            "title": "Lille VS Stade Rennais",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746558/stade-rennais-lille",
-            "stats": {
-              "Possession": {
-                "home": "38.5%",
-                "away": "61.5%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "18"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "746548",
-            "date": "2025-12-14",
-            "team1": "AJ Auxerre",
-            "team2": "Lille",
-            "score": "3 - 4",
-            "title": "AJ Auxerre VS Lille",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746548/lille-aj-auxerre",
-            "stats": {
-              "Possession": {
-                "home": "45%",
-                "away": "55%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "10",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "746539",
-            "date": "2025-12-05",
-            "team1": "Lille",
-            "team2": "Marseille",
-            "score": "1 - 0",
-            "title": "Lille VS Marseille",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746539/marseille-lille",
-            "stats": {
-              "Possession": {
-                "home": "42.1%",
-                "away": "57.9%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "746534",
-            "date": "2025-11-30",
-            "team1": "Le Havre AC",
-            "team2": "Lille",
-            "score": "0 - 1",
-            "title": "Le Havre AC VS Lille",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746534/lille-le-havre-ac",
-            "stats": {
-              "Possession": {
-                "home": "42.6%",
-                "away": "57.4%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "7"
-              }
-            }
-          },
-          {
-            "gameId": "746525",
-            "date": "2025-11-23",
-            "team1": "Lille",
-            "team2": "Paris FC",
-            "score": "4 - 2",
-            "title": "Lille VS Paris FC",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746525/paris-fc-lille",
-            "stats": {
-              "Possession": {
-                "home": "51.9%",
-                "away": "48.1%"
-              },
-              "Shots on Goal": {
-                "home": "10",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "9",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "7"
-              }
-            }
-          },
-          {
-            "gameId": "746513",
-            "date": "2025-11-09",
-            "team1": "Strasbourg",
-            "team2": "Lille",
-            "score": "2 - 0",
-            "title": "Strasbourg VS Lille",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746513/lille-strasbourg",
-            "stats": {
-              "Possession": {
-                "home": "42.4%",
-                "away": "57.6%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "746505",
-            "date": "2025-11-02",
-            "team1": "Lille",
-            "team2": "Angers",
-            "score": "1 - 0",
-            "title": "Lille VS Angers",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/746505/angers-lille",
-            "stats": {
-              "Possession": {
-                "home": "54%",
-                "away": "46%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "9",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.34,
-        "away": 8.0,
-        "draw": 5.5
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "B Barcola",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 5"
-          },
-          {
-            "name": "J Neves",
-            "raw_stats": "Midfielder\nMatches: 10\nGoals: 5"
-          },
-          {
-            "name": "G Ramos",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 4"
-          },
-          {
-            "name": "H Haraldsson",
-            "raw_stats": "Midfielder\nMatches: 16\nGoals: 5"
-          },
-          {
-            "name": "H Igmane",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 5"
-          },
-          {
-            "name": "O Giroud",
-            "raw_stats": "Forward\nMatches: 15\nGoals: 4"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "Vitinha",
-            "raw_stats": "Midfielder\nMatches: 16\nAssists: 6"
-          },
-          {
-            "name": "K Kvaratskhelia",
-            "raw_stats": "Forward\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "W Zaïre-Emery",
-            "raw_stats": "Midfielder\nMatches: 17\nAssists: 2"
-          },
-          {
-            "name": "F Correia",
-            "raw_stats": "Forward\nMatches: 17\nAssists: 4"
-          },
-          {
-            "name": "R Perraud",
-            "raw_stats": "Defender\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "M Fernandez-Pardo",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 3"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/746570/lille-paris-saint-germain"
-  },
-  {
-    "gameId": "736991",
-    "date": "2026-01-16",
-    "league": "Italy_Serie_A",
-    "team1": "Pisa",
-    "team1_id": "3956",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3956.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/3956",
-    "team2": "Atalanta",
-    "team2_id": "105",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/105",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Pisa",
-        "last_matches": [
-          {
-            "gameId": "736978",
-            "date": "2026-01-10",
-            "team1": "Udinese",
-            "team2": "Pisa",
-            "score": "2 - 2",
-            "title": "Udinese VS Pisa",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736978/pisa-udinese",
-            "stats": {
-              "Possession": {
-                "home": "53.7%",
-                "away": "46.3%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "14"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "8"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "736971",
-            "date": "2026-01-06",
-            "team1": "Pisa",
-            "team2": "Como",
-            "score": "0 - 3",
-            "title": "Pisa VS Como",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736971/como-pisa",
-            "stats": {
-              "Possession": {
-                "home": "27%",
-                "away": "73%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "736963",
-            "date": "2026-01-03",
-            "team1": "Genoa",
-            "team2": "Pisa",
-            "score": "1 - 1",
-            "title": "Genoa VS Pisa",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736963/pisa-genoa",
-            "stats": {
-              "Possession": {
-                "home": "62.1%",
-                "away": "37.9%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "736947",
-            "date": "2025-12-27",
-            "team1": "Pisa",
-            "team2": "Juventus",
-            "score": "0 - 2",
-            "title": "Pisa VS Juventus",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736947/juventus-pisa",
-            "stats": {
-              "Possession": {
-                "home": "40.6%",
-                "away": "59.4%"
-              },
-              "Shots on Goal": {
-                "home": "0",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "8"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "736934",
-            "date": "2025-12-21",
-            "team1": "Cagliari",
-            "team2": "Pisa",
-            "score": "2 - 2",
-            "title": "Cagliari VS Pisa",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736934/pisa-cagliari",
-            "stats": {
-              "Possession": {
-                "home": "59%",
-                "away": "41%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "736928",
-            "date": "2025-12-12",
-            "team1": "Lecce",
-            "team2": "Pisa",
-            "score": "1 - 0",
-            "title": "Lecce VS Pisa",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736928/pisa-lecce",
-            "stats": {
-              "Possession": {
-                "home": "51.4%",
-                "away": "48.6%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "21",
-                "away": "5"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "12",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "736916",
-            "date": "2025-12-08",
-            "team1": "Pisa",
-            "team2": "Parma",
-            "score": "0 - 1",
-            "title": "Pisa VS Parma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736916/parma-pisa",
-            "stats": {
-              "Possession": {
-                "home": "60.3%",
-                "away": "39.7%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "0"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Atalanta",
-        "last_matches": [
-          {
-            "gameId": "736977",
-            "date": "2026-01-10",
-            "team1": "Atalanta",
-            "team2": "Torino",
-            "score": "2 - 0",
-            "title": "Atalanta VS Torino",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736977/torino-atalanta",
-            "stats": {
-              "Possession": {
-                "home": "56.5%",
-                "away": "43.5%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "736964",
-            "date": "2026-01-07",
-            "team1": "Bologna",
-            "team2": "Atalanta",
-            "score": "0 - 2",
-            "title": "Bologna VS Atalanta",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736964/atalanta-bologna",
-            "stats": {
-              "Possession": {
-                "home": "52.6%",
-                "away": "47.4%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "736954",
-            "date": "2026-01-03",
-            "team1": "Atalanta",
-            "team2": "AS Roma",
-            "score": "1 - 0",
-            "title": "Atalanta VS AS Roma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736954/as-roma-atalanta",
-            "stats": {
-              "Possession": {
-                "home": "45.4%",
-                "away": "54.6%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "736944",
-            "date": "2025-12-28",
-            "team1": "Atalanta",
-            "team2": "Internazionale",
-            "score": "0 - 1",
-            "title": "Atalanta VS Internazionale",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736944/internazionale-atalanta",
-            "stats": {
-              "Possession": {
-                "home": "45.2%",
-                "away": "54.8%"
-              },
-              "Shots on Goal": {
-                "home": "0",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "7",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "736942",
-            "date": "2025-12-21",
-            "team1": "Genoa",
-            "team2": "Atalanta",
-            "score": "0 - 1",
-            "title": "Genoa VS Atalanta",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736942/atalanta-genoa",
-            "stats": {
-              "Possession": {
-                "home": "29.3%",
-                "away": "70.7%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "6",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "10"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "736932",
-            "date": "2025-12-13",
-            "team1": "Atalanta",
-            "team2": "Cagliari",
-            "score": "2 - 1",
-            "title": "Atalanta VS Cagliari",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736932/cagliari-atalanta",
-            "stats": {
-              "Possession": {
-                "home": "58.5%",
-                "away": "41.5%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "736920",
-            "date": "2025-12-06",
-            "team1": "Hellas Verona",
-            "team2": "Atalanta",
-            "score": "3 - 1",
-            "title": "Hellas Verona VS Atalanta",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/736920/atalanta-hellas-verona",
-            "stats": {
-              "Possession": {
-                "home": "36.3%",
-                "away": "63.7%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "4"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 5.75,
-        "away": 1.53,
-        "draw": 3.9
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "S Moreo",
-            "raw_stats": "Forward\nMatches: 19\nGoals: 3"
-          },
-          {
-            "name": "M Nzola",
-            "raw_stats": "Forward\nMatches: 16\nGoals: 3"
-          },
-          {
-            "name": "M Tramoni",
-            "raw_stats": "Forward\nMatches: 18\nGoals: 2"
-          },
-          {
-            "name": "G Scamacca",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 5"
-          },
-          {
-            "name": "N Krstovic",
-            "raw_stats": "Forward\nMatches: 16\nGoals: 4"
-          },
-          {
-            "name": "C De Ketelaere",
-            "raw_stats": "Forward\nMatches: 18\nGoals: 3"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "M Léris",
-            "raw_stats": "Midfielder\nMatches: 18\nAssists: 2"
-          },
-          {
-            "name": "M Aebischer",
-            "raw_stats": "Midfielder\nMatches: 19\nAssists: 1"
-          },
-          {
-            "name": "S Moreo",
-            "raw_stats": "Forward\nMatches: 19\nAssists: 1"
-          },
-          {
-            "name": "N Krstovic",
-            "raw_stats": "Forward\nMatches: 16\nAssists: 3"
-          },
-          {
-            "name": "C De Ketelaere",
-            "raw_stats": "Forward\nMatches: 18\nAssists: 2"
-          },
-          {
-            "name": "D Zappacosta",
-            "raw_stats": "Midfielder\nMatches: 17\nAssists: 2"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/736991/atalanta-pisa"
   },
   {
     "gameId": "401840833",
@@ -5038,11 +1784,223 @@
         ]
       }
     },
+    "h2h": [
+      {
+        "gameId": "736657",
+        "date": "2025-08-17",
+        "team1": "Monterrey",
+        "team2": "Mazatlán FC",
+        "score": "3 - 2",
+        "title": "Monterrey VS Mazatlán FC",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/736657/mazatlan-fc-monterrey",
+        "stats": {
+          "Possession": {
+            "home": "57.6%",
+            "away": "42.4%"
+          },
+          "Shots on Goal": {
+            "home": "6",
+            "away": "5"
+          },
+          "Shot Attempts": {
+            "home": "16",
+            "away": "11"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "1"
+          },
+          "Corner Kicks": {
+            "home": "4",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "3"
+          }
+        }
+      },
+      {
+        "gameId": "725120",
+        "date": "2025-02-25",
+        "team1": "Mazatlán FC",
+        "team2": "Monterrey",
+        "score": "1 - 0",
+        "title": "Mazatlán FC VS Monterrey",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/725120/monterrey-mazatlan-fc",
+        "stats": {
+          "Possession": {
+            "home": "29.3%",
+            "away": "70.7%"
+          },
+          "Shots on Goal": {
+            "home": "4",
+            "away": "6"
+          },
+          "Shot Attempts": {
+            "home": "9",
+            "away": "18"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "1",
+            "away": "8"
+          },
+          "Saves": {
+            "home": "5",
+            "away": "3"
+          }
+        }
+      },
+      {
+        "gameId": "703596",
+        "date": "2024-09-21",
+        "team1": "Monterrey",
+        "team2": "Mazatlán FC",
+        "score": "0 - 0",
+        "title": "Monterrey VS Mazatlán FC",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/703596/mazatlan-fc-monterrey",
+        "stats": {
+          "Possession": {
+            "home": "44.3%",
+            "away": "55.7%"
+          },
+          "Shots on Goal": {
+            "home": "4",
+            "away": "5"
+          },
+          "Shot Attempts": {
+            "home": "5",
+            "away": "16"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "2",
+            "away": "11"
+          },
+          "Saves": {
+            "home": "5",
+            "away": "2"
+          }
+        }
+      },
+      {
+        "gameId": "692343",
+        "date": "2024-03-10",
+        "team1": "Monterrey",
+        "team2": "Mazatlán FC",
+        "score": "2 - 1",
+        "title": "Monterrey VS Mazatlán FC",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/692343/mazatlan-fc-monterrey",
+        "stats": {
+          "Possession": {
+            "home": "54.2%",
+            "away": "45.8%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "7"
+          },
+          "Shot Attempts": {
+            "home": "10",
+            "away": "18"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "3",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "6",
+            "away": "3"
+          }
+        }
+      },
+      {
+        "gameId": "670515",
+        "date": "2023-07-14",
+        "team1": "Mazatlán FC",
+        "team2": "Monterrey",
+        "score": "0 - 3",
+        "title": "Mazatlán FC VS Monterrey",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/670515/monterrey-mazatlan-fc",
+        "stats": {
+          "Possession": {
+            "home": "37.4%",
+            "away": "62.6%"
+          },
+          "Shots on Goal": {
+            "home": "1",
+            "away": "5"
+          },
+          "Shot Attempts": {
+            "home": "5",
+            "away": "14"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "2",
+            "away": "8"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "1"
+          }
+        }
+      },
+      {
+        "gameId": "657708",
+        "date": "2023-04-21",
+        "team1": "Mazatlán FC",
+        "team2": "Monterrey",
+        "score": "0 - 2",
+        "title": "Mazatlán FC VS Monterrey",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/657708/monterrey-mazatlan-fc",
+        "stats": {
+          "Possession": {
+            "home": "52.7%",
+            "away": "47.3%"
+          },
+          "Shots on Goal": {
+            "home": "2",
+            "away": "8"
+          },
+          "Shot Attempts": {
+            "home": "10",
+            "away": "18"
+          },
+          "Yellow Cards": {
+            "home": "5",
+            "away": "0"
+          },
+          "Corner Kicks": {
+            "home": "5",
+            "away": "2"
+          },
+          "Saves": {
+            "home": "6",
+            "away": "2"
+          }
+        }
+      }
+    ],
     "odds": {
       "moneyline": {
-        "home": 4.6,
-        "away": 1.71,
-        "draw": 3.9
+        "home": 5.0,
+        "away": 1.65,
+        "draw": 4.0
       },
       "key_players": {
         "top_scorers": [
@@ -5596,1801 +2554,229 @@
         ]
       }
     },
+    "h2h": [
+      {
+        "gameId": "750246",
+        "date": "2025-08-08",
+        "team1": "Casa Pia",
+        "team2": "Sporting CP",
+        "score": "0 - 2",
+        "title": "Casa Pia VS Sporting CP",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/750246/sporting-cp-casa-pia",
+        "stats": {
+          "Possession": {
+            "home": "33%",
+            "away": "67%"
+          },
+          "Shots on Goal": {
+            "home": "2",
+            "away": "12"
+          },
+          "Shot Attempts": {
+            "home": "7",
+            "away": "27"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "1"
+          },
+          "Corner Kicks": {
+            "home": "2",
+            "away": "9"
+          },
+          "Saves": {
+            "home": "8",
+            "away": "2"
+          }
+        }
+      },
+      {
+        "gameId": "712827",
+        "date": "2025-03-09",
+        "team1": "Casa Pia",
+        "team2": "Sporting CP",
+        "score": "1 - 3",
+        "title": "Casa Pia VS Sporting CP",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/712827/sporting-cp-casa-pia",
+        "stats": {
+          "Possession": {
+            "home": "51.2%",
+            "away": "48.8%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "6"
+          },
+          "Shot Attempts": {
+            "home": "10",
+            "away": "17"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "4",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "3"
+          }
+        }
+      },
+      {
+        "gameId": "712678",
+        "date": "2024-10-05",
+        "team1": "Sporting CP",
+        "team2": "Casa Pia",
+        "score": "2 - 0",
+        "title": "Sporting CP VS Casa Pia",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/712678/casa-pia-sporting-cp",
+        "stats": {
+          "Possession": {
+            "home": "81.2%",
+            "away": "18.8%"
+          },
+          "Shots on Goal": {
+            "home": "6",
+            "away": "3"
+          },
+          "Shot Attempts": {
+            "home": "25",
+            "away": "6"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "5",
+            "away": "3"
+          },
+          "Saves": {
+            "home": "3",
+            "away": "4"
+          }
+        }
+      },
+      {
+        "gameId": "680236",
+        "date": "2024-01-29",
+        "team1": "Sporting CP",
+        "team2": "Casa Pia",
+        "score": "8 - 0",
+        "title": "Sporting CP VS Casa Pia",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/680236/casa-pia-sporting-cp",
+        "stats": {
+          "Possession": {
+            "home": "73.8%",
+            "away": "26.2%"
+          },
+          "Shots on Goal": {
+            "home": "11",
+            "away": "2"
+          },
+          "Shot Attempts": {
+            "home": "22",
+            "away": "2"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "1"
+          },
+          "Corner Kicks": {
+            "home": "9",
+            "away": "0"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "3"
+          }
+        }
+      },
+      {
+        "gameId": "680076",
+        "date": "2023-08-18",
+        "team1": "Casa Pia",
+        "team2": "Sporting CP",
+        "score": "1 - 2",
+        "title": "Casa Pia VS Sporting CP",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/680076/sporting-cp-casa-pia",
+        "stats": {
+          "Possession": {
+            "home": "43.8%",
+            "away": "56.2%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "5"
+          },
+          "Shot Attempts": {
+            "home": "12",
+            "away": "17"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "1"
+          },
+          "Corner Kicks": {
+            "home": "4",
+            "away": "5"
+          },
+          "Saves": {
+            "home": "3",
+            "away": "2"
+          }
+        }
+      },
+      {
+        "gameId": "646909",
+        "date": "2023-04-09",
+        "team1": "Casa Pia",
+        "team2": "Sporting CP",
+        "score": "3 - 4",
+        "title": "Casa Pia VS Sporting CP",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/646909/sporting-cp-casa-pia",
+        "stats": {
+          "Possession": {
+            "home": "25.2%",
+            "away": "74.8%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "12"
+          },
+          "Shot Attempts": {
+            "home": "8",
+            "away": "20"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "0"
+          },
+          "Corner Kicks": {
+            "home": "1",
+            "away": "18"
+          },
+          "Saves": {
+            "home": "8",
+            "away": "2"
+          }
+        }
+      }
+    ],
     "odds": {
       "moneyline": {
-        "home": 1.18,
-        "away": 13.0,
-        "draw": 7.0
+        "home": 1.07,
+        "away": 131.0,
+        "draw": 151.0
       },
       "key_players": {
-        "top_scorers": [
-          {
-            "name": "L Suárez",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 15"
-          },
-          {
-            "name": "P Gonçalves",
-            "raw_stats": "Midfielder\nMatches: 13\nGoals: 9"
-          },
-          {
-            "name": "F Trincão",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 4"
-          },
-          {
-            "name": "J Livolant",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 3"
-          },
-          {
-            "name": "Cassiano",
-            "raw_stats": "Forward\nMatches: 17\nGoals: 2"
-          },
-          {
-            "name": "R Nhaga",
-            "raw_stats": "Midfielder\nMatches: 16\nGoals: 2"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "F Trincão",
-            "raw_stats": "Forward\nMatches: 17\nAssists: 6"
-          },
-          {
-            "name": "P Gonçalves",
-            "raw_stats": "Midfielder\nMatches: 13\nAssists: 5"
-          },
-          {
-            "name": "G Quenda",
-            "raw_stats": "Midfielder\nMatches: 13\nAssists: 4"
-          },
-          {
-            "name": "J Livolant",
-            "raw_stats": "Forward\nMatches: 17\nAssists: 4"
-          },
-          {
-            "name": "G Larrazabal",
-            "raw_stats": "Defender\nMatches: 17\nAssists: 3"
-          },
-          {
-            "name": "M Sousa",
-            "raw_stats": "Midfielder\nMatches: 12\nAssists: 2"
-          }
-        ]
+        "top_scorers": [],
+        "most_assists": []
       }
     },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/750405/casa-pia-sporting-cp"
-  },
-  {
-    "gameId": "756043",
-    "date": "2026-01-16",
-    "league": "Saudi_Arabia_Pro_League",
-    "team1": "Al Najma",
-    "team1_id": "22023",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22023.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/22023",
-    "team2": "Al Fateh",
-    "team2_id": "13033",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13033.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/13033",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Al Najma",
-        "last_matches": [
-          {
-            "gameId": "756030",
-            "date": "2026-01-12",
-            "team1": "Al Hazem",
-            "team2": "Al Najma",
-            "score": "3 - 2",
-            "title": "Al Hazem VS Al Najma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756030/al-najma-al-hazem",
-            "stats": {
-              "Possession": {
-                "home": "60.5%",
-                "away": "39.5%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "25",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "756029",
-            "date": "2026-01-08",
-            "team1": "Al Najma",
-            "team2": "Al Ettifaq",
-            "score": "3 - 4",
-            "title": "Al Najma VS Al Ettifaq",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756029/al-ettifaq-al-najma",
-            "stats": {
-              "Possession": {
-                "home": "51.9%",
-                "away": "48.1%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "756016",
-            "date": "2026-01-02",
-            "team1": "Al Najma",
-            "team2": "Al Khaleej",
-            "score": "2 - 2",
-            "title": "Al Najma VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756016/al-khaleej-al-najma",
-            "stats": {
-              "Possession": {
-                "home": "51.3%",
-                "away": "48.7%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "756009",
-            "date": "2025-12-29",
-            "team1": "Al Taawoun",
-            "team2": "Al Najma",
-            "score": "1 - 0",
-            "title": "Al Taawoun VS Al Najma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756009/al-najma-al-taawoun",
-            "stats": {
-              "Possession": {
-                "home": "60.4%",
-                "away": "39.6%"
-              },
-              "Shots on Goal": {
-                "home": "1",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "5"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "10",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "756002",
-            "date": "2025-12-25",
-            "team1": "Neom SC",
-            "team2": "Al Najma",
-            "score": "2 - 1",
-            "title": "Neom SC VS Al Najma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756002/al-najma-neom-sc",
-            "stats": {
-              "Possession": {
-                "home": "54.6%",
-                "away": "45.4%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "755977",
-            "date": "2025-11-22",
-            "team1": "Damac",
-            "team2": "Al Najma",
-            "score": "0 - 0",
-            "title": "Damac VS Al Najma",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755977/al-najma-damac",
-            "stats": {
-              "Possession": {
-                "home": "68.1%",
-                "away": "31.9%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "10"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "13",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "755967",
-            "date": "2025-11-07",
-            "team1": "Al Najma",
-            "team2": "Al Hilal",
-            "score": "2 - 4",
-            "title": "Al Najma VS Al Hilal",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755967/al-hilal-al-najma",
-            "stats": {
-              "Possession": {
-                "home": "28.1%",
-                "away": "71.9%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "9"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "18"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "10"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Al Fateh",
-        "last_matches": [
-          {
-            "gameId": "756037",
-            "date": "2026-01-13",
-            "team1": "Al Fateh",
-            "team2": "Al Riyadh",
-            "score": "3 - 1",
-            "title": "Al Fateh VS Al Riyadh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756037/al-riyadh-al-fateh",
-            "stats": {
-              "Possession": {
-                "home": "47.3%",
-                "away": "52.7%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "9"
-              },
-              "Shot Attempts": {
-                "home": "11",
-                "away": "18"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "9"
-              },
-              "Saves": {
-                "home": "8",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "756024",
-            "date": "2026-01-10",
-            "team1": "Neom SC",
-            "team2": "Al Fateh",
-            "score": "0 - 1",
-            "title": "Neom SC VS Al Fateh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756024/al-fateh-neom-sc",
-            "stats": {
-              "Possession": {
-                "home": "57%",
-                "away": "43%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "10",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "756017",
-            "date": "2026-01-03",
-            "team1": "Al Fateh",
-            "team2": "Al Shabab",
-            "score": "2 - 0",
-            "title": "Al Fateh VS Al Shabab",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756017/al-shabab-al-fateh",
-            "stats": {
-              "Possession": {
-                "home": "58%",
-                "away": "42%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "10"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "756005",
-            "date": "2025-12-29",
-            "team1": "Al Khaleej",
-            "team2": "Al Fateh",
-            "score": "0 - 1",
-            "title": "Al Khaleej VS Al Fateh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756005/al-fateh-al-khaleej",
-            "stats": {
-              "Possession": {
-                "home": "67.3%",
-                "away": "32.7%"
-              },
-              "Shots on Goal": {
-                "home": "0",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "756000",
-            "date": "2025-12-26",
-            "team1": "Al Fateh",
-            "team2": "Al Ahli",
-            "score": "2 - 1",
-            "title": "Al Fateh VS Al Ahli",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756000/al-ahli-al-fateh",
-            "stats": {
-              "Possession": {
-                "home": "43.3%",
-                "away": "56.7%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "6",
-                "away": "17"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "9"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "755976",
-            "date": "2025-11-22",
-            "team1": "Al Hilal",
-            "team2": "Al Fateh",
-            "score": "2 - 1",
-            "title": "Al Hilal VS Al Fateh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755976/al-fateh-al-hilal",
-            "stats": {
-              "Possession": {
-                "home": "68%",
-                "away": "32%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "17",
-                "away": "5"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "755968",
-            "date": "2025-11-07",
-            "team1": "Al Fateh",
-            "team2": "Al Taawoun",
-            "score": "2 - 5",
-            "title": "Al Fateh VS Al Taawoun",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755968/al-taawoun-al-fateh",
-            "stats": {
-              "Possession": {
-                "home": "48.7%",
-                "away": "51.3%"
-              },
-              "Shots on Goal": {
-                "home": "8",
-                "away": "12"
-              },
-              "Shot Attempts": {
-                "home": "20",
-                "away": "22"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "7",
-                "away": "5"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 3.65,
-        "away": 1.83,
-        "draw": 3.65
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "Lázaro",
-            "raw_stats": "Forward\nMatches: 11\nGoals: 4"
-          },
-          {
-            "name": "A Jasim",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 3"
-          },
-          {
-            "name": "R Altulayhi",
-            "raw_stats": "Midfielder\nMatches: 14\nGoals: 2"
-          },
-          {
-            "name": "M Vargas",
-            "raw_stats": "Midfielder\nMatches: 14\nGoals: 5"
-          },
-          {
-            "name": "S Bendebka",
-            "raw_stats": "Forward\nMatches: 11\nGoals: 4"
-          },
-          {
-            "name": "M Batna",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 3"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "R Altulayhi",
-            "raw_stats": "Midfielder\nMatches: 14\nAssists: 2"
-          },
-          {
-            "name": "B Boutobba",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 1"
-          },
-          {
-            "name": "Samir",
-            "raw_stats": "Defender\nMatches: 11\nAssists: 1"
-          },
-          {
-            "name": "M Batna",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 7"
-          },
-          {
-            "name": "Fahad Zubaidi",
-            "raw_stats": "Forward\nMatches: 14\nAssists: 1"
-          },
-          {
-            "name": "M Saadane",
-            "raw_stats": "Midfielder\nMatches: 11\nAssists: 1"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/756043/al-fateh-al-najma"
-  },
-  {
-    "gameId": "756042",
-    "date": "2026-01-16",
-    "league": "Saudi_Arabia_Pro_League",
-    "team1": "Al Khaleej",
-    "team1_id": "21829",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21829.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/21829",
-    "team2": "Al Okhdood",
-    "team2_id": "21966",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21966.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/21966",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Al Khaleej",
-        "last_matches": [
-          {
-            "gameId": "756038",
-            "date": "2026-01-12",
-            "team1": "Al Ettifaq",
-            "team2": "Al Khaleej",
-            "score": "1 - 2",
-            "title": "Al Ettifaq VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756038/al-khaleej-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "48.4%",
-                "away": "51.6%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "7",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "756025",
-            "date": "2026-01-09",
-            "team1": "Al Khaleej",
-            "team2": "Damac",
-            "score": "4 - 0",
-            "title": "Al Khaleej VS Damac",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756025/damac-al-khaleej",
-            "stats": {
-              "Possession": {
-                "home": "66.7%",
-                "away": "33.3%"
-              },
-              "Shots on Goal": {
-                "home": "9",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "3"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "9",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "756016",
-            "date": "2026-01-02",
-            "team1": "Al Najma",
-            "team2": "Al Khaleej",
-            "score": "2 - 2",
-            "title": "Al Najma VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756016/al-khaleej-al-najma",
-            "stats": {
-              "Possession": {
-                "home": "51.3%",
-                "away": "48.7%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "6"
-              },
-              "Shot Attempts": {
-                "home": "13",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "756005",
-            "date": "2025-12-29",
-            "team1": "Al Khaleej",
-            "team2": "Al Fateh",
-            "score": "0 - 1",
-            "title": "Al Khaleej VS Al Fateh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756005/al-fateh-al-khaleej",
-            "stats": {
-              "Possession": {
-                "home": "67.3%",
-                "away": "32.7%"
-              },
-              "Shots on Goal": {
-                "home": "0",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "755994",
-            "date": "2025-12-26",
-            "team1": "Al Hilal",
-            "team2": "Al Khaleej",
-            "score": "3 - 2",
-            "title": "Al Hilal VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755994/al-khaleej-al-hilal",
-            "stats": {
-              "Possession": {
-                "home": "49.5%",
-                "away": "50.5%"
-              },
-              "Shots on Goal": {
-                "home": "11",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "18",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "8"
-              }
-            }
-          },
-          {
-            "gameId": "755979",
-            "date": "2025-11-23",
-            "team1": "Al Nassr",
-            "team2": "Al Khaleej",
-            "score": "4 - 1",
-            "title": "Al Nassr VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755979/al-khaleej-al-nassr",
-            "stats": {
-              "Possession": {
-                "home": "54.7%",
-                "away": "45.3%"
-              },
-              "Shots on Goal": {
-                "home": "10",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "21",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "755970",
-            "date": "2025-11-06",
-            "team1": "Al Hazem",
-            "team2": "Al Khaleej",
-            "score": "1 - 4",
-            "title": "Al Hazem VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755970/al-khaleej-al-hazem",
-            "stats": {
-              "Possession": {
-                "home": "55.6%",
-                "away": "44.4%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "21",
-                "away": "13"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "6",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "5"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Al Okhdood",
-        "last_matches": [
-          {
-            "gameId": "756035",
-            "date": "2026-01-13",
-            "team1": "Al Okhdood",
-            "team2": "Al Kholood",
-            "score": "1 - 0",
-            "title": "Al Okhdood VS Al Kholood",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756035/al-kholood-al-okhdood",
-            "stats": {
-              "Possession": {
-                "home": "41.2%",
-                "away": "58.8%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "10",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "3",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "756022",
-            "date": "2026-01-10",
-            "team1": "Al Okhdood",
-            "team2": "Al Ahli",
-            "score": "0 - 1",
-            "title": "Al Okhdood VS Al Ahli",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756022/al-ahli-al-okhdood",
-            "stats": {
-              "Possession": {
-                "home": "50.8%",
-                "away": "49.2%"
-              },
-              "Shots on Goal": {
-                "home": "0",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "4",
-                "away": "3"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "6"
-              },
-              "Saves": {
-                "home": "3",
-                "away": "0"
-              }
-            }
-          },
-          {
-            "gameId": "756020",
-            "date": "2026-01-02",
-            "team1": "Al Ettifaq",
-            "team2": "Al Okhdood",
-            "score": "2 - 0",
-            "title": "Al Ettifaq VS Al Okhdood",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756020/al-okhdood-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "63.6%",
-                "away": "36.4%"
-              },
-              "Shots on Goal": {
-                "home": "9",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "7"
-              }
-            }
-          },
-          {
-            "gameId": "756003",
-            "date": "2025-12-30",
-            "team1": "Al Okhdood",
-            "team2": "Damac",
-            "score": "0 - 1",
-            "title": "Al Okhdood VS Damac",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756003/damac-al-okhdood",
-            "stats": {
-              "Possession": {
-                "home": "56.3%",
-                "away": "43.7%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "12",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "4"
-              }
-            }
-          },
-          {
-            "gameId": "755996",
-            "date": "2025-12-27",
-            "team1": "Al Nassr",
-            "team2": "Al Okhdood",
-            "score": "3 - 0",
-            "title": "Al Nassr VS Al Okhdood",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755996/al-okhdood-al-nassr",
-            "stats": {
-              "Possession": {
-                "home": "64.6%",
-                "away": "35.4%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "4"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "755978",
-            "date": "2025-11-23",
-            "team1": "Al Okhdood",
-            "team2": "Al Shabab",
-            "score": "1 - 1",
-            "title": "Al Okhdood VS Al Shabab",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755978/al-shabab-al-okhdood",
-            "stats": {
-              "Possession": {
-                "home": "42.5%",
-                "away": "57.5%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "1"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "5"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "755969",
-            "date": "2025-11-07",
-            "team1": "Al Fayha",
-            "team2": "Al Okhdood",
-            "score": "2 - 0",
-            "title": "Al Fayha VS Al Okhdood",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755969/al-okhdood-al-fayha",
-            "stats": {
-              "Possession": {
-                "home": "61.9%",
-                "away": "38.1%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "8"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "4",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.47,
-        "away": 5.75,
-        "draw": 4.3
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "J King",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 12"
-          },
-          {
-            "name": "K Fortounis",
-            "raw_stats": "Midfielder\nMatches: 14\nGoals: 6"
-          },
-          {
-            "name": "G Masouras",
-            "raw_stats": "Forward\nMatches: 14\nGoals: 6"
-          },
-          {
-            "name": "J Pedroza",
-            "raw_stats": "Midfielder\nMatches: 13\nGoals: 2"
-          },
-          {
-            "name": "S Al-Rabiei",
-            "raw_stats": "Defender\nMatches: 11\nGoals: 2"
-          },
-          {
-            "name": "K Narey",
-            "raw_stats": "Forward\nMatches: 9\nGoals: 2"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "K Fortounis",
-            "raw_stats": "Midfielder\nMatches: 14\nAssists: 10"
-          },
-          {
-            "name": "Rebocho",
-            "raw_stats": "Defender\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "A Moris",
-            "raw_stats": "Goalkeeper\nMatches: 14\nAssists: 2"
-          },
-          {
-            "name": "G Gül",
-            "raw_stats": "Midfielder\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "A Al Salem",
-            "raw_stats": "Defender\nMatches: 14\nAssists: 1"
-          },
-          {
-            "name": "S Al-Rabiei",
-            "raw_stats": "Defender\nMatches: 11\nAssists: 1"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/756042/al-okhdood-al-khaleej"
-  },
-  {
-    "gameId": "756041",
-    "date": "2026-01-16",
-    "league": "Saudi_Arabia_Pro_League",
-    "team1": "Al Ittihad",
-    "team1_id": "2276",
-    "team1_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2276.png",
-    "team1_url": "https://www.espn.com/soccer/team/_/id/2276",
-    "team2": "Al Ettifaq",
-    "team2_id": "8363",
-    "team2_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8363.png",
-    "team2_url": "https://www.espn.com/soccer/team/_/id/8363",
-    "score": "v",
-    "recent_form": {
-      "match1": {
-        "team": "Al Ittihad",
-        "last_matches": [
-          {
-            "gameId": "756034",
-            "date": "2026-01-13",
-            "team1": "Damac",
-            "team2": "Al Ittihad",
-            "score": "1 - 1",
-            "title": "Damac VS Al Ittihad",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756034/al-ittihad-damac",
-            "stats": {
-              "Possession": {
-                "home": "32.8%",
-                "away": "67.2%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "17"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "12"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "756028",
-            "date": "2026-01-09",
-            "team1": "Al Kholood",
-            "team2": "Al Ittihad",
-            "score": "0 - 4",
-            "title": "Al Kholood VS Al Ittihad",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756028/al-ittihad-al-kholood",
-            "stats": {
-              "Possession": {
-                "home": "27.7%",
-                "away": "72.3%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "11"
-              },
-              "Shot Attempts": {
-                "home": "5",
-                "away": "24"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "12"
-              },
-              "Saves": {
-                "home": "7",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "756013",
-            "date": "2026-01-03",
-            "team1": "Al Ittihad",
-            "team2": "Al Taawoun",
-            "score": "1 - 0",
-            "title": "Al Ittihad VS Al Taawoun",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756013/al-taawoun-al-ittihad",
-            "stats": {
-              "Possession": {
-                "home": "63.4%",
-                "away": "36.6%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "0"
-              },
-              "Shot Attempts": {
-                "home": "19",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "0",
-                "away": "5"
-              }
-            }
-          },
-          {
-            "gameId": "756004",
-            "date": "2025-12-31",
-            "team1": "Neom SC",
-            "team2": "Al Ittihad",
-            "score": "1 - 3",
-            "title": "Neom SC VS Al Ittihad",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756004/al-ittihad-neom-sc",
-            "stats": {
-              "Possession": {
-                "home": "45.4%",
-                "away": "54.6%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "14",
-                "away": "11"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "1",
-                "away": "1"
-              }
-            }
-          },
-          {
-            "gameId": "755995",
-            "date": "2025-12-27",
-            "team1": "Al Ittihad",
-            "team2": "Al Shabab",
-            "score": "2 - 0",
-            "title": "Al Ittihad VS Al Shabab",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755995/al-shabab-al-ittihad",
-            "stats": {
-              "Possession": {
-                "home": "68.2%",
-                "away": "31.8%"
-              },
-              "Shots on Goal": {
-                "home": "7",
-                "away": "4"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "6"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "12",
-                "away": "1"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "5"
-              }
-            }
-          },
-          {
-            "gameId": "755981",
-            "date": "2025-11-21",
-            "team1": "Al Ittihad",
-            "team2": "Al Riyadh",
-            "score": "2 - 1",
-            "title": "Al Ittihad VS Al Riyadh",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755981/al-riyadh-al-ittihad",
-            "stats": {
-              "Possession": {
-                "home": "64.9%",
-                "away": "35.1%"
-              },
-              "Shots on Goal": {
-                "home": "6",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "5",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "6"
-              }
-            }
-          },
-          {
-            "gameId": "755975",
-            "date": "2025-11-08",
-            "team1": "Al Ittihad",
-            "team2": "Al Ahli",
-            "score": "0 - 1",
-            "title": "Al Ittihad VS Al Ahli",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755975/al-ahli-al-ittihad",
-            "stats": {
-              "Possession": {
-                "home": "68.9%",
-                "away": "31.1%"
-              },
-              "Shots on Goal": {
-                "home": "3",
-                "away": "5"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "9"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "4"
-              },
-              "Corner Kicks": {
-                "home": "7",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "4",
-                "away": "3"
-              }
-            }
-          }
-        ]
-      },
-      "match2": {
-        "team": "Al Ettifaq",
-        "last_matches": [
-          {
-            "gameId": "756038",
-            "date": "2026-01-12",
-            "team1": "Al Ettifaq",
-            "team2": "Al Khaleej",
-            "score": "1 - 2",
-            "title": "Al Ettifaq VS Al Khaleej",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756038/al-khaleej-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "48.4%",
-                "away": "51.6%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "9",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "7"
-              },
-              "Saves": {
-                "home": "7",
-                "away": "3"
-              }
-            }
-          },
-          {
-            "gameId": "756029",
-            "date": "2026-01-08",
-            "team1": "Al Najma",
-            "team2": "Al Ettifaq",
-            "score": "3 - 4",
-            "title": "Al Najma VS Al Ettifaq",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756029/al-ettifaq-al-najma",
-            "stats": {
-              "Possession": {
-                "home": "51.9%",
-                "away": "48.1%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "16",
-                "away": "16"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "4"
-              },
-              "Saves": {
-                "home": "5",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "756020",
-            "date": "2026-01-02",
-            "team1": "Al Ettifaq",
-            "team2": "Al Okhdood",
-            "score": "2 - 0",
-            "title": "Al Ettifaq VS Al Okhdood",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756020/al-okhdood-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "63.6%",
-                "away": "36.4%"
-              },
-              "Shots on Goal": {
-                "home": "9",
-                "away": "2"
-              },
-              "Shot Attempts": {
-                "home": "15",
-                "away": "7"
-              },
-              "Yellow Cards": {
-                "home": "2",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "8",
-                "away": "3"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "7"
-              }
-            }
-          },
-          {
-            "gameId": "756006",
-            "date": "2025-12-30",
-            "team1": "Al Ettifaq",
-            "team2": "Al Nassr",
-            "score": "2 - 2",
-            "title": "Al Ettifaq VS Al Nassr",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/756006/al-nassr-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "33.2%",
-                "away": "66.8%"
-              },
-              "Shots on Goal": {
-                "home": "4",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "6",
-                "away": "26"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "2"
-              },
-              "Corner Kicks": {
-                "home": "1",
-                "away": "16"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "755998",
-            "date": "2025-12-25",
-            "team1": "Al Riyadh",
-            "team2": "Al Ettifaq",
-            "score": "0 - 2",
-            "title": "Al Riyadh VS Al Ettifaq",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755998/al-ettifaq-al-riyadh",
-            "stats": {
-              "Possession": {
-                "home": "33.7%",
-                "away": "66.3%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "8"
-              },
-              "Shot Attempts": {
-                "home": "8",
-                "away": "15"
-              },
-              "Yellow Cards": {
-                "home": "1",
-                "away": "1"
-              },
-              "Corner Kicks": {
-                "home": "2",
-                "away": "2"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "755982",
-            "date": "2025-11-22",
-            "team1": "Al Ettifaq",
-            "team2": "Al Fayha",
-            "score": "3 - 2",
-            "title": "Al Ettifaq VS Al Fayha",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755982/al-fayha-al-ettifaq",
-            "stats": {
-              "Possession": {
-                "home": "39.2%",
-                "away": "60.8%"
-              },
-              "Shots on Goal": {
-                "home": "5",
-                "away": "7"
-              },
-              "Shot Attempts": {
-                "home": "7",
-                "away": "22"
-              },
-              "Yellow Cards": {
-                "home": "0",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "0",
-                "away": "8"
-              },
-              "Saves": {
-                "home": "6",
-                "away": "2"
-              }
-            }
-          },
-          {
-            "gameId": "755974",
-            "date": "2025-11-08",
-            "team1": "Al Shabab",
-            "team2": "Al Ettifaq",
-            "score": "1 - 1",
-            "title": "Al Shabab VS Al Ettifaq",
-            "match_url": "https://www.espn.com/soccer/match/_/gameId/755974/al-ettifaq-al-shabab",
-            "stats": {
-              "Possession": {
-                "home": "27.7%",
-                "away": "72.3%"
-              },
-              "Shots on Goal": {
-                "home": "2",
-                "away": "3"
-              },
-              "Shot Attempts": {
-                "home": "7",
-                "away": "12"
-              },
-              "Yellow Cards": {
-                "home": "5",
-                "away": "0"
-              },
-              "Corner Kicks": {
-                "home": "3",
-                "away": "9"
-              },
-              "Saves": {
-                "home": "2",
-                "away": "1"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "odds": {
-      "moneyline": {
-        "home": 1.32,
-        "away": 7.0,
-        "draw": 5.0
-      },
-      "key_players": {
-        "top_scorers": [
-          {
-            "name": "K Benzema",
-            "raw_stats": "Forward\nMatches: 11\nGoals: 7"
-          },
-          {
-            "name": "S Bergwijn",
-            "raw_stats": "Forward\nMatches: 11\nGoals: 5"
-          },
-          {
-            "name": "M Al-Shanqiti",
-            "raw_stats": "Defender\nMatches: 11\nGoals: 3"
-          },
-          {
-            "name": "G Wijnaldum",
-            "raw_stats": "Midfielder\nMatches: 14\nGoals: 9"
-          },
-          {
-            "name": "M Dembélé",
-            "raw_stats": "Forward\nMatches: 9\nGoals: 5"
-          },
-          {
-            "name": "K Al-Ghannam",
-            "raw_stats": "Forward\nMatches: 13\nGoals: 4"
-          }
-        ],
-        "most_assists": [
-          {
-            "name": "M Diaby",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 5"
-          },
-          {
-            "name": "M Al-Shanqiti",
-            "raw_stats": "Defender\nMatches: 11\nAssists: 4"
-          },
-          {
-            "name": "S Bergwijn",
-            "raw_stats": "Forward\nMatches: 11\nAssists: 2"
-          },
-          {
-            "name": "G Wijnaldum",
-            "raw_stats": "Midfielder\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "Á Medrán",
-            "raw_stats": "Midfielder\nMatches: 14\nAssists: 3"
-          },
-          {
-            "name": "K Al-Ghannam",
-            "raw_stats": "Forward\nMatches: 13\nAssists: 3"
-          }
-        ]
-      }
-    },
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/756041/al-ettifaq-al-ittihad"
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/750405"
   }
 ]

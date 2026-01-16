@@ -4,16 +4,22 @@ import requests
 from datetime import datetime
 
 # ================== CONFIG ==================
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") or "REMPLACE_PAR_TA_CLE_API"
-GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
+API_KEY = os.getenv("GROQ1")  # Clé API stockée dans la variable d’environnement GROQ1
 MODEL_ID = "openai/gpt-oss-120b"
 
 INPUT_FILE = "data/football/games_of_day.json"
 OUTPUT_DIR = "data/football/predictions"
+
+MAX_TOKENS = 4000
+TEMPERATURE = 0.4
+
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 # ===========================================
 
 
 def load_json(path):
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"Fichier introuvable : {path}")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -25,9 +31,39 @@ def save_json(path, data):
     print(f"💾 Fichier sauvegardé : {os.path.abspath(path)}")
 
 
-def ask_gpt_oss(prompt):
+def build_prompt(match):
+    """
+    Construit un prompt propre pour GPT-OSS à partir de la structure complète du match.
+    """
+    return f"""
+Tu es un analyste football professionnel spécialisé dans la data et la prédiction sportive.
+
+Analyse ce match en profondeur en te basant uniquement sur les données fournies :
+- Forme récente des deux équipes (résultats, buts marqués/encaissés, dynamique)
+- Statistiques clés (possession, tirs cadrés, occasions, corners, discipline)
+- Confrontation de styles
+- Impact des joueurs clés
+- Lecture des cotes (moneyline)
+
+Puis fournis :
+1. Une analyse tactique détaillée
+2. Une analyse statistique comparative
+3. Les forces/faiblesses de chaque équipe
+4. Le scénario de match le plus probable
+5. Une prédiction finale claire (1, X, 2) avec justification
+6. Une estimation du nombre de buts (+1.5 / -3.5)
+7. Probabilité que les deux équipes marquent (Oui / Non)
+
+Réponds uniquement en texte, pas en JSON.
+
+Données du match :
+{json.dumps(match, indent=2, ensure_ascii=False)}
+"""
+
+
+def call_gpt_oss(prompt):
     headers = {
-        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
 
@@ -37,11 +73,8 @@ def ask_gpt_oss(prompt):
             {
                 "role": "system",
                 "content": (
-                    "Tu es un analyste football professionnel. "
-                    "Fournis une analyse détaillée du match, en expliquant la forme des équipes, "
-                    "les forces, faiblesses, tendances tactiques, impact des statistiques, "
-                    "et termine par une prédiction claire et argumentée. "
-                    "Réponds uniquement en texte, pas en JSON."
+                    "Tu es un expert en analyse football, orienté data science et pronostics. "
+                    "Tes réponses doivent être professionnelles, détaillées, structurées et exploitables."
                 )
             },
             {
@@ -49,59 +82,56 @@ def ask_gpt_oss(prompt):
                 "content": prompt
             }
         ],
-        "temperature": 0.4
+        "temperature": TEMPERATURE,
+        "max_tokens": MAX_TOKENS
     }
 
-    r = requests.post(GROQ_URL, headers=headers, json=payload, timeout=120)
-    r.raise_for_status()
-    return r.json()["choices"][0]["message"]["content"]
+    response = requests.post(GROQ_URL, headers=headers, json=payload, timeout=120)
 
+    if response.status_code != 200:
+        raise Exception(f"❌ Erreur API Groq / GPT-OSS : {response.text}")
 
-def build_prompt(match):
-    return f"""
-Analyse ce match de manière approfondie :
-
-{json.dumps(match, indent=2, ensure_ascii=False)}
-
-Je veux :
-- une analyse tactique,
-- une lecture de la forme récente,
-- une interprétation des statistiques,
-- une prise en compte des cotes,
-- une conclusion avec un scénario probable.
-"""
+    data = response.json()
+    return data["choices"][0]["message"]["content"]
 
 
 def main():
-    print("📂 Chargement de games_of_day.json...")
+    if not API_KEY:
+        raise ValueError("❌ La clé API GROQ1 n’est pas définie dans l’environnement.")
+
+    print("📂 Chargement des matchs...")
     games = load_json(INPUT_FILE)
 
-    enriched_games = []
+    results = []
+    today = datetime.now().strftime("%Y-%m-%d")
+    output_file = os.path.join(OUTPUT_DIR, f"games-{today}.json")
 
-    for match in games:
-        print(f"⚽ Analyse IA : {match['team1']} vs {match['team2']}")
+    for i, match in enumerate(games, start=1):
+        print(f"\n⚽ Analyse du match {i}/{len(games)} : {match.get('team1')} vs {match.get('team2')}")
 
         prompt = build_prompt(match)
 
         try:
-            analysis_text = ask_gpt_oss(prompt)
-            match["Analyse"] = analysis_text
+            analysis = call_gpt_oss(prompt)
         except Exception as e:
-            print(f"❌ Erreur GPT : {e}")
-            match["Analyse"] = f"Erreur lors de l’analyse IA : {e}"
+            print(e)
+            analysis = "Analyse indisponible (erreur API)."
 
-        enriched_games.append(match)
+        # Injection de l’analyse dans la structure existante
+        enriched_match = dict(match)
+        enriched_match["Analyse"] = analysis
 
-    today = datetime.now().strftime("%Y-%m-%d")
-    output_file = os.path.join(OUTPUT_DIR, f"games-{today}.json")
+        results.append(enriched_match)
 
-    save_json(output_file, enriched_games)
+    print(f"\n📝 Sauvegarde des prédictions dans : {output_file}")
+    save_json(output_file, results)
 
-    print("===================================")
-    print("✅ ANALYSE FOOTBALL IA TERMINÉE")
-    print(f"📁 Fichier final : {output_file}")
-    print(f"⚽ Matchs analysés : {len(enriched_games)}")
-    print("===================================")
+    print("====================================")
+    print("✅ ANALYSES GÉNÉRÉES AVEC SUCCÈS")
+    print(f"📊 Matchs traités : {len(results)}")
+    print(f"🧠 Modèle utilisé : {MODEL_ID}")
+    print(f"🧾 Max tokens : {MAX_TOKENS}")
+    print("====================================")
 
 
 if __name__ == "__main__":

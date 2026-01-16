@@ -1,7 +1,10 @@
-name: Football Games Analisys
+name: Football Games Analysis
 
 on:
-  workflow_dispatch:   # Lancement uniquement manuel depuis GitHub
+  schedule:
+    # Exécution automatique tous les jours à 02h UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:   # Lancement manuel possible
 
 jobs:
   football-analysis:
@@ -26,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      # 4️⃣ 🔥 Synchronisation avec la branche main avant exécution
+      # 4️⃣ Synchronisation avec la branche main avant exécution
       - name: Sync with remote main
         run: |
           git config --local user.name "github-actions[bot]"
@@ -37,6 +40,7 @@ jobs:
       - name: Run football analysis script
         env:
           GROQ1: ${{ secrets.GROQ1 }}
+          GROQ2: ${{ secrets.GROQ2 }}
         run: |
           python scripts/football.py
 
@@ -44,7 +48,7 @@ jobs:
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "🤖 Analyse IA football (GPT-OSS) – génération manuelle"
+          commit_message: "🤖 Analyse IA football (GPT-OSS) – génération automatique"
           branch: main
           file_pattern: |
             data/football/predictions/*.json

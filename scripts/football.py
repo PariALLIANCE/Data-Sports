@@ -64,7 +64,7 @@ Tâches à réaliser :
 - Victoire {match['team2']}
 - Victoire {match['team1']} ou Nul
 - Victoire {match['team2']} ou Nul
-- Total +1.5 buts
+- Total +2.5 buts
 - Total -3.5 buts
 - Les deux équipes marquent Oui
 - Les deux équipes marquent Non
@@ -72,7 +72,7 @@ Tâches à réaliser :
 - Total corners -10.5
 
 3️⃣ Justifie la prédiction finale de manière détaillée :  
-tactique, forme récente, H2H, joueurs clés, cotes.
+tactique, forme récente, H2H, joueurs clés, cotes(assez importants), facteurs domicile/extérieur(des matchs passés +confrontations historiques), classement.
 
 4️⃣ Fournis une partie JSON stricte à la fin :
 
@@ -89,7 +89,7 @@ tactique, forme récente, H2H, joueurs clés, cotes.
 Exemple attendu :
 {{
   "prediction_textuelle": "Victoire probable de {match['team1']}",
-  "confidence": 82
+  "confidence": 56
 }}
 
 Données du match :
@@ -119,8 +119,8 @@ def call_gpt_oss(prompt):
             {
                 "role": "system",
                 "content": (
-                    "Tu es un expert en analyse football orienté data science et pronostics. "
-                    "Analyse rigoureuse, raisonnement structuré, aucune combinaison interdite, "
+                    "Tu es un expert en analyse football orienté data science et pronostics et gestion financière. "
+                    "Analyse rigoureuse(par énumération pas de tableau ), raisonnement structuré, aucune combinaison interdite, "
                     "JSON final strict et exploitable."
                 )
             },

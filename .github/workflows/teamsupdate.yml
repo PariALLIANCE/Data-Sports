@@ -1,4 +1,4 @@
-name: Football Teams Scraper
+name: Teams Scraper (Football + NHL)
 
 on:
   workflow_dispatch:
@@ -44,5 +44,6 @@ jobs:
       - name: Commit and push results
         run: |
           git add data/football/teams/football_teams.json
-          git commit -m "Update football teams JSON" || echo "No changes to commit"
+          git add data/hockey/teams/hockey_NHL_teams.json
+          git commit -m "Update football and NHL teams JSON" || echo "No changes to commit"
           git push origin main

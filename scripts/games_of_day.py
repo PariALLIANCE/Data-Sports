@@ -1,355 +1,144 @@
+import os
+import json
+import re
+import time
 import requests
 from bs4 import BeautifulSoup
-import json
-from datetime import datetime, timezone
-import re
-import os
-import time
 
-# ================= HEADERS =================
+# -------------------- CONFIG --------------------
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-    "Accept-Language": "en-US,en;q=0.9",
+    "User-Agent": "Mozilla/5.0",
+    "Accept-Language": "en-US,en;q=0.9"
 }
 
-# ================= DOSSIERS =================
-BASE_DIR = "data/football"
-TEAMS_DIR = os.path.join(BASE_DIR, "teams")
-LEAGUES_DIR = os.path.join(BASE_DIR, "leagues")
-STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
-OUTPUT_DIR = BASE_DIR
+# FOOTBALL
+FOOTBALL_BASE_URL = "https://www.espn.com/soccer/teams/_/league/"
+FOOTBALL_LOGO_URL = "https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
+FOOTBALL_OUTPUT_DIR = "data/football/teams"
+FOOTBALL_OUTPUT_FILE = "football_teams.json"
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "games_of_day.json")
-TEAMS_FILE = os.path.join(TEAMS_DIR, "football_teams.json")
-
-# ================= LIGUES =================
-LEAGUES = {
-    "England_Premier_League": "eng.1",
-    "Spain_Laliga": "esp.1",
-    "Germany_Bundesliga": "ger.1",
-    "Argentina_Primera_Nacional": "arg.2",
-    "Austria_Bundesliga": "aut.1",
-    "Belgium_Jupiler_Pro_League": "bel.1",
-    "Brazil_Serie_A": "bra.1",
-    "Brazil_Serie_B": "bra.2",
-    "Chile_Primera_Division": "chi.1",
-    "China_Super_League": "chn.1",
-    "Colombia_Primera_A": "col.1",
-    "England_National_League": "eng.5",
-    "France_Ligue_1": "fra.1",
-    "Greece_Super_League_1": "gre.1",
-    "Italy_Serie_A": "ita.1",
-    "Japan_J1_League": "jpn.1",
-    "Mexico_Liga_MX": "mex.1",
-    "Netherlands_Eredivisie": "ned.1",
-    "Paraguay_Division_Profesional": "par.1",
-    "Peru_Primera_Division": "per.1",
-    "Portugal_Primeira_Liga": "por.1",
-    "Romania_Liga_I": "rou.1",
-    "Russia_Premier_League": "rus.1",
-    "Saudi_Arabia_Pro_League": "ksa.1",
-    "Sweden_Allsvenskan": "swe.1",
-    "Switzerland_Super_League": "sui.1",
-    "Turkey_Super_Lig": "tur.1",
-    "USA_Major_League_Soccer": "usa.1",
-    "Venezuela_Primera_Division": "ven.1",
-    "UEFA_Champions_League": "uefa.champions",
-    "UEFA_Europa_League": "uefa.europa",
-    "FIFA_Club_World_Cup": "fifa.cwc"
+FOOTBALL_LEAGUES = {
+  "England_Premier_League": { "id": "eng.1" },
+  "Spain_Laliga": { "id": "esp.1" },
+  "Germany_Bundesliga": { "id": "ger.1" },
+  "Argentina_Primera_Nacional": { "id": "arg.2" },
+  "Austria_Bundesliga": { "id": "aut.1" },
+  "Belgium_Jupiler_Pro_League": { "id": "bel.1" },
+  "Brazil_Serie_A": { "id": "bra.1" },
+  "Brazil_Serie_B": { "id": "bra.2" },
+  "Chile_Primera_Division": { "id": "chi.1" },
+  "China_Super_League": { "id": "chn.1" },
+  "Colombia_Primera_A": { "id": "col.1" },
+  "England_National_League": { "id": "eng.5" },
+  "France_Ligue_1": { "id": "fra.1" },
+  "Greece_Super_League_1": { "id": "gre.1" },
+  "Italy_Serie_A": { "id": "ita.1" },
+  "Japan_J1_League": { "id": "jpn.1" },
+  "Mexico_Liga_MX": { "id": "mex.1" },
+  "Netherlands_Eredivisie": { "id": "ned.1" },
+  "Paraguay_Division_Profesional": { "id": "par.1" },
+  "Peru_Primera_Division": { "id": "per.1" },
+  "Portugal_Primeira_Liga": { "id": "por.1" },
+  "Romania_Liga_I": { "id": "rou.1" },
+  "Russia_Premier_League": { "id": "rus.1" },
+  "Saudi_Arabia_Pro_League": { "id": "ksa.1" },
+  "Sweden_Allsvenskan": { "id": "swe.1" },
+  "Switzerland_Super_League": { "id": "sui.1" },
+  "Turkey_Super_Lig": { "id": "tur.1" },
+  "USA_Major_League_Soccer": { "id": "usa.1" },
+  "Venezuela_Primera_Division": { "id": "ven.1" },
+  "UEFA_Champions_League": { "id": "uefa.champions" },
+  "UEFA_Europa_League": { "id": "uefa.europa" },
+  "FIFA_Club_World_Cup": { "id": "fifa.cwc" }
 }
+    # Ajoute ici d'autres ligues si nécessaire
 
-BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
+# HOCKEY NHL
+NHL_URL = "https://www.espn.com/nhl/teams"
+NHL_OUTPUT_FILE = "data/hockey/teams/hockey_NHL_teams.json"
 
-# ================= DATE =================
-today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
-today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+# -------------------- FONCTIONS --------------------
+def get_football_teams_for_league(league_id):
+    """Récupère les équipes d'une ligue de football ESPN."""
+    url = FOOTBALL_BASE_URL + league_id
+    response = requests.get(url, headers=HEADERS, timeout=20)
+    response.raise_for_status()
 
-# ================= UTILITAIRES =================
-def convert_date_to_iso(date_text):
-    try:
-        date_obj = datetime.strptime(date_text, "%A, %B %d, %Y")
-        return date_obj.strftime("%Y-%m-%d")
-    except:
-        return date_text
+    soup = BeautifulSoup(response.text, "html.parser")
+    teams = []
 
-def us_to_decimal(odds):
-    if not odds:
-        return None
-    try:
-        odds = odds.replace("+", "").strip()
-        odds = int(odds)
-        if odds > 0:
-            return round(1 + (odds / 100), 2)
-        else:
-            return round(1 + (100 / abs(odds)), 2)
-    except:
-        return None
-
-def normalize_team_name(name):
-    return name.lower().strip() if name else ""
-
-# ================= FORMES RÉCENTES =================
-def load_league_history(league_name):
-    league_file = os.path.join(LEAGUES_DIR, f"{league_name}.json")
-    if not os.path.exists(league_file):
-        print(f"⚠️ Historique ligue introuvable : {league_file}")
-        return []
-    with open(league_file, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def extract_recent_matches(team_name, league_matches, limit=7):
-    team_norm = normalize_team_name(team_name)
-    team_games = []
-
-    for match in league_matches:
-        t1 = normalize_team_name(match.get("team1", ""))
-        t2 = normalize_team_name(match.get("team2", ""))
-
-        if team_norm == t1 or team_norm == t2:
-            match_copy = dict(match)
-            match_copy["date"] = convert_date_to_iso(match_copy.get("date", ""))
-            team_games.append(match_copy)
-
-    team_games.sort(key=lambda x: x.get("date", ""), reverse=True)
-    return team_games[:limit]
-
-def extract_h2h_matches(team1_name, team2_name, league_matches, limit=7):
-    t1_norm = normalize_team_name(team1_name)
-    t2_norm = normalize_team_name(team2_name)
-    h2h_games = []
-
-    for match in league_matches:
-        m_t1 = normalize_team_name(match.get("team1", ""))
-        m_t2 = normalize_team_name(match.get("team2", ""))
-
-        if (t1_norm == m_t1 and t2_norm == m_t2) or (t1_norm == m_t2 and t2_norm == m_t1):
-            match_copy = dict(match)
-            match_copy["date"] = convert_date_to_iso(match_copy.get("date", ""))
-            h2h_games.append(match_copy)
-
-    h2h_games.sort(key=lambda x: x.get("date", ""), reverse=True)
-    return h2h_games[:limit]
-
-# ================= EXTRACTION COTES =================
-def extract_ml_by_index(match_url):
-    try:
-        res = requests.get(match_url, headers=HEADERS, timeout=15)
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        odds_cells = soup.find_all("div", {"data-testid": "OddsCell"})
-        if len(odds_cells) < 10:
-            return None
-
-        def get_value(cell):
-            val = cell.find("div", class_="FTMw")
-            return val.text.strip() if val else None
-
-        home_us = get_value(odds_cells[1])
-        away_us = get_value(odds_cells[5])
-        draw_us = get_value(odds_cells[9])
-
-        return {
-            "home": us_to_decimal(home_us),
-            "away": us_to_decimal(away_us),
-            "draw": us_to_decimal(draw_us)
-        }
-    except Exception as e:
-        print(f"⚠️ Erreur récupération cotes ML : {e}")
-        return None
-
-# ================= JOUEURS CLÉS =================
-def parse_players(section):
-    players = []
-    athletes = section.find_all("a", class_="Athlete")
-
-    for a in athletes:
-        name_tag = a.find("span", class_="Athlete__PlayerName")
-        stats_tag = a.find("div", class_="Athlete__Stats")
-
-        name = name_tag.get_text(strip=True) if name_tag else None
-        stats_block = stats_tag.get_text("\n", strip=True) if stats_tag else None
-
-        if name:
-            players.append({
-                "name": name,
-                "raw_stats": stats_block
-            })
-    return players
-
-def extract_top_scorers_and_assists(match_url):
-    try:
-        res = requests.get(match_url, headers=HEADERS, timeout=15)
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        top_scorers_header = soup.find("h3", string="Top Scorers")
-        most_assists_header = soup.find("h3", string="Most Assists")
-
-        if not top_scorers_header or not most_assists_header:
-            return {"top_scorers": [], "most_assists": []}
-
-        top_scorers_section = top_scorers_header.find_parent("section", class_="Card")
-        most_assists_section = most_assists_header.find_parent("section", class_="Card")
-
-        top_scorers = parse_players(top_scorers_section) if top_scorers_section else []
-        most_assists = parse_players(most_assists_section) if most_assists_section else []
-
-        return {
-            "top_scorers": top_scorers,
-            "most_assists": most_assists
-        }
-
-    except Exception as e:
-        print(f"⚠️ Erreur récupération joueurs clés : {e}")
-        return {"top_scorers": [], "most_assists": []}
-
-# ================= CHARGEMENT DES ÉQUIPES =================
-if not os.path.exists(TEAMS_FILE):
-    raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
-
-with open(TEAMS_FILE, "r", encoding="utf-8") as f:
-    football_teams = json.load(f)
-
-teams_index = {}
-for league, teams in football_teams.items():
-    teams_index[league] = {}
-    for t in teams:
-        teams_index[league][t["team"].strip().lower()] = t
-
-print(f"✅ {len(teams_index)} ligues chargées")
-
-# ================= CHARGEMENT DES STANDINGS =================
-STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
-if os.path.exists(STANDINGS_FILE):
-    with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
-        standings_data = json.load(f)
-else:
-    standings_data = {}
-    print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
-
-def get_league_standing(league_name):
-    return standings_data.get(league_name, [])
-
-# ================= SCRAPING PRINCIPAL =================
-games_of_day = {}
-league_history_cache = {}
-
-for league_name, league_code in LEAGUES.items():
-    print(f"📅 {league_name}")
-
-    try:
-        res = requests.get(
-            BASE_URL.format(date=today_str, league=league_code),
-            headers=HEADERS,
-            timeout=15
-        )
-        soup = BeautifulSoup(res.text, "html.parser")
-    except Exception as e:
-        print(f"⚠️ Erreur réseau {league_name}: {e}")
-        continue
-
-    if league_name not in league_history_cache:
-        league_history_cache[league_name] = load_league_history(league_name)
-
-    league_history = league_history_cache[league_name]
-    league_standing = get_league_standing(league_name)  # 🔹 Classement complet
-
-    for table in soup.select("div.ResponsiveTable"):
-        date_title = table.select_one("div.Table__Title")
-        date_text = date_title.text.strip() if date_title else today_str
-        date_text_iso = convert_date_to_iso(date_text)
-
-        if date_text_iso != today_iso:
+    sections = soup.select("section.TeamLinks")
+    for section in sections:
+        name_tag = section.select_one("h2")
+        link_tag = section.select_one("a[href*='/soccer/team/_/id/']")
+        if not (name_tag and link_tag):
             continue
 
-        for row in table.select("tbody > tr.Table__TR"):
-            teams = row.select("span.Table__Team a.AnchorLink:last-child")
-            score_tag = row.select_one("a.AnchorLink.at")
+        team_name = name_tag.get_text(strip=True)
+        match = re.search(r"/id/(\d+)", link_tag["href"])
+        if not match:
+            continue
 
-            if len(teams) != 2 or not score_tag:
-                continue
+        team_id = match.group(1)
+        logo_url = FOOTBALL_LOGO_URL.format(team_id=team_id)
+        teams.append({"team": team_name, "team_id": team_id, "logo": logo_url})
 
-            score = score_tag.text.strip()
-            if score.lower() != "v":
-                continue
+    return teams
 
-            match_id = re.search(r"gameId/(\d+)", score_tag["href"])
-            if not match_id:
-                continue
-            game_id = match_id.group(1)
+def scrape_football_teams():
+    """Scrape toutes les ligues de football et sauvegarde dans JSON."""
+    all_leagues_data = {}
+    for league_name, league_info in FOOTBALL_LEAGUES.items():
+        league_id = league_info["id"]
+        print(f"🏆 Football : Scraping {league_name} ({league_id})")
+        try:
+            teams = get_football_teams_for_league(league_id)
+            all_leagues_data[league_name] = teams
+            print(f"   → {len(teams)} équipes récupérées")
+        except Exception as e:
+            print(f"❌ Erreur pour {league_name} : {e}")
+            all_leagues_data[league_name] = []
+        time.sleep(1)
 
-            team1_name = teams[0].text.strip()
-            team2_name = teams[1].text.strip()
+    os.makedirs(FOOTBALL_OUTPUT_DIR, exist_ok=True)
+    output_path = os.path.join(FOOTBALL_OUTPUT_DIR, FOOTBALL_OUTPUT_FILE)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(all_leagues_data, f, indent=2, ensure_ascii=False)
+    print(f"\n✅ Fichier football généré / écrasé : {output_path}")
 
-            team1_data = teams_index.get(league_name, {}).get(team1_name.lower(), {})
-            team2_data = teams_index.get(league_name, {}).get(team2_name.lower(), {})
+def extract_nhl_team_id(href):
+    """Extrait le team_id depuis l'URL NHL ESPN."""
+    parts = href.strip("/").split("/")
+    if "name" in parts:
+        return parts[parts.index("name") + 1]
+    return None
 
-            match_url = "https://www.espn.com" + score_tag["href"]
+def scrape_nhl_teams():
+    """Scrape toutes les équipes NHL et sauvegarde dans JSON."""
+    response = requests.get(NHL_URL, headers=HEADERS, timeout=20)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
 
-            # Cotes
-            ml_odds = extract_ml_by_index(match_url)
-            time.sleep(1)
+    teams = []
+    for section in soup.select("section.TeamLinks"):
+        link = section.find("a", href=True)
+        name_tag = section.find("h2")
+        if not (link and name_tag):
+            continue
+        team_id = extract_nhl_team_id(link["href"])
+        if not team_id:
+            continue
+        logo_url = f"https://a.espncdn.com/i/teamlogos/nhl/500/{team_id}.png"
+        teams.append({"team": name_tag.text.strip(), "team_id": team_id, "logo": logo_url})
 
-            # Joueurs clés
-            key_players = extract_top_scorers_and_assists(match_url)
-            time.sleep(1)
+    os.makedirs(os.path.dirname(NHL_OUTPUT_FILE), exist_ok=True)
+    with open(NHL_OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump({"NHL": teams}, f, indent=2, ensure_ascii=False)
+    print(f"✅ {len(teams)} équipes NHL sauvegardées dans {NHL_OUTPUT_FILE}")
 
-            # Forme récente
-            recent_team1 = extract_recent_matches(team1_name, league_history)
-            recent_team2 = extract_recent_matches(team2_name, league_history)
-
-            # H2H
-            h2h_matches = extract_h2h_matches(team1_name, team2_name, league_history)
-
-            games_of_day[game_id] = {
-                "gameId": game_id,
-                "date": date_text_iso,
-                "league": league_name,
-
-                "team1": team1_name,
-                "team1_id": team1_data.get("team_id"),
-                "team1_logo": team1_data.get("logo"),
-                "team1_url": f"https://www.espn.com/soccer/team/_/id/{team1_data.get('team_id')}" if team1_data.get("team_id") else None,
-
-                "team2": team2_name,
-                "team2_id": team2_data.get("team_id"),
-                "team2_logo": team2_data.get("logo"),
-                "team2_url": f"https://www.espn.com/soccer/team/_/id/{team2_data.get('team_id')}" if team2_data.get("team_id") else None,
-
-                "score": score,
-
-                "recent_form": {
-                    "match1": {
-                        "team": team1_name,
-                        "last_matches": recent_team1
-                    },
-                    "match2": {
-                        "team": team2_name,
-                        "last_matches": recent_team2
-                    }
-                },
-
-                "h2h": h2h_matches,
-
-                "odds": {
-                    "moneyline": ml_odds,
-                    "key_players": {
-                        "top_scorers": key_players.get("top_scorers", []),
-                        "most_assists": key_players.get("most_assists", [])
-                    }
-                },
-
-                "match_url": match_url,
-
-                # 🔹 classement complet de la ligue
-                "league_standing": league_standing
-            }
-
-            time.sleep(0.5)
-
-# ================= SAUVEGARDE =================
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
-
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + joueurs clés + classement complet dans {OUTPUT_FILE}")
+# -------------------- MAIN --------------------
+if __name__ == "__main__":
+    print("=== DÉBUT DU SCRAPING FOOTBALL ===")
+    scrape_football_teams()
+    print("\n=== DÉBUT DU SCRAPING NHL ===")
+    scrape_nhl_teams()

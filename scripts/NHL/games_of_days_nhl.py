@@ -3,107 +3,276 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import json
 import os
-
-# ================= CONFIG =================
-BASE_URL = "https://www.espn.com/nhl/schedule/_/date/"
-OUTPUT_PATH = "data/hockey/games_of_day_nhl.json"
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0"
-}
-
-# ==========================================
-
-def get_today_url():
-    today = datetime.now().strftime("%Y%m%d")
-    return BASE_URL + today, today
+import re
 
 
-def clean_text(text):
-    return text.replace("\n", "").strip()
+def extract_team_full_name(href):
+    """
+    Extrait le nom complet de l'équipe depuis un lien href
+    Exemple: /nhl/team/_/name/bos/boston-bruins -> Boston Bruins
+    """
+    if not href:
+        return ""
+    
+    # Format: /nhl/team/_/name/ABBR/full-team-name
+    match = re.search(r'/nhl/team/_/name/[^/]+/(.+)$', href)
+    if match:
+        team_slug = match.group(1)
+        # Convertir le slug en nom (remplacer tirets par espaces et capitaliser)
+        team_name = team_slug.replace('-', ' ').title()
+        return team_name
+    return ""
 
 
-def get_games_of_day():
-    url, today_str = get_today_url()
-    res = requests.get(url, headers=HEADERS, timeout=15)
-    res.raise_for_status()
-
-    soup = BeautifulSoup(res.text, "html.parser")
-    games = []
-
-    # Tables contenant les matchs à venir (TIME)
-    tables = soup.select("table.Table")
-
-    for table in tables:
-        headers = [th.get_text(strip=True).lower() for th in table.select("thead th")]
-
-        # On garde uniquement les tables avec colonne TIME
-        if "time" not in headers:
-            continue
-
-        rows = table.select("tbody tr")
-
-        for row in rows:
-            teams = row.select(".Table__Team a[href*='/nhl/team']")
-            if len(teams) < 2:
-                continue
-
-            # Équipes
-            away_team = clean_text(teams[0].get_text())
-            home_team = clean_text(teams[1].get_text())
-
-            away_url = "https://www.espn.com" + teams[0]["href"]
-            home_url = "https://www.espn.com" + teams[1]["href"]
-
-            # Logos
-            logos = row.select("img.team__logo")
-            away_logo = logos[0]["src"] if len(logos) > 0 else None
-            home_logo = logos[1]["src"] if len(logos) > 1 else None
-
-            # Heure + lien du match
-            time_cell = row.select_one("td.date__col a")
-            if not time_cell:
-                continue
-
-            match_time = clean_text(time_cell.get_text())
-            match_url = "https://www.espn.com" + time_cell["href"]
-
-            game = {
-                "date": today_str,
-                "time": match_time,
-                "match": f"{away_team} v {home_team}",
-                "score": "v",
-                "away": {
-                    "name": away_team,
-                    "url": away_url,
-                    "logo": away_logo
-                },
-                "home": {
-                    "name": home_team,
-                    "url": home_url,
-                    "logo": home_logo
-                },
-                "match_url": match_url
-            }
-
-            games.append(game)
-
-    return {
-        "source": "ESPN",
-        "league": "NHL",
-        "date": today_str,
-        "games_count": len(games),
-        "games": games
+def scrape_nhl_games_today():
+    """
+    Scrape les matchs NHL du jour depuis ESPN et sauvegarde dans un fichier JSON.
+    Ne garde QUE les matchs qui n'ont pas encore été joués.
+    Retourne le chemin du fichier créé ou None en cas d'erreur.
+    """
+    
+    # Date du jour
+    today = datetime.now()
+    date_str = today.strftime("%Y%m%d")
+    date_formatted = today.strftime("%Y-%m-%d")
+    
+    # Formater la date en jour de la semaine en anglais
+    weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    months = ["", "January", "February", "March", "April", "May", "June", 
+              "July", "August", "September", "October", "November", "December"]
+    
+    target_date = f"{weekdays[today.weekday()]}, {months[today.month]} {today.day}, {today.year}"
+    
+    # URL ESPN avec la date du jour
+    url = f"https://www.espn.com/nhl/schedule/_/date/{date_str}"
+    
+    print(f"🏒 Récupération des matchs NHL pour le {today.strftime('%d/%m/%Y')}...")
+    print(f"📅 Date cible: {target_date}")
+    print(f"🌐 URL: {url}")
+    
+    # Headers pour simuler un navigateur
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
     }
-
-
-def save_json(data):
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    
+    try:
+        # Requête HTTP
+        print("📡 Envoi de la requête HTTP...")
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        
+        print(f"✅ Réponse reçue: {response.status_code}")
+        
+        # Parser le HTML
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # Trouver tous les blocs de tables avec leur titre de date
+        games_data = []
+        schedule_blocks = soup.find_all('div', class_='ScheduleTables')
+        
+        print(f"📊 {len(schedule_blocks)} blocs de planning trouvés")
+        
+        for block in schedule_blocks:
+            # Vérifier le titre de la date
+            title_elem = block.find('div', class_='Table__Title')
+            if not title_elem:
+                continue
+            
+            date_title = title_elem.get_text(strip=True)
+            
+            # Ne traiter que les matchs du jour ciblé
+            if target_date not in date_title:
+                continue
+            
+            print(f"\n✅ Section trouvée: {date_title}")
+            
+            # Trouver les tables dans ce bloc
+            tables = block.find_all('table', class_='Table')
+            
+            for table in tables:
+                # Vérifier si c'est une table avec des matchs à venir (pas de résultats)
+                thead = table.find('thead')
+                if not thead:
+                    continue
+                
+                # FILTRE CRITIQUE: Chercher les en-têtes pour distinguer matchs à venir vs matchs terminés
+                th_elements = thead.find_all('th')
+                headers_text = ' '.join([th.get_text().upper() for th in th_elements])
+                
+                # Si on trouve "RESULT" ou "TOP PLAYER" ou "WINNING GOALIE", c'est une table de résultats
+                if any(keyword in headers_text for keyword in ['RESULT', 'TOP PLAYER', 'WINNING GOALIE', 'ATT']):
+                    print("⏭️  Table de résultats ignorée (matchs déjà joués)")
+                    continue
+                
+                # Si on ne trouve pas "TIME", ce n'est pas une table de matchs à venir
+                if 'TIME' not in headers_text:
+                    print("⏭️  Table sans horaires ignorée")
+                    continue
+                
+                print("📋 Traitement de la table des matchs à venir...")
+                
+                # Parser les lignes de matchs
+                tbody = table.find('tbody')
+                if not tbody:
+                    continue
+                
+                rows = tbody.find_all('tr', class_='Table__TR')
+                print(f"🔍 {len(rows)} lignes trouvées")
+                
+                for row in rows:
+                    try:
+                        # Extraire la cellule des matchs
+                        events_col = row.find('td', class_='events__col')
+                        colspan_col = row.find('td', class_='colspan__col')
+                        
+                        if not events_col or not colspan_col:
+                            continue
+                        
+                        # Équipe visiteuse (away)
+                        away_links = events_col.find_all('a', class_='AnchorLink')
+                        away_team_name = ""
+                        away_team_abbr = ""
+                        away_logo_url = ""
+                        
+                        for link in away_links:
+                            href = link.get('href', '')
+                            if '/nhl/team/' in href:
+                                # Extraire le nom complet depuis le href
+                                full_name = extract_team_full_name(href)
+                                if full_name:
+                                    away_team_name = full_name
+                                    
+                            # Récupérer l'abréviation aussi
+                            text = link.get_text(strip=True)
+                            if text and len(text) <= 4:
+                                away_team_abbr = text
+                                
+                            # Logo
+                            img = link.find('img', class_='Logo')
+                            if img and 'src' in img.attrs:
+                                full_url = img['src']
+                                if 'img=/i/teamlogos' in full_url:
+                                    match = re.search(r'img=(/i/teamlogos/nhl/500/[^&]+)', full_url)
+                                    if match:
+                                        away_logo_url = f"https://a.espncdn.com{match.group(1)}"
+                                else:
+                                    away_logo_url = full_url
+                        
+                        # Équipe domicile (home)
+                        home_links = colspan_col.find_all('a', class_='AnchorLink')
+                        home_team_name = ""
+                        home_team_abbr = ""
+                        home_logo_url = ""
+                        
+                        for link in home_links:
+                            href = link.get('href', '')
+                            if '/nhl/team/' in href:
+                                # Extraire le nom complet depuis le href
+                                full_name = extract_team_full_name(href)
+                                if full_name:
+                                    home_team_name = full_name
+                                    
+                            # Récupérer l'abréviation aussi
+                            text = link.get_text(strip=True)
+                            if text and len(text) <= 4:
+                                home_team_abbr = text
+                                
+                            # Logo
+                            img = link.find('img', class_='Logo')
+                            if img and 'src' in img.attrs:
+                                full_url = img['src']
+                                if 'img=/i/teamlogos' in full_url:
+                                    match = re.search(r'img=(/i/teamlogos/nhl/500/[^&]+)', full_url)
+                                    if match:
+                                        home_logo_url = f"https://a.espncdn.com{match.group(1)}"
+                                else:
+                                    home_logo_url = full_url
+                        
+                        if not away_team_name or not home_team_name:
+                            continue
+                        
+                        # Heure du match
+                        time_col = row.find('td', class_='date__col')
+                        if not time_col:
+                            continue
+                        
+                        time_link = time_col.find('a')
+                        if not time_link:
+                            continue
+                        
+                        time_text = time_link.get_text(strip=True)
+                        
+                        # Game ID (depuis le lien)
+                        game_link = time_link.get('href', '')
+                        game_id = ""
+                        if '/gameId/' in game_link:
+                            game_id_match = re.search(r'/gameId/(\d+)/', game_link)
+                            if game_id_match:
+                                game_id = game_id_match.group(1)
+                        
+                        # Créer l'objet match avec noms complets
+                        game = {
+                            "game_id": game_id,
+                            "date": date_formatted,
+                            "time": time_text,
+                            "away_team": {
+                                "name": away_team_name,
+                                "abbreviation": away_team_abbr,
+                                "logo_url": away_logo_url
+                            },
+                            "home_team": {
+                                "name": home_team_name,
+                                "abbreviation": home_team_abbr,
+                                "logo_url": home_logo_url
+                            }
+                        }
+                        
+                        games_data.append(game)
+                        print(f"   ✅ {away_team_name} @ {home_team_name} à {time_text} (ID: {game_id})")
+                        
+                    except Exception as e:
+                        print(f"   ⚠️  Erreur lors du parsing d'une ligne: {e}")
+                        continue
+        
+        # Créer le dossier de destination si nécessaire
+        output_dir = "data/hockey"
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Sauvegarder dans un fichier JSON
+        output_file = os.path.join(output_dir, "games_of_days_nhl.json")
+        
+        result = {
+            "date": date_formatted,
+            "total_games": len(games_data),
+            "games": games_data
+        }
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
+        
+        print(f"\n🎉 {len(games_data)} matchs à venir sauvegardés dans: {output_file}")
+        
+        return output_file
+        
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Erreur lors de la requête HTTP: {e}")
+        print("💡 Vérifiez votre connexion Internet ou les paramètres réseau")
+        return None
+    except Exception as e:
+        print(f"❌ Erreur inattendue: {e}")
+        import traceback
+        traceback.print_exc()
+        return None
 
 
 if __name__ == "__main__":
-    data = get_games_of_day()
-    save_json(data)
-    print(f"✅ {data['games_count']} matchs NHL à venir enregistrés dans {OUTPUT_PATH}")
+    output_file = scrape_nhl_games_today()
+    
+    if output_file:
+        print("\n✨ Script terminé avec succès!")
+        print(f"📁 Fichier créé: {output_file}")
+    else:
+        print("\n❌ Le script a échoué")
+        exit(1)

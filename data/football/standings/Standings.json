@@ -1750,6 +1750,20 @@
         },
         {
             "position": 3,
+            "name": "Chapecoense",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 5,
+                "A": 3,
+                "GD": 2,
+                "P": 4
+            }
+        },
+        {
+            "position": 4,
             "name": "Mirassol",
             "stats": {
                 "GP": 2,
@@ -1763,7 +1777,35 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
+            "name": "Fluminense",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 4
+            }
+        },
+        {
+            "position": 6,
+            "name": "Bahia",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 4
+            }
+        },
+        {
+            "position": 7,
             "name": "São Paulo",
             "stats": {
                 "GP": 2,
@@ -1777,7 +1819,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 8,
             "name": "Botafogo",
             "stats": {
                 "GP": 2,
@@ -1791,21 +1833,7 @@
             }
         },
         {
-            "position": 6,
-            "name": "Chapecoense",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 4,
-                "A": 2,
-                "GD": 2,
-                "P": 3
-            }
-        },
-        {
-            "position": 7,
+            "position": 9,
             "name": "Grêmio",
             "stats": {
                 "GP": 2,
@@ -1814,34 +1842,6 @@
                 "L": 1,
                 "F": 6,
                 "A": 5,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 8,
-            "name": "Fluminense",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 2,
-                "A": 1,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 9,
-            "name": "Bahia",
-            "stats": {
-                "GP": 1,
-                "W": 1,
-                "D": 0,
-                "L": 0,
-                "F": 2,
-                "A": 1,
                 "GD": 1,
                 "P": 3
             }
@@ -1862,6 +1862,20 @@
         },
         {
             "position": 11,
+            "name": "Coritiba",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 2,
+                "A": 2,
+                "GD": 0,
+                "P": 3
+            }
+        },
+        {
+            "position": 12,
             "name": "Vitória",
             "stats": {
                 "GP": 2,
@@ -1875,22 +1889,8 @@
             }
         },
         {
-            "position": 12,
-            "name": "Atlético-MG",
-            "stats": {
-                "GP": 2,
-                "W": 0,
-                "D": 1,
-                "L": 1,
-                "F": 2,
-                "A": 3,
-                "GD": -1,
-                "P": 1
-            }
-        },
-        {
             "position": 13,
-            "name": "Flamengo",
+            "name": "Vasco da Gama",
             "stats": {
                 "GP": 2,
                 "W": 0,
@@ -1904,6 +1904,34 @@
         },
         {
             "position": 14,
+            "name": "Atlético-MG",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 1,
+                "L": 1,
+                "F": 2,
+                "A": 3,
+                "GD": -1,
+                "P": 1
+            }
+        },
+        {
+            "position": 15,
+            "name": "Flamengo",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 1,
+                "L": 1,
+                "F": 2,
+                "A": 3,
+                "GD": -1,
+                "P": 1
+            }
+        },
+        {
+            "position": 16,
             "name": "Internacional",
             "stats": {
                 "GP": 2,
@@ -1917,7 +1945,7 @@
             }
         },
         {
-            "position": 15,
+            "position": 17,
             "name": "Santos",
             "stats": {
                 "GP": 2,
@@ -1931,7 +1959,7 @@
             }
         },
         {
-            "position": 16,
+            "position": 18,
             "name": "Remo",
             "stats": {
                 "GP": 2,
@@ -1945,21 +1973,7 @@
             }
         },
         {
-            "position": 17,
-            "name": "Vasco da Gama",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 1,
-                "A": 2,
-                "GD": -1,
-                "P": 0
-            }
-        },
-        {
-            "position": 18,
+            "position": 19,
             "name": "Corinthians",
             "stats": {
                 "GP": 1,
@@ -1973,30 +1987,16 @@
             }
         },
         {
-            "position": 19,
-            "name": "Coritiba",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 1,
-                "GD": -1,
-                "P": 0
-            }
-        },
-        {
             "position": 20,
             "name": "Cruzeiro",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 0,
                 "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 4,
-                "GD": -4,
+                "L": 2,
+                "F": 1,
+                "A": 6,
+                "GD": -5,
                 "P": 0
             }
         }
@@ -6014,18 +6014,32 @@
             "position": 1,
             "name": "Al Hilal",
             "stats": {
-                "GP": 19,
-                "W": 14,
+                "GP": 20,
+                "W": 15,
                 "D": 5,
                 "L": 0,
-                "F": 47,
+                "F": 53,
                 "A": 18,
-                "GD": 29,
-                "P": 47
+                "GD": 35,
+                "P": 50
             }
         },
         {
             "position": 2,
+            "name": "Al Ahli",
+            "stats": {
+                "GP": 20,
+                "W": 14,
+                "D": 5,
+                "L": 1,
+                "F": 35,
+                "A": 12,
+                "GD": 23,
+                "P": 47
+            }
+        },
+        {
+            "position": 3,
             "name": "Al Nassr",
             "stats": {
                 "GP": 19,
@@ -6036,20 +6050,6 @@
                 "A": 18,
                 "GD": 31,
                 "P": 46
-            }
-        },
-        {
-            "position": 3,
-            "name": "Al Ahli",
-            "stats": {
-                "GP": 19,
-                "W": 13,
-                "D": 5,
-                "L": 1,
-                "F": 33,
-                "A": 12,
-                "GD": 21,
-                "P": 44
             }
         },
         {
@@ -6152,30 +6152,30 @@
         },
         {
             "position": 11,
-            "name": "Al Hazem",
+            "name": "Al Fayha",
             "stats": {
-                "GP": 19,
-                "W": 5,
-                "D": 6,
-                "L": 8,
-                "F": 20,
-                "A": 35,
-                "GD": -15,
-                "P": 21
+                "GP": 20,
+                "W": 6,
+                "D": 5,
+                "L": 9,
+                "F": 22,
+                "A": 33,
+                "GD": -11,
+                "P": 23
             }
         },
         {
             "position": 12,
-            "name": "Al Fayha",
+            "name": "Al Hazem",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 5,
-                "D": 5,
+                "D": 6,
                 "L": 9,
-                "F": 19,
-                "A": 33,
-                "GD": -14,
-                "P": 20
+                "F": 20,
+                "A": 37,
+                "GD": -17,
+                "P": 21
             }
         },
         {
@@ -6238,13 +6238,13 @@
             "position": 17,
             "name": "Al Okhdood",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 2,
                 "D": 4,
-                "L": 13,
+                "L": 14,
                 "F": 15,
-                "A": 35,
-                "GD": -20,
+                "A": 41,
+                "GD": -26,
                 "P": 10
             }
         },
@@ -6252,13 +6252,13 @@
             "position": 18,
             "name": "Al Najma",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 0,
                 "D": 5,
-                "L": 14,
+                "L": 15,
                 "F": 18,
-                "A": 38,
-                "GD": -20,
+                "A": 41,
+                "GD": -23,
                 "P": 5
             }
         }

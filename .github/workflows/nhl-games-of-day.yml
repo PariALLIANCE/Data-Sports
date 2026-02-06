@@ -32,6 +32,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add data/hockey/games_of_day_nhl.json
+          git add data/hockey/games_of_days_nhl.json
           git commit -m "Update NHL games of the day" || echo "No changes to commit"
           git push

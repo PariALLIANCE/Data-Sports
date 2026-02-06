@@ -29,21 +29,21 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests beautifulsoup4
 
-      # 4️⃣ 🔥 Rebase AVANT toute écriture
+      # 4️⃣ 🔥 Rebase AVANT toute écriture (structure inchangée)
       - name: Sync with remote main
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
+          git pull --rebase origin main || true
 
-      # 5️⃣ Exécution du scraper depuis le dossier scripts
-      - name: Run teams scraper
-        run: python scripts/teams.py
+      # 5️⃣ ✅ Script NHL – MATCHS DU JOUR
+      - name: Run NHL games scraper
+        run: |
+          python scripts/NHL/games_of_days_nhl.py
 
-      # 6️⃣ Commit & push des résultats
+      # 6️⃣ Commit & push (config adaptée)
       - name: Commit and push results
         run: |
-          git add data/football/teams/football_teams.json
-          git add data/hockey/teams/hockey_NHL_teams.json
-          git commit -m "Update football and NHL teams JSON" || echo "No changes to commit"
+          git add data/hockey/games_of_days_nhl.json
+          git commit -m "Update NHL games of day" || echo "No changes to commit"
           git push origin main

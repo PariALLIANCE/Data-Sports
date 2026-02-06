@@ -58,10 +58,23 @@ def scrape_nhl_games_today():
         'Accept-Language': 'en-US,en;q=0.5',
     }
 
+    # Déterminer le répertoire de base (racine du projet)
+    # Si on est dans GitHub Actions, GITHUB_WORKSPACE est défini
+    # Sinon, on utilise le répertoire courant
+    base_dir = os.environ.get('GITHUB_WORKSPACE', os.getcwd())
+    
+    # Créer le chemin absolu pour le dossier de destination
+    output_dir = os.path.join(base_dir, "data", "hockey")
+    
+    print(f"📂 Répertoire de base: {base_dir}")
+    print(f"📁 Dossier de destination: {output_dir}")
+    
     # Créer le dossier de destination si nécessaire (avant toute opération)
-    output_dir = "data/hockey"
     os.makedirs(output_dir, exist_ok=True)
+    print(f"✅ Dossier créé/vérifié: {output_dir}")
+    
     output_file = os.path.join(output_dir, "games_of_days_nhl.json")
+    print(f"📄 Fichier de sortie: {output_file}")
 
     # Initialiser la liste des matchs (vide par défaut)
     games_data = []
@@ -266,8 +279,23 @@ def scrape_nhl_games_today():
             "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
 
+        print(f"\n💾 Tentative de sauvegarde dans: {output_file}")
+        
+        # Vérifier que le dossier existe bien avant d'écrire
+        if not os.path.exists(output_dir):
+            print(f"⚠️  Le dossier n'existe pas, recréation...")
+            os.makedirs(output_dir, exist_ok=True)
+        
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
+        
+        # Vérifier que le fichier a bien été créé
+        if os.path.exists(output_file):
+            file_size = os.path.getsize(output_file)
+            print(f"✅ Fichier sauvegardé avec succès ({file_size} octets)")
+        else:
+            print(f"❌ Le fichier n'a pas été créé!")
+            return None
 
         if len(games_data) > 0:
             print(f"\n🎉 {len(games_data)} matchs à venir sauvegardés dans: {output_file}")

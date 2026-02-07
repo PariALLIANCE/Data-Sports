@@ -214,27 +214,27 @@
             "position": 16,
             "name": "Leeds United",
             "stats": {
-                "GP": 24,
-                "W": 6,
+                "GP": 25,
+                "W": 7,
                 "D": 8,
                 "L": 10,
-                "F": 31,
-                "A": 42,
-                "GD": -11,
-                "P": 26
+                "F": 34,
+                "A": 43,
+                "GD": -9,
+                "P": 29
             }
         },
         {
             "position": 17,
             "name": "Nottingham Forest",
             "stats": {
-                "GP": 24,
+                "GP": 25,
                 "W": 7,
                 "D": 5,
-                "L": 12,
-                "F": 24,
-                "A": 35,
-                "GD": -11,
+                "L": 13,
+                "F": 25,
+                "A": 38,
+                "GD": -13,
                 "P": 26
             }
         },
@@ -370,18 +370,32 @@
             "position": 7,
             "name": "Celta Vigo",
             "stats": {
-                "GP": 22,
+                "GP": 23,
                 "W": 8,
                 "D": 9,
-                "L": 5,
-                "F": 29,
-                "A": 23,
-                "GD": 6,
+                "L": 6,
+                "F": 30,
+                "A": 25,
+                "GD": 5,
                 "P": 33
             }
         },
         {
             "position": 8,
+            "name": "Osasuna",
+            "stats": {
+                "GP": 23,
+                "W": 8,
+                "D": 5,
+                "L": 10,
+                "F": 28,
+                "A": 28,
+                "GD": 0,
+                "P": 29
+            }
+        },
+        {
+            "position": 9,
             "name": "Real Sociedad",
             "stats": {
                 "GP": 22,
@@ -392,20 +406,6 @@
                 "A": 30,
                 "GD": 0,
                 "P": 28
-            }
-        },
-        {
-            "position": 9,
-            "name": "Osasuna",
-            "stats": {
-                "GP": 22,
-                "W": 7,
-                "D": 5,
-                "L": 10,
-                "F": 26,
-                "A": 27,
-                "GD": -1,
-                "P": 26
             }
         },
         {
@@ -650,6 +650,20 @@
         },
         {
             "position": 7,
+            "name": "Eintracht Frankfurt",
+            "stats": {
+                "GP": 21,
+                "W": 7,
+                "D": 7,
+                "L": 7,
+                "F": 41,
+                "A": 46,
+                "GD": -5,
+                "P": 28
+            }
+        },
+        {
+            "position": 8,
             "name": "SC Freiburg",
             "stats": {
                 "GP": 20,
@@ -663,31 +677,17 @@
             }
         },
         {
-            "position": 8,
-            "name": "Eintracht Frankfurt",
-            "stats": {
-                "GP": 20,
-                "W": 7,
-                "D": 6,
-                "L": 7,
-                "F": 40,
-                "A": 45,
-                "GD": -5,
-                "P": 27
-            }
-        },
-        {
             "position": 9,
             "name": "1. FC Union Berlin",
             "stats": {
-                "GP": 20,
+                "GP": 21,
                 "W": 6,
-                "D": 6,
+                "D": 7,
                 "L": 8,
-                "F": 25,
-                "A": 33,
+                "F": 26,
+                "A": 34,
                 "GD": -8,
-                "P": 24
+                "P": 25
             }
         },
         {
@@ -1328,13 +1328,13 @@
             "position": 1,
             "name": "RB Salzburg",
             "stats": {
-                "GP": 17,
+                "GP": 18,
                 "W": 9,
                 "D": 5,
-                "L": 3,
+                "L": 4,
                 "F": 36,
-                "A": 21,
-                "GD": 15,
+                "A": 23,
+                "GD": 13,
                 "P": 32
             }
         },
@@ -1354,6 +1354,20 @@
         },
         {
             "position": 3,
+            "name": "Austria Vienna",
+            "stats": {
+                "GP": 18,
+                "W": 9,
+                "D": 2,
+                "L": 7,
+                "F": 27,
+                "A": 26,
+                "GD": 1,
+                "P": 29
+            }
+        },
+        {
+            "position": 4,
             "name": "SK Sturm Graz",
             "stats": {
                 "GP": 17,
@@ -1367,7 +1381,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "TSV Hartberg",
             "stats": {
                 "GP": 17,
@@ -1377,20 +1391,6 @@
                 "F": 26,
                 "A": 22,
                 "GD": 4,
-                "P": 26
-            }
-        },
-        {
-            "position": 5,
-            "name": "Austria Vienna",
-            "stats": {
-                "GP": 17,
-                "W": 8,
-                "D": 2,
-                "L": 7,
-                "F": 25,
-                "A": 26,
-                "GD": -1,
                 "P": 26
             }
         },
@@ -1512,14 +1512,14 @@
             "position": 2,
             "name": "Sint-Truidense",
             "stats": {
-                "GP": 23,
-                "W": 14,
+                "GP": 24,
+                "W": 15,
                 "D": 3,
                 "L": 6,
-                "F": 33,
+                "F": 37,
                 "A": 26,
-                "GD": 7,
-                "P": 45
+                "GD": 11,
+                "P": 48
             }
         },
         {
@@ -1638,13 +1638,13 @@
             "position": 11,
             "name": "KVC Westerlo",
             "stats": {
-                "GP": 23,
+                "GP": 24,
                 "W": 7,
                 "D": 7,
-                "L": 9,
+                "L": 10,
                 "F": 30,
-                "A": 33,
-                "GD": -3,
+                "A": 37,
+                "GD": -7,
                 "P": 28
             }
         },
@@ -2286,6 +2286,20 @@
     "Chile_Primera_Division": [
         {
             "position": 1,
+            "name": "Audax Italiano",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 1,
+                "L": 0,
+                "F": 3,
+                "A": 0,
+                "GD": 3,
+                "P": 4
+            }
+        },
+        {
+            "position": 2,
             "name": "Deportes Limache",
             "stats": {
                 "GP": 1,
@@ -2299,7 +2313,7 @@
             }
         },
         {
-            "position": 2,
+            "position": 3,
             "name": "O'Higgins",
             "stats": {
                 "GP": 1,
@@ -2313,7 +2327,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Unión La Calera",
             "stats": {
                 "GP": 1,
@@ -2327,7 +2341,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Cobresal",
             "stats": {
                 "GP": 1,
@@ -2341,21 +2355,21 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "Universidad de Concepción",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 1,
                 "D": 0,
-                "L": 0,
+                "L": 1,
                 "F": 1,
-                "A": 0,
-                "GD": 1,
+                "A": 3,
+                "GD": -2,
                 "P": 3
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Universidad Católica",
             "stats": {
                 "GP": 1,
@@ -2369,7 +2383,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "La Serena",
             "stats": {
                 "GP": 1,
@@ -2383,7 +2397,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Ñublense",
             "stats": {
                 "GP": 1,
@@ -2397,7 +2411,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "Palestino",
             "stats": {
                 "GP": 1,
@@ -2406,20 +2420,6 @@
                 "L": 0,
                 "F": 1,
                 "A": 1,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
-            "position": 10,
-            "name": "Audax Italiano",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 0,
-                "A": 0,
                 "GD": 0,
                 "P": 1
             }
@@ -2740,28 +2740,28 @@
             "position": 1,
             "name": "Deportivo Pasto",
             "stats": {
-                "GP": 4,
+                "GP": 5,
                 "W": 3,
-                "D": 0,
+                "D": 1,
                 "L": 1,
                 "F": 5,
                 "A": 5,
                 "GD": 0,
-                "P": 9
+                "P": 10
             }
         },
         {
             "position": 2,
             "name": "Bucaramanga",
             "stats": {
-                "GP": 4,
+                "GP": 5,
                 "W": 2,
-                "D": 2,
+                "D": 3,
                 "L": 0,
                 "F": 10,
                 "A": 4,
                 "GD": 6,
-                "P": 8
+                "P": 9
             }
         },
         {
@@ -3416,14 +3416,14 @@
             "position": 5,
             "name": "Lille",
             "stats": {
-                "GP": 20,
+                "GP": 21,
                 "W": 10,
-                "D": 2,
+                "D": 3,
                 "L": 8,
                 "F": 34,
                 "A": 30,
                 "GD": 4,
-                "P": 32
+                "P": 33
             }
         },
         {
@@ -3598,14 +3598,14 @@
             "position": 18,
             "name": "Metz",
             "stats": {
-                "GP": 20,
+                "GP": 21,
                 "W": 3,
-                "D": 3,
+                "D": 4,
                 "L": 14,
                 "F": 21,
                 "A": 46,
                 "GD": -25,
-                "P": 12
+                "P": 13
             }
         }
     ],
@@ -4064,34 +4064,48 @@
             "position": 19,
             "name": "Pisa",
             "stats": {
-                "GP": 23,
+                "GP": 24,
                 "W": 1,
-                "D": 11,
+                "D": 12,
                 "L": 11,
                 "F": 19,
                 "A": 40,
                 "GD": -21,
-                "P": 14
+                "P": 15
             }
         },
         {
             "position": 20,
             "name": "Hellas Verona",
             "stats": {
-                "GP": 23,
+                "GP": 24,
                 "W": 2,
-                "D": 8,
+                "D": 9,
                 "L": 13,
                 "F": 18,
                 "A": 41,
                 "GD": -23,
-                "P": 14
+                "P": 15
             }
         }
     ],
     "Japan_J1_League": [
         {
             "position": 1,
+            "name": "Machida Zelvia",
+            "stats": {
+                "GP": 1,
+                "W": 1,
+                "D": 0,
+                "L": 0,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 2,
             "name": "FC Tokyo",
             "stats": {
                 "GP": 0,
@@ -4105,7 +4119,7 @@
             }
         },
         {
-            "position": 2,
+            "position": 3,
             "name": "JEF United Ichihara-Chiba",
             "stats": {
                 "GP": 0,
@@ -4119,7 +4133,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Kashima Antlers",
             "stats": {
                 "GP": 0,
@@ -4133,7 +4147,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Kashiwa Reysol",
             "stats": {
                 "GP": 0,
@@ -4147,22 +4161,8 @@
             }
         },
         {
-            "position": 5,
-            "name": "Kawasaki Frontale",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
             "position": 6,
-            "name": "Machida Zelvia",
+            "name": "Kawasaki Frontale",
             "stats": {
                 "GP": 0,
                 "W": 0,
@@ -4220,18 +4220,60 @@
             "position": 10,
             "name": "Yokohama F. Marinos",
             "stats": {
-                "GP": 0,
+                "GP": 1,
                 "W": 0,
                 "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
+                "L": 1,
+                "F": 2,
+                "A": 3,
+                "GD": -1,
                 "P": 0
             }
         },
         {
             "position": 1,
+            "name": "Sanfrecce Hiroshima",
+            "stats": {
+                "GP": 1,
+                "W": 1,
+                "D": 0,
+                "L": 0,
+                "F": 3,
+                "A": 1,
+                "GD": 2,
+                "P": 3
+            }
+        },
+        {
+            "position": 2,
+            "name": "Vissel Kobe",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 1,
+                "L": 0,
+                "F": 1,
+                "A": 1,
+                "GD": 0,
+                "P": 2
+            }
+        },
+        {
+            "position": 3,
+            "name": "Kyoto Sanga",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 1,
+                "L": 0,
+                "F": 1,
+                "A": 1,
+                "GD": 0,
+                "P": 1
+            }
+        },
+        {
+            "position": 4,
             "name": "Avispa Fukuoka",
             "stats": {
                 "GP": 0,
@@ -4245,7 +4287,7 @@
             }
         },
         {
-            "position": 2,
+            "position": 5,
             "name": "Cerezo Osaka",
             "stats": {
                 "GP": 0,
@@ -4259,7 +4301,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 6,
             "name": "Fagiano Okayama",
             "stats": {
                 "GP": 0,
@@ -4273,7 +4315,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 7,
             "name": "Gamba Osaka",
             "stats": {
                 "GP": 0,
@@ -4287,21 +4329,7 @@
             }
         },
         {
-            "position": 5,
-            "name": "Kyoto Sanga",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 6,
+            "position": 8,
             "name": "Nagoya Grampus",
             "stats": {
                 "GP": 0,
@@ -4315,21 +4343,7 @@
             }
         },
         {
-            "position": 7,
-            "name": "Sanfrecce Hiroshima",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 8,
+            "position": 9,
             "name": "Shimizu S-Pulse",
             "stats": {
                 "GP": 0,
@@ -4343,30 +4357,16 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "V-Varen Nagasaki",
             "stats": {
-                "GP": 0,
+                "GP": 1,
                 "W": 0,
                 "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 10,
-            "name": "Vissel Kobe",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
+                "L": 1,
+                "F": 1,
+                "A": 3,
+                "GD": -2,
                 "P": 0
             }
         }
@@ -4388,6 +4388,20 @@
         },
         {
             "position": 2,
+            "name": "Tigres UANL",
+            "stats": {
+                "GP": 5,
+                "W": 3,
+                "D": 1,
+                "L": 1,
+                "F": 9,
+                "A": 4,
+                "GD": 5,
+                "P": 10
+            }
+        },
+        {
+            "position": 3,
             "name": "Cruz Azul",
             "stats": {
                 "GP": 4,
@@ -4401,7 +4415,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Atlas",
             "stats": {
                 "GP": 4,
@@ -4415,7 +4429,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Pumas UNAM",
             "stats": {
                 "GP": 4,
@@ -4429,7 +4443,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "Toluca",
             "stats": {
                 "GP": 4,
@@ -4443,7 +4457,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Monterrey",
             "stats": {
                 "GP": 4,
@@ -4453,20 +4467,6 @@
                 "F": 9,
                 "A": 4,
                 "GD": 5,
-                "P": 7
-            }
-        },
-        {
-            "position": 7,
-            "name": "Tigres UANL",
-            "stats": {
-                "GP": 4,
-                "W": 2,
-                "D": 1,
-                "L": 1,
-                "F": 4,
-                "A": 3,
-                "GD": 1,
                 "P": 7
             }
         },
@@ -4486,6 +4486,20 @@
         },
         {
             "position": 9,
+            "name": "Necaxa",
+            "stats": {
+                "GP": 5,
+                "W": 2,
+                "D": 0,
+                "L": 3,
+                "F": 7,
+                "A": 7,
+                "GD": 0,
+                "P": 6
+            }
+        },
+        {
+            "position": 10,
             "name": "América",
             "stats": {
                 "GP": 4,
@@ -4499,7 +4513,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "Pachuca",
             "stats": {
                 "GP": 4,
@@ -4510,20 +4524,6 @@
                 "A": 3,
                 "GD": -1,
                 "P": 5
-            }
-        },
-        {
-            "position": 11,
-            "name": "Atlético de San Luis",
-            "stats": {
-                "GP": 4,
-                "W": 1,
-                "D": 1,
-                "L": 2,
-                "F": 6,
-                "A": 6,
-                "GD": 0,
-                "P": 4
             }
         },
         {
@@ -4570,16 +4570,16 @@
         },
         {
             "position": 15,
-            "name": "Necaxa",
+            "name": "Atlético de San Luis",
             "stats": {
-                "GP": 4,
+                "GP": 5,
                 "W": 1,
-                "D": 0,
+                "D": 1,
                 "L": 3,
-                "F": 3,
-                "A": 6,
+                "F": 7,
+                "A": 10,
                 "GD": -3,
-                "P": 3
+                "P": 4
             }
         },
         {
@@ -4600,13 +4600,13 @@
             "position": 17,
             "name": "Santos",
             "stats": {
-                "GP": 4,
+                "GP": 5,
                 "W": 0,
                 "D": 1,
-                "L": 3,
-                "F": 4,
-                "A": 12,
-                "GD": -8,
+                "L": 4,
+                "F": 5,
+                "A": 17,
+                "GD": -12,
                 "P": 1
             }
         },
@@ -4754,6 +4754,20 @@
         },
         {
             "position": 10,
+            "name": "Excelsior",
+            "stats": {
+                "GP": 22,
+                "W": 7,
+                "D": 5,
+                "L": 10,
+                "F": 24,
+                "A": 37,
+                "GD": -13,
+                "P": 26
+            }
+        },
+        {
+            "position": 11,
             "name": "Heerenveen",
             "stats": {
                 "GP": 20,
@@ -4767,7 +4781,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Fortuna Sittard",
             "stats": {
                 "GP": 21,
@@ -4781,7 +4795,7 @@
             }
         },
         {
-            "position": 12,
+            "position": 13,
             "name": "FC Utrecht",
             "stats": {
                 "GP": 20,
@@ -4792,20 +4806,6 @@
                 "A": 27,
                 "GD": 3,
                 "P": 24
-            }
-        },
-        {
-            "position": 13,
-            "name": "Excelsior",
-            "stats": {
-                "GP": 21,
-                "W": 6,
-                "D": 5,
-                "L": 10,
-                "F": 22,
-                "A": 37,
-                "GD": -15,
-                "P": 23
             }
         },
         {
@@ -4852,20 +4852,6 @@
         },
         {
             "position": 17,
-            "name": "NAC Breda",
-            "stats": {
-                "GP": 21,
-                "W": 3,
-                "D": 7,
-                "L": 11,
-                "F": 23,
-                "A": 34,
-                "GD": -11,
-                "P": 16
-            }
-        },
-        {
-            "position": 18,
             "name": "Telstar",
             "stats": {
                 "GP": 21,
@@ -4875,6 +4861,20 @@
                 "F": 25,
                 "A": 37,
                 "GD": -12,
+                "P": 16
+            }
+        },
+        {
+            "position": 18,
+            "name": "NAC Breda",
+            "stats": {
+                "GP": 22,
+                "W": 3,
+                "D": 7,
+                "L": 12,
+                "F": 23,
+                "A": 36,
+                "GD": -13,
                 "P": 16
             }
         }
@@ -4896,6 +4896,20 @@
         },
         {
             "position": 2,
+            "name": "Deportivo Recoleta",
+            "stats": {
+                "GP": 4,
+                "W": 2,
+                "D": 2,
+                "L": 0,
+                "F": 7,
+                "A": 3,
+                "GD": 4,
+                "P": 8
+            }
+        },
+        {
+            "position": 3,
             "name": "Cerro Porteño",
             "stats": {
                 "GP": 3,
@@ -4909,7 +4923,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Olimpia",
             "stats": {
                 "GP": 3,
@@ -4923,31 +4937,17 @@
             }
         },
         {
-            "position": 4,
-            "name": "Deportivo Recoleta",
+            "position": 5,
+            "name": "Sportivo Ameliano",
             "stats": {
-                "GP": 3,
-                "W": 1,
-                "D": 2,
-                "L": 0,
+                "GP": 4,
+                "W": 2,
+                "D": 1,
+                "L": 1,
                 "F": 4,
                 "A": 3,
                 "GD": 1,
-                "P": 5
-            }
-        },
-        {
-            "position": 5,
-            "name": "Libertad",
-            "stats": {
-                "GP": 3,
-                "W": 1,
-                "D": 1,
-                "L": 1,
-                "F": 3,
-                "A": 3,
-                "GD": 0,
-                "P": 4
+                "P": 7
             }
         },
         {
@@ -4966,7 +4966,7 @@
         },
         {
             "position": 7,
-            "name": "Sportivo Ameliano",
+            "name": "Libertad",
             "stats": {
                 "GP": 3,
                 "W": 1,
@@ -4982,13 +4982,13 @@
             "position": 8,
             "name": "Sportivo Luqueño",
             "stats": {
-                "GP": 3,
+                "GP": 4,
                 "W": 1,
                 "D": 0,
-                "L": 2,
+                "L": 3,
                 "F": 3,
-                "A": 5,
-                "GD": -2,
+                "A": 6,
+                "GD": -3,
                 "P": 3
             }
         },
@@ -5038,13 +5038,13 @@
             "position": 12,
             "name": "Sportivo San Lorenzo",
             "stats": {
-                "GP": 3,
+                "GP": 4,
                 "W": 0,
                 "D": 0,
-                "L": 3,
+                "L": 4,
                 "F": 2,
-                "A": 6,
-                "GD": -4,
+                "A": 9,
+                "GD": -7,
                 "P": 0
             }
         }
@@ -5054,14 +5054,14 @@
             "position": 1,
             "name": "UTC",
             "stats": {
-                "GP": 1,
-                "W": 1,
+                "GP": 2,
+                "W": 2,
                 "D": 0,
                 "L": 0,
-                "F": 2,
-                "A": 0,
-                "GD": 2,
-                "P": 3
+                "F": 5,
+                "A": 2,
+                "GD": 3,
+                "P": 6
             }
         },
         {
@@ -5250,13 +5250,13 @@
             "position": 15,
             "name": "Deportivo Moquegua",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 0,
                 "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 1,
-                "GD": -1,
+                "L": 2,
+                "F": 2,
+                "A": 4,
+                "GD": -2,
                 "P": 0
             }
         },
@@ -6026,6 +6026,20 @@
         },
         {
             "position": 2,
+            "name": "Al Nassr",
+            "stats": {
+                "GP": 20,
+                "W": 16,
+                "D": 1,
+                "L": 3,
+                "F": 51,
+                "A": 18,
+                "GD": 33,
+                "P": 49
+            }
+        },
+        {
+            "position": 3,
             "name": "Al Ahli",
             "stats": {
                 "GP": 20,
@@ -6036,20 +6050,6 @@
                 "A": 12,
                 "GD": 23,
                 "P": 47
-            }
-        },
-        {
-            "position": 3,
-            "name": "Al Nassr",
-            "stats": {
-                "GP": 19,
-                "W": 15,
-                "D": 1,
-                "L": 3,
-                "F": 49,
-                "A": 18,
-                "GD": 31,
-                "P": 46
             }
         },
         {
@@ -6082,34 +6082,48 @@
         },
         {
             "position": 6,
-            "name": "Al Ittihad",
+            "name": "Al Ettifaq",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 10,
-                "D": 4,
+                "D": 5,
                 "L": 5,
-                "F": 34,
-                "A": 23,
-                "GD": 11,
-                "P": 34
+                "F": 30,
+                "A": 30,
+                "GD": 0,
+                "P": 35
             }
         },
         {
             "position": 7,
-            "name": "Al Ettifaq",
+            "name": "Al Ittihad",
             "stats": {
-                "GP": 19,
-                "W": 9,
-                "D": 5,
-                "L": 5,
-                "F": 28,
-                "A": 30,
-                "GD": -2,
-                "P": 32
+                "GP": 20,
+                "W": 10,
+                "D": 4,
+                "L": 6,
+                "F": 34,
+                "A": 25,
+                "GD": 9,
+                "P": 34
             }
         },
         {
             "position": 8,
+            "name": "Neom SC",
+            "stats": {
+                "GP": 20,
+                "W": 8,
+                "D": 4,
+                "L": 8,
+                "F": 26,
+                "A": 29,
+                "GD": -3,
+                "P": 28
+            }
+        },
+        {
+            "position": 9,
             "name": "Al Khaleej",
             "stats": {
                 "GP": 19,
@@ -6119,20 +6133,6 @@
                 "F": 38,
                 "A": 31,
                 "GD": 7,
-                "P": 25
-            }
-        },
-        {
-            "position": 9,
-            "name": "Neom SC",
-            "stats": {
-                "GP": 19,
-                "W": 7,
-                "D": 4,
-                "L": 8,
-                "F": 25,
-                "A": 29,
-                "GD": -4,
                 "P": 25
             }
         },
@@ -6210,13 +6210,13 @@
             "position": 15,
             "name": "Damac",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 1,
                 "D": 9,
-                "L": 9,
+                "L": 10,
                 "F": 14,
-                "A": 33,
-                "GD": -19,
+                "A": 35,
+                "GD": -21,
                 "P": 12
             }
         },
@@ -6224,13 +6224,13 @@
             "position": 16,
             "name": "Al Riyadh",
             "stats": {
-                "GP": 19,
+                "GP": 20,
                 "W": 2,
                 "D": 6,
-                "L": 11,
+                "L": 12,
                 "F": 18,
-                "A": 39,
-                "GD": -21,
+                "A": 40,
+                "GD": -22,
                 "P": 12
             }
         },
@@ -7338,16 +7338,16 @@
     "Venezuela_Primera_Division": [
         {
             "position": 1,
-            "name": "Deportivo Táchira",
+            "name": "Portuguesa",
             "stats": {
-                "GP": 1,
+                "GP": 2,
                 "W": 1,
-                "D": 0,
+                "D": 1,
                 "L": 0,
-                "F": 3,
-                "A": 1,
-                "GD": 2,
-                "P": 3
+                "F": 1,
+                "A": 0,
+                "GD": 1,
+                "P": 4
             }
         },
         {
@@ -7380,6 +7380,34 @@
         },
         {
             "position": 4,
+            "name": "Deportivo Táchira",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 5,
+            "name": "Deportivo Rayo Zuliano",
+            "stats": {
+                "GP": 2,
+                "W": 1,
+                "D": 0,
+                "L": 1,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 6,
             "name": "Zamora",
             "stats": {
                 "GP": 1,
@@ -7393,7 +7421,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 7,
             "name": "Caracas FC",
             "stats": {
                 "GP": 1,
@@ -7407,7 +7435,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 8,
             "name": "Estudiantes de Mérida",
             "stats": {
                 "GP": 1,
@@ -7421,7 +7449,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 9,
             "name": "Academia Puerto Cabello",
             "stats": {
                 "GP": 1,
@@ -7435,7 +7463,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 10,
             "name": "Metropolitanos FC",
             "stats": {
                 "GP": 1,
@@ -7449,7 +7477,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 11,
             "name": "Carabobo",
             "stats": {
                 "GP": 1,
@@ -7463,49 +7491,7 @@
             }
         },
         {
-            "position": 10,
-            "name": "Portuguesa",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
-            "position": 11,
-            "name": "Deportivo Rayo Zuliano",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 1,
-                "GD": -1,
-                "P": 0
-            }
-        },
-        {
             "position": 12,
-            "name": "Academia Anzoátegui",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 1,
-                "A": 3,
-                "GD": -2,
-                "P": 0
-            }
-        },
-        {
-            "position": 13,
             "name": "Monagas SC",
             "stats": {
                 "GP": 1,
@@ -7519,7 +7505,7 @@
             }
         },
         {
-            "position": 14,
+            "position": 13,
             "name": "Trujillanos",
             "stats": {
                 "GP": 1,
@@ -7529,6 +7515,20 @@
                 "F": 0,
                 "A": 2,
                 "GD": -2,
+                "P": 0
+            }
+        },
+        {
+            "position": 14,
+            "name": "Academia Anzoátegui",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 0,
+                "L": 2,
+                "F": 2,
+                "A": 6,
+                "GD": -4,
                 "P": 0
             }
         }

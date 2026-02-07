@@ -1,8 +1,8 @@
-name: Run NHL Scraper
+name: NHL Recent Games Scraper
 
 on:
   schedule:
-    - cron: "15 3 * * *"
+    - cron: "0 6 * * *"  # Tous les jours à 6h UTC
   workflow_dispatch:
 
 jobs:
@@ -10,43 +10,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout du dépôt
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # IMPORTANT pour le rebase
+          fetch-depth: 0
 
-      # 2️⃣ Setup Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # 3️⃣ Installer les dépendances
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      # 4️⃣ 🔥 Rebase AVANT toute écriture
       - name: Sync with remote main
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
 
-      # 5️⃣ Exécuter le script NHL
-      - name: Run NHL scraper
+      - name: Run NHL recent games scraper
         run: |
-          python scripts/NHL/leagues.py
+          python scripts/NHL/nhl_recent.py
 
-      # 6️⃣ Commit & push uniquement s'il y a des changements
       - name: Commit and push results
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git add data/hockey/leagues/NHL.json
-            git commit -m "Update NHL games data - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git commit -m "Update NHL recent games - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             git push origin main
           else
-            echo "Aucun changement à commit"
+            echo "Aucun nouveau match à ajouter"
           fi

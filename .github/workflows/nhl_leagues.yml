@@ -1,8 +1,8 @@
 name: NHL Recent Games Scraper
 
 on:
-  schedule:
-    - cron: "0 6 * * *"  # Tous les jours à 6h UTC
+   #schedule:
+    #- cron: "0 6 * * *"  # Tous les jours à 6h UTC
   workflow_dispatch:
 
 jobs:

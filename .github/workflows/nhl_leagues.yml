@@ -38,7 +38,7 @@ jobs:
       # 5️⃣ Exécuter le script NHL
       - name: Run NHL scraper
         run: |
-          python scripts/nhl_leagues.py
+          python scripts/NHL/nhl_leagues.py
 
       # 6️⃣ Commit & push uniquement s'il y a des changements
       - name: Commit and push results

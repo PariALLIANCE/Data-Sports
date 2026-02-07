@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Tous les jours à 01:00 UTC
-    - cron: "0 1 * * *"
+    - cron: "30 0 * * *"
 
 jobs:
   scrape-standings:

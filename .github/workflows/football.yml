@@ -3,7 +3,7 @@ name: Football Games Analysis
 on:
   schedule:
     # Exécution automatique tous les jours à 02h UTC
-    - cron: '0 2 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:   # Lancement manuel possible
 
 jobs:

@@ -1778,20 +1778,34 @@
         },
         {
             "position": 5,
-            "name": "Athletico Paranaense",
+            "name": "Corinthians",
             "stats": {
-                "GP": 2,
+                "GP": 3,
                 "W": 2,
                 "D": 0,
-                "L": 0,
-                "F": 3,
-                "A": 1,
+                "L": 1,
+                "F": 4,
+                "A": 2,
                 "GD": 2,
                 "P": 6
             }
         },
         {
             "position": 6,
+            "name": "Athletico Paranaense",
+            "stats": {
+                "GP": 3,
+                "W": 2,
+                "D": 0,
+                "L": 1,
+                "F": 3,
+                "A": 2,
+                "GD": 1,
+                "P": 6
+            }
+        },
+        {
+            "position": 7,
             "name": "Red Bull Bragantino",
             "stats": {
                 "GP": 3,
@@ -1805,7 +1819,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Chapecoense",
             "stats": {
                 "GP": 3,
@@ -1819,7 +1833,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Mirassol",
             "stats": {
                 "GP": 3,
@@ -1833,7 +1847,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "Coritiba",
             "stats": {
                 "GP": 3,
@@ -1847,7 +1861,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "Flamengo",
             "stats": {
                 "GP": 3,
@@ -1861,7 +1875,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Botafogo",
             "stats": {
                 "GP": 3,
@@ -1870,20 +1884,6 @@
                 "L": 2,
                 "F": 7,
                 "A": 6,
-                "GD": 1,
-                "P": 3
-            }
-        },
-        {
-            "position": 12,
-            "name": "Corinthians",
-            "stats": {
-                "GP": 2,
-                "W": 1,
-                "D": 0,
-                "L": 1,
-                "F": 3,
-                "A": 2,
                 "GD": 1,
                 "P": 3
             }
@@ -4884,18 +4884,32 @@
             "position": 1,
             "name": "Nacional",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 4,
-                "D": 0,
+                "D": 1,
                 "L": 1,
-                "F": 11,
-                "A": 4,
+                "F": 12,
+                "A": 5,
                 "GD": 7,
-                "P": 12
+                "P": 13
             }
         },
         {
             "position": 2,
+            "name": "Sportivo Ameliano",
+            "stats": {
+                "GP": 6,
+                "W": 3,
+                "D": 2,
+                "L": 1,
+                "F": 8,
+                "A": 4,
+                "GD": 4,
+                "P": 11
+            }
+        },
+        {
+            "position": 3,
             "name": "Club Olimpia",
             "stats": {
                 "GP": 5,
@@ -4909,31 +4923,17 @@
             }
         },
         {
-            "position": 3,
-            "name": "Sportivo Ameliano",
-            "stats": {
-                "GP": 5,
-                "W": 3,
-                "D": 1,
-                "L": 1,
-                "F": 7,
-                "A": 3,
-                "GD": 4,
-                "P": 10
-            }
-        },
-        {
             "position": 4,
             "name": "Trinidense",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 2,
-                "D": 2,
+                "D": 3,
                 "L": 1,
-                "F": 5,
-                "A": 4,
+                "F": 6,
+                "A": 5,
                 "GD": 1,
-                "P": 8
+                "P": 9
             }
         },
         {
@@ -5038,14 +5038,14 @@
             "position": 12,
             "name": "Sportivo San Lorenzo",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 0,
-                "D": 0,
+                "D": 1,
                 "L": 5,
-                "F": 3,
-                "A": 12,
+                "F": 4,
+                "A": 13,
                 "GD": -9,
-                "P": 0
+                "P": 1
             }
         }
     ],
@@ -6026,6 +6026,20 @@
         },
         {
             "position": 2,
+            "name": "Al Ahli",
+            "stats": {
+                "GP": 22,
+                "W": 16,
+                "D": 5,
+                "L": 1,
+                "F": 44,
+                "A": 15,
+                "GD": 29,
+                "P": 53
+            }
+        },
+        {
+            "position": 3,
             "name": "Al Nassr",
             "stats": {
                 "GP": 21,
@@ -6036,20 +6050,6 @@
                 "A": 18,
                 "GD": 35,
                 "P": 52
-            }
-        },
-        {
-            "position": 3,
-            "name": "Al Ahli",
-            "stats": {
-                "GP": 21,
-                "W": 15,
-                "D": 5,
-                "L": 1,
-                "F": 40,
-                "A": 14,
-                "GD": 26,
-                "P": 50
             }
         },
         {
@@ -6082,6 +6082,20 @@
         },
         {
             "position": 6,
+            "name": "Al Ettifaq",
+            "stats": {
+                "GP": 22,
+                "W": 11,
+                "D": 5,
+                "L": 6,
+                "F": 34,
+                "A": 35,
+                "GD": -1,
+                "P": 38
+            }
+        },
+        {
+            "position": 7,
             "name": "Al Ittihad",
             "stats": {
                 "GP": 21,
@@ -6092,20 +6106,6 @@
                 "A": 26,
                 "GD": 10,
                 "P": 37
-            }
-        },
-        {
-            "position": 7,
-            "name": "Al Ettifaq",
-            "stats": {
-                "GP": 21,
-                "W": 10,
-                "D": 5,
-                "L": 6,
-                "F": 30,
-                "A": 32,
-                "GD": -2,
-                "P": 35
             }
         },
         {
@@ -6140,13 +6140,13 @@
             "position": 10,
             "name": "Al Fateh",
             "stats": {
-                "GP": 21,
+                "GP": 22,
                 "W": 6,
                 "D": 6,
-                "L": 9,
-                "F": 26,
-                "A": 37,
-                "GD": -11,
+                "L": 10,
+                "F": 29,
+                "A": 41,
+                "GD": -12,
                 "P": 24
             }
         },
@@ -6180,20 +6180,6 @@
         },
         {
             "position": 13,
-            "name": "Al Kholood",
-            "stats": {
-                "GP": 21,
-                "W": 6,
-                "D": 1,
-                "L": 14,
-                "F": 27,
-                "A": 37,
-                "GD": -10,
-                "P": 19
-            }
-        },
-        {
-            "position": 14,
             "name": "Al Shabab",
             "stats": {
                 "GP": 21,
@@ -6207,7 +6193,35 @@
             }
         },
         {
+            "position": 14,
+            "name": "Al Kholood",
+            "stats": {
+                "GP": 22,
+                "W": 6,
+                "D": 1,
+                "L": 15,
+                "F": 27,
+                "A": 39,
+                "GD": -12,
+                "P": 19
+            }
+        },
+        {
             "position": 15,
+            "name": "Al Riyadh",
+            "stats": {
+                "GP": 22,
+                "W": 3,
+                "D": 7,
+                "L": 12,
+                "F": 21,
+                "A": 41,
+                "GD": -20,
+                "P": 16
+            }
+        },
+        {
+            "position": 16,
             "name": "Damac",
             "stats": {
                 "GP": 21,
@@ -6218,20 +6232,6 @@
                 "A": 36,
                 "GD": -20,
                 "P": 15
-            }
-        },
-        {
-            "position": 16,
-            "name": "Al Riyadh",
-            "stats": {
-                "GP": 21,
-                "W": 2,
-                "D": 7,
-                "L": 12,
-                "F": 19,
-                "A": 41,
-                "GD": -22,
-                "P": 13
             }
         },
         {
@@ -6252,13 +6252,13 @@
             "position": 18,
             "name": "Al Najma",
             "stats": {
-                "GP": 21,
+                "GP": 22,
                 "W": 1,
                 "D": 5,
-                "L": 15,
-                "F": 20,
-                "A": 42,
-                "GD": -22,
+                "L": 16,
+                "F": 21,
+                "A": 46,
+                "GD": -25,
                 "P": 8
             }
         }

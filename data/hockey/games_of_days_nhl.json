@@ -1,10 +1,130 @@
 {
-  "date": "2026-02-27",
-  "total_games": 4,
+  "date": "2026-02-28",
+  "total_games": 13,
   "games": [
     {
-      "game_id": "401803281",
-      "date": "2026-02-27",
+      "game_id": "401803285",
+      "date": "2026-02-28",
+      "time": "12:30 PM",
+      "away_team": {
+        "name": "Pittsburgh Penguins",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "New York Rangers",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803286",
+      "date": "2026-02-28",
+      "time": "3:00 PM",
+      "away_team": {
+        "name": "Boston Bruins",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Philadelphia Flyers",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803287",
+      "date": "2026-02-28",
+      "time": "4:00 PM",
+      "away_team": {
+        "name": "Edmonton Oilers",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "San Jose Sharks",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803294",
+      "date": "2026-02-28",
+      "time": "5:00 PM",
+      "away_team": {
+        "name": "New Jersey Devils",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "St Louis Blues",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803288",
+      "date": "2026-02-28",
+      "time": "6:00 PM",
+      "away_team": {
+        "name": "New York Islanders",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Columbus Blue Jackets",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803289",
+      "date": "2026-02-28",
+      "time": "6:00 PM",
+      "away_team": {
+        "name": "Chicago Blackhawks",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Colorado Avalanche",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803290",
+      "date": "2026-02-28",
+      "time": "7:00 PM",
+      "away_team": {
+        "name": "Ottawa Senators",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Toronto Maple Leafs",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803291",
+      "date": "2026-02-28",
+      "time": "7:00 PM",
+      "away_team": {
+        "name": "Washington Capitals",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Montreal Canadiens",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803292",
+      "date": "2026-02-28",
       "time": "7:00 PM",
       "away_team": {
         "name": "Buffalo Sabres",
@@ -12,56 +132,71 @@
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       },
       "home_team": {
-        "name": "Florida Panthers",
+        "name": "Tampa Bay Lightning",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       }
     },
     {
-      "game_id": "401803282",
-      "date": "2026-02-27",
+      "game_id": "401803293",
+      "date": "2026-02-28",
       "time": "7:00 PM",
       "away_team": {
-        "name": "Vegas Golden Knights",
+        "name": "Detroit Red Wings",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       },
       "home_team": {
-        "name": "Washington Capitals",
+        "name": "Carolina Hurricanes",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       }
     },
     {
-      "game_id": "401803283",
-      "date": "2026-02-27",
-      "time": "9:00 PM",
+      "game_id": "401803295",
+      "date": "2026-02-28",
+      "time": "7:00 PM",
       "away_team": {
-        "name": "Minnesota Wild",
+        "name": "Calgary Flames",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       },
       "home_team": {
-        "name": "Utah Mammoth",
-        "abbreviation": "Utah",
+        "name": "Los Angeles Kings",
+        "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       }
     },
     {
-      "game_id": "401803284",
-      "date": "2026-02-27",
+      "game_id": "401803296",
+      "date": "2026-02-28",
+      "time": "8:00 PM",
+      "away_team": {
+        "name": "Nashville Predators",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      },
+      "home_team": {
+        "name": "Dallas Stars",
+        "abbreviation": "",
+        "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      }
+    },
+    {
+      "game_id": "401803297",
+      "date": "2026-02-28",
       "time": "10:00 PM",
       "away_team": {
-        "name": "Winnipeg Jets",
+        "name": "Vancouver Canucks",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       },
       "home_team": {
-        "name": "Anaheim Ducks",
+        "name": "Seattle Kraken",
         "abbreviation": "",
         "logo_url": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       }
     }
   ],
-  "last_updated": "2026-02-27 05:14:48"
+  "last_updated": "2026-02-28 02:39:46"
 }

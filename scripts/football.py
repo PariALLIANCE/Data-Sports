@@ -72,7 +72,7 @@ Tâches à réaliser :
 - Total corners -10.5
 
 3️⃣ Justifie la prédiction finale de manière détaillée :  
-tactique, forme récente, H2H, joueurs clés, cotes(assez importants), facteurs domicile/extérieur(des matchs passés +confrontations historiques), classement.
+tactique, forme récente, H2H, joueurs clés, cotes(assez importants), facteurs domicile/extérieur(des matchs passés +confrontations historiques), classement. Et surtout reviens à la ligne pour chaque facteur!!!
 
 4️⃣ Fournis une partie JSON stricte à la fin :
 

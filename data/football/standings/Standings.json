@@ -170,6 +170,20 @@
         },
         {
             "position": 13,
+            "name": "Crystal Palace",
+            "stats": {
+                "GP": 29,
+                "W": 10,
+                "D": 8,
+                "L": 11,
+                "F": 33,
+                "A": 35,
+                "GD": -2,
+                "P": 38
+            }
+        },
+        {
+            "position": 14,
             "name": "Brighton & Hove Albion",
             "stats": {
                 "GP": 29,
@@ -180,20 +194,6 @@
                 "A": 36,
                 "GD": 2,
                 "P": 37
-            }
-        },
-        {
-            "position": 14,
-            "name": "Crystal Palace",
-            "stats": {
-                "GP": 28,
-                "W": 9,
-                "D": 8,
-                "L": 11,
-                "F": 30,
-                "A": 34,
-                "GD": -4,
-                "P": 35
             }
         },
         {
@@ -214,13 +214,13 @@
             "position": 16,
             "name": "Tottenham Hotspur",
             "stats": {
-                "GP": 28,
+                "GP": 29,
                 "W": 7,
                 "D": 8,
-                "L": 13,
-                "F": 38,
-                "A": 43,
-                "GD": -5,
+                "L": 14,
+                "F": 39,
+                "A": 46,
+                "GD": -7,
                 "P": 29
             }
         },
@@ -2740,14 +2740,14 @@
             "position": 1,
             "name": "Internacional de Bogotá",
             "stats": {
-                "GP": 9,
+                "GP": 10,
                 "W": 5,
-                "D": 3,
+                "D": 4,
                 "L": 1,
-                "F": 14,
-                "A": 12,
+                "F": 15,
+                "A": 13,
                 "GD": 2,
-                "P": 18
+                "P": 19
             }
         },
         {
@@ -2850,6 +2850,20 @@
         },
         {
             "position": 9,
+            "name": "Fortaleza CEIF",
+            "stats": {
+                "GP": 10,
+                "W": 3,
+                "D": 5,
+                "L": 2,
+                "F": 12,
+                "A": 14,
+                "GD": -2,
+                "P": 14
+            }
+        },
+        {
+            "position": 10,
             "name": "Deportivo Cali",
             "stats": {
                 "GP": 9,
@@ -2863,7 +2877,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "Águilas Doradas",
             "stats": {
                 "GP": 8,
@@ -2877,7 +2891,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Millonarios",
             "stats": {
                 "GP": 9,
@@ -2891,31 +2905,17 @@
             }
         },
         {
-            "position": 12,
-            "name": "Fortaleza CEIF",
+            "position": 13,
+            "name": "Llaneros",
             "stats": {
                 "GP": 9,
                 "W": 2,
                 "D": 5,
                 "L": 2,
                 "F": 10,
-                "A": 13,
-                "GD": -3,
-                "P": 11
-            }
-        },
-        {
-            "position": 13,
-            "name": "Llaneros",
-            "stats": {
-                "GP": 8,
-                "W": 2,
-                "D": 4,
-                "L": 2,
-                "F": 9,
-                "A": 8,
+                "A": 9,
                 "GD": 1,
-                "P": 10
+                "P": 11
             }
         },
         {
@@ -2936,13 +2936,13 @@
             "position": 15,
             "name": "Jaguares de Córdoba",
             "stats": {
-                "GP": 8,
+                "GP": 9,
                 "W": 3,
                 "D": 1,
-                "L": 4,
-                "F": 8,
-                "A": 15,
-                "GD": -7,
+                "L": 5,
+                "F": 9,
+                "A": 17,
+                "GD": -8,
                 "P": 10
             }
         },
@@ -4444,6 +4444,20 @@
         },
         {
             "position": 6,
+            "name": "Atlas",
+            "stats": {
+                "GP": 9,
+                "W": 5,
+                "D": 1,
+                "L": 3,
+                "F": 12,
+                "A": 13,
+                "GD": -1,
+                "P": 16
+            }
+        },
+        {
+            "position": 7,
             "name": "Monterrey",
             "stats": {
                 "GP": 9,
@@ -4457,7 +4471,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Tigres UANL",
             "stats": {
                 "GP": 9,
@@ -4471,30 +4485,16 @@
             }
         },
         {
-            "position": 8,
-            "name": "Atlas",
-            "stats": {
-                "GP": 8,
-                "W": 4,
-                "D": 1,
-                "L": 3,
-                "F": 10,
-                "A": 12,
-                "GD": -2,
-                "P": 13
-            }
-        },
-        {
             "position": 9,
             "name": "América",
             "stats": {
-                "GP": 8,
+                "GP": 9,
                 "W": 3,
                 "D": 2,
-                "L": 3,
-                "F": 8,
-                "A": 7,
-                "GD": 1,
+                "L": 4,
+                "F": 9,
+                "A": 9,
+                "GD": 0,
                 "P": 11
             }
         },
@@ -4528,6 +4528,20 @@
         },
         {
             "position": 12,
+            "name": "FC Juarez",
+            "stats": {
+                "GP": 8,
+                "W": 3,
+                "D": 1,
+                "L": 4,
+                "F": 13,
+                "A": 14,
+                "GD": -1,
+                "P": 10
+            }
+        },
+        {
+            "position": 13,
             "name": "León",
             "stats": {
                 "GP": 8,
@@ -4541,21 +4555,21 @@
             }
         },
         {
-            "position": 13,
+            "position": 14,
             "name": "Tijuana",
             "stats": {
-                "GP": 8,
+                "GP": 9,
                 "W": 1,
                 "D": 6,
-                "L": 1,
-                "F": 7,
-                "A": 7,
-                "GD": 0,
+                "L": 2,
+                "F": 8,
+                "A": 9,
+                "GD": -1,
                 "P": 9
             }
         },
         {
-            "position": 14,
+            "position": 15,
             "name": "Necaxa",
             "stats": {
                 "GP": 9,
@@ -4566,20 +4580,6 @@
                 "A": 15,
                 "GD": -4,
                 "P": 9
-            }
-        },
-        {
-            "position": 15,
-            "name": "FC Juarez",
-            "stats": {
-                "GP": 7,
-                "W": 2,
-                "D": 1,
-                "L": 4,
-                "F": 11,
-                "A": 13,
-                "GD": -2,
-                "P": 7
             }
         },
         {
@@ -6208,29 +6208,29 @@
         },
         {
             "position": 15,
-            "name": "Al Riyadh",
+            "name": "Damac",
             "stats": {
-                "GP": 24,
+                "GP": 25,
                 "W": 3,
-                "D": 7,
-                "L": 14,
-                "F": 22,
-                "A": 45,
-                "GD": -23,
-                "P": 16
+                "D": 10,
+                "L": 12,
+                "F": 21,
+                "A": 41,
+                "GD": -20,
+                "P": 19
             }
         },
         {
             "position": 16,
-            "name": "Damac",
+            "name": "Al Riyadh",
             "stats": {
-                "GP": 24,
-                "W": 2,
-                "D": 10,
-                "L": 12,
-                "F": 18,
-                "A": 41,
-                "GD": -23,
+                "GP": 25,
+                "W": 3,
+                "D": 7,
+                "L": 15,
+                "F": 22,
+                "A": 48,
+                "GD": -26,
                 "P": 16
             }
         },

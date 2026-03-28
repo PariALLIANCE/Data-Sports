@@ -960,6 +960,20 @@
         },
         {
             "position": 11,
+            "name": "Ciudad de Bolívar",
+            "stats": {
+                "GP": 6,
+                "W": 0,
+                "D": 6,
+                "L": 0,
+                "F": 3,
+                "A": 3,
+                "GD": 0,
+                "P": 6
+            }
+        },
+        {
+            "position": 12,
             "name": "Mitre (Santiago del Estero)",
             "stats": {
                 "GP": 5,
@@ -973,7 +987,7 @@
             }
         },
         {
-            "position": 12,
+            "position": 13,
             "name": "Deportivo Madryn",
             "stats": {
                 "GP": 5,
@@ -983,20 +997,6 @@
                 "F": 5,
                 "A": 4,
                 "GD": 1,
-                "P": 5
-            }
-        },
-        {
-            "position": 13,
-            "name": "Ciudad de Bolívar",
-            "stats": {
-                "GP": 5,
-                "W": 0,
-                "D": 5,
-                "L": 0,
-                "F": 3,
-                "A": 3,
-                "GD": 0,
                 "P": 5
             }
         },
@@ -1184,6 +1184,20 @@
         },
         {
             "position": 9,
+            "name": "Agropecuario",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 2,
+                "L": 2,
+                "F": 5,
+                "A": 5,
+                "GD": 0,
+                "P": 8
+            }
+        },
+        {
+            "position": 10,
             "name": "Atlanta",
             "stats": {
                 "GP": 5,
@@ -1193,20 +1207,6 @@
                 "F": 5,
                 "A": 4,
                 "GD": 1,
-                "P": 7
-            }
-        },
-        {
-            "position": 10,
-            "name": "Agropecuario",
-            "stats": {
-                "GP": 5,
-                "W": 2,
-                "D": 1,
-                "L": 2,
-                "F": 5,
-                "A": 5,
-                "GD": 0,
                 "P": 7
             }
         },
@@ -2864,6 +2864,20 @@
         },
         {
             "position": 10,
+            "name": "Águilas Doradas",
+            "stats": {
+                "GP": 13,
+                "W": 5,
+                "D": 4,
+                "L": 4,
+                "F": 13,
+                "A": 12,
+                "GD": 1,
+                "P": 19
+            }
+        },
+        {
+            "position": 11,
             "name": "Deportivo Cali",
             "stats": {
                 "GP": 13,
@@ -2877,7 +2891,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Llaneros",
             "stats": {
                 "GP": 13,
@@ -2887,20 +2901,6 @@
                 "F": 14,
                 "A": 13,
                 "GD": 1,
-                "P": 16
-            }
-        },
-        {
-            "position": 12,
-            "name": "Águilas Doradas",
-            "stats": {
-                "GP": 12,
-                "W": 4,
-                "D": 4,
-                "L": 4,
-                "F": 12,
-                "A": 12,
-                "GD": 0,
                 "P": 16
             }
         },
@@ -2964,13 +2964,13 @@
             "position": 17,
             "name": "Alianza FC",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 2,
                 "D": 5,
-                "L": 5,
+                "L": 6,
                 "F": 7,
-                "A": 19,
-                "GD": -12,
+                "A": 20,
+                "GD": -13,
                 "P": 11
             }
         },
@@ -4232,6 +4232,20 @@
         },
         {
             "position": 1,
+            "name": "Vissel Kobe",
+            "stats": {
+                "GP": 8,
+                "W": 4,
+                "D": 3,
+                "L": 1,
+                "F": 13,
+                "A": 7,
+                "GD": 6,
+                "P": 16
+            }
+        },
+        {
+            "position": 2,
             "name": "Kyoto Sanga",
             "stats": {
                 "GP": 8,
@@ -4245,7 +4259,7 @@
             }
         },
         {
-            "position": 2,
+            "position": 3,
             "name": "Gamba Osaka",
             "stats": {
                 "GP": 8,
@@ -4256,20 +4270,6 @@
                 "A": 11,
                 "GD": 0,
                 "P": 14
-            }
-        },
-        {
-            "position": 3,
-            "name": "Vissel Kobe",
-            "stats": {
-                "GP": 7,
-                "W": 3,
-                "D": 3,
-                "L": 1,
-                "F": 11,
-                "A": 6,
-                "GD": 5,
-                "P": 13
             }
         },
         {
@@ -4318,13 +4318,13 @@
             "position": 7,
             "name": "Sanfrecce Hiroshima",
             "stats": {
-                "GP": 7,
+                "GP": 8,
                 "W": 3,
                 "D": 1,
-                "L": 3,
-                "F": 11,
-                "A": 10,
-                "GD": 1,
+                "L": 4,
+                "F": 12,
+                "A": 12,
+                "GD": 0,
                 "P": 11
             }
         },
@@ -4896,6 +4896,20 @@
         },
         {
             "position": 2,
+            "name": "Nacional",
+            "stats": {
+                "GP": 13,
+                "W": 6,
+                "D": 5,
+                "L": 2,
+                "F": 21,
+                "A": 13,
+                "GD": 8,
+                "P": 23
+            }
+        },
+        {
+            "position": 3,
             "name": "Cerro Porteño",
             "stats": {
                 "GP": 12,
@@ -4909,44 +4923,30 @@
             }
         },
         {
-            "position": 3,
-            "name": "Nacional",
+            "position": 4,
+            "name": "Sportivo Ameliano",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 5,
                 "D": 5,
-                "L": 2,
-                "F": 18,
-                "A": 11,
-                "GD": 7,
+                "L": 3,
+                "F": 14,
+                "A": 9,
+                "GD": 5,
                 "P": 20
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Libertad",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 5,
                 "D": 2,
-                "L": 5,
+                "L": 6,
                 "F": 20,
-                "A": 13,
-                "GD": 7,
-                "P": 17
-            }
-        },
-        {
-            "position": 5,
-            "name": "Sportivo Ameliano",
-            "stats": {
-                "GP": 12,
-                "W": 4,
-                "D": 5,
-                "L": 3,
-                "F": 12,
-                "A": 9,
-                "GD": 3,
+                "A": 15,
+                "GD": 5,
                 "P": 17
             }
         },
@@ -5024,13 +5024,13 @@
             "position": 11,
             "name": "Sportivo Luqueño",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 3,
                 "D": 2,
-                "L": 7,
-                "F": 10,
-                "A": 16,
-                "GD": -6,
+                "L": 8,
+                "F": 12,
+                "A": 19,
+                "GD": -7,
                 "P": 11
             }
         },

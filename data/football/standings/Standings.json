@@ -834,6 +834,20 @@
         },
         {
             "position": 2,
+            "name": "Colón (Santa Fe)",
+            "stats": {
+                "GP": 6,
+                "W": 3,
+                "D": 2,
+                "L": 1,
+                "F": 7,
+                "A": 5,
+                "GD": 2,
+                "P": 11
+            }
+        },
+        {
+            "position": 3,
             "name": "Racing (Córdoba)",
             "stats": {
                 "GP": 6,
@@ -847,7 +861,21 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
+            "name": "Godoy Cruz Antonio Tomba",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 4,
+                "L": 0,
+                "F": 6,
+                "A": 4,
+                "GD": 2,
+                "P": 10
+            }
+        },
+        {
+            "position": 5,
             "name": "Defensores de Belgrano",
             "stats": {
                 "GP": 5,
@@ -861,7 +889,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 6,
             "name": "Acassuso",
             "stats": {
                 "GP": 5,
@@ -875,7 +903,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 7,
             "name": "San Miguel",
             "stats": {
                 "GP": 6,
@@ -889,7 +917,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 8,
             "name": "Ferro Carril Oeste",
             "stats": {
                 "GP": 6,
@@ -903,21 +931,7 @@
             }
         },
         {
-            "position": 7,
-            "name": "Colón (Santa Fe)",
-            "stats": {
-                "GP": 5,
-                "W": 2,
-                "D": 2,
-                "L": 1,
-                "F": 5,
-                "A": 5,
-                "GD": 0,
-                "P": 8
-            }
-        },
-        {
-            "position": 8,
+            "position": 9,
             "name": "Almirante Brown",
             "stats": {
                 "GP": 6,
@@ -931,49 +945,63 @@
             }
         },
         {
-            "position": 9,
-            "name": "Godoy Cruz Antonio Tomba",
-            "stats": {
-                "GP": 5,
-                "W": 1,
-                "D": 4,
-                "L": 0,
-                "F": 5,
-                "A": 4,
-                "GD": 1,
-                "P": 7
-            }
-        },
-        {
             "position": 10,
             "name": "All Boys",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 2,
-                "D": 1,
+                "D": 2,
                 "L": 2,
                 "F": 4,
                 "A": 4,
+                "GD": 0,
+                "P": 8
+            }
+        },
+        {
+            "position": 11,
+            "name": "Central Norte",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 2,
+                "L": 2,
+                "F": 2,
+                "A": 3,
+                "GD": -1,
+                "P": 8
+            }
+        },
+        {
+            "position": 12,
+            "name": "Mitre (Santiago del Estero)",
+            "stats": {
+                "GP": 6,
+                "W": 1,
+                "D": 4,
+                "L": 1,
+                "F": 5,
+                "A": 5,
                 "GD": 0,
                 "P": 7
             }
         },
         {
-            "position": 11,
-            "name": "Los Andes",
+            "position": 13,
+            "name": "Deportivo Madryn",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 3,
-                "L": 1,
-                "F": 3,
-                "A": 2,
+                "L": 2,
+                "F": 6,
+                "A": 5,
                 "GD": 1,
                 "P": 6
             }
         },
         {
-            "position": 12,
+            "position": 14,
             "name": "Ciudad de Bolívar",
             "stats": {
                 "GP": 6,
@@ -987,13 +1015,13 @@
             }
         },
         {
-            "position": 13,
-            "name": "Mitre (Santiago del Estero)",
+            "position": 15,
+            "name": "Los Andes",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 3,
-                "L": 1,
+                "L": 2,
                 "F": 3,
                 "A": 3,
                 "GD": 0,
@@ -1001,49 +1029,35 @@
             }
         },
         {
-            "position": 14,
-            "name": "Deportivo Madryn",
-            "stats": {
-                "GP": 5,
-                "W": 1,
-                "D": 2,
-                "L": 2,
-                "F": 5,
-                "A": 4,
-                "GD": 1,
-                "P": 5
-            }
-        },
-        {
-            "position": 15,
+            "position": 16,
             "name": "San Telmo",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 2,
-                "L": 2,
+                "L": 3,
                 "F": 8,
-                "A": 9,
-                "GD": -1,
-                "P": 5
-            }
-        },
-        {
-            "position": 16,
-            "name": "Central Norte",
-            "stats": {
-                "GP": 5,
-                "W": 1,
-                "D": 2,
-                "L": 2,
-                "F": 1,
-                "A": 3,
-                "GD": -2,
+                "A": 12,
+                "GD": -4,
                 "P": 5
             }
         },
         {
             "position": 17,
+            "name": "Estudiantes (Buenos Aires)",
+            "stats": {
+                "GP": 6,
+                "W": 1,
+                "D": 0,
+                "L": 5,
+                "F": 3,
+                "A": 8,
+                "GD": -5,
+                "P": 3
+            }
+        },
+        {
+            "position": 18,
             "name": "Chaco For Ever",
             "stats": {
                 "GP": 6,
@@ -1054,20 +1068,6 @@
                 "A": 12,
                 "GD": -6,
                 "P": 2
-            }
-        },
-        {
-            "position": 18,
-            "name": "Estudiantes (Buenos Aires)",
-            "stats": {
-                "GP": 5,
-                "W": 0,
-                "D": 0,
-                "L": 5,
-                "F": 0,
-                "A": 8,
-                "GD": -8,
-                "P": 0
             }
         },
         {
@@ -1102,32 +1102,46 @@
             "position": 3,
             "name": "Nueva Chicago",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 3,
-                "D": 1,
+                "D": 2,
                 "L": 1,
                 "F": 6,
                 "A": 3,
+                "GD": 3,
+                "P": 11
+            }
+        },
+        {
+            "position": 4,
+            "name": "Temperley",
+            "stats": {
+                "GP": 6,
+                "W": 3,
+                "D": 2,
+                "L": 1,
+                "F": 4,
+                "A": 2,
+                "GD": 2,
+                "P": 11
+            }
+        },
+        {
+            "position": 5,
+            "name": "San Martín (Tucumán)",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 4,
+                "L": 0,
+                "F": 7,
+                "A": 4,
                 "GD": 3,
                 "P": 10
             }
         },
         {
-            "position": 4,
-            "name": "Gimnasia y Tiro (Salta)",
-            "stats": {
-                "GP": 5,
-                "W": 3,
-                "D": 1,
-                "L": 1,
-                "F": 7,
-                "A": 5,
-                "GD": 2,
-                "P": 10
-            }
-        },
-        {
-            "position": 5,
+            "position": 6,
             "name": "Atletico Rafaela",
             "stats": {
                 "GP": 5,
@@ -1141,21 +1155,21 @@
             }
         },
         {
-            "position": 6,
-            "name": "San Martín (Tucumán)",
+            "position": 7,
+            "name": "Gimnasia y Tiro (Salta)",
             "stats": {
-                "GP": 5,
-                "W": 2,
-                "D": 3,
-                "L": 0,
-                "F": 6,
-                "A": 3,
-                "GD": 3,
-                "P": 9
+                "GP": 6,
+                "W": 3,
+                "D": 1,
+                "L": 2,
+                "F": 7,
+                "A": 6,
+                "GD": 1,
+                "P": 10
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Midland",
             "stats": {
                 "GP": 5,
@@ -1165,20 +1179,6 @@
                 "F": 5,
                 "A": 3,
                 "GD": 2,
-                "P": 8
-            }
-        },
-        {
-            "position": 8,
-            "name": "Temperley",
-            "stats": {
-                "GP": 5,
-                "W": 2,
-                "D": 2,
-                "L": 1,
-                "F": 3,
-                "A": 2,
-                "GD": 1,
                 "P": 8
             }
         },
@@ -1212,6 +1212,20 @@
         },
         {
             "position": 11,
+            "name": "Quilmes",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 1,
+                "L": 3,
+                "F": 6,
+                "A": 3,
+                "GD": 3,
+                "P": 7
+            }
+        },
+        {
+            "position": 12,
             "name": "Atlanta",
             "stats": {
                 "GP": 6,
@@ -1225,7 +1239,21 @@
             }
         },
         {
-            "position": 12,
+            "position": 13,
+            "name": "Güemes",
+            "stats": {
+                "GP": 6,
+                "W": 1,
+                "D": 3,
+                "L": 2,
+                "F": 7,
+                "A": 8,
+                "GD": -1,
+                "P": 6
+            }
+        },
+        {
+            "position": 14,
             "name": "San Martín (San Juan)",
             "stats": {
                 "GP": 6,
@@ -1239,72 +1267,44 @@
             }
         },
         {
-            "position": 13,
-            "name": "Güemes",
-            "stats": {
-                "GP": 5,
-                "W": 1,
-                "D": 2,
-                "L": 2,
-                "F": 5,
-                "A": 6,
-                "GD": -1,
-                "P": 5
-            }
-        },
-        {
-            "position": 14,
+            "position": 15,
             "name": "Patronato",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 2,
-                "L": 2,
-                "F": 3,
-                "A": 5,
-                "GD": -2,
-                "P": 5
-            }
-        },
-        {
-            "position": 15,
-            "name": "Quilmes",
-            "stats": {
-                "GP": 5,
-                "W": 1,
-                "D": 1,
                 "L": 3,
                 "F": 3,
-                "A": 3,
-                "GD": 0,
-                "P": 4
+                "A": 7,
+                "GD": -4,
+                "P": 5
             }
         },
         {
             "position": 16,
-            "name": "Chacarita Juniors",
+            "name": "Deportivo Maipú",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 1,
-                "L": 3,
-                "F": 5,
-                "A": 7,
-                "GD": -2,
+                "L": 4,
+                "F": 6,
+                "A": 10,
+                "GD": -4,
                 "P": 4
             }
         },
         {
             "position": 17,
-            "name": "Deportivo Maipú",
+            "name": "Chacarita Juniors",
             "stats": {
-                "GP": 5,
+                "GP": 6,
                 "W": 1,
                 "D": 1,
-                "L": 3,
-                "F": 6,
-                "A": 9,
-                "GD": -3,
+                "L": 4,
+                "F": 5,
+                "A": 10,
+                "GD": -5,
                 "P": 4
             }
         },
@@ -1736,6 +1736,20 @@
         },
         {
             "position": 2,
+            "name": "Athletico Paranaense",
+            "stats": {
+                "GP": 8,
+                "W": 5,
+                "D": 1,
+                "L": 2,
+                "F": 14,
+                "A": 8,
+                "GD": 6,
+                "P": 16
+            }
+        },
+        {
+            "position": 3,
             "name": "São Paulo",
             "stats": {
                 "GP": 8,
@@ -1749,7 +1763,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Fluminense",
             "stats": {
                 "GP": 8,
@@ -1763,7 +1777,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Flamengo",
             "stats": {
                 "GP": 7,
@@ -1777,7 +1791,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "Bahia",
             "stats": {
                 "GP": 7,
@@ -1788,20 +1802,6 @@
                 "A": 7,
                 "GD": 2,
                 "P": 14
-            }
-        },
-        {
-            "position": 6,
-            "name": "Athletico Paranaense",
-            "stats": {
-                "GP": 7,
-                "W": 4,
-                "D": 1,
-                "L": 2,
-                "F": 10,
-                "A": 7,
-                "GD": 3,
-                "P": 13
             }
         },
         {
@@ -1948,13 +1948,13 @@
             "position": 17,
             "name": "Botafogo",
             "stats": {
-                "GP": 6,
+                "GP": 7,
                 "W": 2,
                 "D": 0,
-                "L": 4,
-                "F": 10,
-                "A": 12,
-                "GD": -2,
+                "L": 5,
+                "F": 11,
+                "A": 16,
+                "GD": -5,
                 "P": 6
             }
         },
@@ -2740,32 +2740,46 @@
             "position": 1,
             "name": "Atlético Nacional",
             "stats": {
-                "GP": 12,
-                "W": 9,
+                "GP": 13,
+                "W": 10,
                 "D": 0,
                 "L": 3,
-                "F": 26,
-                "A": 9,
-                "GD": 17,
-                "P": 27
+                "F": 28,
+                "A": 10,
+                "GD": 18,
+                "P": 30
             }
         },
         {
             "position": 2,
             "name": "Deportivo Pasto",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 8,
                 "D": 3,
-                "L": 2,
-                "F": 20,
-                "A": 15,
-                "GD": 5,
+                "L": 3,
+                "F": 21,
+                "A": 17,
+                "GD": 4,
                 "P": 27
             }
         },
         {
             "position": 3,
+            "name": "Atlético Junior",
+            "stats": {
+                "GP": 14,
+                "W": 8,
+                "D": 1,
+                "L": 5,
+                "F": 20,
+                "A": 18,
+                "GD": 2,
+                "P": 25
+            }
+        },
+        {
+            "position": 4,
             "name": "Deportes Tolima",
             "stats": {
                 "GP": 13,
@@ -2779,7 +2793,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Once Caldas",
             "stats": {
                 "GP": 13,
@@ -2790,20 +2804,6 @@
                 "A": 17,
                 "GD": 7,
                 "P": 23
-            }
-        },
-        {
-            "position": 5,
-            "name": "Atlético Junior",
-            "stats": {
-                "GP": 13,
-                "W": 7,
-                "D": 1,
-                "L": 5,
-                "F": 19,
-                "A": 18,
-                "GD": 1,
-                "P": 22
             }
         },
         {
@@ -2824,13 +2824,13 @@
             "position": 7,
             "name": "Internacional de Bogotá",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 5,
                 "D": 6,
-                "L": 2,
+                "L": 3,
                 "F": 17,
-                "A": 18,
-                "GD": -1,
+                "A": 19,
+                "GD": -2,
                 "P": 21
             }
         },
@@ -4952,6 +4952,20 @@
         },
         {
             "position": 6,
+            "name": "Trinidense",
+            "stats": {
+                "GP": 13,
+                "W": 3,
+                "D": 7,
+                "L": 3,
+                "F": 13,
+                "A": 13,
+                "GD": 0,
+                "P": 16
+            }
+        },
+        {
+            "position": 7,
             "name": "Deportivo Recoleta",
             "stats": {
                 "GP": 13,
@@ -4965,21 +4979,21 @@
             }
         },
         {
-            "position": 7,
-            "name": "Trinidense",
+            "position": 8,
+            "name": "Guarani",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 3,
                 "D": 6,
-                "L": 3,
-                "F": 13,
-                "A": 13,
-                "GD": 0,
+                "L": 4,
+                "F": 18,
+                "A": 16,
+                "GD": 2,
                 "P": 15
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Rubio Ñú",
             "stats": {
                 "GP": 13,
@@ -4990,20 +5004,6 @@
                 "A": 13,
                 "GD": -3,
                 "P": 15
-            }
-        },
-        {
-            "position": 9,
-            "name": "Guarani",
-            "stats": {
-                "GP": 12,
-                "W": 3,
-                "D": 5,
-                "L": 4,
-                "F": 18,
-                "A": 16,
-                "GD": 2,
-                "P": 14
             }
         },
         {

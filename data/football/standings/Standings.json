@@ -862,6 +862,20 @@
         },
         {
             "position": 4,
+            "name": "Defensores de Belgrano",
+            "stats": {
+                "GP": 6,
+                "W": 2,
+                "D": 4,
+                "L": 0,
+                "F": 6,
+                "A": 3,
+                "GD": 3,
+                "P": 10
+            }
+        },
+        {
+            "position": 5,
             "name": "Godoy Cruz Antonio Tomba",
             "stats": {
                 "GP": 6,
@@ -872,20 +886,6 @@
                 "A": 4,
                 "GD": 2,
                 "P": 10
-            }
-        },
-        {
-            "position": 5,
-            "name": "Defensores de Belgrano",
-            "stats": {
-                "GP": 5,
-                "W": 2,
-                "D": 3,
-                "L": 0,
-                "F": 5,
-                "A": 2,
-                "GD": 3,
-                "P": 9
             }
         },
         {
@@ -1114,6 +1114,20 @@
         },
         {
             "position": 4,
+            "name": "Atletico Rafaela",
+            "stats": {
+                "GP": 6,
+                "W": 3,
+                "D": 2,
+                "L": 1,
+                "F": 5,
+                "A": 3,
+                "GD": 2,
+                "P": 11
+            }
+        },
+        {
+            "position": 5,
             "name": "Temperley",
             "stats": {
                 "GP": 6,
@@ -1127,7 +1141,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "San Martín (Tucumán)",
             "stats": {
                 "GP": 6,
@@ -1137,20 +1151,6 @@
                 "F": 7,
                 "A": 4,
                 "GD": 3,
-                "P": 10
-            }
-        },
-        {
-            "position": 6,
-            "name": "Atletico Rafaela",
-            "stats": {
-                "GP": 5,
-                "W": 3,
-                "D": 1,
-                "L": 1,
-                "F": 4,
-                "A": 2,
-                "GD": 2,
                 "P": 10
             }
         },
@@ -2780,6 +2780,20 @@
         },
         {
             "position": 4,
+            "name": "Once Caldas",
+            "stats": {
+                "GP": 14,
+                "W": 6,
+                "D": 6,
+                "L": 2,
+                "F": 25,
+                "A": 18,
+                "GD": 7,
+                "P": 24
+            }
+        },
+        {
+            "position": 5,
             "name": "Deportes Tolima",
             "stats": {
                 "GP": 13,
@@ -2793,35 +2807,35 @@
             }
         },
         {
-            "position": 5,
-            "name": "Once Caldas",
-            "stats": {
-                "GP": 13,
-                "W": 6,
-                "D": 5,
-                "L": 2,
-                "F": 24,
-                "A": 17,
-                "GD": 7,
-                "P": 23
-            }
-        },
-        {
             "position": 6,
-            "name": "América de Cali",
+            "name": "Millonarios",
             "stats": {
-                "GP": 12,
+                "GP": 14,
                 "W": 6,
                 "D": 3,
-                "L": 3,
-                "F": 16,
-                "A": 8,
-                "GD": 8,
+                "L": 5,
+                "F": 25,
+                "A": 16,
+                "GD": 9,
                 "P": 21
             }
         },
         {
             "position": 7,
+            "name": "América de Cali",
+            "stats": {
+                "GP": 13,
+                "W": 6,
+                "D": 3,
+                "L": 4,
+                "F": 17,
+                "A": 10,
+                "GD": 7,
+                "P": 21
+            }
+        },
+        {
+            "position": 8,
             "name": "Internacional de Bogotá",
             "stats": {
                 "GP": 14,
@@ -2832,20 +2846,6 @@
                 "A": 19,
                 "GD": -2,
                 "P": 21
-            }
-        },
-        {
-            "position": 8,
-            "name": "Millonarios",
-            "stats": {
-                "GP": 13,
-                "W": 6,
-                "D": 2,
-                "L": 5,
-                "F": 23,
-                "A": 14,
-                "GD": 9,
-                "P": 20
             }
         },
         {
@@ -2908,42 +2908,42 @@
             "position": 13,
             "name": "Llaneros",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 3,
-                "D": 7,
+                "D": 8,
                 "L": 3,
-                "F": 14,
-                "A": 13,
+                "F": 15,
+                "A": 14,
                 "GD": 1,
-                "P": 16
+                "P": 17
             }
         },
         {
             "position": 14,
-            "name": "Fortaleza CEIF",
+            "name": "Independiente Medellín",
             "stats": {
                 "GP": 13,
-                "W": 3,
-                "D": 5,
+                "W": 4,
+                "D": 4,
                 "L": 5,
-                "F": 14,
-                "A": 20,
-                "GD": -6,
-                "P": 14
+                "F": 18,
+                "A": 18,
+                "GD": 0,
+                "P": 16
             }
         },
         {
             "position": 15,
-            "name": "Independiente Medellín",
+            "name": "Fortaleza CEIF",
             "stats": {
-                "GP": 12,
+                "GP": 14,
                 "W": 3,
-                "D": 4,
+                "D": 6,
                 "L": 5,
                 "F": 16,
-                "A": 17,
-                "GD": -1,
-                "P": 13
+                "A": 22,
+                "GD": -6,
+                "P": 15
             }
         },
         {
@@ -4940,14 +4940,14 @@
             "position": 5,
             "name": "Libertad",
             "stats": {
-                "GP": 13,
-                "W": 5,
+                "GP": 14,
+                "W": 6,
                 "D": 2,
                 "L": 6,
-                "F": 20,
+                "F": 21,
                 "A": 15,
-                "GD": 5,
-                "P": 17
+                "GD": 6,
+                "P": 20
             }
         },
         {
@@ -4968,13 +4968,13 @@
             "position": 7,
             "name": "Deportivo Recoleta",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 4,
                 "D": 4,
-                "L": 5,
+                "L": 6,
                 "F": 16,
-                "A": 17,
-                "GD": -1,
+                "A": 18,
+                "GD": -2,
                 "P": 16
             }
         },

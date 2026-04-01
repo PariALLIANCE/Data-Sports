@@ -2102,6 +2102,20 @@
         },
         {
             "position": 8,
+            "name": "Cuiabá",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 2,
+                "L": 0,
+                "F": 0,
+                "A": 0,
+                "GD": 0,
+                "P": 2
+            }
+        },
+        {
+            "position": 9,
             "name": "CRB",
             "stats": {
                 "GP": 1,
@@ -2115,7 +2129,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "Vila Nova",
             "stats": {
                 "GP": 1,
@@ -2129,7 +2143,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "São Bernardo",
             "stats": {
                 "GP": 1,
@@ -2143,7 +2157,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Ceará",
             "stats": {
                 "GP": 1,
@@ -2152,20 +2166,6 @@
                 "L": 0,
                 "F": 1,
                 "A": 1,
-                "GD": 0,
-                "P": 1
-            }
-        },
-        {
-            "position": 12,
-            "name": "Cuiabá",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 1,
-                "L": 0,
-                "F": 0,
-                "A": 0,
                 "GD": 0,
                 "P": 1
             }
@@ -2186,6 +2186,48 @@
         },
         {
             "position": 14,
+            "name": "Novorizontino",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 1,
+                "L": 1,
+                "F": 1,
+                "A": 3,
+                "GD": -2,
+                "P": 1
+            }
+        },
+        {
+            "position": 15,
+            "name": "Juventude",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 1,
+                "L": 1,
+                "F": 0,
+                "A": 2,
+                "GD": -2,
+                "P": 1
+            }
+        },
+        {
+            "position": 16,
+            "name": "Fortaleza",
+            "stats": {
+                "GP": 2,
+                "W": 0,
+                "D": 1,
+                "L": 1,
+                "F": 0,
+                "A": 4,
+                "GD": -4,
+                "P": 1
+            }
+        },
+        {
+            "position": 17,
             "name": "Ponte Preta",
             "stats": {
                 "GP": 1,
@@ -2199,7 +2241,7 @@
             }
         },
         {
-            "position": 15,
+            "position": 18,
             "name": "Atlético Goianiense",
             "stats": {
                 "GP": 1,
@@ -2213,7 +2255,7 @@
             }
         },
         {
-            "position": 16,
+            "position": 19,
             "name": "Náutico",
             "stats": {
                 "GP": 1,
@@ -2227,21 +2269,7 @@
             }
         },
         {
-            "position": 17,
-            "name": "Novorizontino",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 1,
-                "A": 3,
-                "GD": -2,
-                "P": 0
-            }
-        },
-        {
-            "position": 18,
+            "position": 20,
             "name": "América Mineiro",
             "stats": {
                 "GP": 1,
@@ -2251,34 +2279,6 @@
                 "F": 1,
                 "A": 3,
                 "GD": -2,
-                "P": 0
-            }
-        },
-        {
-            "position": 19,
-            "name": "Juventude",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 2,
-                "GD": -2,
-                "P": 0
-            }
-        },
-        {
-            "position": 20,
-            "name": "Fortaleza",
-            "stats": {
-                "GP": 1,
-                "W": 0,
-                "D": 0,
-                "L": 1,
-                "F": 0,
-                "A": 4,
-                "GD": -4,
                 "P": 0
             }
         }
@@ -2766,6 +2766,20 @@
         },
         {
             "position": 3,
+            "name": "Deportes Tolima",
+            "stats": {
+                "GP": 14,
+                "W": 7,
+                "D": 5,
+                "L": 2,
+                "F": 22,
+                "A": 11,
+                "GD": 11,
+                "P": 26
+            }
+        },
+        {
+            "position": 4,
             "name": "Atlético Junior",
             "stats": {
                 "GP": 14,
@@ -2779,7 +2793,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Once Caldas",
             "stats": {
                 "GP": 14,
@@ -2790,20 +2804,6 @@
                 "A": 18,
                 "GD": 7,
                 "P": 24
-            }
-        },
-        {
-            "position": 5,
-            "name": "Deportes Tolima",
-            "stats": {
-                "GP": 13,
-                "W": 6,
-                "D": 5,
-                "L": 2,
-                "F": 18,
-                "A": 10,
-                "GD": 8,
-                "P": 23
             }
         },
         {
@@ -2880,13 +2880,13 @@
             "position": 11,
             "name": "Águilas Doradas",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 5,
                 "D": 4,
-                "L": 4,
-                "F": 13,
-                "A": 12,
-                "GD": 1,
+                "L": 5,
+                "F": 14,
+                "A": 16,
+                "GD": -2,
                 "P": 19
             }
         },
@@ -3106,14 +3106,14 @@
             "position": 7,
             "name": "Southend United",
             "stats": {
-                "GP": 38,
-                "W": 17,
+                "GP": 39,
+                "W": 18,
                 "D": 11,
                 "L": 10,
-                "F": 62,
-                "A": 37,
-                "GD": 25,
-                "P": 62
+                "F": 64,
+                "A": 38,
+                "GD": 26,
+                "P": 65
             }
         },
         {
@@ -3134,18 +3134,32 @@
             "position": 9,
             "name": "Hartlepool United",
             "stats": {
-                "GP": 39,
+                "GP": 40,
                 "W": 16,
                 "D": 12,
-                "L": 11,
+                "L": 12,
                 "F": 47,
-                "A": 42,
-                "GD": 5,
+                "A": 49,
+                "GD": -2,
                 "P": 60
             }
         },
         {
             "position": 10,
+            "name": "Woking",
+            "stats": {
+                "GP": 40,
+                "W": 14,
+                "D": 12,
+                "L": 14,
+                "F": 58,
+                "A": 49,
+                "GD": 9,
+                "P": 54
+            }
+        },
+        {
+            "position": 11,
             "name": "Tamworth",
             "stats": {
                 "GP": 41,
@@ -3159,21 +3173,21 @@
             }
         },
         {
-            "position": 11,
-            "name": "Woking",
+            "position": 12,
+            "name": "Wealdstone",
             "stats": {
-                "GP": 39,
+                "GP": 40,
                 "W": 14,
-                "D": 11,
-                "L": 14,
-                "F": 57,
-                "A": 48,
-                "GD": 9,
-                "P": 53
+                "D": 9,
+                "L": 17,
+                "F": 59,
+                "A": 63,
+                "GD": -4,
+                "P": 51
             }
         },
         {
-            "position": 12,
+            "position": 13,
             "name": "Solihull Moors",
             "stats": {
                 "GP": 40,
@@ -3187,7 +3201,7 @@
             }
         },
         {
-            "position": 13,
+            "position": 14,
             "name": "Boston United",
             "stats": {
                 "GP": 40,
@@ -3201,44 +3215,30 @@
             }
         },
         {
-            "position": 14,
-            "name": "Wealdstone",
-            "stats": {
-                "GP": 39,
-                "W": 13,
-                "D": 9,
-                "L": 17,
-                "F": 52,
-                "A": 63,
-                "GD": -11,
-                "P": 48
-            }
-        },
-        {
             "position": 15,
             "name": "Altrincham",
             "stats": {
-                "GP": 40,
+                "GP": 41,
                 "W": 14,
-                "D": 5,
+                "D": 6,
                 "L": 21,
-                "F": 47,
-                "A": 59,
+                "F": 48,
+                "A": 60,
                 "GD": -12,
-                "P": 47
+                "P": 48
             }
         },
         {
             "position": 16,
             "name": "Yeovil Town",
             "stats": {
-                "GP": 40,
+                "GP": 41,
                 "W": 14,
                 "D": 5,
-                "L": 21,
-                "F": 44,
-                "A": 57,
-                "GD": -13,
+                "L": 22,
+                "F": 45,
+                "A": 59,
+                "GD": -14,
                 "P": 47
             }
         },
@@ -4898,42 +4898,42 @@
             "position": 2,
             "name": "Cerro Porteño",
             "stats": {
-                "GP": 13,
-                "W": 8,
+                "GP": 14,
+                "W": 9,
                 "D": 2,
                 "L": 3,
-                "F": 19,
-                "A": 11,
-                "GD": 8,
-                "P": 26
+                "F": 22,
+                "A": 13,
+                "GD": 9,
+                "P": 29
             }
         },
         {
             "position": 3,
             "name": "Nacional",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 6,
-                "D": 5,
+                "D": 6,
                 "L": 2,
-                "F": 21,
-                "A": 13,
+                "F": 22,
+                "A": 14,
                 "GD": 8,
-                "P": 23
+                "P": 24
             }
         },
         {
             "position": 4,
             "name": "Sportivo Ameliano",
             "stats": {
-                "GP": 13,
-                "W": 5,
+                "GP": 14,
+                "W": 6,
                 "D": 5,
                 "L": 3,
-                "F": 14,
-                "A": 9,
-                "GD": 5,
-                "P": 20
+                "F": 16,
+                "A": 10,
+                "GD": 6,
+                "P": 23
             }
         },
         {
@@ -5010,27 +5010,27 @@
             "position": 10,
             "name": "2 de Mayo",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 3,
-                "D": 4,
+                "D": 5,
                 "L": 6,
-                "F": 10,
-                "A": 20,
+                "F": 11,
+                "A": 21,
                 "GD": -10,
-                "P": 13
+                "P": 14
             }
         },
         {
             "position": 11,
             "name": "Sportivo Luqueño",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 3,
                 "D": 2,
-                "L": 8,
-                "F": 12,
-                "A": 19,
-                "GD": -7,
+                "L": 9,
+                "F": 14,
+                "A": 22,
+                "GD": -8,
                 "P": 11
             }
         },
@@ -5038,13 +5038,13 @@
             "position": 12,
             "name": "Sportivo San Lorenzo",
             "stats": {
-                "GP": 13,
+                "GP": 14,
                 "W": 0,
                 "D": 5,
-                "L": 8,
-                "F": 7,
-                "A": 27,
-                "GD": -20,
+                "L": 9,
+                "F": 8,
+                "A": 29,
+                "GD": -21,
                 "P": 5
             }
         }

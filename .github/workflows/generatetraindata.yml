@@ -1,12 +1,8 @@
 name: Generate Dataset
 
+# 🔹 Déclenchement manuel
 on:
-  push:
-    branches:
-      - main  # ou la branche que tu utilises
-    paths:
-      - 't.py'         # déclenche seulement si le script change
-      - 'data-with-stats.json'  # ou tout autre JSON source
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'  # ou la version que tu utilises
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |

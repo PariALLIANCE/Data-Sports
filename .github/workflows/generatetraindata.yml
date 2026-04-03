@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        persist-credentials: false  # important pour utiliser un token personnalisé
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -23,8 +25,12 @@ jobs:
     - name: Run dataset script
       run: python t.py
 
-    - name: Upload dataset artifact
-      uses: actions/upload-artifact@v4  # 🔹 mise à jour ici
-      with:
-        name: dataset-expert-full
-        path: dataset-expert-full.json
+    - name: Commit and push dataset
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add dataset-expert-full.json
+        git commit -m "Update dataset-expert-full.json [skip ci]" || echo "No changes to commit"
+        git push origin HEAD:main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

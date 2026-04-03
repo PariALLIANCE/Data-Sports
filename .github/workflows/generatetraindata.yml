@@ -1,0 +1,36 @@
+name: Generate Dataset
+
+on:
+  push:
+    branches:
+      - main  # ou la branche que tu utilises
+    paths:
+      - 't.py'         # déclenche seulement si le script change
+      - 'data-with-stats.json'  # ou tout autre JSON source
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'  # ou la version que tu utilises
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # ici aucune dépendance externe, sinon les lister
+
+    - name: Run dataset script
+      run: python t.py
+
+    - name: Upload dataset artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: dataset-expert-full
+        path: dataset-expert-full.json

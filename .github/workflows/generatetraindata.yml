@@ -1,6 +1,5 @@
 name: Generate Dataset
 
-# 🔹 Déclenchement manuel
 on:
   workflow_dispatch:
 
@@ -20,13 +19,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # ici aucune dépendance externe, sinon les lister
 
     - name: Run dataset script
       run: python t.py
 
     - name: Upload dataset artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # 🔹 mise à jour ici
       with:
         name: dataset-expert-full
         path: dataset-expert-full.json

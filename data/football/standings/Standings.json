@@ -314,13 +314,13 @@
             "position": 3,
             "name": "Villarreal",
             "stats": {
-                "GP": 29,
+                "GP": 30,
                 "W": 18,
                 "D": 4,
-                "L": 7,
+                "L": 8,
                 "F": 54,
-                "A": 34,
-                "GD": 20,
+                "A": 35,
+                "GD": 19,
                 "P": 58
             }
         },
@@ -438,6 +438,20 @@
         },
         {
             "position": 12,
+            "name": "Girona",
+            "stats": {
+                "GP": 30,
+                "W": 9,
+                "D": 10,
+                "L": 11,
+                "F": 32,
+                "A": 44,
+                "GD": -12,
+                "P": 37
+            }
+        },
+        {
+            "position": 13,
             "name": "Rayo Vallecano",
             "stats": {
                 "GP": 30,
@@ -451,7 +465,7 @@
             }
         },
         {
-            "position": 13,
+            "position": 14,
             "name": "Valencia",
             "stats": {
                 "GP": 30,
@@ -462,20 +476,6 @@
                 "A": 45,
                 "GD": -11,
                 "P": 35
-            }
-        },
-        {
-            "position": 14,
-            "name": "Girona",
-            "stats": {
-                "GP": 29,
-                "W": 8,
-                "D": 10,
-                "L": 11,
-                "F": 31,
-                "A": 44,
-                "GD": -13,
-                "P": 34
             }
         },
         {
@@ -1512,14 +1512,14 @@
             "position": 2,
             "name": "Club Brugge",
             "stats": {
-                "GP": 30,
-                "W": 20,
+                "GP": 31,
+                "W": 21,
                 "D": 3,
                 "L": 7,
-                "F": 59,
-                "A": 36,
-                "GD": 23,
-                "P": 32
+                "F": 63,
+                "A": 38,
+                "GD": 25,
+                "P": 35
             }
         },
         {
@@ -1540,41 +1540,41 @@
             "position": 4,
             "name": "KAA Gent",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 13,
-                "D": 6,
+                "D": 7,
                 "L": 11,
-                "F": 49,
-                "A": 43,
+                "F": 50,
+                "A": 44,
                 "GD": 6,
-                "P": 23
+                "P": 24
             }
         },
         {
             "position": 5,
             "name": "KV Mechelen",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 12,
-                "D": 9,
+                "D": 10,
                 "L": 9,
-                "F": 39,
-                "A": 37,
+                "F": 40,
+                "A": 38,
                 "GD": 2,
-                "P": 23
+                "P": 24
             }
         },
         {
             "position": 6,
             "name": "Anderlecht",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 12,
                 "D": 8,
-                "L": 10,
-                "F": 43,
-                "A": 39,
-                "GD": 4,
+                "L": 11,
+                "F": 45,
+                "A": 43,
+                "GD": 2,
                 "P": 22
             }
         },
@@ -1694,13 +1694,13 @@
             "position": 3,
             "name": "RAAL La Louvière",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 6,
                 "D": 13,
-                "L": 11,
+                "L": 12,
                 "F": 30,
-                "A": 37,
-                "GD": -7,
+                "A": 38,
+                "GD": -8,
                 "P": 31
             }
         },
@@ -1708,14 +1708,14 @@
             "position": 4,
             "name": "Dender",
             "stats": {
-                "GP": 30,
-                "W": 3,
+                "GP": 31,
+                "W": 4,
                 "D": 10,
                 "L": 17,
-                "F": 24,
+                "F": 25,
                 "A": 51,
-                "GD": -27,
-                "P": 19
+                "GD": -26,
+                "P": 22
             }
         }
     ],
@@ -2004,6 +2004,20 @@
     "Brazil_Serie_B": [
         {
             "position": 1,
+            "name": "Goiás",
+            "stats": {
+                "GP": 3,
+                "W": 2,
+                "D": 1,
+                "L": 0,
+                "F": 6,
+                "A": 3,
+                "GD": 3,
+                "P": 7
+            }
+        },
+        {
+            "position": 2,
             "name": "Avaí",
             "stats": {
                 "GP": 3,
@@ -2017,7 +2031,7 @@
             }
         },
         {
-            "position": 2,
+            "position": 3,
             "name": "Operário PR",
             "stats": {
                 "GP": 3,
@@ -2031,7 +2045,7 @@
             }
         },
         {
-            "position": 3,
+            "position": 4,
             "name": "Botafogo-SP",
             "stats": {
                 "GP": 3,
@@ -2045,7 +2059,7 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
             "name": "Náutico",
             "stats": {
                 "GP": 3,
@@ -2059,7 +2073,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "Ceará",
             "stats": {
                 "GP": 3,
@@ -2073,7 +2087,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Vila Nova",
             "stats": {
                 "GP": 3,
@@ -2087,7 +2101,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Athletic",
             "stats": {
                 "GP": 3,
@@ -2101,7 +2115,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Sport",
             "stats": {
                 "GP": 3,
@@ -2112,20 +2126,6 @@
                 "A": 2,
                 "GD": 1,
                 "P": 5
-            }
-        },
-        {
-            "position": 9,
-            "name": "Goiás",
-            "stats": {
-                "GP": 2,
-                "W": 1,
-                "D": 1,
-                "L": 0,
-                "F": 5,
-                "A": 3,
-                "GD": 2,
-                "P": 4
             }
         },
         {
@@ -2144,20 +2144,6 @@
         },
         {
             "position": 11,
-            "name": "Criciúma",
-            "stats": {
-                "GP": 2,
-                "W": 1,
-                "D": 1,
-                "L": 0,
-                "F": 2,
-                "A": 1,
-                "GD": 1,
-                "P": 4
-            }
-        },
-        {
-            "position": 12,
             "name": "São Bernardo",
             "stats": {
                 "GP": 3,
@@ -2166,6 +2152,20 @@
                 "L": 1,
                 "F": 4,
                 "A": 4,
+                "GD": 0,
+                "P": 4
+            }
+        },
+        {
+            "position": 12,
+            "name": "Criciúma",
+            "stats": {
+                "GP": 3,
+                "W": 1,
+                "D": 1,
+                "L": 1,
+                "F": 2,
+                "A": 2,
                 "GD": 0,
                 "P": 4
             }
@@ -2370,6 +2370,20 @@
         },
         {
             "position": 7,
+            "name": "Huachipato",
+            "stats": {
+                "GP": 8,
+                "W": 4,
+                "D": 0,
+                "L": 4,
+                "F": 13,
+                "A": 12,
+                "GD": 1,
+                "P": 12
+            }
+        },
+        {
+            "position": 8,
             "name": "Coquimbo Unido",
             "stats": {
                 "GP": 8,
@@ -2383,21 +2397,21 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Universidad de Concepción",
             "stats": {
-                "GP": 7,
+                "GP": 8,
                 "W": 3,
                 "D": 2,
-                "L": 2,
-                "F": 6,
-                "A": 9,
-                "GD": -3,
+                "L": 3,
+                "F": 7,
+                "A": 14,
+                "GD": -7,
                 "P": 11
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "Audax Italiano",
             "stats": {
                 "GP": 8,
@@ -2411,7 +2425,7 @@
             }
         },
         {
-            "position": 10,
+            "position": 11,
             "name": "Unión La Calera",
             "stats": {
                 "GP": 8,
@@ -2425,7 +2439,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "La Serena",
             "stats": {
                 "GP": 8,
@@ -2435,20 +2449,6 @@
                 "F": 9,
                 "A": 11,
                 "GD": -2,
-                "P": 9
-            }
-        },
-        {
-            "position": 12,
-            "name": "Huachipato",
-            "stats": {
-                "GP": 7,
-                "W": 3,
-                "D": 0,
-                "L": 4,
-                "F": 8,
-                "A": 11,
-                "GD": -3,
                 "P": 9
             }
         },
@@ -2740,14 +2740,14 @@
             "position": 1,
             "name": "Atlético Nacional",
             "stats": {
-                "GP": 14,
-                "W": 10,
+                "GP": 15,
+                "W": 11,
                 "D": 1,
                 "L": 3,
-                "F": 28,
-                "A": 10,
-                "GD": 18,
-                "P": 31
+                "F": 30,
+                "A": 11,
+                "GD": 19,
+                "P": 34
             }
         },
         {
@@ -2962,30 +2962,30 @@
         },
         {
             "position": 17,
-            "name": "Jaguares de Córdoba",
+            "name": "Alianza FC",
             "stats": {
                 "GP": 15,
-                "W": 4,
-                "D": 2,
-                "L": 9,
-                "F": 13,
-                "A": 26,
-                "GD": -13,
-                "P": 14
+                "W": 3,
+                "D": 6,
+                "L": 6,
+                "F": 10,
+                "A": 22,
+                "GD": -12,
+                "P": 15
             }
         },
         {
             "position": 18,
-            "name": "Alianza FC",
+            "name": "Jaguares de Córdoba",
             "stats": {
-                "GP": 14,
-                "W": 2,
-                "D": 6,
-                "L": 6,
-                "F": 7,
-                "A": 20,
-                "GD": -13,
-                "P": 12
+                "GP": 16,
+                "W": 4,
+                "D": 2,
+                "L": 10,
+                "F": 14,
+                "A": 28,
+                "GD": -14,
+                "P": 14
             }
         },
         {
@@ -3006,13 +3006,13 @@
             "position": 20,
             "name": "Deportivo Pereira",
             "stats": {
-                "GP": 14,
+                "GP": 15,
                 "W": 0,
                 "D": 6,
-                "L": 8,
-                "F": 12,
-                "A": 26,
-                "GD": -14,
+                "L": 9,
+                "F": 14,
+                "A": 29,
+                "GD": -15,
                 "P": 6
             }
         }
@@ -3022,55 +3022,55 @@
             "position": 1,
             "name": "York City",
             "stats": {
-                "GP": 42,
-                "W": 30,
+                "GP": 43,
+                "W": 31,
                 "D": 8,
                 "L": 4,
-                "F": 107,
-                "A": 39,
-                "GD": 68,
-                "P": 98
+                "F": 109,
+                "A": 40,
+                "GD": 69,
+                "P": 101
             }
         },
         {
             "position": 2,
             "name": "Rochdale",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 31,
-                "D": 5,
+                "D": 6,
                 "L": 6,
                 "F": 83,
                 "A": 38,
                 "GD": 45,
-                "P": 98
+                "P": 99
             }
         },
         {
             "position": 3,
             "name": "Carlisle United",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 26,
-                "D": 7,
+                "D": 8,
                 "L": 9,
-                "F": 78,
-                "A": 49,
+                "F": 80,
+                "A": 51,
                 "GD": 29,
-                "P": 85
+                "P": 86
             }
         },
         {
             "position": 4,
             "name": "Boreham Wood",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 24,
                 "D": 9,
-                "L": 9,
-                "F": 87,
-                "A": 54,
-                "GD": 33,
+                "L": 10,
+                "F": 88,
+                "A": 58,
+                "GD": 30,
                 "P": 81
             }
         },
@@ -3078,13 +3078,13 @@
             "position": 5,
             "name": "Scunthorpe United",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 22,
                 "D": 12,
-                "L": 8,
+                "L": 9,
                 "F": 75,
-                "A": 58,
-                "GD": 17,
+                "A": 60,
+                "GD": 15,
                 "P": 78
             }
         },
@@ -3092,153 +3092,153 @@
             "position": 6,
             "name": "Forest Green Rovers",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 21,
-                "D": 11,
+                "D": 12,
                 "L": 10,
-                "F": 72,
-                "A": 48,
+                "F": 73,
+                "A": 49,
                 "GD": 24,
-                "P": 74
+                "P": 75
             }
         },
         {
             "position": 7,
             "name": "Southend United",
             "stats": {
-                "GP": 40,
-                "W": 19,
+                "GP": 41,
+                "W": 20,
                 "D": 11,
                 "L": 10,
-                "F": 67,
+                "F": 70,
                 "A": 40,
-                "GD": 27,
-                "P": 68
+                "GD": 30,
+                "P": 71
             }
         },
         {
             "position": 8,
             "name": "FC Halifax Town",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 19,
-                "D": 8,
+                "D": 9,
                 "L": 15,
-                "F": 64,
-                "A": 58,
+                "F": 66,
+                "A": 60,
                 "GD": 6,
-                "P": 65
+                "P": 66
             }
         },
         {
             "position": 9,
             "name": "Hartlepool United",
             "stats": {
-                "GP": 41,
+                "GP": 42,
                 "W": 16,
-                "D": 13,
+                "D": 14,
                 "L": 12,
                 "F": 47,
                 "A": 49,
                 "GD": -2,
-                "P": 61
+                "P": 62
             }
         },
         {
             "position": 10,
             "name": "Tamworth",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 16,
-                "D": 9,
+                "D": 10,
                 "L": 17,
-                "F": 55,
-                "A": 66,
+                "F": 57,
+                "A": 68,
                 "GD": -11,
-                "P": 57
+                "P": 58
             }
         },
         {
             "position": 11,
             "name": "Woking",
             "stats": {
-                "GP": 41,
+                "GP": 42,
                 "W": 14,
-                "D": 13,
+                "D": 14,
                 "L": 14,
                 "F": 61,
                 "A": 52,
                 "GD": 9,
-                "P": 55
+                "P": 56
             }
         },
         {
             "position": 12,
             "name": "Wealdstone",
             "stats": {
-                "GP": 41,
-                "W": 14,
+                "GP": 42,
+                "W": 15,
                 "D": 9,
                 "L": 18,
-                "F": 60,
+                "F": 63,
                 "A": 68,
-                "GD": -8,
-                "P": 51
+                "GD": -5,
+                "P": 54
             }
         },
         {
             "position": 13,
-            "name": "Yeovil Town",
+            "name": "Solihull Moors",
             "stats": {
                 "GP": 42,
-                "W": 15,
-                "D": 5,
-                "L": 22,
-                "F": 46,
-                "A": 59,
-                "GD": -13,
-                "P": 50
+                "W": 13,
+                "D": 12,
+                "L": 17,
+                "F": 67,
+                "A": 68,
+                "GD": -1,
+                "P": 51
             }
         },
         {
             "position": 14,
-            "name": "Solihull Moors",
+            "name": "Yeovil Town",
             "stats": {
-                "GP": 41,
-                "W": 12,
-                "D": 12,
-                "L": 17,
-                "F": 63,
-                "A": 67,
-                "GD": -4,
-                "P": 48
+                "GP": 43,
+                "W": 15,
+                "D": 5,
+                "L": 23,
+                "F": 47,
+                "A": 61,
+                "GD": -14,
+                "P": 50
             }
         },
         {
             "position": 15,
             "name": "Boston United",
             "stats": {
-                "GP": 41,
+                "GP": 42,
                 "W": 12,
-                "D": 12,
+                "D": 13,
                 "L": 17,
-                "F": 54,
-                "A": 64,
+                "F": 55,
+                "A": 65,
                 "GD": -10,
-                "P": 48
+                "P": 49
             }
         },
         {
             "position": 16,
             "name": "Altrincham",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 14,
                 "D": 6,
-                "L": 22,
-                "F": 48,
-                "A": 61,
-                "GD": -13,
+                "L": 23,
+                "F": 49,
+                "A": 63,
+                "GD": -14,
                 "P": 48
             }
         },
@@ -3246,112 +3246,112 @@
             "position": 17,
             "name": "Sutton United",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 11,
                 "D": 14,
-                "L": 17,
+                "L": 18,
                 "F": 58,
-                "A": 70,
-                "GD": -12,
+                "A": 73,
+                "GD": -15,
                 "P": 47
             }
         },
         {
             "position": 18,
-            "name": "Aldershot Town",
+            "name": "Gateshead",
             "stats": {
-                "GP": 41,
+                "GP": 43,
                 "W": 13,
-                "D": 7,
-                "L": 21,
-                "F": 68,
-                "A": 77,
-                "GD": -9,
-                "P": 46
+                "D": 8,
+                "L": 22,
+                "F": 52,
+                "A": 84,
+                "GD": -32,
+                "P": 47
             }
         },
         {
             "position": 19,
-            "name": "Gateshead",
+            "name": "Aldershot Town",
             "stats": {
                 "GP": 42,
-                "W": 12,
-                "D": 8,
+                "W": 13,
+                "D": 7,
                 "L": 22,
-                "F": 50,
-                "A": 84,
-                "GD": -34,
-                "P": 44
+                "F": 68,
+                "A": 80,
+                "GD": -12,
+                "P": 46
             }
         },
         {
             "position": 20,
             "name": "Eastleigh",
             "stats": {
-                "GP": 42,
-                "W": 11,
+                "GP": 43,
+                "W": 12,
                 "D": 10,
                 "L": 21,
-                "F": 53,
-                "A": 77,
-                "GD": -24,
-                "P": 43
+                "F": 55,
+                "A": 78,
+                "GD": -23,
+                "P": 46
             }
         },
         {
             "position": 21,
             "name": "Brackley Town",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 9,
-                "D": 11,
+                "D": 12,
                 "L": 22,
-                "F": 37,
-                "A": 69,
+                "F": 38,
+                "A": 70,
                 "GD": -32,
-                "P": 38
+                "P": 39
             }
         },
         {
             "position": 22,
             "name": "Morecambe",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 9,
-                "D": 10,
+                "D": 11,
                 "L": 23,
-                "F": 63,
-                "A": 88,
+                "F": 65,
+                "A": 90,
                 "GD": -25,
-                "P": 37
+                "P": 38
             }
         },
         {
             "position": 23,
             "name": "Braintree Town",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 8,
-                "D": 11,
+                "D": 12,
                 "L": 23,
                 "F": 35,
                 "A": 66,
                 "GD": -31,
-                "P": 35
+                "P": 36
             }
         },
         {
             "position": 24,
             "name": "Truro City",
             "stats": {
-                "GP": 42,
+                "GP": 43,
                 "W": 7,
-                "D": 9,
+                "D": 10,
                 "L": 26,
-                "F": 39,
-                "A": 69,
+                "F": 40,
+                "A": 70,
                 "GD": -30,
-                "P": 30
+                "P": 31
             }
         }
     ],
@@ -3824,58 +3824,58 @@
         },
         {
             "position": 2,
-            "name": "AC Milan",
+            "name": "Napoli",
             "stats": {
-                "GP": 30,
-                "W": 18,
-                "D": 9,
-                "L": 3,
+                "GP": 31,
+                "W": 20,
+                "D": 5,
+                "L": 6,
                 "F": 47,
-                "A": 23,
-                "GD": 24,
-                "P": 63
+                "A": 30,
+                "GD": 17,
+                "P": 65
             }
         },
         {
             "position": 3,
-            "name": "Napoli",
+            "name": "AC Milan",
             "stats": {
-                "GP": 30,
-                "W": 19,
-                "D": 5,
-                "L": 6,
-                "F": 46,
-                "A": 30,
-                "GD": 16,
-                "P": 62
+                "GP": 31,
+                "W": 18,
+                "D": 9,
+                "L": 4,
+                "F": 47,
+                "A": 24,
+                "GD": 23,
+                "P": 63
             }
         },
         {
             "position": 4,
             "name": "Como",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 16,
-                "D": 9,
+                "D": 10,
                 "L": 5,
                 "F": 53,
                 "A": 22,
                 "GD": 31,
-                "P": 57
+                "P": 58
             }
         },
         {
             "position": 5,
             "name": "Juventus",
             "stats": {
-                "GP": 30,
-                "W": 15,
+                "GP": 31,
+                "W": 16,
                 "D": 9,
                 "L": 6,
-                "F": 52,
+                "F": 54,
                 "A": 29,
-                "GD": 23,
-                "P": 54
+                "GD": 25,
+                "P": 57
             }
         },
         {
@@ -3896,14 +3896,14 @@
             "position": 7,
             "name": "Atalanta",
             "stats": {
-                "GP": 30,
-                "W": 13,
+                "GP": 31,
+                "W": 14,
                 "D": 11,
                 "L": 6,
-                "F": 41,
+                "F": 44,
                 "A": 27,
-                "GD": 14,
-                "P": 50
+                "GD": 17,
+                "P": 53
             }
         },
         {
@@ -3952,14 +3952,14 @@
             "position": 11,
             "name": "Udinese",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 11,
-                "D": 6,
+                "D": 7,
                 "L": 13,
                 "F": 35,
                 "A": 42,
                 "GD": -7,
-                "P": 39
+                "P": 40
             }
         },
         {
@@ -3994,13 +3994,13 @@
             "position": 14,
             "name": "Genoa",
             "stats": {
-                "GP": 30,
+                "GP": 31,
                 "W": 8,
                 "D": 9,
-                "L": 13,
+                "L": 14,
                 "F": 36,
-                "A": 42,
-                "GD": -6,
+                "A": 44,
+                "GD": -8,
                 "P": 33
             }
         },
@@ -4034,20 +4034,6 @@
         },
         {
             "position": 17,
-            "name": "Lecce",
-            "stats": {
-                "GP": 30,
-                "W": 7,
-                "D": 6,
-                "L": 17,
-                "F": 21,
-                "A": 40,
-                "GD": -19,
-                "P": 27
-            }
-        },
-        {
-            "position": 18,
             "name": "Cremonese",
             "stats": {
                 "GP": 31,
@@ -4057,6 +4043,20 @@
                 "F": 26,
                 "A": 46,
                 "GD": -20,
+                "P": 27
+            }
+        },
+        {
+            "position": 18,
+            "name": "Lecce",
+            "stats": {
+                "GP": 31,
+                "W": 7,
+                "D": 6,
+                "L": 18,
+                "F": 21,
+                "A": 43,
+                "GD": -22,
                 "P": 27
             }
         },
@@ -4378,12 +4378,12 @@
             "stats": {
                 "GP": 13,
                 "W": 10,
-                "D": 0,
-                "L": 3,
-                "F": 25,
+                "D": 1,
+                "L": 2,
+                "F": 27,
                 "A": 13,
-                "GD": 12,
-                "P": 30
+                "GD": 14,
+                "P": 31
             }
         },
         {
@@ -4402,20 +4402,6 @@
         },
         {
             "position": 3,
-            "name": "Pumas UNAM",
-            "stats": {
-                "GP": 13,
-                "W": 7,
-                "D": 5,
-                "L": 1,
-                "F": 23,
-                "A": 12,
-                "GD": 11,
-                "P": 26
-            }
-        },
-        {
-            "position": 4,
             "name": "Toluca",
             "stats": {
                 "GP": 13,
@@ -4429,7 +4415,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 4,
             "name": "Pachuca",
             "stats": {
                 "GP": 13,
@@ -4440,6 +4426,20 @@
                 "A": 11,
                 "GD": 6,
                 "P": 25
+            }
+        },
+        {
+            "position": 5,
+            "name": "Pumas UNAM",
+            "stats": {
+                "GP": 13,
+                "W": 6,
+                "D": 6,
+                "L": 1,
+                "F": 23,
+                "A": 14,
+                "GD": 9,
+                "P": 24
             }
         },
         {
@@ -4938,6 +4938,20 @@
         },
         {
             "position": 5,
+            "name": "Trinidense",
+            "stats": {
+                "GP": 15,
+                "W": 5,
+                "D": 7,
+                "L": 3,
+                "F": 19,
+                "A": 14,
+                "GD": 5,
+                "P": 22
+            }
+        },
+        {
+            "position": 6,
             "name": "Guarani",
             "stats": {
                 "GP": 15,
@@ -4951,7 +4965,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Libertad",
             "stats": {
                 "GP": 15,
@@ -4962,20 +4976,6 @@
                 "A": 16,
                 "GD": 5,
                 "P": 20
-            }
-        },
-        {
-            "position": 7,
-            "name": "Trinidense",
-            "stats": {
-                "GP": 14,
-                "W": 4,
-                "D": 7,
-                "L": 3,
-                "F": 15,
-                "A": 14,
-                "GD": 1,
-                "P": 19
             }
         },
         {
@@ -4996,13 +4996,13 @@
             "position": 9,
             "name": "Rubio Ñú",
             "stats": {
-                "GP": 14,
+                "GP": 15,
                 "W": 4,
                 "D": 3,
-                "L": 7,
+                "L": 8,
                 "F": 10,
-                "A": 15,
-                "GD": -5,
+                "A": 19,
+                "GD": -9,
                 "P": 15
             }
         },
@@ -5054,14 +5054,14 @@
             "position": 1,
             "name": "Los Chankas",
             "stats": {
-                "GP": 8,
-                "W": 6,
+                "GP": 9,
+                "W": 7,
                 "D": 2,
                 "L": 0,
-                "F": 17,
+                "F": 18,
                 "A": 10,
-                "GD": 7,
-                "P": 20
+                "GD": 8,
+                "P": 23
             }
         },
         {
@@ -5292,13 +5292,13 @@
             "position": 18,
             "name": "FC Cajamarca",
             "stats": {
-                "GP": 8,
+                "GP": 9,
                 "W": 1,
                 "D": 2,
-                "L": 5,
+                "L": 6,
                 "F": 10,
-                "A": 16,
-                "GD": -6,
+                "A": 17,
+                "GD": -7,
                 "P": 5
             }
         }
@@ -5336,14 +5336,14 @@
             "position": 3,
             "name": "Benfica",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 19,
-                "D": 8,
+                "D": 9,
                 "L": 0,
-                "F": 58,
-                "A": 17,
+                "F": 59,
+                "A": 18,
                 "GD": 41,
-                "P": 65
+                "P": 66
             }
         },
         {
@@ -5392,13 +5392,13 @@
             "position": 7,
             "name": "Estoril",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 10,
                 "D": 7,
-                "L": 10,
-                "F": 48,
-                "A": 44,
-                "GD": 4,
+                "L": 11,
+                "F": 50,
+                "A": 47,
+                "GD": 3,
                 "P": 37
             }
         },
@@ -5432,6 +5432,20 @@
         },
         {
             "position": 10,
+            "name": "Arouca",
+            "stats": {
+                "GP": 28,
+                "W": 9,
+                "D": 5,
+                "L": 14,
+                "F": 37,
+                "A": 57,
+                "GD": -20,
+                "P": 32
+            }
+        },
+        {
+            "position": 11,
             "name": "Alverca",
             "stats": {
                 "GP": 28,
@@ -5445,7 +5459,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 12,
             "name": "Rio Ave",
             "stats": {
                 "GP": 28,
@@ -5456,20 +5470,6 @@
                 "A": 48,
                 "GD": -19,
                 "P": 30
-            }
-        },
-        {
-            "position": 12,
-            "name": "Arouca",
-            "stats": {
-                "GP": 27,
-                "W": 8,
-                "D": 5,
-                "L": 14,
-                "F": 34,
-                "A": 55,
-                "GD": -21,
-                "P": 29
             }
         },
         {
@@ -5518,14 +5518,14 @@
             "position": 16,
             "name": "Casa Pia",
             "stats": {
-                "GP": 26,
+                "GP": 27,
                 "W": 5,
-                "D": 9,
+                "D": 10,
                 "L": 12,
-                "F": 26,
-                "A": 48,
+                "F": 27,
+                "A": 49,
                 "GD": -22,
-                "P": 24
+                "P": 25
             }
         },
         {
@@ -5645,6 +5645,20 @@
         },
         {
             "position": 7,
+            "name": "Rubin Kazan",
+            "stats": {
+                "GP": 23,
+                "W": 9,
+                "D": 6,
+                "L": 8,
+                "F": 23,
+                "A": 25,
+                "GD": -2,
+                "P": 33
+            }
+        },
+        {
+            "position": 8,
             "name": "Dinamo Moscow",
             "stats": {
                 "GP": 23,
@@ -5655,20 +5669,6 @@
                 "A": 33,
                 "GD": 7,
                 "P": 31
-            }
-        },
-        {
-            "position": 8,
-            "name": "Rubin Kazan",
-            "stats": {
-                "GP": 22,
-                "W": 8,
-                "D": 6,
-                "L": 8,
-                "F": 22,
-                "A": 25,
-                "GD": -3,
-                "P": 30
             }
         },
         {
@@ -5773,13 +5773,13 @@
             "position": 16,
             "name": "Sochi",
             "stats": {
-                "GP": 22,
+                "GP": 23,
                 "W": 2,
                 "D": 3,
-                "L": 17,
+                "L": 18,
                 "F": 20,
-                "A": 52,
-                "GD": -32,
+                "A": 53,
+                "GD": -33,
                 "P": 9
             }
         }
@@ -6069,6 +6069,20 @@
         },
         {
             "position": 3,
+            "name": "IF Elfsborg",
+            "stats": {
+                "GP": 1,
+                "W": 1,
+                "D": 0,
+                "L": 0,
+                "F": 2,
+                "A": 0,
+                "GD": 2,
+                "P": 3
+            }
+        },
+        {
+            "position": 4,
             "name": "AIK",
             "stats": {
                 "GP": 1,
@@ -6082,7 +6096,21 @@
             }
         },
         {
-            "position": 4,
+            "position": 5,
+            "name": "Djurgården",
+            "stats": {
+                "GP": 1,
+                "W": 1,
+                "D": 0,
+                "L": 0,
+                "F": 1,
+                "A": 0,
+                "GD": 1,
+                "P": 3
+            }
+        },
+        {
+            "position": 6,
             "name": "Västerås SK",
             "stats": {
                 "GP": 1,
@@ -6096,7 +6124,35 @@
             }
         },
         {
-            "position": 5,
+            "position": 7,
+            "name": "IF Brommapojkarna",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 1,
+                "L": 0,
+                "F": 2,
+                "A": 2,
+                "GD": 0,
+                "P": 1
+            }
+        },
+        {
+            "position": 8,
+            "name": "BK Häcken",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 1,
+                "L": 0,
+                "F": 2,
+                "A": 2,
+                "GD": 0,
+                "P": 1
+            }
+        },
+        {
+            "position": 9,
             "name": "Malmö FF",
             "stats": {
                 "GP": 1,
@@ -6110,7 +6166,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 10,
             "name": "Örgryte IS",
             "stats": {
                 "GP": 1,
@@ -6124,91 +6180,7 @@
             }
         },
         {
-            "position": 7,
-            "name": "IF Brommapojkarna",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 8,
-            "name": "Djurgården",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 9,
-            "name": "IF Elfsborg",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 10,
-            "name": "GAIS",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
             "position": 11,
-            "name": "BK Häcken",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 12,
-            "name": "IFK Göteborg",
-            "stats": {
-                "GP": 0,
-                "W": 0,
-                "D": 0,
-                "L": 0,
-                "F": 0,
-                "A": 0,
-                "GD": 0,
-                "P": 0
-            }
-        },
-        {
-            "position": 13,
             "name": "Halmstads BK",
             "stats": {
                 "GP": 1,
@@ -6222,7 +6194,21 @@
             }
         },
         {
-            "position": 14,
+            "position": 12,
+            "name": "GAIS",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 0,
+                "L": 1,
+                "F": 0,
+                "A": 1,
+                "GD": -1,
+                "P": 0
+            }
+        },
+        {
+            "position": 13,
             "name": "Kalmar FF",
             "stats": {
                 "GP": 1,
@@ -6232,6 +6218,20 @@
                 "F": 0,
                 "A": 1,
                 "GD": -1,
+                "P": 0
+            }
+        },
+        {
+            "position": 14,
+            "name": "IFK Göteborg",
+            "stats": {
+                "GP": 1,
+                "W": 0,
+                "D": 0,
+                "L": 1,
+                "F": 0,
+                "A": 2,
+                "GD": -2,
                 "P": 0
             }
         },
@@ -6509,14 +6509,14 @@
             "position": 6,
             "name": "Istanbul Basaksehir",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 12,
-                "D": 7,
+                "D": 8,
                 "L": 8,
                 "F": 44,
                 "A": 30,
                 "GD": 14,
-                "P": 43
+                "P": 44
             }
         },
         {
@@ -6535,6 +6535,20 @@
         },
         {
             "position": 8,
+            "name": "Kocaelispor",
+            "stats": {
+                "GP": 28,
+                "W": 9,
+                "D": 7,
+                "L": 12,
+                "F": 23,
+                "A": 32,
+                "GD": -9,
+                "P": 34
+            }
+        },
+        {
+            "position": 9,
             "name": "Gaziantep FK",
             "stats": {
                 "GP": 28,
@@ -6545,20 +6559,6 @@
                 "A": 47,
                 "GD": -10,
                 "P": 34
-            }
-        },
-        {
-            "position": 9,
-            "name": "Kocaelispor",
-            "stats": {
-                "GP": 27,
-                "W": 9,
-                "D": 6,
-                "L": 12,
-                "F": 23,
-                "A": 32,
-                "GD": -9,
-                "P": 33
             }
         },
         {

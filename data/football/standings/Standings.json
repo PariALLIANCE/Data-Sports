@@ -932,20 +932,6 @@
         },
         {
             "position": 9,
-            "name": "Acassuso",
-            "stats": {
-                "GP": 6,
-                "W": 3,
-                "D": 0,
-                "L": 3,
-                "F": 8,
-                "A": 8,
-                "GD": 0,
-                "P": 9
-            }
-        },
-        {
-            "position": 10,
             "name": "Ferro Carril Oeste",
             "stats": {
                 "GP": 7,
@@ -959,7 +945,7 @@
             }
         },
         {
-            "position": 11,
+            "position": 10,
             "name": "All Boys",
             "stats": {
                 "GP": 7,
@@ -969,6 +955,20 @@
                 "F": 4,
                 "A": 4,
                 "GD": 0,
+                "P": 9
+            }
+        },
+        {
+            "position": 11,
+            "name": "Acassuso",
+            "stats": {
+                "GP": 7,
+                "W": 3,
+                "D": 0,
+                "L": 4,
+                "F": 8,
+                "A": 9,
+                "GD": -1,
                 "P": 9
             }
         },
@@ -1114,6 +1114,20 @@
         },
         {
             "position": 4,
+            "name": "Midland",
+            "stats": {
+                "GP": 7,
+                "W": 3,
+                "D": 3,
+                "L": 1,
+                "F": 6,
+                "A": 3,
+                "GD": 3,
+                "P": 12
+            }
+        },
+        {
+            "position": 5,
             "name": "Temperley",
             "stats": {
                 "GP": 7,
@@ -1127,7 +1141,7 @@
             }
         },
         {
-            "position": 5,
+            "position": 6,
             "name": "San Martín (Tucumán)",
             "stats": {
                 "GP": 7,
@@ -1141,7 +1155,7 @@
             }
         },
         {
-            "position": 6,
+            "position": 7,
             "name": "Gimnasia y Tiro (Salta)",
             "stats": {
                 "GP": 7,
@@ -1155,7 +1169,7 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
             "name": "Atletico Rafaela",
             "stats": {
                 "GP": 7,
@@ -1169,7 +1183,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Quilmes",
             "stats": {
                 "GP": 7,
@@ -1180,20 +1194,6 @@
                 "A": 4,
                 "GD": 4,
                 "P": 10
-            }
-        },
-        {
-            "position": 9,
-            "name": "Midland",
-            "stats": {
-                "GP": 6,
-                "W": 2,
-                "D": 3,
-                "L": 1,
-                "F": 5,
-                "A": 3,
-                "GD": 2,
-                "P": 9
             }
         },
         {
@@ -3726,55 +3726,55 @@
             "position": 1,
             "name": "Atromitos",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 7,
-                "D": 9,
+                "D": 10,
                 "L": 11,
                 "F": 27,
                 "A": 31,
                 "GD": -4,
-                "P": 30
+                "P": 31
             }
         },
         {
             "position": 2,
-            "name": "Kifisia",
+            "name": "Panetolikos",
             "stats": {
-                "GP": 27,
-                "W": 6,
-                "D": 9,
-                "L": 12,
-                "F": 33,
-                "A": 44,
-                "GD": -11,
-                "P": 27
+                "GP": 28,
+                "W": 8,
+                "D": 6,
+                "L": 14,
+                "F": 27,
+                "A": 40,
+                "GD": -13,
+                "P": 30
             }
         },
         {
             "position": 3,
-            "name": "Panetolikos",
+            "name": "Kifisia",
             "stats": {
-                "GP": 27,
-                "W": 7,
-                "D": 6,
-                "L": 14,
-                "F": 25,
-                "A": 39,
-                "GD": -14,
-                "P": 27
+                "GP": 28,
+                "W": 6,
+                "D": 10,
+                "L": 12,
+                "F": 33,
+                "A": 44,
+                "GD": -11,
+                "P": 28
             }
         },
         {
             "position": 4,
             "name": "Larissa FC",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 4,
                 "D": 11,
-                "L": 12,
-                "F": 23,
-                "A": 42,
-                "GD": -19,
+                "L": 13,
+                "F": 24,
+                "A": 44,
+                "GD": -20,
                 "P": 23
             }
         },
@@ -3782,28 +3782,28 @@
             "position": 5,
             "name": "Asteras Tripoli",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 4,
-                "D": 8,
+                "D": 9,
                 "L": 15,
                 "F": 25,
                 "A": 42,
                 "GD": -17,
-                "P": 20
+                "P": 21
             }
         },
         {
             "position": 6,
             "name": "Panserraikos FC",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 5,
-                "D": 5,
+                "D": 6,
                 "L": 17,
                 "F": 18,
                 "A": 56,
                 "GD": -38,
-                "P": 20
+                "P": 21
             }
         }
     ],
@@ -5803,28 +5803,28 @@
             "position": 2,
             "name": "Al Hilal",
             "stats": {
-                "GP": 27,
-                "W": 19,
+                "GP": 28,
+                "W": 20,
                 "D": 8,
                 "L": 0,
-                "F": 69,
+                "F": 75,
                 "A": 25,
-                "GD": 44,
-                "P": 65
+                "GD": 50,
+                "P": 68
             }
         },
         {
             "position": 3,
             "name": "Al Ahli",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 20,
-                "D": 5,
+                "D": 6,
                 "L": 2,
-                "F": 54,
-                "A": 19,
+                "F": 55,
+                "A": 20,
                 "GD": 35,
-                "P": 65
+                "P": 66
             }
         },
         {
@@ -5859,13 +5859,13 @@
             "position": 6,
             "name": "Al Ittihad",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 13,
                 "D": 6,
-                "L": 8,
-                "F": 42,
-                "A": 34,
-                "GD": 8,
+                "L": 9,
+                "F": 45,
+                "A": 38,
+                "GD": 7,
                 "P": 45
             }
         },
@@ -5887,28 +5887,28 @@
             "position": 8,
             "name": "Neom SC",
             "stats": {
-                "GP": 27,
-                "W": 10,
+                "GP": 28,
+                "W": 11,
                 "D": 6,
                 "L": 11,
-                "F": 32,
-                "A": 36,
-                "GD": -4,
-                "P": 36
+                "F": 36,
+                "A": 39,
+                "GD": -3,
+                "P": 39
             }
         },
         {
             "position": 9,
             "name": "Al Fayha",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 9,
-                "D": 6,
+                "D": 7,
                 "L": 12,
-                "F": 34,
-                "A": 42,
+                "F": 35,
+                "A": 43,
                 "GD": -8,
-                "P": 33
+                "P": 34
             }
         },
         {
@@ -5971,13 +5971,13 @@
             "position": 14,
             "name": "Al Kholood",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 8,
                 "D": 2,
-                "L": 17,
+                "L": 18,
                 "F": 36,
-                "A": 50,
-                "GD": -14,
+                "A": 56,
+                "GD": -20,
                 "P": 26
             }
         },
@@ -6439,14 +6439,14 @@
             "position": 1,
             "name": "Galatasaray",
             "stats": {
-                "GP": 27,
-                "W": 20,
+                "GP": 28,
+                "W": 21,
                 "D": 4,
                 "L": 3,
-                "F": 63,
-                "A": 20,
-                "GD": 43,
-                "P": 64
+                "F": 66,
+                "A": 21,
+                "GD": 45,
+                "P": 67
             }
         },
         {
@@ -6495,13 +6495,13 @@
             "position": 5,
             "name": "Goztepe",
             "stats": {
-                "GP": 27,
+                "GP": 28,
                 "W": 12,
                 "D": 10,
-                "L": 5,
-                "F": 32,
-                "A": 20,
-                "GD": 12,
+                "L": 6,
+                "F": 33,
+                "A": 23,
+                "GD": 10,
                 "P": 46
             }
         },

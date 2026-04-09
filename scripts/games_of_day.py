@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, UTC
 import re
 import os
 import time
@@ -73,6 +73,17 @@ def convert_date_to_iso(date_text):
         return date_obj.strftime("%Y-%m-%d")
     except:
         return date_text
+
+def convert_time_to_utc(time_str):
+    try:
+        # Convertit "3:00 PM" → datetime
+        dt = datetime.strptime(time_str, "%I:%M %p")
+        # ESPN affiche les heures en Eastern Time (UTC-4 en été, UTC-5 en hiver)
+        # On applique +4h comme approximation vers UTC
+        dt_utc_hour = (dt.hour + 4) % 24
+        return f"{dt_utc_hour:02d}:{dt.minute:02d}"
+    except:
+        return time_str
 
 def us_to_decimal(odds):
     if not odds:
@@ -253,7 +264,7 @@ for league_name, league_code in LEAGUES.items():
         league_history_cache[league_name] = load_league_history(league_name)
 
     league_history = league_history_cache[league_name]
-    league_standing = get_league_standing(league_name)  # 🔹 Classement complet
+    league_standing = get_league_standing(league_name)
 
     for table in soup.select("div.ResponsiveTable"):
         date_title = table.select_one("div.Table__Title")
@@ -266,6 +277,11 @@ for league_name, league_code in LEAGUES.items():
         for row in table.select("tbody > tr.Table__TR"):
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
             score_tag = row.select_one("a.AnchorLink.at")
+
+            # ── Récupération de l'heure depuis la colonne date ──
+            time_tag = row.select_one("td.date__col a")
+            raw_time = time_tag.text.strip() if time_tag else None
+            match_time_utc = convert_time_to_utc(raw_time) if raw_time else None
 
             if len(teams) != 2 or not score_tag:
                 continue
@@ -305,6 +321,7 @@ for league_name, league_code in LEAGUES.items():
             games_of_day[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
+                "time_utc": match_time_utc,       # ← nouveau champ
                 "league": league_name,
 
                 "team1": team1_name,
@@ -341,8 +358,6 @@ for league_name, league_code in LEAGUES.items():
                 },
 
                 "match_url": match_url,
-
-                # 🔹 classement complet de la ligue
                 "league_standing": league_standing
             }
 

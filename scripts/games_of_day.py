@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from datetime import datetime, timezone, UTC
+from datetime import datetime, timezone
 import re
 import os
 import time
@@ -76,10 +76,7 @@ def convert_date_to_iso(date_text):
 
 def convert_time_to_utc(time_str):
     try:
-        # Convertit "3:00 PM" → datetime
         dt = datetime.strptime(time_str, "%I:%M %p")
-        # ESPN affiche les heures en Eastern Time (UTC-4 en été, UTC-5 en hiver)
-        # On applique +4h comme approximation vers UTC
         dt_utc_hour = (dt.hour + 4) % 24
         return f"{dt_utc_hour:02d}:{dt.minute:02d}"
     except:
@@ -170,51 +167,6 @@ def extract_ml_by_index(match_url):
         print(f"⚠️ Erreur récupération cotes ML : {e}")
         return None
 
-# ================= JOUEURS CLÉS =================
-def parse_players(section):
-    players = []
-    athletes = section.find_all("a", class_="Athlete")
-
-    for a in athletes:
-        name_tag = a.find("span", class_="Athlete__PlayerName")
-        stats_tag = a.find("div", class_="Athlete__Stats")
-
-        name = name_tag.get_text(strip=True) if name_tag else None
-        stats_block = stats_tag.get_text("\n", strip=True) if stats_tag else None
-
-        if name:
-            players.append({
-                "name": name,
-                "raw_stats": stats_block
-            })
-    return players
-
-def extract_top_scorers_and_assists(match_url):
-    try:
-        res = requests.get(match_url, headers=HEADERS, timeout=15)
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        top_scorers_header = soup.find("h3", string="Top Scorers")
-        most_assists_header = soup.find("h3", string="Most Assists")
-
-        if not top_scorers_header or not most_assists_header:
-            return {"top_scorers": [], "most_assists": []}
-
-        top_scorers_section = top_scorers_header.find_parent("section", class_="Card")
-        most_assists_section = most_assists_header.find_parent("section", class_="Card")
-
-        top_scorers = parse_players(top_scorers_section) if top_scorers_section else []
-        most_assists = parse_players(most_assists_section) if most_assists_section else []
-
-        return {
-            "top_scorers": top_scorers,
-            "most_assists": most_assists
-        }
-
-    except Exception as e:
-        print(f"⚠️ Erreur récupération joueurs clés : {e}")
-        return {"top_scorers": [], "most_assists": []}
-
 # ================= CHARGEMENT DES ÉQUIPES =================
 if not os.path.exists(TEAMS_FILE):
     raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
@@ -278,7 +230,6 @@ for league_name, league_code in LEAGUES.items():
             teams = row.select("span.Table__Team a.AnchorLink:last-child")
             score_tag = row.select_one("a.AnchorLink.at")
 
-            # ── Récupération de l'heure depuis la colonne date ──
             time_tag = row.select_one("td.date__col a")
             raw_time = time_tag.text.strip() if time_tag else None
             match_time_utc = convert_time_to_utc(raw_time) if raw_time else None
@@ -307,10 +258,6 @@ for league_name, league_code in LEAGUES.items():
             ml_odds = extract_ml_by_index(match_url)
             time.sleep(1)
 
-            # Joueurs clés
-            key_players = extract_top_scorers_and_assists(match_url)
-            time.sleep(1)
-
             # Forme récente
             recent_team1 = extract_recent_matches(team1_name, league_history)
             recent_team2 = extract_recent_matches(team2_name, league_history)
@@ -321,7 +268,7 @@ for league_name, league_code in LEAGUES.items():
             games_of_day[game_id] = {
                 "gameId": game_id,
                 "date": date_text_iso,
-                "time_utc": match_time_utc,       # ← nouveau champ
+                "time_utc": match_time_utc,
                 "league": league_name,
 
                 "team1": team1_name,
@@ -350,11 +297,7 @@ for league_name, league_code in LEAGUES.items():
                 "h2h": h2h_matches,
 
                 "odds": {
-                    "moneyline": ml_odds,
-                    "key_players": {
-                        "top_scorers": key_players.get("top_scorers", []),
-                        "most_assists": key_players.get("most_assists", [])
-                    }
+                    "moneyline": ml_odds
                 },
 
                 "match_url": match_url,
@@ -367,4 +310,4 @@ for league_name, league_code in LEAGUES.items():
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
 
-print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + joueurs clés + classement complet dans {OUTPUT_FILE}")
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés avec forme récente + H2H + cotes + classement dans {OUTPUT_FILE}")

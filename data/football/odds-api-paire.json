@@ -1,27 +1,47 @@
 {
-  "England_Premier_League": "soccer_epl",
-  "Spain_Laliga": "soccer_spain_la_liga",
-  "Germany_Bundesliga": "soccer_germany_bundesliga",
-  "Austria_Bundesliga": "soccer_austria_bundesliga",
-  "Belgium_Jupiler_Pro_League": "soccer_belgium_jupiler_pro_league",
-  "Brazil_Serie_A": "soccer_brazil_campeonato",
-  "Brazil_Serie_B": "soccer_brazil_serie_b",
-  "Chile_Primera_Division": "soccer_chile_campeonato",
-  "China_Super_League": "soccer_china_super_league",
-  "Colombia_Primera_A": "soccer_colombia_primera_a",
-  "France_Ligue_1": "soccer_france_ligue_1",
-  "Greece_Super_League_1": "soccer_greece_super_league",
-  "Italy_Serie_A": "soccer_italy_serie_a",
-  "Japan_J1_League": "soccer_japan_j_league",
-  "Mexico_Liga_MX": "soccer_mexico_liga_mx",
-  "Netherlands_Eredivisie": "soccer_netherlands_eredivisie",
-  "Portugal_Primeira_Liga": "soccer_portugal_primeira_liga",
-  "Russia_Premier_League": "soccer_russia_premier_league",
-  "Saudi_Arabia_Pro_League": "soccer_saudi_arabia_pro_league",
-  "Sweden_Allsvenskan": "soccer_sweden_allsvenskan",
-  "Switzerland_Super_League": "soccer_switzerland_superleague",
-  "Turkey_Super_Lig": "soccer_turkey_super_league",
-  "USA_Major_League_Soccer": "soccer_usa_mls",
-  "UEFA_Champions_League": "soccer_uefa_champions_league",
-  "UEFA_Europa_League": "soccer_uefa_europa_league"
+  "England_Premier_League": { "id": "soccer_epl", "json": "England_Premier_League.json" },
+  "Spain_Laliga": { "id": "soccer_spain_la_liga", "json": "Spain_Laliga.json" },
+  "Germany_Bundesliga": { "id": "soccer_germany_bundesliga", "json": "Germany_Bundesliga.json" },
+
+  "Argentina_Primera_Nacional": { "id": "soccer_argentina_primera_division", "json": "Argentina_Primera_Nacional.json" },
+  "Austria_Bundesliga": { "id": "soccer_austria_bundesliga", "json": "Austria_Bundesliga.json" },
+  "Belgium_Jupiler_Pro_League": { "id": "soccer_belgium_first_div", "json": "Belgium_Jupiler_Pro_League.json" },
+
+  "Brazil_Serie_A": { "id": "soccer_brazil_campeonato", "json": "Brazil_Serie_A.json" },
+  "Brazil_Serie_B": { "id": "soccer_brazil_serie_b", "json": "Brazil_Serie_B.json" },
+
+  "Chile_Primera_Division": { "id": "soccer_chile_campeonato", "json": "Chile_Primera_Division.json" },
+  "China_Super_League": { "id": "soccer_china_superleague", "json": "China_Super_League.json" },
+
+  "France_Ligue_1": { "id": "soccer_france_ligue_one", "json": "France_Ligue_1.json" },
+  "France_Ligue_2": { "id": "soccer_france_ligue_two", "json": "France_Ligue_2.json" },
+
+  "Greece_Super_League_1": { "id": "soccer_greece_super_league", "json": "Greece_Super_League_1.json" },
+
+  "Italy_Serie_A": { "id": "soccer_italy_serie_a", "json": "Italy_Serie_A.json" },
+  "Italy_Serie_B": { "id": "soccer_italy_serie_b", "json": "Italy_Serie_B.json" },
+
+  "Japan_J1_League": { "id": "soccer_japan_j_league", "json": "Japan_J1_League.json" },
+  "Korea_KLeague_1": { "id": "soccer_korea_kleague1", "json": "Korea_KLeague_1.json" },
+
+  "Mexico_Liga_MX": { "id": "soccer_mexico_ligamx", "json": "Mexico_Liga_MX.json" },
+
+  "Netherlands_Eredivisie": { "id": "soccer_netherlands_eredivisie", "json": "Netherlands_Eredivisie.json" },
+
+  "Portugal_Primeira_Liga": { "id": "soccer_portugal_primeira_liga", "json": "Portugal_Primeira_Liga.json" },
+
+  "Russia_Premier_League": { "id": "soccer_russia_premier_league", "json": "Russia_Premier_League.json" },
+
+  "Saudi_Arabia_Pro_League": { "id": "soccer_saudi_arabia_pro_league", "json": "Saudi_Arabia_Pro_League.json" },
+
+  "Sweden_Allsvenskan": { "id": "soccer_sweden_allsvenskan", "json": "Sweden_Allsvenskan.json" },
+
+  "Switzerland_Super_League": { "id": "soccer_switzerland_superleague", "json": "Switzerland_Super_League.json" },
+
+  "Turkey_Super_Lig": { "id": "soccer_turkey_super_league", "json": "Turkey_Super_Lig.json" },
+
+  "USA_Major_League_Soccer": { "id": "soccer_usa_mls", "json": "USA_Major_League_Soccer.json" },
+
+  "UEFA_Champions_League": { "id": "soccer_uefa_champs_league", "json": "UEFA_Champions_League.json" },
+  "UEFA_Europa_League": { "id": "soccer_uefa_europa_league", "json": "UEFA_Europa_League.json" }
 }

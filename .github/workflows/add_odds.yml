@@ -1,0 +1,48 @@
+name: Add Odds to League Matches
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # Tous les jours à 06h00 UTC
+
+jobs:
+  add-odds:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout du repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3️⃣ Installation des dépendances
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      # 4️⃣ Synchronisation avec la branche main avant exécution
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      # 5️⃣ Exécution du script
+      - name: Run add_odds script
+        run: |
+          python scripts/add_odds.py
+
+      # 6️⃣ Commit et push des fichiers enrichis
+      - name: Commit and push updated league files
+        run: |
+          git add data/football/leagues/*.json
+          git diff --cached --quiet && echo "Aucune modification détectée" && exit 0
+          git commit -m "chore: add odds to league matches [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push origin main

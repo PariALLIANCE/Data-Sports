@@ -42,7 +42,6 @@ print(f"✅ {len(ODDS_API_KEYS)} clé(s) Odds-API chargée(s)")
 _key_index = 0
 
 def next_api_key():
-    """Retourne la prochaine clé en rotation circulaire."""
     global _key_index
     key = ODDS_API_KEYS[_key_index % len(ODDS_API_KEYS)]
     _key_index += 1
@@ -231,8 +230,7 @@ def fetch_odds(sport_key):
     url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds/"
     params = {"regions": "eu", "markets": "h2h"}
 
-    # Tente chaque clé dans l'ordre de rotation jusqu'à succès
-    for attempt in range(len(ODDS_API_KEYS)):
+    for _ in range(len(ODDS_API_KEYS)):
         key = next_api_key()
         try:
             print(f"  🌐 Odds-API → {sport_key} (clé ...{key[-4:]})")
@@ -242,25 +240,17 @@ def fetch_odds(sport_key):
                 data = r.json()
                 odds_cache[sport_key] = data
                 return data
-
             elif r.status_code == 401:
                 print(f"  ⛔ Clé invalide (...{key[-4:]}) — passage à la suivante")
-                continue
-
             elif r.status_code == 429:
                 print(f"  ⚠️ Quota dépassé (...{key[-4:]}) — passage à la suivante")
-                continue
-
             else:
                 print(f"  ⚠️ Erreur {r.status_code} avec clé ...{key[-4:]} — passage à la suivante")
-                continue
 
         except requests.exceptions.Timeout:
             print(f"  ⚠️ Timeout avec clé ...{key[-4:]} — passage à la suivante")
-            continue
         except requests.exceptions.RequestException as e:
             print(f"  ⚠️ Erreur réseau avec clé ...{key[-4:]} : {e} — passage à la suivante")
-            continue
 
     print(f"  ❌ Toutes les clés ont échoué pour {sport_key}")
     odds_cache[sport_key] = []
@@ -334,7 +324,6 @@ for league_name, league_code in LEAGUES.items():
         print(f"  ⚠️ Erreur réseau ESPN : {e}")
         continue
 
-    # Cotes Odds-API pour cette ligue
     odds_data = []
     if league_name in league_map:
         sport_key = league_map[league_name]["id"]
@@ -377,7 +366,6 @@ for league_name, league_code in LEAGUES.items():
             team1_name = teams[0].text.strip()
             team2_name = teams[1].text.strip()
 
-            # Recherche cotes bookmaker
             bookmaker_h2h = None
             if odds_data:
                 game_stub = {"team1": team1_name, "team2": team2_name}
@@ -388,7 +376,6 @@ for league_name, league_code in LEAGUES.items():
                 else:
                     print(f"  ❌ No odds match → {team1_name} vs {team2_name}")
 
-            # Skip si pas de cotes bookmaker
             if not bookmaker_h2h:
                 continue
 

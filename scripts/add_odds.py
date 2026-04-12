@@ -3,135 +3,161 @@ from bs4 import BeautifulSoup
 import json
 import os
 import time
-import glob
+from datetime import datetime
 
-# ================= HEADERS =================
+# ================= CONFIG =================
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
     "Accept-Language": "en-US,en;q=0.9",
 }
 
-# ================= DOSSIERS =================
-LEAGUES_DIR = "data/football/leagues"
+LEAGUES_DIR    = "data/football/leagues"
+INPUT_FILE     = os.path.join(LEAGUES_DIR, "England_Premier_League.json")
+OUTPUT_FILE    = "dataset_with_odds.json"
+MAX_MISS       = 10   # Arrêt après 10 matchs consécutifs sans cotes
 
 # ================= UTILITAIRES =================
-def us_to_decimal(odds):
-    if not odds:
+def us_to_decimal(odds_str):
+    if not odds_str:
         return None
     try:
-        odds = odds.replace("+", "").strip()
-        odds = int(odds)
-        if odds > 0:
-            return round(1 + (odds / 100), 2)
+        val = int(odds_str.replace("+", "").strip())
+        if val > 0:
+            return round(1 + (val / 100), 2)
         else:
-            return round(1 + (100 / abs(odds)), 2)
+            return round(1 + (100 / abs(val)), 2)
     except:
         return None
 
-# ================= EXTRACTION COTES =================
-def extract_ml_by_index(match_url):
+def parse_date(date_str):
+    """Convertit 'Sunday, January 1, 2023' en datetime pour tri."""
+    try:
+        return datetime.strptime(date_str, "%A, %B %d, %Y")
+    except:
+        try:
+            return datetime.strptime(date_str, "%Y-%m-%d")
+        except:
+            return datetime.min
+
+def extract_odds(match_url):
+    """
+    Extrait les cotes moneyline depuis une page ESPN.
+    Structure : 7 OddsCell, ML aux indices 0 (home), 3 (away), 6 (draw).
+    """
     try:
         res = requests.get(match_url, headers=HEADERS, timeout=15)
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        odds_cells = soup.find_all("div", {"data-testid": "OddsCell"})
-        if len(odds_cells) < 10:
+        if res.status_code != 200:
             return None
 
-        def get_value(cell):
-            val = cell.find("div", class_="FTMw")
-            return val.text.strip() if val else None
+        soup = BeautifulSoup(res.text, "html.parser")
+        odds_cells = soup.find_all("div", {"data-testid": "OddsCell"})
 
-        home_us = get_value(odds_cells[1])
-        away_us = get_value(odds_cells[5])
-        draw_us = get_value(odds_cells[9])
+        if len(odds_cells) < 7:
+            return None
 
-        home = us_to_decimal(home_us)
-        away = us_to_decimal(away_us)
-        draw = us_to_decimal(draw_us)
+        home_us = odds_cells[0].get_text(strip=True) or None
+        away_us = odds_cells[3].get_text(strip=True) or None
+        draw_us = odds_cells[6].get_text(strip=True) or None
 
-        # Si toutes les cotes sont None → pas de données disponibles
-        if home is None and away is None and draw is None:
+        # Vérification : les valeurs doivent ressembler à des cotes US (+XXX ou -XXX)
+        def is_valid(val):
+            if not val:
+                return False
+            try:
+                int(val.replace("+", "").replace("-", ""))
+                return True
+            except:
+                return False
+
+        if not (is_valid(home_us) and is_valid(away_us) and is_valid(draw_us)):
             return None
 
         return {
-            "home": home,
-            "away": away,
-            "draw": draw
+            "home": us_to_decimal(home_us),
+            "away": us_to_decimal(away_us),
+            "draw": us_to_decimal(draw_us)
         }
 
     except Exception as e:
-        print(f"    ⚠️  Erreur récupération cotes : {e}")
+        print(f"    ⚠️  Erreur : {e}")
         return None
 
-# ================= TRAITEMENT =================
-json_files = glob.glob(os.path.join(LEAGUES_DIR, "*.json"))
+# ================= CHARGEMENT =================
+print(f"📂 Lecture de {INPUT_FILE}...")
+with open(INPUT_FILE, "r", encoding="utf-8") as f:
+    matches = json.load(f)
 
-if not json_files:
-    print(f"❌ Aucun fichier JSON trouvé dans {LEAGUES_DIR}")
-    exit(1)
+print(f"   {len(matches)} matchs chargés")
 
-print(f"📂 {len(json_files)} fichier(s) trouvé(s)\n")
+# Tri du plus récent au plus ancien
+matches_sorted = sorted(matches, key=lambda m: parse_date(m.get("date", "")), reverse=True)
 
-total_matches   = 0
-total_enriched  = 0
-total_null      = 0
-total_skipped   = 0
+# ================= CHARGEMENT DATASET EXISTANT =================
+existing_ids = set()
+existing_matches = []
 
-for json_file in sorted(json_files):
-    league_name = os.path.splitext(os.path.basename(json_file))[0]
-    print(f"🏆 {league_name}")
+if os.path.exists(OUTPUT_FILE):
+    print(f"📂 Dataset existant trouvé : {OUTPUT_FILE}")
+    with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+        existing_matches = json.load(f)
+    existing_ids = {m["gameId"] for m in existing_matches}
+    print(f"   {len(existing_matches)} matchs déjà présents")
+else:
+    print(f"📂 Nouveau dataset : {OUTPUT_FILE}")
 
-    with open(json_file, "r", encoding="utf-8") as f:
-        matches = json.load(f)
+# ================= SCRAPING =================
+new_matches   = []
+consecutive_miss = 0
+total_scraped = 0
+total_skipped = 0
 
-    modified = False
+print(f"\n🚀 Démarrage du scraping (arrêt après {MAX_MISS} miss consécutifs)...\n")
 
-    for match in matches:
-        total_matches += 1
-        game_id    = match.get("gameId", "?")
-        match_url  = match.get("match_url")
+for match in matches_sorted:
+    game_id   = match.get("gameId")
+    match_url = match.get("match_url")
+    date_str  = match.get("date", "?")
+    team1     = match.get("team1", "?")
+    team2     = match.get("team2", "?")
 
-        # Déjà enrichi → on saute
-        if "odds" in match:
-            print(f"   ⏭️  {game_id} — déjà enrichi, ignoré")
-            total_skipped += 1
-            continue
+    # Déjà dans le dataset → skip
+    if game_id in existing_ids:
+        total_skipped += 1
+        continue
 
-        if not match_url:
-            print(f"   ⚠️  {game_id} — pas d'URL, odds=null")
-            match["odds"] = {"home": None, "away": None, "draw": None}
-            total_null += 1
-            modified = True
-            continue
+    print(f"🔍 [{date_str}] {team1} vs {team2}")
 
-        print(f"   🔍 {game_id} — {match.get('team1')} vs {match.get('team2')}")
-        odds = extract_ml_by_index(match_url)
+    if not match_url:
+        print(f"   ⚠️  Pas d'URL → skip")
+        consecutive_miss += 1
+    else:
+        odds = extract_odds(match_url)
+        time.sleep(1)
 
         if odds:
-            match["odds"] = odds
-            print(f"       ✅ home={odds['home']}  draw={odds['draw']}  away={odds['away']}")
-            total_enriched += 1
+            match_copy = dict(match)
+            match_copy["odds"] = odds
+            new_matches.append(match_copy)
+            consecutive_miss = 0
+            total_scraped += 1
+            print(f"   ✅ home={odds['home']}  draw={odds['draw']}  away={odds['away']}")
         else:
-            match["odds"] = {"home": None, "away": None, "draw": None}
-            print(f"       ℹ️  Cotes indisponibles → null")
-            total_null += 1
+            consecutive_miss += 1
+            print(f"   ℹ️  Cotes indisponibles ({consecutive_miss}/{MAX_MISS})")
 
-        modified = True
-        time.sleep(1)  # Pause polie entre chaque requête
+    if consecutive_miss >= MAX_MISS:
+        print(f"\n⛔ {MAX_MISS} miss consécutifs — arrêt du scraping")
+        break
 
-    if modified:
-        with open(json_file, "w", encoding="utf-8") as f:
-            json.dump(matches, f, indent=2, ensure_ascii=False)
-        print(f"   💾 Fichier mis à jour\n")
-    else:
-        print(f"   ✔️  Aucune modification nécessaire\n")
+# ================= SAUVEGARDE =================
+final_dataset = existing_matches + new_matches
 
-# ================= RÉSUMÉ =================
-print("=" * 50)
-print(f"✅ Terminé !")
-print(f"   Total matchs    : {total_matches}")
-print(f"   Enrichis (cotes): {total_enriched}")
-print(f"   Cotes null      : {total_null}")
-print(f"   Déjà enrichis   : {total_skipped}")
-print("=" * 50)
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(final_dataset, f, indent=2, ensure_ascii=False)
+
+print(f"\n{'='*50}")
+print(f"💾 Sauvegardé : {OUTPUT_FILE}")
+print(f"   Nouveaux matchs ajoutés : {total_scraped}")
+print(f"   Déjà présents (skippés) : {total_skipped}")
+print(f"   Total dans le dataset   : {len(final_dataset)}")
+print(f"{'='*50}")

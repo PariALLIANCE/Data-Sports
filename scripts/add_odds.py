@@ -12,7 +12,7 @@ HEADERS = {
 }
 
 LEAGUES_DIR    = "data/football/leagues"
-INPUT_FILE     = os.path.join(LEAGUES_DIR, "England_Premier_League.json")
+INPUT_FILE     = os.path.join(LEAGUES_DIR, "Italy_Serie_A.json")
 OUTPUT_FILE    = "dataset_with_odds.json"
 MAX_MISS       = 10   # Arrêt après 10 matchs consécutifs sans cotes
 

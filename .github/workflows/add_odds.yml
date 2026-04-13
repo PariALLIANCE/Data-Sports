@@ -8,40 +8,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout du repo
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2️⃣ Setup Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # 3️⃣ Installation des dépendances
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
 
-      # 4️⃣ Synchronisation avec la branche main avant exécution
       - name: Sync with remote main
         run: |
           git pull --rebase origin main
 
-      # 5️⃣ Exécution du script
-      - name: Run add_odds script
+      - name: Run enrich_leagues_with_odds script
         run: |
-          python scripts/add_odds.py
+          python scripts/enrich_leagues_with_odds.py
 
-      # 6️⃣ Commit et push du dataset généré
-      - name: Commit and push dataset_with_odds.json
+      - name: Commit and push leagues_with_odds
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add dataset_with_odds.json
+          git add data/football/leagues_with_odds/
           git diff --cached --quiet && echo "Aucune modification détectée" && exit 0
-          git commit -m "chore: update dataset_with_odds.json [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git commit -m "chore: update leagues_with_odds [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git pull --rebase origin main
           git push origin main

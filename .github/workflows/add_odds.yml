@@ -28,8 +28,6 @@ jobs:
       # 4️⃣ Synchronisation avec la branche main avant exécution
       - name: Sync with remote main
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
 
       # 5️⃣ Exécution du script
@@ -40,7 +38,10 @@ jobs:
       # 6️⃣ Commit et push du dataset généré
       - name: Commit and push dataset_with_odds.json
         run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add dataset_with_odds.json
           git diff --cached --quiet && echo "Aucune modification détectée" && exit 0
           git commit -m "chore: update dataset_with_odds.json [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase origin main
           git push origin main

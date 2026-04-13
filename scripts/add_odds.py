@@ -12,9 +12,10 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 
-LEAGUES_DIR = "data/football/leagues"
-OUTPUT_FILE = "dataset_with_odds.json"
-MAX_MISS    = 10  # Arrêt après 10 matchs consécutifs sans cotes par ligue
+LEAGUES_DIR     = "data/football/leagues"
+OUTPUT_DIR      = "data/football/leagues_with_odds"   # ← Nouveau dossier, originaux intacts
+MAX_MISS        = 10   # Arrêt après 10 matchs consécutifs sans cotes par fichier
+START_FROM      = ""   # Ex: "Germany_Bundesliga.json" pour reprendre à partir d'un fichier
 
 # ================= UTILITAIRES =================
 def us_to_decimal(odds_str):
@@ -76,22 +77,11 @@ def extract_odds(match_url):
         print(f"    ⚠️  Erreur : {e}")
         return None
 
-# ================= CHARGEMENT DATASET EXISTANT =================
-existing_matches = []
-existing_ids     = set()
-
-if os.path.exists(OUTPUT_FILE):
-    print(f"📂 Dataset existant trouvé : {OUTPUT_FILE}")
-    with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-        existing_matches = json.load(f)
-    existing_ids = {m["gameId"] for m in existing_matches}
-    print(f"   {len(existing_matches)} matchs déjà présents\n")
-else:
-    print(f"📂 Nouveau dataset : {OUTPUT_FILE}\n")
+# ================= CRÉATION DU DOSSIER DE SORTIE =================
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+print(f"📁 Dossier de sortie : {OUTPUT_DIR}\n")
 
 # ================= DÉCOUVERTE DES FICHIERS =================
-START_FROM  = "Germany_Bundesliga.json"  # Fichier de départ (inclus), "" pour tout traiter
-
 json_files = sorted(glob.glob(os.path.join(LEAGUES_DIR, "*.json")))
 
 if not json_files:
@@ -112,28 +102,53 @@ print(f"📋 {len(json_files)} ligue(s) à traiter\n")
 print("=" * 50)
 
 # ================= TRAITEMENT PAR LIGUE =================
-all_new_matches   = []
-grand_total_added = 0
-grand_total_skip  = 0
+grand_total_with_odds    = 0
+grand_total_without_odds = 0
+grand_total_skipped_file = 0
 
 for json_file in json_files:
     league_name = os.path.splitext(os.path.basename(json_file))[0]
+    output_file = os.path.join(OUTPUT_DIR, os.path.basename(json_file))
+
     print(f"\n🏆 {league_name}")
 
+    # ── Vérifier si ce fichier a déjà été traité ──────────────────────────
+    # On considère "déjà traité" si le fichier output existe ET contient
+    # au moins un match avec une clé "odds". Sinon on re-traite.
+    already_processed_ids = set()
+    enriched_index = {}   # gameId → match enrichi (sortie existante)
+
+    if os.path.exists(output_file):
+        with open(output_file, "r", encoding="utf-8") as f:
+            existing_output = json.load(f)
+        for m in existing_output:
+            if "odds" in m:
+                already_processed_ids.add(m["gameId"])
+            enriched_index[m["gameId"]] = m
+        print(f"   📂 Sortie existante : {len(enriched_index)} matchs ({len(already_processed_ids)} avec cotes)")
+
+    # ── Charger le JSON source ─────────────────────────────────────────────
     with open(json_file, "r", encoding="utf-8") as f:
         matches = json.load(f)
 
-    # Tri du plus récent au plus ancien
+    # Tri du plus récent au plus ancien pour la logique de miss consécutifs
     matches_sorted = sorted(
         matches,
         key=lambda m: parse_date(m.get("date", "")),
         reverse=True
     )
 
-    new_matches      = []
-    consecutive_miss = 0
-    league_added     = 0
-    league_skipped   = 0
+    league_with_odds    = 0
+    league_without_odds = 0
+    consecutive_miss    = 0
+    stopped_early       = False
+
+    # On travaille sur une copie enrichie de tous les matchs
+    # enriched_index est initialisé avec ce qui existe déjà en sortie
+    # Les matchs source non encore traités sont ajoutés tels quels
+    for m in matches:
+        if m["gameId"] not in enriched_index:
+            enriched_index[m["gameId"]] = dict(m)
 
     for match in matches_sorted:
         game_id   = match.get("gameId")
@@ -142,66 +157,78 @@ for json_file in json_files:
         team1     = match.get("team1", "?")
         team2     = match.get("team2", "?")
 
-        # Déjà présent → skip silencieux
-        if game_id in existing_ids:
-            league_skipped += 1
-            grand_total_skip += 1
+        # Déjà enrichi avec des cotes → skip
+        if game_id in already_processed_ids:
+            league_with_odds += 1
             continue
 
         if not match_url:
             consecutive_miss += 1
+            print(f"  ⚠️  [{date_str}] {team1} vs {team2} → pas d'URL ({consecutive_miss}/{MAX_MISS})")
+            if consecutive_miss >= MAX_MISS:
+                print(f"  ⛔ {MAX_MISS} miss consécutifs — passage à la ligue suivante")
+                stopped_early = True
+                break
             continue
 
         odds = extract_odds(match_url)
         time.sleep(1)
 
         if odds:
-            match_copy = dict(match)
-            match_copy["league"] = league_name
-            match_copy["odds"]   = odds
-            new_matches.append(match_copy)
-            # Ajouter à existing_ids pour éviter doublons inter-ligues
-            existing_ids.add(game_id)
+            enriched_index[game_id]["odds"] = odds
+            already_processed_ids.add(game_id)
             consecutive_miss = 0
-            league_added    += 1
-            grand_total_added += 1
+            league_with_odds += 1
             print(f"  ✅ [{date_str}] {team1} vs {team2} → {odds['home']} / {odds['draw']} / {odds['away']}")
         else:
             consecutive_miss += 1
+            league_without_odds += 1
             print(f"  ℹ️  [{date_str}] {team1} vs {team2} → pas de cotes ({consecutive_miss}/{MAX_MISS})")
 
-        if consecutive_miss >= MAX_MISS:
-            print(f"  ⛔ {MAX_MISS} miss consécutifs — passage à la ligue suivante")
-            break
+            if consecutive_miss >= MAX_MISS:
+                print(f"  ⛔ {MAX_MISS} miss consécutifs — passage à la ligue suivante")
+                stopped_early = True
+                break
 
-    all_new_matches.extend(new_matches)
-    print(f"  → {league_added} ajoutés, {league_skipped} déjà présents")
+    # ── Reconstruire la liste finale dans l'ordre original du JSON source ──
+    # On préserve l'ordre du fichier source (pas l'ordre de traitement)
+    final_matches = []
+    source_ids_ordered = [m["gameId"] for m in matches]
 
-    # Sauvegarde intermédiaire après chaque ligue
-    # → si le job est interrompu, les ligues déjà traitées sont préservées
-    if new_matches:
-        intermediate = existing_matches + all_new_matches
-        TMP_FILE = OUTPUT_FILE + ".tmp"
-        with open(TMP_FILE, "w", encoding="utf-8") as f:
-            json.dump(intermediate, f, indent=2, ensure_ascii=False)
-        os.replace(TMP_FILE, OUTPUT_FILE)
-        print(f"  💾 Sauvegarde intermédiaire ({len(intermediate)} matchs total)")
+    for gid in source_ids_ordered:
+        if gid in enriched_index:
+            final_matches.append(enriched_index[gid])
 
-# ================= SAUVEGARDE ATOMIQUE =================
-# Écriture dans un .tmp puis renommage atomique
-# → si le process est tué pendant l'écriture, l'ancien fichier reste intact
-final_dataset = existing_matches + all_new_matches
-TMP_FILE = OUTPUT_FILE + ".tmp"
+    # Ajouter les matchs qui seraient dans enriched_index mais pas dans source
+    # (cas théorique de fichier output plus complet que le source)
+    source_ids_set = set(source_ids_ordered)
+    for gid, m in enriched_index.items():
+        if gid not in source_ids_set:
+            final_matches.append(m)
 
-with open(TMP_FILE, "w", encoding="utf-8") as f:
-    json.dump(final_dataset, f, indent=2, ensure_ascii=False)
+    # ── Sauvegarde atomique ─────────────────────────────────────────────────
+    tmp_file = output_file + ".tmp"
+    with open(tmp_file, "w", encoding="utf-8") as f:
+        json.dump(final_matches, f, indent=2, ensure_ascii=False)
+    os.replace(tmp_file, output_file)
 
-os.replace(TMP_FILE, OUTPUT_FILE)
+    grand_total_with_odds    += league_with_odds
+    grand_total_without_odds += league_without_odds
+    if stopped_early:
+        grand_total_skipped_file += 1
 
+    with_odds_count    = sum(1 for m in final_matches if "odds" in m)
+    without_odds_count = sum(1 for m in final_matches if "odds" not in m)
+
+    print(f"  → 💾 {os.path.basename(output_file)} : {len(final_matches)} matchs total")
+    print(f"       ✅ avec cotes : {with_odds_count}  |  ℹ️  sans cotes : {without_odds_count}")
+
+# ================= RÉSUMÉ FINAL =================
 print(f"\n{'='*50}")
-print(f"💾 Sauvegardé : {OUTPUT_FILE}")
-print(f"   Ligues traitées       : {len(json_files)}")
-print(f"   Nouveaux matchs       : {grand_total_added}")
-print(f"   Déjà présents         : {grand_total_skip}")
-print(f"   Total dans le dataset : {len(final_dataset)}")
+print(f"🏁 TRAITEMENT TERMINÉ")
+print(f"   Ligues traitées              : {len(json_files)}")
+print(f"   Fichiers avec arrêt anticipé : {grand_total_skipped_file}")
+print(f"   Matchs enrichis (cotes)      : {grand_total_with_odds}")
+print(f"   Matchs sans cotes            : {grand_total_without_odds}")
+print(f"   Dossier de sortie            : {OUTPUT_DIR}/")
 print(f"{'='*50}")

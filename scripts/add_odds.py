@@ -90,11 +90,23 @@ else:
     print(f"📂 Nouveau dataset : {OUTPUT_FILE}\n")
 
 # ================= DÉCOUVERTE DES FICHIERS =================
+START_FROM  = "Germany_Bundesliga.json"  # Fichier de départ (inclus), "" pour tout traiter
+
 json_files = sorted(glob.glob(os.path.join(LEAGUES_DIR, "*.json")))
 
 if not json_files:
     print(f"❌ Aucun fichier JSON trouvé dans {LEAGUES_DIR}")
     exit(1)
+
+# Filtrage à partir du fichier de départ
+if START_FROM:
+    start_names = [os.path.basename(f) for f in json_files]
+    if START_FROM in start_names:
+        start_idx  = start_names.index(START_FROM)
+        json_files = json_files[start_idx:]
+        print(f"▶️  Démarrage à partir de : {START_FROM}")
+    else:
+        print(f"⚠️  '{START_FROM}' introuvable — traitement de tous les fichiers")
 
 print(f"📋 {len(json_files)} ligue(s) à traiter\n")
 print("=" * 50)
@@ -165,11 +177,26 @@ for json_file in json_files:
     all_new_matches.extend(new_matches)
     print(f"  → {league_added} ajoutés, {league_skipped} déjà présents")
 
-# ================= SAUVEGARDE =================
-final_dataset = existing_matches + all_new_matches
+    # Sauvegarde intermédiaire après chaque ligue
+    # → si le job est interrompu, les ligues déjà traitées sont préservées
+    if new_matches:
+        intermediate = existing_matches + all_new_matches
+        TMP_FILE = OUTPUT_FILE + ".tmp"
+        with open(TMP_FILE, "w", encoding="utf-8") as f:
+            json.dump(intermediate, f, indent=2, ensure_ascii=False)
+        os.replace(TMP_FILE, OUTPUT_FILE)
+        print(f"  💾 Sauvegarde intermédiaire ({len(intermediate)} matchs total)")
 
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+# ================= SAUVEGARDE ATOMIQUE =================
+# Écriture dans un .tmp puis renommage atomique
+# → si le process est tué pendant l'écriture, l'ancien fichier reste intact
+final_dataset = existing_matches + all_new_matches
+TMP_FILE = OUTPUT_FILE + ".tmp"
+
+with open(TMP_FILE, "w", encoding="utf-8") as f:
     json.dump(final_dataset, f, indent=2, ensure_ascii=False)
+
+os.replace(TMP_FILE, OUTPUT_FILE)
 
 print(f"\n{'='*50}")
 print(f"💾 Sauvegardé : {OUTPUT_FILE}")

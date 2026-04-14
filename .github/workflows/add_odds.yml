@@ -28,7 +28,7 @@ jobs:
 
       - name: Run enrich_leagues_with_odds script
         run: |
-          python scripts/enrich_leagues_with_odds.py
+          python scripts/add_odds.py
 
       - name: Commit and push leagues_with_odds
         run: |

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-prepare_prediction.py
+games_models.py
 Convertit today_matches.json en prediction_input.json utilisable par les modèles ML.
 L'entête complète du match est conservée dans chaque entrée.
 """
@@ -20,29 +20,20 @@ def parse_pct(val):
 
 
 def get_team_perspective_stats(match_data, team_name):
-    """
-    Retourne (goals_scored, goals_conceded, stats_from_team_pov)
-    en déterminant si l'équipe était home ou away dans ce match.
-    """
     t1 = match_data.get("team1", "")
-    t2 = match_data.get("team2", "")
     score_str = match_data.get("score", "0 - 0")
     parts = re.findall(r"\d+", score_str)
     g1, g2 = (int(parts[0]), int(parts[1])) if len(parts) >= 2 else (0, 0)
 
     stats = match_data.get("stats", {})
-
-    # Détermine si notre équipe est home ou away dans ce match
     is_home = team_name.lower() in t1.lower()
 
     if is_home:
         gs, gc = g1, g2
         pov = "home"
-        opp_pov = "away"
     else:
         gs, gc = g2, g1
         pov = "away"
-        opp_pov = "home"
 
     def get_stat(key, default=0.0):
         s = stats.get(key, {})
@@ -64,10 +55,6 @@ def get_team_perspective_stats(match_data, team_name):
 
 
 def compute_form_features(recent_matches, team_name, odds_context=None):
-    """
-    Calcule les features de forme à partir des matchs récents.
-    odds_context non disponible ici → on met 0
-    """
     wins = draws = losses = 0
     possession_list, shots_list, scored_list, conceded_list = [], [], [], []
     saves_list, corners_list = [], []
@@ -117,7 +104,6 @@ def compute_form_features(recent_matches, team_name, odds_context=None):
         "clean_sheet_rate": round(clean_sheets / n, 4),
         "big_win_rate": round(big_wins / n, 4),
         "total_goals_avg": avg([s + c for s, c in zip(scored_list, conceded_list)]),
-        # Pas de cotes dans recent_form → valeurs neutres
         "avg_odds_home": 0.0,
         "avg_odds_draw": 0.0,
         "avg_odds_away": 0.0,
@@ -126,7 +112,6 @@ def compute_form_features(recent_matches, team_name, odds_context=None):
 
 
 def get_standing(league_standing, team_name):
-    """Retourne les stats de classement d'une équipe."""
     for entry in league_standing:
         if entry.get("name", "").lower() == team_name.lower():
             s = entry.get("stats", {})
@@ -146,7 +131,6 @@ def get_standing(league_standing, team_name):
 
 
 def compute_h2h_features(h2h_matches, home_team, away_team):
-    """Features issues des confrontations directes."""
     home_wins = away_wins = draws = 0
     total_goals = []
 
@@ -188,8 +172,6 @@ def compute_h2h_features(h2h_matches, home_team, away_team):
 
 
 def build_prediction_entry(match):
-    """Construit une entrée complète pour la prédiction."""
-
     home_team = match["home"]["team"]
     away_team = match["away"]["team"]
     odds = match.get("odds", {})
@@ -197,18 +179,14 @@ def build_prediction_entry(match):
     league_standing = match.get("league_standing", [])
     h2h = match.get("h2h", [])
 
-    # ── Forme récente ──────────────────────────────────────────────────────────
     form_home = compute_form_features(recent_form.get("home", []), home_team)
     form_away = compute_form_features(recent_form.get("away", []), away_team)
 
-    # ── Classement ────────────────────────────────────────────────────────────
     standing_home = get_standing(league_standing, home_team)
     standing_away = get_standing(league_standing, away_team)
 
-    # ── H2H ───────────────────────────────────────────────────────────────────
     h2h_features = compute_h2h_features(h2h, home_team, away_team)
 
-    # ── Cotes & probabilités implicites normalisées ────────────────────────────
     odds_home = odds.get("home", 0)
     odds_draw = odds.get("draw", 0)
     odds_away = odds.get("away", 0)
@@ -220,9 +198,7 @@ def build_prediction_entry(match):
     imp_draw = round(raw_pd / total_raw, 4)
     imp_away = round(raw_pa / total_raw, 4)
 
-    # ── Features (alignées sur model_1x2.json) ────────────────────────────────
     features = {
-        # Stats moyennes 7 matchs (alignées avec dataset d'entraînement)
         "moy_possession_home": form_home["avg_possession"],
         "moy_possession_away": form_away["avg_possession"],
         "moy_shots_ontarget_home": form_home["avg_shots_on_target"],
@@ -231,12 +207,10 @@ def build_prediction_entry(match):
         "moy_buts_marques_away": form_away["avg_scored"],
         "moy_buts_encaisses_home": form_home["avg_conceded"],
         "moy_buts_encaisses_away": form_away["avg_conceded"],
-        # Différentiels
         "diff_possession": round(form_home["avg_possession"] - form_away["avg_possession"], 4),
         "diff_shots_ontarget": round(form_home["avg_shots_on_target"] - form_away["avg_shots_on_target"], 4),
         "diff_buts_marques": round(form_home["avg_scored"] - form_away["avg_scored"], 4),
         "diff_buts_encaisses": round(form_home["avg_conceded"] - form_away["avg_conceded"], 4),
-        # Forme home
         "home_wins": form_home["wins"],
         "home_draws": form_home["draws"],
         "home_losses": form_home["losses"],
@@ -247,7 +221,6 @@ def build_prediction_entry(match):
         "home_avg_odds_draw": form_home["avg_odds_draw"],
         "home_avg_odds_away": form_home["avg_odds_away"],
         "home_avg_implied_prob_winner": form_home["avg_implied_prob_winner"],
-        # Forme away
         "away_wins": form_away["wins"],
         "away_draws": form_away["draws"],
         "away_losses": form_away["losses"],
@@ -258,7 +231,6 @@ def build_prediction_entry(match):
         "away_avg_odds_draw": form_away["avg_odds_draw"],
         "away_avg_odds_away": form_away["avg_odds_away"],
         "away_avg_implied_prob_winner": form_away["avg_implied_prob_winner"],
-        # Scores récents
         "home_avg_scored": form_home["avg_scored"],
         "home_avg_conceded": form_home["avg_conceded"],
         "home_clean_sheet_rate": form_home["clean_sheet_rate"],
@@ -269,9 +241,8 @@ def build_prediction_entry(match):
         "away_clean_sheet_rate": form_away["clean_sheet_rate"],
         "away_big_win_rate": form_away["big_win_rate"],
         "away_total_goals_avg": form_away["total_goals_avg"],
-        # Pos adversaires (approx via classement des adversaires récents)
         "home_vaincu_count": form_home["wins"],
-        "home_vaincu_avg_pos": 0.0,  # non dispo sans lookup classement par match
+        "home_vaincu_avg_pos": 0.0,
         "home_vaincu_min_pos": 0,
         "away_vaincu_count": form_away["wins"],
         "away_vaincu_avg_pos": 0.0,
@@ -280,14 +251,12 @@ def build_prediction_entry(match):
         "home_invaincu_avg_pos": 0.0,
         "away_invaincu_count": form_away["wins"] + form_away["draws"],
         "away_invaincu_avg_pos": 0.0,
-        # Cotes du match
         "odds_home": odds_home,
         "odds_draw": odds_draw,
         "odds_away": odds_away,
         "imp_prob_home": imp_home,
         "imp_prob_draw": imp_draw,
         "imp_prob_away": imp_away,
-        # Classement actuel (features bonus)
         "home_position": standing_home["position"],
         "home_points": standing_home["points"],
         "home_goal_diff": standing_home["goal_diff"],
@@ -298,9 +267,7 @@ def build_prediction_entry(match):
         "away_season_win_rate": round(standing_away["wins"] / standing_away["gp"], 4) if standing_away["gp"] else 0,
         "diff_position": standing_home["position"] - standing_away["position"],
         "diff_points": standing_home["points"] - standing_away["points"],
-        # H2H
         **h2h_features,
-        # Méta (conservé pour traçabilité)
         "gameId": match.get("gameId", ""),
         "league": match.get("league", ""),
         "date": match.get("date", ""),
@@ -308,7 +275,6 @@ def build_prediction_entry(match):
         "team2": away_team,
     }
 
-    # ── Entête complète conservée ──────────────────────────────────────────────
     header = {
         "gameId": match.get("gameId"),
         "date": match.get("date"),
@@ -327,8 +293,8 @@ def build_prediction_entry(match):
 
 def main():
     root = Path(__file__).parent.parent
-    input_path = root / "today_matches.json"
-    output_path = root / "dataset" / "prediction_input.json"
+    input_path = root / "data" / "football" / "today_matches.json"
+    output_path = root / "data" / "football" / "prediction_input.json"
     output_path.parent.mkdir(exist_ok=True)
 
     print(f"Lecture de {input_path} ...")

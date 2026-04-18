@@ -32,7 +32,7 @@ jobs:
 
       - name: Commit & push prediction input
         run: |
-          git add dataset/prediction_input.json
+          git add data/football/prediction_input.json
           git diff --cached --quiet && echo "Aucun changement à committer." || (
             git commit -m "🔮 [games_models] Mise à jour prediction_input.json"
             git push origin main

@@ -1,0 +1,39 @@
+name: 🔮 Prepare Prediction Input
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 3 * * *'
+
+jobs:
+  prepare-prediction:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      - name: Run games_models.py
+        run: python scripts/games_models.py
+
+      - name: Commit & push prediction input
+        run: |
+          git add dataset/prediction_input.json
+          git diff --cached --quiet && echo "Aucun changement à committer." || (
+            git commit -m "🔮 [games_models] Mise à jour prediction_input.json"
+            git push origin main
+          )

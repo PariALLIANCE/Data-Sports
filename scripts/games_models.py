@@ -293,7 +293,7 @@ def build_prediction_entry(match):
 
 def main():
     root = Path(__file__).parent.parent
-    input_path = root / "data" / "football" / "today_matches.json"
+    input_path = root / "data" / "football" / "games_of_day.json"
     output_path = root / "data" / "football" / "prediction_input.json"
     output_path.parent.mkdir(exist_ok=True)
 

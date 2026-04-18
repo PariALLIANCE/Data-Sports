@@ -1,0 +1,40 @@
+name: 4️⃣ Generate ML Datasets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-datasets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --upgrade pip
+
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      - name: Run 4_data.py
+        run: python scripts/4_data.py
+
+      - name: Commit & push generated datasets
+        run: |
+          git add dataset/
+          git diff --cached --quiet && echo "Aucun changement à committer." || (
+            git commit -m "🤖 [4_data] Mise à jour des datasets ML"
+            git push origin main
+          )

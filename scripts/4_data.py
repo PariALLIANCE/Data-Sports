@@ -37,7 +37,6 @@ def parse_form_with_odds(form_list):
                 odds_home_list.append(o1)
                 odds_draw_list.append(od)
                 odds_away_list.append(o2)
-                # probabilité implicite du vainqueur réel
                 if result_key == "W":
                     implied_prob_winner_list.append(1 / o1)
                 elif result_key == "D":
@@ -135,7 +134,6 @@ def extract_base_features(match):
     odds_draw = cotes.get("odds_draw", 0)
     odds_away = cotes.get("odds_away", 0)
 
-    # Probabilités implicites normalisées (margin removal simplifié)
     raw_ph = 1 / odds_home if odds_home else 0
     raw_pd = 1 / odds_draw if odds_draw else 0
     raw_pa = 1 / odds_away if odds_away else 0
@@ -145,7 +143,6 @@ def extract_base_features(match):
     imp_away = round(raw_pa / total_raw, 4)
 
     features = {
-        # Stats moyennes 7 matchs
         "moy_possession_home": m7.get("moy_possession_home", 0),
         "moy_possession_away": m7.get("moy_possession_away", 0),
         "moy_shots_ontarget_home": m7.get("moy_shots_ontarget_home", 0),
@@ -154,12 +151,10 @@ def extract_base_features(match):
         "moy_buts_marques_away": m7.get("moy_buts_marques_away", 0),
         "moy_buts_encaisses_home": m7.get("moy_buts_encaisses_home", 0),
         "moy_buts_encaisses_away": m7.get("moy_buts_encaisses_away", 0),
-        # Différentiels (home - away)
         "diff_possession": round(m7.get("moy_possession_home", 0) - m7.get("moy_possession_away", 0), 4),
         "diff_shots_ontarget": round(m7.get("moy_shots_ontarget_home", 0) - m7.get("moy_shots_ontarget_away", 0), 4),
         "diff_buts_marques": round(m7.get("moy_buts_marques_home", 0) - m7.get("moy_buts_marques_away", 0), 4),
         "diff_buts_encaisses": round(m7.get("moy_buts_encaisses_home", 0) - m7.get("moy_buts_encaisses_away", 0), 4),
-        # Forme home
         "home_wins": form_home["wins"],
         "home_draws": form_home["draws"],
         "home_losses": form_home["losses"],
@@ -170,7 +165,6 @@ def extract_base_features(match):
         "home_avg_odds_draw": form_home["avg_odds_draw"],
         "home_avg_odds_away": form_home["avg_odds_away"],
         "home_avg_implied_prob_winner": form_home["avg_implied_prob_winner"],
-        # Forme away
         "away_wins": form_away["wins"],
         "away_draws": form_away["draws"],
         "away_losses": form_away["losses"],
@@ -181,19 +175,16 @@ def extract_base_features(match):
         "away_avg_odds_draw": form_away["avg_odds_draw"],
         "away_avg_odds_away": form_away["avg_odds_away"],
         "away_avg_implied_prob_winner": form_away["avg_implied_prob_winner"],
-        # Position adversaires vaincus
         "home_vaincu_count": pos_vaincu_home["count"],
         "home_vaincu_avg_pos": pos_vaincu_home["avg_pos"],
         "home_vaincu_min_pos": pos_vaincu_home["min_pos"],
         "away_vaincu_count": pos_vaincu_away["count"],
         "away_vaincu_avg_pos": pos_vaincu_away["avg_pos"],
         "away_vaincu_min_pos": pos_vaincu_away["min_pos"],
-        # Position adversaires invaincu
         "home_invaincu_count": pos_invaincu_home["count"],
         "home_invaincu_avg_pos": pos_invaincu_home["avg_pos"],
         "away_invaincu_count": pos_invaincu_away["count"],
         "away_invaincu_avg_pos": pos_invaincu_away["avg_pos"],
-        # Scores récents
         "home_avg_scored": scores_home.get("avg_scored", 0),
         "home_avg_conceded": scores_home.get("avg_conceded", 0),
         "home_clean_sheet_rate": scores_home.get("clean_sheet_rate", 0),
@@ -204,14 +195,12 @@ def extract_base_features(match):
         "away_clean_sheet_rate": scores_away.get("clean_sheet_rate", 0),
         "away_big_win_rate": scores_away.get("big_win_rate", 0),
         "away_total_goals_avg": scores_away.get("total_goals_avg", 0),
-        # Cotes du match
         "odds_home": odds_home,
         "odds_draw": odds_draw,
         "odds_away": odds_away,
         "imp_prob_home": imp_home,
         "imp_prob_draw": imp_draw,
         "imp_prob_away": imp_away,
-        # Méta
         "gameId": match.get("gameId", ""),
         "league": match.get("league", ""),
         "date": match.get("date", ""),
@@ -237,7 +226,7 @@ def determine_1x2(targets):
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
-    root = Path(__file__).parent
+    root = Path(__file__).parent.parent  # scripts/ → racine du repo
     input_path = root / "dataset_ml.json"
     output_dir = root / "dataset"
     output_dir.mkdir(exist_ok=True)
@@ -246,7 +235,6 @@ def main():
     with open(input_path, "r", encoding="utf-8") as f:
         raw = json.load(f)
 
-    # Normalise : accepte liste directe ou dict avec clé 'matches'
     if isinstance(raw, dict):
         matches = raw.get("matches", list(raw.values()))
     else:
@@ -291,7 +279,6 @@ def main():
                 "label_score_away": int(sa),
             })
 
-    # Sauvegarde
     outputs = {
         "model_1x2.json": ds_1x2,
         "model_over_under_2_5.json": ds_ou25,

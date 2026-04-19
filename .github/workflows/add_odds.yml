@@ -30,12 +30,13 @@ jobs:
         run: |
           python scripts/add_odds.py
 
-      - name: Commit and push leagues_with_odds
+      - name: Commit and push
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/football/leagues/
           git add data/football/leagues_with_odds/
           git diff --cached --quiet && echo "Aucune modification détectée" && exit 0
-          git commit -m "chore: update leagues_with_odds [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git commit -m "chore: update leagues with odds [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git pull --rebase origin main
           git push origin main

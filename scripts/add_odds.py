@@ -13,11 +13,10 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 
-LEAGUES_DIR  = "data/football/leagues"
-BACKUP_DIR   = "data/football/leagues_backup"
+LEAGUES_DIR   = "data/football/leagues"
 WITH_ODDS_DIR = "data/football/leagues_with_odds"
-MAX_MISS     = 10
-START_FROM   = ""
+MAX_MISS      = 10
+START_FROM    = ""
 
 # ================= UTILITAIRES =================
 def us_to_decimal(odds_str):
@@ -75,17 +74,6 @@ def extract_odds(match_url):
         print(f"    ⚠️  Erreur : {e}")
         return None
 
-# ================= NETTOYAGE leagues_with_odds =================
-if os.path.exists(WITH_ODDS_DIR):
-    old_files = glob.glob(os.path.join(WITH_ODDS_DIR, "*.json"))
-    if old_files:
-        print(f"🗑️  Suppression de {len(old_files)} fichier(s) dans {WITH_ODDS_DIR}/")
-        for f in old_files:
-            os.remove(f)
-        print("   ✅ Suppression terminée\n")
-    else:
-        print(f"📂 {WITH_ODDS_DIR}/ déjà vide\n")
-
 # ================= DÉCOUVERTE DES FICHIERS =================
 json_files = sorted(glob.glob(os.path.join(LEAGUES_DIR, "*.json")))
 
@@ -104,12 +92,19 @@ if START_FROM:
 
 print(f"📋 {len(json_files)} ligue(s) à traiter\n")
 
-# ================= BACKUP DES ORIGINAUX =================
-os.makedirs(BACKUP_DIR, exist_ok=True)
-print(f"💾 Sauvegarde des originaux dans {BACKUP_DIR}/")
+# ================= NETTOYAGE + BACKUP DANS leagues_with_odds =================
+os.makedirs(WITH_ODDS_DIR, exist_ok=True)
+
+old_files = glob.glob(os.path.join(WITH_ODDS_DIR, "*.json"))
+if old_files:
+    print(f"🗑️  Suppression de {len(old_files)} fichier(s) dans {WITH_ODDS_DIR}/")
+    for f in old_files:
+        os.remove(f)
+    print("   ✅ Suppression terminée")
+
+print(f"💾 Sauvegarde des originaux dans {WITH_ODDS_DIR}/")
 for json_file in json_files:
-    dest = os.path.join(BACKUP_DIR, os.path.basename(json_file))
-    shutil.copy2(json_file, dest)
+    shutil.copy2(json_file, os.path.join(WITH_ODDS_DIR, os.path.basename(json_file)))
 print(f"   ✅ {len(json_files)} fichier(s) sauvegardé(s)\n")
 print("=" * 50)
 
@@ -206,5 +201,4 @@ print(f"   Ligues traitées              : {len(json_files)}")
 print(f"   Fichiers avec arrêt anticipé : {grand_total_skipped_file}")
 print(f"   Matchs enrichis (cotes)      : {grand_total_with_odds}")
 print(f"   Matchs sans cotes            : {grand_total_without_odds}")
-print(f"   Backup disponible dans       : {BACKUP_DIR}/")
 print(f"{'='*50}")

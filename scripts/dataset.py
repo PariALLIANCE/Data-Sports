@@ -1,4 +1,3 @@
-Voici le script complet nettoyé, sans H2H, avec vérification stats non vides et cotes présentes, robuste :
 import json
 import os
 import glob

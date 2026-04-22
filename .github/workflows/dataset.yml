@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
@@ -17,19 +19,15 @@ jobs:
           python-version: "3.11"
 
       - name: 📦 Install dependencies
-        run: |
-          pip install --upgrade pip
+        run: pip install --upgrade pip
 
-      - name: ▶️ Run dataset script
-        run: |
-          python scripts/dataset.py
-
-      - name: 💾 Commit & push dataset
+      - name: 🔧 Configure git
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
-          git add dataset_ml.json
-
-          git diff --cached --quiet || git commit -m "🤖 Manual dataset update"
-          git push
+      - name: ▶️ Run dataset script (push ligue par ligue)
+        run: |
+          python scripts/dataset.py
+        env:
+          GIT_PUSH: "true"

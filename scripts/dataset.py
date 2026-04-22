@@ -8,6 +8,7 @@ from collections import defaultdict
 LEAGUES_DIR    = "data/football/leagues"
 STANDINGS_FILE = "data/football/standings/Standings.json"
 OUTPUT_FILE    = "dataset_ml.json"
+TMP_DIR        = "data/football/dataset_tmp"
 
 # ================= UTILITAIRES =================
 
@@ -56,7 +57,6 @@ def safe_avg(values):
     return round(sum(valid) / len(valid), 2)
 
 def is_valid_match(m):
-    """Vérifie cotes présentes et stats non vides."""
     if "odds" not in m:
         return False
     odds = m["odds"]
@@ -181,9 +181,11 @@ print("=" * 60)
 print("🔨 Construction du dataset...")
 print("=" * 60)
 
+os.makedirs(TMP_DIR, exist_ok=True)
+
 try:
-    dataset = []
     processed_game_ids = set()
+    league_tmp_files   = []
 
     for jf in json_files:
         league_name = os.path.splitext(os.path.basename(jf))[0]
@@ -206,9 +208,11 @@ try:
         matches_valid.sort(key=lambda m: m["_date_obj"])
 
         if not matches_valid:
+            print(f"  ⏭️  {league_name} : aucun match valide")
             continue
 
-        league_count = 0
+        league_entries = []
+        league_count   = 0
 
         for match in matches_valid:
             game_id = match.get("gameId")
@@ -223,7 +227,6 @@ try:
             score_a  = match["_score_away"]
             odds     = match["odds"]
 
-            # ── Historique 6 matchs ───────────────────────────────────────
             hist_home = get_last_n(team1, dt, game_id, n=6)
             hist_away = get_last_n(team2, dt, game_id, n=6)
 
@@ -233,7 +236,6 @@ try:
             hist_home_chron = sorted(hist_home, key=lambda m: m["_date_obj"])
             hist_away_chron = sorted(hist_away, key=lambda m: m["_date_obj"])
 
-            # ── Métriques ─────────────────────────────────────────────────
             means_home = calc_means(hist_home_chron, team1)
             means_away = calc_means(hist_away_chron, team2)
 
@@ -246,10 +248,10 @@ try:
             scores_home = build_scores_recents(hist_home_chron)
             scores_away = build_scores_recents(hist_away_chron)
 
-            # ── Targets ───────────────────────────────────────────────────
             total_buts = score_h + score_a
             over_25    = 1 if total_buts > 2 else 0
             btts_yes   = 1 if score_h > 0 and score_a > 0 else 0
+            result_1x2 = "1" if score_h > score_a else ("X" if score_h == score_a else "2")
 
             entry = {
                 "gameId":  game_id,
@@ -287,8 +289,9 @@ try:
                 },
 
                 "targets": {
-                    "target_score_home": score_h,
-                    "target_score_away": score_a,
+                    "target_1X2":          result_1x2,
+                    "target_score_home":   score_h,
+                    "target_score_away":   score_a,
                     "target_over_under_2_5": {
                         "Over_2_5":  over_25,
                         "Under_2_5": 1 - over_25,
@@ -300,19 +303,37 @@ try:
                 },
             }
 
-            dataset.append(entry)
+            league_entries.append(entry)
             processed_game_ids.add(game_id)
             league_count += 1
 
+        # ── Sauvegarde intermédiaire par ligue ────────────────────────────
+        if league_entries:
+            tmp_path = os.path.join(TMP_DIR, f"{league_name}.json")
+            with open(tmp_path, "w", encoding="utf-8") as f:
+                json.dump(league_entries, f, ensure_ascii=False)
+            league_tmp_files.append(tmp_path)
+
         print(f"  ✅ {league_name} : {league_count} entrées générées")
+
+    # ── Assemblage final ──────────────────────────────────────────────────
+    dataset = []
+    for tmp_path in league_tmp_files:
+        with open(tmp_path, "r", encoding="utf-8") as f:
+            dataset.extend(json.load(f))
 
     if not dataset:
         print("⚠️  Dataset vide — aucune écriture effectuée")
     else:
-        tmp_file = OUTPUT_FILE + ".tmp"
-        with open(tmp_file, "w", encoding="utf-8") as f:
+        tmp_final = OUTPUT_FILE + ".tmp"
+        with open(tmp_final, "w", encoding="utf-8") as f:
             json.dump(dataset, f, indent=2, ensure_ascii=False)
-        os.replace(tmp_file, OUTPUT_FILE)
+        os.replace(tmp_final, OUTPUT_FILE)
+
+        # Nettoyage des fichiers tmp par ligue
+        for tmp_path in league_tmp_files:
+            os.remove(tmp_path)
+
         print(f"\n{'='*60}")
         print(f"💾 Dataset sauvegardé : {OUTPUT_FILE}")
         print(f"   Total entrées       : {len(dataset)}")
@@ -320,5 +341,6 @@ try:
 
 except Exception as e:
     print(f"\n❌ Erreur durant la construction : {e}")
-    print("⚠️  Aucune écriture effectuée — dataset_ml.json inchangé")
+    print("⚠️  Fichiers intermédiaires conservés dans {TMP_DIR}/")
+    print("⚠️  dataset_ml.json inchangé")
     raise

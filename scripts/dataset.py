@@ -9,6 +9,7 @@ LEAGUES_DIR    = "data/football/leagues"
 STANDINGS_FILE = "data/football/standings/Standings.json"
 OUTPUT_FILE    = "dataset_ml.json"
 TMP_DIR        = "data/football/dataset_tmp"
+MIN_ENTRIES    = 30
 
 # ================= UTILITAIRES =================
 
@@ -307,14 +308,18 @@ try:
             processed_game_ids.add(game_id)
             league_count += 1
 
-        # ── Sauvegarde intermédiaire par ligue ────────────────────────────
-        if league_entries:
-            tmp_path = os.path.join(TMP_DIR, f"{league_name}.json")
-            with open(tmp_path, "w", encoding="utf-8") as f:
-                json.dump(league_entries, f, ensure_ascii=False)
-            league_tmp_files.append(tmp_path)
+        # ── Filtre minimum 30 entrées ─────────────────────────────────────
+        if league_count < MIN_ENTRIES:
+            print(f"  ⛔ {league_name} : {league_count} entrées — ignorée (< {MIN_ENTRIES})")
+            continue
 
-        print(f"  ✅ {league_name} : {league_count} entrées générées")
+        # ── Sauvegarde intermédiaire par ligue ────────────────────────────
+        tmp_path = os.path.join(TMP_DIR, f"{league_name}.json")
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(league_entries, f, ensure_ascii=False)
+        league_tmp_files.append(tmp_path)
+
+        print(f"  ✅ {league_name} : {league_count} entrées générées et sauvegardées")
 
     # ── Assemblage final ──────────────────────────────────────────────────
     dataset = []
@@ -330,7 +335,6 @@ try:
             json.dump(dataset, f, indent=2, ensure_ascii=False)
         os.replace(tmp_final, OUTPUT_FILE)
 
-        # Nettoyage des fichiers tmp par ligue
         for tmp_path in league_tmp_files:
             os.remove(tmp_path)
 
@@ -341,6 +345,6 @@ try:
 
 except Exception as e:
     print(f"\n❌ Erreur durant la construction : {e}")
-    print("⚠️  Fichiers intermédiaires conservés dans {TMP_DIR}/")
+    print(f"⚠️  Fichiers intermédiaires conservés dans {TMP_DIR}/")
     print("⚠️  dataset_ml.json inchangé")
     raise

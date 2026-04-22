@@ -1,3 +1,4 @@
+Voici le script complet nettoyé, sans H2H, avec vérification stats non vides et cotes présentes, robuste :
 import json
 import os
 import glob
@@ -55,6 +56,23 @@ def safe_avg(values):
         return None
     return round(sum(valid) / len(valid), 2)
 
+def is_valid_match(m):
+    """Vérifie cotes présentes et stats non vides."""
+    if "odds" not in m:
+        return False
+    odds = m["odds"]
+    if not odds.get("home") or not odds.get("away") or not odds.get("draw"):
+        return False
+    stats = m.get("stats")
+    if not stats or not isinstance(stats, dict) or len(stats) == 0:
+        return False
+    score_h, score_a = parse_score(m.get("score", ""))
+    if score_h is None:
+        return False
+    if parse_date(m.get("date", "")) is None:
+        return False
+    return True
+
 # ================= CHARGEMENT STANDINGS =================
 print(f"📂 Chargement des classements : {STANDINGS_FILE}")
 with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
@@ -69,63 +87,36 @@ if not json_files:
     print(f"❌ Aucun fichier JSON trouvé dans {LEAGUES_DIR}")
     exit(1)
 
-all_matches_with_odds = []
+all_matches = []
 
 for jf in json_files:
     league_name = os.path.splitext(os.path.basename(jf))[0]
     with open(jf, "r", encoding="utf-8") as f:
-        matches = json.load(f)
-    for m in matches:
-        if "odds" not in m:
+        raw = json.load(f)
+    for m in raw:
+        if not is_valid_match(m):
             continue
-        if not m.get("stats"):
-            continue
-        score_h, score_a = parse_score(m.get("score", ""))
-        if score_h is None:
-            continue
-        dt = parse_date(m.get("date", ""))
-        if dt is None:
-            continue
-        m["_date_obj"]   = dt
-        m["_score_home"] = score_h
-        m["_score_away"] = score_a
-        m["_league"]     = league_name
-        all_matches_with_odds.append(m)
+        mc = dict(m)
+        score_h, score_a = parse_score(mc.get("score", ""))
+        mc["_date_obj"]   = parse_date(mc.get("date", ""))
+        mc["_score_home"] = score_h
+        mc["_score_away"] = score_a
+        mc["_league"]     = league_name
+        all_matches.append(mc)
 
-all_matches_with_odds.sort(key=lambda m: m["_date_obj"])
-print(f"   {len(all_matches_with_odds)} matchs valides chargés\n")
+all_matches.sort(key=lambda m: m["_date_obj"])
+print(f"   {len(all_matches)} matchs valides chargés\n")
 
 # ── Index par équipe ──────────────────────────────────────────────────────────
 team_history = defaultdict(list)
-for m in all_matches_with_odds:
-    t1 = m.get("team1", "").strip()
-    t2 = m.get("team2", "").strip()
-    team_history[t1].append(m)
-    team_history[t2].append(m)
-
-# ── Index H2H : paire (team_a, team_b) triée → matchs avec cotes ─────────────
-h2h_index = defaultdict(list)
-for m in all_matches_with_odds:
-    t1  = m.get("team1", "").strip()
-    t2  = m.get("team2", "").strip()
-    key = tuple(sorted([t1, t2]))
-    h2h_index[key].append(m)
+for m in all_matches:
+    team_history[m.get("team1", "").strip()].append(m)
+    team_history[m.get("team2", "").strip()].append(m)
 
 # ================= HELPERS =================
 
 def get_last_n(team_name, before_dt, before_game_id, n=6):
     history = team_history.get(team_name, [])
-    prev = [
-        m for m in history
-        if m["_date_obj"] < before_dt or
-           (m["_date_obj"] == before_dt and m.get("gameId") != before_game_id)
-    ]
-    prev.sort(key=lambda m: m["_date_obj"], reverse=True)
-    return prev[:n]
-
-def get_h2h(team1, team2, before_dt, before_game_id, n=5):
-    key = tuple(sorted([team1, team2]))
-    history = h2h_index.get(key, [])
     prev = [
         m for m in history
         if m["_date_obj"] < before_dt or
@@ -154,10 +145,10 @@ def calc_means(history, team_name):
 def build_form(history, team_name):
     form = []
     for m in history:
-        is_h     = m.get("team1", "").strip() == team_name
-        sh, sa   = m["_score_home"], m["_score_away"]
-        res      = result_for_team(sh, sa, "home" if is_h else "away")
-        o        = m["odds"]
+        is_h   = m.get("team1", "").strip() == team_name
+        sh, sa = m["_score_home"], m["_score_away"]
+        res    = result_for_team(sh, sa, "home" if is_h else "away")
+        o      = m["odds"]
         odd_home, odd_draw, odd_away = o["home"], o["draw"], o["away"]
         if sh > sa:
             winner_odd, draw_odd_val, loser_odd = odd_home, odd_draw, odd_away
@@ -186,207 +177,149 @@ def build_pos_adv(history, team_name):
 def build_scores_recents(history):
     return " | ".join(m.get("score", "?") for m in history)
 
-def calc_h2h_metrics(h2h_matches, ref_team):
-    """
-    Calcule les métriques H2H du point de vue de ref_team.
-    Matchs ordonnés du plus récent au plus ancien.
-    """
-    wins = nuls = losses = 0
-    buts_m, buts_e = [], []
-    form = []
-
-    for m in h2h_matches:
-        is_h   = m.get("team1", "").strip() == ref_team
-        sh, sa = m["_score_home"], m["_score_away"]
-        res    = result_for_team(sh, sa, "home" if is_h else "away")
-
-        if res == "V":
-            wins += 1
-        elif res == "N":
-            nuls += 1
-        else:
-            losses += 1
-
-        buts_m.append(sh if is_h else sa)
-        buts_e.append(sa if is_h else sh)
-
-        o = m["odds"]
-        odd_home, odd_draw, odd_away = o["home"], o["draw"], o["away"]
-        if sh > sa:
-            winner_odd, draw_odd_val, loser_odd = odd_home, odd_draw, odd_away
-        elif sa > sh:
-            winner_odd, draw_odd_val, loser_odd = odd_away, odd_draw, odd_home
-        else:
-            winner_odd, draw_odd_val, loser_odd = odd_home, odd_draw, odd_away
-        form.append(f"{res}:{winner_odd},{draw_odd_val},{loser_odd}")
-
-    return {
-        "h2h_wins":              wins,
-        "h2h_nuls":              nuls,
-        "h2h_losses":            losses,
-        "h2h_moy_buts_marques":  safe_avg(buts_m),
-        "h2h_moy_buts_encaisses":safe_avg(buts_e),
-        "h2h_form":              form,   # du plus récent au plus ancien
-    }
-
 # ================= CONSTRUCTION DU DATASET =================
-dataset = []
-processed_game_ids = set()
-
 print("=" * 60)
 print("🔨 Construction du dataset...")
 print("=" * 60)
 
-for jf in json_files:
-    league_name = os.path.splitext(os.path.basename(jf))[0]
+try:
+    dataset = []
+    processed_game_ids = set()
 
-    with open(jf, "r", encoding="utf-8") as f:
-        matches_raw = json.load(f)
+    for jf in json_files:
+        league_name = os.path.splitext(os.path.basename(jf))[0]
 
-    matches_valid = []
-    for m in matches_raw:
-        if "odds" not in m:
-            continue
-        if not m.get("stats"):
-            continue
-        score_h, score_a = parse_score(m.get("score", ""))
-        if score_h is None:
-            continue
-        dt = parse_date(m.get("date", ""))
-        if dt is None:
-            continue
-        m["_date_obj"]   = dt
-        m["_score_home"] = score_h
-        m["_score_away"] = score_a
-        m["_league"]     = league_name
-        matches_valid.append(m)
+        with open(jf, "r", encoding="utf-8") as f:
+            matches_raw = json.load(f)
 
-    matches_valid.sort(key=lambda m: m["_date_obj"])
+        matches_valid = []
+        for m in matches_raw:
+            if not is_valid_match(m):
+                continue
+            mc = dict(m)
+            score_h, score_a = parse_score(mc.get("score", ""))
+            mc["_date_obj"]   = parse_date(mc.get("date", ""))
+            mc["_score_home"] = score_h
+            mc["_score_away"] = score_a
+            mc["_league"]     = league_name
+            matches_valid.append(mc)
 
-    if not matches_valid:
-        continue
+        matches_valid.sort(key=lambda m: m["_date_obj"])
 
-    league_count = 0
-
-    for match in matches_valid:
-        game_id = match.get("gameId")
-        if game_id in processed_game_ids:
+        if not matches_valid:
             continue
 
-        team1    = match.get("team1", "").strip()
-        team2    = match.get("team2", "").strip()
-        date_str = match.get("date", "")
-        dt       = match["_date_obj"]
-        score_h  = match["_score_home"]
-        score_a  = match["_score_away"]
-        odds     = match["odds"]
+        league_count = 0
 
-        # ── Historique 6 matchs par équipe ────────────────────────────────
-        hist_home = get_last_n(team1, dt, game_id, n=6)
-        hist_away = get_last_n(team2, dt, game_id, n=6)
+        for match in matches_valid:
+            game_id = match.get("gameId")
+            if not game_id or game_id in processed_game_ids:
+                continue
 
-        if len(hist_home) < 6 or len(hist_away) < 6:
-            continue
+            team1    = match.get("team1", "").strip()
+            team2    = match.get("team2", "").strip()
+            date_str = match.get("date", "")
+            dt       = match["_date_obj"]
+            score_h  = match["_score_home"]
+            score_a  = match["_score_away"]
+            odds     = match["odds"]
 
-        # Ordre chronologique pour les moyennes/form
-        hist_home_chron = sorted(hist_home, key=lambda m: m["_date_obj"])
-        hist_away_chron = sorted(hist_away, key=lambda m: m["_date_obj"])
+            # ── Historique 6 matchs ───────────────────────────────────────
+            hist_home = get_last_n(team1, dt, game_id, n=6)
+            hist_away = get_last_n(team2, dt, game_id, n=6)
 
-        # ── H2H (max 5, avec cotes uniquement, déjà filtré) ───────────────
-        h2h_matches = get_h2h(team1, team2, dt, game_id, n=5)
-        # Ordre du plus récent au plus ancien pour les métriques
-        h2h_recent = sorted(h2h_matches, key=lambda m: m["_date_obj"], reverse=True)
+            if len(hist_home) < 6 or len(hist_away) < 6:
+                continue
 
-        # ── Métriques ─────────────────────────────────────────────────────
-        means_home = calc_means(hist_home_chron, team1)
-        means_away = calc_means(hist_away_chron, team2)
+            hist_home_chron = sorted(hist_home, key=lambda m: m["_date_obj"])
+            hist_away_chron = sorted(hist_away, key=lambda m: m["_date_obj"])
 
-        form_home = build_form(hist_home_chron, team1)
-        form_away = build_form(hist_away_chron, team2)
+            # ── Métriques ─────────────────────────────────────────────────
+            means_home = calc_means(hist_home_chron, team1)
+            means_away = calc_means(hist_away_chron, team2)
 
-        vaincu_h, invaincu_h = build_pos_adv(hist_home_chron, team1)
-        vaincu_a, invaincu_a = build_pos_adv(hist_away_chron, team2)
+            form_home = build_form(hist_home_chron, team1)
+            form_away = build_form(hist_away_chron, team2)
 
-        scores_home = build_scores_recents(hist_home_chron)
-        scores_away = build_scores_recents(hist_away_chron)
+            vaincu_h, invaincu_h = build_pos_adv(hist_home_chron, team1)
+            vaincu_a, invaincu_a = build_pos_adv(hist_away_chron, team2)
 
-        h2h_metrics_home = calc_h2h_metrics(h2h_recent, team1)
-        h2h_metrics_away = calc_h2h_metrics(h2h_recent, team2)
+            scores_home = build_scores_recents(hist_home_chron)
+            scores_away = build_scores_recents(hist_away_chron)
 
-        # ── Targets ───────────────────────────────────────────────────────
-        total_buts = score_h + score_a
-        over_25    = 1 if total_buts > 2 else 0
-        btts_yes   = 1 if score_h > 0 and score_a > 0 else 0
+            # ── Targets ───────────────────────────────────────────────────
+            total_buts = score_h + score_a
+            over_25    = 1 if total_buts > 2 else 0
+            btts_yes   = 1 if score_h > 0 and score_a > 0 else 0
 
-        # ── Assemblage ────────────────────────────────────────────────────
-        entry = {
-            "gameId":  game_id,
-            "date":    date_str,
-            "league":  league_name,
-            "team1":   team1,
-            "team2":   team2,
+            entry = {
+                "gameId":  game_id,
+                "date":    date_str,
+                "league":  league_name,
+                "team1":   team1,
+                "team2":   team2,
 
-            "Moy_6derniersmatchs": {
-                "moy_possession_home":     means_home["moy_possession"],
-                "moy_possession_away":     means_away["moy_possession"],
-                "moy_shots_ontarget_home": means_home["moy_shots_ontarget"],
-                "moy_shots_ontarget_away": means_away["moy_shots_ontarget"],
-                "moy_buts_marques_home":   means_home["moy_buts_marques"],
-                "moy_buts_marques_away":   means_away["moy_buts_marques"],
-                "moy_buts_encaisses_home": means_home["moy_buts_encaisses"],
-                "moy_buts_encaisses_away": means_away["moy_buts_encaisses"],
-            },
-
-            "Form_recents_with_odds_home": form_home,
-            "Form_recents_with_odds_away": form_away,
-
-            "pos_adv_vaincu_home":   vaincu_h,
-            "pos_adv_vaincu_away":   vaincu_a,
-            "pos_adv_invaincu_home": invaincu_h,
-            "pos_adv_invaincu_away": invaincu_a,
-
-            "scores_finaux_recents_home": scores_home,
-            "scores_finaux_recents_away": scores_away,
-
-            "h2h": {
-                "nb_matchs": len(h2h_recent),
-                "home": h2h_metrics_home,
-                "away": h2h_metrics_away,
-            },
-
-            "cotes_match": {
-                "odds_home": odds.get("home"),
-                "odds_away": odds.get("away"),
-                "odds_draw": odds.get("draw"),
-            },
-
-            "targets": {
-                "target_score_home": score_h,
-                "target_score_away": score_a,
-                "target_over_under_2_5": {
-                    "Over_2_5":  over_25,
-                    "Under_2_5": 1 - over_25,
+                "Moy_6derniersmatchs": {
+                    "moy_possession_home":     means_home["moy_possession"],
+                    "moy_possession_away":     means_away["moy_possession"],
+                    "moy_shots_ontarget_home": means_home["moy_shots_ontarget"],
+                    "moy_shots_ontarget_away": means_away["moy_shots_ontarget"],
+                    "moy_buts_marques_home":   means_home["moy_buts_marques"],
+                    "moy_buts_marques_away":   means_away["moy_buts_marques"],
+                    "moy_buts_encaisses_home": means_home["moy_buts_encaisses"],
+                    "moy_buts_encaisses_away": means_away["moy_buts_encaisses"],
                 },
-                "target_btts": {
-                    "Yes": btts_yes,
-                    "No":  1 - btts_yes,
+
+                "Form_recents_with_odds_home": form_home,
+                "Form_recents_with_odds_away": form_away,
+
+                "pos_adv_vaincu_home":   vaincu_h,
+                "pos_adv_vaincu_away":   vaincu_a,
+                "pos_adv_invaincu_home": invaincu_h,
+                "pos_adv_invaincu_away": invaincu_a,
+
+                "scores_finaux_recents_home": scores_home,
+                "scores_finaux_recents_away": scores_away,
+
+                "cotes_match": {
+                    "odds_home": odds.get("home"),
+                    "odds_away": odds.get("away"),
+                    "odds_draw": odds.get("draw"),
                 },
-            },
-        }
 
-        dataset.append(entry)
-        processed_game_ids.add(game_id)
-        league_count += 1
+                "targets": {
+                    "target_score_home": score_h,
+                    "target_score_away": score_a,
+                    "target_over_under_2_5": {
+                        "Over_2_5":  over_25,
+                        "Under_2_5": 1 - over_25,
+                    },
+                    "target_btts": {
+                        "Yes": btts_yes,
+                        "No":  1 - btts_yes,
+                    },
+                },
+            }
 
-    print(f"  ✅ {league_name} : {league_count} entrées générées")
+            dataset.append(entry)
+            processed_game_ids.add(game_id)
+            league_count += 1
 
-# ================= SAUVEGARDE =================
-tmp_file = OUTPUT_FILE + ".tmp"
-with open(tmp_file, "w", encoding="utf-8") as f:
-    json.dump(dataset, f, indent=2, ensure_ascii=False)
-os.replace(tmp_file, OUTPUT_FILE)
+        print(f"  ✅ {league_name} : {league_count} entrées générées")
 
-print(f"\n{'='*60}")
-print(f"💾 Dataset sauvegardé : {OUTPUT_FILE}")
-print(f"   Total entrées       : {len(dataset)}")
-print(f"{'='*60}")
+    if not dataset:
+        print("⚠️  Dataset vide — aucune écriture effectuée")
+    else:
+        tmp_file = OUTPUT_FILE + ".tmp"
+        with open(tmp_file, "w", encoding="utf-8") as f:
+            json.dump(dataset, f, indent=2, ensure_ascii=False)
+        os.replace(tmp_file, OUTPUT_FILE)
+        print(f"\n{'='*60}")
+        print(f"💾 Dataset sauvegardé : {OUTPUT_FILE}")
+        print(f"   Total entrées       : {len(dataset)}")
+        print(f"{'='*60}")
+
+except Exception as e:
+    print(f"\n❌ Erreur durant la construction : {e}")
+    print("⚠️  Aucune écriture effectuée — dataset_ml.json inchangé")
+    raise

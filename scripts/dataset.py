@@ -1,6 +1,7 @@
 import json
 import os
 import glob
+import subprocess
 from datetime import datetime
 from collections import defaultdict
 
@@ -10,6 +11,7 @@ STANDINGS_FILE = "data/football/standings/Standings.json"
 OUTPUT_FILE    = "dataset_ml.json"
 TMP_DIR        = "data/football/dataset_tmp"
 MIN_ENTRIES    = 30
+PUSH_ENABLED   = os.environ.get("GIT_PUSH", "false").lower() == "true"
 
 # ================= UTILITAIRES =================
 
@@ -72,6 +74,15 @@ def is_valid_match(m):
     if parse_date(m.get("date", "")) is None:
         return False
     return True
+
+def git_push(path, message):
+    subprocess.run(["git", "add", path], check=True)
+    result = subprocess.run(["git", "diff", "--cached", "--quiet"])
+    if result.returncode != 0:
+        subprocess.run(["git", "commit", "-m", message], check=True)
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+        print(f"  📤 Pushé : {message}")
 
 # ================= CHARGEMENT STANDINGS =================
 print(f"📂 Chargement des classements : {STANDINGS_FILE}")
@@ -239,13 +250,10 @@ try:
 
             means_home = calc_means(hist_home_chron, team1)
             means_away = calc_means(hist_away_chron, team2)
-
-            form_home = build_form(hist_home_chron, team1)
-            form_away = build_form(hist_away_chron, team2)
-
+            form_home  = build_form(hist_home_chron, team1)
+            form_away  = build_form(hist_away_chron, team2)
             vaincu_h, invaincu_h = build_pos_adv(hist_home_chron, team1)
             vaincu_a, invaincu_a = build_pos_adv(hist_away_chron, team2)
-
             scores_home = build_scores_recents(hist_home_chron)
             scores_away = build_scores_recents(hist_away_chron)
 
@@ -290,9 +298,9 @@ try:
                 },
 
                 "targets": {
-                    "target_1X2":          result_1x2,
-                    "target_score_home":   score_h,
-                    "target_score_away":   score_a,
+                    "target_1X2":        result_1x2,
+                    "target_score_home": score_h,
+                    "target_score_away": score_a,
                     "target_over_under_2_5": {
                         "Over_2_5":  over_25,
                         "Under_2_5": 1 - over_25,
@@ -313,13 +321,16 @@ try:
             print(f"  ⛔ {league_name} : {league_count} entrées — ignorée (< {MIN_ENTRIES})")
             continue
 
-        # ── Sauvegarde intermédiaire par ligue ────────────────────────────
+        # ── Sauvegarde + push intermédiaire par ligue ─────────────────────
         tmp_path = os.path.join(TMP_DIR, f"{league_name}.json")
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(league_entries, f, ensure_ascii=False)
         league_tmp_files.append(tmp_path)
 
-        print(f"  ✅ {league_name} : {league_count} entrées générées et sauvegardées")
+        print(f"  ✅ {league_name} : {league_count} entrées générées")
+
+        if PUSH_ENABLED:
+            git_push(tmp_path, f"🤖 dataset tmp: {league_name} ({league_count} entrées)")
 
     # ── Assemblage final ──────────────────────────────────────────────────
     dataset = []
@@ -335,13 +346,26 @@ try:
             json.dump(dataset, f, indent=2, ensure_ascii=False)
         os.replace(tmp_final, OUTPUT_FILE)
 
-        for tmp_path in league_tmp_files:
-            os.remove(tmp_path)
-
         print(f"\n{'='*60}")
         print(f"💾 Dataset sauvegardé : {OUTPUT_FILE}")
         print(f"   Total entrées       : {len(dataset)}")
         print(f"{'='*60}")
+
+        if PUSH_ENABLED:
+            # Push dataset_ml.json final
+            git_push(OUTPUT_FILE, f"🤖 dataset_ml.json final — {len(dataset)} entrées")
+            # Supprimer les tmp du repo
+            for tmp_path in league_tmp_files:
+                subprocess.run(["git", "rm", "--cached", tmp_path], check=False)
+                os.remove(tmp_path)
+            result = subprocess.run(["git", "diff", "--cached", "--quiet"])
+            if result.returncode != 0:
+                subprocess.run(["git", "commit", "-m", "🤖 cleanup dataset tmp files"], check=True)
+                subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
+                subprocess.run(["git", "push", "origin", "main"], check=True)
+        else:
+            for tmp_path in league_tmp_files:
+                os.remove(tmp_path)
 
 except Exception as e:
     print(f"\n❌ Erreur durant la construction : {e}")

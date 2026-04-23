@@ -68,7 +68,7 @@ def is_valid_match(m):
     stats = m.get("stats")
     if not stats or not isinstance(stats, dict) or len(stats) == 0:
         return False
-    score_h, _ = parse_score(m.get("score", ""))
+    score_h, score_a = parse_score(m.get("score", ""))
     if score_h is None:
         return False
     if parse_date(m.get("date", "")) is None:
@@ -84,17 +84,21 @@ def git_push(path, message):
         subprocess.run(["git", "push", "origin", "main"], check=True)
         print(f"📤 {message}")
 
-# ================= LOAD =================
-
-print(f"📂 Chargement standings...")
+# ================= CHARGEMENT STANDINGS =================
+print(f"📂 Chargement des classements : {STANDINGS_FILE}")
 with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
     standings = json.load(f)
 
+# ================= CHARGEMENT MATCHS =================
+print(f"📂 Chargement des matchs depuis : {LEAGUES_DIR}")
 json_files = sorted(glob.glob(os.path.join(LEAGUES_DIR, "*.json")))
 
-# ================= INDEX GLOBAL =================
+if not json_files:
+    print("❌ Aucun fichier JSON trouvé")
+    exit(1)
 
 all_matches = []
+
 for jf in json_files:
     league_name = os.path.splitext(os.path.basename(jf))[0]
     with open(jf, "r", encoding="utf-8") as f:
@@ -106,14 +110,16 @@ for jf in json_files:
 
         mc = dict(m)
         sh, sa = parse_score(mc.get("score", ""))
-        mc["_date_obj"] = parse_date(mc.get("date", ""))
+        mc["_date_obj"]   = parse_date(mc.get("date", ""))
         mc["_score_home"] = sh
         mc["_score_away"] = sa
-        mc["_league"] = league_name
+        mc["_league"]     = league_name
         all_matches.append(mc)
 
 all_matches.sort(key=lambda m: m["_date_obj"])
+print(f"   {len(all_matches)} matchs valides chargés\n")
 
+# ================= INDEX PAR ÉQUIPE =================
 team_history = defaultdict(list)
 for m in all_matches:
     team_history[m.get("team1", "").strip()].append(m)
@@ -126,7 +132,7 @@ def get_last_n(team_name, before_dt, game_id, n=6):
     prev = [
         m for m in history
         if m["_date_obj"] < before_dt or
-        (m["_date_obj"] == before_dt and m.get("gameId") != game_id)
+           (m["_date_obj"] == before_dt and m.get("gameId") != game_id)
     ]
     prev.sort(key=lambda m: m["_date_obj"], reverse=True)
     return prev[:n]
@@ -144,88 +150,120 @@ def calc_means(history, team):
         be.append(m["_score_away"] if is_h else m["_score_home"])
 
     return {
-        "pos": safe_avg(poss),
-        "shots": safe_avg(shots),
-        "bm": safe_avg(bm),
-        "be": safe_avg(be),
+        "moy_possession": safe_avg(poss),
+        "moy_shots_ontarget": safe_avg(shots),
+        "moy_buts_marques": safe_avg(bm),
+        "moy_buts_encaisses": safe_avg(be),
     }
 
-# ================= STREAM WRITE =================
+def build_form(history, team):
+    form = []
+    for m in history:
+        is_h = m.get("team1", "").strip() == team
+        sh, sa = m["_score_home"], m["_score_away"]
+        res = result_for_team(sh, sa, "home" if is_h else "away")
+        o = m["odds"]
+        form.append(f"{res}:{o['home']},{o['draw']},{o['away']}")
+    return form
+
+def build_scores(history):
+    return " | ".join(m.get("score", "?") for m in history)
+
+# ================= CONSTRUCTION =================
+
+print("🔨 Construction du dataset...")
+os.makedirs(TMP_DIR, exist_ok=True)
+
+processed_ids = set()
+dataset = []
+
+for jf in json_files:
+    league_name = os.path.splitext(os.path.basename(jf))[0]
+
+    with open(jf, "r", encoding="utf-8") as f:
+        matches = json.load(f)
+
+    count = 0
+
+    for match in matches:
+        if not is_valid_match(match):
+            continue
+
+        game_id = match.get("gameId")
+        if not game_id or game_id in processed_ids:
+            continue
+
+        dt = parse_date(match.get("date", ""))
+        sh, sa = parse_score(match.get("score", ""))
+
+        hist_home = get_last_n(match["team1"], dt, game_id)
+        hist_away = get_last_n(match["team2"], dt, game_id)
+
+        if len(hist_home) < 6 or len(hist_away) < 6:
+            continue
+
+        mh = calc_means(hist_home, match["team1"])
+        ma = calc_means(hist_away, match["team2"])
+
+        entry = {
+            "gameId": game_id,
+            "date": match["date"],
+            "league": league_name,
+            "team1": match["team1"],
+            "team2": match["team2"],
+
+            "Moy_6derniersmatchs": {
+                "moy_possession_home": mh["moy_possession"],
+                "moy_possession_away": ma["moy_possession"],
+                "moy_shots_ontarget_home": mh["moy_shots_ontarget"],
+                "moy_shots_ontarget_away": ma["moy_shots_ontarget"],
+                "moy_buts_marques_home": mh["moy_buts_marques"],
+                "moy_buts_marques_away": ma["moy_buts_marques"],
+                "moy_buts_encaisses_home": mh["moy_buts_encaisses"],
+                "moy_buts_encaisses_away": ma["moy_buts_encaisses"],
+            },
+
+            "scores_finaux_recents_home": build_scores(hist_home),
+            "scores_finaux_recents_away": build_scores(hist_away),
+
+            "targets": {
+                "target_score_home": sh,
+                "target_score_away": sa,
+            }
+        }
+
+        dataset.append(entry)
+        processed_ids.add(game_id)
+        count += 1
+
+    print(f"✅ {league_name} : {count}")
+
+# ================= ÉCRITURE SÉCURISÉE =================
 
 tmp_final = OUTPUT_FILE + ".tmp"
-processed_ids = set()
-total_written = 0
+
+print(f"📊 Total : {len(dataset)} entrées")
 
 with open(tmp_final, "w", encoding="utf-8") as f:
     f.write("[\n")
 
-    first = True
+    for i, item in enumerate(dataset):
+        json.dump(item, f, ensure_ascii=False)
 
-    for jf in json_files:
-        league_name = os.path.splitext(os.path.basename(jf))[0]
+        if i < len(dataset) - 1:
+            f.write(",\n")
 
-        with open(jf, "r", encoding="utf-8") as file:
-            matches = json.load(file)
-
-        count = 0
-
-        for match in matches:
-            if not is_valid_match(match):
-                continue
-
-            game_id = match.get("gameId")
-            if not game_id or game_id in processed_ids:
-                continue
-
-            dt = parse_date(match.get("date", ""))
-            sh, sa = parse_score(match.get("score", ""))
-
-            hist_home = get_last_n(match["team1"], dt, game_id)
-            hist_away = get_last_n(match["team2"], dt, game_id)
-
-            if len(hist_home) < 6 or len(hist_away) < 6:
-                continue
-
-            mh = calc_means(hist_home, match["team1"])
-            ma = calc_means(hist_away, match["team2"])
-
-            entry = {
-                "gameId": game_id,
-                "league": league_name,
-                "team1": match["team1"],
-                "team2": match["team2"],
-                "stats": {
-                    "home": mh,
-                    "away": ma
-                },
-                "score": [sh, sa]
-            }
-
-            if not first:
-                f.write(",\n")
-
-            json.dump(entry, f, ensure_ascii=False)
-
-            first = False
-            processed_ids.add(game_id)
-            count += 1
-            total_written += 1
-
-            # 🔥 flush sécurité
-            if total_written % 1000 == 0:
-                f.flush()
-                os.fsync(f.fileno())
-                print(f"💾 {total_written} écrits...")
-
-        print(f"✅ {league_name} : {count}")
+        if i % 1000 == 0:
+            f.flush()
+            os.fsync(f.fileno())
 
     f.write("\n]")
 
 os.replace(tmp_final, OUTPUT_FILE)
 
-print(f"\n🎯 Dataset final : {total_written} entrées")
+print("💾 Dataset écrit sans troncature")
 
 # ================= PUSH =================
 
 if PUSH_ENABLED:
-    git_push(OUTPUT_FILE, f"dataset {total_written} entrées")
+    git_push(OUTPUT_FILE, f"dataset {len(dataset)}")

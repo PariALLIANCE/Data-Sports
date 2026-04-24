@@ -39,7 +39,7 @@ def parse_pct(val):
 def get_team_position(team_name, standings):
     for league_key, teams in standings.items():
         for t in teams:
-            if t["name"].strip() == team_name:
+            if t["name"] == team_name:
                 return t["position"], league_key
     return None, None
 
@@ -82,45 +82,43 @@ def git_push(path, message):
         subprocess.run(["git", "commit", "-m", message], check=True)
         subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
         subprocess.run(["git", "push", "origin", "main"], check=True)
-        print(f"📤 {message}")
+        print(f"  📤 Pushé : {message}")
 
-# ================= CHARGEMENT =================
-
-print(f"📂 Chargement standings")
+# ================= CHARGEMENT STANDINGS =================
+print(f"📂 Chargement des classements : {STANDINGS_FILE}")
 with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
     standings = json.load(f)
+print(f"   {len(standings)} ligues dans le classement\n")
 
+# ================= CHARGEMENT DE TOUS LES MATCHS =================
+print(f"📂 Chargement des matchs depuis : {LEAGUES_DIR}")
 json_files = sorted(glob.glob(os.path.join(LEAGUES_DIR, "*.json")))
-if not json_files:
-    print("❌ Aucun fichier")
-    exit(1)
 
-# ================= INDEX GLOBAL =================
+if not json_files:
+    print(f"❌ Aucun fichier JSON trouvé dans {LEAGUES_DIR}")
+    exit(1)
 
 all_matches = []
 
 for jf in json_files:
     league_name = os.path.splitext(os.path.basename(jf))[0]
-
     with open(jf, "r", encoding="utf-8") as f:
         raw = json.load(f)
-
     for m in raw:
         if not is_valid_match(m):
             continue
-
         mc = dict(m)
-        sh, sa = parse_score(mc.get("score", ""))
-
+        score_h, score_a = parse_score(mc.get("score", ""))
         mc["_date_obj"]   = parse_date(mc.get("date", ""))
-        mc["_score_home"] = sh
-        mc["_score_away"] = sa
+        mc["_score_home"] = score_h
+        mc["_score_away"] = score_a
         mc["_league"]     = league_name
-
         all_matches.append(mc)
 
 all_matches.sort(key=lambda m: m["_date_obj"])
+print(f"   {len(all_matches)} matchs valides chargés\n")
 
+# ── Index par équipe ──────────────────────────────────────────────────────────
 team_history = defaultdict(list)
 for m in all_matches:
     team_history[m.get("team1", "").strip()].append(m)
@@ -128,180 +126,274 @@ for m in all_matches:
 
 # ================= HELPERS =================
 
-def get_last_n(team_name, before_dt, game_id, n=6):
-    hist = team_history.get(team_name, [])
-    prev = [m for m in hist if m["_date_obj"] < before_dt or m.get("gameId") != game_id]
+def get_last_n(team_name, before_dt, before_game_id, n=6):
+    history = team_history.get(team_name, [])
+    prev = [
+        m for m in history
+        if m["_date_obj"] < before_dt or
+           (m["_date_obj"] == before_dt and m.get("gameId") != before_game_id)
+    ]
     prev.sort(key=lambda m: m["_date_obj"], reverse=True)
     return prev[:n]
 
-def calc_means(history, team):
-    poss, shots, bm, be = [], [], [], []
-
+def calc_means(history, team_name):
+    poss_list, shots_list, buts_m_list, buts_e_list = [], [], [], []
     for m in history:
-        s = m.get("stats", {})
-        is_h = m.get("team1").strip() == team
+        s    = m.get("stats", {})
+        is_h = m.get("team1", "").strip() == team_name
         side = "home" if is_h else "away"
-
-        poss.append(parse_pct(s.get("Possession", {}).get(side, 0)))
-        shots.append(float(s.get("Shots on Goal", {}).get(side, 0) or 0))
-        bm.append(m["_score_home"] if is_h else m["_score_away"])
-        be.append(m["_score_away"] if is_h else m["_score_home"])
-
+        poss_list.append(parse_pct(s.get("Possession", {}).get(side, 0)))
+        shots_list.append(float(s.get("Shots on Goal", {}).get(side, 0) or 0))
+        buts_m_list.append(m["_score_home"] if is_h else m["_score_away"])
+        buts_e_list.append(m["_score_away"] if is_h else m["_score_home"])
     return {
-        "moy_possession": safe_avg(poss),
-        "moy_shots_ontarget": safe_avg(shots),
-        "moy_buts_marques": safe_avg(bm),
-        "moy_buts_encaisses": safe_avg(be),
+        "moy_possession":     safe_avg(poss_list),
+        "moy_shots_ontarget": safe_avg(shots_list),
+        "moy_buts_marques":   safe_avg(buts_m_list),
+        "moy_buts_encaisses": safe_avg(buts_e_list),
     }
 
-def build_form(history, team):
-    out = []
+def build_form(history, team_name):
+    form = []
     for m in history:
-        is_h = m.get("team1").strip() == team
+        is_h   = m.get("team1", "").strip() == team_name
         sh, sa = m["_score_home"], m["_score_away"]
-        res = result_for_team(sh, sa, "home" if is_h else "away")
-        o = m["odds"]
-        out.append(f"{res}:{o['home']},{o['draw']},{o['away']}")
-    return out
+        res    = result_for_team(sh, sa, "home" if is_h else "away")
+        o      = m["odds"]
+        odd_home, odd_draw, odd_away = o["home"], o["draw"], o["away"]
+        if sh > sa:
+            winner_odd, draw_odd_val, loser_odd = odd_home, odd_draw, odd_away
+        elif sa > sh:
+            winner_odd, draw_odd_val, loser_odd = odd_away, odd_draw, odd_home
+        else:
+            winner_odd, draw_odd_val, loser_odd = odd_home, odd_draw, odd_away
+        form.append(f"{res}:{winner_odd},{draw_odd_val},{loser_odd}")
+    return form
 
-def build_pos_adv(history, team):
+def build_pos_adv(history, team_name):
     vaincu, invaincu = [], []
-
     for m in history:
-        is_h = m.get("team1").strip() == team
+        is_h   = m.get("team1", "").strip() == team_name
         sh, sa = m["_score_home"], m["_score_away"]
-
-        res = result_for_team(sh, sa, "home" if is_h else "away")
-
-        adv = m.get("team2" if is_h else "team1").strip()
+        res    = result_for_team(sh, sa, "home" if is_h else "away")
+        adv    = m.get("team2" if is_h else "team1", "").strip()
         pos, _ = get_team_position(adv, standings)
-
-        if pos is None:
-            continue  # ✅ FIX
-
-        pos = str(pos)
-
+        pos_str = str(pos) if pos is not None else "?"
         if res == "V":
-            vaincu.append(pos)
-
+            vaincu.append(pos_str)
         if res in ("V", "N"):
-            invaincu.append(pos)
-
+            invaincu.append(pos_str)
     return vaincu, invaincu
 
-def build_scores(history):
+def build_scores_recents(history):
     return " | ".join(m.get("score", "?") for m in history)
 
-# ================= BUILD =================
+# ================= CONSTRUCTION DU DATASET =================
+print("=" * 60)
+print("🔨 Construction du dataset...")
+print("=" * 60)
 
 os.makedirs(TMP_DIR, exist_ok=True)
 
-dataset = []
-processed = set()
+try:
+    processed_game_ids = set()
+    league_tmp_files   = []
 
-for jf in json_files:
-    league = os.path.splitext(os.path.basename(jf))[0]
+    for jf in json_files:
+        league_name = os.path.splitext(os.path.basename(jf))[0]
 
-    with open(jf, "r", encoding="utf-8") as f:
-        matches = json.load(f)
+        with open(jf, "r", encoding="utf-8") as f:
+            matches_raw = json.load(f)
 
-    entries = []
+        matches_valid = []
+        for m in matches_raw:
+            if not is_valid_match(m):
+                continue
+            mc = dict(m)
+            score_h, score_a = parse_score(mc.get("score", ""))
+            mc["_date_obj"]   = parse_date(mc.get("date", ""))
+            mc["_score_home"] = score_h
+            mc["_score_away"] = score_a
+            mc["_league"]     = league_name
+            matches_valid.append(mc)
 
-    for m in matches:
-        if not is_valid_match(m):
+        matches_valid.sort(key=lambda m: m["_date_obj"])
+
+        if not matches_valid:
+            print(f"  ⏭️  {league_name} : aucun match valide")
             continue
 
-        game_id = m.get("gameId")
-        if game_id in processed:
-            continue
+        league_entries = []
+        league_count   = 0
 
-        sh, sa = parse_score(m["score"])
-        dt = parse_date(m["date"])
+        for match in matches_valid:
+            game_id = match.get("gameId")
+            if not game_id or game_id in processed_game_ids:
+                continue
 
-        t1 = m["team1"].strip()
-        t2 = m["team2"].strip()
+            team1    = match.get("team1", "").strip()
+            team2    = match.get("team2", "").strip()
+            date_str = match.get("date", "")
+            dt       = match["_date_obj"]
+            score_h  = match["_score_home"]
+            score_a  = match["_score_away"]
+            odds     = match["odds"]
 
-        h1 = get_last_n(t1, dt, game_id)
-        h2 = get_last_n(t2, dt, game_id)
+            hist_home = get_last_n(team1, dt, game_id, n=6)
+            hist_away = get_last_n(team2, dt, game_id, n=6)
 
-        if len(h1) < 6 or len(h2) < 6:
-            continue
+            if len(hist_home) < 6 or len(hist_away) < 6:
+                continue
 
-        h1 = sorted(h1, key=lambda x: x["_date_obj"])
-        h2 = sorted(h2, key=lambda x: x["_date_obj"])
+            hist_home_chron = sorted(hist_home, key=lambda m: m["_date_obj"])
+            hist_away_chron = sorted(hist_away, key=lambda m: m["_date_obj"])
 
-        m1 = calc_means(h1, t1)
-        m2 = calc_means(h2, t2)
+            means_home = calc_means(hist_home_chron, team1)
+            means_away = calc_means(hist_away_chron, team2)
+            form_home  = build_form(hist_home_chron, team1)
+            form_away  = build_form(hist_away_chron, team2)
+            vaincu_h, invaincu_h = build_pos_adv(hist_home_chron, team1)
+            vaincu_a, invaincu_a = build_pos_adv(hist_away_chron, team2)
+            scores_home = build_scores_recents(hist_home_chron)
+            scores_away = build_scores_recents(hist_away_chron)
 
-        v1, i1 = build_pos_adv(h1, t1)
-        v2, i2 = build_pos_adv(h2, t2)
+            total_buts = score_h + score_a
+            over_25    = 1 if total_buts > 2 else 0
+            btts_yes   = 1 if score_h > 0 and score_a > 0 else 0
+            result_1x2 = "1" if score_h > score_a else ("X" if score_h == score_a else "2")
 
-        entry = {
-            "gameId": game_id,
-            "date": m["date"],
-            "league": league,
-            "team1": t1,
-            "team2": t2,
+            entry = {
+                "gameId":  game_id,
+                "date":    date_str,
+                "league":  league_name,
+                "team1":   team1,
+                "team2":   team2,
 
-            "Moy_6derniersmatchs": {
-                "moy_possession_home": m1["moy_possession"],
-                "moy_possession_away": m2["moy_possession"],
-                "moy_shots_ontarget_home": m1["moy_shots_ontarget"],
-                "moy_shots_ontarget_away": m2["moy_shots_ontarget"],
-                "moy_buts_marques_home": m1["moy_buts_marques"],
-                "moy_buts_marques_away": m2["moy_buts_marques"],
-                "moy_buts_encaisses_home": m1["moy_buts_encaisses"],
-                "moy_buts_encaisses_away": m2["moy_buts_encaisses"],
-            },
-
-            "Form_recents_with_odds_home": build_form(h1, t1),
-            "Form_recents_with_odds_away": build_form(h2, t2),
-
-            "pos_adv_vaincu_home": v1,
-            "pos_adv_vaincu_away": v2,
-            "pos_adv_invaincu_home": i1,
-            "pos_adv_invaincu_away": i2,
-
-            "scores_finaux_recents_home": build_scores(h1),
-            "scores_finaux_recents_away": build_scores(h2),
-
-            "cotes_match": m["odds"],
-
-            "targets": {
-                "target_1X2": "1" if sh > sa else ("X" if sh == sa else "2"),
-                "target_score_home": sh,
-                "target_score_away": sa,
-                "target_over_under_2_5": {
-                    "Over_2_5": 1 if sh + sa > 2 else 0,
-                    "Under_2_5": 0 if sh + sa > 2 else 1,
+                "Moy_6derniersmatchs": {
+                    "moy_possession_home":     means_home["moy_possession"],
+                    "moy_possession_away":     means_away["moy_possession"],
+                    "moy_shots_ontarget_home": means_home["moy_shots_ontarget"],
+                    "moy_shots_ontarget_away": means_away["moy_shots_ontarget"],
+                    "moy_buts_marques_home":   means_home["moy_buts_marques"],
+                    "moy_buts_marques_away":   means_away["moy_buts_marques"],
+                    "moy_buts_encaisses_home": means_home["moy_buts_encaisses"],
+                    "moy_buts_encaisses_away": means_away["moy_buts_encaisses"],
                 },
-                "target_btts": {
-                    "Yes": 1 if sh > 0 and sa > 0 else 0,
-                    "No": 0 if sh > 0 and sa > 0 else 1,
+
+                "Form_recents_with_odds_home": form_home,
+                "Form_recents_with_odds_away": form_away,
+
+                "pos_adv_vaincu_home":   vaincu_h,
+                "pos_adv_vaincu_away":   vaincu_a,
+                "pos_adv_invaincu_home": invaincu_h,
+                "pos_adv_invaincu_away": invaincu_a,
+
+                "scores_finaux_recents_home": scores_home,
+                "scores_finaux_recents_away": scores_away,
+
+                "cotes_match": {
+                    "odds_home": odds.get("home"),
+                    "odds_away": odds.get("away"),
+                    "odds_draw": odds.get("draw"),
                 },
-            },
-        }
 
-        entries.append(entry)
-        processed.add(game_id)
+                "targets": {
+                    "target_1X2":        result_1x2,
+                    "target_score_home": score_h,
+                    "target_score_away": score_a,
+                    "target_over_under_2_5": {
+                        "Over_2_5":  over_25,
+                        "Under_2_5": 1 - over_25,
+                    },
+                    "target_btts": {
+                        "Yes": btts_yes,
+                        "No":  1 - btts_yes,
+                    },
+                },
+            }
 
-    if len(entries) >= MIN_ENTRIES:
-        tmp = os.path.join(TMP_DIR, f"{league}.json")
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(entries, f, ensure_ascii=False)
+            league_entries.append(entry)
+            processed_game_ids.add(game_id)
+            league_count += 1
 
-        dataset.extend(entries)
+        # ── Filtre minimum 30 entrées ─────────────────────────────────────
+        if league_count < MIN_ENTRIES:
+            print(f"  ⛔ {league_name} : {league_count} entrées — ignorée (< {MIN_ENTRIES})")
+            continue
+
+        # ── Sauvegarde + push intermédiaire par ligue ─────────────────────
+        tmp_path = os.path.join(TMP_DIR, f"{league_name}.json")
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(league_entries, f, ensure_ascii=False)
+        league_tmp_files.append(tmp_path)
+
+        print(f"  ✅ {league_name} : {league_count} entrées générées")
 
         if PUSH_ENABLED:
-            git_push(tmp, f"{league} dataset")
+            git_push(tmp_path, f"🤖 dataset tmp: {league_name} ({league_count} entrées)")
 
-# ================= FINAL WRITE =================
+    # ── Assemblage final ──────────────────────────────────────────────────
+    dataset = []
+    for tmp_path in league_tmp_files:
+        with open(tmp_path, "r", encoding="utf-8") as f:
+            dataset.extend(json.load(f))
 
-tmp_file = OUTPUT_FILE + ".tmp"
+    if not dataset:
+        print("⚠️  Dataset vide — aucune écriture effectuée")
+    else:
+        tmp_final = OUTPUT_FILE + ".tmp"
 
-with open(tmp_file, "w", encoding="utf-8") as f:
-    json.dump(dataset, f, indent=2, ensure_ascii=False)
+        # ✅ Écriture en streaming entrée par entrée — évite la troncature
+        # sur gros datasets (RAM / timeout GitHub Actions).
+        # os.replace() n'est appelé qu'après fermeture complète du fichier,
+        # donc dataset_ml.json reste intact en cas de crash pendant l'écriture.
+        with open(tmp_final, "w", encoding="utf-8") as f:
+            f.write("[\n")
+            last_idx = len(dataset) - 1
+            for i, entry in enumerate(dataset):
+                line = json.dumps(entry, ensure_ascii=False)
+                if i < last_idx:
+                    f.write("  " + line + ",\n")
+                else:
+                    f.write("  " + line + "\n")
+                f.flush()  # écriture progressive sur disque
+        f_closed = True  # fichier fermé proprement via with
 
-os.replace(tmp_file, OUTPUT_FILE)
+        os.replace(tmp_final, OUTPUT_FILE)
 
-print(f"✅ Dataset final: {len(dataset)} matchs")
+        # ── Vérification intégrité du JSON final ──────────────────────────
+        print(f"\n🔍 Vérification intégrité du JSON...")
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            try:
+                verified = json.load(f)
+                print(f"✅ JSON valide — {len(verified)} entrées confirmées")
+            except json.JSONDecodeError as e:
+                print(f"❌ JSON corrompu après écriture : {e}")
+                raise
+
+        print(f"\n{'='*60}")
+        print(f"💾 Dataset sauvegardé : {OUTPUT_FILE}")
+        print(f"   Total entrées       : {len(dataset)}")
+        print(f"{'='*60}")
+
+        if PUSH_ENABLED:
+            # Push dataset_ml.json final
+            git_push(OUTPUT_FILE, f"🤖 dataset_ml.json final — {len(dataset)} entrées")
+            # Supprimer les tmp du repo
+            for tmp_path in league_tmp_files:
+                subprocess.run(["git", "rm", "--cached", tmp_path], check=False)
+                os.remove(tmp_path)
+            result = subprocess.run(["git", "diff", "--cached", "--quiet"])
+            if result.returncode != 0:
+                subprocess.run(["git", "commit", "-m", "🤖 cleanup dataset tmp files"], check=True)
+                subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
+                subprocess.run(["git", "push", "origin", "main"], check=True)
+        else:
+            for tmp_path in league_tmp_files:
+                os.remove(tmp_path)
+
+except Exception as e:
+    print(f"\n❌ Erreur durant la construction : {e}")
+    print(f"⚠️  Fichiers intermédiaires conservés dans {TMP_DIR}/")
+    print(f"⚠️  {OUTPUT_FILE} inchangé")
+    raise

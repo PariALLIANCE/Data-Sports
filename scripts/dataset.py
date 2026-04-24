@@ -75,6 +75,22 @@ def is_valid_match(m):
         return False
     return True
 
+def sanitize_str(val):
+    """Supprime les caractères de contrôle (\n \r \t etc.) d'une string."""
+    if not isinstance(val, str):
+        return val
+    return val.replace("\n", " ").replace("\r", " ").replace("\t", " ").strip()
+
+def sanitize_entry(obj):
+    """Nettoie récursivement tous les strings d'un dict/list."""
+    if isinstance(obj, dict):
+        return {k: sanitize_entry(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [sanitize_entry(v) for v in obj]
+    if isinstance(obj, str):
+        return sanitize_str(obj)
+    return obj
+
 def git_push(path, message):
     subprocess.run(["git", "add", path], check=True)
     result = subprocess.run(["git", "diff", "--cached", "--quiet"])
@@ -312,6 +328,9 @@ try:
                 },
             }
 
+            # ✅ Nettoyage des caractères de contrôle dans toutes les strings
+            entry = sanitize_entry(entry)
+
             league_entries.append(entry)
             processed_game_ids.add(game_id)
             league_count += 1
@@ -343,21 +362,9 @@ try:
     else:
         tmp_final = OUTPUT_FILE + ".tmp"
 
-        # ✅ Écriture en streaming entrée par entrée — évite la troncature
-        # sur gros datasets (RAM / timeout GitHub Actions).
-        # os.replace() n'est appelé qu'après fermeture complète du fichier,
-        # donc dataset_ml.json reste intact en cas de crash pendant l'écriture.
+        # ✅ json.dump standard — les données sont déjà sanitizées en amont
         with open(tmp_final, "w", encoding="utf-8") as f:
-            f.write("[\n")
-            last_idx = len(dataset) - 1
-            for i, entry in enumerate(dataset):
-                line = json.dumps(entry, ensure_ascii=False)
-                if i < last_idx:
-                    f.write("  " + line + ",\n")
-                else:
-                    f.write("  " + line + "\n")
-                f.flush()  # écriture progressive sur disque
-        f_closed = True  # fichier fermé proprement via with
+            json.dump(dataset, f, ensure_ascii=False)
 
         os.replace(tmp_final, OUTPUT_FILE)
 

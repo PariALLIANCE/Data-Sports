@@ -1,12 +1,9 @@
 name: Generate Dataset (Manual)
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
@@ -26,8 +23,12 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
-      - name: ▶️ Run dataset script (push ligue par ligue)
+      - name: ▶️ Run dataset script
+        run: python scripts/dataset.py
+
+      - name: 💾 Commit and push dataset
         run: |
-          python scripts/dataset.py
-        env:
-          GIT_PUSH: "true"
+          git add dataset_ml.json
+          git diff --cached --quiet && echo "Rien à committer" && exit 0
+          git commit -m "🤖 Update dataset_ml.json [$(date +'%Y-%m-%d %H:%M')]"
+          git push

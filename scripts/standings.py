@@ -1,8 +1,13 @@
-import requests
-from bs4 import BeautifulSoup
 import json
 import os
 import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 LEAGUES = {
     "England_Premier_League": "eng.1",
@@ -39,87 +44,109 @@ LEAGUES = {
     "FIFA_Club_World_Cup": "fifa.cwc"
 }
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9,fr;q=0.8",
-    "Referer": "https://www.espn.com/",
-    "Upgrade-Insecure-Requests": "1"
-}
-
 BASE_DIR = "data/football/standings"
 os.makedirs(BASE_DIR, exist_ok=True)
 OUTPUT_FILE = os.path.join(BASE_DIR, "Standings.json")
 
-def fetch_page(url):
-    r = requests.get(url, headers=HEADERS, timeout=20)
-    r.raise_for_status()
-    return r.text
+def setup_driver():
+    """Configure Chrome en mode headless pour GitHub Actions / CI"""
+    chrome_options = Options()
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+    
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    chrome_options.add_argument(f"user-agent={user_agent}")
+    
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
-def parse_standings(html):
-    soup = BeautifulSoup(html, "html.parser")
-    teams_rows = soup.select("table.Table--fixed-left tbody tr")
-    stats_rows = soup.select(".Table__Scroller table tbody tr")
-    standings = []
-
-    for i in range(min(len(teams_rows), len(stats_rows))):
-        team_row = teams_rows[i]
-        stat_row = stats_rows[i]
-
-        team_div = team_row.select_one("div.team-link")
-        if not team_div:
-            continue
-
-        # Position
-        pos_tag = team_div.select_one(".team-position")
-        position = int(pos_tag.text.strip()) if pos_tag else i + 1
-
-        # Nom
-        name_tag = team_div.select_one(".hide-mobile a")
-        name = name_tag.text.strip() if name_tag else None
-
-        # Stats
-        tds = [td.text.strip() for td in stat_row.select("td")]
-        if len(tds) < 8:
-            continue
-
-        gp, w, d, l, f, a, gd, p = tds[:8]
-
-        standings.append({
-            "position": position,
-            "name": name,
-            "stats": {
-                "GP": int(gp),
-                "W": int(w),
-                "D": int(d),
-                "L": int(l),
-                "F": int(f),
-                "A": int(a),
-                "GD": int(gd.replace("+", "")),
-                "P": int(p)
-            }
-        })
-    return standings
+def fetch_standings_with_selenium(league_id):
+    """Charge la page ESPN et extrait les standings avec Selenium"""
+    url = f"https://www.espn.com/soccer/standings/_/league/{league_id}"
+    driver = setup_driver()
+    
+    try:
+        driver.get(url)
+        # Attendre que le tableau des positions apparaisse
+        wait = WebDriverWait(driver, 20)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.Table--fixed-left")))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".Table__Scroller table")))
+        
+        # Récupérer les lignes des équipes (partie gauche avec noms)
+        team_rows = driver.find_elements(By.CSS_SELECTOR, "table.Table--fixed-left tbody tr")
+        # Récupérer les lignes des statistiques (partie droite)
+        stats_rows = driver.find_elements(By.CSS_SELECTOR, ".Table__Scroller table tbody tr")
+        
+        standings = []
+        for i in range(min(len(team_rows), len(stats_rows))):
+            team_row = team_rows[i]
+            stat_row = stats_rows[i]
+            
+            # Position
+            pos_elem = team_row.find_element(By.CSS_SELECTOR, "span.team-position")
+            position = int(pos_elem.text.strip())
+            
+            # Nom de l'équipe
+            name_elem = team_row.find_element(By.CSS_SELECTOR, ".hide-mobile a")
+            name = name_elem.text.strip()
+            
+            # Statistiques
+            stat_cells = stat_row.find_elements(By.CSS_SELECTOR, "td span.stat-cell")
+            if len(stat_cells) < 8:
+                continue
+            
+            values = [cell.text.strip() for cell in stat_cells[:8]]
+            gp, w, d, l, f, a, gd, p = values
+            
+            # Gérer le signe + du GD
+            if gd.startswith('+'):
+                gd = gd[1:]
+            
+            standings.append({
+                "position": position,
+                "name": name,
+                "stats": {
+                    "GP": int(gp),
+                    "W": int(w),
+                    "D": int(d),
+                    "L": int(l),
+                    "F": int(f),
+                    "A": int(a),
+                    "GD": int(gd),
+                    "P": int(p)
+                }
+            })
+        return standings
+    except Exception as e:
+        print(f"  Erreur Selenium : {e}")
+        # Sauvegarder la source pour debug
+        with open(f"debug_{league_id}.html", "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+        return []
+    finally:
+        driver.quit()
 
 def scrape_all_leagues():
     all_data = {}
     for league_name, league_id in LEAGUES.items():
         try:
             print(f"🔹 Scraping {league_name}...")
-            url = f"https://www.espn.com/soccer/standings/_/league/{league_id}"
-            html = fetch_page(url)
-            data = parse_standings(html)
-            all_data[league_name] = data
-            print(f"✔ {len(data)} équipes enregistrées pour {league_name}\n")
-            time.sleep(1)  # anti-block
+            standings = fetch_standings_with_selenium(league_id)
+            all_data[league_name] = standings
+            print(f"✔ {len(standings)} équipes enregistrées pour {league_name}\n")
+            time.sleep(2)  # Pause pour éviter la surcharge
         except Exception as e:
             print(f"❌ Erreur pour {league_name}: {e}")
-
-    # Sauvegarde
+    
+    # Sauvegarde finale
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_data, f, indent=4, ensure_ascii=False)
     print(f"\n✅ Tous les classements enregistrés dans {OUTPUT_FILE}")

@@ -2,8 +2,8 @@ name: Scrape Premier League Table
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Tous les jours à minuit
-  workflow_dispatch:  # Permet l'exécution manuelle
+   # - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -33,6 +33,7 @@ jobs:
         sudo apt-get install -y google-chrome-stable
     
     - name: Run scraper
+      id: scraper
       run: python scraper.py
     
     - name: Upload CSV as artifact
@@ -40,11 +41,19 @@ jobs:
       with:
         name: premier-league-table
         path: premier_league_2025-2026.csv
+        if-no-files-found: warn
     
     - name: Commit and push if changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add premier_league_2025-2026.csv
-        git diff --quiet && git diff --staged --quiet || git commit -m "Update Premier League table [skip ci]"
-        git push
+        
+        # Vérifier si le fichier existe avant de l'ajouter
+        if [ -f "premier_league_2025-2026.csv" ]; then
+          git add premier_league_2025-2026.csv
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update Premier League table [skip ci]"
+          git push
+        else
+          echo "Fichier premier_league_2025-2026.csv non trouvé, aucun commit effectué"
+          exit 1
+        fi

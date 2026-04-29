@@ -23,7 +23,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
+          pip install selenium beautifulsoup4
+
+      - name: Install Chrome & ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
       - name: Sync with remote main
         run: |
@@ -33,12 +38,6 @@ jobs:
 
       - name: Run update script
         run: python scripts/games_of_day.py
-        env:
-          ODDS1: ${{ secrets.ODDS1 }}
-          ODDS2: ${{ secrets.ODDS2 }}
-          ODDS3: ${{ secrets.ODDS3 }}
-          ODDS4: ${{ secrets.ODDS4 }}
-          ODDS5: ${{ secrets.ODDS5 }}
 
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4

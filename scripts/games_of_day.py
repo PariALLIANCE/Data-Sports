@@ -1,16 +1,43 @@
-import requests
-from bs4 import BeautifulSoup
 import json
 from datetime import datetime, timezone
 import re
 import os
 import time
 
-# ================= HEADERS =================
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-    "Accept-Language": "en-US,en;q=0.9",
-}
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
+
+# ================= DRIVER SELENIUM =================
+def make_driver():
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
+    )
+    options.add_argument("--lang=en-US")
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(10)
+    return driver
+
+def get_soup(driver, url, wait_selector=None, timeout=15):
+    """Charge une URL avec Selenium et retourne un BeautifulSoup."""
+    driver.get(url)
+    if wait_selector:
+        try:
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, wait_selector))
+            )
+        except Exception:
+            pass  # on continue même si le sélecteur n'apparaît pas
+    return BeautifulSoup(driver.page_source, "html.parser")
 
 # ================= DOSSIERS =================
 BASE_DIR      = "data/football"
@@ -92,15 +119,19 @@ def normalize(name):
     return name.lower().strip() if name else ""
 
 # ================= EXTRACTION COTES ESPN =================
-def extract_ml_odds(match_url):
+def extract_ml_odds(driver, match_url):
     """
     Extrait les cotes moneyline depuis la page ESPN du match.
     Structure : 7 OddsCell minimum, ML aux indices 0 (home), 3 (away), 6 (draw).
     La valeur est lue via get_text() directement sur l'OddsCell.
     """
     try:
-        res = requests.get(match_url, headers=HEADERS, timeout=15)
-        soup = BeautifulSoup(res.text, "html.parser")
+        soup = get_soup(
+            driver,
+            match_url,
+            wait_selector='[data-testid="OddsCell"]',
+            timeout=15,
+        )
 
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
         if len(cells) < 7:
@@ -185,100 +216,107 @@ else:
     print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
 
 # ================= SCRAPING PRINCIPAL =================
-games_of_day       = {}
-history_cache      = {}
+games_of_day  = {}
+history_cache = {}
 
-for league_name, league_code in LEAGUES.items():
-    print(f"\n📅 {league_name}")
+driver = make_driver()
 
-    try:
-        res  = requests.get(
-            BASE_URL.format(date=today_str, league=league_code),
-            headers=HEADERS, timeout=15
-        )
-        soup = BeautifulSoup(res.text, "html.parser")
-    except Exception as e:
-        print(f"  ⚠️ Erreur réseau : {e}")
-        continue
+try:
+    for league_name, league_code in LEAGUES.items():
+        print(f"\n📅 {league_name}")
 
-    if league_name not in history_cache:
-        history_cache[league_name] = load_league_history(league_name)
-
-    history  = history_cache[league_name]
-    standing = standings_data.get(league_name, [])
-
-    for table in soup.select("div.ResponsiveTable"):
-        date_tag = table.select_one("div.Table__Title")
-        date_iso = convert_date_to_iso(date_tag.text.strip() if date_tag else today_str)
-
-        if date_iso != today_iso:
+        try:
+            soup = get_soup(
+                driver,
+                BASE_URL.format(date=today_str, league=league_code),
+                wait_selector="div.ResponsiveTable",
+                timeout=15,
+            )
+        except Exception as e:
+            print(f"  ⚠️ Erreur réseau : {e}")
             continue
 
-        for row in table.select("tbody > tr.Table__TR"):
-            teams     = row.select("span.Table__Team a.AnchorLink:last-child")
-            score_tag = row.select_one("a.AnchorLink.at")
-            time_tag  = row.select_one("td.date__col a")
+        if league_name not in history_cache:
+            history_cache[league_name] = load_league_history(league_name)
 
-            if len(teams) != 2 or not score_tag:
+        history  = history_cache[league_name]
+        standing = standings_data.get(league_name, [])
+
+        for table in soup.select("div.ResponsiveTable"):
+            date_tag = table.select_one("div.Table__Title")
+            date_iso = convert_date_to_iso(date_tag.text.strip() if date_tag else today_str)
+
+            if date_iso != today_iso:
                 continue
-            if score_tag.text.strip().lower() != "v":
-                continue
 
-            match_id = re.search(r"gameId/(\d+)", score_tag["href"])
-            if not match_id:
-                continue
+            for row in table.select("tbody > tr.Table__TR"):
+                teams     = row.select("span.Table__Team a.AnchorLink:last-child")
+                score_tag = row.select_one("a.AnchorLink.at")
+                time_tag  = row.select_one("td.date__col a")
 
-            game_id   = match_id.group(1)
-            team1     = teams[0].text.strip()
-            team2     = teams[1].text.strip()
-            match_url = "https://www.espn.com" + score_tag["href"]
-            raw_time  = time_tag.text.strip() if time_tag else None
+                if len(teams) != 2 or not score_tag:
+                    continue
+                if score_tag.text.strip().lower() != "v":
+                    continue
 
-            t1_data = teams_index.get(league_name, {}).get(team1.lower(), {})
-            t2_data = teams_index.get(league_name, {}).get(team2.lower(), {})
+                match_id = re.search(r"gameId/(\d+)", score_tag["href"])
+                if not match_id:
+                    continue
 
-            # Cotes ML ESPN
-            ml = extract_ml_odds(match_url)
-            time.sleep(1)
+                game_id   = match_id.group(1)
+                team1     = teams[0].text.strip()
+                team2     = teams[1].text.strip()
+                match_url = "https://www.espn.com" + score_tag["href"]
+                raw_time  = time_tag.text.strip() if time_tag else None
 
-            games_of_day[game_id] = {
-                "gameId":    game_id,
-                "date":      date_iso,
-                "time_utc":  convert_time_to_utc(raw_time) if raw_time else None,
-                "league":    league_name,
-                "match_url": match_url,
+                t1_data = teams_index.get(league_name, {}).get(team1.lower(), {})
+                t2_data = teams_index.get(league_name, {}).get(team2.lower(), {})
 
-                "home": {
-                    "team":   team1,
-                    "team_id": t1_data.get("team_id"),
-                    "logo":   t1_data.get("logo"),
-                    "url":    f"https://www.espn.com/soccer/team/_/id/{t1_data['team_id']}" if t1_data.get("team_id") else None,
-                },
-                "away": {
-                    "team":   team2,
-                    "team_id": t2_data.get("team_id"),
-                    "logo":   t2_data.get("logo"),
-                    "url":    f"https://www.espn.com/soccer/team/_/id/{t2_data['team_id']}" if t2_data.get("team_id") else None,
-                },
+                # Cotes ML ESPN
+                ml = extract_ml_odds(driver, match_url)
+                time.sleep(1)
 
-                "odds": {
-                    "home": ml["home"] if ml else None,
-                    "away": ml["away"] if ml else None,
-                    "draw": ml["draw"] if ml else None,
-                },
+                games_of_day[game_id] = {
+                    "gameId":    game_id,
+                    "date":      date_iso,
+                    "time_utc":  convert_time_to_utc(raw_time) if raw_time else None,
+                    "league":    league_name,
+                    "match_url": match_url,
 
-                "recent_form": {
-                    "home": recent_matches(team1, history),
-                    "away": recent_matches(team2, history),
-                },
-                "h2h": h2h_matches(team1, team2, history),
+                    "home": {
+                        "team":    team1,
+                        "team_id": t1_data.get("team_id"),
+                        "logo":    t1_data.get("logo"),
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{t1_data['team_id']}" if t1_data.get("team_id") else None,
+                    },
+                    "away": {
+                        "team":    team2,
+                        "team_id": t2_data.get("team_id"),
+                        "logo":    t2_data.get("logo"),
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{t2_data['team_id']}" if t2_data.get("team_id") else None,
+                    },
 
-                "league_standing": standing,
-            }
+                    "odds": {
+                        "home": ml["home"] if ml else None,
+                        "away": ml["away"] if ml else None,
+                        "draw": ml["draw"] if ml else None,
+                    },
 
-            status = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
-            print(f"  {team1} vs {team2} → {status}")
-            time.sleep(0.5)
+                    "recent_form": {
+                        "home": recent_matches(team1, history),
+                        "away": recent_matches(team2, history),
+                    },
+                    "h2h": h2h_matches(team1, team2, history),
+
+                    "league_standing": standing,
+                }
+
+                status = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
+                print(f"  {team1} vs {team2} → {status}")
+                time.sleep(0.5)
+
+finally:
+    driver.quit()
 
 # ================= SAUVEGARDE =================
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

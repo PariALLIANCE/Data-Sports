@@ -36,7 +36,7 @@ def get_soup(driver, url, wait_selector=None, timeout=15):
                 EC.presence_of_element_located((By.CSS_SELECTOR, wait_selector))
             )
         except Exception:
-            pass  # on continue même si le sélecteur n'apparaît pas
+            pass
     return BeautifulSoup(driver.page_source, "html.parser")
 
 # ================= DOSSIERS =================
@@ -102,7 +102,7 @@ def convert_date_to_iso(date_text):
 def convert_time_to_utc(time_str):
     try:
         dt = datetime.strptime(time_str, "%I:%M %p")
-        return f"{(dt.hour + 4) % 24:02d}:{dt.minute:02d}"
+        return f"{(dt.hour - 4) % 24:02d}:{dt.minute:02d}"
     except:
         return time_str
 
@@ -174,7 +174,7 @@ def load_league_history(league_name):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def recent_matches(team_name, history, limit=7):
+def recent_matches(team_name, history, limit=6):
     norm = normalize(team_name)
     games = [
         {**m, "date": convert_date_to_iso(m.get("date", ""))}
@@ -183,7 +183,7 @@ def recent_matches(team_name, history, limit=7):
     ]
     return sorted(games, key=lambda x: x.get("date", ""), reverse=True)[:limit]
 
-def h2h_matches(t1, t2, history, limit=7):
+def h2h_matches(t1, t2, history, limit=6):
     n1, n2 = normalize(t1), normalize(t2)
     games = [
         {**m, "date": convert_date_to_iso(m.get("date", ""))}

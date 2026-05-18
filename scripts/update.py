@@ -65,7 +65,7 @@ def parse_date_formats(date_str):
     for fmt in ("%A, %B %d, %Y", "%Y%m%d", "%Y-%m-%d"):
         try:
             return datetime.strptime(date_str, fmt).strftime("%Y%m%d")
-        except:
+        except Exception:
             continue
     return None
 
@@ -88,9 +88,10 @@ def load_existing_matches(path):
 # =============================
 
 def get_match_stats(game_id):
-    url = f"https://africa.espn.com/football/match/_/gameId/{game_id}"
+    # Nouvelle URL ESPN pour les détails d'un match
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     headers = {
-        "User-Agent": "Mozilla/5.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
         "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8"
     }
     try:
@@ -127,7 +128,7 @@ def us_to_decimal(odds_str):
     try:
         val = int(odds_str.replace("+", "").strip())
         return round(1 + (val / 100), 2) if val > 0 else round(1 + (100 / abs(val)), 2)
-    except:
+    except Exception:
         return None
 
 def is_valid_us_odds(val):
@@ -136,10 +137,12 @@ def is_valid_us_odds(val):
     try:
         int(val.replace("+", "").replace("-", ""))
         return True
-    except:
+    except Exception:
         return False
 
-def extract_odds(match_url):
+def extract_odds(game_id):
+    # Nouvelle URL ESPN pour les cotes (page match)
+    match_url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
         res = requests.get(match_url, headers=HEADERS, timeout=15)
         if res.status_code != 200:
@@ -173,9 +176,11 @@ def extract_odds(match_url):
 
 for league_name, league in LEAGUES.items():
     print(f"\n🏆 {league_name}")
-    BASE_URL = f"https://www.espn.com/soccer/schedule/_/date/{{date}}/league/{league['id']}"
-    json_path = os.path.join(OUTPUT_DIR, league["json"])
 
+    # Nouvelle structure d'URL ESPN : /soccer/schedule/_/date/{date}/league/{id}
+    BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
+
+    json_path = os.path.join(OUTPUT_DIR, league["json"])
     matches = load_existing_matches(json_path)
 
     # ── Étape 1 : supprimer les matchs hier/avant-hier sans cotes ──────────
@@ -188,17 +193,19 @@ for league_name, league in LEAGUES.items():
     if removed:
         print(f"  🗑️  {len(removed)} match(s) sans cotes supprimé(s) et re-scrapés")
 
-    new_count    = 0
+    new_count     = 0
     stats_updated = 0
 
     # ── Étape 2 : re-scraper hier et avant-hier ────────────────────────────
     for date_str in dates_to_fetch:
         print(f"  📅 {date_str}")
 
+        url = BASE_URL.format(date=date_str)
         try:
-            res = requests.get(BASE_URL.format(date=date_str), headers=HEADERS, timeout=15)
+            res = requests.get(url, headers=HEADERS, timeout=15)
             soup = BeautifulSoup(res.content, "html.parser")
-        except Exception:
+        except Exception as e:
+            print(f"    ⚠️  Erreur requête : {e}")
             continue
 
         for table in soup.select("div.ResponsiveTable"):
@@ -216,12 +223,19 @@ for league_name, league in LEAGUES.items():
                 if score.lower() == "v":
                     continue
 
-                match_id = re.search(r"gameId/(\d+)", score_tag["href"])
+                match_href = score_tag.get("href", "")
+                match_id   = re.search(r"gameId/(\d+)", match_href)
                 if not match_id:
                     continue
 
-                game_id   = match_id.group(1)
-                match_url = "https://www.espn.com" + score_tag["href"]
+                game_id = match_id.group(1)
+
+                # URL canonique du match (nouvelle structure)
+                match_url = (
+                    "https://www.espn.com" + match_href
+                    if match_href.startswith("/")
+                    else match_href
+                )
 
                 # ── Match existant : enrichir stats si manquantes ──────────
                 if game_id in matches:
@@ -234,7 +248,7 @@ for league_name, league in LEAGUES.items():
 
                 # ── Nouveau match : stats + cotes ──────────────────────────
                 stats = get_match_stats(game_id)
-                odds  = extract_odds(match_url)
+                odds  = extract_odds(game_id)
                 time.sleep(1)
 
                 match_data = {

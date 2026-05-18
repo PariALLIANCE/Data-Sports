@@ -10,25 +10,51 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
 }
 
-# === DOSSIER DE SORTIE ===
 OUTPUT_DIR = "data/football/leagues"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === LIGUES ===
 LEAGUES = {
-  "FIFA_Club_World_Cup": {
-    "id": "fifa.cwc",
-    "json": "FIFA_Club_World_Cup.json"
-  },
-  "UEFA_Europa_League": {
-    "id": "uefa.europa",
-    "json": "UEFA_Europa_League.json"
-  }
+    "FA_Cup": {
+        "id": "eng.fa",
+        "json": "FA_Cup.json"
+    },
+    "EFL_Cup": {
+        "id": "eng.league_cup",
+        "json": "EFL_Cup.json"
+    },
+    "Copa_del_Rey": {
+        "id": "esp.copa_del_rey",
+        "json": "Copa_del_Rey.json"
+    },
+    "DFB_Pokal": {
+        "id": "ger.dfb_pokal",
+        "json": "DFB_Pokal.json"
+    },
+    "Coppa_Italia": {
+        "id": "ita.coppa_italia",
+        "json": "Coppa_Italia.json"
+    },
+    "Coupe_de_France": {
+        "id": "fra.coupe_de_france",
+        "json": "Coupe_de_France.json"
+    },
+    "KNVB_Cup": {
+        "id": "ned.cup",
+        "json": "KNVB_Cup.json"
+    },
+    "Taca_de_Portugal": {
+        "id": "por.taca.portugal",
+        "json": "Taca_de_Portugal.json"
+    },
+    "Kings_Cup_Saudi": {
+        "id": "ksa.kings.cup",
+        "json": "Kings_Cup_Saudi.json"
+    }
 }
 
-
-
-BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
+# URL résultats africa.espn
+BASE_URL = "https://africa.espn.com/football/results/_/date/{date}/league/{league}"
 
 # === PÉRIODE ===
 START_DATE = datetime(2023, 1, 1, tzinfo=timezone.utc)
@@ -118,7 +144,6 @@ for league_name, league_info in LEAGUES.items():
                     team2 = teams[1].text.strip()
                     score = score_tag.text.strip()
 
-                    # Match non joué
                     if score.lower() == "v":
                         continue
 
@@ -129,16 +154,13 @@ for league_name, league_info in LEAGUES.items():
 
                     game_id = match_id_match.group(1)
 
-                    # 🔁 Récupération systématique des stats
                     stats = get_match_stats(game_id)
 
-                    # 🔄 Mise à jour si le match existe déjà
                     if game_id in all_matches:
                         if not all_matches[game_id].get("stats") and stats:
                             all_matches[game_id]["stats"] = stats
                         continue
 
-                    # 🆕 Nouveau match
                     all_matches[game_id] = {
                         "gameId": game_id,
                         "date": date_text,
@@ -146,7 +168,7 @@ for league_name, league_info in LEAGUES.items():
                         "team2": team2,
                         "score": score,
                         "title": f"{team1} VS {team2}",
-                        "match_url": "https://www.espn.com" + match_url,
+                        "match_url": "https://africa.espn.com" + match_url,
                         "stats": stats
                     }
 

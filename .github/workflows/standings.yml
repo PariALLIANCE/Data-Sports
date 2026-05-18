@@ -3,8 +3,8 @@ name: Football Standings Scraper
 on:
   workflow_dispatch:
   schedule:
-    # Tous les jours à 01:00 UTC (modifié pour 00:30 UTC)
-    - cron: "30 0 * * *"
+    # Tous les jours à 01:00 UTC (modifié pour 00:40 UTC)
+    - cron: "40 0 * * *"
 
 jobs:
   scrape-standings:

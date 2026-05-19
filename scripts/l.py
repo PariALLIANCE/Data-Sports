@@ -14,71 +14,31 @@ OUTPUT_DIR = "data/football/leagues"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 LEAGUES = {
-    "FA_Cup": {"id": "eng.fa", "json": "FA_Cup.json"},
-    "EFL_Cup": {"id": "eng.league_cup", "json": "EFL_Cup.json"},
-    "Copa_del_Rey": {"id": "esp.copa_del_rey", "json": "Copa_del_Rey.json"},
-    "DFB_Pokal": {"id": "ger.dfb_pokal", "json": "DFB_Pokal.json"},
-    "Coppa_Italia": {"id": "ita.coppa_italia", "json": "Coppa_Italia.json"},
-    "Coupe_de_France": {"id": "fra.coupe_de_france", "json": "Coupe_de_France.json"},
-    "KNVB_Cup": {"id": "ned.cup", "json": "KNVB_Cup.json"},
-    "Taca_de_Portugal": {"id": "por.taca.portugal", "json": "Taca_de_Portugal.json"},
-    "Kings_Cup_Saudi": {"id": "ksa.kings.cup", "json": "Kings_Cup_Saudi.json"}
+    "FA_Cup":           {"id": "eng.fa",              "json": "FA_Cup.json"},
+    "EFL_Cup":          {"id": "eng.league_cup",      "json": "EFL_Cup.json"},
+    "Copa_del_Rey":     {"id": "esp.copa_del_rey",    "json": "Copa_del_Rey.json"},
+    "DFB_Pokal":        {"id": "ger.dfb_pokal",       "json": "DFB_Pokal.json"},
+    "Coppa_Italia":     {"id": "ita.coppa_italia",    "json": "Coppa_Italia.json"},
+    "Coupe_de_France":  {"id": "fra.coupe_de_france", "json": "Coupe_de_France.json"},
+    "KNVB_Cup":         {"id": "ned.cup",             "json": "KNVB_Cup.json"},
+    "Taca_de_Portugal": {"id": "por.taca.portugal",   "json": "Taca_de_Portugal.json"},
+    "Kings_Cup_Saudi":  {"id": "ksa.kings.cup",       "json": "Kings_Cup_Saudi.json"},
 }
 
-# === DATES : 1er janvier 2023 → aujourd'hui ===
-START_DATE = datetime(2023, 1, 1, tzinfo=timezone.utc)
-END_DATE   = datetime.now(timezone.utc)
+# === PLAGE DE DATES : 01/01/2025 → aujourd'hui ===
+now        = datetime.now(timezone.utc)
+start_date = datetime(2025, 1, 1, tzinfo=timezone.utc)
+
+dates_to_fetch = []
+current = start_date
+while current <= now:
+    dates_to_fetch.append(current.strftime("%Y%m%d"))
+    current += timedelta(days=1)
+
+print(f"📆 Plage : {dates_to_fetch[0]} → {dates_to_fetch[-1]} ({len(dates_to_fetch)} jours)\n")
 
 # =============================
 # UTILS
-# =============================
-
-def load_existing_matches(path):
-    if not os.path.exists(path):
-        return {}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return {m["gameId"]: m for m in data if "gameId" in m}
-    except Exception:
-        return {}
-
-# =============================
-# STATS
-# =============================
-
-def get_match_stats(game_id):
-    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-        "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8"
-    }
-    try:
-        res = requests.get(url, headers=headers, timeout=15)
-        res.raise_for_status()
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        stats_section = soup.find("section", {"data-testid": "prism-LayoutCard"})
-        if not stats_section:
-            return {}
-
-        stats = {}
-        for row in stats_section.find_all("div", class_="LOSQp"):
-            name_tag = row.find("span", class_="OkRBU")
-            values   = row.find_all("span", class_="bLeWt")
-            if name_tag and len(values) >= 2:
-                stats[name_tag.text.strip()] = {
-                    "home": values[0].text.strip(),
-                    "away": values[1].text.strip()
-                }
-
-        time.sleep(0.6)
-        return stats
-    except Exception:
-        return {}
-
-# =============================
-# COTES ESPN
 # =============================
 
 def us_to_decimal(odds_str):
@@ -98,6 +58,40 @@ def is_valid_us_odds(val):
         return True
     except Exception:
         return False
+
+# =============================
+# STATS
+# =============================
+
+def get_match_stats(game_id):
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
+    try:
+        res = requests.get(url, headers=HEADERS, timeout=15)
+        res.raise_for_status()
+        soup = BeautifulSoup(res.text, "html.parser")
+
+        stats_section = soup.find("section", {"data-testid": "prism-LayoutCard"})
+        if not stats_section:
+            return {}
+
+        stats = {}
+        for row in stats_section.find_all("div", class_="LOSQp"):
+            name_tag = row.find("span", class_="OkRBU")
+            values   = row.find_all("span", class_="bLeWt")
+            if name_tag and len(values) >= 2:
+                stats[name_tag.text.strip()] = {
+                    "home": values[0].text.strip(),
+                    "away": values[1].text.strip(),
+                }
+
+        time.sleep(0.6)
+        return stats
+    except Exception:
+        return {}
+
+# =============================
+# COTES ESPN
+# =============================
 
 def extract_odds(game_id):
     match_url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
@@ -133,29 +127,36 @@ def extract_odds(game_id):
 # =============================
 
 for league_name, league in LEAGUES.items():
-    print(f"\n🏆 {league_name}")
-
-    BASE_URL  = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
     json_path = os.path.join(OUTPUT_DIR, league["json"])
-    matches   = load_existing_matches(json_path)
 
-    new_count     = 0
-    stats_updated = 0
+    # ── Étape 1 : supprimer le JSON existant ──────────────────────────────
+    if os.path.exists(json_path):
+        os.remove(json_path)
+        print(f"🗑️  JSON supprimé : {json_path}")
 
-    current_date = START_DATE
-    while current_date <= END_DATE:
-        date_str = current_date.strftime("%Y%m%d")
-        print(f"  📅 {date_str}")
+    print(f"\n🏆 {league_name} — scraping complet 01/01/2025 → aujourd'hui")
 
+    BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
+
+    matches   = {}   # gameId → match_data  (repart de zéro)
+    new_count = 0
+
+    # ── Étape 2 : parcourir toutes les dates ──────────────────────────────
+    for date_str in dates_to_fetch:
+
+        url = BASE_URL.format(date=date_str)
         try:
-            res  = requests.get(BASE_URL.format(date=date_str), headers=HEADERS, timeout=15)
+            res  = requests.get(url, headers=HEADERS, timeout=15)
             soup = BeautifulSoup(res.content, "html.parser")
         except Exception as e:
-            print(f"    ⚠️  Erreur requête : {e}")
-            current_date += timedelta(days=1)
+            print(f"    ⚠️  {date_str} — Erreur requête : {e}")
             continue
 
-        for table in soup.select("div.ResponsiveTable"):
+        tables = soup.select("div.ResponsiveTable")
+        if not tables:
+            continue  # Pas de match ce jour-là → on passe silencieusement
+
+        for table in tables:
             date_title = table.select_one("div.Table__Title")
             date_text  = date_title.text.strip() if date_title else date_str
 
@@ -168,34 +169,25 @@ for league_name, league in LEAGUES.items():
 
                 score = score_tag.text.strip()
                 if score.lower() == "v":
-                    continue
+                    continue  # Match pas encore joué
 
                 match_href = score_tag.get("href", "")
                 match_id   = re.search(r"gameId/(\d+)", match_href)
                 if not match_id:
                     continue
 
-                game_id   = match_id.group(1)
+                game_id = match_id.group(1)
+
+                if game_id in matches:
+                    continue  # Déjà traité (doublon de table)
+
                 match_url = (
                     "https://www.espn.com" + match_href
                     if match_href.startswith("/")
                     else match_href
                 )
 
-                # ── Match existant : enrichir stats/cotes si manquantes ────
-                if game_id in matches:
-                    if not matches[game_id].get("stats"):
-                        stats = get_match_stats(game_id)
-                        if stats:
-                            matches[game_id]["stats"] = stats
-                            stats_updated += 1
-                    if not matches[game_id].get("odds"):
-                        odds = extract_odds(game_id)
-                        if odds:
-                            matches[game_id]["odds"] = odds
-                    continue
-
-                # ── Nouveau match : stats + cotes ──────────────────────────
+                # Stats + cotes
                 stats = get_match_stats(game_id)
                 odds  = extract_odds(game_id)
                 time.sleep(1)
@@ -216,16 +208,17 @@ for league_name, league in LEAGUES.items():
                 matches[game_id] = match_data
                 new_count += 1
 
-                status = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
-                print(f"    ✅ {teams[0].text.strip()} vs {teams[1].text.strip()} → {status}")
-
-        current_date += timedelta(days=1)
-        time.sleep(1)
+                odds_str = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
+                print(f"    ✅ [{date_str}] {teams[0].text.strip()} vs {teams[1].text.strip()} → {odds_str}")
 
     # ── Sauvegarde atomique ────────────────────────────────────────────────
-    tmp_path = json_path + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(list(matches.values()), f, indent=2, ensure_ascii=False)
-    os.replace(tmp_path, json_path)
+    if matches:
+        tmp_path = json_path + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(list(matches.values()), f, indent=2, ensure_ascii=False)
+        os.replace(tmp_path, json_path)
+        print(f"  💾 {league_name} : {new_count} matchs sauvegardés → {json_path}")
+    else:
+        print(f"  ⚠️  {league_name} : aucun match trouvé sur la période")
 
-    print(f"  💾 {league_name} : {len(matches)} matchs | +{new_count} nouveaux | stats MAJ {stats_updated}")
+print("\n✅ Scraping complet terminé.")

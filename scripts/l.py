@@ -154,7 +154,10 @@ for league_name, league in LEAGUES.items():
 
         tables = soup.select("div.ResponsiveTable")
         if not tables:
-            continue  # Pas de match ce jour-là → on passe silencieusement
+            print(f"    ⬜ {date_str} — aucun match")
+            continue
+
+        print(f"  📅 {date_str} — {len(tables)} tableau(x) trouvé(s)")
 
         for table in tables:
             date_title = table.select_one("div.Table__Title")
@@ -169,7 +172,8 @@ for league_name, league in LEAGUES.items():
 
                 score = score_tag.text.strip()
                 if score.lower() == "v":
-                    continue  # Match pas encore joué
+                    print(f"    ⏭️  {teams[0].text.strip()} vs {teams[1].text.strip()} — pas encore joué, ignoré")
+                    continue
 
                 match_href = score_tag.get("href", "")
                 match_id   = re.search(r"gameId/(\d+)", match_href)
@@ -179,13 +183,16 @@ for league_name, league in LEAGUES.items():
                 game_id = match_id.group(1)
 
                 if game_id in matches:
-                    continue  # Déjà traité (doublon de table)
+                    print(f"    🔁 {teams[0].text.strip()} vs {teams[1].text.strip()} — doublon ignoré")
+                    continue
 
                 match_url = (
                     "https://www.espn.com" + match_href
                     if match_href.startswith("/")
                     else match_href
                 )
+
+                print(f"    🔍 Scraping : {teams[0].text.strip()} vs {teams[1].text.strip()} (gameId: {game_id})")
 
                 # Stats + cotes
                 stats = get_match_stats(game_id)
@@ -208,8 +215,9 @@ for league_name, league in LEAGUES.items():
                 matches[game_id] = match_data
                 new_count += 1
 
-                odds_str = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
-                print(f"    ✅ [{date_str}] {teams[0].text.strip()} vs {teams[1].text.strip()} → {odds_str}")
+                odds_str  = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
+                stats_str = f"{len(stats)} stat(s)" if stats else "pas de stats"
+                print(f"    ✅ {teams[0].text.strip()} {score} {teams[1].text.strip()} | cotes: {odds_str} | {stats_str}")
 
     # ── Sauvegarde atomique ────────────────────────────────────────────────
     if matches:

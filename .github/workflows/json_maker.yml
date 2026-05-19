@@ -24,7 +24,7 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run football scraper
-        run: python scripts/cups_debut2023.py
+        run: python scripts/l.py
 
       - name: Sync with remote before push
         run: |

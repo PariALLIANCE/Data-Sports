@@ -26,14 +26,12 @@ jobs:
       - name: Run football scraper
         run: python scripts/l.py
 
-      - name: Sync with remote before push
+      - name: Commit and push results
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
-
-      - name: Commit and push results
-        run: |
           git add data/football/leagues/*.json
-          git diff --cached --quiet || git commit -m "🤖 Update cups JSONs debut2023"
+          git diff --cached --quiet && echo "Rien à commiter" && exit 0
+          git commit -m "🤖 Update cups JSONs debut2023"
+          git pull --rebase origin main
           git push origin main

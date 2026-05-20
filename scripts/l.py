@@ -27,7 +27,7 @@ LEAGUES = {
 
 # === PLAGE DE DATES : 01/01/2026 → aujourd'hui ===
 now        = datetime.now(timezone.utc)
-start_date = datetime(2026, 1, 1, tzinfo=timezone.utc)
+start_date = datetime(2023, 1, 1, tzinfo=timezone.utc)
 
 dates_to_fetch = []
 current = start_date

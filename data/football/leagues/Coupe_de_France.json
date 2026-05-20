@@ -1,1 +1,602 @@
-[]
+[
+  {
+    "gameId": "401843547",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Angers",
+    "team2": "Toulouse",
+    "score": "1 - 1",
+    "title": "Angers VS Toulouse",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843547/toulouse-angers",
+    "stats": {},
+    "odds": {
+      "home": 2.95,
+      "away": 2.4,
+      "draw": 3.05
+    }
+  },
+  {
+    "gameId": "401843545",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Bastia",
+    "team2": "Troyes",
+    "score": "0 - 2",
+    "title": "Bastia VS Troyes",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843545/troyes-bastia",
+    "stats": {},
+    "odds": {
+      "home": 2.95,
+      "away": 2.3,
+      "draw": 3.2
+    }
+  },
+  {
+    "gameId": "401843539",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Montreuil FC",
+    "team2": "SC Amiens",
+    "score": "2 - 4",
+    "title": "Montreuil FC VS SC Amiens",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843539/sc-amiens-montreuil-fc",
+    "stats": {},
+    "odds": {
+      "home": 8.5,
+      "away": 1.28,
+      "draw": 5.5
+    }
+  },
+  {
+    "gameId": "401843541",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Orléans",
+    "team2": "AS Monaco",
+    "score": "1 - 3",
+    "title": "Orléans VS AS Monaco",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843541/as-monaco-orleans",
+    "stats": {},
+    "odds": {
+      "home": 7.5,
+      "away": 1.32,
+      "draw": 5.25
+    }
+  },
+  {
+    "gameId": "401843546",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Avranches",
+    "team2": "Strasbourg",
+    "score": "0 - 6",
+    "title": "Avranches VS Strasbourg",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843546/strasbourg-avranches",
+    "stats": {},
+    "odds": {
+      "home": 11.0,
+      "away": 1.2,
+      "draw": 6.0
+    }
+  },
+  {
+    "gameId": "401843543",
+    "date": "Saturday, January 10, 2026",
+    "team1": "FC Istres",
+    "team2": "Stade Laval",
+    "score": "0 - 2",
+    "title": "FC Istres VS Stade Laval",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843543/stade-laval-fc-istres",
+    "stats": {
+      "Possession": {
+        "home": "54.7%",
+        "away": "45.3%"
+      },
+      "Shots on Goal": {
+        "home": "3",
+        "away": "3"
+      },
+      "Shot Attempts": {
+        "home": "8",
+        "away": "11"
+      },
+      "Yellow Cards": {
+        "home": "2",
+        "away": "2"
+      },
+      "Corner Kicks": {
+        "home": "5",
+        "away": "3"
+      },
+      "Saves": {
+        "home": "1",
+        "away": "3"
+      }
+    },
+    "odds": {
+      "home": 3.3,
+      "away": 2.15,
+      "draw": 3.2
+    }
+  },
+  {
+    "gameId": "401843550",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Hauts Lyonnais",
+    "team2": "Lorient",
+    "score": "1 - 3",
+    "title": "Hauts Lyonnais VS Lorient",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843550/lorient-hauts-lyonnais",
+    "stats": {},
+    "odds": {
+      "home": 12.0,
+      "away": 1.14,
+      "draw": 8.0
+    }
+  },
+  {
+    "gameId": "401843536",
+    "date": "Saturday, January 10, 2026",
+    "team1": "Le Puy",
+    "team2": "Stade de Reims",
+    "score": "0 - 0",
+    "title": "Le Puy VS Stade de Reims",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843536/stade-de-reims-le-puy",
+    "stats": {},
+    "odds": {
+      "home": 3.25,
+      "away": 2.05,
+      "draw": 3.4
+    }
+  },
+  {
+    "gameId": "401843548",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Sochaux",
+    "team2": "Lens",
+    "score": "0 - 3",
+    "title": "Sochaux VS Lens",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843548/lens-sochaux",
+    "stats": {},
+    "odds": {
+      "home": 6.0,
+      "away": 1.47,
+      "draw": 4.4
+    }
+  },
+  {
+    "gameId": "401843540",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Chantilly",
+    "team2": "Stade Rennais",
+    "score": "1 - 3",
+    "title": "Chantilly VS Stade Rennais",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843540/stade-rennais-chantilly",
+    "stats": {},
+    "odds": {
+      "home": 15.0,
+      "away": 1.11,
+      "draw": 8.5
+    }
+  },
+  {
+    "gameId": "401843535",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Le Mans",
+    "team2": "AS Nancy Lorraine",
+    "score": "0 - 0",
+    "title": "Le Mans VS AS Nancy Lorraine",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843535/as-nancy-lorraine-le-mans",
+    "stats": {},
+    "odds": {
+      "home": 2.0,
+      "away": 3.6,
+      "draw": 3.25
+    }
+  },
+  {
+    "gameId": "401843538",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Metz",
+    "team2": "Montpellier",
+    "score": "0 - 4",
+    "title": "Metz VS Montpellier",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843538/montpellier-metz",
+    "stats": {},
+    "odds": {
+      "home": 2.15,
+      "away": 3.05,
+      "draw": 3.45
+    }
+  },
+  {
+    "gameId": "401843542",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Nantes",
+    "team2": "Nice",
+    "score": "1 - 1",
+    "title": "Nantes VS Nice",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843542/nice-nantes",
+    "stats": {},
+    "odds": {
+      "home": 3.2,
+      "away": 2.05,
+      "draw": 3.55
+    }
+  },
+  {
+    "gameId": "401843537",
+    "date": "Sunday, January 11, 2026",
+    "team1": "Lille",
+    "team2": "Lyon",
+    "score": "1 - 2",
+    "title": "Lille VS Lyon",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843537/lyon-lille",
+    "stats": {},
+    "odds": {
+      "home": 2.3,
+      "away": 2.85,
+      "draw": 3.35
+    }
+  },
+  {
+    "gameId": "401843549",
+    "date": "Monday, January 12, 2026",
+    "team1": "Paris Saint-Germain",
+    "team2": "Paris FC",
+    "score": "0 - 1",
+    "title": "Paris Saint-Germain VS Paris FC",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843549/paris-fc-paris-saint-germain",
+    "stats": {},
+    "odds": {
+      "home": 1.15,
+      "away": 12.0,
+      "draw": 7.5
+    }
+  },
+  {
+    "gameId": "401843544",
+    "date": "Tuesday, January 13, 2026",
+    "team1": "Bayeux",
+    "team2": "Marseille",
+    "score": "0 - 9",
+    "title": "Bayeux VS Marseille",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843544/marseille-bayeux",
+    "stats": {},
+    "odds": {
+      "home": 66.0,
+      "away": 1.01,
+      "draw": 15.0
+    }
+  },
+  {
+    "gameId": "401851932",
+    "date": "Tuesday, February 3, 2026",
+    "team1": "Stade de Reims",
+    "team2": "Le Mans",
+    "score": "3 - 0",
+    "title": "Stade de Reims VS Le Mans",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851932/le-mans-stade-de-reims",
+    "stats": {},
+    "odds": {
+      "home": 2.0,
+      "away": 3.5,
+      "draw": 3.25
+    }
+  },
+  {
+    "gameId": "401851937",
+    "date": "Tuesday, February 3, 2026",
+    "team1": "Marseille",
+    "team2": "Stade Rennais",
+    "score": "3 - 0",
+    "title": "Marseille VS Stade Rennais",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851937/stade-rennais-marseille",
+    "stats": {},
+    "odds": {
+      "home": 1.47,
+      "away": 5.25,
+      "draw": 4.7
+    }
+  },
+  {
+    "gameId": "401851936",
+    "date": "Wednesday, February 4, 2026",
+    "team1": "Lorient",
+    "team2": "Paris FC",
+    "score": "2 - 0",
+    "title": "Lorient VS Paris FC",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851936/paris-fc-lorient",
+    "stats": {},
+    "odds": {
+      "home": 2.6,
+      "away": 2.6,
+      "draw": 3.2
+    }
+  },
+  {
+    "gameId": "401851935",
+    "date": "Wednesday, February 4, 2026",
+    "team1": "Lyon",
+    "team2": "Stade Laval",
+    "score": "2 - 0",
+    "title": "Lyon VS Stade Laval",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851935/stade-laval-lyon",
+    "stats": {},
+    "odds": {
+      "home": 1.2,
+      "away": 13.0,
+      "draw": 5.5
+    }
+  },
+  {
+    "gameId": "401851938",
+    "date": "Wednesday, February 4, 2026",
+    "team1": "Nice",
+    "team2": "Montpellier",
+    "score": "3 - 2",
+    "title": "Nice VS Montpellier",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851938/montpellier-nice",
+    "stats": {},
+    "odds": {
+      "home": 2.0,
+      "away": 3.6,
+      "draw": 3.3
+    }
+  },
+  {
+    "gameId": "401851934",
+    "date": "Wednesday, February 4, 2026",
+    "team1": "Toulouse",
+    "team2": "SC Amiens",
+    "score": "1 - 0",
+    "title": "Toulouse VS SC Amiens",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851934/sc-amiens-toulouse",
+    "stats": {},
+    "odds": {
+      "home": 1.25,
+      "away": 9.5,
+      "draw": 5.75
+    }
+  },
+  {
+    "gameId": "401851931",
+    "date": "Wednesday, February 4, 2026",
+    "team1": "Troyes",
+    "team2": "Lens",
+    "score": "2 - 4",
+    "title": "Troyes VS Lens",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851931/lens-troyes",
+    "stats": {},
+    "odds": {
+      "home": 3.8,
+      "away": 1.87,
+      "draw": 3.5
+    }
+  },
+  {
+    "gameId": "401851933",
+    "date": "Thursday, February 5, 2026",
+    "team1": "Strasbourg",
+    "team2": "AS Monaco",
+    "score": "3 - 1",
+    "title": "Strasbourg VS AS Monaco",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401851933/as-monaco-strasbourg",
+    "stats": {},
+    "odds": {
+      "home": 2.3,
+      "away": 2.85,
+      "draw": 3.4
+    }
+  },
+  {
+    "gameId": "401859841",
+    "date": "Tuesday, March 3, 2026",
+    "team1": "Strasbourg",
+    "team2": "Stade de Reims",
+    "score": "2 - 1",
+    "title": "Strasbourg VS Stade de Reims",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401859841/stade-de-reims-strasbourg",
+    "stats": {},
+    "odds": {
+      "home": 1.57,
+      "away": 5.25,
+      "draw": 4.0
+    }
+  },
+  {
+    "gameId": "401859838",
+    "date": "Wednesday, March 4, 2026",
+    "team1": "Lorient",
+    "team2": "Nice",
+    "score": "0 - 0",
+    "title": "Lorient VS Nice",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401859838/nice-lorient",
+    "stats": {
+      "Possession": {
+        "home": "40.6%",
+        "away": "59.4%"
+      },
+      "Shots on Goal": {
+        "home": "0",
+        "away": "0"
+      },
+      "Shot Attempts": {
+        "home": "9",
+        "away": "13"
+      },
+      "Yellow Cards": {
+        "home": "4",
+        "away": "2"
+      },
+      "Corner Kicks": {
+        "home": "0",
+        "away": "8"
+      },
+      "Saves": {
+        "home": "0",
+        "away": "0"
+      }
+    },
+    "odds": {
+      "home": 2.1,
+      "away": 3.3,
+      "draw": 3.35
+    }
+  },
+  {
+    "gameId": "401859840",
+    "date": "Wednesday, March 4, 2026",
+    "team1": "Marseille",
+    "team2": "Toulouse",
+    "score": "2 - 2",
+    "title": "Marseille VS Toulouse",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401859840/toulouse-marseille",
+    "stats": {
+      "Possession": {
+        "home": "61.2%",
+        "away": "38.8%"
+      },
+      "Shots on Goal": {
+        "home": "3",
+        "away": "6"
+      },
+      "Shot Attempts": {
+        "home": "14",
+        "away": "11"
+      },
+      "Yellow Cards": {
+        "home": "2",
+        "away": "2"
+      },
+      "Corner Kicks": {
+        "home": "6",
+        "away": "6"
+      },
+      "Saves": {
+        "home": "4",
+        "away": "1"
+      }
+    },
+    "odds": {
+      "home": 1.83,
+      "away": 4.0,
+      "draw": 3.55
+    }
+  },
+  {
+    "gameId": "401859839",
+    "date": "Thursday, March 5, 2026",
+    "team1": "Lyon",
+    "team2": "Lens",
+    "score": "2 - 2",
+    "title": "Lyon VS Lens",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401859839/lens-lyon",
+    "stats": {
+      "Possession": {
+        "home": "59.2%",
+        "away": "40.8%"
+      },
+      "Shots on Goal": {
+        "home": "4",
+        "away": "4"
+      },
+      "Shot Attempts": {
+        "home": "14",
+        "away": "12"
+      },
+      "Yellow Cards": {
+        "home": "1",
+        "away": "3"
+      },
+      "Corner Kicks": {
+        "home": "6",
+        "away": "7"
+      },
+      "Saves": {
+        "home": "2",
+        "away": "2"
+      }
+    },
+    "odds": {
+      "home": 2.6,
+      "away": 2.5,
+      "draw": 3.35
+    }
+  },
+  {
+    "gameId": "401863528",
+    "date": "Tuesday, April 21, 2026",
+    "team1": "Lens",
+    "team2": "Toulouse",
+    "score": "4 - 1",
+    "title": "Lens VS Toulouse",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401863528/toulouse-lens",
+    "stats": {
+      "Possession": {
+        "home": "62.5%",
+        "away": "37.5%"
+      },
+      "Shots on Goal": {
+        "home": "10",
+        "away": "1"
+      },
+      "Shot Attempts": {
+        "home": "16",
+        "away": "7"
+      },
+      "Yellow Cards": {
+        "home": "0",
+        "away": "2"
+      },
+      "Corner Kicks": {
+        "home": "6",
+        "away": "0"
+      },
+      "Saves": {
+        "home": "0",
+        "away": "6"
+      }
+    },
+    "odds": {
+      "home": 1.54,
+      "away": 5.5,
+      "draw": 4.1
+    }
+  },
+  {
+    "gameId": "401863527",
+    "date": "Wednesday, April 22, 2026",
+    "team1": "Strasbourg",
+    "team2": "Nice",
+    "score": "0 - 2",
+    "title": "Strasbourg VS Nice",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401863527/nice-strasbourg",
+    "stats": {
+      "Possession": {
+        "home": "66%",
+        "away": "34%"
+      },
+      "Shots on Goal": {
+        "home": "2",
+        "away": "3"
+      },
+      "Shot Attempts": {
+        "home": "17",
+        "away": "4"
+      },
+      "Yellow Cards": {
+        "home": "2",
+        "away": "3"
+      },
+      "Corner Kicks": {
+        "home": "2",
+        "away": "9"
+      },
+      "Saves": {
+        "home": "1",
+        "away": "1"
+      }
+    },
+    "odds": {
+      "home": 1.74,
+      "away": 4.2,
+      "draw": 3.75
+    }
+  }
+]

@@ -18,14 +18,14 @@
             "position": 2,
             "name": "Manchester City",
             "stats": {
-                "GP": 36,
+                "GP": 37,
                 "W": 23,
-                "D": 8,
+                "D": 9,
                 "L": 5,
-                "F": 75,
-                "A": 32,
+                "F": 76,
+                "A": 33,
                 "GD": 43,
-                "P": 77
+                "P": 78
             }
         },
         {
@@ -74,14 +74,14 @@
             "position": 6,
             "name": "AFC Bournemouth",
             "stats": {
-                "GP": 36,
+                "GP": 37,
                 "W": 13,
-                "D": 16,
+                "D": 17,
                 "L": 7,
-                "F": 56,
-                "A": 52,
+                "F": 57,
+                "A": 53,
                 "GD": 4,
-                "P": 55
+                "P": 56
             }
         },
         {
@@ -100,6 +100,20 @@
         },
         {
             "position": 8,
+            "name": "Chelsea",
+            "stats": {
+                "GP": 37,
+                "W": 14,
+                "D": 10,
+                "L": 13,
+                "F": 57,
+                "A": 50,
+                "GD": 7,
+                "P": 52
+            }
+        },
+        {
+            "position": 9,
             "name": "Brentford",
             "stats": {
                 "GP": 37,
@@ -113,7 +127,7 @@
             }
         },
         {
-            "position": 9,
+            "position": 10,
             "name": "Sunderland",
             "stats": {
                 "GP": 37,
@@ -124,20 +138,6 @@
                 "A": 47,
                 "GD": -7,
                 "P": 51
-            }
-        },
-        {
-            "position": 10,
-            "name": "Chelsea",
-            "stats": {
-                "GP": 36,
-                "W": 13,
-                "D": 10,
-                "L": 13,
-                "F": 55,
-                "A": 49,
-                "GD": 6,
-                "P": 49
             }
         },
         {
@@ -228,13 +228,13 @@
             "position": 17,
             "name": "Tottenham Hotspur",
             "stats": {
-                "GP": 36,
+                "GP": 37,
                 "W": 9,
                 "D": 11,
-                "L": 16,
-                "F": 46,
-                "A": 55,
-                "GD": -9,
+                "L": 17,
+                "F": 47,
+                "A": 57,
+                "GD": -10,
                 "P": 38
             }
         },
@@ -1615,13 +1615,13 @@
             "position": 1,
             "name": "Chengdu Rongcheng",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 11,
                 "D": 1,
-                "L": 0,
+                "L": 1,
                 "F": 32,
-                "A": 10,
-                "GD": 22,
+                "A": 11,
+                "GD": 21,
                 "P": 34
             }
         },
@@ -1657,14 +1657,14 @@
             "position": 4,
             "name": "Dalian Yingbo",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 6,
-                "D": 0,
+                "D": 1,
                 "L": 6,
-                "F": 18,
-                "A": 23,
+                "F": 19,
+                "A": 24,
                 "GD": -5,
-                "P": 18
+                "P": 19
             }
         },
         {
@@ -1685,18 +1685,46 @@
             "position": 6,
             "name": "Qingdao West Coast",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 2,
-                "D": 7,
+                "D": 8,
                 "L": 3,
-                "F": 11,
-                "A": 18,
+                "F": 12,
+                "A": 19,
                 "GD": -7,
-                "P": 13
+                "P": 14
             }
         },
         {
             "position": 7,
+            "name": "Beijing Guoan",
+            "stats": {
+                "GP": 13,
+                "W": 4,
+                "D": 5,
+                "L": 4,
+                "F": 22,
+                "A": 19,
+                "GD": 3,
+                "P": 12
+            }
+        },
+        {
+            "position": 8,
+            "name": "Henan Songshan Longmen",
+            "stats": {
+                "GP": 13,
+                "W": 5,
+                "D": 3,
+                "L": 5,
+                "F": 14,
+                "A": 15,
+                "GD": -1,
+                "P": 12
+            }
+        },
+        {
+            "position": 9,
             "name": "Shanghai Shenhua",
             "stats": {
                 "GP": 12,
@@ -1710,21 +1738,21 @@
             }
         },
         {
-            "position": 8,
-            "name": "Beijing Guoan",
+            "position": 10,
+            "name": "Shanghai Port",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 4,
                 "D": 4,
-                "L": 4,
-                "F": 21,
-                "A": 18,
+                "L": 5,
+                "F": 20,
+                "A": 17,
                 "GD": 3,
                 "P": 11
             }
         },
         {
-            "position": 9,
+            "position": 11,
             "name": "Zhejiang Professional FC",
             "stats": {
                 "GP": 12,
@@ -1738,7 +1766,21 @@
             }
         },
         {
-            "position": 10,
+            "position": 12,
+            "name": "Shenzhen Xinpengcheng",
+            "stats": {
+                "GP": 13,
+                "W": 3,
+                "D": 2,
+                "L": 8,
+                "F": 15,
+                "A": 22,
+                "GD": -7,
+                "P": 11
+            }
+        },
+        {
+            "position": 13,
             "name": "Qingdao Hainiu",
             "stats": {
                 "GP": 12,
@@ -1749,48 +1791,6 @@
                 "A": 19,
                 "GD": 0,
                 "P": 10
-            }
-        },
-        {
-            "position": 11,
-            "name": "Shenzhen Xinpengcheng",
-            "stats": {
-                "GP": 12,
-                "W": 3,
-                "D": 1,
-                "L": 8,
-                "F": 14,
-                "A": 21,
-                "GD": -7,
-                "P": 10
-            }
-        },
-        {
-            "position": 12,
-            "name": "Henan Songshan Longmen",
-            "stats": {
-                "GP": 12,
-                "W": 4,
-                "D": 3,
-                "L": 5,
-                "F": 12,
-                "A": 14,
-                "GD": -2,
-                "P": 9
-            }
-        },
-        {
-            "position": 13,
-            "name": "Shanghai Port",
-            "stats": {
-                "GP": 12,
-                "W": 3,
-                "D": 4,
-                "L": 5,
-                "F": 19,
-                "A": 17,
-                "GD": 2,
-                "P": 8
             }
         },
         {
@@ -1825,13 +1825,13 @@
             "position": 16,
             "name": "Tianjin Jinmen Tiger",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 2,
                 "D": 5,
-                "L": 5,
-                "F": 16,
-                "A": 18,
-                "GD": -2,
+                "L": 6,
+                "F": 17,
+                "A": 20,
+                "GD": -3,
                 "P": 1
             }
         }
@@ -4846,20 +4846,34 @@
         },
         {
             "position": 14,
-            "name": "Örgryte IS",
+            "name": "IFK Göteborg",
             "stats": {
-                "GP": 7,
+                "GP": 8,
                 "W": 1,
-                "D": 2,
+                "D": 3,
                 "L": 4,
-                "F": 6,
-                "A": 18,
-                "GD": -12,
-                "P": 5
+                "F": 7,
+                "A": 17,
+                "GD": -10,
+                "P": 6
             }
         },
         {
             "position": 15,
+            "name": "Örgryte IS",
+            "stats": {
+                "GP": 8,
+                "W": 1,
+                "D": 2,
+                "L": 5,
+                "F": 8,
+                "A": 21,
+                "GD": -13,
+                "P": 5
+            }
+        },
+        {
+            "position": 16,
             "name": "Halmstads BK",
             "stats": {
                 "GP": 8,
@@ -4869,20 +4883,6 @@
                 "F": 5,
                 "A": 15,
                 "GD": -10,
-                "P": 3
-            }
-        },
-        {
-            "position": 16,
-            "name": "IFK Göteborg",
-            "stats": {
-                "GP": 7,
-                "W": 0,
-                "D": 3,
-                "L": 4,
-                "F": 4,
-                "A": 15,
-                "GD": -11,
                 "P": 3
             }
         }

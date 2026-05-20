@@ -45,7 +45,17 @@ LEAGUES = {
   "UEFA_Champions_League": {"id": "uefa.champions", "json": "UEFA_Champions_League.json"},
   "UEFA_Europa_League": {"id": "uefa.europa", "json": "UEFA_Europa_League.json"},
   "USA_Major_League_Soccer": {"id": "usa.1", "json": "USA_Major_League_Soccer.json"},
-  "Venezuela_Primera_Division": {"id": "ven.1", "json": "Venezuela_Primera_Division.json"}
+  "Venezuela_Primera_Division": {"id": "ven.1", "json": "Venezuela_Primera_Division.json"},
+  # ── Cups ──────────────────────────────────────────────────────────────
+  "FA_Cup":           {"id": "eng.fa",              "json": "FA_Cup.json"},
+  "EFL_Cup":          {"id": "eng.league_cup",      "json": "EFL_Cup.json"},
+  "Copa_del_Rey":     {"id": "esp.copa_del_rey",    "json": "Copa_del_Rey.json"},
+  "DFB_Pokal":        {"id": "ger.dfb_pokal",       "json": "DFB_Pokal.json"},
+  "Coppa_Italia":     {"id": "ita.coppa_italia",    "json": "Coppa_Italia.json"},
+  "Coupe_de_France":  {"id": "fra.coupe_de_france", "json": "Coupe_de_France.json"},
+  "KNVB_Cup":         {"id": "ned.cup",             "json": "KNVB_Cup.json"},
+  "Taca_de_Portugal": {"id": "por.taca.portugal",   "json": "Taca_de_Portugal.json"},
+  "Kings_Cup_Saudi":  {"id": "ksa.kings.cup",       "json": "Kings_Cup_Saudi.json"},
 }
 
 # === DATES : AVANT-HIER & HIER ===

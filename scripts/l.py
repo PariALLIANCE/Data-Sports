@@ -25,9 +25,9 @@ LEAGUES = {
     "Kings_Cup_Saudi":  {"id": "ksa.kings.cup",       "json": "Kings_Cup_Saudi.json"},
 }
 
-# === PLAGE DE DATES : 01/01/2025 → aujourd'hui ===
+# === PLAGE DE DATES : 01/01/2026 → aujourd'hui ===
 now        = datetime.now(timezone.utc)
-start_date = datetime(2025, 1, 1, tzinfo=timezone.utc)
+start_date = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
 dates_to_fetch = []
 current = start_date
@@ -68,6 +68,7 @@ def get_match_stats(game_id):
     try:
         res = requests.get(url, headers=HEADERS, timeout=15)
         res.raise_for_status()
+        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "html.parser")
 
         stats_section = soup.find("section", {"data-testid": "prism-LayoutCard"})
@@ -99,7 +100,7 @@ def extract_odds(game_id):
         res = requests.get(match_url, headers=HEADERS, timeout=15)
         if res.status_code != 200:
             return None
-
+        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "html.parser")
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
 
@@ -134,11 +135,11 @@ for league_name, league in LEAGUES.items():
         os.remove(json_path)
         print(f"🗑️  JSON supprimé : {json_path}")
 
-    print(f"\n🏆 {league_name} — scraping complet 01/01/2025 → aujourd'hui")
+    print(f"\n🏆 {league_name} — scraping complet 01/01/2026 → aujourd'hui")
 
     BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
 
-    matches   = {}   # gameId → match_data  (repart de zéro)
+    matches   = {}
     new_count = 0
 
     # ── Étape 2 : parcourir toutes les dates ──────────────────────────────
@@ -146,15 +147,15 @@ for league_name, league in LEAGUES.items():
 
         url = BASE_URL.format(date=date_str)
         try:
-            res  = requests.get(url, headers=HEADERS, timeout=15)
-            soup = BeautifulSoup(res.content, "html.parser")
+            res = requests.get(url, headers=HEADERS, timeout=15)
+            res.encoding = "utf-8"
+            soup = BeautifulSoup(res.text, "html.parser")
         except Exception as e:
             print(f"    ⚠️  {date_str} — Erreur requête : {e}")
             continue
 
         tables = soup.select("div.ResponsiveTable")
         if not tables:
-            print(f"    ⬜ {date_str} — aucun match")
             continue
 
         print(f"  📅 {date_str} — {len(tables)} tableau(x) trouvé(s)")
@@ -172,7 +173,6 @@ for league_name, league in LEAGUES.items():
 
                 score = score_tag.text.strip()
                 if score.lower() == "v":
-                    print(f"    ⏭️  {teams[0].text.strip()} vs {teams[1].text.strip()} — pas encore joué, ignoré")
                     continue
 
                 match_href = score_tag.get("href", "")
@@ -183,7 +183,6 @@ for league_name, league in LEAGUES.items():
                 game_id = match_id.group(1)
 
                 if game_id in matches:
-                    print(f"    🔁 {teams[0].text.strip()} vs {teams[1].text.strip()} — doublon ignoré")
                     continue
 
                 match_url = (
@@ -194,7 +193,6 @@ for league_name, league in LEAGUES.items():
 
                 print(f"    🔍 Scraping : {teams[0].text.strip()} vs {teams[1].text.strip()} (gameId: {game_id})")
 
-                # Stats + cotes
                 stats = get_match_stats(game_id)
                 odds  = extract_odds(game_id)
                 time.sleep(1)

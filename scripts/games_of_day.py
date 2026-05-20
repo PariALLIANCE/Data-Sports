@@ -28,7 +28,6 @@ def make_driver():
     return driver
 
 def get_soup(driver, url, wait_selector=None, timeout=15):
-    """Charge une URL avec Selenium et retourne un BeautifulSoup."""
     driver.get(url)
     if wait_selector:
         try:
@@ -52,38 +51,49 @@ TEAMS_FILE  = os.path.join(TEAMS_DIR, "football_teams.json")
 
 # ================= LIGUES =================
 LEAGUES = {
-    "England_Premier_League":       "eng.1",
-    "Spain_Laliga":                 "esp.1",
-    "Germany_Bundesliga":           "ger.1",
-    "Argentina_Primera_Nacional":   "arg.2",
-    "Austria_Bundesliga":           "aut.1",
-    "Belgium_Jupiler_Pro_League":   "bel.1",
-    "Brazil_Serie_A":               "bra.1",
-    "Brazil_Serie_B":               "bra.2",
-    "Chile_Primera_Division":       "chi.1",
-    "China_Super_League":           "chn.1",
-    "Colombia_Primera_A":           "col.1",
-    "England_National_League":      "eng.5",
-    "France_Ligue_1":               "fra.1",
-    "Greece_Super_League_1":        "gre.1",
-    "Italy_Serie_A":                "ita.1",
-    "Japan_J1_League":              "jpn.1",
-    "Mexico_Liga_MX":               "mex.1",
-    "Netherlands_Eredivisie":       "ned.1",
-    "Paraguay_Division_Profesional":"par.1",
-    "Peru_Primera_Division":        "per.1",
-    "Portugal_Primeira_Liga":       "por.1",
-    "Romania_Liga_I":               "rou.1",
-    "Russia_Premier_League":        "rus.1",
-    "Saudi_Arabia_Pro_League":      "ksa.1",
-    "Sweden_Allsvenskan":           "swe.1",
-    "Switzerland_Super_League":     "sui.1",
-    "Turkey_Super_Lig":             "tur.1",
-    "USA_Major_League_Soccer":      "usa.1",
-    "Venezuela_Primera_Division":   "ven.1",
-    "UEFA_Champions_League":        "uefa.champions",
-    "UEFA_Europa_League":           "uefa.europa",
-    "FIFA_Club_World_Cup":          "fifa.cwc",
+    # ── Ligues ────────────────────────────────────────────────────────────
+    "England_Premier_League":        "eng.1",
+    "Spain_Laliga":                  "esp.1",
+    "Germany_Bundesliga":            "ger.1",
+    "Argentina_Primera_Nacional":    "arg.2",
+    "Austria_Bundesliga":            "aut.1",
+    "Belgium_Jupiler_Pro_League":    "bel.1",
+    "Brazil_Serie_A":                "bra.1",
+    "Brazil_Serie_B":                "bra.2",
+    "Chile_Primera_Division":        "chi.1",
+    "China_Super_League":            "chn.1",
+    "Colombia_Primera_A":            "col.1",
+    "England_National_League":       "eng.5",
+    "France_Ligue_1":                "fra.1",
+    "Greece_Super_League_1":         "gre.1",
+    "Italy_Serie_A":                 "ita.1",
+    "Japan_J1_League":               "jpn.1",
+    "Mexico_Liga_MX":                "mex.1",
+    "Netherlands_Eredivisie":        "ned.1",
+    "Paraguay_Division_Profesional": "par.1",
+    "Peru_Primera_Division":         "per.1",
+    "Portugal_Primeira_Liga":        "por.1",
+    "Romania_Liga_I":                "rou.1",
+    "Russia_Premier_League":         "rus.1",
+    "Saudi_Arabia_Pro_League":       "ksa.1",
+    "Sweden_Allsvenskan":            "swe.1",
+    "Switzerland_Super_League":      "sui.1",
+    "Turkey_Super_Lig":              "tur.1",
+    "USA_Major_League_Soccer":       "usa.1",
+    "Venezuela_Primera_Division":    "ven.1",
+    "UEFA_Champions_League":         "uefa.champions",
+    "UEFA_Europa_League":            "uefa.europa",
+    "FIFA_Club_World_Cup":           "fifa.cwc",
+    # ── Cups ──────────────────────────────────────────────────────────────
+    "FA_Cup":                        "eng.fa",
+    "EFL_Cup":                       "eng.league_cup",
+    "Copa_del_Rey":                  "esp.copa_del_rey",
+    "DFB_Pokal":                     "ger.dfb_pokal",
+    "Coppa_Italia":                  "ita.coppa_italia",
+    "Coupe_de_France":               "fra.coupe_de_france",
+    "KNVB_Cup":                      "ned.cup",
+    "Taca_de_Portugal":              "por.taca.portugal",
+    "Kings_Cup_Saudi":               "ksa.kings.cup",
 }
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
@@ -120,11 +130,6 @@ def normalize(name):
 
 # ================= EXTRACTION COTES ESPN =================
 def extract_ml_odds(driver, match_url):
-    """
-    Extrait les cotes moneyline depuis la page ESPN du match.
-    Structure : 7 OddsCell minimum, ML aux indices 0 (home), 3 (away), 6 (draw).
-    La valeur est lue via get_text() directement sur l'OddsCell.
-    """
     try:
         soup = get_soup(
             driver,
@@ -272,7 +277,6 @@ try:
                 t1_data = teams_index.get(league_name, {}).get(team1.lower(), {})
                 t2_data = teams_index.get(league_name, {}).get(team2.lower(), {})
 
-                # Cotes ML ESPN
                 ml = extract_ml_odds(driver, match_url)
                 time.sleep(1)
 

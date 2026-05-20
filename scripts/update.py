@@ -61,7 +61,6 @@ dates_to_fetch = sorted(target_dates)
 # =============================
 
 def parse_date_formats(date_str):
-    """Tente de parser une date ESPN en objet date pour comparaison."""
     for fmt in ("%A, %B %d, %Y", "%Y%m%d", "%Y-%m-%d"):
         try:
             return datetime.strptime(date_str, fmt).strftime("%Y%m%d")
@@ -88,7 +87,6 @@ def load_existing_matches(path):
 # =============================
 
 def get_match_stats(game_id):
-    # Nouvelle URL ESPN pour les détails d'un match
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
@@ -97,6 +95,7 @@ def get_match_stats(game_id):
     try:
         res = requests.get(url, headers=headers, timeout=15)
         res.raise_for_status()
+        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "html.parser")
 
         stats_section = soup.find("section", {"data-testid": "prism-LayoutCard"})
@@ -141,13 +140,12 @@ def is_valid_us_odds(val):
         return False
 
 def extract_odds(game_id):
-    # Nouvelle URL ESPN pour les cotes (page match)
     match_url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
         res = requests.get(match_url, headers=HEADERS, timeout=15)
         if res.status_code != 200:
             return None
-
+        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "html.parser")
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
 
@@ -177,7 +175,6 @@ def extract_odds(game_id):
 for league_name, league in LEAGUES.items():
     print(f"\n🏆 {league_name}")
 
-    # Nouvelle structure d'URL ESPN : /soccer/schedule/_/date/{date}/league/{id}
     BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
 
     json_path = os.path.join(OUTPUT_DIR, league["json"])
@@ -203,7 +200,8 @@ for league_name, league in LEAGUES.items():
         url = BASE_URL.format(date=date_str)
         try:
             res = requests.get(url, headers=HEADERS, timeout=15)
-            soup = BeautifulSoup(res.content, "html.parser")
+            res.encoding = "utf-8"
+            soup = BeautifulSoup(res.text, "html.parser")
         except Exception as e:
             print(f"    ⚠️  Erreur requête : {e}")
             continue
@@ -230,7 +228,6 @@ for league_name, league in LEAGUES.items():
 
                 game_id = match_id.group(1)
 
-                # URL canonique du match (nouvelle structure)
                 match_url = (
                     "https://www.espn.com" + match_href
                     if match_href.startswith("/")

@@ -1629,28 +1629,28 @@
             "position": 2,
             "name": "Chongqing Tonglianglong",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 5,
-                "D": 5,
+                "D": 6,
                 "L": 2,
                 "F": 16,
                 "A": 13,
                 "GD": 3,
-                "P": 20
+                "P": 21
             }
         },
         {
             "position": 3,
             "name": "Yunnan Yukun",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 6,
-                "D": 1,
+                "D": 2,
                 "L": 5,
                 "F": 24,
                 "A": 20,
                 "GD": 4,
-                "P": 19
+                "P": 20
             }
         },
         {
@@ -1671,18 +1671,32 @@
             "position": 5,
             "name": "Shandong Taishan",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 7,
                 "D": 2,
-                "L": 3,
-                "F": 21,
-                "A": 17,
-                "GD": 4,
+                "L": 4,
+                "F": 22,
+                "A": 21,
+                "GD": 1,
                 "P": 17
             }
         },
         {
             "position": 6,
+            "name": "Zhejiang Professional FC",
+            "stats": {
+                "GP": 13,
+                "W": 5,
+                "D": 4,
+                "L": 4,
+                "F": 18,
+                "A": 18,
+                "GD": 0,
+                "P": 14
+            }
+        },
+        {
+            "position": 7,
             "name": "Qingdao West Coast",
             "stats": {
                 "GP": 13,
@@ -1696,7 +1710,21 @@
             }
         },
         {
-            "position": 7,
+            "position": 8,
+            "name": "Shanghai Shenhua",
+            "stats": {
+                "GP": 13,
+                "W": 6,
+                "D": 4,
+                "L": 3,
+                "F": 26,
+                "A": 20,
+                "GD": 6,
+                "P": 12
+            }
+        },
+        {
+            "position": 9,
             "name": "Beijing Guoan",
             "stats": {
                 "GP": 13,
@@ -1710,7 +1738,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 10,
             "name": "Henan Songshan Longmen",
             "stats": {
                 "GP": 13,
@@ -1724,21 +1752,7 @@
             }
         },
         {
-            "position": 9,
-            "name": "Shanghai Shenhua",
-            "stats": {
-                "GP": 12,
-                "W": 6,
-                "D": 3,
-                "L": 3,
-                "F": 24,
-                "A": 18,
-                "GD": 6,
-                "P": 11
-            }
-        },
-        {
-            "position": 10,
+            "position": 11,
             "name": "Shanghai Port",
             "stats": {
                 "GP": 13,
@@ -1748,20 +1762,6 @@
                 "F": 20,
                 "A": 17,
                 "GD": 3,
-                "P": 11
-            }
-        },
-        {
-            "position": 11,
-            "name": "Zhejiang Professional FC",
-            "stats": {
-                "GP": 12,
-                "W": 4,
-                "D": 4,
-                "L": 4,
-                "F": 14,
-                "A": 17,
-                "GD": -3,
                 "P": 11
             }
         },
@@ -1781,44 +1781,44 @@
         },
         {
             "position": 13,
-            "name": "Qingdao Hainiu",
+            "name": "Liaoning Tieren",
             "stats": {
-                "GP": 12,
-                "W": 5,
+                "GP": 13,
+                "W": 3,
                 "D": 2,
-                "L": 5,
-                "F": 19,
-                "A": 19,
-                "GD": 0,
-                "P": 10
+                "L": 8,
+                "F": 12,
+                "A": 21,
+                "GD": -9,
+                "P": 11
             }
         },
         {
             "position": 14,
-            "name": "Liaoning Tieren",
+            "name": "Qingdao Hainiu",
             "stats": {
-                "GP": 12,
-                "W": 2,
+                "GP": 13,
+                "W": 5,
                 "D": 2,
-                "L": 8,
-                "F": 10,
-                "A": 20,
-                "GD": -10,
-                "P": 8
+                "L": 6,
+                "F": 20,
+                "A": 21,
+                "GD": -1,
+                "P": 10
             }
         },
         {
             "position": 15,
             "name": "Wuhan Three Towns",
             "stats": {
-                "GP": 12,
+                "GP": 13,
                 "W": 2,
-                "D": 4,
+                "D": 5,
                 "L": 6,
-                "F": 16,
-                "A": 24,
+                "F": 18,
+                "A": 26,
                 "GD": -8,
-                "P": 5
+                "P": 6
             }
         },
         {
@@ -4440,14 +4440,14 @@
             "position": 3,
             "name": "Al Ahli",
             "stats": {
-                "GP": 33,
-                "W": 24,
+                "GP": 34,
+                "W": 25,
                 "D": 6,
                 "L": 3,
-                "F": 67,
-                "A": 24,
-                "GD": 43,
-                "P": 78
+                "F": 71,
+                "A": 25,
+                "GD": 46,
+                "P": 81
             }
         },
         {
@@ -4552,13 +4552,13 @@
             "position": 11,
             "name": "Al Khaleej",
             "stats": {
-                "GP": 33,
+                "GP": 34,
                 "W": 10,
                 "D": 7,
-                "L": 16,
-                "F": 53,
-                "A": 58,
-                "GD": -5,
+                "L": 17,
+                "F": 54,
+                "A": 62,
+                "GD": -8,
                 "P": 37
             }
         },
@@ -4580,13 +4580,13 @@
             "position": 13,
             "name": "Al Shabab",
             "stats": {
-                "GP": 33,
+                "GP": 34,
                 "W": 8,
                 "D": 11,
-                "L": 14,
+                "L": 15,
                 "F": 44,
-                "A": 56,
-                "GD": -12,
+                "A": 57,
+                "GD": -13,
                 "P": 35
             }
         },
@@ -4650,14 +4650,14 @@
             "position": 18,
             "name": "Al Najma",
             "stats": {
-                "GP": 33,
-                "W": 2,
+                "GP": 34,
+                "W": 3,
                 "D": 7,
                 "L": 24,
-                "F": 31,
+                "F": 32,
                 "A": 76,
-                "GD": -45,
-                "P": 13
+                "GD": -44,
+                "P": 16
             }
         }
     ],
@@ -4680,13 +4680,13 @@
             "position": 2,
             "name": "Hammarby IF",
             "stats": {
-                "GP": 8,
+                "GP": 9,
                 "W": 5,
                 "D": 2,
-                "L": 1,
+                "L": 2,
                 "F": 21,
-                "A": 6,
-                "GD": 15,
+                "A": 8,
+                "GD": 13,
                 "P": 17
             }
         },
@@ -4748,6 +4748,20 @@
         },
         {
             "position": 7,
+            "name": "GAIS",
+            "stats": {
+                "GP": 9,
+                "W": 3,
+                "D": 3,
+                "L": 3,
+                "F": 12,
+                "A": 9,
+                "GD": 3,
+                "P": 12
+            }
+        },
+        {
+            "position": 8,
             "name": "IF Brommapojkarna",
             "stats": {
                 "GP": 8,
@@ -4761,7 +4775,7 @@
             }
         },
         {
-            "position": 8,
+            "position": 9,
             "name": "Malmö FF",
             "stats": {
                 "GP": 8,
@@ -4772,20 +4786,6 @@
                 "A": 15,
                 "GD": -2,
                 "P": 10
-            }
-        },
-        {
-            "position": 9,
-            "name": "GAIS",
-            "stats": {
-                "GP": 8,
-                "W": 2,
-                "D": 3,
-                "L": 3,
-                "F": 10,
-                "A": 9,
-                "GD": 1,
-                "P": 9
             }
         },
         {

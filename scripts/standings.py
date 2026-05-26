@@ -60,10 +60,10 @@ def setup_driver():
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', False)
-    
+
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     chrome_options.add_argument(f"user-agent={user_agent}")
-    
+
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
@@ -72,44 +72,44 @@ def fetch_standings_with_selenium(league_id):
     """Charge la page ESPN et extrait les standings avec Selenium"""
     url = f"https://www.espn.com/soccer/standings/_/league/{league_id}"
     driver = setup_driver()
-    
+
     try:
         driver.get(url)
         # Attendre que le tableau des positions apparaisse
         wait = WebDriverWait(driver, 20)
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.Table--fixed-left")))
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".Table__Scroller table")))
-        
+
         # Récupérer les lignes des équipes (partie gauche avec noms)
         team_rows = driver.find_elements(By.CSS_SELECTOR, "table.Table--fixed-left tbody tr")
         # Récupérer les lignes des statistiques (partie droite)
         stats_rows = driver.find_elements(By.CSS_SELECTOR, ".Table__Scroller table tbody tr")
-        
+
         standings = []
         for i in range(min(len(team_rows), len(stats_rows))):
             team_row = team_rows[i]
             stat_row = stats_rows[i]
-            
+
             # Position
             pos_elem = team_row.find_element(By.CSS_SELECTOR, "span.team-position")
             position = int(pos_elem.text.strip())
-            
+
             # Nom de l'équipe
             name_elem = team_row.find_element(By.CSS_SELECTOR, ".hide-mobile a")
             name = name_elem.text.strip()
-            
+
             # Statistiques
             stat_cells = stat_row.find_elements(By.CSS_SELECTOR, "td span.stat-cell")
             if len(stat_cells) < 8:
                 continue
-            
+
             values = [cell.text.strip() for cell in stat_cells[:8]]
             gp, w, d, l, f, a, gd, p = values
-            
+
             # Gérer le signe + du GD
             if gd.startswith('+'):
                 gd = gd[1:]
-            
+
             standings.append({
                 "position": position,
                 "name": name,
@@ -140,12 +140,17 @@ def scrape_all_leagues():
         try:
             print(f"🔹 Scraping {league_name}...")
             standings = fetch_standings_with_selenium(league_id)
-            all_data[league_name] = standings
-            print(f"✔ {len(standings)} équipes enregistrées pour {league_name}\n")
+            num_teams = len(standings)
+            total_journees = num_teams * 2 - 2 if num_teams > 0 else 0
+            all_data[league_name] = {
+                "total_journees": total_journees,
+                "standings": standings
+            }
+            print(f"✔ {num_teams} équipes enregistrées pour {league_name} — {total_journees} journées\n")
             time.sleep(2)  # Pause pour éviter la surcharge
         except Exception as e:
             print(f"❌ Erreur pour {league_name}: {e}")
-    
+
     # Sauvegarde finale
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_data, f, indent=4, ensure_ascii=False)

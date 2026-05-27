@@ -1,6 +1,33 @@
 {
     "England_Premier_League": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "6",
+                "label": "UEFA Conference League Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "18",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "19-20",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -14,6 +41,10 @@
                     "A": 27,
                     "GD": 44,
                     "P": 85
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -28,6 +59,10 @@
                     "A": 35,
                     "GD": 42,
                     "P": 78
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -42,6 +77,10 @@
                     "A": 50,
                     "GD": 19,
                     "P": 71
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -56,6 +95,10 @@
                     "A": 49,
                     "GD": 7,
                     "P": 65
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -70,6 +113,10 @@
                     "A": 53,
                     "GD": 10,
                     "P": 60
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -84,6 +131,10 @@
                     "A": 54,
                     "GD": 4,
                     "P": 57
+                },
+                "zone": {
+                    "label": "UEFA Conference League Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -98,7 +149,8 @@
                     "A": 48,
                     "GD": -6,
                     "P": 54
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -112,7 +164,8 @@
                     "A": 46,
                     "GD": 6,
                     "P": 53
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -126,7 +179,8 @@
                     "A": 52,
                     "GD": 3,
                     "P": 53
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -140,7 +194,8 @@
                     "A": 52,
                     "GD": 6,
                     "P": 52
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -154,7 +209,8 @@
                     "A": 51,
                     "GD": -4,
                     "P": 52
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -168,7 +224,8 @@
                     "A": 55,
                     "GD": -2,
                     "P": 49
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -182,7 +239,8 @@
                     "A": 50,
                     "GD": -3,
                     "P": 49
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -196,7 +254,8 @@
                     "A": 56,
                     "GD": -7,
                     "P": 47
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -210,7 +269,8 @@
                     "A": 51,
                     "GD": -10,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -224,7 +284,8 @@
                     "A": 51,
                     "GD": -3,
                     "P": 44
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -238,7 +299,8 @@
                     "A": 57,
                     "GD": -9,
                     "P": 41
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -252,6 +314,10 @@
                     "A": 65,
                     "GD": -19,
                     "P": 39
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -266,6 +332,10 @@
                     "A": 75,
                     "GD": -37,
                     "P": 22
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -280,12 +350,43 @@
                     "A": 68,
                     "GD": -41,
                     "P": 20
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Spain_Laliga": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5-6",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "7",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "18",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "19-20",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -299,6 +400,10 @@
                     "A": 36,
                     "GD": 59,
                     "P": 94
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -313,6 +418,10 @@
                     "A": 35,
                     "GD": 42,
                     "P": 86
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -327,6 +436,10 @@
                     "A": 46,
                     "GD": 26,
                     "P": 72
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -341,6 +454,10 @@
                     "A": 44,
                     "GD": 18,
                     "P": 69
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -355,6 +472,10 @@
                     "A": 48,
                     "GD": 11,
                     "P": 60
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -369,6 +490,10 @@
                     "A": 48,
                     "GD": 5,
                     "P": 54
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -383,6 +508,10 @@
                     "A": 38,
                     "GD": -6,
                     "P": 51
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -397,7 +526,8 @@
                     "A": 44,
                     "GD": -3,
                     "P": 50
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -411,7 +541,8 @@
                     "A": 55,
                     "GD": -9,
                     "P": 49
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -425,7 +556,8 @@
                     "A": 61,
                     "GD": -2,
                     "P": 46
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -439,7 +571,8 @@
                     "A": 55,
                     "GD": -12,
                     "P": 46
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -453,7 +586,8 @@
                     "A": 58,
                     "GD": -15,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -467,7 +601,8 @@
                     "A": 60,
                     "GD": -14,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -481,7 +616,8 @@
                     "A": 56,
                     "GD": -12,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -495,7 +631,8 @@
                     "A": 57,
                     "GD": -8,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -509,7 +646,8 @@
                     "A": 61,
                     "GD": -14,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -523,7 +661,8 @@
                     "A": 50,
                     "GD": -6,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -537,6 +676,10 @@
                     "A": 57,
                     "GD": -10,
                     "P": 42
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -551,6 +694,10 @@
                     "A": 55,
                     "GD": -16,
                     "P": 41
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -565,12 +712,43 @@
                     "A": 60,
                     "GD": -34,
                     "P": 29
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Germany_Bundesliga": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "6",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "16",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "17-18",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -584,6 +762,10 @@
                     "A": 36,
                     "GD": 86,
                     "P": 89
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -598,6 +780,10 @@
                     "A": 34,
                     "GD": 36,
                     "P": 73
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -612,6 +798,10 @@
                     "A": 47,
                     "GD": 19,
                     "P": 65
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -626,6 +816,10 @@
                     "A": 49,
                     "GD": 22,
                     "P": 62
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -640,6 +834,10 @@
                     "A": 52,
                     "GD": 13,
                     "P": 61
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -654,6 +852,10 @@
                     "A": 47,
                     "GD": 21,
                     "P": 59
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -668,7 +870,8 @@
                     "A": 57,
                     "GD": -6,
                     "P": 47
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -682,7 +885,8 @@
                     "A": 65,
                     "GD": -4,
                     "P": 44
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -696,7 +900,8 @@
                     "A": 61,
                     "GD": -16,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -710,7 +915,8 @@
                     "A": 53,
                     "GD": -9,
                     "P": 40
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -724,7 +930,8 @@
                     "A": 58,
                     "GD": -14,
                     "P": 39
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -738,7 +945,8 @@
                     "A": 53,
                     "GD": -11,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -752,7 +960,8 @@
                     "A": 54,
                     "GD": -14,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -766,7 +975,8 @@
                     "A": 63,
                     "GD": -14,
                     "P": 32
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -780,7 +990,8 @@
                     "A": 60,
                     "GD": -23,
                     "P": 32
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -794,6 +1005,10 @@
                     "A": 69,
                     "GD": -24,
                     "P": 29
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -808,6 +1023,10 @@
                     "A": 72,
                     "GD": -31,
                     "P": 26
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -822,24 +1041,122 @@
                     "A": 60,
                     "GD": -31,
                     "P": 26
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Argentina_Primera_Nacional": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                2,
+                "Promotion Primera Division",
+                true
+            ],
+            [
+                3,
+                4,
+                "Promotion Playoff",
+                true
+            ]
+        ],
         "standings": []
     },
     "Austria_Bundesliga": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                2,
+                "UEFA Champions League",
+                true
+            ],
+            [
+                3,
+                4,
+                "UEFA Europa League",
+                true
+            ],
+            [
+                5,
+                5,
+                "UEFA Conference League",
+                true
+            ],
+            [
+                10,
+                10,
+                "Relégation Playoff",
+                false
+            ],
+            [
+                11,
+                12,
+                "Relégation",
+                false
+            ]
+        ],
         "standings": []
     },
     "Belgium_Jupiler_Pro_League": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                1,
+                "UEFA Champions League Playoff",
+                true
+            ],
+            [
+                2,
+                3,
+                "UEFA Europa League",
+                true
+            ],
+            [
+                4,
+                4,
+                "UEFA Conference League",
+                true
+            ],
+            [
+                16,
+                16,
+                "Relégation Playoff",
+                false
+            ]
+        ],
         "standings": []
     },
     "Brazil_Serie_A": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "CONMEBOL Libertadores (Groupes)",
+                "type": "avantage"
+            },
+            {
+                "positions": "5-6",
+                "label": "CONMEBOL Libertadores Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "7-12",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            },
+            {
+                "positions": "17-20",
+                "label": "Relégation Serie B",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -853,6 +1170,10 @@
                     "A": 13,
                     "GD": 16,
                     "P": 38
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores (Groupes)",
+                    "type": "avantage"
                 }
             },
             {
@@ -867,6 +1188,10 @@
                     "A": 16,
                     "GD": 12,
                     "P": 31
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores (Groupes)",
+                    "type": "avantage"
                 }
             },
             {
@@ -881,6 +1206,10 @@
                     "A": 22,
                     "GD": 5,
                     "P": 30
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores (Groupes)",
+                    "type": "avantage"
                 }
             },
             {
@@ -895,6 +1224,10 @@
                     "A": 18,
                     "GD": 5,
                     "P": 27
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores (Groupes)",
+                    "type": "avantage"
                 }
             },
             {
@@ -909,6 +1242,10 @@
                     "A": 18,
                     "GD": 4,
                     "P": 26
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -923,6 +1260,10 @@
                     "A": 21,
                     "GD": 3,
                     "P": 26
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -937,6 +1278,10 @@
                     "A": 19,
                     "GD": 4,
                     "P": 25
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -951,6 +1296,10 @@
                     "A": 22,
                     "GD": 1,
                     "P": 23
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -965,6 +1314,10 @@
                     "A": 27,
                     "GD": -4,
                     "P": 23
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -979,6 +1332,10 @@
                     "A": 29,
                     "GD": 1,
                     "P": 22
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -993,6 +1350,10 @@
                     "A": 22,
                     "GD": -2,
                     "P": 22
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1007,6 +1368,10 @@
                     "A": 23,
                     "GD": -2,
                     "P": 21
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1021,7 +1386,8 @@
                     "A": 19,
                     "GD": 1,
                     "P": 21
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -1035,7 +1401,8 @@
                     "A": 20,
                     "GD": -1,
                     "P": 21
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -1049,7 +1416,8 @@
                     "A": 18,
                     "GD": -3,
                     "P": 21
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -1063,7 +1431,8 @@
                     "A": 28,
                     "GD": -6,
                     "P": 20
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -1077,6 +1446,10 @@
                     "A": 28,
                     "GD": -5,
                     "P": 18
+                },
+                "zone": {
+                    "label": "Relégation Serie B",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1091,6 +1464,10 @@
                     "A": 23,
                     "GD": -5,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Relégation Serie B",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1105,6 +1482,10 @@
                     "A": 29,
                     "GD": -9,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Relégation Serie B",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1119,12 +1500,28 @@
                     "A": 32,
                     "GD": -15,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Relégation Serie B",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Brazil_Serie_B": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "Promotion Serie A",
+                "type": "avantage"
+            },
+            {
+                "positions": "17-20",
+                "label": "Relégation Serie C",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -1138,6 +1535,10 @@
                     "A": 7,
                     "GD": 9,
                     "P": 20
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
                 }
             },
             {
@@ -1152,6 +1553,10 @@
                     "A": 9,
                     "GD": 7,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
                 }
             },
             {
@@ -1166,6 +1571,10 @@
                     "A": 7,
                     "GD": 6,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
                 }
             },
             {
@@ -1180,6 +1589,10 @@
                     "A": 11,
                     "GD": 5,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
                 }
             },
             {
@@ -1194,7 +1607,8 @@
                     "A": 10,
                     "GD": 4,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -1208,7 +1622,8 @@
                     "A": 12,
                     "GD": -1,
                     "P": 16
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -1222,7 +1637,8 @@
                     "A": 10,
                     "GD": 3,
                     "P": 16
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -1236,7 +1652,8 @@
                     "A": 15,
                     "GD": 2,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -1250,7 +1667,8 @@
                     "A": 9,
                     "GD": 2,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -1264,7 +1682,8 @@
                     "A": 11,
                     "GD": 1,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -1278,7 +1697,8 @@
                     "A": 11,
                     "GD": 0,
                     "P": 13
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -1292,7 +1712,8 @@
                     "A": 6,
                     "GD": 0,
                     "P": 13
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -1306,7 +1727,8 @@
                     "A": 13,
                     "GD": -3,
                     "P": 13
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -1320,7 +1742,8 @@
                     "A": 10,
                     "GD": -1,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -1334,7 +1757,8 @@
                     "A": 13,
                     "GD": -3,
                     "P": 10
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -1348,7 +1772,8 @@
                     "A": 5,
                     "GD": -1,
                     "P": 10
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -1362,6 +1787,10 @@
                     "A": 11,
                     "GD": 0,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Relégation Serie C",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1376,6 +1805,10 @@
                     "A": 18,
                     "GD": -6,
                     "P": 8
+                },
+                "zone": {
+                    "label": "Relégation Serie C",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1390,6 +1823,10 @@
                     "A": 20,
                     "GD": -11,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Relégation Serie C",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1404,12 +1841,38 @@
                     "A": 19,
                     "GD": -13,
                     "P": 3
+                },
+                "zone": {
+                    "label": "Relégation Serie C",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Chile_Primera_Division": {
         "total_journees": 30,
+        "position_zones": [
+            {
+                "positions": "1-3",
+                "label": "CONMEBOL Libertadores",
+                "type": "avantage"
+            },
+            {
+                "positions": "4-8",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            },
+            {
+                "positions": "14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -1423,6 +1886,10 @@
                     "A": 10,
                     "GD": 12,
                     "P": 30
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -1437,6 +1904,10 @@
                     "A": 17,
                     "GD": 4,
                     "P": 22
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -1451,6 +1922,10 @@
                     "A": 17,
                     "GD": 9,
                     "P": 21
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -1465,6 +1940,10 @@
                     "A": 19,
                     "GD": 8,
                     "P": 20
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1479,6 +1958,10 @@
                     "A": 16,
                     "GD": 3,
                     "P": 20
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1493,6 +1976,10 @@
                     "A": 20,
                     "GD": 1,
                     "P": 20
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1507,6 +1994,10 @@
                     "A": 11,
                     "GD": 4,
                     "P": 19
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1521,6 +2012,10 @@
                     "A": 17,
                     "GD": 0,
                     "P": 19
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -1535,7 +2030,8 @@
                     "A": 17,
                     "GD": -2,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -1549,7 +2045,8 @@
                     "A": 21,
                     "GD": -9,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -1563,7 +2060,8 @@
                     "A": 7,
                     "GD": 4,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -1577,7 +2075,8 @@
                     "A": 20,
                     "GD": -2,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -1591,7 +2090,8 @@
                     "A": 20,
                     "GD": -3,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -1605,6 +2105,10 @@
                     "A": 25,
                     "GD": -6,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1619,6 +2123,10 @@
                     "A": 19,
                     "GD": -9,
                     "P": 11
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1633,12 +2141,33 @@
                     "A": 26,
                     "GD": -14,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "China_Super_League": {
         "total_journees": 30,
+        "position_zones": [
+            {
+                "positions": "1-2",
+                "label": "AFC Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "AFC Challenge League",
+                "type": "avantage"
+            },
+            {
+                "positions": "14-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -1652,6 +2181,10 @@
                     "A": 13,
                     "GD": 19,
                     "P": 34
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -1666,6 +2199,10 @@
                     "A": 13,
                     "GD": 4,
                     "P": 24
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -1680,6 +2217,10 @@
                     "A": 24,
                     "GD": -3,
                     "P": 22
+                },
+                "zone": {
+                    "label": "AFC Challenge League",
+                    "type": "avantage"
                 }
             },
             {
@@ -1694,6 +2235,10 @@
                     "A": 23,
                     "GD": 3,
                     "P": 20
+                },
+                "zone": {
+                    "label": "AFC Challenge League",
+                    "type": "avantage"
                 }
             },
             {
@@ -1708,7 +2253,8 @@
                     "A": 24,
                     "GD": 1,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -1722,7 +2268,8 @@
                     "A": 21,
                     "GD": -6,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -1736,7 +2283,8 @@
                     "A": 16,
                     "GD": 0,
                     "P": 15
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -1750,7 +2298,8 @@
                     "A": 21,
                     "GD": -4,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -1764,7 +2313,8 @@
                     "A": 23,
                     "GD": -5,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -1778,7 +2328,8 @@
                     "A": 23,
                     "GD": -6,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -1792,7 +2343,8 @@
                     "A": 22,
                     "GD": 5,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -1806,7 +2358,8 @@
                     "A": 18,
                     "GD": 3,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -1820,7 +2373,8 @@
                     "A": 21,
                     "GD": 2,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -1834,6 +2388,10 @@
                     "A": 22,
                     "GD": -2,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1848,6 +2406,10 @@
                     "A": 29,
                     "GD": -8,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -1862,12 +2424,33 @@
                     "A": 21,
                     "GD": -3,
                     "P": 2
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Colombia_Primera_A": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-8",
+                "label": "Playoffs Título",
+                "type": "avantage"
+            },
+            {
+                "positions": "1-3",
+                "label": "CONMEBOL Libertadores",
+                "type": "avantage"
+            },
+            {
+                "positions": "4-8",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -1881,6 +2464,10 @@
                     "A": 15,
                     "GD": 20,
                     "P": 40
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1895,6 +2482,10 @@
                     "A": 24,
                     "GD": 7,
                     "P": 35
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1909,6 +2500,10 @@
                     "A": 25,
                     "GD": 4,
                     "P": 34
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1923,6 +2518,10 @@
                     "A": 15,
                     "GD": 10,
                     "P": 33
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1937,6 +2536,10 @@
                     "A": 22,
                     "GD": 9,
                     "P": 33
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1951,6 +2554,10 @@
                     "A": 17,
                     "GD": 10,
                     "P": 31
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1965,6 +2572,10 @@
                     "A": 22,
                     "GD": 7,
                     "P": 29
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1979,6 +2590,10 @@
                     "A": 26,
                     "GD": 0,
                     "P": 28
+                },
+                "zone": {
+                    "label": "Playoffs Título",
+                    "type": "avantage"
                 }
             },
             {
@@ -1993,7 +2608,8 @@
                     "A": 16,
                     "GD": 4,
                     "P": 27
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -2007,7 +2623,8 @@
                     "A": 23,
                     "GD": 8,
                     "P": 26
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -2021,7 +2638,8 @@
                     "A": 24,
                     "GD": 2,
                     "P": 26
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -2035,7 +2653,8 @@
                     "A": 25,
                     "GD": -5,
                     "P": 26
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -2049,7 +2668,8 @@
                     "A": 20,
                     "GD": 6,
                     "P": 23
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -2063,7 +2683,8 @@
                     "A": 20,
                     "GD": -3,
                     "P": 22
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -2077,7 +2698,8 @@
                     "A": 27,
                     "GD": -5,
                     "P": 22
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -2091,7 +2713,8 @@
                     "A": 33,
                     "GD": -13,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -2105,7 +2728,8 @@
                     "A": 27,
                     "GD": -14,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -2119,7 +2743,8 @@
                     "A": 32,
                     "GD": -17,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 19,
@@ -2133,7 +2758,8 @@
                     "A": 35,
                     "GD": -13,
                     "P": 16
-                }
+                },
+                "zone": null
             },
             {
                 "position": 20,
@@ -2147,12 +2773,30 @@
                     "A": 32,
                     "GD": -17,
                     "P": 10
-                }
+                },
+                "zone": null
             }
         ]
     },
     "England_National_League": {
         "total_journees": 46,
+        "position_zones": [
+            {
+                "positions": "1",
+                "label": "Promotion EFL League Two",
+                "type": "avantage"
+            },
+            {
+                "positions": "2-7",
+                "label": "Promotion Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "22-24",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -2166,6 +2810,10 @@
                     "A": 41,
                     "GD": 73,
                     "P": 108
+                },
+                "zone": {
+                    "label": "Promotion EFL League Two",
+                    "type": "avantage"
                 }
             },
             {
@@ -2180,6 +2828,10 @@
                     "A": 41,
                     "GD": 47,
                     "P": 106
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2194,6 +2846,10 @@
                     "A": 51,
                     "GD": 36,
                     "P": 95
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2208,6 +2864,10 @@
                     "A": 58,
                     "GD": 37,
                     "P": 90
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2222,6 +2882,10 @@
                     "A": 62,
                     "GD": 15,
                     "P": 82
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2236,6 +2900,10 @@
                     "A": 47,
                     "GD": 36,
                     "P": 81
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2250,6 +2918,10 @@
                     "A": 52,
                     "GD": 30,
                     "P": 81
+                },
+                "zone": {
+                    "label": "Promotion Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2264,7 +2936,8 @@
                     "A": 66,
                     "GD": 3,
                     "P": 70
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -2278,7 +2951,8 @@
                     "A": 59,
                     "GD": -5,
                     "P": 68
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -2292,7 +2966,8 @@
                     "A": 54,
                     "GD": 15,
                     "P": 63
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -2306,7 +2981,8 @@
                     "A": 71,
                     "GD": -8,
                     "P": 62
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -2320,7 +2996,8 @@
                     "A": 67,
                     "GD": -4,
                     "P": 59
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -2334,7 +3011,8 @@
                     "A": 65,
                     "GD": -10,
                     "P": 57
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -2348,7 +3026,8 @@
                     "A": 72,
                     "GD": -1,
                     "P": 56
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -2362,7 +3041,8 @@
                     "A": 74,
                     "GD": -7,
                     "P": 56
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -2376,7 +3056,8 @@
                     "A": 68,
                     "GD": -20,
                     "P": 51
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -2390,7 +3071,8 @@
                     "A": 80,
                     "GD": -23,
                     "P": 50
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -2404,7 +3086,8 @@
                     "A": 90,
                     "GD": -36,
                     "P": 50
-                }
+                },
+                "zone": null
             },
             {
                 "position": 19,
@@ -2418,7 +3101,8 @@
                     "A": 79,
                     "GD": -20,
                     "P": 47
-                }
+                },
+                "zone": null
             },
             {
                 "position": 20,
@@ -2432,7 +3116,8 @@
                     "A": 87,
                     "GD": -18,
                     "P": 46
-                }
+                },
+                "zone": null
             },
             {
                 "position": 21,
@@ -2446,7 +3131,8 @@
                     "A": 75,
                     "GD": -35,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 22,
@@ -2460,6 +3146,10 @@
                     "A": 103,
                     "GD": -37,
                     "P": 38
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -2474,6 +3164,10 @@
                     "A": 76,
                     "GD": -38,
                     "P": 36
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -2488,12 +3182,48 @@
                     "A": 72,
                     "GD": -30,
                     "P": 34
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "France_Ligue_1": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-3",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "4",
+                "label": "UEFA Champions League Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "6",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "16",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "17-18",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -2507,6 +3237,10 @@
                     "A": 29,
                     "GD": 45,
                     "P": 76
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2521,6 +3255,10 @@
                     "A": 35,
                     "GD": 31,
                     "P": 70
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2535,6 +3273,10 @@
                     "A": 37,
                     "GD": 15,
                     "P": 61
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2549,6 +3291,10 @@
                     "A": 40,
                     "GD": 13,
                     "P": 60
+                },
+                "zone": {
+                    "label": "UEFA Champions League Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -2563,6 +3309,10 @@
                     "A": 45,
                     "GD": 18,
                     "P": 59
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2577,6 +3327,10 @@
                     "A": 50,
                     "GD": 9,
                     "P": 59
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2591,7 +3345,8 @@
                     "A": 54,
                     "GD": 6,
                     "P": 54
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -2605,7 +3360,8 @@
                     "A": 47,
                     "GD": 11,
                     "P": 53
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -2619,7 +3375,8 @@
                     "A": 51,
                     "GD": -3,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -2633,7 +3390,8 @@
                     "A": 46,
                     "GD": 1,
                     "P": 44
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -2647,7 +3405,8 @@
                     "A": 50,
                     "GD": -3,
                     "P": 44
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -2661,7 +3420,8 @@
                     "A": 55,
                     "GD": -12,
                     "P": 39
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -2675,7 +3435,8 @@
                     "A": 48,
                     "GD": -19,
                     "P": 36
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -2689,7 +3450,8 @@
                     "A": 44,
                     "GD": -12,
                     "P": 35
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -2703,7 +3465,8 @@
                     "A": 44,
                     "GD": -10,
                     "P": 34
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -2717,6 +3480,10 @@
                     "A": 60,
                     "GD": -23,
                     "P": 32
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -2731,6 +3498,10 @@
                     "A": 52,
                     "GD": -23,
                     "P": 23
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -2745,16 +3516,79 @@
                     "A": 76,
                     "GD": -44,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Greece_Super_League_1": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                1,
+                "UEFA Champions League",
+                true
+            ],
+            [
+                2,
+                3,
+                "UEFA Europa League",
+                true
+            ],
+            [
+                4,
+                4,
+                "UEFA Conference League",
+                true
+            ],
+            [
+                13,
+                14,
+                "Relégation Playoff",
+                false
+            ],
+            [
+                15,
+                16,
+                "Relégation",
+                false
+            ]
+        ],
         "standings": []
     },
     "Italy_Serie_A": {
         "total_journees": 38,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "6",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "18",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "19-20",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -2768,6 +3602,10 @@
                     "A": 35,
                     "GD": 54,
                     "P": 87
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2782,6 +3620,10 @@
                     "A": 36,
                     "GD": 22,
                     "P": 76
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2796,6 +3638,10 @@
                     "A": 31,
                     "GD": 28,
                     "P": 73
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2810,6 +3656,10 @@
                     "A": 29,
                     "GD": 36,
                     "P": 71
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2824,6 +3674,10 @@
                     "A": 35,
                     "GD": 18,
                     "P": 70
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2838,6 +3692,10 @@
                     "A": 34,
                     "GD": 27,
                     "P": 69
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -2852,7 +3710,8 @@
                     "A": 36,
                     "GD": 15,
                     "P": 59
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -2866,7 +3725,8 @@
                     "A": 46,
                     "GD": 3,
                     "P": 56
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -2880,7 +3740,8 @@
                     "A": 40,
                     "GD": 1,
                     "P": 54
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -2894,7 +3755,8 @@
                     "A": 48,
                     "GD": -3,
                     "P": 50
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -2908,7 +3770,8 @@
                     "A": 50,
                     "GD": -4,
                     "P": 49
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -2922,7 +3785,8 @@
                     "A": 63,
                     "GD": -19,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -2936,7 +3800,8 @@
                     "A": 46,
                     "GD": -18,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -2950,7 +3815,8 @@
                     "A": 53,
                     "GD": -13,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -2964,7 +3830,8 @@
                     "A": 50,
                     "GD": -9,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -2978,7 +3845,8 @@
                     "A": 51,
                     "GD": -10,
                     "P": 41
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -2992,7 +3860,8 @@
                     "A": 50,
                     "GD": -22,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -3006,6 +3875,10 @@
                     "A": 57,
                     "GD": -25,
                     "P": 34
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -3020,6 +3893,10 @@
                     "A": 61,
                     "GD": -36,
                     "P": 21
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -3034,16 +3911,58 @@
                     "A": 71,
                     "GD": -45,
                     "P": 18
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Japan_J1_League": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                2,
+                "AFC Champions League (Elite)",
+                true
+            ],
+            [
+                3,
+                3,
+                "AFC Champions League Playoff",
+                true
+            ],
+            [
+                17,
+                17,
+                "Relégation Playoff",
+                false
+            ],
+            [
+                18,
+                20,
+                "Relégation J2",
+                false
+            ]
+        ],
         "standings": []
     },
     "Mexico_Liga_MX": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "Liguilla directe",
+                "type": "avantage"
+            },
+            {
+                "positions": "5-12",
+                "label": "Reclasificación",
+                "type": "avantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -3057,6 +3976,10 @@
                     "A": 17,
                     "GD": 17,
                     "P": 36
+                },
+                "zone": {
+                    "label": "Liguilla directe",
+                    "type": "avantage"
                 }
             },
             {
@@ -3071,6 +3994,10 @@
                     "A": 17,
                     "GD": 16,
                     "P": 36
+                },
+                "zone": {
+                    "label": "Liguilla directe",
+                    "type": "avantage"
                 }
             },
             {
@@ -3085,6 +4012,10 @@
                     "A": 18,
                     "GD": 13,
                     "P": 33
+                },
+                "zone": {
+                    "label": "Liguilla directe",
+                    "type": "avantage"
                 }
             },
             {
@@ -3099,6 +4030,10 @@
                     "A": 19,
                     "GD": 6,
                     "P": 31
+                },
+                "zone": {
+                    "label": "Liguilla directe",
+                    "type": "avantage"
                 }
             },
             {
@@ -3113,6 +4048,10 @@
                     "A": 16,
                     "GD": 12,
                     "P": 30
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3127,6 +4066,10 @@
                     "A": 18,
                     "GD": -2,
                     "P": 26
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3141,6 +4084,10 @@
                     "A": 18,
                     "GD": 10,
                     "P": 25
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3155,6 +4102,10 @@
                     "A": 17,
                     "GD": 3,
                     "P": 25
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3169,6 +4120,10 @@
                     "A": 17,
                     "GD": 2,
                     "P": 23
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3183,6 +4138,10 @@
                     "A": 32,
                     "GD": -10,
                     "P": 22
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3197,6 +4156,10 @@
                     "A": 21,
                     "GD": -4,
                     "P": 20
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3211,6 +4174,10 @@
                     "A": 32,
                     "GD": -6,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Reclasificación",
+                    "type": "avantage"
                 }
             },
             {
@@ -3225,7 +4192,8 @@
                     "A": 24,
                     "GD": -2,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -3239,7 +4207,8 @@
                     "A": 27,
                     "GD": -3,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -3253,7 +4222,8 @@
                     "A": 25,
                     "GD": -6,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -3267,7 +4237,8 @@
                     "A": 37,
                     "GD": -15,
                     "P": 15
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -3281,7 +4252,8 @@
                     "A": 26,
                     "GD": -13,
                     "P": 13
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -3295,12 +4267,40 @@
                     "A": 38,
                     "GD": -18,
                     "P": 12
-                }
+                },
+                "zone": null
             }
         ]
     },
     "Netherlands_Eredivisie": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "2-4",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "16",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "17-18",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -3314,6 +4314,10 @@
                     "A": 45,
                     "GD": 56,
                     "P": 84
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -3328,6 +4332,10 @@
                     "A": 44,
                     "GD": 26,
                     "P": 65
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -3342,6 +4350,10 @@
                     "A": 53,
                     "GD": 24,
                     "P": 59
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -3356,6 +4368,10 @@
                     "A": 40,
                     "GD": 19,
                     "P": 58
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -3370,6 +4386,10 @@
                     "A": 41,
                     "GD": 21,
                     "P": 56
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -3384,7 +4404,8 @@
                     "A": 42,
                     "GD": 13,
                     "P": 53
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -3398,7 +4419,8 @@
                     "A": 51,
                     "GD": 7,
                     "P": 52
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -3412,7 +4434,8 @@
                     "A": 53,
                     "GD": 4,
                     "P": 51
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -3426,7 +4449,8 @@
                     "A": 45,
                     "GD": 4,
                     "P": 48
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -3440,7 +4464,8 @@
                     "A": 62,
                     "GD": -22,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -3454,7 +4479,8 @@
                     "A": 63,
                     "GD": -14,
                     "P": 39
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -3468,7 +4494,8 @@
                     "A": 53,
                     "GD": 1,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -3482,7 +4509,8 @@
                     "A": 56,
                     "GD": -13,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -3496,7 +4524,8 @@
                     "A": 55,
                     "GD": -6,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -3510,7 +4539,8 @@
                     "A": 71,
                     "GD": -27,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -3524,6 +4554,10 @@
                     "A": 55,
                     "GD": -20,
                     "P": 32
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -3538,6 +4572,10 @@
                     "A": 58,
                     "GD": -23,
                     "P": 29
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -3552,12 +4590,28 @@
                     "A": 85,
                     "GD": -50,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Paraguay_Division_Profesional": {
         "total_journees": 22,
+        "position_zones": [
+            {
+                "positions": "1-2",
+                "label": "CONMEBOL Libertadores",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -3571,6 +4625,10 @@
                     "A": 17,
                     "GD": 20,
                     "P": 49
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -3585,6 +4643,10 @@
                     "A": 22,
                     "GD": 9,
                     "P": 39
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -3599,6 +4661,10 @@
                     "A": 22,
                     "GD": 8,
                     "P": 38
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -3613,6 +4679,10 @@
                     "A": 21,
                     "GD": 6,
                     "P": 33
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -3627,7 +4697,8 @@
                     "A": 24,
                     "GD": 6,
                     "P": 32
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -3641,7 +4712,8 @@
                     "A": 26,
                     "GD": 8,
                     "P": 31
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -3655,7 +4727,8 @@
                     "A": 23,
                     "GD": 4,
                     "P": 29
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -3669,7 +4742,8 @@
                     "A": 32,
                     "GD": 3,
                     "P": 28
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -3683,7 +4757,8 @@
                     "A": 26,
                     "GD": -11,
                     "P": 23
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -3697,7 +4772,8 @@
                     "A": 35,
                     "GD": -17,
                     "P": 22
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -3711,7 +4787,8 @@
                     "A": 33,
                     "GD": -9,
                     "P": 20
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -3725,12 +4802,30 @@
                     "A": 41,
                     "GD": -27,
                     "P": 15
-                }
+                },
+                "zone": null
             }
         ]
     },
     "Peru_Primera_Division": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-2",
+                "label": "CONMEBOL Libertadores",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            },
+            {
+                "positions": "17-18",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -3744,6 +4839,10 @@
                     "A": 7,
                     "GD": 22,
                     "P": 39
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -3758,6 +4857,10 @@
                     "A": 19,
                     "GD": 4,
                     "P": 33
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
                 }
             },
             {
@@ -3772,6 +4875,10 @@
                     "A": 20,
                     "GD": 11,
                     "P": 30
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -3786,6 +4893,10 @@
                     "A": 14,
                     "GD": 8,
                     "P": 26
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
                 }
             },
             {
@@ -3800,7 +4911,8 @@
                     "A": 19,
                     "GD": 7,
                     "P": 25
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -3814,7 +4926,8 @@
                     "A": 23,
                     "GD": -4,
                     "P": 24
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -3828,7 +4941,8 @@
                     "A": 17,
                     "GD": 0,
                     "P": 23
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -3842,7 +4956,8 @@
                     "A": 15,
                     "GD": 4,
                     "P": 21
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -3856,7 +4971,8 @@
                     "A": 19,
                     "GD": -1,
                     "P": 21
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -3870,7 +4986,8 @@
                     "A": 19,
                     "GD": 2,
                     "P": 20
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -3884,7 +5001,8 @@
                     "A": 27,
                     "GD": -1,
                     "P": 19
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -3898,7 +5016,8 @@
                     "A": 23,
                     "GD": -6,
                     "P": 18
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -3912,7 +5031,8 @@
                     "A": 24,
                     "GD": -5,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -3926,7 +5046,8 @@
                     "A": 19,
                     "GD": -5,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -3940,7 +5061,8 @@
                     "A": 27,
                     "GD": -5,
                     "P": 16
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -3954,7 +5076,8 @@
                     "A": 29,
                     "GD": -9,
                     "P": 16
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -3968,6 +5091,10 @@
                     "A": 36,
                     "GD": -15,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -3982,12 +5109,43 @@
                     "A": 18,
                     "GD": -7,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Portugal_Primeira_Liga": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "6",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "16",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "17-18",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -4001,6 +5159,10 @@
                     "A": 18,
                     "GD": 48,
                     "P": 88
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4015,6 +5177,10 @@
                     "A": 24,
                     "GD": 65,
                     "P": 82
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4029,6 +5195,10 @@
                     "A": 25,
                     "GD": 49,
                     "P": 80
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4043,6 +5213,10 @@
                     "A": 36,
                     "GD": 28,
                     "P": 59
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4057,6 +5231,10 @@
                     "A": 29,
                     "GD": 13,
                     "P": 56
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4071,6 +5249,10 @@
                     "A": 38,
                     "GD": 9,
                     "P": 50
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4085,7 +5267,8 @@
                     "A": 49,
                     "GD": -12,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -4099,7 +5282,8 @@
                     "A": 64,
                     "GD": -17,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -4113,7 +5297,8 @@
                     "A": 51,
                     "GD": -12,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -4127,7 +5312,8 @@
                     "A": 57,
                     "GD": -3,
                     "P": 39
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -4141,7 +5327,8 @@
                     "A": 52,
                     "GD": -17,
                     "P": 39
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -4155,7 +5342,8 @@
                     "A": 57,
                     "GD": -22,
                     "P": 36
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -4169,7 +5357,8 @@
                     "A": 41,
                     "GD": -9,
                     "P": 36
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -4183,7 +5372,8 @@
                     "A": 45,
                     "GD": -8,
                     "P": 34
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -4197,7 +5387,8 @@
                     "A": 56,
                     "GD": -18,
                     "P": 30
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -4211,6 +5402,10 @@
                     "A": 57,
                     "GD": -26,
                     "P": 30
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4225,6 +5420,10 @@
                     "A": 55,
                     "GD": -28,
                     "P": 28
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4239,16 +5438,57 @@
                     "A": 67,
                     "GD": -40,
                     "P": 21
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Romania_Liga_I": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                2,
+                "UEFA Conference League",
+                true
+            ],
+            [
+                14,
+                14,
+                "Relégation Playoff",
+                false
+            ],
+            [
+                15,
+                16,
+                "Relégation",
+                false
+            ]
+        ],
         "standings": []
     },
     "Russia_Premier_League": {
         "total_journees": 30,
+        "position_zones": [
+            {
+                "positions": "1-6",
+                "label": "Playoff Champions",
+                "type": "avantage"
+            },
+            {
+                "positions": "13-14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -4262,6 +5502,10 @@
                     "A": 19,
                     "GD": 34,
                     "P": 68
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4276,6 +5520,10 @@
                     "A": 23,
                     "GD": 37,
                     "P": 66
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4290,6 +5538,10 @@
                     "A": 39,
                     "GD": 15,
                     "P": 53
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4304,6 +5556,10 @@
                     "A": 39,
                     "GD": 8,
                     "P": 52
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4318,6 +5574,10 @@
                     "A": 33,
                     "GD": 11,
                     "P": 51
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4332,6 +5592,10 @@
                     "A": 21,
                     "GD": 17,
                     "P": 46
+                },
+                "zone": {
+                    "label": "Playoff Champions",
+                    "type": "avantage"
                 }
             },
             {
@@ -4346,7 +5610,8 @@
                     "A": 40,
                     "GD": 11,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -4360,7 +5625,8 @@
                     "A": 30,
                     "GD": -1,
                     "P": 43
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -4374,7 +5640,8 @@
                     "A": 39,
                     "GD": -4,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -4388,7 +5655,8 @@
                     "A": 32,
                     "GD": -7,
                     "P": 33
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -4402,7 +5670,8 @@
                     "A": 50,
                     "GD": -15,
                     "P": 32
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -4416,7 +5685,8 @@
                     "A": 44,
                     "GD": -15,
                     "P": 29
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -4430,6 +5700,10 @@
                     "A": 53,
                     "GD": -18,
                     "P": 27
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4444,6 +5718,10 @@
                     "A": 37,
                     "GD": -18,
                     "P": 26
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4458,6 +5736,10 @@
                     "A": 50,
                     "GD": -24,
                     "P": 23
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4472,12 +5754,33 @@
                     "A": 60,
                     "GD": -31,
                     "P": 22
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Saudi_Arabia_Pro_League": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-4",
+                "label": "AFC Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -4491,6 +5794,10 @@
                     "A": 28,
                     "GD": 63,
                     "P": 86
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4505,6 +5812,10 @@
                     "A": 27,
                     "GD": 58,
                     "P": 84
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4519,6 +5830,10 @@
                     "A": 25,
                     "GD": 46,
                     "P": 81
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4533,6 +5848,10 @@
                     "A": 34,
                     "GD": 49,
                     "P": 77
+                },
+                "zone": {
+                    "label": "AFC Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4547,7 +5866,8 @@
                     "A": 48,
                     "GD": 7,
                     "P": 55
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -4561,7 +5881,8 @@
                     "A": 46,
                     "GD": 13,
                     "P": 53
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -4575,7 +5896,8 @@
                     "A": 55,
                     "GD": -4,
                     "P": 50
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -4589,7 +5911,8 @@
                     "A": 48,
                     "GD": -5,
                     "P": 45
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -4603,7 +5926,8 @@
                     "A": 57,
                     "GD": -19,
                     "P": 42
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -4617,7 +5941,8 @@
                     "A": 54,
                     "GD": -13,
                     "P": 38
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -4631,7 +5956,8 @@
                     "A": 55,
                     "GD": -14,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -4645,7 +5971,8 @@
                     "A": 62,
                     "GD": -8,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -4659,7 +5986,8 @@
                     "A": 57,
                     "GD": -13,
                     "P": 35
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -4673,6 +6001,10 @@
                     "A": 61,
                     "GD": -22,
                     "P": 33
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4687,6 +6019,10 @@
                     "A": 63,
                     "GD": -28,
                     "P": 30
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4701,6 +6037,10 @@
                     "A": 55,
                     "GD": -23,
                     "P": 29
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4715,7 +6055,8 @@
                     "A": 70,
                     "GD": -43,
                     "P": 20
-                }
+                },
+                "zone": null
             },
             {
                 "position": 18,
@@ -4729,12 +6070,30 @@
                     "A": 76,
                     "GD": -44,
                     "P": 16
-                }
+                },
+                "zone": null
             }
         ]
     },
     "Sweden_Allsvenskan": {
         "total_journees": 30,
+        "position_zones": [
+            {
+                "positions": "1",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -4748,6 +6107,10 @@
                     "A": 10,
                     "GD": 14,
                     "P": 25
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4762,7 +6125,8 @@
                     "A": 10,
                     "GD": 12,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 3,
@@ -4776,7 +6140,8 @@
                     "A": 12,
                     "GD": 5,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 4,
@@ -4790,7 +6155,8 @@
                     "A": 9,
                     "GD": 5,
                     "P": 17
-                }
+                },
+                "zone": null
             },
             {
                 "position": 5,
@@ -4804,7 +6170,8 @@
                     "A": 11,
                     "GD": 3,
                     "P": 15
-                }
+                },
+                "zone": null
             },
             {
                 "position": 6,
@@ -4818,7 +6185,8 @@
                     "A": 14,
                     "GD": -1,
                     "P": 14
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -4832,7 +6200,8 @@
                     "A": 13,
                     "GD": 6,
                     "P": 13
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -4846,7 +6215,8 @@
                     "A": 11,
                     "GD": 2,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -4860,7 +6230,8 @@
                     "A": 13,
                     "GD": -1,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -4874,7 +6245,8 @@
                     "A": 17,
                     "GD": -4,
                     "P": 12
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -4888,7 +6260,8 @@
                     "A": 12,
                     "GD": -1,
                     "P": 10
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -4902,7 +6275,8 @@
                     "A": 18,
                     "GD": -3,
                     "P": 10
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -4916,7 +6290,8 @@
                     "A": 14,
                     "GD": -4,
                     "P": 9
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -4930,6 +6305,10 @@
                     "A": 18,
                     "GD": -10,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4944,6 +6323,10 @@
                     "A": 15,
                     "GD": -8,
                     "P": 6
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             },
             {
@@ -4958,16 +6341,79 @@
                     "A": 23,
                     "GD": -15,
                     "P": 5
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "Switzerland_Super_League": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                1,
+                "UEFA Champions League",
+                true
+            ],
+            [
+                2,
+                3,
+                "UEFA Europa League",
+                true
+            ],
+            [
+                4,
+                4,
+                "UEFA Conference League",
+                true
+            ],
+            [
+                9,
+                9,
+                "Relégation Playoff",
+                false
+            ],
+            [
+                10,
+                10,
+                "Relégation",
+                false
+            ]
+        ],
         "standings": []
     },
     "Turkey_Super_Lig": {
         "total_journees": 34,
+        "position_zones": [
+            {
+                "positions": "1-2",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "17",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "18-19",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -4981,6 +6427,10 @@
                     "A": 30,
                     "GD": 47,
                     "P": 77
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -4995,6 +6445,10 @@
                     "A": 37,
                     "GD": 40,
                     "P": 74
+                },
+                "zone": {
+                    "label": "UEFA Champions League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5009,6 +6463,10 @@
                     "A": 39,
                     "GD": 22,
                     "P": 69
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5023,6 +6481,10 @@
                     "A": 40,
                     "GD": 19,
                     "P": 60
+                },
+                "zone": {
+                    "label": "UEFA Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5037,6 +6499,10 @@
                     "A": 35,
                     "GD": 23,
                     "P": 57
+                },
+                "zone": {
+                    "label": "UEFA Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5051,7 +6517,8 @@
                     "A": 32,
                     "GD": 10,
                     "P": 55
-                }
+                },
+                "zone": null
             },
             {
                 "position": 7,
@@ -5065,7 +6532,8 @@
                     "A": 45,
                     "GD": 1,
                     "P": 51
-                }
+                },
+                "zone": null
             },
             {
                 "position": 8,
@@ -5079,7 +6547,8 @@
                     "A": 52,
                     "GD": -6,
                     "P": 41
-                }
+                },
+                "zone": null
             },
             {
                 "position": 9,
@@ -5093,7 +6562,8 @@
                     "A": 50,
                     "GD": -7,
                     "P": 40
-                }
+                },
+                "zone": null
             },
             {
                 "position": 10,
@@ -5107,7 +6577,8 @@
                     "A": 38,
                     "GD": -12,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 11,
@@ -5121,7 +6592,8 @@
                     "A": 41,
                     "GD": 0,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 12,
@@ -5135,7 +6607,8 @@
                     "A": 58,
                     "GD": -15,
                     "P": 37
-                }
+                },
+                "zone": null
             },
             {
                 "position": 13,
@@ -5149,7 +6622,8 @@
                     "A": 49,
                     "GD": -16,
                     "P": 35
-                }
+                },
+                "zone": null
             },
             {
                 "position": 14,
@@ -5163,7 +6637,8 @@
                     "A": 47,
                     "GD": -11,
                     "P": 34
-                }
+                },
+                "zone": null
             },
             {
                 "position": 15,
@@ -5177,7 +6652,8 @@
                     "A": 48,
                     "GD": -15,
                     "P": 33
-                }
+                },
+                "zone": null
             },
             {
                 "position": 16,
@@ -5191,7 +6667,8 @@
                     "A": 55,
                     "GD": -22,
                     "P": 32
-                }
+                },
+                "zone": null
             },
             {
                 "position": 17,
@@ -5205,6 +6682,10 @@
                     "A": 62,
                     "GD": -35,
                     "P": 30
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5219,20 +6700,74 @@
                     "A": 54,
                     "GD": -23,
                     "P": 30
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "USA_Major_League_Soccer": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                7,
+                "MLS Cup Playoffs",
+                true
+            ],
+            [
+                8,
+                9,
+                "Playoffs wild-card",
+                true
+            ]
+        ],
         "standings": []
     },
     "Venezuela_Primera_Division": {
         "total_journees": 0,
+        "position_zones": [
+            [
+                1,
+                2,
+                "CONMEBOL Libertadores",
+                true
+            ],
+            [
+                3,
+                4,
+                "CONMEBOL Sudamericana",
+                true
+            ]
+        ],
         "standings": []
     },
     "UEFA_Champions_League": {
         "total_journees": 70,
+        "position_zones": [
+            {
+                "positions": "1-8",
+                "label": "Huitièmes de finale",
+                "type": "avantage"
+            },
+            {
+                "positions": "9-16",
+                "label": "Huitièmes Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "17-24",
+                "label": "Repêchage Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "25-36",
+                "label": "Élimination",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -5246,6 +6781,10 @@
                     "A": 4,
                     "GD": 19,
                     "P": 24
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5260,6 +6799,10 @@
                     "A": 8,
                     "GD": 14,
                     "P": 21
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5274,6 +6817,10 @@
                     "A": 8,
                     "GD": 12,
                     "P": 18
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5288,6 +6835,10 @@
                     "A": 7,
                     "GD": 10,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5302,6 +6853,10 @@
                     "A": 14,
                     "GD": 8,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5316,6 +6871,10 @@
                     "A": 10,
                     "GD": 7,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5330,6 +6889,10 @@
                     "A": 11,
                     "GD": 6,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5344,6 +6907,10 @@
                     "A": 9,
                     "GD": 6,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5358,6 +6925,10 @@
                     "A": 12,
                     "GD": 9,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5372,6 +6943,10 @@
                     "A": 7,
                     "GD": 8,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5386,6 +6961,10 @@
                     "A": 11,
                     "GD": 10,
                     "P": 14
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5400,6 +6979,10 @@
                     "A": 7,
                     "GD": 10,
                     "P": 14
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5414,6 +6997,10 @@
                     "A": 10,
                     "GD": 4,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5428,6 +7015,10 @@
                     "A": 15,
                     "GD": 2,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5442,6 +7033,10 @@
                     "A": 10,
                     "GD": 0,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5456,6 +7051,10 @@
                     "A": 14,
                     "GD": -1,
                     "P": 12
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5470,6 +7069,10 @@
                     "A": 17,
                     "GD": 2,
                     "P": 11
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5484,6 +7087,10 @@
                     "A": 14,
                     "GD": -4,
                     "P": 11
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5498,6 +7105,10 @@
                     "A": 17,
                     "GD": -2,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5512,6 +7123,10 @@
                     "A": 11,
                     "GD": -2,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5526,6 +7141,10 @@
                     "A": 14,
                     "GD": -6,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5540,6 +7159,10 @@
                     "A": 21,
                     "GD": -8,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5554,6 +7177,10 @@
                     "A": 15,
                     "GD": -1,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5568,6 +7195,10 @@
                     "A": 12,
                     "GD": -2,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Repêchage Europa League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5582,6 +7213,10 @@
                     "A": 14,
                     "GD": -3,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5596,6 +7231,10 @@
                     "A": 11,
                     "GD": -3,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5610,6 +7249,10 @@
                     "A": 17,
                     "GD": -9,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5624,6 +7267,10 @@
                     "A": 16,
                     "GD": 0,
                     "P": 8
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5638,6 +7285,10 @@
                     "A": 14,
                     "GD": -5,
                     "P": 8
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5652,6 +7303,10 @@
                     "A": 15,
                     "GD": -6,
                     "P": 8
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5666,6 +7321,10 @@
                     "A": 21,
                     "GD": -9,
                     "P": 8
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5680,6 +7339,10 @@
                     "A": 21,
                     "GD": -13,
                     "P": 6
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5694,6 +7357,10 @@
                     "A": 21,
                     "GD": -11,
                     "P": 4
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5708,6 +7375,10 @@
                     "A": 19,
                     "GD": -14,
                     "P": 3
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5722,6 +7393,10 @@
                     "A": 18,
                     "GD": -13,
                     "P": 1
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -5736,12 +7411,38 @@
                     "A": 22,
                     "GD": -15,
                     "P": 1
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "UEFA_Europa_League": {
         "total_journees": 70,
+        "position_zones": [
+            {
+                "positions": "1-8",
+                "label": "Huitièmes de finale",
+                "type": "avantage"
+            },
+            {
+                "positions": "9-16",
+                "label": "Huitièmes Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "17-24",
+                "label": "Repêchage Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "25-36",
+                "label": "Élimination",
+                "type": "désavantage"
+            }
+        ],
         "standings": [
             {
                 "position": 1,
@@ -5755,6 +7456,10 @@
                     "A": 5,
                     "GD": 13,
                     "P": 21
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5769,6 +7474,10 @@
                     "A": 6,
                     "GD": 8,
                     "P": 21
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5783,6 +7492,10 @@
                     "A": 8,
                     "GD": 10,
                     "P": 19
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5797,6 +7510,10 @@
                     "A": 7,
                     "GD": 6,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5811,6 +7528,10 @@
                     "A": 7,
                     "GD": 6,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5825,6 +7546,10 @@
                     "A": 5,
                     "GD": 6,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5839,6 +7564,10 @@
                     "A": 4,
                     "GD": 6,
                     "P": 17
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5853,6 +7582,10 @@
                     "A": 6,
                     "GD": 7,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes de finale",
+                    "type": "avantage"
                 }
             },
             {
@@ -5867,6 +7600,10 @@
                     "A": 7,
                     "GD": 4,
                     "P": 16
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5881,6 +7618,10 @@
                     "A": 7,
                     "GD": 7,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5895,6 +7636,10 @@
                     "A": 9,
                     "GD": 6,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5909,6 +7654,10 @@
                     "A": 11,
                     "GD": 1,
                     "P": 15
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5923,6 +7672,10 @@
                     "A": 7,
                     "GD": 8,
                     "P": 14
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5937,6 +7690,10 @@
                     "A": 3,
                     "GD": 5,
                     "P": 14
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5951,6 +7708,10 @@
                     "A": 6,
                     "GD": 1,
                     "P": 14
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5965,6 +7726,10 @@
                     "A": 11,
                     "GD": 4,
                     "P": 13
+                },
+                "zone": {
+                    "label": "Huitièmes Playoff",
+                    "type": "avantage"
                 }
             },
             {
@@ -5979,6 +7744,10 @@
                     "A": 14,
                     "GD": 3,
                     "P": 12
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -5993,6 +7762,10 @@
                     "A": 9,
                     "GD": 3,
                     "P": 12
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6007,6 +7780,10 @@
                     "A": 7,
                     "GD": 3,
                     "P": 12
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6021,6 +7798,10 @@
                     "A": 9,
                     "GD": 2,
                     "P": 12
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6035,6 +7816,10 @@
                     "A": 15,
                     "GD": -2,
                     "P": 11
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6049,6 +7834,10 @@
                     "A": 15,
                     "GD": -3,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6063,6 +7852,10 @@
                     "A": 16,
                     "GD": -4,
                     "P": 10
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6077,6 +7870,10 @@
                     "A": 11,
                     "GD": -2,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Repêchage Conference League",
+                    "type": "avantage"
                 }
             },
             {
@@ -6091,6 +7888,10 @@
                     "A": 16,
                     "GD": -6,
                     "P": 9
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6105,6 +7906,10 @@
                     "A": 11,
                     "GD": -6,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6119,6 +7924,10 @@
                     "A": 16,
                     "GD": -7,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6133,6 +7942,10 @@
                     "A": 14,
                     "GD": -8,
                     "P": 7
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6147,6 +7960,10 @@
                     "A": 15,
                     "GD": -4,
                     "P": 6
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6161,6 +7978,10 @@
                     "A": 13,
                     "GD": -4,
                     "P": 6
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6175,6 +7996,10 @@
                     "A": 15,
                     "GD": -5,
                     "P": 6
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6189,6 +8014,10 @@
                     "A": 14,
                     "GD": -9,
                     "P": 4
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6203,6 +8032,10 @@
                     "A": 15,
                     "GD": -8,
                     "P": 3
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6217,6 +8050,10 @@
                     "A": 15,
                     "GD": -10,
                     "P": 1
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6231,6 +8068,10 @@
                     "A": 15,
                     "GD": -11,
                     "P": 1
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             },
             {
@@ -6245,12 +8086,17 @@
                     "A": 22,
                     "GD": -20,
                     "P": 1
+                },
+                "zone": {
+                    "label": "Élimination",
+                    "type": "désavantage"
                 }
             }
         ]
     },
     "FIFA_Club_World_Cup": {
         "total_journees": 0,
+        "position_zones": [],
         "standings": []
     }
 }

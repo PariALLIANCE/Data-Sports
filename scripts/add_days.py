@@ -38,7 +38,7 @@ LEAGUES = {
     "Venezuela_Primera_Division": {"id": "ven.1", "json": "Venezuela_Primera_Division.json"},
 }
 
-LEAGUES_DIR  = "data/football/leagues/"
+LEAGUES_DIR    = "data/football/leagues/"
 STANDINGS_PATH = "data/football/standings/Standings.json"
 
 # ─────────────────────────────────────────────
@@ -53,11 +53,12 @@ with open(STANDINGS_PATH, "r", encoding="utf-8") as f:
 # ─────────────────────────────────────────────
 
 DATE_FORMATS = [
-    "%A, %B %d, %Y",
-    "%A, %d %B %Y",
-    "%Y-%m-%d",
-    "%d/%m/%Y",
-    "%m/%d/%Y",
+    "%A, %B %d, %Y",   # Sunday, May 10, 2026
+    "%A, %d %B %Y",    # Sunday, 10 May 2026
+    "%Y-%m-%d",        # 2026-05-10
+    "%Y%m%d",          # 20260510  ✅
+    "%d/%m/%Y",        # 10/05/2026
+    "%m/%d/%Y",        # 05/10/2026
 ]
 
 def parse_date(date_str: str) -> datetime | None:
@@ -98,7 +99,12 @@ def process_league(league_key: str, league_info: dict) -> None:
     gp_per_team = {
         entry["name"]: entry["stats"]["GP"]
         for entry in standing["standings"]
+        if entry.get("stats", {}).get("GP") is not None  # ✅ ignore entrées sans GP
     }
+
+    if not gp_per_team:
+        print(f"  [SKIP] Aucune équipe avec GP valide pour {league_key}")
+        return
 
     CURRENT_JOURNEE = max(gp_per_team.values())
 

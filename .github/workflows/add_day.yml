@@ -1,0 +1,37 @@
+name: Add Journée to Matches
+
+on:
+  workflow_dispatch:
+
+jobs:
+  add-days:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync with remote main
+        run: |
+          git pull --rebase origin main
+
+      - name: Run add_days script
+        run: |
+          python scripts/add_days.py
+
+      - name: Commit and push
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/football/leagues/
+          git diff --cached --quiet && echo "Aucune modification détectée" && exit 0
+          git commit -m "chore: add journée to matches [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase origin main
+          git push origin main

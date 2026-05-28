@@ -1,5 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
 import json
 from datetime import datetime, timedelta, timezone
 import re
@@ -8,9 +6,14 @@ import os
 import copy
 from collections import defaultdict
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
-}
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
+from webdriver_manager.chrome import ChromeDriverManager
 
 OUTPUT_DIR     = "data/football/leagues"
 STANDINGS_PATH = "data/football/standings/Standings.json"
@@ -49,7 +52,6 @@ LEAGUES = {
   "UEFA_Europa_League":            {"id": "uefa.europa",        "json": "UEFA_Europa_League.json"},
   "USA_Major_League_Soccer":       {"id": "usa.1",              "json": "USA_Major_League_Soccer.json"},
   "Venezuela_Primera_Division":    {"id": "ven.1",              "json": "Venezuela_Primera_Division.json"},
-  # ── Cups ──────────────────────────────────────────────────────────────
   "FA_Cup":           {"id": "eng.fa",              "json": "FA_Cup.json"},
   "EFL_Cup":          {"id": "eng.league_cup",      "json": "EFL_Cup.json"},
   "Copa_del_Rey":     {"id": "esp.copa_del_rey",    "json": "Copa_del_Rey.json"},
@@ -61,7 +63,6 @@ LEAGUES = {
   "Kings_Cup_Saudi":  {"id": "ksa.kings.cup",       "json": "Kings_Cup_Saudi.json"},
 }
 
-# Ligues exclues de l'enrichissement journée
 CUPS_AND_INTL = {
     "FIFA_Club_World_Cup",
     "UEFA_Champions_League",
@@ -84,9 +85,9 @@ CUPS_AND_INTL = {
 now = datetime.now(timezone.utc)
 target_dates = {
     (now - timedelta(days=i)).strftime("%Y%m%d")
-    for i in range(1, 11)  # j-1 à j-10
+    for i in range(1, 11)
 }
-dates_to_fetch = sorted(target_dates)  # du plus ancien au plus récent
+dates_to_fetch = sorted(target_dates)
 
 # ─────────────────────────────────────────────
 # PARSING DATES
@@ -101,7 +102,7 @@ DATE_FORMATS = [
     "%m/%d/%Y",
 ]
 
-def parse_date(date_str: str) -> datetime | None:
+def parse_date(date_str: str):
     for fmt in DATE_FORMATS:
         try:
             return datetime.strptime(date_str.strip(), fmt)
@@ -166,14 +167,12 @@ def enrich_journee(matches_list: list, league_key: str) -> list:
 
     CURRENT_JOURNEE = max(gp_per_team.values())
 
-    # Tri du plus récent au plus ancien
     def sort_key(m):
         d = parse_date(m.get("date", ""))
         return d if d else datetime.min
 
     matches_sorted = sorted(matches_list, key=sort_key, reverse=True)
 
-    # Regroupement par équipe
     team_matches_order = defaultdict(list)
     for m in matches_sorted:
         t1 = m.get("team1")
@@ -183,7 +182,6 @@ def enrich_journee(matches_list: list, league_key: str) -> list:
         if t2:
             team_matches_order[t2].append(m)
 
-    # Attribution des journées par équipe
     match_journee = {}
 
     for team, team_matches in team_matches_order.items():
@@ -212,7 +210,6 @@ def enrich_journee(matches_list: list, league_key: str) -> list:
                 saison_offset += 1
                 journee = TOTAL_JOURNEES
 
-    # Consolidation : une journée unique par match
     def consolidate(game_id, m):
         data = match_journee.get(game_id, {})
         t1   = m.get("team1")
@@ -234,7 +231,6 @@ def enrich_journee(matches_list: list, league_key: str) -> list:
 
         return {"journee": None, "saison_offset": None}
 
-    # Appliquer uniquement sur les matchs sans journée
     enriched = []
     for m in matches_list:
         mc      = copy.deepcopy(m)
@@ -278,38 +274,76 @@ def load_existing_matches(path):
         return {}
 
 # ─────────────────────────────────────────────
+# DRIVER SELENIUM
+# ─────────────────────────────────────────────
+
+def create_driver():
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--lang=fr-FR")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option("useAutomationExtension", False)
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    )
+    service = Service(ChromeDriverManager().install())
+    driver  = webdriver.Chrome(service=service, options=options)
+    driver.execute_script(
+        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    )
+    return driver
+
+def safe_get(driver, url, wait_selector=None, timeout=15):
+    try:
+        driver.get(url)
+        if wait_selector:
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, wait_selector))
+            )
+        else:
+            time.sleep(2)
+        return True
+    except TimeoutException:
+        return True  # Page chargée mais élément absent, on continue
+    except WebDriverException as e:
+        print(f"    ⚠️  WebDriver erreur : {e}")
+        return False
+
+# ─────────────────────────────────────────────
 # STATS
 # ─────────────────────────────────────────────
 
-def get_match_stats(game_id):
-    url     = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
-    headers = {
-        "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-        "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8"
-    }
+def get_match_stats(driver, game_id):
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
+    if not safe_get(driver, url, wait_selector="section[data-testid='prism-LayoutCard']", timeout=12):
+        return {}
     try:
-        res = requests.get(url, headers=headers, timeout=15)
-        res.raise_for_status()
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        stats_section = soup.find("section", {"data-testid": "prism-LayoutCard"})
-        if not stats_section:
-            return {}
-
+        stats_section = driver.find_element(By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']")
+        rows  = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
         stats = {}
-        for row in stats_section.find_all("div", class_="LOSQp"):
-            name_tag = row.find("span", class_="OkRBU")
-            values   = row.find_all("span", class_="bLeWt")
-            if name_tag and len(values) >= 2:
-                stats[name_tag.text.strip()] = {
-                    "home": values[0].text.strip(),
-                    "away": values[1].text.strip()
-                }
-
+        for row in rows:
+            try:
+                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                values   = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                if name_tag and len(values) >= 2:
+                    stats[name_tag.text.strip()] = {
+                        "home": values[0].text.strip(),
+                        "away": values[1].text.strip()
+                    }
+            except NoSuchElementException:
+                continue
         time.sleep(0.6)
         return stats
-    except Exception:
+    except NoSuchElementException:
+        return {}
+    except Exception as e:
+        print(f"    ⚠️  Erreur stats ({game_id}) : {e}")
         return {}
 
 # ─────────────────────────────────────────────
@@ -334,22 +368,20 @@ def is_valid_us_odds(val):
     except Exception:
         return False
 
-def extract_odds(game_id):
-    match_url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
+def extract_odds(driver, game_id):
+    # La page du match est déjà chargée après get_match_stats,
+    # on tente directement de lire les cotes sans recharger
     try:
-        res = requests.get(match_url, headers=HEADERS, timeout=15)
-        if res.status_code != 200:
-            return None
-        res.encoding = "utf-8"
-        soup  = BeautifulSoup(res.text, "html.parser")
-        cells = soup.find_all("div", {"data-testid": "OddsCell"})
-
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[data-testid='OddsCell']"))
+        )
+        cells = driver.find_elements(By.CSS_SELECTOR, "div[data-testid='OddsCell']")
         if len(cells) < 7:
             return None
 
-        home_us = cells[0].get_text(strip=True) or None
-        away_us = cells[3].get_text(strip=True) or None
-        draw_us = cells[6].get_text(strip=True) or None
+        home_us = cells[0].text.strip() or None
+        away_us = cells[3].text.strip() or None
+        draw_us = cells[6].text.strip() or None
 
         if not all(is_valid_us_odds(v) for v in [home_us, away_us, draw_us]):
             return None
@@ -359,96 +391,128 @@ def extract_odds(game_id):
             "away": us_to_decimal(away_us),
             "draw": us_to_decimal(draw_us),
         }
+    except TimeoutException:
+        return None
     except Exception as e:
-        print(f"    ⚠️  Erreur cotes : {e}")
+        print(f"    ⚠️  Erreur cotes ({game_id}) : {e}")
         return None
 
 # ─────────────────────────────────────────────
-# BOUCLE PRINCIPALE
+# SCRAPING SCHEDULE
 # ─────────────────────────────────────────────
 
-for league_name, league in LEAGUES.items():
-    print(f"\n🏆 {league_name}")
+def scrape_schedule(driver, league_id, date_str):
+    url = f"https://www.espn.com/soccer/schedule/_/date/{date_str}/league/{league_id}"
+    if not safe_get(driver, url, wait_selector="div.ResponsiveTable", timeout=15):
+        return []
 
-    BASE_URL  = "https://www.espn.com/soccer/schedule/_/date/{date}/league/" + league["id"]
-    json_path = os.path.join(OUTPUT_DIR, league["json"])
-    matches   = load_existing_matches(json_path)
+    results = []
+    try:
+        tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+        for table in tables:
+            try:
+                date_title = table.find_element(By.CSS_SELECTOR, "div.Table__Title")
+                date_text  = date_title.text.strip()
+            except NoSuchElementException:
+                date_text = date_str
 
-    # ── Étape 1 : supprimer les matchs des 10 derniers jours sans cotes ───
-    removed = [
-        gid for gid, m in matches.items()
-        if is_target_date(m.get("date", "")) and not m.get("odds")
-    ]
-    for gid in removed:
-        del matches[gid]
-    if removed:
-        print(f"  🗑️  {len(removed)} match(s) sans cotes supprimé(s) et re-scrapés")
+            rows = table.find_elements(By.CSS_SELECTOR, "tbody > tr.Table__TR")
+            for row in rows:
+                try:
+                    teams     = row.find_elements(By.CSS_SELECTOR, "span.Table__Team a.AnchorLink:last-child")
+                    score_tag = row.find_element(By.CSS_SELECTOR, "a.AnchorLink.at")
+                except NoSuchElementException:
+                    continue
 
-    new_count     = 0
-    stats_updated = 0
-
-    # ── Étape 2 : scraper les 10 derniers jours ───────────────────────────
-    for date_str in dates_to_fetch:
-        print(f"  📅 {date_str}")
-
-        url = BASE_URL.format(date=date_str)
-        try:
-            res = requests.get(url, headers=HEADERS, timeout=15)
-            res.encoding = "utf-8"
-            soup = BeautifulSoup(res.text, "html.parser")
-        except Exception as e:
-            print(f"    ⚠️  Erreur requête : {e}")
-            continue
-
-        for table in soup.select("div.ResponsiveTable"):
-            date_title = table.select_one("div.Table__Title")
-            date_text  = date_title.text.strip() if date_title else date_str
-
-            for row in table.select("tbody > tr.Table__TR"):
-                teams     = row.select("span.Table__Team a.AnchorLink:last-child")
-                score_tag = row.select_one("a.AnchorLink.at")
-
-                if len(teams) != 2 or not score_tag:
+                if len(teams) != 2:
                     continue
 
                 score = score_tag.text.strip()
                 if score.lower() == "v":
                     continue
 
-                match_href = score_tag.get("href", "")
+                match_href = score_tag.get_attribute("href") or ""
                 match_id   = re.search(r"gameId/(\d+)", match_href)
                 if not match_id:
                     continue
 
                 game_id   = match_id.group(1)
                 match_url = (
-                    "https://www.espn.com" + match_href
-                    if match_href.startswith("/")
-                    else match_href
+                    match_href if match_href.startswith("http")
+                    else "https://www.espn.com" + match_href
                 )
 
-                # ── Match existant : enrichir stats si manquantes ──────────
+                results.append({
+                    "gameId":    game_id,
+                    "date_text": date_text,
+                    "team1":     teams[0].text.strip(),
+                    "team2":     teams[1].text.strip(),
+                    "score":     score,
+                    "match_url": match_url,
+                })
+    except Exception as e:
+        print(f"    ⚠️  Erreur parsing schedule : {e}")
+
+    return results
+
+# ─────────────────────────────────────────────
+# BOUCLE PRINCIPALE
+# ─────────────────────────────────────────────
+
+driver = create_driver()
+
+try:
+    for league_name, league in LEAGUES.items():
+        print(f"\n🏆 {league_name}")
+
+        json_path = os.path.join(OUTPUT_DIR, league["json"])
+        matches   = load_existing_matches(json_path)
+
+        # ── Étape 1 : supprimer les matchs des 10 derniers jours sans cotes ──
+        removed = [
+            gid for gid, m in matches.items()
+            if is_target_date(m.get("date", "")) and not m.get("odds")
+        ]
+        for gid in removed:
+            del matches[gid]
+        if removed:
+            print(f"  🗑️  {len(removed)} match(s) sans cotes supprimé(s) et re-scrapés")
+
+        new_count     = 0
+        stats_updated = 0
+
+        # ── Étape 2 : scraper les 10 derniers jours ──────────────────────────
+        for date_str in dates_to_fetch:
+            print(f"  📅 {date_str}")
+
+            day_matches = scrape_schedule(driver, league["id"], date_str)
+
+            for item in day_matches:
+                game_id = item["gameId"]
+
+                # ── Match existant : enrichir stats si manquantes ────────────
                 if game_id in matches:
                     if not matches[game_id].get("stats"):
-                        stats = get_match_stats(game_id)
+                        stats = get_match_stats(driver, game_id)
                         if stats:
                             matches[game_id]["stats"] = stats
                             stats_updated += 1
                     continue
 
-                # ── Nouveau match : stats + cotes ──────────────────────────
-                stats = get_match_stats(game_id)
-                odds  = extract_odds(game_id)
+                # ── Nouveau match : stats + cotes ────────────────────────────
+                # get_match_stats charge la page du match, extract_odds la réutilise
+                stats = get_match_stats(driver, game_id)
+                odds  = extract_odds(driver, game_id)
                 time.sleep(1)
 
                 match_data = {
                     "gameId":    game_id,
-                    "date":      date_text,
-                    "team1":     teams[0].text.strip(),
-                    "team2":     teams[1].text.strip(),
-                    "score":     score,
-                    "title":     f"{teams[0].text.strip()} VS {teams[1].text.strip()}",
-                    "match_url": match_url,
+                    "date":      item["date_text"],
+                    "team1":     item["team1"],
+                    "team2":     item["team2"],
+                    "score":     item["score"],
+                    "title":     f"{item['team1']} VS {item['team2']}",
+                    "match_url": item["match_url"],
                     "stats":     stats,
                 }
                 if odds:
@@ -458,19 +522,23 @@ for league_name, league in LEAGUES.items():
                 new_count += 1
 
                 status = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
-                print(f"    ✅ {teams[0].text.strip()} vs {teams[1].text.strip()} → {status}")
+                print(f"    ✅ {item['team1']} vs {item['team2']} → {status}")
 
-    # ── Étape 3 : enrichissement journée (ligues uniquement) ──────────────
-    if league_name not in CUPS_AND_INTL:
-        matches_list  = list(matches.values())
-        enriched_list = enrich_journee(matches_list, league_name)
-        matches       = {m["gameId"]: m for m in enriched_list if "gameId" in m}
-        print(f"  📆 Journées mises à jour")
+        # ── Étape 3 : enrichissement journée (ligues uniquement) ──────────────
+        if league_name not in CUPS_AND_INTL:
+            matches_list  = list(matches.values())
+            enriched_list = enrich_journee(matches_list, league_name)
+            matches       = {m["gameId"]: m for m in enriched_list if "gameId" in m}
+            print(f"  📆 Journées mises à jour")
 
-    # ── Sauvegarde atomique ────────────────────────────────────────────────
-    tmp_path = json_path + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(list(matches.values()), f, indent=2, ensure_ascii=False)
-    os.replace(tmp_path, json_path)
+        # ── Sauvegarde atomique ───────────────────────────────────────────────
+        tmp_path = json_path + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(list(matches.values()), f, indent=2, ensure_ascii=False)
+        os.replace(tmp_path, json_path)
 
-    print(f"  💾 {league_name} : {len(matches)} matchs | +{new_count} nouveaux | stats MAJ {stats_updated}")
+        print(f"  💾 {league_name} : {len(matches)} matchs | +{new_count} nouveaux | stats MAJ {stats_updated}")
+
+finally:
+    driver.quit()
+    print("\n✅ Driver fermé proprement.")

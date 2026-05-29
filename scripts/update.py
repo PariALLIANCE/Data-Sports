@@ -79,13 +79,13 @@ CUPS_AND_INTL = {
 }
 
 # ─────────────────────────────────────────────
-# DATES : 10 DERNIERS JOURS
+# DATES : J-1 ET J-2 UNIQUEMENT
 # ─────────────────────────────────────────────
 
 now = datetime.now(timezone.utc)
 target_dates = {
     (now - timedelta(days=i)).strftime("%Y%m%d")
-    for i in range(1, 11)
+    for i in range(1, 3)   # i=1 → hier, i=2 → avant-hier
 }
 dates_to_fetch = sorted(target_dates)
 
@@ -369,8 +369,6 @@ def is_valid_us_odds(val):
         return False
 
 def extract_odds(driver, game_id):
-    # La page du match est déjà chargée après get_match_stats,
-    # on tente directement de lire les cotes sans recharger
     try:
         WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[data-testid='OddsCell']"))
@@ -459,6 +457,8 @@ def scrape_schedule(driver, league_id, date_str):
 # BOUCLE PRINCIPALE
 # ─────────────────────────────────────────────
 
+print(f"📆 Dates ciblées : {sorted(target_dates)}")
+
 driver = create_driver()
 
 try:
@@ -468,7 +468,7 @@ try:
         json_path = os.path.join(OUTPUT_DIR, league["json"])
         matches   = load_existing_matches(json_path)
 
-        # ── Étape 1 : supprimer les matchs des 10 derniers jours sans cotes ──
+        # ── Étape 1 : supprimer J-1 / J-2 sans cotes pour re-scraper ────────
         removed = [
             gid for gid, m in matches.items()
             if is_target_date(m.get("date", "")) and not m.get("odds")
@@ -481,7 +481,7 @@ try:
         new_count     = 0
         stats_updated = 0
 
-        # ── Étape 2 : scraper les 10 derniers jours ──────────────────────────
+        # ── Étape 2 : scraper J-1 et J-2 ────────────────────────────────────
         for date_str in dates_to_fetch:
             print(f"  📅 {date_str}")
 
@@ -500,7 +500,6 @@ try:
                     continue
 
                 # ── Nouveau match : stats + cotes ────────────────────────────
-                # get_match_stats charge la page du match, extract_odds la réutilise
                 stats = get_match_stats(driver, game_id)
                 odds  = extract_odds(driver, game_id)
                 time.sleep(1)
@@ -524,7 +523,7 @@ try:
                 status = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
                 print(f"    ✅ {item['team1']} vs {item['team2']} → {status}")
 
-        # ── Étape 3 : enrichissement journée (ligues uniquement) ──────────────
+        # ── Étape 3 : enrichissement journée (ligues uniquement) ─────────────
         if league_name not in CUPS_AND_INTL:
             matches_list  = list(matches.values())
             enriched_list = enrich_journee(matches_list, league_name)

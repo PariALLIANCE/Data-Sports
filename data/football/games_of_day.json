@@ -1,1 +1,3600 @@
-[]
+[
+  {
+    "gameId": "401850580",
+    "date": "2026-05-29",
+    "time_utc": "18:00",
+    "league": "Chile_Primera_Division",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401850580/nublense-cobresal",
+    "home": {
+      "team": "Cobresal",
+      "team_id": "4133",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4133.png",
+      "url": "https://www.espn.com/soccer/team/_/id/4133"
+    },
+    "away": {
+      "team": "Ñublense",
+      "team_id": "7427",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7427.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7427"
+    },
+    "odds": {
+      "home": 2.9,
+      "away": 2.35,
+      "draw": 3.45
+    },
+    "recent_form": {
+      "home": [
+        {
+          "gameId": "401850482",
+          "date": "20260226",
+          "team1": "Cobresal",
+          "team2": "La Serena",
+          "score": "0 - 1",
+          "title": "Cobresal VS La Serena",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850482/la-serena-cobresal",
+          "stats": {
+            "Possession": {
+              "home": "58.4%",
+              "away": "41.6%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "13"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "7",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "6"
+            }
+          },
+          "journee": 7,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850574",
+          "date": "2026-05-23",
+          "team1": "Audax Italiano",
+          "team2": "Cobresal",
+          "score": "2 - 1",
+          "title": "Audax Italiano VS Cobresal",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850574/cobresal-audax-italiano",
+          "stats": {
+            "Possession": {
+              "home": "50.4\n%",
+              "away": "49.6\n%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "20",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.74,
+            "away": 4.5,
+            "draw": 3.9
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850566",
+          "date": "2026-05-17",
+          "team1": "Cobresal",
+          "team2": "Universidad de Chile",
+          "score": "1 - 0",
+          "title": "Cobresal VS Universidad de Chile",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850566/universidad-de-chile-cobresal",
+          "stats": {
+            "Possession": {
+              "home": "31.7%",
+              "away": "68.3%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "16",
+              "away": "13"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "8"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 3.65,
+            "away": 1.91,
+            "draw": 3.8
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850548",
+          "date": "2026-04-19",
+          "team1": "Cobresal",
+          "team2": "O'Higgins",
+          "score": "2 - 3",
+          "title": "Cobresal VS O'Higgins",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850548/ohiggins-cobresal",
+          "stats": {
+            "Possession": {
+              "home": "42.3%",
+              "away": "57.7%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "5"
+            },
+            "Shot Attempts": {
+              "home": "14",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "8",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.75,
+            "away": 2.45,
+            "draw": 3.5
+          },
+          "journee": 12,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850541",
+          "date": "2026-04-12",
+          "team1": "Universidad de Concepción",
+          "team2": "Cobresal",
+          "score": "1 - 0",
+          "title": "Universidad de Concepción VS Cobresal",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850541/cobresal-universidad-de-concepcion",
+          "stats": {
+            "Possession": {
+              "home": "48.7%",
+              "away": "51.3%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "8",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "1"
+            }
+          },
+          "odds": {
+            "home": 1.62,
+            "away": 5.0,
+            "draw": 4.0
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850538",
+          "date": "2026-04-03",
+          "team1": "Coquimbo Unido",
+          "team2": "Cobresal",
+          "score": "3 - 2",
+          "title": "Coquimbo Unido VS Cobresal",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850538/cobresal-coquimbo-unido",
+          "stats": {
+            "Possession": {
+              "home": "58.4%",
+              "away": "41.6%"
+            },
+            "Shots on Goal": {
+              "home": "11",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "22",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "9",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "8"
+            }
+          },
+          "odds": {
+            "home": 1.36,
+            "away": 9.0,
+            "draw": 4.8
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ],
+      "away": [
+        {
+          "gameId": "401850547",
+          "date": "20260411",
+          "team1": "Ñublense",
+          "team2": "Universidad de Chile",
+          "score": "1 - 0",
+          "title": "Ñublense VS Universidad de Chile",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850547/universidad-de-chile-nublense",
+          "stats": {
+            "Possession": {
+              "home": "37.3%",
+              "away": "62.7%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "8"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "3"
+            }
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850476",
+          "date": "20260219",
+          "team1": "Unión La Calera",
+          "team2": "Ñublense",
+          "score": "0 - 1",
+          "title": "Unión La Calera VS Ñublense",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850476/nublense-union-la-calera",
+          "stats": {
+            "Possession": {
+              "home": "62.3%",
+              "away": "37.7%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "6",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "3"
+            }
+          },
+          "journee": 6,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850448",
+          "date": "20260214",
+          "team1": "Ñublense",
+          "team2": "Audax Italiano",
+          "score": "1 - 0",
+          "title": "Ñublense VS Audax Italiano",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850448/audax-italiano-nublense",
+          "stats": {
+            "Possession": {
+              "home": "40.5%",
+              "away": "59.5%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "6"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "1"
+            }
+          },
+          "journee": 5,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850576",
+          "date": "2026-05-23",
+          "team1": "Ñublense",
+          "team2": "Universidad de Concepción",
+          "score": "2 - 2",
+          "title": "Ñublense VS Universidad de Concepción",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850576/universidad-de-concepcion-nublense",
+          "stats": {
+            "Possession": {
+              "home": "34\n%",
+              "away": "66\n%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "18"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "2",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.69,
+            "away": 5.0,
+            "draw": 3.7
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850565",
+          "date": "2026-05-17",
+          "team1": "Colo Colo",
+          "team2": "Ñublense",
+          "score": "6 - 2",
+          "title": "Colo Colo VS Ñublense",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850565/nublense-colo-colo",
+          "stats": {
+            "Possession": {
+              "home": "69.1%",
+              "away": "30.9%"
+            },
+            "Shots on Goal": {
+              "home": "11",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "18",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
+            }
+          },
+          "odds": {
+            "home": 1.71,
+            "away": 4.9,
+            "draw": 3.65
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401850555",
+          "date": "2026-04-19",
+          "team1": "Coquimbo Unido",
+          "team2": "Ñublense",
+          "score": "1 - 1",
+          "title": "Coquimbo Unido VS Ñublense",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850555/nublense-coquimbo-unido",
+          "stats": {
+            "Possession": {
+              "home": "41.8%",
+              "away": "58.2%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "7"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.83,
+            "away": 4.4,
+            "draw": 3.45
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ]
+    },
+    "h2h": [
+      {
+        "gameId": "731303",
+        "date": "2025-12-07",
+        "team1": "Ñublense",
+        "team2": "Cobresal",
+        "score": "5 - 0",
+        "title": "Ñublense VS Cobresal",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/731303/cobresal-nublense",
+        "stats": {
+          "Possession": {
+            "home": "72.6%",
+            "away": "27.4%"
+          },
+          "Shots on Goal": {
+            "home": "12",
+            "away": "4"
+          },
+          "Shot Attempts": {
+            "home": "25",
+            "away": "9"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "4"
+          },
+          "Corner Kicks": {
+            "home": "7",
+            "away": "1"
+          },
+          "Saves": {
+            "home": "4",
+            "away": "5"
+          }
+        },
+        "journee": 2,
+        "saison_offset": 0,
+        "saison": "2025/2026",
+        "saison_terminee": false
+      },
+      {
+        "gameId": "731177",
+        "date": "2025-06-22",
+        "team1": "Cobresal",
+        "team2": "Ñublense",
+        "score": "1 - 1",
+        "title": "Cobresal VS Ñublense",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/731177/nublense-cobresal",
+        "stats": {
+          "Possession": {
+            "home": "43.5%",
+            "away": "56.5%"
+          },
+          "Shots on Goal": {
+            "home": "5",
+            "away": "3"
+          },
+          "Shot Attempts": {
+            "home": "13",
+            "away": "13"
+          },
+          "Yellow Cards": {
+            "home": "3",
+            "away": "2"
+          },
+          "Corner Kicks": {
+            "home": "3",
+            "away": "12"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "4"
+          }
+        },
+        "journee": 17,
+        "saison_offset": 1,
+        "saison": "2024/2025",
+        "saison_terminee": false
+      },
+      {
+        "gameId": "696908",
+        "date": "2024-09-14",
+        "team1": "Ñublense",
+        "team2": "Cobresal",
+        "score": "1 - 0",
+        "title": "Ñublense VS Cobresal",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/696908/cobresal-nublense",
+        "stats": {
+          "Possession": {
+            "home": "42.1%",
+            "away": "57.9%"
+          },
+          "Shots on Goal": {
+            "home": "4",
+            "away": "2"
+          },
+          "Shot Attempts": {
+            "home": "17",
+            "away": "9"
+          },
+          "Yellow Cards": {
+            "home": "4",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "1",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "3"
+          }
+        },
+        "journee": 26,
+        "saison_offset": 2,
+        "saison": "2023/2024",
+        "saison_terminee": false
+      },
+      {
+        "gameId": "696787",
+        "date": "2024-04-20",
+        "team1": "Cobresal",
+        "team2": "Ñublense",
+        "score": "2 - 2",
+        "title": "Cobresal VS Ñublense",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/696787/nublense-cobresal",
+        "stats": {
+          "Possession": {
+            "home": "60.2%",
+            "away": "39.8%"
+          },
+          "Shots on Goal": {
+            "home": "11",
+            "away": "9"
+          },
+          "Shot Attempts": {
+            "home": "22",
+            "away": "16"
+          },
+          "Yellow Cards": {
+            "home": "0",
+            "away": "4"
+          },
+          "Corner Kicks": {
+            "home": "3",
+            "away": "7"
+          },
+          "Saves": {
+            "home": "7",
+            "away": "9"
+          }
+        },
+        "journee": 11,
+        "saison_offset": 2,
+        "saison": "2023/2024",
+        "saison_terminee": false
+      },
+      {
+        "gameId": "660465",
+        "date": "2023-08-06",
+        "team1": "Ñublense",
+        "team2": "Cobresal",
+        "score": "1 - 2",
+        "title": "Ñublense VS Cobresal",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/660465/cobresal-nublense",
+        "stats": {
+          "Possession": {
+            "home": "55.7%",
+            "away": "44.3%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "3"
+          },
+          "Shot Attempts": {
+            "home": "18",
+            "away": "8"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "7",
+            "away": "2"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "2"
+          }
+        },
+        "journee": 23,
+        "saison_offset": 3,
+        "saison": "2022/2023",
+        "saison_terminee": false
+      },
+      {
+        "gameId": "660339",
+        "date": "2023-02-18",
+        "team1": "Cobresal",
+        "team2": "Ñublense",
+        "score": "1 - 1",
+        "title": "Cobresal VS Ñublense",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/660339/nublense-cobresal",
+        "stats": {
+          "Possession": {
+            "home": "47.7%",
+            "away": "52.3%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "2"
+          },
+          "Shot Attempts": {
+            "home": "17",
+            "away": "6"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "3"
+          },
+          "Corner Kicks": {
+            "home": "4",
+            "away": "2"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "2"
+          }
+        },
+        "journee": 7,
+        "saison_offset": 3,
+        "saison": "2022/2023",
+        "saison_terminee": false
+      }
+    ],
+    "league_standing": {
+      "total_journees": 30,
+      "position_zones": [
+        {
+          "positions": "1-3",
+          "label": "CONMEBOL Libertadores",
+          "type": "avantage"
+        },
+        {
+          "positions": "4-8",
+          "label": "CONMEBOL Sudamericana",
+          "type": "avantage"
+        },
+        {
+          "positions": "14",
+          "label": "Relégation Playoff",
+          "type": "désavantage"
+        },
+        {
+          "positions": "15-16",
+          "label": "Relégation",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "Colo Colo",
+          "stats": {
+            "GP": 13,
+            "W": 10,
+            "D": 0,
+            "L": 3,
+            "F": 22,
+            "A": 10,
+            "GD": 12,
+            "P": 30
+          },
+          "zone": {
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "Huachipato",
+          "stats": {
+            "GP": 13,
+            "W": 7,
+            "D": 1,
+            "L": 5,
+            "F": 21,
+            "A": 17,
+            "GD": 4,
+            "P": 22
+          },
+          "zone": {
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 3,
+          "name": "Deportes Limache",
+          "stats": {
+            "GP": 13,
+            "W": 6,
+            "D": 3,
+            "L": 4,
+            "F": 26,
+            "A": 17,
+            "GD": 9,
+            "P": 21
+          },
+          "zone": {
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 4,
+          "name": "Universidad Católica",
+          "stats": {
+            "GP": 13,
+            "W": 6,
+            "D": 2,
+            "L": 5,
+            "F": 27,
+            "A": 19,
+            "GD": 8,
+            "P": 20
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 5,
+          "name": "Coquimbo Unido",
+          "stats": {
+            "GP": 13,
+            "W": 6,
+            "D": 2,
+            "L": 5,
+            "F": 19,
+            "A": 16,
+            "GD": 3,
+            "P": 20
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 6,
+          "name": "Palestino",
+          "stats": {
+            "GP": 13,
+            "W": 6,
+            "D": 2,
+            "L": 5,
+            "F": 21,
+            "A": 20,
+            "GD": 1,
+            "P": 20
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 7,
+          "name": "Everton CD",
+          "stats": {
+            "GP": 13,
+            "W": 5,
+            "D": 4,
+            "L": 4,
+            "F": 15,
+            "A": 11,
+            "GD": 4,
+            "P": 19
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 8,
+          "name": "O'Higgins",
+          "stats": {
+            "GP": 12,
+            "W": 6,
+            "D": 1,
+            "L": 5,
+            "F": 17,
+            "A": 17,
+            "GD": 0,
+            "P": 19
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 9,
+          "name": "Ñublense",
+          "stats": {
+            "GP": 13,
+            "W": 4,
+            "D": 6,
+            "L": 3,
+            "F": 15,
+            "A": 17,
+            "GD": -2,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "Universidad de Concepción",
+          "stats": {
+            "GP": 13,
+            "W": 5,
+            "D": 3,
+            "L": 5,
+            "F": 12,
+            "A": 21,
+            "GD": -9,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Universidad de Chile",
+          "stats": {
+            "GP": 12,
+            "W": 4,
+            "D": 5,
+            "L": 3,
+            "F": 11,
+            "A": 7,
+            "GD": 4,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "La Serena",
+          "stats": {
+            "GP": 13,
+            "W": 4,
+            "D": 5,
+            "L": 4,
+            "F": 18,
+            "A": 20,
+            "GD": -2,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "Audax Italiano",
+          "stats": {
+            "GP": 13,
+            "W": 4,
+            "D": 2,
+            "L": 7,
+            "F": 17,
+            "A": 20,
+            "GD": -3,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "Cobresal",
+          "stats": {
+            "GP": 13,
+            "W": 4,
+            "D": 1,
+            "L": 8,
+            "F": 19,
+            "A": 25,
+            "GD": -6,
+            "P": 13
+          },
+          "zone": {
+            "label": "Relégation Playoff",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 15,
+          "name": "Deportes Concepcion",
+          "stats": {
+            "GP": 13,
+            "W": 3,
+            "D": 2,
+            "L": 8,
+            "F": 10,
+            "A": 19,
+            "GD": -9,
+            "P": 11
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 16,
+          "name": "Unión La Calera",
+          "stats": {
+            "GP": 13,
+            "W": 3,
+            "D": 1,
+            "L": 9,
+            "F": 12,
+            "A": 26,
+            "GD": -14,
+            "P": 10
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "gameId": "401861543",
+    "date": "2026-05-29",
+    "time_utc": "07:35",
+    "league": "China_Super_League",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401861543/shanghai-port-liaoning-tieren",
+    "home": {
+      "team": "Liaoning Tieren",
+      "team_id": null,
+      "logo": null,
+      "url": null
+    },
+    "away": {
+      "team": "Shanghai Port",
+      "team_id": "15515",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15515.png",
+      "url": "https://www.espn.com/soccer/team/_/id/15515"
+    },
+    "odds": {
+      "home": 2.3,
+      "away": 2.85,
+      "draw": 3.6
+    },
+    "recent_form": {
+      "home": [
+        {
+          "gameId": "401861542",
+          "date": "2026-05-24",
+          "team1": "Zhejiang Professional FC",
+          "team2": "Liaoning Tieren",
+          "score": "0 - 5",
+          "title": "Zhejiang Professional FC VS Liaoning Tieren",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861542/liaoning-tieren-zhejiang-professional-fc",
+          "stats": {
+            "Possession": {
+              "home": "60.7\n%",
+              "away": "39.3\n%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "9"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "9",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.69,
+            "away": 4.4,
+            "draw": 4.2
+          },
+          "journee": 14,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861539",
+          "date": "2026-05-20",
+          "team1": "Liaoning Tieren",
+          "team2": "Qingdao Hainiu",
+          "score": "2 - 1",
+          "title": "Liaoning Tieren VS Qingdao Hainiu",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861539/qingdao-hainiu-liaoning-tieren",
+          "stats": {
+            "Possession": {
+              "home": "50.1%",
+              "away": "49.9%"
+            },
+            "Shots on Goal": {
+              "home": "8",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "17",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
+            }
+          },
+          "odds": {
+            "home": 2.1,
+            "away": 3.25,
+            "draw": 3.6
+          },
+          "journee": 14,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861537",
+          "date": "2026-05-16",
+          "team1": "Wuhan Three Towns",
+          "team2": "Liaoning Tieren",
+          "score": "2 - 2",
+          "title": "Wuhan Three Towns VS Liaoning Tieren",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861537/liaoning-tieren-wuhan-three-towns",
+          "stats": {
+            "Possession": {
+              "home": "32.9%",
+              "away": "67.1%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "6"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "7"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.4,
+            "away": 2.95,
+            "draw": 3.3
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861536",
+          "date": "2026-05-10",
+          "team1": "Liaoning Tieren",
+          "team2": "Yunnan Yukun",
+          "score": "1 - 2",
+          "title": "Liaoning Tieren VS Yunnan Yukun",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861536/yunnan-yukun-liaoning-tieren",
+          "stats": {
+            "Possession": {
+              "home": "47.7%",
+              "away": "52.3%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "8"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.2,
+            "away": 2.9,
+            "draw": 3.85
+          },
+          "journee": 12,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861533",
+          "date": "2026-05-05",
+          "team1": "Liaoning Tieren",
+          "team2": "Chengdu Rongcheng",
+          "score": "0 - 1",
+          "title": "Liaoning Tieren VS Chengdu Rongcheng",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861533/chengdu-rongcheng-liaoning-tieren",
+          "stats": {
+            "Possession": {
+              "home": "30.5%",
+              "away": "69.5%"
+            },
+            "Shots on Goal": {
+              "home": "1",
+              "away": "5"
+            },
+            "Shot Attempts": {
+              "home": "5",
+              "away": "17"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "10"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "1"
+            }
+          },
+          "odds": {
+            "home": 4.3,
+            "away": 1.67,
+            "draw": 4.3
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861532",
+          "date": "2026-05-01",
+          "team1": "Henan Songshan Longmen",
+          "team2": "Liaoning Tieren",
+          "score": "4 - 0",
+          "title": "Henan Songshan Longmen VS Liaoning Tieren",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861532/liaoning-tieren-henan-songshan-longmen",
+          "stats": {
+            "Possession": {
+              "home": "45.7%",
+              "away": "54.3%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "8"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          },
+          "odds": {
+            "home": 1.69,
+            "away": 4.6,
+            "draw": 4.0
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ],
+      "away": [
+        {
+          "gameId": "401861392",
+          "date": "2026-05-23",
+          "team1": "Shanghai Port",
+          "team2": "Tianjin Jinmen Tiger",
+          "score": "1 - 1",
+          "title": "Shanghai Port VS Tianjin Jinmen Tiger",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861392/tianjin-jinmen-tiger-shanghai-port",
+          "stats": {
+            "Possession": {
+              "home": "57.2\n%",
+              "away": "42.8\n%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "12",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.83,
+            "away": 4.2,
+            "draw": 3.65
+          },
+          "journee": 14,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861388",
+          "date": "2026-05-19",
+          "team1": "Chengdu Rongcheng",
+          "team2": "Shanghai Port",
+          "score": "0 - 1",
+          "title": "Chengdu Rongcheng VS Shanghai Port",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861388/shanghai-port-chengdu-rongcheng",
+          "stats": {
+            "Possession": {
+              "home": "55.7%",
+              "away": "44.3%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "18",
+              "away": "3"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "9"
+            },
+            "Corner Kicks": {
+              "home": "6",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "6"
+            }
+          },
+          "odds": {
+            "home": 1.71,
+            "away": 4.2,
+            "draw": 4.1
+          },
+          "journee": 14,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861380",
+          "date": "2026-05-15",
+          "team1": "Shanghai Port",
+          "team2": "Zhejiang Professional FC",
+          "score": "2 - 2",
+          "title": "Shanghai Port VS Zhejiang Professional FC",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861380/zhejiang-professional-fc-shanghai-port",
+          "stats": {
+            "Possession": {
+              "home": "63.7%",
+              "away": "36.3%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "9",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "0"
+            }
+          },
+          "odds": {
+            "home": 1.91,
+            "away": 3.6,
+            "draw": 3.95
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861378",
+          "date": "2026-05-10",
+          "team1": "Beijing Guoan",
+          "team2": "Shanghai Port",
+          "score": "2 - 2",
+          "title": "Beijing Guoan VS Shanghai Port",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861378/shanghai-port-beijing-guoan",
+          "stats": {
+            "Possession": {
+              "home": "64.2%",
+              "away": "35.8%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "8",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.53,
+            "away": 5.25,
+            "draw": 4.7
+          },
+          "journee": 12,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861372",
+          "date": "2026-05-06",
+          "team1": "Shanghai Port",
+          "team2": "Shenzhen Xinpengcheng",
+          "score": "1 - 1",
+          "title": "Shanghai Port VS Shenzhen Xinpengcheng",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861372/shenzhen-xinpengcheng-shanghai-port",
+          "stats": {
+            "Possession": {
+              "home": "65.1%",
+              "away": "34.9%"
+            },
+            "Shots on Goal": {
+              "home": "1",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "8"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "0"
+            }
+          },
+          "odds": {
+            "home": 1.61,
+            "away": 5.0,
+            "draw": 4.3
+          },
+          "journee": 11,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401861365",
+          "date": "2026-05-02",
+          "team1": "Qingdao Hainiu",
+          "team2": "Shanghai Port",
+          "score": "3 - 1",
+          "title": "Qingdao Hainiu VS Shanghai Port",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861365/shanghai-port-qingdao-hainiu",
+          "stats": {
+            "Possession": {
+              "home": "35.7%",
+              "away": "64.3%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "11",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "1",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "1"
+            }
+          },
+          "odds": {
+            "home": 3.15,
+            "away": 2.35,
+            "draw": 3.2
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ]
+    },
+    "h2h": [],
+    "league_standing": {
+      "total_journees": 30,
+      "position_zones": [
+        {
+          "positions": "1-2",
+          "label": "AFC Champions League",
+          "type": "avantage"
+        },
+        {
+          "positions": "3-4",
+          "label": "AFC Challenge League",
+          "type": "avantage"
+        },
+        {
+          "positions": "14-16",
+          "label": "Relégation",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "Chengdu Rongcheng",
+          "stats": {
+            "GP": 14,
+            "W": 11,
+            "D": 1,
+            "L": 2,
+            "F": 32,
+            "A": 13,
+            "GD": 19,
+            "P": 34
+          },
+          "zone": {
+            "label": "AFC Champions League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "Chongqing Tonglianglong",
+          "stats": {
+            "GP": 14,
+            "W": 6,
+            "D": 6,
+            "L": 2,
+            "F": 17,
+            "A": 13,
+            "GD": 4,
+            "P": 24
+          },
+          "zone": {
+            "label": "AFC Champions League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 3,
+          "name": "Dalian Yingbo",
+          "stats": {
+            "GP": 14,
+            "W": 7,
+            "D": 1,
+            "L": 6,
+            "F": 21,
+            "A": 24,
+            "GD": -3,
+            "P": 22
+          },
+          "zone": {
+            "label": "AFC Challenge League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 4,
+          "name": "Yunnan Yukun",
+          "stats": {
+            "GP": 14,
+            "W": 6,
+            "D": 2,
+            "L": 6,
+            "F": 26,
+            "A": 23,
+            "GD": 3,
+            "P": 20
+          },
+          "zone": {
+            "label": "AFC Challenge League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 5,
+          "name": "Shandong Taishan",
+          "stats": {
+            "GP": 14,
+            "W": 7,
+            "D": 3,
+            "L": 4,
+            "F": 25,
+            "A": 24,
+            "GD": 1,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 6,
+          "name": "Qingdao West Coast",
+          "stats": {
+            "GP": 14,
+            "W": 3,
+            "D": 8,
+            "L": 3,
+            "F": 15,
+            "A": 21,
+            "GD": -6,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 7,
+          "name": "Henan Songshan Longmen",
+          "stats": {
+            "GP": 14,
+            "W": 6,
+            "D": 3,
+            "L": 5,
+            "F": 16,
+            "A": 16,
+            "GD": 0,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 8,
+          "name": "Liaoning Tieren",
+          "stats": {
+            "GP": 14,
+            "W": 4,
+            "D": 2,
+            "L": 8,
+            "F": 17,
+            "A": 21,
+            "GD": -4,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 9,
+          "name": "Zhejiang Professional FC",
+          "stats": {
+            "GP": 14,
+            "W": 5,
+            "D": 4,
+            "L": 5,
+            "F": 18,
+            "A": 23,
+            "GD": -5,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "Shenzhen Xinpengcheng",
+          "stats": {
+            "GP": 14,
+            "W": 4,
+            "D": 2,
+            "L": 8,
+            "F": 17,
+            "A": 23,
+            "GD": -6,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Shanghai Shenhua",
+          "stats": {
+            "GP": 14,
+            "W": 6,
+            "D": 4,
+            "L": 4,
+            "F": 27,
+            "A": 22,
+            "GD": 5,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "Shanghai Port",
+          "stats": {
+            "GP": 14,
+            "W": 4,
+            "D": 5,
+            "L": 5,
+            "F": 21,
+            "A": 18,
+            "GD": 3,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "Beijing Guoan",
+          "stats": {
+            "GP": 14,
+            "W": 4,
+            "D": 5,
+            "L": 5,
+            "F": 23,
+            "A": 21,
+            "GD": 2,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "Qingdao Hainiu",
+          "stats": {
+            "GP": 14,
+            "W": 5,
+            "D": 2,
+            "L": 7,
+            "F": 20,
+            "A": 22,
+            "GD": -2,
+            "P": 10
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 15,
+          "name": "Wuhan Three Towns",
+          "stats": {
+            "GP": 14,
+            "W": 2,
+            "D": 6,
+            "L": 6,
+            "F": 21,
+            "A": 29,
+            "GD": -8,
+            "P": 7
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 16,
+          "name": "Tianjin Jinmen Tiger",
+          "stats": {
+            "GP": 14,
+            "W": 2,
+            "D": 6,
+            "L": 6,
+            "F": 18,
+            "A": 21,
+            "GD": -3,
+            "P": 2
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "gameId": "401857521",
+    "date": "2026-05-29",
+    "time_utc": "16:00",
+    "league": "Peru_Primera_Division",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401857521/deportivo-moquegua-atletico-grau",
+    "home": {
+      "team": "Atlético Grau",
+      "team_id": "20293",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20293.png",
+      "url": "https://www.espn.com/soccer/team/_/id/20293"
+    },
+    "away": {
+      "team": "Deportivo Moquegua",
+      "team_id": "131654",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131654.png",
+      "url": "https://www.espn.com/soccer/team/_/id/131654"
+    },
+    "odds": {
+      "home": 1.61,
+      "away": 5.0,
+      "draw": 3.55
+    },
+    "recent_form": {
+      "home": [
+        {
+          "gameId": "401857485",
+          "date": "20260501",
+          "team1": "ADT",
+          "team2": "Atlético Grau",
+          "score": "1 - 0",
+          "title": "ADT VS Atlético Grau",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857485/atletico-grau-adt",
+          "stats": {
+            "Possession": {
+              "home": "55.6%",
+              "away": "44.4%"
+            },
+            "Shots on Goal": {
+              "home": "9",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "19",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "1",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "8"
+            }
+          },
+          "odds": {
+            "home": 1.83,
+            "away": 4.2,
+            "draw": 3.45
+          },
+          "journee": 15,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857453",
+          "date": "20260421",
+          "team1": "Atlético Grau",
+          "team2": "Sporting Cristal",
+          "score": "4 - 1",
+          "title": "Atlético Grau VS Sporting Cristal",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857453/sporting-cristal-atletico-grau",
+          "stats": {
+            "Possession": {
+              "home": "40.4%",
+              "away": "59.6%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "21",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "8",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "3"
+            }
+          },
+          "odds": {
+            "home": 3.2,
+            "away": 2.2,
+            "draw": 3.2
+          },
+          "journee": 15,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857388",
+          "date": "20260213",
+          "team1": "Sport Boys",
+          "team2": "Atlético Grau",
+          "score": "1 - 0",
+          "title": "Sport Boys VS Atlético Grau",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857388/atletico-grau-sport-boys",
+          "stats": {
+            "POSSESSION": {
+              "home": "46.9%",
+              "away": "53.1%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "1"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "1",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          },
+          "journee": 5,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857387",
+          "date": "20260206",
+          "team1": "Atlético Grau",
+          "team2": "Sport Huancayo",
+          "score": "0 - 0",
+          "title": "Atlético Grau VS Sport Huancayo",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857387/sport-huancayo-atletico-grau",
+          "stats": {
+            "Possession": {
+              "home": "58.9%",
+              "away": "41.1%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "14",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "4"
+            }
+          },
+          "journee": 6,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857512",
+          "date": "2026-05-23",
+          "team1": "Cusco FC",
+          "team2": "Atlético Grau",
+          "score": "1 - 0",
+          "title": "Cusco FC VS Atlético Grau",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857512/atletico-grau-cusco-fc",
+          "stats": {
+            "Possession": {
+              "home": "69.2\n%",
+              "away": "30.8\n%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "9"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.51,
+            "away": 6.5,
+            "draw": 3.75
+          },
+          "journee": 16,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857468",
+          "date": "2026-04-17",
+          "team1": "Los Chankas",
+          "team2": "Atlético Grau",
+          "score": "2 - 0",
+          "title": "Los Chankas VS Atlético Grau",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857468/atletico-grau-los-chankas",
+          "stats": {
+            "Possession": {
+              "home": "56.4%",
+              "away": "43.6%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "6"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "7",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.74,
+            "away": 4.6,
+            "draw": 3.45
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ],
+      "away": [
+        {
+          "gameId": "401857459",
+          "date": "20260413",
+          "team1": "Deportivo Moquegua",
+          "team2": "Juan Pablo II",
+          "score": "3 - 0",
+          "title": "Deportivo Moquegua VS Juan Pablo II",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857459/juan-pablo-ii-deportivo-moquegua",
+          "stats": {
+            "Possession": {
+              "home": "54.6%",
+              "away": "45.4%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "5",
+              "away": "9"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "0"
+            }
+          },
+          "journee": 13,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857421",
+          "date": "20260306",
+          "team1": "Deportivo Moquegua",
+          "team2": "Sport Huancayo",
+          "score": "2 - 1",
+          "title": "Deportivo Moquegua VS Sport Huancayo",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857421/sport-huancayo-deportivo-moquegua",
+          "stats": {
+            "Possession": {
+              "home": "40.9%",
+              "away": "59.1%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "17",
+              "away": "8"
+            },
+            "Yellow Cards": {
+              "home": "6",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "3"
+            }
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857511",
+          "date": "2026-05-23",
+          "team1": "Deportivo Moquegua",
+          "team2": "Universitario",
+          "score": "0 - 0",
+          "title": "Deportivo Moquegua VS Universitario",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857511/universitario-deportivo-moquegua",
+          "stats": {
+            "Possession": {
+              "home": "41\n%",
+              "away": "59\n%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "3"
+            }
+          },
+          "odds": {
+            "home": 3.15,
+            "away": 2.35,
+            "draw": 2.95
+          },
+          "journee": 16,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857504",
+          "date": "2026-05-17",
+          "team1": "Los Chankas",
+          "team2": "Deportivo Moquegua",
+          "score": "1 - 0",
+          "title": "Los Chankas VS Deportivo Moquegua",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857504/deportivo-moquegua-los-chankas",
+          "stats": {
+            "Possession": {
+              "home": "56.4%",
+              "away": "43.6%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "16",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.38,
+            "away": 7.0,
+            "draw": 4.6
+          },
+          "journee": 16,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857479",
+          "date": "2026-05-02",
+          "team1": "Alianza Lima",
+          "team2": "Deportivo Moquegua",
+          "score": "2 - 1",
+          "title": "Alianza Lima VS Deportivo Moquegua",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857479/deportivo-moquegua-alianza-lima",
+          "stats": {
+            "Possession": {
+              "home": "67.1%",
+              "away": "32.9%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "17",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "1",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.13,
+            "away": 15.0,
+            "draw": 7.5
+          },
+          "journee": 15,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401857460",
+          "date": "2026-04-19",
+          "team1": "Cienciano del Cusco",
+          "team2": "Deportivo Moquegua",
+          "score": "2 - 1",
+          "title": "Cienciano del Cusco VS Deportivo Moquegua",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401857460/deportivo-moquegua-cienciano-del-cusco",
+          "stats": {
+            "Possession": {
+              "home": "59.3%",
+              "away": "40.7%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "23",
+              "away": "6"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.38,
+            "away": 7.0,
+            "draw": 4.8
+          },
+          "journee": 14,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ]
+    },
+    "h2h": [],
+    "league_standing": {
+      "total_journees": 34,
+      "position_zones": [
+        {
+          "positions": "1-2",
+          "label": "CONMEBOL Libertadores",
+          "type": "avantage"
+        },
+        {
+          "positions": "3-4",
+          "label": "CONMEBOL Sudamericana",
+          "type": "avantage"
+        },
+        {
+          "positions": "17-18",
+          "label": "Relégation",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "Alianza Lima",
+          "stats": {
+            "GP": 16,
+            "W": 12,
+            "D": 3,
+            "L": 1,
+            "F": 29,
+            "A": 7,
+            "GD": 22,
+            "P": 39
+          },
+          "zone": {
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "Los Chankas",
+          "stats": {
+            "GP": 16,
+            "W": 10,
+            "D": 3,
+            "L": 3,
+            "F": 23,
+            "A": 19,
+            "GD": 4,
+            "P": 33
+          },
+          "zone": {
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 3,
+          "name": "Cienciano del Cusco",
+          "stats": {
+            "GP": 16,
+            "W": 9,
+            "D": 3,
+            "L": 4,
+            "F": 31,
+            "A": 20,
+            "GD": 11,
+            "P": 30
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 4,
+          "name": "Universitario",
+          "stats": {
+            "GP": 16,
+            "W": 7,
+            "D": 5,
+            "L": 4,
+            "F": 22,
+            "A": 14,
+            "GD": 8,
+            "P": 26
+          },
+          "zone": {
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 5,
+          "name": "Melgar",
+          "stats": {
+            "GP": 16,
+            "W": 7,
+            "D": 4,
+            "L": 5,
+            "F": 26,
+            "A": 19,
+            "GD": 7,
+            "P": 25
+          },
+          "zone": null
+        },
+        {
+          "position": 6,
+          "name": "Cusco FC",
+          "stats": {
+            "GP": 16,
+            "W": 7,
+            "D": 3,
+            "L": 6,
+            "F": 19,
+            "A": 23,
+            "GD": -4,
+            "P": 24
+          },
+          "zone": null
+        },
+        {
+          "position": 7,
+          "name": "Deportivo Garcilaso",
+          "stats": {
+            "GP": 16,
+            "W": 6,
+            "D": 5,
+            "L": 5,
+            "F": 17,
+            "A": 17,
+            "GD": 0,
+            "P": 23
+          },
+          "zone": null
+        },
+        {
+          "position": 8,
+          "name": "Alianza Atlético",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 6,
+            "L": 5,
+            "F": 19,
+            "A": 15,
+            "GD": 4,
+            "P": 21
+          },
+          "zone": null
+        },
+        {
+          "position": 9,
+          "name": "Comerciantes Unidos",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 6,
+            "L": 5,
+            "F": 18,
+            "A": 19,
+            "GD": -1,
+            "P": 21
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "ADT",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 5,
+            "L": 6,
+            "F": 21,
+            "A": 19,
+            "GD": 2,
+            "P": 20
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Sporting Cristal",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 4,
+            "L": 7,
+            "F": 26,
+            "A": 27,
+            "GD": -1,
+            "P": 19
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "Deportivo Moquegua",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 3,
+            "L": 8,
+            "F": 17,
+            "A": 23,
+            "GD": -6,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "UTC",
+          "stats": {
+            "GP": 16,
+            "W": 4,
+            "D": 5,
+            "L": 7,
+            "F": 19,
+            "A": 24,
+            "GD": -5,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "Sport Boys",
+          "stats": {
+            "GP": 16,
+            "W": 4,
+            "D": 5,
+            "L": 7,
+            "F": 14,
+            "A": 19,
+            "GD": -5,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 15,
+          "name": "FC Cajamarca",
+          "stats": {
+            "GP": 16,
+            "W": 4,
+            "D": 4,
+            "L": 8,
+            "F": 22,
+            "A": 27,
+            "GD": -5,
+            "P": 16
+          },
+          "zone": null
+        },
+        {
+          "position": 16,
+          "name": "Sport Huancayo",
+          "stats": {
+            "GP": 16,
+            "W": 4,
+            "D": 4,
+            "L": 8,
+            "F": 20,
+            "A": 29,
+            "GD": -9,
+            "P": 16
+          },
+          "zone": null
+        },
+        {
+          "position": 17,
+          "name": "Juan Pablo II",
+          "stats": {
+            "GP": 16,
+            "W": 4,
+            "D": 4,
+            "L": 8,
+            "F": 21,
+            "A": 36,
+            "GD": -15,
+            "P": 16
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 18,
+          "name": "Atlético Grau",
+          "stats": {
+            "GP": 16,
+            "W": 3,
+            "D": 4,
+            "L": 9,
+            "F": 11,
+            "A": 18,
+            "GD": -7,
+            "P": 13
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "gameId": "401842737",
+    "date": "2026-05-29",
+    "time_utc": "13:00",
+    "league": "Sweden_Allsvenskan",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401842737/if-elfsborg-orgryte-is",
+    "home": {
+      "team": "Örgryte IS",
+      "team_id": "131552",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131552.png",
+      "url": "https://www.espn.com/soccer/team/_/id/131552"
+    },
+    "away": {
+      "team": "IF Elfsborg",
+      "team_id": "529",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/529.png",
+      "url": "https://www.espn.com/soccer/team/_/id/529"
+    },
+    "odds": {
+      "home": 3.9,
+      "away": 1.91,
+      "draw": 3.65
+    },
+    "recent_form": {
+      "home": [
+        {
+          "gameId": "401842729",
+          "date": "2026-05-23",
+          "team1": "Halmstads BK",
+          "team2": "Örgryte IS",
+          "score": "2 - 0",
+          "title": "Halmstads BK VS Örgryte IS",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842729/orgryte-is-halmstads-bk",
+          "stats": {
+            "Possession": {
+              "home": "52.8\n%",
+              "away": "47.2\n%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "6"
+            },
+            "Shot Attempts": {
+              "home": "20",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.0,
+            "away": 3.6,
+            "draw": 3.5
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842718",
+          "date": "2026-05-19",
+          "team1": "Örgryte IS",
+          "team2": "IFK Göteborg",
+          "score": "1 - 2",
+          "title": "Örgryte IS VS IFK Göteborg",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842718/ifk-goteborg-orgryte-is",
+          "stats": {
+            "Possession": {
+              "home": "32.7%",
+              "away": "67.3%"
+            },
+            "Shots on Goal": {
+              "home": "1",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "2",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "0"
+            }
+          },
+          "odds": {
+            "home": 4.1,
+            "away": 1.83,
+            "draw": 3.75
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842707",
+          "date": "2026-05-11",
+          "team1": "IK Sirius",
+          "team2": "Örgryte IS",
+          "score": "2 - 0",
+          "title": "IK Sirius VS Örgryte IS",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842707/orgryte-is-ik-sirius",
+          "stats": {
+            "Possession": {
+              "home": "59.3%",
+              "away": "40.7%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "23",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.22,
+            "away": 10.0,
+            "draw": 7.0
+          },
+          "journee": 8,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842704",
+          "date": "2026-05-03",
+          "team1": "GAIS",
+          "team2": "Örgryte IS",
+          "score": "4 - 0",
+          "title": "GAIS VS Örgryte IS",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842704/orgryte-is-gais",
+          "stats": {
+            "Possession": {
+              "home": "50.2%",
+              "away": "49.8%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "19",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "8",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.5,
+            "away": 6.0,
+            "draw": 4.5
+          },
+          "journee": 8,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842682",
+          "date": "2026-04-22",
+          "team1": "Örgryte IS",
+          "team2": "IF Brommapojkarna",
+          "score": "1 - 2",
+          "title": "Örgryte IS VS IF Brommapojkarna",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842682/if-brommapojkarna-orgryte-is",
+          "stats": {
+            "Possession": {
+              "home": "52.5%",
+              "away": "47.5%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "12",
+              "away": "6"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "2",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 3.2,
+            "away": 2.1,
+            "draw": 3.65
+          },
+          "journee": 6,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842676",
+          "date": "2026-04-18",
+          "team1": "Hammarby IF",
+          "team2": "Örgryte IS",
+          "score": "8 - 1",
+          "title": "Hammarby IF VS Örgryte IS",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842676/orgryte-is-hammarby-if",
+          "stats": {
+            "Possession": {
+              "home": "61.6%",
+              "away": "38.4%"
+            },
+            "Shots on Goal": {
+              "home": "17",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "33",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "6",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "9"
+            }
+          },
+          "odds": {
+            "home": 1.18,
+            "away": 13.0,
+            "draw": 7.5
+          },
+          "journee": 6,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ],
+      "away": [
+        {
+          "gameId": "401842723",
+          "date": "2026-05-25",
+          "team1": "IF Elfsborg",
+          "team2": "BK Häcken",
+          "score": "1 - 1",
+          "title": "IF Elfsborg VS BK Häcken",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842723/bk-hacken-if-elfsborg",
+          "stats": {
+            "Possession": {
+              "home": "36.7\n%",
+              "away": "63.3\n%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "9",
+              "away": "18"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "1",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 2.7,
+            "away": 2.5,
+            "draw": 3.45
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842777",
+          "date": "2026-05-21",
+          "team1": "IF Elfsborg",
+          "team2": "Mjällby AIF",
+          "score": "1 - 1",
+          "title": "IF Elfsborg VS Mjällby AIF",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842777/mjallby-aif-if-elfsborg",
+          "stats": {
+            "Possession": {
+              "home": "42.8%",
+              "away": "57.2%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
+            }
+          },
+          "odds": {
+            "home": 2.15,
+            "away": 3.5,
+            "draw": 3.25
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842717",
+          "date": "2026-05-16",
+          "team1": "Halmstads BK",
+          "team2": "IF Elfsborg",
+          "score": "1 - 1",
+          "title": "Halmstads BK VS IF Elfsborg",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842717/if-elfsborg-halmstads-bk",
+          "stats": {
+            "Possession": {
+              "home": "33.6%",
+              "away": "66.4%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "11",
+              "away": "13"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "2",
+              "away": "8"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 3.6,
+            "away": 2.05,
+            "draw": 3.35
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842711",
+          "date": "2026-05-08",
+          "team1": "IF Elfsborg",
+          "team2": "IF Brommapojkarna",
+          "score": "2 - 0",
+          "title": "IF Elfsborg VS IF Brommapojkarna",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842711/if-brommapojkarna-if-elfsborg",
+          "stats": {
+            "Possession": {
+              "home": "58.8%",
+              "away": "41.2%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "8"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 1.83,
+            "away": 4.3,
+            "draw": 3.6
+          },
+          "journee": 8,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842698",
+          "date": "2026-05-03",
+          "team1": "IF Elfsborg",
+          "team2": "AIK",
+          "score": "1 - 1",
+          "title": "IF Elfsborg VS AIK",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842698/aik-if-elfsborg",
+          "stats": {
+            "Possession": {
+              "home": "38.4%",
+              "away": "61.6%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "5"
+            },
+            "Shot Attempts": {
+              "home": "11",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "4",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.8,
+            "away": 2.55,
+            "draw": 3.2
+          },
+          "journee": 7,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401842686",
+          "date": "2026-04-22",
+          "team1": "IF Elfsborg",
+          "team2": "Djurgården",
+          "score": "2 - 1",
+          "title": "IF Elfsborg VS Djurgården",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842686/djurgarden-if-elfsborg",
+          "stats": {
+            "Possession": {
+              "home": "23.9%",
+              "away": "76.1%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "5"
+            },
+            "Shot Attempts": {
+              "home": "9",
+              "away": "19"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "2",
+              "away": "7"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "1"
+            }
+          },
+          "odds": {
+            "home": 2.95,
+            "away": 2.4,
+            "draw": 3.3
+          },
+          "journee": 6,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ]
+    },
+    "h2h": [],
+    "league_standing": {
+      "total_journees": 30,
+      "position_zones": [
+        {
+          "positions": "1",
+          "label": "UEFA Conference League",
+          "type": "avantage"
+        },
+        {
+          "positions": "14",
+          "label": "Relégation Playoff",
+          "type": "désavantage"
+        },
+        {
+          "positions": "15-16",
+          "label": "Relégation",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "IK Sirius",
+          "stats": {
+            "GP": 9,
+            "W": 8,
+            "D": 1,
+            "L": 0,
+            "F": 24,
+            "A": 10,
+            "GD": 14,
+            "P": 25
+          },
+          "zone": {
+            "label": "UEFA Conference League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "Hammarby IF",
+          "stats": {
+            "GP": 10,
+            "W": 5,
+            "D": 2,
+            "L": 3,
+            "F": 22,
+            "A": 10,
+            "GD": 12,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 3,
+          "name": "BK Häcken",
+          "stats": {
+            "GP": 9,
+            "W": 4,
+            "D": 5,
+            "L": 0,
+            "F": 17,
+            "A": 12,
+            "GD": 5,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 4,
+          "name": "IF Elfsborg",
+          "stats": {
+            "GP": 10,
+            "W": 4,
+            "D": 5,
+            "L": 1,
+            "F": 14,
+            "A": 9,
+            "GD": 5,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 5,
+          "name": "Mjällby AIF",
+          "stats": {
+            "GP": 10,
+            "W": 4,
+            "D": 3,
+            "L": 3,
+            "F": 14,
+            "A": 11,
+            "GD": 3,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 6,
+          "name": "IF Brommapojkarna",
+          "stats": {
+            "GP": 9,
+            "W": 4,
+            "D": 2,
+            "L": 3,
+            "F": 13,
+            "A": 14,
+            "GD": -1,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 7,
+          "name": "Djurgården",
+          "stats": {
+            "GP": 9,
+            "W": 4,
+            "D": 1,
+            "L": 4,
+            "F": 19,
+            "A": 13,
+            "GD": 6,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 8,
+          "name": "GAIS",
+          "stats": {
+            "GP": 10,
+            "W": 3,
+            "D": 3,
+            "L": 4,
+            "F": 13,
+            "A": 11,
+            "GD": 2,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 9,
+          "name": "AIK",
+          "stats": {
+            "GP": 9,
+            "W": 3,
+            "D": 3,
+            "L": 3,
+            "F": 12,
+            "A": 13,
+            "GD": -1,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "Västerås SK",
+          "stats": {
+            "GP": 9,
+            "W": 3,
+            "D": 3,
+            "L": 3,
+            "F": 13,
+            "A": 17,
+            "GD": -4,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Kalmar FF",
+          "stats": {
+            "GP": 9,
+            "W": 3,
+            "D": 1,
+            "L": 5,
+            "F": 11,
+            "A": 12,
+            "GD": -1,
+            "P": 10
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "Malmö FF",
+          "stats": {
+            "GP": 9,
+            "W": 3,
+            "D": 1,
+            "L": 5,
+            "F": 15,
+            "A": 18,
+            "GD": -3,
+            "P": 10
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "Degerfors IF",
+          "stats": {
+            "GP": 9,
+            "W": 2,
+            "D": 3,
+            "L": 4,
+            "F": 10,
+            "A": 14,
+            "GD": -4,
+            "P": 9
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "IFK Göteborg",
+          "stats": {
+            "GP": 9,
+            "W": 1,
+            "D": 4,
+            "L": 4,
+            "F": 8,
+            "A": 18,
+            "GD": -10,
+            "P": 7
+          },
+          "zone": {
+            "label": "Relégation Playoff",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 15,
+          "name": "Halmstads BK",
+          "stats": {
+            "GP": 9,
+            "W": 1,
+            "D": 3,
+            "L": 5,
+            "F": 7,
+            "A": 15,
+            "GD": -8,
+            "P": 6
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 16,
+          "name": "Örgryte IS",
+          "stats": {
+            "GP": 9,
+            "W": 1,
+            "D": 2,
+            "L": 6,
+            "F": 8,
+            "A": 23,
+            "GD": -15,
+            "P": 5
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  }
+]

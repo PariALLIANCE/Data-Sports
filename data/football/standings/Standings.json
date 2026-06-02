@@ -1052,86 +1052,429 @@
     "Argentina_Primera_Nacional": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                2,
-                "Promotion Primera Division",
-                true
-            ],
-            [
-                3,
-                4,
-                "Promotion Playoff",
-                true
-            ]
+            {
+                "positions": "1-2",
+                "label": "Promotion Primera Division",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "Promotion Playoff",
+                "type": "avantage"
+            }
         ],
         "standings": []
     },
     "Austria_Bundesliga": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                2,
-                "UEFA Champions League",
-                true
-            ],
-            [
-                3,
-                4,
-                "UEFA Europa League",
-                true
-            ],
-            [
-                5,
-                5,
-                "UEFA Conference League",
-                true
-            ],
-            [
-                10,
-                10,
-                "Relégation Playoff",
-                false
-            ],
-            [
-                11,
-                12,
-                "Relégation",
-                false
-            ]
+            {
+                "positions": "1-2",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "5",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "10",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "11-12",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
         ],
         "standings": []
     },
     "Belgium_Jupiler_Pro_League": {
-        "total_journees": 0,
-        "position_zones": [
-            [
-                1,
-                1,
-                "UEFA Champions League Playoff",
-                true
+        "regular_season": {
+            "total_journees": 30,
+            "position_zones": [
+                {
+                    "positions": "1-6",
+                    "label": "Championship Playoffs",
+                    "type": "avantage"
+                },
+                {
+                    "positions": "7-12",
+                    "label": "European Playoffs",
+                    "type": "avantage"
+                },
+                {
+                    "positions": "13-16",
+                    "label": "Relegation Playoffs",
+                    "type": "désavantage"
+                }
             ],
-            [
-                2,
-                3,
-                "UEFA Europa League",
-                true
-            ],
-            [
-                4,
-                4,
-                "UEFA Conference League",
-                true
-            ],
-            [
-                16,
-                16,
-                "Relégation Playoff",
-                false
+            "standings": [
+                {
+                    "position": 1,
+                    "name": "Union St.-Gilloise",
+                    "stats": {
+                        "GP": 30,
+                        "W": 19,
+                        "D": 9,
+                        "L": 2,
+                        "F": 50,
+                        "A": 17,
+                        "GD": 33,
+                        "P": 66
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "Club Brugge",
+                    "stats": {
+                        "GP": 30,
+                        "W": 20,
+                        "D": 3,
+                        "L": 7,
+                        "F": 59,
+                        "A": 36,
+                        "GD": 23,
+                        "P": 63
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
+                    "name": "Sint-Truidense",
+                    "stats": {
+                        "GP": 30,
+                        "W": 18,
+                        "D": 3,
+                        "L": 9,
+                        "F": 47,
+                        "A": 35,
+                        "GD": 12,
+                        "P": 57
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
+                    "name": "KAA Gent",
+                    "stats": {
+                        "GP": 30,
+                        "W": 13,
+                        "D": 6,
+                        "L": 11,
+                        "F": 49,
+                        "A": 43,
+                        "GD": 6,
+                        "P": 45
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
+                    "name": "KV Mechelen",
+                    "stats": {
+                        "GP": 30,
+                        "W": 12,
+                        "D": 9,
+                        "L": 9,
+                        "F": 39,
+                        "A": 37,
+                        "GD": 2,
+                        "P": 45
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 6,
+                    "name": "Anderlecht",
+                    "stats": {
+                        "GP": 30,
+                        "W": 12,
+                        "D": 8,
+                        "L": 10,
+                        "F": 43,
+                        "A": 39,
+                        "GD": 4,
+                        "P": 44
+                    },
+                    "zone": {
+                        "label": "Championship Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 7,
+                    "name": "Racing Genk",
+                    "stats": {
+                        "GP": 30,
+                        "W": 11,
+                        "D": 9,
+                        "L": 10,
+                        "F": 46,
+                        "A": 47,
+                        "GD": -1,
+                        "P": 42
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 8,
+                    "name": "Standard Liege",
+                    "stats": {
+                        "GP": 30,
+                        "W": 11,
+                        "D": 7,
+                        "L": 12,
+                        "F": 27,
+                        "A": 35,
+                        "GD": -8,
+                        "P": 40
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 9,
+                    "name": "KVC Westerlo",
+                    "stats": {
+                        "GP": 30,
+                        "W": 10,
+                        "D": 9,
+                        "L": 11,
+                        "F": 36,
+                        "A": 40,
+                        "GD": -4,
+                        "P": 39
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 10,
+                    "name": "Antwerp",
+                    "stats": {
+                        "GP": 30,
+                        "W": 9,
+                        "D": 8,
+                        "L": 13,
+                        "F": 31,
+                        "A": 32,
+                        "GD": -1,
+                        "P": 35
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 11,
+                    "name": "Royal Charleroi SC",
+                    "stats": {
+                        "GP": 30,
+                        "W": 9,
+                        "D": 7,
+                        "L": 14,
+                        "F": 38,
+                        "A": 42,
+                        "GD": -4,
+                        "P": 34
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 12,
+                    "name": "Oud-Heverlee Leuven",
+                    "stats": {
+                        "GP": 30,
+                        "W": 9,
+                        "D": 7,
+                        "L": 14,
+                        "F": 32,
+                        "A": 43,
+                        "GD": -11,
+                        "P": 34
+                    },
+                    "zone": {
+                        "label": "European Playoffs",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 13,
+                    "name": "Zulte-Waregem",
+                    "stats": {
+                        "GP": 30,
+                        "W": 8,
+                        "D": 8,
+                        "L": 14,
+                        "F": 38,
+                        "A": 47,
+                        "GD": -9,
+                        "P": 32
+                    },
+                    "zone": {
+                        "label": "Relegation Playoffs",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 14,
+                    "name": "Cercle Brugge KSV",
+                    "stats": {
+                        "GP": 30,
+                        "W": 7,
+                        "D": 10,
+                        "L": 13,
+                        "F": 39,
+                        "A": 47,
+                        "GD": -8,
+                        "P": 31
+                    },
+                    "zone": {
+                        "label": "Relegation Playoffs",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 15,
+                    "name": "RAAL La Louvière",
+                    "stats": {
+                        "GP": 30,
+                        "W": 6,
+                        "D": 13,
+                        "L": 11,
+                        "F": 30,
+                        "A": 37,
+                        "GD": -7,
+                        "P": 31
+                    },
+                    "zone": {
+                        "label": "Relegation Playoffs",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 16,
+                    "name": "Dender",
+                    "stats": {
+                        "GP": 30,
+                        "W": 3,
+                        "D": 10,
+                        "L": 17,
+                        "F": 24,
+                        "A": 51,
+                        "GD": -27,
+                        "P": 19
+                    },
+                    "zone": {
+                        "label": "Relegation Playoffs",
+                        "type": "désavantage"
+                    }
+                }
             ]
-        ],
-        "standings": []
+        },
+        "playoffs": {
+            "total_journees": 10,
+            "championship": {
+                "position_zones": [
+                    {
+                        "positions": "1",
+                        "label": "Champion + UEFA Champions League",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "2",
+                        "label": "UEFA Champions League",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "3-4",
+                        "label": "UEFA Europa League",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "5",
+                        "label": "UEFA Conference League",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "6",
+                        "label": "Eliminé des compétitions UEFA",
+                        "type": "désavantage"
+                    }
+                ],
+                "standings": []
+            },
+            "european": {
+                "position_zones": [
+                    {
+                        "positions": "1",
+                        "label": "UEFA Conference League Playoff",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "2-6",
+                        "label": "Éliminé",
+                        "type": "désavantage"
+                    }
+                ],
+                "standings": []
+            },
+            "relegation": {
+                "position_zones": [
+                    {
+                        "positions": "1",
+                        "label": "Maintien garanti",
+                        "type": "avantage"
+                    },
+                    {
+                        "positions": "2",
+                        "label": "Playoff Relégation vs Challenger",
+                        "type": "désavantage"
+                    },
+                    {
+                        "positions": "3-4",
+                        "label": "Relégation",
+                        "type": "désavantage"
+                    }
+                ],
+                "standings": []
+            }
+        }
     },
     "Brazil_Serie_A": {
         "total_journees": 38,
@@ -3527,36 +3870,31 @@
     "Greece_Super_League_1": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                1,
-                "UEFA Champions League",
-                true
-            ],
-            [
-                2,
-                3,
-                "UEFA Europa League",
-                true
-            ],
-            [
-                4,
-                4,
-                "UEFA Conference League",
-                true
-            ],
-            [
-                13,
-                14,
-                "Relégation Playoff",
-                false
-            ],
-            [
-                15,
-                16,
-                "Relégation",
-                false
-            ]
+            {
+                "positions": "1",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "2-3",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "4",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "13-14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
         ],
         "standings": []
     },
@@ -3922,30 +4260,26 @@
     "Japan_J1_League": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                2,
-                "AFC Champions League (Elite)",
-                true
-            ],
-            [
-                3,
-                3,
-                "AFC Champions League Playoff",
-                true
-            ],
-            [
-                17,
-                17,
-                "Relégation Playoff",
-                false
-            ],
-            [
-                18,
-                20,
-                "Relégation J2",
-                false
-            ]
+            {
+                "positions": "1-2",
+                "label": "AFC Champions League (Elite)",
+                "type": "avantage"
+            },
+            {
+                "positions": "3",
+                "label": "AFC Champions League Playoff",
+                "type": "avantage"
+            },
+            {
+                "positions": "17",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "18-20",
+                "label": "Relégation J2",
+                "type": "désavantage"
+            }
         ],
         "standings": []
     },
@@ -5449,24 +5783,21 @@
     "Romania_Liga_I": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                2,
-                "UEFA Conference League",
-                true
-            ],
-            [
-                14,
-                14,
-                "Relégation Playoff",
-                false
-            ],
-            [
-                15,
-                16,
-                "Relégation",
-                false
-            ]
+            {
+                "positions": "1-2",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "14",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "15-16",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
         ],
         "standings": []
     },
@@ -6352,36 +6683,31 @@
     "Switzerland_Super_League": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                1,
-                "UEFA Champions League",
-                true
-            ],
-            [
-                2,
-                3,
-                "UEFA Europa League",
-                true
-            ],
-            [
-                4,
-                4,
-                "UEFA Conference League",
-                true
-            ],
-            [
-                9,
-                9,
-                "Relégation Playoff",
-                false
-            ],
-            [
-                10,
-                10,
-                "Relégation",
-                false
-            ]
+            {
+                "positions": "1",
+                "label": "UEFA Champions League",
+                "type": "avantage"
+            },
+            {
+                "positions": "2-3",
+                "label": "UEFA Europa League",
+                "type": "avantage"
+            },
+            {
+                "positions": "4",
+                "label": "UEFA Conference League",
+                "type": "avantage"
+            },
+            {
+                "positions": "9",
+                "label": "Relégation Playoff",
+                "type": "désavantage"
+            },
+            {
+                "positions": "10",
+                "label": "Relégation",
+                "type": "désavantage"
+            }
         ],
         "standings": []
     },
@@ -6711,36 +7037,32 @@
     "USA_Major_League_Soccer": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                7,
-                "MLS Cup Playoffs",
-                true
-            ],
-            [
-                8,
-                9,
-                "Playoffs wild-card",
-                true
-            ]
+            {
+                "positions": "1-7",
+                "label": "MLS Cup Playoffs",
+                "type": "avantage"
+            },
+            {
+                "positions": "8-9",
+                "label": "Playoffs wild-card",
+                "type": "avantage"
+            }
         ],
         "standings": []
     },
     "Venezuela_Primera_Division": {
         "total_journees": 0,
         "position_zones": [
-            [
-                1,
-                2,
-                "CONMEBOL Libertadores",
-                true
-            ],
-            [
-                3,
-                4,
-                "CONMEBOL Sudamericana",
-                true
-            ]
+            {
+                "positions": "1-2",
+                "label": "CONMEBOL Libertadores",
+                "type": "avantage"
+            },
+            {
+                "positions": "3-4",
+                "label": "CONMEBOL Sudamericana",
+                "type": "avantage"
+            }
         ],
         "standings": []
     },

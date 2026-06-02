@@ -20,7 +20,6 @@ STANDINGS_PATH = "data/football/standings/Standings.json"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 LEAGUES = {
-  "Argentina_Primera_Nacional":    {"id": "arg.2",              "json": "Argentina_Primera_Nacional.json"},
   "Austria_Bundesliga":            {"id": "aut.1",              "json": "Austria_Bundesliga.json"},
   "Belgium_Jupiler_Pro_League":    {"id": "bel.1",              "json": "Belgium_Jupiler_Pro_League.json"},
   "Brazil_Serie_A":                {"id": "bra.1",              "json": "Brazil_Serie_A.json"},
@@ -85,7 +84,7 @@ CUPS_AND_INTL = {
 now = datetime.now(timezone.utc)
 target_dates = {
     (now - timedelta(days=i)).strftime("%Y%m%d")
-    for i in range(1, 3)   # i=1 → hier, i=2 → avant-hier
+    for i in range(1, 3)
 }
 dates_to_fetch = sorted(target_dates)
 
@@ -310,7 +309,7 @@ def safe_get(driver, url, wait_selector=None, timeout=15):
             time.sleep(2)
         return True
     except TimeoutException:
-        return True  # Page chargée mais élément absent, on continue
+        return True
     except WebDriverException as e:
         print(f"    ⚠️  WebDriver erreur : {e}")
         return False
@@ -468,7 +467,6 @@ try:
         json_path = os.path.join(OUTPUT_DIR, league["json"])
         matches   = load_existing_matches(json_path)
 
-        # ── Étape 1 : supprimer J-1 / J-2 sans cotes pour re-scraper ────────
         removed = [
             gid for gid, m in matches.items()
             if is_target_date(m.get("date", "")) and not m.get("odds")
@@ -481,7 +479,6 @@ try:
         new_count     = 0
         stats_updated = 0
 
-        # ── Étape 2 : scraper J-1 et J-2 ────────────────────────────────────
         for date_str in dates_to_fetch:
             print(f"  📅 {date_str}")
 
@@ -490,7 +487,6 @@ try:
             for item in day_matches:
                 game_id = item["gameId"]
 
-                # ── Match existant : enrichir stats si manquantes ────────────
                 if game_id in matches:
                     if not matches[game_id].get("stats"):
                         stats = get_match_stats(driver, game_id)
@@ -499,7 +495,6 @@ try:
                             stats_updated += 1
                     continue
 
-                # ── Nouveau match : stats + cotes ────────────────────────────
                 stats = get_match_stats(driver, game_id)
                 odds  = extract_odds(driver, game_id)
                 time.sleep(1)
@@ -523,14 +518,12 @@ try:
                 status = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
                 print(f"    ✅ {item['team1']} vs {item['team2']} → {status}")
 
-        # ── Étape 3 : enrichissement journée (ligues uniquement) ─────────────
         if league_name not in CUPS_AND_INTL:
             matches_list  = list(matches.values())
             enriched_list = enrich_journee(matches_list, league_name)
             matches       = {m["gameId"]: m for m in enriched_list if "gameId" in m}
             print(f"  📆 Journées mises à jour")
 
-        # ── Sauvegarde atomique ───────────────────────────────────────────────
         tmp_path = json_path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(list(matches.values()), f, indent=2, ensure_ascii=False)

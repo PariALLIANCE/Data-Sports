@@ -46,8 +46,8 @@ LEAGUES = {
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Ligues avec deux phases (saison régulière + playoffs séparés).
-# Ce système est actif UNIQUEMENT pour la saison en cours (2025-26).
-# À partir de 2026-27, la Jupiler Pro League revient au format classique.
+# Ce système est actif UNIQUEMENT pour la saison 2025-26 de la Jupiler Pro League.
+# À partir de 2026-27, elle revient au format classique : retirer l'entrée ici.
 # ──────────────────────────────────────────────────────────────────────────────
 MULTI_PHASE_LEAGUES = {
     "Belgium_Jupiler_Pro_League": {
@@ -62,39 +62,35 @@ MULTI_PHASE_LEAGUES = {
 # Zones de positions par ligue
 # (pos_min, pos_max, label, is_advantage)
 #
-# Pour Belgium_Jupiler_Pro_League :
-#   - Les zones de la saison régulière indiquent le groupe de playoffs rejoint.
-#   - Les zones des playoffs indiquent la qualification européenne finale.
-#     Les playoffs regroupent 16 équipes en classement général (pos 1-16) :
-#       pos 1-6   → Championship group
-#       pos 7-12  → European group
-#       pos 13-16 → Relegation group
+# Belgium_Jupiler_Pro_League       → zones saison régulière (pos 1-16)
+# Belgium_Jupiler_Pro_League_Playoffs → zones playoffs en classement global 1-16
+#   pos 1-6   = Champions Playoffs  (ESPN repart à 1 dans ce groupe)
+#   pos 7-12  = Europe Playoffs     (ESPN repart à 1 dans ce groupe)
+#   pos 13-16 = Relegation Playoffs (ESPN repart à 1 dans ce groupe)
 # ──────────────────────────────────────────────────────────────────────────────
 LEAGUE_ZONES = {
-    # ── Saison régulière belge ────────────────────────────────────────────────
     "Belgium_Jupiler_Pro_League": [
         (1,  6,  "Championship Playoffs",  True),
         (7,  12, "European Playoffs",      True),
         (13, 16, "Relegation Playoffs",    False),
     ],
-    # ── Playoffs belges — classement général 1-16 ─────────────────────────────
-    # pos 1-6 : Championship group
     "Belgium_Jupiler_Pro_League_Playoffs": [
-        (1,  1,  "Champion + UEFA Champions League",        True),
-        (2,  2,  "UEFA Champions League",                   True),
-        (3,  4,  "UEFA Europa League",                      True),
-        (5,  5,  "UEFA Conference League",                  True),
-        (6,  6,  "Éliminé compétitions UEFA",               False),
-        # pos 7-12 : European group
-        (7,  7,  "UEFA Conference League Playoff",          True),
-        (8,  12, "Éliminé",                                 False),
-        # pos 13-16 : Relegation group
-        (13, 13, "Maintien garanti",                        True),
-        (14, 14, "Playoff Relégation vs Challenger",        False),
-        (15, 16, "Relégation",                              False),
+        # Champions Playoffs (pos globale 1-6)
+        (1,  1,  "Champion + UEFA Champions League",   True),
+        (2,  2,  "UEFA Champions League",              True),
+        (3,  4,  "UEFA Europa League",                 True),
+        (5,  5,  "UEFA Conference League",             True),
+        (6,  6,  "Éliminé compétitions UEFA",          False),
+        # Europe Playoffs (pos globale 7-12)
+        (7,  7,  "UEFA Conference League Playoff",     True),
+        (8,  12, "Éliminé",                            False),
+        # Relegation Playoffs (pos globale 13-16)
+        (13, 13, "Maintien garanti",                   True),
+        (14, 14, "Playoff Relégation vs Challenger",   False),
+        (15, 16, "Relégation",                         False),
     ],
     "England_Premier_League": [
-        (1,  4,  "UEFA Champions League",         True),
+        (1,  4,  "UEFA Champions League",          True),
         (5,  5,  "UEFA Europa League",             True),
         (6,  6,  "UEFA Conference League Playoff", True),
         (18, 18, "Relégation Playoff",             False),
@@ -307,7 +303,7 @@ def setup_driver():
 
 
 def fetch_standings_from_url(url: str) -> list:
-    """Charge une URL ESPN et retourne la liste brute des standings."""
+    """Scrape standard : un seul tableau ESPN sans sous-groupes."""
     driver = setup_driver()
     try:
         driver.get(url)
@@ -335,7 +331,6 @@ def fetch_standings_from_url(url: str) -> list:
 
             values = [cell.text.strip() for cell in stat_cells[:8]]
             gp, w, d, l, f, a, gd, p = values
-
             if gd.startswith('+'):
                 gd = gd[1:]
 
@@ -343,14 +338,9 @@ def fetch_standings_from_url(url: str) -> list:
                 "position": position,
                 "name": name,
                 "stats": {
-                    "GP": int(gp),
-                    "W":  int(w),
-                    "D":  int(d),
-                    "L":  int(l),
-                    "F":  int(f),
-                    "A":  int(a),
-                    "GD": int(gd),
-                    "P":  int(p)
+                    "GP": int(gp), "W": int(w),  "D": int(d),
+                    "L":  int(l),  "F": int(f),  "A": int(a),
+                    "GD": int(gd), "P": int(p)
                 }
             })
         return standings
@@ -359,6 +349,105 @@ def fetch_standings_from_url(url: str) -> list:
         print(f"  Erreur Selenium ({url}) : {e}")
         slug = url.split("/league/")[-1].replace("/", "_")
         with open(f"debug_{slug}.html", "w", encoding="utf-8") as fh:
+            fh.write(driver.page_source)
+        return []
+    finally:
+        driver.quit()
+
+
+def fetch_playoff_standings_subgroups(url: str) -> list:
+    """
+    Scrape spécifique pour les playoffs ESPN avec sous-groupes.
+
+    La page contient un seul <table.Table--fixed-left> et un seul
+    <Table__Scroller table>, mais chaque tableau entremêle :
+      - des lignes  .subgroup-headers  (titre du groupe + ligne d'en-têtes stats)
+      - des lignes  normales           (équipes)
+
+    ESPN repart à la position 1 dans chaque sous-groupe.
+    On reconstitue un classement global 1-16 en incrémentant un compteur.
+
+    Sous-groupes attendus (dans l'ordre ESPN) :
+      Champions Playoffs  → 6 équipes → pos globale  1-6
+      Europe Playoffs     → 6 équipes → pos globale  7-12
+      Relegation Playoffs → 4 équipes → pos globale 13-16
+    """
+    driver = setup_driver()
+    try:
+        driver.get(url)
+        wait = WebDriverWait(driver, 20)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.Table--fixed-left")))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".Table__Scroller table")))
+
+        # Toutes les lignes des deux tableaux (gauche noms / droite stats)
+        left_rows  = driver.find_elements(By.CSS_SELECTOR, "table.Table--fixed-left tbody tr")
+        right_rows = driver.find_elements(By.CSS_SELECTOR, ".Table__Scroller table tbody tr")
+
+        standings    = []
+        global_pos   = 0          # compteur position globale 1→16
+        right_cursor = 0          # index dans right_rows (on saute les subheaders)
+
+        for left_row in left_rows:
+            row_classes = left_row.get_attribute("class") or ""
+
+            # ── Ligne de titre de sous-groupe ou d'en-têtes stats → ignorer ──
+            if "subgroup-headers" in row_classes or "Table__sub-header" in row_classes:
+                # La ligne miroir côté droit est aussi un subgroup-header : on l'avance
+                if right_cursor < len(right_rows):
+                    rc = right_rows[right_cursor].get_attribute("class") or ""
+                    if "subgroup-headers" in rc or "Table__sub-header" in rc:
+                        right_cursor += 1
+                continue
+
+            # ── Ligne d'équipe ────────────────────────────────────────────────
+            try:
+                name_elem = left_row.find_element(By.CSS_SELECTOR, ".hide-mobile a")
+                name = name_elem.text.strip()
+            except Exception:
+                right_cursor += 1
+                continue
+
+            # Récupérer les stats dans la ligne droite correspondante,
+            # en sautant d'abord les éventuels subgroup-headers côté droit
+            while right_cursor < len(right_rows):
+                rc = right_rows[right_cursor].get_attribute("class") or ""
+                if "subgroup-headers" in rc or "Table__sub-header" in rc:
+                    right_cursor += 1
+                else:
+                    break
+
+            if right_cursor >= len(right_rows):
+                break
+
+            stat_cells = right_rows[right_cursor].find_elements(
+                By.CSS_SELECTOR, "td span.stat-cell"
+            )
+            right_cursor += 1
+
+            if len(stat_cells) < 8:
+                continue
+
+            values = [cell.text.strip() for cell in stat_cells[:8]]
+            gp, w, d, l, f, a, gd, p = values
+            if gd.startswith('+'):
+                gd = gd[1:]
+
+            global_pos += 1
+            standings.append({
+                "position": global_pos,
+                "name": name,
+                "stats": {
+                    "GP": int(gp), "W": int(w),  "D": int(d),
+                    "L":  int(l),  "F": int(f),  "A": int(a),
+                    "GD": int(gd), "P": int(p)
+                }
+            })
+
+        return standings
+
+    except Exception as e:
+        print(f"  Erreur Selenium playoffs ({url}) : {e}")
+        with open("debug_BEL1_playoffs.html", "w", encoding="utf-8") as fh:
             fh.write(driver.page_source)
         return []
     finally:
@@ -402,16 +491,6 @@ def enrich_standings_with_zones(league_name: str, standings: list) -> list:
 
 
 def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_data: dict) -> dict:
-    """
-    Scrape une ligue à deux phases (ex. Belgique 2025-26) :
-      - Saison régulière (seasontype/1) : 16 équipes, 30 journées
-      - Playoffs (seasontype/2)         : 16 équipes en classement général
-          pos 1-6   → Championship group
-          pos 7-12  → European group
-          pos 13-16 → Relegation group
-        Les zones sont appliquées directement sur le classement général 1-16
-        via Belgium_Jupiler_Pro_League_Playoffs.
-    """
     result = {}
 
     # ── Saison régulière ──────────────────────────────────────────────────────
@@ -420,11 +499,10 @@ def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_dat
     time.sleep(2)
 
     if regular_standings:
-        enriched_regular = enrich_standings_with_zones(league_name, regular_standings)
         result["regular_season"] = {
             "total_journees": phase_config["regular_journees"],
             "position_zones": build_zones_meta(league_name),
-            "standings": enriched_regular
+            "standings": enrich_standings_with_zones(league_name, regular_standings)
         }
         print(f"  ✔ Saison régulière : {len(regular_standings)} équipes")
     else:
@@ -439,23 +517,21 @@ def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_dat
                 "standings": []
             }
 
-    # ── Playoffs ──────────────────────────────────────────────────────────────
+    # ── Playoffs (sous-groupes ESPN → classement global 1-16) ─────────────────
     print(f"  🏆 Playoffs...")
-    playoff_standings = fetch_standings_from_url(phase_config["playoffs"])
+    playoff_standings = fetch_playoff_standings_subgroups(phase_config["playoffs"])
     time.sleep(2)
 
     if playoff_standings:
-        # Classement général 1-16 avec zones directement appliquées
-        enriched_playoffs = enrich_standings_with_zones(
-            "Belgium_Jupiler_Pro_League_Playoffs",
-            playoff_standings
-        )
         result["playoffs"] = {
             "total_journees": phase_config["playoff_max_journees"],
             "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs"),
-            "standings": enriched_playoffs
+            "standings": enrich_standings_with_zones(
+                "Belgium_Jupiler_Pro_League_Playoffs",
+                playoff_standings
+            )
         }
-        print(f"  ✔ Playoffs : {len(playoff_standings)} équipes (classement général)")
+        print(f"  ✔ Playoffs : {len(playoff_standings)} équipes (classement global 1-{len(playoff_standings)})")
     else:
         old = existing_data.get(league_name, {}).get("playoffs")
         if old:
@@ -507,16 +583,12 @@ def scrape_all_leagues():
                 continue
 
             total_journees = num_teams * 2 - 2
-            standings_enriched = enrich_standings_with_zones(league_name, standings)
-            zones_meta = build_zones_meta(league_name)
-
             all_data[league_name] = {
                 "total_journees": total_journees,
-                "position_zones": zones_meta,
-                "standings": standings_enriched
+                "position_zones": build_zones_meta(league_name),
+                "standings": enrich_standings_with_zones(league_name, standings)
             }
-
-            print(f"✔ {num_teams} équipes — {total_journees} journées — {len(zones_meta)} zones pour {league_name}\n")
+            print(f"✔ {num_teams} équipes — {total_journees} journées — {len(build_zones_meta(league_name))} zones pour {league_name}\n")
             time.sleep(2)
 
         except Exception as e:

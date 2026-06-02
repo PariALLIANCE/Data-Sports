@@ -45,217 +45,223 @@ LEAGUES = {
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Ligues avec deux phases (saison régulière + playoffs séparés)
-# Clé : nom de ligue → dict avec les URLs ESPN pour chaque phase
+# Ligues avec deux phases (saison régulière + playoffs séparés).
+# Ce système est actif UNIQUEMENT pour la saison en cours (2025-26).
+# À partir de 2026-27, la Jupiler Pro League revient au format classique.
 # ──────────────────────────────────────────────────────────────────────────────
 MULTI_PHASE_LEAGUES = {
     "Belgium_Jupiler_Pro_League": {
         "regular": "https://www.espn.com/soccer/standings/_/league/BEL.1/seasontype/1",
         "playoffs": "https://www.espn.com/soccer/standings/_/league/BEL.1/seasontype/2",
+        "regular_journees": 30,
         "playoff_max_journees": 10,
     }
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Zones de positions par ligue
-# Saison régulière : positions déterminant le groupe de playoffs
-# Playoffs        : positions finales déterminant les qualifications européennes
+# (pos_min, pos_max, label, is_advantage)
+#
+# Pour Belgium_Jupiler_Pro_League :
+#   - Les zones de la saison régulière indiquent le groupe de playoffs rejoint.
+#   - Les zones des playoffs indiquent la qualification européenne finale.
+#     Les playoffs regroupent 16 équipes en classement général (pos 1-16) :
+#       pos 1-6   → Championship group
+#       pos 7-12  → European group
+#       pos 13-16 → Relegation group
 # ──────────────────────────────────────────────────────────────────────────────
 LEAGUE_ZONES = {
-    # ── Saison régulière (journées 1-30) ──────────────────────────────────────
+    # ── Saison régulière belge ────────────────────────────────────────────────
     "Belgium_Jupiler_Pro_League": [
-        (1, 6,  "Championship Playoffs",    True),
-        (7, 12, "European Playoffs",        True),
-        (13, 16, "Relegation Playoffs",     False),
+        (1,  6,  "Championship Playoffs",  True),
+        (7,  12, "European Playoffs",      True),
+        (13, 16, "Relegation Playoffs",    False),
     ],
-    # ── Playoffs Championship (pos 1-6 après playoffs) ───────────────────────
-    "Belgium_Jupiler_Pro_League_Playoffs_Championship": [
-        (1, 1,  "Champion + UEFA Champions League",  True),
-        (2, 2,  "UEFA Champions League",             True),
-        (3, 4,  "UEFA Europa League",                True),
-        (5, 5,  "UEFA Conference League",            True),
-        (6, 6,  "Eliminé des compétitions UEFA",     False),
-    ],
-    # ── Playoffs European (pos 7-12 après playoffs) ──────────────────────────
-    "Belgium_Jupiler_Pro_League_Playoffs_European": [
-        (1, 1,  "UEFA Conference League Playoff",    True),
-        (2, 6,  "Éliminé",                           False),
-    ],
-    # ── Playoffs Relégation (pos 13-16 après playoffs) ───────────────────────
-    "Belgium_Jupiler_Pro_League_Playoffs_Relegation": [
-        (1, 1,  "Maintien garanti",                  True),
-        (2, 2,  "Playoff Relégation vs Challenger",  False),
-        (3, 4,  "Relégation",                        False),
+    # ── Playoffs belges — classement général 1-16 ─────────────────────────────
+    # pos 1-6 : Championship group
+    "Belgium_Jupiler_Pro_League_Playoffs": [
+        (1,  1,  "Champion + UEFA Champions League",        True),
+        (2,  2,  "UEFA Champions League",                   True),
+        (3,  4,  "UEFA Europa League",                      True),
+        (5,  5,  "UEFA Conference League",                  True),
+        (6,  6,  "Éliminé compétitions UEFA",               False),
+        # pos 7-12 : European group
+        (7,  7,  "UEFA Conference League Playoff",          True),
+        (8,  12, "Éliminé",                                 False),
+        # pos 13-16 : Relegation group
+        (13, 13, "Maintien garanti",                        True),
+        (14, 14, "Playoff Relégation vs Challenger",        False),
+        (15, 16, "Relégation",                              False),
     ],
     "England_Premier_League": [
-        (1, 4,  "UEFA Champions League",          True),
-        (5, 5,  "UEFA Europa League",              True),
-        (6, 6,  "UEFA Conference League Playoff",  True),
+        (1,  4,  "UEFA Champions League",         True),
+        (5,  5,  "UEFA Europa League",             True),
+        (6,  6,  "UEFA Conference League Playoff", True),
         (18, 18, "Relégation Playoff",             False),
         (19, 20, "Relégation",                     False),
     ],
     "Spain_Laliga": [
-        (1, 4,  "UEFA Champions League",           True),
-        (5, 6,  "UEFA Europa League",              True),
-        (7, 7,  "UEFA Conference League",          True),
+        (1,  4,  "UEFA Champions League",          True),
+        (5,  6,  "UEFA Europa League",             True),
+        (7,  7,  "UEFA Conference League",         True),
         (18, 18, "Relégation Playoff",             False),
         (19, 20, "Relégation",                     False),
     ],
     "Germany_Bundesliga": [
-        (1, 4,  "UEFA Champions League",           True),
-        (5, 5,  "UEFA Europa League",              True),
-        (6, 6,  "UEFA Conference League",          True),
+        (1,  4,  "UEFA Champions League",          True),
+        (5,  5,  "UEFA Europa League",             True),
+        (6,  6,  "UEFA Conference League",         True),
         (16, 16, "Relégation Playoff",             False),
         (17, 18, "Relégation",                     False),
     ],
     "France_Ligue_1": [
-        (1, 3,  "UEFA Champions League",           True),
-        (4, 4,  "UEFA Champions League Playoff",   True),
-        (5, 5,  "UEFA Europa League",              True),
-        (6, 6,  "UEFA Conference League",          True),
+        (1,  3,  "UEFA Champions League",          True),
+        (4,  4,  "UEFA Champions League Playoff",  True),
+        (5,  5,  "UEFA Europa League",             True),
+        (6,  6,  "UEFA Conference League",         True),
         (16, 16, "Relégation Playoff",             False),
         (17, 18, "Relégation",                     False),
     ],
     "Italy_Serie_A": [
-        (1, 4,  "UEFA Champions League",           True),
-        (5, 5,  "UEFA Europa League",              True),
-        (6, 6,  "UEFA Conference League",          True),
+        (1,  4,  "UEFA Champions League",          True),
+        (5,  5,  "UEFA Europa League",             True),
+        (6,  6,  "UEFA Conference League",         True),
         (18, 18, "Relégation Playoff",             False),
         (19, 20, "Relégation",                     False),
     ],
     "Portugal_Primeira_Liga": [
-        (1, 4,  "UEFA Champions League",           True),
-        (5, 5,  "UEFA Europa League",              True),
-        (6, 6,  "UEFA Conference League",          True),
+        (1,  4,  "UEFA Champions League",          True),
+        (5,  5,  "UEFA Europa League",             True),
+        (6,  6,  "UEFA Conference League",         True),
         (16, 16, "Relégation Playoff",             False),
         (17, 18, "Relégation",                     False),
     ],
     "Netherlands_Eredivisie": [
-        (1, 1,  "UEFA Champions League",           True),
-        (2, 4,  "UEFA Europa League",              True),
-        (5, 5,  "UEFA Conference League",          True),
+        (1,  1,  "UEFA Champions League",          True),
+        (2,  4,  "UEFA Europa League",             True),
+        (5,  5,  "UEFA Conference League",         True),
         (16, 16, "Relégation Playoff",             False),
         (17, 18, "Relégation",                     False),
     ],
     "Turkey_Super_Lig": [
-        (1, 2,  "UEFA Champions League",           True),
-        (3, 4,  "UEFA Europa League",              True),
-        (5, 5,  "UEFA Conference League",          True),
+        (1,  2,  "UEFA Champions League",          True),
+        (3,  4,  "UEFA Europa League",             True),
+        (5,  5,  "UEFA Conference League",         True),
         (17, 17, "Relégation Playoff",             False),
         (18, 19, "Relégation",                     False),
     ],
     "Greece_Super_League_1": [
-        (1, 1,  "UEFA Champions League",           True),
-        (2, 3,  "UEFA Europa League",              True),
-        (4, 4,  "UEFA Conference League",          True),
+        (1,  1,  "UEFA Champions League",          True),
+        (2,  3,  "UEFA Europa League",             True),
+        (4,  4,  "UEFA Conference League",         True),
         (13, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Austria_Bundesliga": [
-        (1, 2,  "UEFA Champions League",           True),
-        (3, 4,  "UEFA Europa League",              True),
-        (5, 5,  "UEFA Conference League",          True),
+        (1,  2,  "UEFA Champions League",          True),
+        (3,  4,  "UEFA Europa League",             True),
+        (5,  5,  "UEFA Conference League",         True),
         (10, 10, "Relégation Playoff",             False),
         (11, 12, "Relégation",                     False),
     ],
     "Switzerland_Super_League": [
-        (1, 1,  "UEFA Champions League",           True),
-        (2, 3,  "UEFA Europa League",              True),
-        (4, 4,  "UEFA Conference League",          True),
-        (9, 9,  "Relégation Playoff",              False),
+        (1,  1,  "UEFA Champions League",          True),
+        (2,  3,  "UEFA Europa League",             True),
+        (4,  4,  "UEFA Conference League",         True),
+        (9,  9,  "Relégation Playoff",             False),
         (10, 10, "Relégation",                     False),
     ],
     "Romania_Liga_I": [
-        (1, 2,  "UEFA Conference League",          True),
+        (1,  2,  "UEFA Conference League",         True),
         (14, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Russia_Premier_League": [
-        (1, 6,  "Playoff Champions",               True),
+        (1,  6,  "Playoff Champions",              True),
         (13, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Sweden_Allsvenskan": [
-        (1, 1,  "UEFA Conference League",          True),
+        (1,  1,  "UEFA Conference League",         True),
         (14, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Saudi_Arabia_Pro_League": [
-        (1, 4,  "AFC Champions League",            True),
+        (1,  4,  "AFC Champions League",           True),
         (14, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Brazil_Serie_A": [
-        (1, 4,  "CONMEBOL Libertadores (Groupes)", True),
-        (5, 6,  "CONMEBOL Libertadores Playoff",   True),
-        (7, 12, "CONMEBOL Sudamericana",           True),
-        (17, 20, "Relégation Serie B",             False),
+        (1,  4,  "CONMEBOL Libertadores (Groupes)", True),
+        (5,  6,  "CONMEBOL Libertadores Playoff",   True),
+        (7,  12, "CONMEBOL Sudamericana",            True),
+        (17, 20, "Relégation Serie B",              False),
     ],
     "Brazil_Serie_B": [
-        (1, 4,  "Promotion Serie A",               True),
+        (1,  4,  "Promotion Serie A",              True),
         (17, 20, "Relégation Serie C",             False),
     ],
     "Argentina_Primera_Nacional": [
-        (1, 2,  "Promotion Primera Division",      True),
-        (3, 4,  "Promotion Playoff",               True),
+        (1,  2,  "Promotion Primera Division",     True),
+        (3,  4,  "Promotion Playoff",              True),
     ],
     "Colombia_Primera_A": [
-        (1, 8,  "Playoffs Título",                 True),
-        (1, 3,  "CONMEBOL Libertadores",           True),
-        (4, 8,  "CONMEBOL Sudamericana",           True),
+        (1,  8,  "Playoffs Título",                True),
+        (1,  3,  "CONMEBOL Libertadores",          True),
+        (4,  8,  "CONMEBOL Sudamericana",          True),
     ],
     "Chile_Primera_Division": [
-        (1, 3,  "CONMEBOL Libertadores",           True),
-        (4, 8,  "CONMEBOL Sudamericana",           True),
+        (1,  3,  "CONMEBOL Libertadores",          True),
+        (4,  8,  "CONMEBOL Sudamericana",          True),
         (14, 14, "Relégation Playoff",             False),
         (15, 16, "Relégation",                     False),
     ],
     "Peru_Primera_Division": [
-        (1, 2,  "CONMEBOL Libertadores",           True),
-        (3, 4,  "CONMEBOL Sudamericana",           True),
+        (1,  2,  "CONMEBOL Libertadores",          True),
+        (3,  4,  "CONMEBOL Sudamericana",          True),
         (17, 18, "Relégation",                     False),
     ],
     "Paraguay_Division_Profesional": [
-        (1, 2,  "CONMEBOL Libertadores",           True),
-        (3, 4,  "CONMEBOL Sudamericana",           True),
+        (1,  2,  "CONMEBOL Libertadores",          True),
+        (3,  4,  "CONMEBOL Sudamericana",          True),
     ],
     "Venezuela_Primera_Division": [
-        (1, 2,  "CONMEBOL Libertadores",           True),
-        (3, 4,  "CONMEBOL Sudamericana",           True),
+        (1,  2,  "CONMEBOL Libertadores",          True),
+        (3,  4,  "CONMEBOL Sudamericana",          True),
     ],
     "Mexico_Liga_MX": [
-        (1, 4,  "Liguilla directe",                True),
-        (5, 12, "Reclasificación",                 True),
+        (1,  4,  "Liguilla directe",               True),
+        (5,  12, "Reclasificación",                True),
     ],
     "USA_Major_League_Soccer": [
-        (1, 7,  "MLS Cup Playoffs",                True),
-        (8, 9,  "Playoffs wild-card",              True),
+        (1,  7,  "MLS Cup Playoffs",               True),
+        (8,  9,  "Playoffs wild-card",             True),
     ],
     "Japan_J1_League": [
-        (1, 2,  "AFC Champions League (Elite)",    True),
-        (3, 3,  "AFC Champions League Playoff",    True),
+        (1,  2,  "AFC Champions League (Elite)",   True),
+        (3,  3,  "AFC Champions League Playoff",   True),
         (17, 17, "Relégation Playoff",             False),
         (18, 20, "Relégation J2",                  False),
     ],
     "China_Super_League": [
-        (1, 2,  "AFC Champions League",            True),
-        (3, 4,  "AFC Challenge League",            True),
+        (1,  2,  "AFC Champions League",           True),
+        (3,  4,  "AFC Challenge League",           True),
         (14, 16, "Relégation",                     False),
     ],
     "England_National_League": [
-        (1, 1,  "Promotion EFL League Two",        True),
-        (2, 7,  "Promotion Playoff",               True),
+        (1,  1,  "Promotion EFL League Two",       True),
+        (2,  7,  "Promotion Playoff",              True),
         (22, 24, "Relégation",                     False),
     ],
     "UEFA_Champions_League": [
-        (1, 8,  "Huitièmes de finale",             True),
-        (9, 16, "Huitièmes Playoff",               True),
+        (1,  8,  "Huitièmes de finale",            True),
+        (9,  16, "Huitièmes Playoff",              True),
         (17, 24, "Repêchage Europa League",        True),
         (25, 36, "Élimination",                    False),
     ],
     "UEFA_Europa_League": [
-        (1, 8,  "Huitièmes de finale",             True),
-        (9, 16, "Huitièmes Playoff",               True),
+        (1,  8,  "Huitièmes de finale",            True),
+        (9,  16, "Huitièmes Playoff",              True),
         (17, 24, "Repêchage Conference League",    True),
         (25, 36, "Élimination",                    False),
     ],
@@ -301,7 +307,7 @@ def setup_driver():
 
 
 def fetch_standings_from_url(url: str) -> list:
-    """Charge une URL ESPN et retourne la liste des standings."""
+    """Charge une URL ESPN et retourne la liste brute des standings."""
     driver = setup_driver()
     try:
         driver.get(url)
@@ -309,7 +315,7 @@ def fetch_standings_from_url(url: str) -> list:
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.Table--fixed-left")))
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".Table__Scroller table")))
 
-        team_rows = driver.find_elements(By.CSS_SELECTOR, "table.Table--fixed-left tbody tr")
+        team_rows  = driver.find_elements(By.CSS_SELECTOR, "table.Table--fixed-left tbody tr")
         stats_rows = driver.find_elements(By.CSS_SELECTOR, ".Table__Scroller table tbody tr")
 
         standings = []
@@ -338,29 +344,28 @@ def fetch_standings_from_url(url: str) -> list:
                 "name": name,
                 "stats": {
                     "GP": int(gp),
-                    "W": int(w),
-                    "D": int(d),
-                    "L": int(l),
-                    "F": int(f),
-                    "A": int(a),
+                    "W":  int(w),
+                    "D":  int(d),
+                    "L":  int(l),
+                    "F":  int(f),
+                    "A":  int(a),
                     "GD": int(gd),
-                    "P": int(p)
+                    "P":  int(p)
                 }
             })
         return standings
 
     except Exception as e:
         print(f"  Erreur Selenium ({url}) : {e}")
-        league_id = url.split("/league/")[-1].split("/")[0]
-        with open(f"debug_{league_id}.html", "w", encoding="utf-8") as f:
-            f.write(driver.page_source)
+        slug = url.split("/league/")[-1].replace("/", "_")
+        with open(f"debug_{slug}.html", "w", encoding="utf-8") as fh:
+            fh.write(driver.page_source)
         return []
     finally:
         driver.quit()
 
 
 def fetch_standings_with_selenium(league_id: str) -> list:
-    """Wrapper pour les ligues simples (URL standard ESPN)."""
     url = f"https://www.espn.com/soccer/standings/_/league/{league_id}"
     return fetch_standings_from_url(url)
 
@@ -375,16 +380,6 @@ def load_existing_data() -> dict:
     return {}
 
 
-def enrich_standings_with_zones(league_name: str, standings: list) -> list:
-    enriched = []
-    for team in standings:
-        zone = get_position_zone(league_name, team["position"])
-        entry = dict(team)
-        entry["zone"] = zone
-        enriched.append(entry)
-    return enriched
-
-
 def build_zones_meta(league_name: str) -> list:
     return [
         {
@@ -396,98 +391,72 @@ def build_zones_meta(league_name: str) -> list:
     ]
 
 
+def enrich_standings_with_zones(league_name: str, standings: list) -> list:
+    enriched = []
+    for team in standings:
+        zone = get_position_zone(league_name, team["position"])
+        entry = dict(team)
+        entry["zone"] = zone
+        enriched.append(entry)
+    return enriched
+
+
 def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_data: dict) -> dict:
     """
-    Scrape une ligue à deux phases (ex. Belgique) :
-      - Phase 1 : saison régulière  (seasontype/1)
-      - Phase 2 : playoffs           (seasontype/2, divisés en 3 groupes)
-    Retourne le dict complet à stocker dans Standings.json.
+    Scrape une ligue à deux phases (ex. Belgique 2025-26) :
+      - Saison régulière (seasontype/1) : 16 équipes, 30 journées
+      - Playoffs (seasontype/2)         : 16 équipes en classement général
+          pos 1-6   → Championship group
+          pos 7-12  → European group
+          pos 13-16 → Relegation group
+        Les zones sont appliquées directement sur le classement général 1-16
+        via Belgium_Jupiler_Pro_League_Playoffs.
     """
     result = {}
 
-    # ── Phase 1 : Saison régulière ────────────────────────────────────────────
+    # ── Saison régulière ──────────────────────────────────────────────────────
     print(f"  📋 Saison régulière...")
     regular_standings = fetch_standings_from_url(phase_config["regular"])
     time.sleep(2)
 
     if regular_standings:
-        total_journees = 30  # saison régulière belge fixe à 30 journées
         enriched_regular = enrich_standings_with_zones(league_name, regular_standings)
         result["regular_season"] = {
-            "total_journees": total_journees,
+            "total_journees": phase_config["regular_journees"],
             "position_zones": build_zones_meta(league_name),
             "standings": enriched_regular
         }
         print(f"  ✔ Saison régulière : {len(regular_standings)} équipes")
     else:
-        # Fallback
         old = existing_data.get(league_name, {}).get("regular_season")
         if old:
             print(f"  ⚠️  Fallback saison régulière précédente")
             result["regular_season"] = old
         else:
             result["regular_season"] = {
-                "total_journees": 30,
+                "total_journees": phase_config["regular_journees"],
                 "position_zones": build_zones_meta(league_name),
                 "standings": []
             }
 
-    # ── Phase 2 : Playoffs ────────────────────────────────────────────────────
+    # ── Playoffs ──────────────────────────────────────────────────────────────
     print(f"  🏆 Playoffs...")
-    playoff_standings_raw = fetch_standings_from_url(phase_config["playoffs"])
+    playoff_standings = fetch_standings_from_url(phase_config["playoffs"])
     time.sleep(2)
 
-    if playoff_standings_raw:
-        # ESPN affiche les 3 groupes dans un seul tableau (positions 1-16).
-        # On les répartit selon les tranches de la saison régulière.
-        # pos 1-6  → Championship  (positions ESPN 1-6)
-        # pos 7-12 → European       (ESPN 7-12)
-        # pos 13-16→ Relegation     (ESPN 13-16)
-
-        championship_group = [t for t in playoff_standings_raw if 1  <= t["position"] <= 6]
-        european_group     = [t for t in playoff_standings_raw if 7  <= t["position"] <= 12]
-        relegation_group   = [t for t in playoff_standings_raw if 13 <= t["position"] <= 16]
-
-        # Ré-indexer chaque groupe en position 1..N pour les zones internes
-        def reindex(group):
-            reindexed = []
-            for rank, team in enumerate(group, start=1):
-                t = dict(team)
-                t["position"] = rank
-                reindexed.append(t)
-            return reindexed
-
-        championship_reindexed = reindex(championship_group)
-        european_reindexed     = reindex(european_group)
-        relegation_reindexed   = reindex(relegation_group)
-
+    if playoff_standings:
+        # Classement général 1-16 avec zones directement appliquées
+        enriched_playoffs = enrich_standings_with_zones(
+            "Belgium_Jupiler_Pro_League_Playoffs",
+            playoff_standings
+        )
         result["playoffs"] = {
             "total_journees": phase_config["playoff_max_journees"],
-            "championship": {
-                "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_Championship"),
-                "standings": enrich_standings_with_zones(
-                    "Belgium_Jupiler_Pro_League_Playoffs_Championship",
-                    championship_reindexed
-                )
-            },
-            "european": {
-                "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_European"),
-                "standings": enrich_standings_with_zones(
-                    "Belgium_Jupiler_Pro_League_Playoffs_European",
-                    european_reindexed
-                )
-            },
-            "relegation": {
-                "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_Relegation"),
-                "standings": enrich_standings_with_zones(
-                    "Belgium_Jupiler_Pro_League_Playoffs_Relegation",
-                    relegation_reindexed
-                )
-            }
+            "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs"),
+            "standings": enriched_playoffs
         }
-        print(f"  ✔ Playoffs : {len(championship_group)} champ / {len(european_group)} euro / {len(relegation_group)} relég")
+        print(f"  ✔ Playoffs : {len(playoff_standings)} équipes (classement général)")
     else:
-        # Fallback playoffs
         old = existing_data.get(league_name, {}).get("playoffs")
         if old:
             print(f"  ⚠️  Fallback playoffs précédents")
@@ -495,9 +464,8 @@ def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_dat
         else:
             result["playoffs"] = {
                 "total_journees": phase_config["playoff_max_journees"],
-                "championship": {"position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_Championship"), "standings": []},
-                "european":     {"position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_European"),     "standings": []},
-                "relegation":   {"position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs_Relegation"),   "standings": []}
+                "position_zones": build_zones_meta("Belgium_Jupiler_Pro_League_Playoffs"),
+                "standings": []
             }
 
     return result

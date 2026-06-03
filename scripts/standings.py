@@ -43,23 +43,45 @@ LEAGUES = {
     "FIFA_Club_World_Cup": "fifa.cwc"
 }
 
-SUBGROUP_LEAGUES = set()  # Aucune ligue à sous-groupes simples pour l'instant
+# ──────────────────────────────────────────────────────────────────────────────
+# Ligues dont la page ESPN utilise des sous-groupes (subgroup-headers).
+# ──────────────────────────────────────────────────────────────────────────────
+SUBGROUP_LEAGUES = set()
 
+# ──────────────────────────────────────────────────────────────────────────────
+# Ligues avec deux phases distinctes.
+# Mexico_Liga_MX : seasontype/1 = Apertura, seasontype/2 = Clausura
+# Belgium_Jupiler_Pro_League : seasontype/1 = saison régulière, seasontype/2 = playoffs
+# ──────────────────────────────────────────────────────────────────────────────
 MULTI_PHASE_LEAGUES = {
     "Belgium_Jupiler_Pro_League": {
         "regular": "https://www.espn.com/soccer/standings/_/league/BEL.1/seasontype/1",
         "playoffs": "https://www.espn.com/soccer/standings/_/league/BEL.1/seasontype/2",
         "regular_journees": 30,
         "playoff_max_journees": 10,
-    }
+        "phase1_label": "regular_season",
+        "phase2_label": "playoffs",
+        "phase2_is_subgroup": True,
+    },
+    "Mexico_Liga_MX": {
+        "regular": "https://www.espn.com/soccer/standings/_/league/MEX.1/seasontype/1",
+        "playoffs": "https://www.espn.com/soccer/standings/_/league/MEX.1/seasontype/2",
+        "regular_journees": 17,   # Apertura : 17 journées
+        "playoff_max_journees": 17,  # Clausura : 17 journées
+        "phase1_label": "apertura",
+        "phase2_label": "clausura",
+        "phase2_is_subgroup": False,
+    },
 }
 
 LEAGUE_ZONES = {
+    # ── Belgique saison régulière ─────────────────────────────────────────────
     "Belgium_Jupiler_Pro_League": [
         (1,  6,  "Championship Playoffs",  True),
         (7,  12, "European Playoffs",      True),
         (13, 16, "Relegation Playoffs",    False),
     ],
+    # ── Belgique playoffs (classement global 1-16) ────────────────────────────
     "Belgium_Jupiler_Pro_League_Playoffs": [
         (1,  1,  "Champion + UEFA Champions League",   True),
         (2,  2,  "UEFA Champions League",              True),
@@ -71,6 +93,16 @@ LEAGUE_ZONES = {
         (13, 13, "Maintien garanti",                   True),
         (14, 14, "Playoff Relégation vs Challenger",   False),
         (15, 16, "Relégation",                         False),
+    ],
+    # ── Mexico Apertura (saison régulière) ────────────────────────────────────
+    "Mexico_Liga_MX": [
+        (1,  6,  "Liguilla directe (Quarts de finale)", True),
+        (7,  10, "Play-in (Reclasificación)",           True),
+    ],
+    # ── Mexico Clausura (saison régulière) ────────────────────────────────────
+    "Mexico_Liga_MX_Clausura": [
+        (1,  6,  "Liguilla directe (Quarts de finale)", True),
+        (7,  10, "Play-in (Reclasificación)",           True),
     ],
     "England_Premier_League": [
         (1,  4,  "UEFA Champions League",          True),
@@ -203,10 +235,6 @@ LEAGUE_ZONES = {
     "Venezuela_Primera_Division": [
         (1,  2,  "CONMEBOL Libertadores",          True),
         (3,  4,  "CONMEBOL Sudamericana",          True),
-    ],
-    "Mexico_Liga_MX": [
-        (1,  4,  "Liguilla directe",               True),
-        (5,  12, "Reclasificación",                True),
     ],
     "USA_Major_League_Soccer": [
         (1,  7,  "MLS Cup Playoffs",               True),
@@ -447,52 +475,66 @@ def enrich_standings_with_zones(league_name: str, standings: list) -> list:
 
 
 def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_data: dict) -> dict:
+    """
+    Scrape une ligue à deux phases.
+    Belgique : phase1 = saison régulière, phase2 = playoffs (sous-groupes)
+    Mexique  : phase1 = Apertura (seasontype/1), phase2 = Clausura (seasontype/2)
+    """
     result = {}
+    phase1_label = phase_config["phase1_label"]
+    phase2_label = phase_config["phase2_label"]
+    phase2_zone_key = f"{league_name}_{phase2_label.capitalize()}" \
+        if league_name == "Mexico_Liga_MX" \
+        else f"{league_name}_Playoffs"
 
-    print(f"  📋 Saison régulière...")
-    regular_standings = fetch_standings_from_url(phase_config["regular"])
+    # ── Phase 1 ───────────────────────────────────────────────────────────────
+    print(f"  📋 Phase 1 ({phase1_label})...")
+    phase1_standings = fetch_standings_from_url(phase_config["regular"])
     time.sleep(2)
 
-    if regular_standings:
-        result["regular_season"] = {
+    if phase1_standings:
+        result[phase1_label] = {
             "total_journees": phase_config["regular_journees"],
             "position_zones": build_zones_meta(league_name),
-            "standings": enrich_standings_with_zones(league_name, regular_standings)
+            "standings": enrich_standings_with_zones(league_name, phase1_standings)
         }
-        print(f"  ✔ Saison régulière : {len(regular_standings)} équipes")
+        print(f"  ✔ {phase1_label} : {len(phase1_standings)} équipes")
     else:
-        old = existing_data.get(league_name, {}).get("regular_season")
+        old = existing_data.get(league_name, {}).get(phase1_label)
         if old:
-            print(f"  ⚠️  Fallback saison régulière précédente")
-            result["regular_season"] = old
+            print(f"  ⚠️  Fallback {phase1_label} précédent")
+            result[phase1_label] = old
         else:
-            result["regular_season"] = {
+            result[phase1_label] = {
                 "total_journees": phase_config["regular_journees"],
                 "position_zones": build_zones_meta(league_name),
                 "standings": []
             }
 
-    print(f"  🏆 Playoffs...")
-    playoff_standings = fetch_subgroup_standings(phase_config["playoffs"])
+    # ── Phase 2 ───────────────────────────────────────────────────────────────
+    print(f"  🏆 Phase 2 ({phase2_label})...")
+    if phase_config["phase2_is_subgroup"]:
+        phase2_standings = fetch_subgroup_standings(phase_config["playoffs"])
+    else:
+        phase2_standings = fetch_standings_from_url(phase_config["playoffs"])
     time.sleep(2)
 
-    playoffs_zone_key = f"{league_name}_Playoffs"
-    if playoff_standings:
-        result["playoffs"] = {
+    if phase2_standings:
+        result[phase2_label] = {
             "total_journees": phase_config["playoff_max_journees"],
-            "position_zones": build_zones_meta(playoffs_zone_key),
-            "standings": enrich_standings_with_zones(playoffs_zone_key, playoff_standings)
+            "position_zones": build_zones_meta(phase2_zone_key),
+            "standings": enrich_standings_with_zones(phase2_zone_key, phase2_standings)
         }
-        print(f"  ✔ Playoffs : {len(playoff_standings)} équipes (classement global 1-{len(playoff_standings)})")
+        print(f"  ✔ {phase2_label} : {len(phase2_standings)} équipes")
     else:
-        old = existing_data.get(league_name, {}).get("playoffs")
+        old = existing_data.get(league_name, {}).get(phase2_label)
         if old:
-            print(f"  ⚠️  Fallback playoffs précédents")
-            result["playoffs"] = old
+            print(f"  ⚠️  Fallback {phase2_label} précédent")
+            result[phase2_label] = old
         else:
-            result["playoffs"] = {
+            result[phase2_label] = {
                 "total_journees": phase_config["playoff_max_journees"],
-                "position_zones": build_zones_meta(playoffs_zone_key),
+                "position_zones": build_zones_meta(phase2_zone_key),
                 "standings": []
             }
 

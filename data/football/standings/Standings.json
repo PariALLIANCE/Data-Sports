@@ -4545,327 +4545,339 @@
         "standings": []
     },
     "Mexico_Liga_MX": {
-        "total_journees": 34,
-        "position_zones": [
-            {
-                "positions": "1-4",
-                "label": "Liguilla directe",
-                "type": "avantage"
-            },
-            {
-                "positions": "5-12",
-                "label": "Reclasificación",
-                "type": "avantage"
-            }
-        ],
-        "standings": [
-            {
-                "position": 1,
-                "name": "Pumas UNAM",
-                "stats": {
-                    "GP": 17,
-                    "W": 10,
-                    "D": 6,
-                    "L": 1,
-                    "F": 34,
-                    "A": 17,
-                    "GD": 17,
-                    "P": 36
+        "apertura": {
+            "total_journees": 17,
+            "position_zones": [
+                {
+                    "positions": "1-6",
+                    "label": "Liguilla directe (Quarts de finale)",
+                    "type": "avantage"
                 },
-                "zone": {
-                    "label": "Liguilla directe",
+                {
+                    "positions": "7-10",
+                    "label": "Play-in (Reclasificación)",
                     "type": "avantage"
                 }
-            },
-            {
-                "position": 2,
-                "name": "Guadalajara",
-                "stats": {
-                    "GP": 17,
-                    "W": 11,
-                    "D": 3,
-                    "L": 3,
-                    "F": 33,
-                    "A": 17,
-                    "GD": 16,
-                    "P": 36
+            ],
+            "standings": [
+                {
+                    "position": 1,
+                    "name": "Toluca",
+                    "stats": {
+                        "GP": 17,
+                        "W": 11,
+                        "D": 4,
+                        "L": 2,
+                        "F": 43,
+                        "A": 18,
+                        "GD": 25,
+                        "P": 37
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
                 },
-                "zone": {
-                    "label": "Liguilla directe",
+                {
+                    "position": 2,
+                    "name": "Tigres UANL",
+                    "stats": {
+                        "GP": 17,
+                        "W": 10,
+                        "D": 6,
+                        "L": 1,
+                        "F": 35,
+                        "A": 16,
+                        "GD": 19,
+                        "P": 36
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
+                    "name": "Cruz Azul",
+                    "stats": {
+                        "GP": 17,
+                        "W": 10,
+                        "D": 5,
+                        "L": 2,
+                        "F": 32,
+                        "A": 20,
+                        "GD": 12,
+                        "P": 35
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
+                    "name": "América",
+                    "stats": {
+                        "GP": 17,
+                        "W": 10,
+                        "D": 4,
+                        "L": 3,
+                        "F": 33,
+                        "A": 18,
+                        "GD": 15,
+                        "P": 34
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
+                    "name": "Monterrey",
+                    "stats": {
+                        "GP": 17,
+                        "W": 9,
+                        "D": 4,
+                        "L": 4,
+                        "F": 33,
+                        "A": 29,
+                        "GD": 4,
+                        "P": 31
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 6,
+                    "name": "Guadalajara",
+                    "stats": {
+                        "GP": 17,
+                        "W": 9,
+                        "D": 2,
+                        "L": 6,
+                        "F": 29,
+                        "A": 22,
+                        "GD": 7,
+                        "P": 29
+                    },
+                    "zone": {
+                        "label": "Liguilla directe (Quarts de finale)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 7,
+                    "name": "Tijuana",
+                    "stats": {
+                        "GP": 17,
+                        "W": 6,
+                        "D": 6,
+                        "L": 5,
+                        "F": 29,
+                        "A": 23,
+                        "GD": 6,
+                        "P": 24
+                    },
+                    "zone": {
+                        "label": "Play-in (Reclasificación)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 8,
+                    "name": "FC Juarez",
+                    "stats": {
+                        "GP": 17,
+                        "W": 6,
+                        "D": 5,
+                        "L": 6,
+                        "F": 27,
+                        "A": 28,
+                        "GD": -1,
+                        "P": 23
+                    },
+                    "zone": {
+                        "label": "Play-in (Reclasificación)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 9,
+                    "name": "Pachuca",
+                    "stats": {
+                        "GP": 17,
+                        "W": 6,
+                        "D": 4,
+                        "L": 7,
+                        "F": 21,
+                        "A": 21,
+                        "GD": 0,
+                        "P": 22
+                    },
+                    "zone": {
+                        "label": "Play-in (Reclasificación)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 10,
+                    "name": "Pumas UNAM",
+                    "stats": {
+                        "GP": 17,
+                        "W": 5,
+                        "D": 6,
+                        "L": 6,
+                        "F": 24,
+                        "A": 25,
+                        "GD": -1,
+                        "P": 21
+                    },
+                    "zone": {
+                        "label": "Play-in (Reclasificación)",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 11,
+                    "name": "Santos",
+                    "stats": {
+                        "GP": 17,
+                        "W": 6,
+                        "D": 2,
+                        "L": 9,
+                        "F": 22,
+                        "A": 28,
+                        "GD": -6,
+                        "P": 20
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Querétaro",
+                    "stats": {
+                        "GP": 17,
+                        "W": 6,
+                        "D": 2,
+                        "L": 9,
+                        "F": 19,
+                        "A": 29,
+                        "GD": -10,
+                        "P": 20
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 13,
+                    "name": "Necaxa",
+                    "stats": {
+                        "GP": 17,
+                        "W": 4,
+                        "D": 5,
+                        "L": 8,
+                        "F": 24,
+                        "A": 32,
+                        "GD": -8,
+                        "P": 17
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 14,
+                    "name": "Atlas",
+                    "stats": {
+                        "GP": 17,
+                        "W": 4,
+                        "D": 5,
+                        "L": 8,
+                        "F": 24,
+                        "A": 35,
+                        "GD": -11,
+                        "P": 17
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 15,
+                    "name": "Atlético de San Luis",
+                    "stats": {
+                        "GP": 17,
+                        "W": 5,
+                        "D": 1,
+                        "L": 11,
+                        "F": 25,
+                        "A": 29,
+                        "GD": -4,
+                        "P": 16
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 16,
+                    "name": "Mazatlán FC",
+                    "stats": {
+                        "GP": 17,
+                        "W": 2,
+                        "D": 8,
+                        "L": 7,
+                        "F": 20,
+                        "A": 29,
+                        "GD": -9,
+                        "P": 14
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 17,
+                    "name": "León",
+                    "stats": {
+                        "GP": 17,
+                        "W": 3,
+                        "D": 4,
+                        "L": 10,
+                        "F": 14,
+                        "A": 31,
+                        "GD": -17,
+                        "P": 13
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 18,
+                    "name": "Puebla",
+                    "stats": {
+                        "GP": 17,
+                        "W": 3,
+                        "D": 3,
+                        "L": 11,
+                        "F": 21,
+                        "A": 42,
+                        "GD": -21,
+                        "P": 12
+                    },
+                    "zone": null
+                }
+            ]
+        },
+        "clausura": {
+            "total_journees": 17,
+            "position_zones": [
+                {
+                    "positions": "1-6",
+                    "label": "Liguilla directe (Quarts de finale)",
+                    "type": "avantage"
+                },
+                {
+                    "positions": "7-10",
+                    "label": "Play-in (Reclasificación)",
                     "type": "avantage"
                 }
-            },
-            {
-                "position": 3,
-                "name": "Cruz Azul",
-                "stats": {
-                    "GP": 17,
-                    "W": 9,
-                    "D": 6,
-                    "L": 2,
-                    "F": 31,
-                    "A": 18,
-                    "GD": 13,
-                    "P": 33
-                },
-                "zone": {
-                    "label": "Liguilla directe",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 4,
-                "name": "Pachuca",
-                "stats": {
-                    "GP": 17,
-                    "W": 9,
-                    "D": 4,
-                    "L": 4,
-                    "F": 25,
-                    "A": 19,
-                    "GD": 6,
-                    "P": 31
-                },
-                "zone": {
-                    "label": "Liguilla directe",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 5,
-                "name": "Toluca",
-                "stats": {
-                    "GP": 17,
-                    "W": 8,
-                    "D": 6,
-                    "L": 3,
-                    "F": 28,
-                    "A": 16,
-                    "GD": 12,
-                    "P": 30
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 6,
-                "name": "Atlas",
-                "stats": {
-                    "GP": 17,
-                    "W": 7,
-                    "D": 5,
-                    "L": 5,
-                    "F": 16,
-                    "A": 18,
-                    "GD": -2,
-                    "P": 26
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 7,
-                "name": "Tigres UANL",
-                "stats": {
-                    "GP": 17,
-                    "W": 7,
-                    "D": 4,
-                    "L": 6,
-                    "F": 28,
-                    "A": 18,
-                    "GD": 10,
-                    "P": 25
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 8,
-                "name": "América",
-                "stats": {
-                    "GP": 17,
-                    "W": 7,
-                    "D": 4,
-                    "L": 6,
-                    "F": 20,
-                    "A": 17,
-                    "GD": 3,
-                    "P": 25
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 9,
-                "name": "Tijuana",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 8,
-                    "L": 4,
-                    "F": 19,
-                    "A": 17,
-                    "GD": 2,
-                    "P": 23
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 10,
-                "name": "León",
-                "stats": {
-                    "GP": 17,
-                    "W": 7,
-                    "D": 1,
-                    "L": 9,
-                    "F": 22,
-                    "A": 32,
-                    "GD": -10,
-                    "P": 22
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 11,
-                "name": "Querétaro",
-                "stats": {
-                    "GP": 17,
-                    "W": 4,
-                    "D": 8,
-                    "L": 5,
-                    "F": 17,
-                    "A": 21,
-                    "GD": -4,
-                    "P": 20
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 12,
-                "name": "FC Juarez",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 4,
-                    "L": 8,
-                    "F": 26,
-                    "A": 32,
-                    "GD": -6,
-                    "P": 19
-                },
-                "zone": {
-                    "label": "Reclasificación",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 13,
-                "name": "Monterrey",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 3,
-                    "L": 9,
-                    "F": 22,
-                    "A": 24,
-                    "GD": -2,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
-                "position": 14,
-                "name": "Atlético de San Luis",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 3,
-                    "L": 9,
-                    "F": 24,
-                    "A": 27,
-                    "GD": -3,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
-                "position": 15,
-                "name": "Necaxa",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 3,
-                    "L": 9,
-                    "F": 19,
-                    "A": 25,
-                    "GD": -6,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
-                "position": 16,
-                "name": "Mazatlán FC",
-                "stats": {
-                    "GP": 17,
-                    "W": 4,
-                    "D": 3,
-                    "L": 10,
-                    "F": 22,
-                    "A": 37,
-                    "GD": -15,
-                    "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 17,
-                "name": "Puebla",
-                "stats": {
-                    "GP": 17,
-                    "W": 3,
-                    "D": 4,
-                    "L": 10,
-                    "F": 13,
-                    "A": 26,
-                    "GD": -13,
-                    "P": 13
-                },
-                "zone": null
-            },
-            {
-                "position": 18,
-                "name": "Santos",
-                "stats": {
-                    "GP": 17,
-                    "W": 3,
-                    "D": 3,
-                    "L": 11,
-                    "F": 20,
-                    "A": 38,
-                    "GD": -18,
-                    "P": 12
-                },
-                "zone": null
-            }
-        ]
+            ],
+            "standings": []
+        }
     },
     "Netherlands_Eredivisie": {
         "total_journees": 34,

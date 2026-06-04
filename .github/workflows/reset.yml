@@ -25,15 +25,15 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main
 
-      - name: Run reset.py
+      - name: Run reset_journees.py
         run: python scripts/reset.py
 
       - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
           git add data/football/leagues/
           git diff --cached --quiet && echo "Rien à committer" && exit 0
+          git pull --rebase origin main
           git commit -m "🧹 Reset journées [$(date -u '+%Y-%m-%d %H:%M')] [skip ci]"
           git push origin main

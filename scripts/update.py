@@ -145,19 +145,61 @@ def load_standings():
 standings_raw = load_standings()
 
 # ─────────────────────────────────────────────
+# RÉSOLUTION STANDING (mono-phase ou multi-phase)
+# ─────────────────────────────────────────────
+
+def resolve_standing(league_key: str) -> dict | None:
+    """
+    Retourne le bloc standing plat {"total_journees", "standings", ...}
+    adapté à la ligue, qu'elle soit mono-phase ou multi-phase.
+    Pour les ligues multi-phases (Belgium, Mexico…), on sélectionne
+    la phase dont le GP max est le plus élevé (phase la plus avancée).
+    Retourne None si introuvable ou vide.
+    """
+    if league_key not in standings_raw:
+        return None
+
+    standing = standings_raw[league_key]
+
+    # Déjà une structure plate standard
+    if "total_journees" in standing:
+        return standing
+
+    # Structure multi-phase : {"regular_season": {...}, "playoffs": {...}}
+    best_phase = None
+    best_gp    = -1
+    for phase_data in standing.values():
+        if not isinstance(phase_data, dict):
+            continue
+        entries = phase_data.get("standings", [])
+        if not entries:
+            continue
+        gp = max(
+            (e.get("stats", {}).get("GP", 0) for e in entries),
+            default=0
+        )
+        if gp > best_gp:
+            best_gp    = gp
+            best_phase = phase_data
+
+    return best_phase  # peut être None si aucune phase valide
+
+# ─────────────────────────────────────────────
 # ENRICHISSEMENT JOURNÉE
 # ─────────────────────────────────────────────
 
 def enrich_journee(matches_list: list, league_key: str) -> list:
-    if league_key not in standings_raw:
+    standing = resolve_standing(league_key)
+    if standing is None:
         return matches_list
 
-    standing       = standings_raw[league_key]
-    TOTAL_JOURNEES = standing["total_journees"]
+    TOTAL_JOURNEES = standing.get("total_journees")
+    if not TOTAL_JOURNEES:
+        return matches_list
 
     gp_per_team = {
         entry["name"]: entry["stats"]["GP"]
-        for entry in standing["standings"]
+        for entry in standing.get("standings", [])
         if entry.get("stats", {}).get("GP") is not None
     }
 

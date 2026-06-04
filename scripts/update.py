@@ -4,7 +4,6 @@ import re
 import time
 import os
 import copy
-from collections import defaultdict
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,8 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 from webdriver_manager.chrome import ChromeDriverManager
 
-OUTPUT_DIR     = "data/football/leagues"
-STANDINGS_PATH = "data/football/standings/Standings.json"
+OUTPUT_DIR = "data/football/leagues"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 LEAGUES = {
@@ -62,21 +60,6 @@ LEAGUES = {
   "Kings_Cup_Saudi":  {"id": "ksa.kings.cup",       "json": "Kings_Cup_Saudi.json"},
 }
 
-CUPS_AND_INTL = {
-    "FIFA_Club_World_Cup",
-    "UEFA_Champions_League",
-    "UEFA_Europa_League",
-    "FA_Cup",
-    "EFL_Cup",
-    "Copa_del_Rey",
-    "DFB_Pokal",
-    "Coppa_Italia",
-    "Coupe_de_France",
-    "KNVB_Cup",
-    "Taca_de_Portugal",
-    "Kings_Cup_Saudi",
-}
-
 # ─────────────────────────────────────────────
 # DATES : J-1 ET J-2 UNIQUEMENT
 # ─────────────────────────────────────────────
@@ -101,14 +84,6 @@ DATE_FORMATS = [
     "%m/%d/%Y",
 ]
 
-def parse_date(date_str: str):
-    for fmt in DATE_FORMATS:
-        try:
-            return datetime.strptime(date_str.strip(), fmt)
-        except ValueError:
-            continue
-    return None
-
 def parse_date_formats(date_str):
     for fmt in ("%A, %B %d, %Y", "%Y%m%d", "%Y-%m-%d"):
         try:
@@ -120,185 +95,6 @@ def parse_date_formats(date_str):
 def is_target_date(date_str):
     normalized = parse_date_formats(date_str)
     return normalized in target_dates
-
-# ─────────────────────────────────────────────
-# LABEL SAISON
-# ─────────────────────────────────────────────
-
-def get_saison_label(saison_offset: int) -> str:
-    current_year = datetime.now().year
-    start = current_year - saison_offset - 1
-    end   = current_year - saison_offset
-    return f"{start}/{end}"
-
-# ─────────────────────────────────────────────
-# CHARGEMENT STANDINGS
-# ─────────────────────────────────────────────
-
-def load_standings():
-    if not os.path.exists(STANDINGS_PATH):
-        print(f"  [WARN] Standings introuvable : {STANDINGS_PATH}")
-        return {}
-    with open(STANDINGS_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-standings_raw = load_standings()
-
-# ─────────────────────────────────────────────
-# RÉSOLUTION STANDING (mono-phase ou multi-phase)
-# ─────────────────────────────────────────────
-
-def resolve_standing(league_key: str) -> dict | None:
-    """
-    Retourne le bloc standing plat {"total_journees", "standings", ...}
-    adapté à la ligue, qu'elle soit mono-phase ou multi-phase.
-    Pour les ligues multi-phases (Belgium, Mexico…), on sélectionne
-    la phase dont le GP max est le plus élevé (phase la plus avancée).
-    Retourne None si introuvable ou vide.
-    """
-    if league_key not in standings_raw:
-        return None
-
-    standing = standings_raw[league_key]
-
-    # Déjà une structure plate standard
-    if "total_journees" in standing:
-        return standing
-
-    # Structure multi-phase : {"regular_season": {...}, "playoffs": {...}}
-    best_phase = None
-    best_gp    = -1
-    for phase_data in standing.values():
-        if not isinstance(phase_data, dict):
-            continue
-        entries = phase_data.get("standings", [])
-        if not entries:
-            continue
-        gp = max(
-            (e.get("stats", {}).get("GP", 0) for e in entries),
-            default=0
-        )
-        if gp > best_gp:
-            best_gp    = gp
-            best_phase = phase_data
-
-    return best_phase  # peut être None si aucune phase valide
-
-# ─────────────────────────────────────────────
-# ENRICHISSEMENT JOURNÉE
-# ─────────────────────────────────────────────
-
-def enrich_journee(matches_list: list, league_key: str) -> list:
-    standing = resolve_standing(league_key)
-    if standing is None:
-        return matches_list
-
-    TOTAL_JOURNEES = standing.get("total_journees")
-    if not TOTAL_JOURNEES:
-        return matches_list
-
-    gp_per_team = {
-        entry["name"]: entry["stats"]["GP"]
-        for entry in standing.get("standings", [])
-        if entry.get("stats", {}).get("GP") is not None
-    }
-
-    if not gp_per_team:
-        return matches_list
-
-    CURRENT_JOURNEE = max(gp_per_team.values())
-
-    def sort_key(m):
-        d = parse_date(m.get("date", ""))
-        return d if d else datetime.min
-
-    matches_sorted = sorted(matches_list, key=sort_key, reverse=True)
-
-    team_matches_order = defaultdict(list)
-    for m in matches_sorted:
-        t1 = m.get("team1")
-        t2 = m.get("team2")
-        if t1:
-            team_matches_order[t1].append(m)
-        if t2:
-            team_matches_order[t2].append(m)
-
-    match_journee = {}
-
-    for team, team_matches in team_matches_order.items():
-        journee       = gp_per_team.get(team, CURRENT_JOURNEE)
-        saison_offset = 0
-
-        for m in team_matches:
-            game_id = m.get("gameId")
-            if not game_id:
-                journee -= 1
-                if journee < 1:
-                    saison_offset += 1
-                    journee = TOTAL_JOURNEES
-                continue
-
-            if game_id not in match_journee:
-                match_journee[game_id] = {}
-
-            match_journee[game_id][f"journee_team_{team}"] = {
-                "journee":       journee,
-                "saison_offset": saison_offset
-            }
-
-            journee -= 1
-            if journee < 1:
-                saison_offset += 1
-                journee = TOTAL_JOURNEES
-
-    def consolidate(game_id, m):
-        data = match_journee.get(game_id, {})
-        t1   = m.get("team1")
-        t2   = m.get("team2")
-
-        key1 = f"journee_team_{t1}" if t1 else None
-        key2 = f"journee_team_{t2}" if t2 else None
-
-        if key1 and key1 in data:
-            return data[key1]
-        if key2 and key2 in data:
-            return data[key2]
-
-        values = list(data.values())
-        if values:
-            avg_j = round(sum(v["journee"] for v in values) / len(values))
-            avg_s = round(sum(v["saison_offset"] for v in values) / len(values))
-            return {"journee": avg_j, "saison_offset": avg_s}
-
-        return {"journee": None, "saison_offset": None}
-
-    enriched = []
-    for m in matches_list:
-        mc      = copy.deepcopy(m)
-        game_id = mc.get("gameId")
-
-        if mc.get("journee") is not None:
-            enriched.append(mc)
-            continue
-
-        if game_id:
-            result        = consolidate(game_id, mc)
-            journee       = result["journee"]
-            saison_offset = result["saison_offset"]
-
-            mc["journee"]         = journee
-            mc["saison_offset"]   = saison_offset
-            mc["saison"]          = get_saison_label(saison_offset) if saison_offset is not None else None
-            mc["saison_terminee"] = (CURRENT_JOURNEE >= TOTAL_JOURNEES)
-        else:
-            mc["journee"]         = None
-            mc["saison_offset"]   = None
-            mc["saison"]          = None
-            mc["saison_terminee"] = None
-
-        enriched.append(mc)
-
-    return enriched
 
 # ─────────────────────────────────────────────
 # UTILS
@@ -559,12 +355,6 @@ try:
 
                 status = f"{odds['home']} / {odds['draw']} / {odds['away']}" if odds else "pas de cotes"
                 print(f"    ✅ {item['team1']} vs {item['team2']} → {status}")
-
-        if league_name not in CUPS_AND_INTL:
-            matches_list  = list(matches.values())
-            enriched_list = enrich_journee(matches_list, league_name)
-            matches       = {m["gameId"]: m for m in enriched_list if "gameId" in m}
-            print(f"  📆 Journées mises à jour")
 
         tmp_path = json_path + ".tmp"
         with open(tmp_path, "w", encoding="utf-8") as f:

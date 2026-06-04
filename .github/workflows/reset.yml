@@ -1,0 +1,32 @@
+name: Reset Journées
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run reset_journees.py
+        run: python scripts/reset_journees.py
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add data/football/leagues/
+          git diff --cached --quiet && echo "Rien à committer" && exit 0
+          git commit -m "🧹 Reset journées [$(date -u '+%Y-%m-%d %H:%M')] [skip ci]"
+          git push origin main

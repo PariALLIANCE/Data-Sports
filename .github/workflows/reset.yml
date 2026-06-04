@@ -18,8 +18,15 @@ jobs:
         with:
           python-version: "3.11"
 
+      # 4️⃣ Synchronisation avec la branche main avant exécution
+      - name: Sync with remote main
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
       - name: Run reset.py
-        run: python scripts/reset.py
+        run: python scripts/reset_journees.py
 
       - name: Commit & Push
         run: |

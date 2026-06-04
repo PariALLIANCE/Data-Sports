@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Run reset_journees.py
+      - name: Run reset.py
         run: python scripts/reset_journees.py
 
       - name: Commit & Push

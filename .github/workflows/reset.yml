@@ -26,7 +26,7 @@ jobs:
           git pull --rebase origin main
 
       - name: Run reset_journees.py
-        run: python scripts/reset_journees.py
+        run: python scripts/reset.py
 
       - name: Commit & Push
         run: |

@@ -1,1 +1,902 @@
-[]
+[
+  {
+    "gameId": "401873965",
+    "date": "2026-06-05",
+    "time_utc": "19:00",
+    "league": "Brazil_Serie_B",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873965/juventude-operario-pr",
+    "home": {
+      "team": "Operário PR",
+      "team_id": "18187",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+      "url": "https://www.espn.com/soccer/team/_/id/18187"
+    },
+    "away": {
+      "team": "Juventude",
+      "team_id": null,
+      "logo": null,
+      "url": null
+    },
+    "odds": {
+      "home": 2.25,
+      "away": 3.9,
+      "draw": 2.8
+    },
+    "recent_form": {
+      "home": [
+        {
+          "gameId": "401860165",
+          "date": "2026-05-31",
+          "team1": "Ceará",
+          "team2": "Operário PR",
+          "score": "1 - 2",
+          "title": "Ceará VS Operário PR",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860165/operario-pr-ceara",
+          "stats": {
+            "Possession": {
+              "home": "52.7\n%",
+              "away": "47.3\n%"
+            },
+            "Shots on Goal": {
+              "home": "8",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "20",
+              "away": "9"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "7",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "7"
+            }
+          },
+          "odds": {
+            "home": 2.05,
+            "away": 4.1,
+            "draw": 3.05
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860159",
+          "date": "2026-05-24",
+          "team1": "Operário PR",
+          "team2": "Criciúma",
+          "score": "1 - 1",
+          "title": "Operário PR VS Criciúma",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860159/criciuma-operario-pr",
+          "stats": {
+            "Possession": {
+              "home": "50.4\n%",
+              "away": "49.6\n%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "6"
+            },
+            "Shot Attempts": {
+              "home": "20",
+              "away": "13"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "8",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 2.2,
+            "away": 3.7,
+            "draw": 3.05
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860143",
+          "date": "2026-05-16",
+          "team1": "Operário PR",
+          "team2": "Náutico",
+          "score": "2 - 6",
+          "title": "Operário PR VS Náutico",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860143/nautico-operario-pr",
+          "stats": {
+            "Possession": {
+              "home": "45.5%",
+              "away": "54.5%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "8"
+            },
+            "Shot Attempts": {
+              "home": "17",
+              "away": "18"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "7",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
+            }
+          },
+          "odds": {
+            "home": 2.15,
+            "away": 3.6,
+            "draw": 3.2
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860122",
+          "date": "2026-05-03",
+          "team1": "Operário PR",
+          "team2": "Londrina",
+          "score": "3 - 0",
+          "title": "Operário PR VS Londrina",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860122/londrina-operario-pr",
+          "stats": {
+            "Possession": {
+              "home": "55.4%",
+              "away": "44.6%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "14",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "5"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 1.8,
+            "away": 5.25,
+            "draw": 3.25
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860104",
+          "date": "2026-04-18",
+          "team1": "Vila Nova",
+          "team2": "Operário PR",
+          "score": "2 - 1",
+          "title": "Vila Nova VS Operário PR",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860104/operario-pr-vila-nova",
+          "stats": {
+            "Possession": {
+              "home": "45%",
+              "away": "55%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "7",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "3",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.3,
+            "away": 3.5,
+            "draw": 3.0
+          },
+          "journee": 8,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860094",
+          "date": "2026-04-12",
+          "team1": "Operário PR",
+          "team2": "Cuiabá",
+          "score": "0 - 0",
+          "title": "Operário PR VS Cuiabá",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860094/cuiaba-operario-pr",
+          "stats": {
+            "Possession": {
+              "home": "59.4%",
+              "away": "40.6%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "13",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "5"
+            },
+            "Corner Kicks": {
+              "home": "2",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
+            }
+          },
+          "odds": {
+            "home": 1.87,
+            "away": 4.9,
+            "draw": 3.15
+          },
+          "journee": 7,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ],
+      "away": [
+        {
+          "gameId": "401860167",
+          "date": "20260528",
+          "team1": "Juventude",
+          "team2": "América Mineiro",
+          "score": "3 - 0",
+          "title": "Juventude VS América Mineiro",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860167/america-mineiro-juventude",
+          "stats": {
+            "Possession": {
+              "home": "37.4\n%",
+              "away": "62.6\n%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "8"
+            },
+            "Shot Attempts": {
+              "home": "16",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "8",
+              "away": "3"
+            }
+          },
+          "odds": {
+            "home": 1.95,
+            "away": 4.6,
+            "draw": 3.05
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860156",
+          "date": "2026-05-23",
+          "team1": "Juventude",
+          "team2": "Sport",
+          "score": "0 - 1",
+          "title": "Juventude VS Sport",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860156/sport-juventude",
+          "stats": {
+            "Possession": {
+              "home": "52.3\n%",
+              "away": "47.7\n%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "16",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "4"
+            },
+            "Corner Kicks": {
+              "home": "9",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "2"
+            }
+          },
+          "odds": {
+            "home": 2.2,
+            "away": 3.45,
+            "draw": 3.15
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860148",
+          "date": "2026-05-17",
+          "team1": "Athletic",
+          "team2": "Juventude",
+          "score": "1 - 1",
+          "title": "Athletic VS Juventude",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860148/juventude-athletic",
+          "stats": {
+            "Possession": {
+              "home": "43.6%",
+              "away": "56.4%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "4"
+            },
+            "Shot Attempts": {
+              "home": "18",
+              "away": "10"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          },
+          "odds": {
+            "home": 2.65,
+            "away": 2.95,
+            "draw": 2.95
+          },
+          "journee": 10,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860128",
+          "date": "2026-05-03",
+          "team1": "Atlético Goianiense",
+          "team2": "Juventude",
+          "score": "0 - 0",
+          "title": "Atlético Goianiense VS Juventude",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860128/juventude-atletico-goianiense",
+          "stats": {
+            "Possession": {
+              "home": "49.7%",
+              "away": "50.3%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "16",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "3"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "6"
+            }
+          },
+          "odds": {
+            "home": 2.2,
+            "away": 3.8,
+            "draw": 2.95
+          },
+          "journee": 9,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860110",
+          "date": "2026-04-18",
+          "team1": "CRB",
+          "team2": "Juventude",
+          "score": "0 - 1",
+          "title": "CRB VS Juventude",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860110/juventude-crb",
+          "stats": {
+            "Possession": {
+              "home": "57.1%",
+              "away": "42.9%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "2"
+            },
+            "Shot Attempts": {
+              "home": "15",
+              "away": "8"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "2"
+            },
+            "Corner Kicks": {
+              "home": "5",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "6"
+            }
+          },
+          "odds": {
+            "home": 2.25,
+            "away": 3.55,
+            "draw": 3.05
+          },
+          "journee": 8,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        },
+        {
+          "gameId": "401860095",
+          "date": "2026-04-11",
+          "team1": "Juventude",
+          "team2": "Goiás",
+          "score": "2 - 0",
+          "title": "Juventude VS Goiás",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860095/goias-juventude",
+          "stats": {
+            "Possession": {
+              "home": "42.2%",
+              "away": "57.8%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "1"
+            },
+            "Shot Attempts": {
+              "home": "10",
+              "away": "5"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "6",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "6"
+            }
+          },
+          "odds": {
+            "home": 2.3,
+            "away": 3.4,
+            "draw": 3.1
+          },
+          "journee": 7,
+          "saison_offset": 0,
+          "saison": "2025/2026",
+          "saison_terminee": false
+        }
+      ]
+    },
+    "h2h": [],
+    "league_standing": {
+      "total_journees": 38,
+      "position_zones": [
+        {
+          "positions": "1-4",
+          "label": "Promotion Serie A",
+          "type": "avantage"
+        },
+        {
+          "positions": "17-20",
+          "label": "Relégation Serie C",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "Sport",
+          "stats": {
+            "GP": 11,
+            "W": 6,
+            "D": 4,
+            "L": 1,
+            "F": 15,
+            "A": 7,
+            "GD": 8,
+            "P": 22
+          },
+          "zone": {
+            "label": "Promotion Serie A",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "Vila Nova",
+          "stats": {
+            "GP": 11,
+            "W": 6,
+            "D": 4,
+            "L": 1,
+            "F": 17,
+            "A": 11,
+            "GD": 6,
+            "P": 22
+          },
+          "zone": {
+            "label": "Promotion Serie A",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 3,
+          "name": "São Bernardo",
+          "stats": {
+            "GP": 11,
+            "W": 6,
+            "D": 3,
+            "L": 2,
+            "F": 17,
+            "A": 8,
+            "GD": 9,
+            "P": 21
+          },
+          "zone": {
+            "label": "Promotion Serie A",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 4,
+          "name": "Náutico",
+          "stats": {
+            "GP": 11,
+            "W": 6,
+            "D": 1,
+            "L": 4,
+            "F": 16,
+            "A": 11,
+            "GD": 5,
+            "P": 19
+          },
+          "zone": {
+            "label": "Promotion Serie A",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 5,
+          "name": "Fortaleza",
+          "stats": {
+            "GP": 11,
+            "W": 5,
+            "D": 3,
+            "L": 3,
+            "F": 14,
+            "A": 11,
+            "GD": 3,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 6,
+          "name": "Goiás",
+          "stats": {
+            "GP": 11,
+            "W": 5,
+            "D": 2,
+            "L": 4,
+            "F": 12,
+            "A": 13,
+            "GD": -1,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 7,
+          "name": "Novorizontino",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 5,
+            "L": 2,
+            "F": 14,
+            "A": 11,
+            "GD": 3,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 8,
+          "name": "Criciúma",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 5,
+            "L": 2,
+            "F": 13,
+            "A": 10,
+            "GD": 3,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 9,
+          "name": "Athletic",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 5,
+            "L": 2,
+            "F": 13,
+            "A": 11,
+            "GD": 2,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "Juventude",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 4,
+            "L": 3,
+            "F": 9,
+            "A": 6,
+            "GD": 3,
+            "P": 16
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Operário PR",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 4,
+            "L": 3,
+            "F": 12,
+            "A": 14,
+            "GD": -2,
+            "P": 16
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "CRB",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 2,
+            "L": 5,
+            "F": 17,
+            "A": 17,
+            "GD": 0,
+            "P": 14
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "Ceará",
+          "stats": {
+            "GP": 11,
+            "W": 3,
+            "D": 4,
+            "L": 4,
+            "F": 12,
+            "A": 13,
+            "GD": -1,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "Atlético Goianiense",
+          "stats": {
+            "GP": 11,
+            "W": 3,
+            "D": 4,
+            "L": 4,
+            "F": 10,
+            "A": 11,
+            "GD": -1,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 15,
+          "name": "Cuiabá",
+          "stats": {
+            "GP": 11,
+            "W": 2,
+            "D": 7,
+            "L": 2,
+            "F": 6,
+            "A": 5,
+            "GD": 1,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 16,
+          "name": "Botafogo-SP",
+          "stats": {
+            "GP": 11,
+            "W": 2,
+            "D": 4,
+            "L": 5,
+            "F": 11,
+            "A": 11,
+            "GD": 0,
+            "P": 10
+          },
+          "zone": null
+        },
+        {
+          "position": 17,
+          "name": "Avaí",
+          "stats": {
+            "GP": 11,
+            "W": 2,
+            "D": 4,
+            "L": 5,
+            "F": 11,
+            "A": 15,
+            "GD": -4,
+            "P": 10
+          },
+          "zone": {
+            "label": "Relégation Serie C",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 18,
+          "name": "Londrina",
+          "stats": {
+            "GP": 11,
+            "W": 2,
+            "D": 2,
+            "L": 7,
+            "F": 12,
+            "A": 19,
+            "GD": -7,
+            "P": 8
+          },
+          "zone": {
+            "label": "Relégation Serie C",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 19,
+          "name": "Ponte Preta",
+          "stats": {
+            "GP": 11,
+            "W": 2,
+            "D": 2,
+            "L": 7,
+            "F": 9,
+            "A": 20,
+            "GD": -11,
+            "P": 8
+          },
+          "zone": {
+            "label": "Relégation Serie C",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 20,
+          "name": "América Mineiro",
+          "stats": {
+            "GP": 11,
+            "W": 0,
+            "D": 3,
+            "L": 8,
+            "F": 6,
+            "A": 22,
+            "GD": -16,
+            "P": 3
+          },
+          "zone": {
+            "label": "Relégation Serie C",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  }
+]

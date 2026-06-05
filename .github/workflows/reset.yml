@@ -37,5 +37,6 @@ jobs:
           git stash
           git pull --rebase origin main
           git stash pop
+          git add data/football/leagues/
           git commit -m "🧹 Reset journées [$(date -u '+%Y-%m-%d %H:%M')] [skip ci]"
           git push origin main

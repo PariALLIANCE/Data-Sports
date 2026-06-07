@@ -41,7 +41,6 @@ def get_soup(driver, url, wait_selector=None, timeout=15):
 # ================= DOSSIERS =================
 BASE_DIR      = "data/football"
 TEAMS_DIR     = os.path.join(BASE_DIR, "teams")
-LEAGUES_DIR   = os.path.join(BASE_DIR, "leagues")
 STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
 
 os.makedirs(BASE_DIR, exist_ok=True)
@@ -51,7 +50,6 @@ TEAMS_FILE  = os.path.join(TEAMS_DIR, "football_teams.json")
 
 # ================= LIGUES =================
 LEAGUES = {
-    # ── Ligues ────────────────────────────────────────────────────────────
     "England_Premier_League":        "eng.1",
     "Spain_Laliga":                  "esp.1",
     "Germany_Bundesliga":            "ger.1",
@@ -84,7 +82,6 @@ LEAGUES = {
     "UEFA_Champions_League":         "uefa.champions",
     "UEFA_Europa_League":            "uefa.europa",
     "FIFA_Club_World_Cup":           "fifa.cwc",
-    # ── Cups ──────────────────────────────────────────────────────────────
     "FA_Cup":                        "eng.fa",
     "EFL_Cup":                       "eng.league_cup",
     "Copa_del_Rey":                  "esp.copa_del_rey",
@@ -171,32 +168,88 @@ def extract_ml_odds(driver, match_url):
         print(f"  ⚠️ Erreur cotes : {e}")
         return None
 
-# ================= FORMES RÉCENTES =================
-def load_league_history(league_name):
-    path = os.path.join(LEAGUES_DIR, f"{league_name}.json")
-    if not os.path.exists(path):
-        return []
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+# ================= EXTRACTION STATS DU MATCH =================
+def extract_match_stats(driver, match_url):
+    """
+    Scrape la page ESPN du match pour récupérer les stats clés.
+    Retourne un dict { label: { home: val, away: val } } ou {} si rien trouvé.
 
-def recent_matches(team_name, history, limit=6):
-    norm = normalize(team_name)
-    games = [
-        {**m, "date": convert_date_to_iso(m.get("date", ""))}
-        for m in history
-        if normalize(m.get("team1", "")) == norm or normalize(m.get("team2", "")) == norm
-    ]
-    return sorted(games, key=lambda x: x.get("date", ""), reverse=True)[:limit]
+    ESPN affiche les stats dans une section identifiable via
+    la classe 'StatCellContent' ou des blocs 'GameStat'.
+    On tente plusieurs sélecteurs pour couvrir les variantes de layout.
+    """
+    stats = {}
+    try:
+        # La page du match a les stats sous l'onglet "Match Stats"
+        # ESPN charge les stats dans le HTML initial si le match est terminé,
+        # sinon elles peuvent être absentes pour les matchs à venir.
+        soup = get_soup(
+            driver,
+            match_url,
+            wait_selector=".StatCellContent, .GameStat, [class*='gamepackage-matchup-charts']",
+            timeout=15,
+        )
 
-def h2h_matches(t1, t2, history, limit=6):
-    n1, n2 = normalize(t1), normalize(t2)
-    games = [
-        {**m, "date": convert_date_to_iso(m.get("date", ""))}
-        for m in history
-        if (normalize(m.get("team1", "")) in (n1, n2) and
-            normalize(m.get("team2", "")) in (n1, n2))
-    ]
-    return sorted(games, key=lambda x: x.get("date", ""), reverse=True)[:limit]
+        # ── Tentative 1 : layout "StatCellContent" (matchs terminés récents) ──
+        stat_rows = soup.select("div.StatCellContent")
+        if stat_rows:
+            # Structure : [home_val, label, away_val] répété
+            values = [el.get_text(strip=True) for el in stat_rows]
+            i = 0
+            while i + 2 < len(values):
+                home_val = values[i]
+                label    = values[i + 1]
+                away_val = values[i + 2]
+                if label and not label.replace(" ", "").isdigit():
+                    stats[label] = {"home": home_val, "away": away_val}
+                    i += 3
+                else:
+                    i += 1
+            if stats:
+                return stats
+
+        # ── Tentative 2 : layout "GameStat" ──
+        game_stat_rows = soup.select("div.GameStat")
+        if game_stat_rows:
+            for row in game_stat_rows:
+                cols = row.select("div")
+                texts = [c.get_text(strip=True) for c in cols if c.get_text(strip=True)]
+                if len(texts) >= 3:
+                    stats[texts[1]] = {"home": texts[0], "away": texts[2]}
+            if stats:
+                return stats
+
+        # ── Tentative 3 : layout gamepackage (ancienne structure ESPN) ──
+        gp_rows = soup.select("div.gamepackage-matchup-charts tr")
+        if gp_rows:
+            for row in gp_rows:
+                cells = row.select("td")
+                if len(cells) == 3:
+                    home_val = cells[0].get_text(strip=True)
+                    label    = cells[1].get_text(strip=True)
+                    away_val = cells[2].get_text(strip=True)
+                    if label:
+                        stats[label] = {"home": home_val, "away": away_val}
+            if stats:
+                return stats
+
+        # ── Tentative 4 : sélecteur générique basé sur aria-label / data-stat ──
+        rows = soup.select("tr[data-stat], div[data-stat]")
+        for row in rows:
+            label    = row.get("data-stat", "")
+            children = row.select("td, div.value")
+            if len(children) >= 2 and label:
+                stats[label] = {
+                    "home": children[0].get_text(strip=True),
+                    "away": children[1].get_text(strip=True),
+                }
+        if stats:
+            return stats
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur stats : {e}")
+
+    return {}  # stats indisponibles (match à venir, page incomplète, etc.)
 
 # ================= CHARGEMENT ÉQUIPES =================
 if not os.path.exists(TEAMS_FILE):
@@ -221,9 +274,7 @@ else:
     print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
 
 # ================= SCRAPING PRINCIPAL =================
-games_of_day  = {}
-history_cache = {}
-
+games_of_day = {}
 driver = make_driver()
 
 try:
@@ -241,10 +292,6 @@ try:
             print(f"  ⚠️ Erreur réseau : {e}")
             continue
 
-        if league_name not in history_cache:
-            history_cache[league_name] = load_league_history(league_name)
-
-        history  = history_cache[league_name]
         standing = standings_data.get(league_name, [])
 
         for table in soup.select("div.ResponsiveTable"):
@@ -277,8 +324,13 @@ try:
                 t1_data = teams_index.get(league_name, {}).get(team1.lower(), {})
                 t2_data = teams_index.get(league_name, {}).get(team2.lower(), {})
 
+                # ── Cotes ──
                 ml = extract_ml_odds(driver, match_url)
                 time.sleep(1)
+
+                # ── Stats ──
+                match_stats = extract_match_stats(driver, match_url)
+                time.sleep(0.5)
 
                 games_of_day[game_id] = {
                     "gameId":    game_id,
@@ -306,24 +358,21 @@ try:
                         "draw": ml["draw"] if ml else None,
                     },
 
-                    "recent_form": {
-                        "home": recent_matches(team1, history),
-                        "away": recent_matches(team2, history),
-                    },
-                    "h2h": h2h_matches(team1, team2, history),
-
-                    "league_standing": standing,
+                    "stats": match_stats,  # {} si match à venir / stats indisponibles
                 }
 
-                status = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
-                print(f"  {team1} vs {team2} → {status}")
+                odds_str  = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
+                stats_str = f"📊 {len(match_stats)} stats" if match_stats else "📊 pas de stats"
+                print(f"  {team1} vs {team2} → {odds_str} | {stats_str}")
                 time.sleep(0.5)
 
 finally:
     driver.quit()
 
-# ================= SAUVEGARDE =================
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+# ================= SAUVEGARDE ATOMIQUE =================
+tmp_file = OUTPUT_FILE + ".tmp"
+with open(tmp_file, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
+os.replace(tmp_file, OUTPUT_FILE)
 
 print(f"\n💾 {len(games_of_day)} matchs sauvegardés → {OUTPUT_FILE}")

@@ -2183,6 +2183,24 @@
             },
             {
                 "position": 4,
+                "name": "Criciúma",
+                "stats": {
+                    "GP": 12,
+                    "W": 5,
+                    "D": 5,
+                    "L": 2,
+                    "F": 14,
+                    "A": 10,
+                    "GD": 4,
+                    "P": 20
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
                 "name": "Náutico",
                 "stats": {
                     "GP": 11,
@@ -2194,13 +2212,10 @@
                     "GD": 5,
                     "P": 19
                 },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
+                "zone": null
             },
             {
-                "position": 5,
+                "position": 6,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 12,
@@ -2215,7 +2230,7 @@
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Fortaleza",
                 "stats": {
                     "GP": 11,
@@ -2230,7 +2245,7 @@
                 "zone": null
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "Goiás",
                 "stats": {
                     "GP": 11,
@@ -2245,7 +2260,7 @@
                 "zone": null
             },
             {
-                "position": 8,
+                "position": 9,
                 "name": "Novorizontino",
                 "stats": {
                     "GP": 11,
@@ -2254,21 +2269,6 @@
                     "L": 2,
                     "F": 14,
                     "A": 11,
-                    "GD": 3,
-                    "P": 17
-                },
-                "zone": null
-            },
-            {
-                "position": 9,
-                "name": "Criciúma",
-                "stats": {
-                    "GP": 11,
-                    "W": 4,
-                    "D": 5,
-                    "L": 2,
-                    "F": 13,
-                    "A": 10,
                     "GD": 3,
                     "P": 17
                 },
@@ -2401,13 +2401,13 @@
                 "position": 18,
                 "name": "Londrina",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 2,
                     "D": 2,
-                    "L": 7,
+                    "L": 8,
                     "F": 12,
-                    "A": 19,
-                    "GD": -7,
+                    "A": 20,
+                    "GD": -8,
                     "P": 8
                 },
                 "zone": {

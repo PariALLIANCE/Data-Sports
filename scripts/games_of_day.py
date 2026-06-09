@@ -120,9 +120,6 @@ def us_to_decimal(val):
     except:
         return None
 
-def normalize(name):
-    return name.lower().strip() if name else ""
-
 def extract_team_id_from_logo(logo_url):
     """Extrait le team_id depuis l'URL du logo ESPN.
     Ex: https://a.espncdn.com/i/teamlogos/soccer/500/6272.png → '6272'
@@ -132,28 +129,25 @@ def extract_team_id_from_logo(logo_url):
     match = re.search(r"/(\d+)\.png$", logo_url)
     return match.group(1) if match else None
 
-# ================= EXTRACTION LOGOS DEPUIS LA PAGE SCHEDULE =================
-def extract_logos_from_row(row):
+# ================= EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH =================
+def extract_logos_from_match_page(soup):
     """
-    Extrait les URLs des logos home/away depuis les <img data-testid="prism-image">
-    présents dans la ligne du tableau de schedule ESPN.
-    Retourne (logo_home, logo_away) ou (None, None) si non trouvés.
+    Extrait les logos home/away depuis la page ESPN du match.
+    Les deux premiers img[data-testid="prism-image"] correspondent
+    au logo home puis au logo away dans le header du match.
+    Retourne (logo_home, logo_away).
     """
-    imgs = row.select('img[data-testid="prism-image"]')
+    imgs = soup.select('img[data-testid="prism-image"]')
     logo_home = imgs[0]["src"] if len(imgs) >= 1 else None
     logo_away = imgs[1]["src"] if len(imgs) >= 2 else None
     return logo_home, logo_away
 
 # ================= EXTRACTION COTES ESPN =================
-def extract_ml_odds(driver, match_url):
+def extract_ml_odds(soup):
+    """
+    Extrait les cotes moneyline depuis la soup déjà chargée de la page du match.
+    """
     try:
-        soup = get_soup(
-            driver,
-            match_url,
-            wait_selector='[data-testid="OddsCell"]',
-            timeout=15,
-        )
-
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
         if len(cells) < 7:
             return None
@@ -188,16 +182,12 @@ def extract_ml_odds(driver, match_url):
         return None
 
 # ================= EXTRACTION STATS DU MATCH =================
-def extract_match_stats(driver, match_url):
+def extract_match_stats(soup):
+    """
+    Extrait les stats depuis la soup déjà chargée de la page du match.
+    """
     stats = {}
     try:
-        soup = get_soup(
-            driver,
-            match_url,
-            wait_selector=".StatCellContent, .GameStat, [class*='gamepackage-matchup-charts']",
-            timeout=15,
-        )
-
         # ── Tentative 1 : layout "StatCellContent" ──
         stat_rows = soup.select("div.StatCellContent")
         if stat_rows:
@@ -313,18 +303,25 @@ try:
                 match_url = "https://www.espn.com" + score_tag["href"]
                 raw_time  = time_tag.text.strip() if time_tag else None
 
-                # ── Logos extraits directement depuis la ligne du tableau ──
-                logo_home, logo_away = extract_logos_from_row(row)
+                # ── Chargement unique de la page du match ──
+                match_soup = get_soup(
+                    driver,
+                    match_url,
+                    wait_selector='img[data-testid="prism-image"], [data-testid="OddsCell"]',
+                    timeout=15,
+                )
+                time.sleep(0.5)
+
+                # ── Logos & IDs extraits depuis la page du match ──
+                logo_home, logo_away = extract_logos_from_match_page(match_soup)
                 team_id_home = extract_team_id_from_logo(logo_home)
                 team_id_away = extract_team_id_from_logo(logo_away)
 
-                # ── Cotes ──
-                ml = extract_ml_odds(driver, match_url)
-                time.sleep(1)
+                # ── Cotes extraites depuis la même soup ──
+                ml = extract_ml_odds(match_soup)
 
-                # ── Stats ──
-                match_stats = extract_match_stats(driver, match_url)
-                time.sleep(0.5)
+                # ── Stats extraites depuis la même soup ──
+                match_stats = extract_match_stats(match_soup)
 
                 games_of_day[game_id] = {
                     "gameId":    game_id,

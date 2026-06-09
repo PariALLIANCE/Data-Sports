@@ -121,9 +121,6 @@ def us_to_decimal(val):
         return None
 
 def extract_team_id_from_logo(logo_url):
-    """Extrait le team_id depuis l'URL du logo ESPN.
-    Ex: https://a.espncdn.com/i/teamlogos/soccer/500/6272.png → '6272'
-    """
     if not logo_url:
         return None
     match = re.search(r"/(\d+)\.png$", logo_url)
@@ -131,12 +128,6 @@ def extract_team_id_from_logo(logo_url):
 
 # ================= EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH =================
 def extract_logos_from_match_page(soup):
-    """
-    Extrait les logos home/away depuis la page ESPN du match.
-    Les deux premiers img[data-testid="prism-image"] correspondent
-    au logo home puis au logo away dans le header du match.
-    Retourne (logo_home, logo_away).
-    """
     imgs = soup.select('img[data-testid="prism-image"]')
     logo_home = imgs[0]["src"] if len(imgs) >= 1 else None
     logo_away = imgs[1]["src"] if len(imgs) >= 2 else None
@@ -144,9 +135,6 @@ def extract_logos_from_match_page(soup):
 
 # ================= EXTRACTION COTES ESPN =================
 def extract_ml_odds(soup):
-    """
-    Extrait les cotes moneyline depuis la soup déjà chargée de la page du match.
-    """
     try:
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
         if len(cells) < 7:
@@ -183,12 +171,8 @@ def extract_ml_odds(soup):
 
 # ================= EXTRACTION STATS DU MATCH =================
 def extract_match_stats(soup):
-    """
-    Extrait les stats depuis la soup déjà chargée de la page du match.
-    """
     stats = {}
     try:
-        # ── Tentative 1 : layout "StatCellContent" ──
         stat_rows = soup.select("div.StatCellContent")
         if stat_rows:
             values = [el.get_text(strip=True) for el in stat_rows]
@@ -205,7 +189,6 @@ def extract_match_stats(soup):
             if stats:
                 return stats
 
-        # ── Tentative 2 : layout "GameStat" ──
         game_stat_rows = soup.select("div.GameStat")
         if game_stat_rows:
             for row in game_stat_rows:
@@ -216,7 +199,6 @@ def extract_match_stats(soup):
             if stats:
                 return stats
 
-        # ── Tentative 3 : layout gamepackage (ancienne structure ESPN) ──
         gp_rows = soup.select("div.gamepackage-matchup-charts tr")
         if gp_rows:
             for row in gp_rows:
@@ -230,7 +212,6 @@ def extract_match_stats(soup):
             if stats:
                 return stats
 
-        # ── Tentative 4 : sélecteur générique data-stat ──
         rows = soup.select("tr[data-stat], div[data-stat]")
         for row in rows:
             label    = row.get("data-stat", "")
@@ -247,6 +228,176 @@ def extract_match_stats(soup):
         print(f"  ⚠️ Erreur stats : {e}")
 
     return {}
+
+# ================= EXTRACTION H2H =================
+def extract_h2h(soup):
+    """
+    Extrait les 5 derniers matchs H2H depuis la section Head-To-Head ESPN.
+    Retourne une liste de dicts avec date, competition, score_home, score_away,
+    venue (@HOME ou @AWAY depuis la perspective de l'équipe home du match du jour),
+    match_url et résultat (W/D/L) du point de vue de l'équipe home du match du jour.
+    """
+    h2h_list = []
+    try:
+        # Sélecteur pour la section H2H (nouveau layout "prism")
+        section = soup.find("section", {"data-testid": "prism-LayoutCard"})
+        if not section:
+            # Fallback ancien layout
+            section = soup.find("section", class_=re.compile(r".*Head.*To.*Head.*", re.I))
+        if not section:
+            return h2h_list
+
+        # Chaque ligne de match H2H
+        rows = section.select("div.mLASH.rpjsZ.TzFuW")
+        for row in rows:
+            try:
+                # Lien du match
+                link_tag = row.select_one("a[data-game-link='true']")
+                match_url = ("https://www.espn.com" + link_tag["href"]) if link_tag and link_tag.get("href") else None
+
+                # Scores : deux blocs score (left = home de ce match H2H, right = away)
+                score_divs = row.select("div.mLASH.RRvbN")
+                score_left  = score_divs[0].select_one("div.mLASH.LiUVm, div.mLASH.rbmla")
+                score_right = score_divs[1].select_one("div.mLASH.LiUVm, div.mLASH.rbmla") if len(score_divs) > 1 else None
+
+                # On récupère uniquement le chiffre (pas le SVG winner arrow)
+                def clean_score(div):
+                    if not div:
+                        return None
+                    # Retirer les sous-éléments (ex: svg arrow winner)
+                    for sub in div.select("div, svg"):
+                        sub.decompose()
+                    return div.get_text(strip=True)
+
+                score_left_val  = clean_score(score_left)
+                score_right_val = clean_score(score_right)
+
+                # Compétition
+                comp_div = row.select_one("div.LiUVm.PLrIT")
+                competition = comp_div.get_text(strip=True) if comp_div else None
+
+                # Date
+                date_div = row.select_one("div.uMFIG")
+                date_raw = date_div.get_text(strip=True) if date_div else None
+                try:
+                    date_iso = datetime.strptime(date_raw, "%m/%d/%y").strftime("%Y-%m-%d") if date_raw else None
+                except:
+                    date_iso = date_raw
+
+                # Venue : "@ FOR" ou "@ NAU" → indique où se jouait le match
+                venue_span = row.select_one("span.LiUVm.FWLyZ")
+                venue_text = venue_span.get_text(strip=True) if venue_span else None
+
+                h2h_list.append({
+                    "date":        date_iso,
+                    "competition": competition,
+                    "score_left":  score_left_val,
+                    "score_right": score_right_val,
+                    "venue":       venue_text,
+                    "match_url":   match_url,
+                })
+            except Exception as e:
+                print(f"    ⚠️ Erreur ligne H2H : {e}")
+                continue
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur H2H globale : {e}")
+
+    return h2h_list
+
+# ================= EXTRACTION DERNIERS MATCHS (LAST 5) =================
+def extract_last_five(soup, team_abbr):
+    """
+    Extrait les 5 derniers matchs d'une équipe depuis la section LastGamesV4.
+    team_abbr : ex 'NAU' ou 'FOR' — correspond au bouton actif (Button--active).
+    
+    Comme ESPN affiche les deux équipes dans la même section avec des onglets,
+    on cherche la section dont le bouton actif correspond à team_abbr.
+    Retourne une liste de dicts.
+    """
+    last_five = []
+    try:
+        # Il peut y avoir plusieurs sections LastGamesV4 (une par équipe)
+        sections = soup.find_all("section", {"data-testid": "lastGames"})
+        
+        target_section = None
+        for sec in sections:
+            # Cherche le bouton actif
+            active_btn = sec.select_one("button.Button--active")
+            if active_btn:
+                abbr_span = active_btn.select_one("span.LastGames__TeamName")
+                abbr_text = abbr_span.get_text(strip=True) if abbr_span else ""
+                if team_abbr.upper() in abbr_text.upper():
+                    target_section = sec
+                    break
+
+        if not target_section:
+            # Fallback : prendre la première section disponible
+            if sections:
+                target_section = sections[0]
+            else:
+                return last_five
+
+        rows = target_section.select("tbody tr.Table__TR")
+        for row in rows:
+            try:
+                tds = row.select("td.Table__TD")
+                if len(tds) < 4:
+                    continue
+
+                # Date
+                date_raw = tds[0].get_text(strip=True)
+                try:
+                    date_iso = datetime.strptime(date_raw, "%m/%d/%y").strftime("%Y-%m-%d")
+                except:
+                    date_iso = date_raw
+
+                # Adversaire
+                opp_td   = tds[1]
+                at_span  = opp_td.select_one("span.atVs")
+                venue    = at_span.get_text(strip=True) if at_span else ""  # "@" ou "vs"
+                opp_abbr_span = opp_td.select_one("span.OppAbbr")
+                opp_name = opp_abbr_span.get_text(strip=True) if opp_abbr_span else ""
+                opp_link_tag = opp_td.select_one("a.AnchorLink")
+                opp_url  = ("https://www.espn.com" + opp_link_tag["href"]) if opp_link_tag and opp_link_tag.get("href") else None
+
+                # Logo adversaire → team_id
+                opp_logo_img = opp_td.select_one("img")
+                opp_logo_src = opp_logo_img["src"] if opp_logo_img else None
+                opp_team_id  = extract_team_id_from_logo(opp_logo_src)
+
+                # Résultat
+                result_td    = tds[2]
+                result_link  = result_td.select_one("a.AnchorLink")
+                match_url    = ("https://www.espn.com" + result_link["href"]) if result_link and result_link.get("href") else None
+                result_span  = result_td.select_one("span.GameResults")
+                result       = result_span.get_text(strip=True) if result_span else None  # W / D / L
+                score_span   = result_td.select_one("span.Score")
+                score        = score_span.get_text(strip=True) if score_span else None
+
+                # Compétition
+                comp_td      = tds[3]
+                competition  = comp_td.get_text(strip=True)
+
+                last_five.append({
+                    "date":        date_iso,
+                    "venue":       venue,          # "@" = away, "vs" = home
+                    "opponent":    opp_name,
+                    "opponent_id": opp_team_id,
+                    "opponent_url": opp_url,
+                    "result":      result,         # W / D / L
+                    "score":       score,
+                    "competition": competition,
+                    "match_url":   match_url,
+                })
+            except Exception as e:
+                print(f"    ⚠️ Erreur ligne last5 : {e}")
+                continue
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur last5 globale : {e}")
+
+    return last_five
 
 # ================= CHARGEMENT STANDINGS =================
 STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
@@ -307,10 +458,15 @@ try:
                 match_soup = get_soup(
                     driver,
                     match_url,
-                    wait_selector='img[data-testid="prism-image"], [data-testid="OddsCell"]',
-                    timeout=15,
+                    wait_selector=(
+                        'img[data-testid="prism-image"], '
+                        '[data-testid="OddsCell"], '
+                        'section[data-testid="lastGames"], '
+                        'section[data-testid="prism-LayoutCard"]'
+                    ),
+                    timeout=20,
                 )
-                time.sleep(0.5)
+                time.sleep(1)
 
                 # ── Logos & IDs extraits depuis la page du match ──
                 logo_home, logo_away = extract_logos_from_match_page(match_soup)
@@ -323,6 +479,61 @@ try:
                 # ── Stats extraites depuis la même soup ──
                 match_stats = extract_match_stats(match_soup)
 
+                # ── H2H extrait depuis la même soup ──
+                h2h = extract_h2h(match_soup)
+
+                # ── Déduction des abréviations depuis les logos ──
+                # On cherche dans la section LastGamesV4 les abréviations réelles
+                last5_sections = match_soup.find_all("section", {"data-testid": "lastGames"})
+                abbr_home, abbr_away = None, None
+                if last5_sections:
+                    for sec in last5_sections:
+                        btns = sec.select("button.Button--filter span.LastGames__TeamName")
+                        if len(btns) >= 2:
+                            abbr_home = btns[0].get_text(strip=True).strip()
+                            abbr_away = btns[1].get_text(strip=True).strip()
+                            # Nettoyer les espaces et éventuels artefacts
+                            # Les spans contiennent img + texte, get_text peut donner "NAU"
+                            # On extrait proprement
+                            def get_abbr(btn_span):
+                                txt = btn_span.get_text(strip=True)
+                                # Enlever éventuels caractères non-alpha
+                                return re.sub(r'[^A-Z]', '', txt.upper()) or txt.strip()
+                            abbr_home = get_abbr(btns[0])
+                            abbr_away = get_abbr(btns[1])
+                            break
+
+                # ── Last 5 matchs home ──
+                last5_home = extract_last_five(match_soup, abbr_home) if abbr_home else []
+
+                # ── Last 5 matchs away ──
+                # Pour l'équipe away, on a besoin que la section avec abbr_away soit active.
+                # ESPN affiche les deux équipes dans la même section avec onglets JS.
+                # On tente de cliquer sur l'onglet away via Selenium pour charger ses données.
+                last5_away = []
+                if abbr_away:
+                    try:
+                        # Chercher le bouton de l'équipe away et cliquer dessus
+                        away_btn = None
+                        btns_el = driver.find_elements(
+                            By.CSS_SELECTOR,
+                            "section[data-testid='lastGames'] button.Button--filter"
+                        )
+                        for btn_el in btns_el:
+                            if abbr_away.upper() in btn_el.text.upper():
+                                away_btn = btn_el
+                                break
+
+                        if away_btn:
+                            driver.execute_script("arguments[0].click();", away_btn)
+                            time.sleep(1.5)
+                            away_soup = BeautifulSoup(driver.page_source, "html.parser")
+                            last5_away = extract_last_five(away_soup, abbr_away)
+                        else:
+                            print(f"  ⚠️ Bouton away '{abbr_away}' introuvable pour last5")
+                    except Exception as e:
+                        print(f"  ⚠️ Erreur clic onglet away last5 : {e}")
+
                 games_of_day[game_id] = {
                     "gameId":    game_id,
                     "date":      date_iso,
@@ -331,16 +542,18 @@ try:
                     "match_url": match_url,
 
                     "home": {
-                        "team":    team1,
-                        "team_id": team_id_home,
-                        "logo":    logo_home,
-                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
+                        "team":      team1,
+                        "team_id":   team_id_home,
+                        "logo":      logo_home,
+                        "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
+                        "last_five": last5_home,
                     },
                     "away": {
-                        "team":    team2,
-                        "team_id": team_id_away,
-                        "logo":    logo_away,
-                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
+                        "team":      team2,
+                        "team_id":   team_id_away,
+                        "logo":      logo_away,
+                        "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
+                        "last_five": last5_away,
                     },
 
                     "odds": {
@@ -350,12 +563,16 @@ try:
                     },
 
                     "stats": match_stats,
+                    "h2h":   h2h,
                 }
 
                 odds_str  = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
                 stats_str = f"📊 {len(match_stats)} stats" if match_stats else "📊 pas de stats"
                 logo_str  = f"🖼️  {team_id_home} / {team_id_away}" if team_id_home else "🖼️  logos manquants"
-                print(f"  {team1} vs {team2} → {odds_str} | {stats_str} | {logo_str}")
+                h2h_str   = f"🔁 {len(h2h)} H2H" if h2h else "🔁 pas de H2H"
+                l5h_str   = f"🏠 {len(last5_home)} matchs" if last5_home else "🏠 0 matchs"
+                l5a_str   = f"✈️  {len(last5_away)} matchs" if last5_away else "✈️  0 matchs"
+                print(f"  {team1} vs {team2} → {odds_str} | {stats_str} | {logo_str} | {h2h_str} | {l5h_str} | {l5a_str}")
                 time.sleep(0.5)
 
 finally:

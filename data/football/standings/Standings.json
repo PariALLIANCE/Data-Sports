@@ -2129,6 +2129,24 @@
         "standings": [
             {
                 "position": 1,
+                "name": "Vila Nova",
+                "stats": {
+                    "GP": 12,
+                    "W": 7,
+                    "D": 4,
+                    "L": 1,
+                    "F": 18,
+                    "A": 11,
+                    "GD": 7,
+                    "P": 25
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 2,
                 "name": "São Bernardo",
                 "stats": {
                     "GP": 12,
@@ -2146,7 +2164,7 @@
                 }
             },
             {
-                "position": 2,
+                "position": 3,
                 "name": "Sport",
                 "stats": {
                     "GP": 11,
@@ -2156,24 +2174,6 @@
                     "F": 15,
                     "A": 7,
                     "GD": 8,
-                    "P": 22
-                },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 3,
-                "name": "Vila Nova",
-                "stats": {
-                    "GP": 11,
-                    "W": 6,
-                    "D": 4,
-                    "L": 1,
-                    "F": 17,
-                    "A": 11,
-                    "GD": 6,
                     "P": 22
                 },
                 "zone": {
@@ -2306,6 +2306,21 @@
             },
             {
                 "position": 12,
+                "name": "Atlético Goianiense",
+                "stats": {
+                    "GP": 12,
+                    "W": 4,
+                    "D": 4,
+                    "L": 4,
+                    "F": 12,
+                    "A": 12,
+                    "GD": 0,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 13,
                 "name": "CRB",
                 "stats": {
                     "GP": 12,
@@ -2320,7 +2335,7 @@
                 "zone": null
             },
             {
-                "position": 13,
+                "position": 14,
                 "name": "Ceará",
                 "stats": {
                     "GP": 11,
@@ -2329,21 +2344,6 @@
                     "L": 4,
                     "F": 12,
                     "A": 13,
-                    "GD": -1,
-                    "P": 13
-                },
-                "zone": null
-            },
-            {
-                "position": 14,
-                "name": "Atlético Goianiense",
-                "stats": {
-                    "GP": 11,
-                    "W": 3,
-                    "D": 4,
-                    "L": 4,
-                    "F": 10,
-                    "A": 11,
                     "GD": -1,
                     "P": 13
                 },
@@ -2368,13 +2368,13 @@
                 "position": 16,
                 "name": "Botafogo-SP",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 2,
                     "D": 4,
-                    "L": 5,
+                    "L": 6,
                     "F": 11,
-                    "A": 11,
-                    "GD": 0,
+                    "A": 12,
+                    "GD": -1,
                     "P": 10
                 },
                 "zone": null
@@ -2437,13 +2437,13 @@
                 "position": 20,
                 "name": "América Mineiro",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 0,
                     "D": 3,
-                    "L": 8,
-                    "F": 6,
-                    "A": 22,
-                    "GD": -16,
+                    "L": 9,
+                    "F": 7,
+                    "A": 24,
+                    "GD": -17,
                     "P": 3
                 },
                 "zone": {

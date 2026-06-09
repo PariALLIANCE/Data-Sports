@@ -40,13 +40,11 @@ def get_soup(driver, url, wait_selector=None, timeout=15):
 
 # ================= DOSSIERS =================
 BASE_DIR      = "data/football"
-TEAMS_DIR     = os.path.join(BASE_DIR, "teams")
 STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
 
 os.makedirs(BASE_DIR, exist_ok=True)
 
 OUTPUT_FILE = os.path.join(BASE_DIR, "games_of_day.json")
-TEAMS_FILE  = os.path.join(TEAMS_DIR, "football_teams.json")
 
 # ================= LIGUES =================
 LEAGUES = {
@@ -125,6 +123,27 @@ def us_to_decimal(val):
 def normalize(name):
     return name.lower().strip() if name else ""
 
+def extract_team_id_from_logo(logo_url):
+    """Extrait le team_id depuis l'URL du logo ESPN.
+    Ex: https://a.espncdn.com/i/teamlogos/soccer/500/6272.png → '6272'
+    """
+    if not logo_url:
+        return None
+    match = re.search(r"/(\d+)\.png$", logo_url)
+    return match.group(1) if match else None
+
+# ================= EXTRACTION LOGOS DEPUIS LA PAGE SCHEDULE =================
+def extract_logos_from_row(row):
+    """
+    Extrait les URLs des logos home/away depuis les <img data-testid="prism-image">
+    présents dans la ligne du tableau de schedule ESPN.
+    Retourne (logo_home, logo_away) ou (None, None) si non trouvés.
+    """
+    imgs = row.select('img[data-testid="prism-image"]')
+    logo_home = imgs[0]["src"] if len(imgs) >= 1 else None
+    logo_away = imgs[1]["src"] if len(imgs) >= 2 else None
+    return logo_home, logo_away
+
 # ================= EXTRACTION COTES ESPN =================
 def extract_ml_odds(driver, match_url):
     try:
@@ -170,19 +189,8 @@ def extract_ml_odds(driver, match_url):
 
 # ================= EXTRACTION STATS DU MATCH =================
 def extract_match_stats(driver, match_url):
-    """
-    Scrape la page ESPN du match pour récupérer les stats clés.
-    Retourne un dict { label: { home: val, away: val } } ou {} si rien trouvé.
-
-    ESPN affiche les stats dans une section identifiable via
-    la classe 'StatCellContent' ou des blocs 'GameStat'.
-    On tente plusieurs sélecteurs pour couvrir les variantes de layout.
-    """
     stats = {}
     try:
-        # La page du match a les stats sous l'onglet "Match Stats"
-        # ESPN charge les stats dans le HTML initial si le match est terminé,
-        # sinon elles peuvent être absentes pour les matchs à venir.
         soup = get_soup(
             driver,
             match_url,
@@ -190,10 +198,9 @@ def extract_match_stats(driver, match_url):
             timeout=15,
         )
 
-        # ── Tentative 1 : layout "StatCellContent" (matchs terminés récents) ──
+        # ── Tentative 1 : layout "StatCellContent" ──
         stat_rows = soup.select("div.StatCellContent")
         if stat_rows:
-            # Structure : [home_val, label, away_val] répété
             values = [el.get_text(strip=True) for el in stat_rows]
             i = 0
             while i + 2 < len(values):
@@ -233,7 +240,7 @@ def extract_match_stats(driver, match_url):
             if stats:
                 return stats
 
-        # ── Tentative 4 : sélecteur générique basé sur aria-label / data-stat ──
+        # ── Tentative 4 : sélecteur générique data-stat ──
         rows = soup.select("tr[data-stat], div[data-stat]")
         for row in rows:
             label    = row.get("data-stat", "")
@@ -249,20 +256,7 @@ def extract_match_stats(driver, match_url):
     except Exception as e:
         print(f"  ⚠️ Erreur stats : {e}")
 
-    return {}  # stats indisponibles (match à venir, page incomplète, etc.)
-
-# ================= CHARGEMENT ÉQUIPES =================
-if not os.path.exists(TEAMS_FILE):
-    raise FileNotFoundError(f"❌ Fichier introuvable : {TEAMS_FILE}")
-
-with open(TEAMS_FILE, "r", encoding="utf-8") as f:
-    football_teams = json.load(f)
-
-teams_index = {
-    league: {t["team"].strip().lower(): t for t in teams}
-    for league, teams in football_teams.items()
-}
-print(f"✅ {len(teams_index)} ligues chargées")
+    return {}
 
 # ================= CHARGEMENT STANDINGS =================
 STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
@@ -292,8 +286,6 @@ try:
             print(f"  ⚠️ Erreur réseau : {e}")
             continue
 
-        standing = standings_data.get(league_name, [])
-
         for table in soup.select("div.ResponsiveTable"):
             date_tag = table.select_one("div.Table__Title")
             date_iso = convert_date_to_iso(date_tag.text.strip() if date_tag else today_str)
@@ -321,8 +313,10 @@ try:
                 match_url = "https://www.espn.com" + score_tag["href"]
                 raw_time  = time_tag.text.strip() if time_tag else None
 
-                t1_data = teams_index.get(league_name, {}).get(team1.lower(), {})
-                t2_data = teams_index.get(league_name, {}).get(team2.lower(), {})
+                # ── Logos extraits directement depuis la ligne du tableau ──
+                logo_home, logo_away = extract_logos_from_row(row)
+                team_id_home = extract_team_id_from_logo(logo_home)
+                team_id_away = extract_team_id_from_logo(logo_away)
 
                 # ── Cotes ──
                 ml = extract_ml_odds(driver, match_url)
@@ -341,15 +335,15 @@ try:
 
                     "home": {
                         "team":    team1,
-                        "team_id": t1_data.get("team_id"),
-                        "logo":    t1_data.get("logo"),
-                        "url":     f"https://www.espn.com/soccer/team/_/id/{t1_data['team_id']}" if t1_data.get("team_id") else None,
+                        "team_id": team_id_home,
+                        "logo":    logo_home,
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
                     },
                     "away": {
                         "team":    team2,
-                        "team_id": t2_data.get("team_id"),
-                        "logo":    t2_data.get("logo"),
-                        "url":     f"https://www.espn.com/soccer/team/_/id/{t2_data['team_id']}" if t2_data.get("team_id") else None,
+                        "team_id": team_id_away,
+                        "logo":    logo_away,
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
                     },
 
                     "odds": {
@@ -358,12 +352,13 @@ try:
                         "draw": ml["draw"] if ml else None,
                     },
 
-                    "stats": match_stats,  # {} si match à venir / stats indisponibles
+                    "stats": match_stats,
                 }
 
                 odds_str  = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
                 stats_str = f"📊 {len(match_stats)} stats" if match_stats else "📊 pas de stats"
-                print(f"  {team1} vs {team2} → {odds_str} | {stats_str}")
+                logo_str  = f"🖼️  {team_id_home} / {team_id_away}" if team_id_home else "🖼️  logos manquants"
+                print(f"  {team1} vs {team2} → {odds_str} | {stats_str} | {logo_str}")
                 time.sleep(0.5)
 
 finally:

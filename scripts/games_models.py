@@ -1,334 +1,370 @@
-#!/usr/bin/env python3
-"""
-games_models.py
-Convertit games_of_day.json → prediction_input.json
-"""
-
 import json
+from datetime import datetime, timezone
 import re
-from pathlib import Path
+import os
+import time
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ================= DRIVER SELENIUM =================
+def make_driver():
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
+    )
+    options.add_argument("--lang=en-US")
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(10)
+    return driver
 
-def safe_float(val, default=0.0):
-    try:
-        return float(str(val).replace("%", "").strip())
-    except (ValueError, TypeError, AttributeError):
-        return default
-
-
-def parse_score(score_str):
-    parts = re.findall(r"\d+", str(score_str))
-    return (int(parts[0]), int(parts[1])) if len(parts) >= 2 else (0, 0)
-
-
-def get_team_stats_from_match(match_data, team_name):
-    """
-    Dans ESPN, team1 = home, team2 = away dans les stats.
-    On détermine le côté de notre équipe via team1/team2.
-    """
-    t1 = match_data.get("team1", "")
-    t2 = match_data.get("team2", "")
-    g1, g2 = parse_score(match_data.get("score", "0 - 0"))
-    stats = match_data.get("stats", {}) or {}
-
-    # Notre équipe est-elle team1 (home dans les stats) ?
-    team_lower = team_name.lower()
-    if team_lower in t1.lower():
-        pov, gs, gc = "home", g1, g2
-    elif team_lower in t2.lower():
-        pov, gs, gc = "away", g2, g1
-    else:
-        # Fallback : correspondance partielle
-        pov = "home" if t1 else "away"
-        gs, gc = (g1, g2) if pov == "home" else (g2, g1)
-
-    def s(key):
-        bloc = stats.get(key, {})
-        if not isinstance(bloc, dict):
-            return 0.0
-        return safe_float(bloc.get(pov, 0.0))
-
-    return {
-        "gs": gs, "gc": gc,
-        "possession": s("Possession"),
-        "shots_on_target": s("Shots on Goal"),
-        "shot_attempts": s("Shot Attempts"),
-        "saves": s("Saves"),
-        "corners": s("Corner Kicks"),
-        "yellow_cards": s("Yellow Cards"),
-    }
-
-
-def compute_form_features(recent_matches, team_name):
-    wins = draws = losses = clean_sheets = big_wins = 0
-    possession_l, shots_l, scored_l, conceded_l, saves_l, corners_l = [], [], [], [], [], []
-
-    for m in (recent_matches or []):
-        if not isinstance(m, dict):
-            continue
-        s = get_team_stats_from_match(m, team_name)
-        gs, gc = s["gs"], s["gc"]
-
-        if gs > gc:   wins += 1
-        elif gs == gc: draws += 1
-        else:          losses += 1
-
-        if gc == 0:        clean_sheets += 1
-        if gs - gc >= 2:   big_wins += 1
-
-        scored_l.append(gs)
-        conceded_l.append(gc)
-        if s["possession"] > 0:    possession_l.append(s["possession"])
-        if s["shots_on_target"] > 0: shots_l.append(s["shots_on_target"])
-        saves_l.append(s["saves"])
-        corners_l.append(s["corners"])
-
-    n = len(recent_matches) if recent_matches else 1
-    avg = lambda lst: round(sum(lst) / len(lst), 4) if lst else 0.0
-
-    return {
-        "wins": wins, "draws": draws, "losses": losses,
-        "win_rate":  round(wins  / n, 4),
-        "draw_rate": round(draws / n, 4),
-        "loss_rate": round(losses / n, 4),
-        "avg_possession":      avg(possession_l),
-        "avg_shots_on_target": avg(shots_l),
-        "avg_saves":           avg(saves_l),
-        "avg_corners":         avg(corners_l),
-        "avg_scored":          avg(scored_l),
-        "avg_conceded":        avg(conceded_l),
-        "clean_sheet_rate":    round(clean_sheets / n, 4),
-        "big_win_rate":        round(big_wins / n, 4),
-        "total_goals_avg":     avg([s + c for s, c in zip(scored_l, conceded_l)]),
-        # Pas de cotes dans recent_form
-        "avg_odds_home": 0.0, "avg_odds_draw": 0.0,
-        "avg_odds_away": 0.0, "avg_implied_prob_winner": 0.0,
-    }
-
-
-def get_standing(league_standing, team_name):
-    empty = {k: 0 for k in ["position", "gp", "wins", "draws", "losses",
-                             "goals_for", "goals_against", "goal_diff", "points"]}
-    if not league_standing:
-        return empty
-    team_lower = team_name.lower()
-    for entry in league_standing:
-        if not isinstance(entry, dict):
-            continue
-        name = entry.get("name")
-        if not name:
-            continue
-        if name.lower() == team_lower:
-            s = entry.get("stats") or {}
-            gp = s.get("GP", 0) or 0
-            return {
-                "position":      entry.get("position", 0) or 0,
-                "gp":            gp,
-                "wins":          s.get("W", 0) or 0,
-                "draws":         s.get("D", 0) or 0,
-                "losses":        s.get("L", 0) or 0,
-                "goals_for":     s.get("F", 0) or 0,
-                "goals_against": s.get("A", 0) or 0,
-                "goal_diff":     s.get("GD", 0) or 0,
-                "points":        s.get("P", 0) or 0,
-            }
-    return empty
-
-
-def compute_h2h_features(h2h_matches, home_team, away_team):
-    home_wins = away_wins = draws = 0
-    total_goals = []
-
-    for m in (h2h_matches or []):
-        if not isinstance(m, dict):
-            continue
-        g1, g2 = parse_score(m.get("score", "0 - 0"))
-        t1 = m.get("team1", "")
-        total_goals.append(g1 + g2)
-
-        if home_team.lower() in t1.lower():
-            if g1 > g2:   home_wins += 1
-            elif g1 < g2: away_wins += 1
-            else:          draws += 1
-        else:
-            if g2 > g1:   home_wins += 1
-            elif g2 < g1: away_wins += 1
-            else:          draws += 1
-
-    n = len(h2h_matches) if h2h_matches else 1
-    avg = lambda lst: round(sum(lst) / len(lst), 4) if lst else 0.0
-
-    return {
-        "h2h_count":            n,
-        "h2h_home_win_rate":    round(home_wins / n, 4),
-        "h2h_away_win_rate":    round(away_wins / n, 4),
-        "h2h_draw_rate":        round(draws / n, 4),
-        "h2h_avg_total_goals":  avg(total_goals),
-    }
-
-
-def build_prediction_entry(match):
-    home_team = match["home"]["team"]
-    away_team = match["away"]["team"]
-    odds = match.get("odds") or {}
-    recent_form = match.get("recent_form") or {}
-    league_standing = match.get("league_standing") or []
-    h2h = match.get("h2h") or []
-
-    form_home = compute_form_features(recent_form.get("home", []), home_team)
-    form_away = compute_form_features(recent_form.get("away", []), away_team)
-
-    standing_home = get_standing(league_standing, home_team)
-    standing_away = get_standing(league_standing, away_team)
-
-    h2h_features = compute_h2h_features(h2h, home_team, away_team)
-
-    odds_home = safe_float(odds.get("home", 0))
-    odds_draw = safe_float(odds.get("draw", 0))
-    odds_away = safe_float(odds.get("away", 0))
-
-    raw_ph = 1 / odds_home if odds_home else 0
-    raw_pd = 1 / odds_draw if odds_draw else 0
-    raw_pa = 1 / odds_away if odds_away else 0
-    total_raw = raw_ph + raw_pd + raw_pa or 1
-    imp_home = round(raw_ph / total_raw, 4)
-    imp_draw = round(raw_pd / total_raw, 4)
-    imp_away = round(raw_pa / total_raw, 4)
-
-    sh_gp = standing_home["gp"]
-    sa_gp = standing_away["gp"]
-
-    features = {
-        # Stats moyennes (alignées dataset entraînement)
-        "moy_possession_home":      form_home["avg_possession"],
-        "moy_possession_away":      form_away["avg_possession"],
-        "moy_shots_ontarget_home":  form_home["avg_shots_on_target"],
-        "moy_shots_ontarget_away":  form_away["avg_shots_on_target"],
-        "moy_buts_marques_home":    form_home["avg_scored"],
-        "moy_buts_marques_away":    form_away["avg_scored"],
-        "moy_buts_encaisses_home":  form_home["avg_conceded"],
-        "moy_buts_encaisses_away":  form_away["avg_conceded"],
-        # Différentiels
-        "diff_possession":      round(form_home["avg_possession"]      - form_away["avg_possession"],      4),
-        "diff_shots_ontarget":  round(form_home["avg_shots_on_target"] - form_away["avg_shots_on_target"], 4),
-        "diff_buts_marques":    round(form_home["avg_scored"]          - form_away["avg_scored"],          4),
-        "diff_buts_encaisses":  round(form_home["avg_conceded"]        - form_away["avg_conceded"],        4),
-        # Forme home
-        "home_wins":                    form_home["wins"],
-        "home_draws":                   form_home["draws"],
-        "home_losses":                  form_home["losses"],
-        "home_win_rate":                form_home["win_rate"],
-        "home_draw_rate":               form_home["draw_rate"],
-        "home_loss_rate":               form_home["loss_rate"],
-        "home_avg_odds_home":           form_home["avg_odds_home"],
-        "home_avg_odds_draw":           form_home["avg_odds_draw"],
-        "home_avg_odds_away":           form_home["avg_odds_away"],
-        "home_avg_implied_prob_winner": form_home["avg_implied_prob_winner"],
-        # Forme away
-        "away_wins":                    form_away["wins"],
-        "away_draws":                   form_away["draws"],
-        "away_losses":                  form_away["losses"],
-        "away_win_rate":                form_away["win_rate"],
-        "away_draw_rate":               form_away["draw_rate"],
-        "away_loss_rate":               form_away["loss_rate"],
-        "away_avg_odds_home":           form_away["avg_odds_home"],
-        "away_avg_odds_draw":           form_away["avg_odds_draw"],
-        "away_avg_odds_away":           form_away["avg_odds_away"],
-        "away_avg_implied_prob_winner": form_away["avg_implied_prob_winner"],
-        # Scores récents
-        "home_avg_scored":        form_home["avg_scored"],
-        "home_avg_conceded":      form_home["avg_conceded"],
-        "home_clean_sheet_rate":  form_home["clean_sheet_rate"],
-        "home_big_win_rate":      form_home["big_win_rate"],
-        "home_total_goals_avg":   form_home["total_goals_avg"],
-        "away_avg_scored":        form_away["avg_scored"],
-        "away_avg_conceded":      form_away["avg_conceded"],
-        "away_clean_sheet_rate":  form_away["clean_sheet_rate"],
-        "away_big_win_rate":      form_away["big_win_rate"],
-        "away_total_goals_avg":   form_away["total_goals_avg"],
-        # Pos adversaires
-        "home_vaincu_count":    form_home["wins"],
-        "home_vaincu_avg_pos":  0.0,
-        "home_vaincu_min_pos":  0,
-        "away_vaincu_count":    form_away["wins"],
-        "away_vaincu_avg_pos":  0.0,
-        "away_vaincu_min_pos":  0,
-        "home_invaincu_count":  form_home["wins"] + form_home["draws"],
-        "home_invaincu_avg_pos": 0.0,
-        "away_invaincu_count":  form_away["wins"] + form_away["draws"],
-        "away_invaincu_avg_pos": 0.0,
-        # Cotes
-        "odds_home":      odds_home,
-        "odds_draw":      odds_draw,
-        "odds_away":      odds_away,
-        "imp_prob_home":  imp_home,
-        "imp_prob_draw":  imp_draw,
-        "imp_prob_away":  imp_away,
-        # Classement
-        "home_position":       standing_home["position"],
-        "home_points":         standing_home["points"],
-        "home_goal_diff":      standing_home["goal_diff"],
-        "home_season_win_rate": round(standing_home["wins"] / sh_gp, 4) if sh_gp else 0.0,
-        "away_position":       standing_away["position"],
-        "away_points":         standing_away["points"],
-        "away_goal_diff":      standing_away["goal_diff"],
-        "away_season_win_rate": round(standing_away["wins"] / sa_gp, 4) if sa_gp else 0.0,
-        "diff_position":       standing_home["position"] - standing_away["position"],
-        "diff_points":         standing_home["points"]   - standing_away["points"],
-        # H2H
-        **h2h_features,
-        # Méta
-        "gameId": match.get("gameId", ""),
-        "league": match.get("league", ""),
-        "date":   match.get("date", ""),
-        "team1":  home_team,
-        "team2":  away_team,
-    }
-
-    header = {
-        "gameId":    match.get("gameId"),
-        "date":      match.get("date"),
-        "time_utc":  match.get("time_utc"),
-        "league":    match.get("league"),
-        "match_url": match.get("match_url"),
-        "home":      match["home"],
-        "away":      match["away"],
-        "odds":      odds,
-    }
-
-    return {"header": header, "features": features}
-
-
-# ── Main ───────────────────────────────────────────────────────────────────────
-
-def main():
-    root = Path(__file__).parent.parent
-    input_path  = root / "data" / "football" / "games_of_day.json"
-    output_path = root / "data" / "football" / "prediction_input.json"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    print(f"Lecture de {input_path} ...")
-    with open(input_path, "r", encoding="utf-8") as f:
-        matches = json.load(f)
-
-    results = []
-    for match in matches:
-        if not isinstance(match, dict):
-            continue
+def get_soup(driver, url, wait_selector=None, timeout=15):
+    driver.get(url)
+    if wait_selector:
         try:
-            entry = build_prediction_entry(match)
-            results.append(entry)
+            WebDriverWait(driver, timeout).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, wait_selector))
+            )
+        except Exception:
+            pass
+    return BeautifulSoup(driver.page_source, "html.parser")
+
+# ================= DOSSIERS =================
+BASE_DIR      = "data/football"
+STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
+
+os.makedirs(BASE_DIR, exist_ok=True)
+
+OUTPUT_FILE = os.path.join(BASE_DIR, "games_of_day.json")
+
+# ================= LIGUES =================
+LEAGUES = {
+    "England_Premier_League":        "eng.1",
+    "Spain_Laliga":                  "esp.1",
+    "Germany_Bundesliga":            "ger.1",
+    "Argentina_Primera_Nacional":    "arg.2",
+    "Austria_Bundesliga":            "aut.1",
+    "Belgium_Jupiler_Pro_League":    "bel.1",
+    "Brazil_Serie_A":                "bra.1",
+    "Brazil_Serie_B":                "bra.2",
+    "Chile_Primera_Division":        "chi.1",
+    "China_Super_League":            "chn.1",
+    "Colombia_Primera_A":            "col.1",
+    "England_National_League":       "eng.5",
+    "France_Ligue_1":                "fra.1",
+    "Greece_Super_League_1":         "gre.1",
+    "Italy_Serie_A":                 "ita.1",
+    "Japan_J1_League":               "jpn.1",
+    "Mexico_Liga_MX":                "mex.1",
+    "Netherlands_Eredivisie":        "ned.1",
+    "Paraguay_Division_Profesional": "par.1",
+    "Peru_Primera_Division":         "per.1",
+    "Portugal_Primeira_Liga":        "por.1",
+    "Romania_Liga_I":                "rou.1",
+    "Russia_Premier_League":         "rus.1",
+    "Saudi_Arabia_Pro_League":       "ksa.1",
+    "Sweden_Allsvenskan":            "swe.1",
+    "Switzerland_Super_League":      "sui.1",
+    "Turkey_Super_Lig":              "tur.1",
+    "USA_Major_League_Soccer":       "usa.1",
+    "Venezuela_Primera_Division":    "ven.1",
+    "UEFA_Champions_League":         "uefa.champions",
+    "UEFA_Europa_League":            "uefa.europa",
+    "FIFA_Club_World_Cup":           "fifa.cwc",
+    "FA_Cup":                        "eng.fa",
+    "EFL_Cup":                       "eng.league_cup",
+    "Copa_del_Rey":                  "esp.copa_del_rey",
+    "DFB_Pokal":                     "ger.dfb_pokal",
+    "Coppa_Italia":                  "ita.coppa_italia",
+    "Coupe_de_France":               "fra.coupe_de_france",
+    "KNVB_Cup":                      "ned.cup",
+    "Taca_de_Portugal":              "por.taca.portugal",
+    "Kings_Cup_Saudi":               "ksa.kings.cup",
+}
+
+BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
+
+# ================= DATE =================
+today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+# ================= UTILITAIRES =================
+def convert_date_to_iso(date_text):
+    try:
+        return datetime.strptime(date_text, "%A, %B %d, %Y").strftime("%Y-%m-%d")
+    except:
+        return date_text
+
+def convert_time_to_utc(time_str):
+    try:
+        dt = datetime.strptime(time_str, "%I:%M %p")
+        return f"{(dt.hour - 4) % 24:02d}:{dt.minute:02d}"
+    except:
+        return time_str
+
+def us_to_decimal(val):
+    if not val:
+        return None
+    try:
+        n = int(val.replace("+", "").strip())
+        return round(1 + (n / 100), 2) if n > 0 else round(1 + (100 / abs(n)), 2)
+    except:
+        return None
+
+def extract_team_id_from_logo(logo_url):
+    """Extrait le team_id depuis l'URL du logo ESPN.
+    Ex: https://a.espncdn.com/i/teamlogos/soccer/500/6272.png → '6272'
+    """
+    if not logo_url:
+        return None
+    match = re.search(r"/(\d+)\.png$", logo_url)
+    return match.group(1) if match else None
+
+# ================= EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH =================
+def extract_logos_from_match_page(soup):
+    """
+    Extrait les logos home/away depuis la page ESPN du match.
+    Les deux premiers img[data-testid="prism-image"] correspondent
+    au logo home puis au logo away dans le header du match.
+    Retourne (logo_home, logo_away).
+    """
+    imgs = soup.select('img[data-testid="prism-image"]')
+    logo_home = imgs[0]["src"] if len(imgs) >= 1 else None
+    logo_away = imgs[1]["src"] if len(imgs) >= 2 else None
+    return logo_home, logo_away
+
+# ================= EXTRACTION COTES ESPN =================
+def extract_ml_odds(soup):
+    """
+    Extrait les cotes moneyline depuis la soup déjà chargée de la page du match.
+    """
+    try:
+        cells = soup.find_all("div", {"data-testid": "OddsCell"})
+        if len(cells) < 7:
+            return None
+
+        def read(cell):
+            return cell.get_text(strip=True) or None
+
+        def is_valid(val):
+            if not val:
+                return False
+            try:
+                int(val.replace("+", "").replace("-", ""))
+                return True
+            except:
+                return False
+
+        home_us = read(cells[0])
+        away_us = read(cells[3])
+        draw_us = read(cells[6])
+
+        if not all(is_valid(v) for v in [home_us, away_us, draw_us]):
+            return None
+
+        return {
+            "home": us_to_decimal(home_us),
+            "away": us_to_decimal(away_us),
+            "draw": us_to_decimal(draw_us),
+        }
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur cotes : {e}")
+        return None
+
+# ================= EXTRACTION STATS DU MATCH =================
+def extract_match_stats(soup):
+    """
+    Extrait les stats depuis la soup déjà chargée de la page du match.
+    """
+    stats = {}
+    try:
+        # ── Tentative 1 : layout "StatCellContent" ──
+        stat_rows = soup.select("div.StatCellContent")
+        if stat_rows:
+            values = [el.get_text(strip=True) for el in stat_rows]
+            i = 0
+            while i + 2 < len(values):
+                home_val = values[i]
+                label    = values[i + 1]
+                away_val = values[i + 2]
+                if label and not label.replace(" ", "").isdigit():
+                    stats[label] = {"home": home_val, "away": away_val}
+                    i += 3
+                else:
+                    i += 1
+            if stats:
+                return stats
+
+        # ── Tentative 2 : layout "GameStat" ──
+        game_stat_rows = soup.select("div.GameStat")
+        if game_stat_rows:
+            for row in game_stat_rows:
+                cols = row.select("div")
+                texts = [c.get_text(strip=True) for c in cols if c.get_text(strip=True)]
+                if len(texts) >= 3:
+                    stats[texts[1]] = {"home": texts[0], "away": texts[2]}
+            if stats:
+                return stats
+
+        # ── Tentative 3 : layout gamepackage (ancienne structure ESPN) ──
+        gp_rows = soup.select("div.gamepackage-matchup-charts tr")
+        if gp_rows:
+            for row in gp_rows:
+                cells = row.select("td")
+                if len(cells) == 3:
+                    home_val = cells[0].get_text(strip=True)
+                    label    = cells[1].get_text(strip=True)
+                    away_val = cells[2].get_text(strip=True)
+                    if label:
+                        stats[label] = {"home": home_val, "away": away_val}
+            if stats:
+                return stats
+
+        # ── Tentative 4 : sélecteur générique data-stat ──
+        rows = soup.select("tr[data-stat], div[data-stat]")
+        for row in rows:
+            label    = row.get("data-stat", "")
+            children = row.select("td, div.value")
+            if len(children) >= 2 and label:
+                stats[label] = {
+                    "home": children[0].get_text(strip=True),
+                    "away": children[1].get_text(strip=True),
+                }
+        if stats:
+            return stats
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur stats : {e}")
+
+    return {}
+
+# ================= CHARGEMENT STANDINGS =================
+STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
+standings_data = {}
+if os.path.exists(STANDINGS_FILE):
+    with open(STANDINGS_FILE, "r", encoding="utf-8") as f:
+        standings_data = json.load(f)
+else:
+    print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
+
+# ================= SCRAPING PRINCIPAL =================
+games_of_day = {}
+driver = make_driver()
+
+try:
+    for league_name, league_code in LEAGUES.items():
+        print(f"\n📅 {league_name}")
+
+        try:
+            soup = get_soup(
+                driver,
+                BASE_URL.format(date=today_str, league=league_code),
+                wait_selector="div.ResponsiveTable",
+                timeout=15,
+            )
         except Exception as e:
-            gid = match.get("gameId", "?")
-            print(f"⚠️  Erreur gameId={gid} : {e}")
+            print(f"  ⚠️ Erreur réseau : {e}")
+            continue
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
+        for table in soup.select("div.ResponsiveTable"):
+            date_tag = table.select_one("div.Table__Title")
+            date_iso = convert_date_to_iso(date_tag.text.strip() if date_tag else today_str)
 
-    print(f"✅  {len(results)} matchs convertis → {output_path}")
+            if date_iso != today_iso:
+                continue
 
+            for row in table.select("tbody > tr.Table__TR"):
+                teams     = row.select("span.Table__Team a.AnchorLink:last-child")
+                score_tag = row.select_one("a.AnchorLink.at")
+                time_tag  = row.select_one("td.date__col a")
 
-if __name__ == "__main__":
-    main()
+                if len(teams) != 2 or not score_tag:
+                    continue
+                if score_tag.text.strip().lower() != "v":
+                    continue
+
+                match_id = re.search(r"gameId/(\d+)", score_tag["href"])
+                if not match_id:
+                    continue
+
+                game_id   = match_id.group(1)
+                team1     = teams[0].text.strip()
+                team2     = teams[1].text.strip()
+                match_url = "https://www.espn.com" + score_tag["href"]
+                raw_time  = time_tag.text.strip() if time_tag else None
+
+                # ── Chargement unique de la page du match ──
+                match_soup = get_soup(
+                    driver,
+                    match_url,
+                    wait_selector='img[data-testid="prism-image"], [data-testid="OddsCell"]',
+                    timeout=15,
+                )
+                time.sleep(0.5)
+
+                # ── Logos & IDs extraits depuis la page du match ──
+                logo_home, logo_away = extract_logos_from_match_page(match_soup)
+                team_id_home = extract_team_id_from_logo(logo_home)
+                team_id_away = extract_team_id_from_logo(logo_away)
+
+                # ── Cotes extraites depuis la même soup ──
+                ml = extract_ml_odds(match_soup)
+
+                # ── Stats extraites depuis la même soup ──
+                match_stats = extract_match_stats(match_soup)
+
+                games_of_day[game_id] = {
+                    "gameId":    game_id,
+                    "date":      date_iso,
+                    "time_utc":  convert_time_to_utc(raw_time) if raw_time else None,
+                    "league":    league_name,
+                    "match_url": match_url,
+
+                    "home": {
+                        "team":    team1,
+                        "team_id": team_id_home,
+                        "logo":    logo_home,
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
+                    },
+                    "away": {
+                        "team":    team2,
+                        "team_id": team_id_away,
+                        "logo":    logo_away,
+                        "url":     f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
+                    },
+
+                    "odds": {
+                        "home": ml["home"] if ml else None,
+                        "away": ml["away"] if ml else None,
+                        "draw": ml["draw"] if ml else None,
+                    },
+
+                    "stats": match_stats,
+                }
+
+                odds_str  = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
+                stats_str = f"📊 {len(match_stats)} stats" if match_stats else "📊 pas de stats"
+                logo_str  = f"🖼️  {team_id_home} / {team_id_away}" if team_id_home else "🖼️  logos manquants"
+                print(f"  {team1} vs {team2} → {odds_str} | {stats_str} | {logo_str}")
+                time.sleep(0.5)
+
+finally:
+    driver.quit()
+
+# ================= SAUVEGARDE ATOMIQUE =================
+tmp_file = OUTPUT_FILE + ".tmp"
+with open(tmp_file, "w", encoding="utf-8") as f:
+    json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)
+os.replace(tmp_file, OUTPUT_FILE)
+
+print(f"\n💾 {len(games_of_day)} matchs sauvegardés → {OUTPUT_FILE}")

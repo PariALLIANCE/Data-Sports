@@ -2183,6 +2183,24 @@
             },
             {
                 "position": 4,
+                "name": "Fortaleza",
+                "stats": {
+                    "GP": 12,
+                    "W": 6,
+                    "D": 3,
+                    "L": 3,
+                    "F": 15,
+                    "A": 11,
+                    "GD": 4,
+                    "P": 21
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
                 "name": "Criciúma",
                 "stats": {
                     "GP": 12,
@@ -2194,28 +2212,25 @@
                     "GD": 4,
                     "P": 20
                 },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
+                "zone": null
             },
             {
-                "position": 5,
+                "position": 6,
                 "name": "Náutico",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 6,
                     "D": 1,
-                    "L": 4,
+                    "L": 5,
                     "F": 16,
-                    "A": 11,
-                    "GD": 5,
+                    "A": 12,
+                    "GD": 4,
                     "P": 19
                 },
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 12,
@@ -2226,21 +2241,6 @@
                     "A": 15,
                     "GD": -1,
                     "P": 19
-                },
-                "zone": null
-            },
-            {
-                "position": 7,
-                "name": "Fortaleza",
-                "stats": {
-                    "GP": 11,
-                    "W": 5,
-                    "D": 3,
-                    "L": 3,
-                    "F": 14,
-                    "A": 11,
-                    "GD": 3,
-                    "P": 18
                 },
                 "zone": null
             },
@@ -2321,6 +2321,21 @@
             },
             {
                 "position": 13,
+                "name": "Cuiabá",
+                "stats": {
+                    "GP": 12,
+                    "W": 3,
+                    "D": 7,
+                    "L": 2,
+                    "F": 8,
+                    "A": 6,
+                    "GD": 2,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 14,
                 "name": "CRB",
                 "stats": {
                     "GP": 12,
@@ -2335,7 +2350,7 @@
                 "zone": null
             },
             {
-                "position": 14,
+                "position": 15,
                 "name": "Ceará",
                 "stats": {
                     "GP": 11,
@@ -2345,21 +2360,6 @@
                     "F": 12,
                     "A": 13,
                     "GD": -1,
-                    "P": 13
-                },
-                "zone": null
-            },
-            {
-                "position": 15,
-                "name": "Cuiabá",
-                "stats": {
-                    "GP": 11,
-                    "W": 2,
-                    "D": 7,
-                    "L": 2,
-                    "F": 6,
-                    "A": 5,
-                    "GD": 1,
                     "P": 13
                 },
                 "zone": null
@@ -2419,13 +2419,13 @@
                 "position": 19,
                 "name": "Ponte Preta",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 2,
                     "D": 2,
-                    "L": 7,
-                    "F": 9,
-                    "A": 20,
-                    "GD": -11,
+                    "L": 8,
+                    "F": 10,
+                    "A": 22,
+                    "GD": -12,
                     "P": 8
                 },
                 "zone": {

@@ -73,34 +73,48 @@ def teams_from_url(url):
 
 def extract_teams(driver):
     """
-    Récupère [team_home, team_away] depuis le Gamestrip.
-    span.NMnSM = nom complet (ex: "Ceará", "Atlético Goianiense")
-    span.HUcap = sigle (ex: "CEA", "AGO")
+    Récupère home/away : nom complet, sigle et ESPN team_id.
+    Les liens équipes dans le Gamestrip :
+      href="/soccer/team/_/id/9969/ceara"  → id=9969
+      span.NMnSM = nom long
+      span.HUcap = sigle
     """
     teams = []
     try:
-        els = driver.find_elements(By.CSS_SELECTOR, "span.NMnSM")
-        for el in els:
-            t = el.text.strip()
-            if t:
-                teams.append(t)
+        # Liens équipes dans le Gamestrip (data-clubhouse-uid présent)
+        links = driver.find_elements(
+            By.CSS_SELECTOR,
+            "a[data-clubhouse-uid][href*='/soccer/team/_/id/']"
+        )
+        seen = []
+        for a in links:
+            href = a.get_attribute("href") or ""
+            m = re.search(r"/soccer/team/_/id/(\d+)/", href)
+            if not m:
+                continue
+            team_id = m.group(1)
+            if team_id in seen:
+                continue
+            seen.append(team_id)
+
+            try:
+                name  = a.find_element(By.CSS_SELECTOR, "span.NMnSM").text.strip()
+            except NoSuchElementException:
+                name  = ""
+            try:
+                sigle = a.find_element(By.CSS_SELECTOR, "span.HUcap").text.strip()
+            except NoSuchElementException:
+                sigle = ""
+
+            if name or sigle:
+                teams.append({"name": name or sigle, "sigle": sigle, "team_id": team_id})
+
     except Exception as e:
         print(f"    ⚠️  Erreur équipes gamestrip : {e}")
 
-    # fallback : abréviations
-    if len(teams) < 2:
-        teams = []
-        try:
-            els = driver.find_elements(By.CSS_SELECTOR, "span.HUcap")
-            for el in els:
-                t = el.text.strip()
-                if t:
-                    teams.append(t)
-        except Exception:
-            pass
-
-    return teams[0] if len(teams) > 0 else None, \
-           teams[1] if len(teams) > 1 else None
+    home = teams[0] if len(teams) > 0 else {"name": None, "sigle": None, "team_id": None}
+    away = teams[1] if len(teams) > 1 else {"name": None, "sigle": None, "team_id": None}
+    return home, away
 
 # ─────────────────────────────────────────────
 # ÉQUIPES EN GRAS DANS LE CLASSEMENT
@@ -263,26 +277,30 @@ def scrape_match(driver, url):
 
     time.sleep(1.5)  # laisser le JS finir de rendre
 
-    team_home, team_away       = extract_teams(driver)
+    home, away                     = extract_teams(driver)
     home_score, away_score, status = extract_score(driver)
-    featured                   = extract_featured_teams_standings(driver)
-    events                     = extract_events(driver)
-    stats                      = extract_stats(driver)
+    featured                       = extract_featured_teams_standings(driver)
+    events                         = extract_events(driver)
+    stats                          = extract_stats(driver)
 
     result = {
         "gameId":     game_id,
         "url":        url,
-        "team_home":  team_home,
-        "team_away":  team_away,
+        "team_home":  home["name"],
+        "team_away":  away["name"],
+        "team_home_id":  home["team_id"],
+        "team_away_id":  away["team_id"],
+        "team_home_sigle": home["sigle"],
+        "team_away_sigle": away["sigle"],
         "home_score": home_score,
         "away_score": away_score,
         "status":     status,
-        "featured_in_standings": featured,  # équipes en gras dans le classement
+        "featured_in_standings": featured,
         "events":     events,
         "stats":      stats,
     }
 
-    print(f"  ✅ {team_home} {home_score} - {away_score} {team_away}  [{status}]")
+    print(f"  ✅ {home['name']} (id={home['team_id']}) {home_score} - {away_score} {away['name']} (id={away['team_id']})  [{status}]")
     print(f"  📊 {len(stats)} stats | {len(events)} événements")
     if featured:
         print(f"  🔲 En gras dans classement : {featured}")

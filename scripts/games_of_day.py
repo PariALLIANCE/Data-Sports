@@ -103,31 +103,21 @@ def convert_date_to_iso(date_text):
         return date_text
 
 def convert_time_espn_to_ci(time_str):
-    """
-    Convertit l'heure ESPN (US Eastern Summer = UTC-4)
-    en heure locale Côte d'Ivoire (UTC+0).
-    Retourne une chaîne "HH:MM" en format 24h.
-    ESPN affiche en format 12h avec AM/PM, ex: "2:30 PM", "10:00 AM".
-    """
     if not time_str:
         return None
     try:
         cleaned = time_str.strip().replace("\u202f", " ").replace("\xa0", " ")
         cleaned = re.sub(r"\s+", " ", cleaned).upper()
-
         if "AM" in cleaned or "PM" in cleaned:
             if " " in cleaned:
                 dt_eastern = datetime.strptime(cleaned, "%I:%M %p")
             else:
                 dt_eastern = datetime.strptime(cleaned, "%I:%M%p")
-            # Eastern Summer (UTC-4) → UTC+0 (CI) = +4h
             hour_ci = (dt_eastern.hour + 4) % 24
             return f"{hour_ci:02d}:{dt_eastern.minute:02d}"
-
         dt = datetime.strptime(cleaned, "%H:%M")
         hour_ci = (dt.hour + 4) % 24
         return f"{hour_ci:02d}:{dt.minute:02d}"
-
     except Exception as e:
         print(f"  ⚠️ Erreur conversion heure '{time_str}': {e}")
         return time_str
@@ -154,10 +144,6 @@ def extract_team_id_from_team_url(team_url):
     return m.group(1) if m else None
 
 def read_direct_text(tag):
-    """
-    Lit uniquement les NavigableString directs d'un tag,
-    en ignorant tout contenu des sous-éléments (div, svg, etc.).
-    """
     if not tag:
         return None
     parts = []
@@ -274,18 +260,10 @@ def extract_match_stats(soup):
 # ================= EXTRACTION H2H =================
 def extract_h2h(soup, home_team_id, away_team_id):
     """
-    Parse la section Head-To-Head ESPN.
-
-    - score.home  = score de l'équipe à domicile dans ce match H2H
-    - score.away  = score de l'équipe à l'extérieur dans ce match H2H
-    - h2h_home / h2h_away identifiés via les team_id du match du jour
-    - venue_text "@ XXX" : XXX est l'abréviation de l'équipe recevante,
-      donc l'équipe recevante = h2h_home.
-    - result_home = W/D/L du point de vue de h2h_home.
+    Retourne uniquement : date, competition, match_url
     """
     h2h_list = []
     try:
-        # ── Localiser la section H2H ──
         section = None
         for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
             h2_tag = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
@@ -297,70 +275,20 @@ def extract_h2h(soup, home_team_id, away_team_id):
             print("  ℹ️  Section H2H introuvable")
             return h2h_list
 
-        # ── Liens header : équipe gauche (home du match du jour) et droite (away) ──
-        header_links = section.select("div.oimqG a[data-testid='prism-linkbase']")
-        id_left, id_right     = None, None
-        slug_left, slug_right = None, None
-        abbr_left, abbr_right = "", ""
-
-        if len(header_links) >= 2:
-            def parse_team_link(a_tag):
-                href = a_tag.get("href", "")
-                m_id   = re.search(r"/id/(\d+)/", href)
-                m_slug = re.search(r"/id/\d+/([^/\?]+)$", href)
-                return (
-                    m_id.group(1)   if m_id   else None,
-                    m_slug.group(1) if m_slug else None,
-                )
-
-            id_left,  slug_left  = parse_team_link(header_links[0])
-            id_right, slug_right = parse_team_link(header_links[1])
-
-            img_left  = header_links[0].select_one("img")
-            img_right = header_links[1].select_one("img")
-            abbr_left  = img_left.get("alt",  "").strip() if img_left  else ""
-            abbr_right = img_right.get("alt", "").strip() if img_right else ""
-
-        # ── Lignes de matchs H2H ──
         match_rows = section.select("div.rpjsZ.TzFuW.lSDCP")
 
         for row in match_rows:
             try:
-                # ── URL & gameId ──
-                link_tag    = row.select_one("a[data-game-link='true']")
-                match_href  = link_tag.get("href", "") if link_tag else ""
-                match_url   = ("https://www.espn.com" + match_href) if match_href else None
-                gid_m       = re.search(r"gameId/(\d+)", match_href)
-                game_id_h2h = gid_m.group(1) if gid_m else None
+                # ── URL ──
+                link_tag   = row.select_one("a[data-game-link='true']")
+                match_href = link_tag.get("href", "") if link_tag else ""
+                match_url  = ("https://www.espn.com" + match_href) if match_href else None
 
-                # ── Contenu principal ──
+                # ── Métadonnées ──
                 content = row.select_one("div.iEHPA.TzFuW")
                 if not content:
                     continue
 
-                # ── Blocs de scores ──
-                score_blocks = content.select("div.mLASH.RRvbN")
-                if len(score_blocks) < 2:
-                    score_blocks = content.select("div.RRvbN")
-                if len(score_blocks) < 2:
-                    print(f"    ⚠️ H2H gameId={game_id_h2h} : score_blocks={len(score_blocks)}")
-                    continue
-
-                def extract_score(block):
-                    inner = block.select_one("div.LiUVm, div.rbmla")
-                    if not inner:
-                        return None, False
-                    score_text = read_direct_text(inner)
-                    is_winner  = (
-                        "rbmla" in inner.get("class", []) and
-                        inner.select_one("div.xtUup") is not None
-                    )
-                    return score_text, is_winner
-
-                score_left_val,  left_is_winner  = extract_score(score_blocks[0])
-                score_right_val, right_is_winner = extract_score(score_blocks[1])
-
-                # ── Métadonnées ──
                 meta = content.select_one("div.vIQoV.QXDKT")
 
                 comp_div    = meta.select_one("div.LiUVm.PLrIT.KTwp.FuEs") if meta else None
@@ -379,82 +307,10 @@ def extract_h2h(soup, home_team_id, away_team_id):
                     if not date_iso:
                         date_iso = date_raw
 
-                venue_span = meta.select_one("span.LiUVm.FWLyZ") if meta else None
-                venue_text = venue_span.get_text(strip=True) if venue_span else None
-                # "@ FOR" → l'abréviation après @ est l'équipe recevante (home de ce H2H)
-
-                # ── Identifier home/away de CE match H2H via venue_text ──
-                # L'équipe dont l'abréviation apparaît après "@" était à domicile.
-                # score_blocks[0] = équipe gauche (home du match du jour)
-                # score_blocks[1] = équipe droite (away du match du jour)
-                h2h_home_id, h2h_home_slug = None, None
-                h2h_away_id, h2h_away_slug = None, None
-                score_home_val = None
-                score_away_val = None
-
-                if venue_text:
-                    venue_clean = venue_text.replace("@", "").strip().upper()
-
-                    if venue_clean == abbr_right.upper():
-                        # Équipe droite (away du match du jour) était HOME dans ce H2H
-                        h2h_home_id,   h2h_home_slug = id_right, slug_right
-                        h2h_away_id,   h2h_away_slug = id_left,  slug_left
-                        score_home_val = score_right_val  # bloc droit = home H2H
-                        score_away_val = score_left_val   # bloc gauche = away H2H
-                    elif venue_clean == abbr_left.upper():
-                        # Équipe gauche (home du match du jour) était HOME dans ce H2H
-                        h2h_home_id,   h2h_home_slug = id_left,  slug_left
-                        h2h_away_id,   h2h_away_slug = id_right, slug_right
-                        score_home_val = score_left_val   # bloc gauche = home H2H
-                        score_away_val = score_right_val  # bloc droit = away H2H
-                    else:
-                        # Fallback : on ne peut pas déterminer, on garde l'ordre ESPN
-                        h2h_home_id,   h2h_home_slug = id_left,  slug_left
-                        h2h_away_id,   h2h_away_slug = id_right, slug_right
-                        score_home_val = score_left_val
-                        score_away_val = score_right_val
-                else:
-                    # Pas de venue : fallback ordre ESPN
-                    h2h_home_id,   h2h_home_slug = id_left,  slug_left
-                    h2h_away_id,   h2h_away_slug = id_right, slug_right
-                    score_home_val = score_left_val
-                    score_away_val = score_right_val
-
-                # ── Résultat du point de vue de h2h_home ──
-                result_home = None
-                if score_home_val is not None and score_away_val is not None:
-                    try:
-                        sh = int(score_home_val)
-                        sa = int(score_away_val)
-                        result_home = "W" if sh > sa else ("L" if sh < sa else "D")
-                    except:
-                        pass
-                if result_home is None:
-                    # Fallback sur les indicateurs visuels winner
-                    if venue_text and venue_text.replace("@", "").strip().upper() == abbr_right.upper():
-                        result_home = "W" if right_is_winner else ("L" if left_is_winner else "D")
-                    else:
-                        result_home = "W" if left_is_winner else ("L" if right_is_winner else "D")
-
                 h2h_list.append({
-                    "game_id":     game_id_h2h,
                     "date":        date_iso,
                     "competition": competition,
-                    "score": {
-                        "home": score_home_val,  # score de l'équipe à domicile dans CE H2H
-                        "away": score_away_val,  # score de l'équipe à l'extérieur dans CE H2H
-                    },
-                    "result_home": result_home,  # W/D/L du point de vue de h2h_home
-                    "venue":       venue_text,
-                    "h2h_home": {
-                        "team_id":   h2h_home_id,
-                        "team_slug": h2h_home_slug,
-                    },
-                    "h2h_away": {
-                        "team_id":   h2h_away_id,
-                        "team_slug": h2h_away_slug,
-                    },
-                    "match_url": match_url,
+                    "match_url":   match_url,
                 })
 
             except Exception as e:
@@ -469,13 +325,7 @@ def extract_h2h(soup, home_team_id, away_team_id):
 # ================= EXTRACTION DERNIERS MATCHS (LAST 5) =================
 def extract_last_five(soup, team_id):
     """
-    Extrait les 5 derniers matchs d'une équipe.
-
-    Sémantique du champ venue (depuis la perspective de l'équipe cible) :
-      - "vs" : l'équipe cible jouait à DOMICILE  → opponent était AWAY
-      - "@"  : l'équipe cible jouait à L'EXTÉRIEUR → opponent était HOME
-
-    Les champs home_team / away_team reflètent qui était effectivement à domicile.
+    Retourne uniquement : date, competition, match_url, result
     """
     last_five = []
     try:
@@ -517,70 +367,23 @@ def extract_last_five(soup, team_id):
                 if not date_iso:
                     date_iso = date_raw
 
-                # ── Adversaire ──
-                opp_td       = tds[1]
-                at_span      = opp_td.select_one("span.atVs")
-                venue        = at_span.get_text(strip=True) if at_span else ""
-                # venue == "vs" → équipe cible était HOME, opponent était AWAY
-                # venue == "@"  → équipe cible était AWAY, opponent était HOME
-
-                opp_link_tag = opp_td.select_one("a.AnchorLink")
-                opp_href     = opp_link_tag.get("href", "") if opp_link_tag else ""
-                opp_team_id  = extract_team_id_from_team_url(opp_href)
-                m_slug       = re.search(r"/id/\d+/([^/\?]+)$", opp_href)
-                opp_slug     = m_slug.group(1) if m_slug else None
-                opp_full_url = ("https://www.espn.com" + opp_href) if opp_href else None
-
-                # ── Résultat & score ──
+                # ── Résultat & URL ──
                 result_td   = tds[2]
                 result_link = result_td.select_one("a.AnchorLink")
                 match_href  = result_link.get("href", "") if result_link else ""
                 match_url   = ("https://www.espn.com" + match_href) if match_href else None
 
-                gid_m     = re.search(r"gameId/(\d+)", match_href)
-                match_gid = gid_m.group(1) if gid_m else None
-
-                slug_m    = re.search(r"gameId/\d+/([^/\?]+)$", match_href.rstrip("/"))
-                match_slug = slug_m.group(1) if slug_m else None
-
                 result_span = result_td.select_one("span.GameResults")
                 result      = result_span.get_text(strip=True) if result_span else None
-                score_span  = result_td.select_one("span.Score")
-                score       = score_span.get_text(strip=True) if score_span else None
-
-                # ── Déduire home_team_id / away_team_id ──
-                # "vs" → team_id est HOME, opp est AWAY
-                # "@"  → opp est HOME, team_id est AWAY
-                if venue == "vs":
-                    home_team_id_match = team_id
-                    away_team_id_match = opp_team_id
-                    home_team_slug     = None   # slug non disponible ici
-                    away_team_slug     = opp_slug
-                else:  # "@"
-                    home_team_id_match = opp_team_id
-                    away_team_id_match = team_id
-                    home_team_slug     = opp_slug
-                    away_team_slug     = None
 
                 # ── Compétition ──
                 competition = tds[3].get_text(strip=True)
 
                 last_five.append({
-                    "date":              date_iso,
-                    "venue":             venue,          # "vs" (cible=home) ou "@" (cible=away)
-                    "opponent_slug":     opp_slug,
-                    "opponent_id":       opp_team_id,
-                    "opponent_url":      opp_full_url,
-                    "home_team_id":      home_team_id_match,   # équipe effectivement à domicile
-                    "home_team_slug":    home_team_slug,
-                    "away_team_id":      away_team_id_match,   # équipe effectivement à l'extérieur
-                    "away_team_slug":    away_team_slug,
-                    "result":            result,          # W/D/L du point de vue de team_id
-                    "score":             score,
-                    "competition":       competition,
-                    "game_id":           match_gid,
-                    "match_slug":        match_slug,
-                    "match_url":         match_url,
+                    "date":        date_iso,
+                    "competition": competition,
+                    "match_url":   match_url,
+                    "result":      result,
                 })
 
             except Exception as e:
@@ -686,13 +489,13 @@ try:
                 # ── Stats ──
                 match_stats = extract_match_stats(match_soup)
 
-                # ── H2H (on passe les IDs des deux équipes pour identifier home/away) ──
+                # ── H2H ──
                 h2h = extract_h2h(match_soup, team_id_home, team_id_away)
 
-                # ── Last 5 home (onglet home actif par défaut) ──
+                # ── Last 5 home ──
                 last5_home = extract_last_five(match_soup, team_id_home)
 
-                # ── Last 5 away : clic sur le 2ème bouton via Selenium ──
+                # ── Last 5 away ──
                 last5_away = []
                 try:
                     away_btns = driver.find_elements(
@@ -739,8 +542,8 @@ try:
                         "draw": ml["draw"] if ml else None,
                     },
 
-                    "stats":  match_stats,
-                    "h2h":    h2h,
+                    "stats": match_stats,
+                    "h2h":   h2h,
                 }
 
                 odds_str = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"

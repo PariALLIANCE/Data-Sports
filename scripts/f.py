@@ -17,7 +17,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 MATCH_URLS = [
     "https://www.espn.com/soccer/match/_/gameId/401873943/avai-ceara",
-    # ajouter d'autres URLs ici
 ]
 
 OUTPUT_FILE = "match_details.json"
@@ -49,66 +48,63 @@ def create_driver():
     return driver
 
 # ─────────────────────────────────────────────
-# ÉQUIPES DEPUIS L'URL
-# Format ESPN : /gameId/XXXXX/team1-team2
+# ÉQUIPES DEPUIS LE GAMESTRIP
+# Source : liens a[data-clubhouse-uid] dans le Gamestrip__Container
+# href="/soccer/team/_/id/9969/ceara"  → team_id=9969
+# span.NzyJW.NMnSM                     → nom long "Ceará"
+# span.HUcap.mpjVY                     → sigle "CEA"
 # ─────────────────────────────────────────────
 
-def teams_from_url(url):
+def extract_teams_gamestrip(driver):
     """
-    Extrait les slugs d'équipes depuis l'URL ESPN.
-    ex: /avai-ceara → ["avai", "ceara"]
-    """
-    m = re.search(r"/gameId/\d+/([a-z0-9\-]+)", url)
-    if not m:
-        return None, None
-    slug = m.group(1)
-    # Tente de couper au milieu (le slug ESPN est toujours team1-team2)
-    # On cherche le séparateur en comparant avec les noms dans le gamestrip
-    return slug  # retourné brut, sera affiné après scraping
-
-# ─────────────────────────────────────────────
-# EXTRACTION ÉQUIPES DEPUIS GAMESTRIP
-# Les deux équipes sont dans span.NMnSM (nom long)
-# ─────────────────────────────────────────────
-
-def extract_teams(driver):
-    """
-    Récupère home/away : nom complet, sigle et ESPN team_id.
-    Les liens équipes dans le Gamestrip :
-      href="/soccer/team/_/id/9969/ceara"  → id=9969
-      span.NMnSM = nom long
-      span.HUcap = sigle
+    Retourne [home, away] chacun = {name, sigle, team_id}
+    Les deux liens équipes dans le Gamestrip ont data-clubhouse-uid
+    et href="/soccer/team/_/id/XXXX/slug".
+    On les prend dans l'ordre DOM : home d'abord, away ensuite.
     """
     teams = []
     try:
-        # Liens équipes dans le Gamestrip (data-clubhouse-uid présent)
-        links = driver.find_elements(
-            By.CSS_SELECTOR,
-            "a[data-clubhouse-uid][href*='/soccer/team/_/id/']"
+        container = driver.find_element(By.CSS_SELECTOR, "div.Gamestrip__Container")
+        links = container.find_elements(
+            By.CSS_SELECTOR, "a[data-clubhouse-uid][href*='/soccer/team/_/id/']"
         )
-        seen = []
+        seen_ids = []
         for a in links:
             href = a.get_attribute("href") or ""
+            uid  = a.get_attribute("data-clubhouse-uid") or ""
+
+            # team_id depuis href
             m = re.search(r"/soccer/team/_/id/(\d+)/", href)
             if not m:
                 continue
             team_id = m.group(1)
-            if team_id in seen:
+            if team_id in seen_ids:
                 continue
-            seen.append(team_id)
+            seen_ids.append(team_id)
 
+            # nom long
             try:
-                name  = a.find_element(By.CSS_SELECTOR, "span.NMnSM").text.strip()
+                name = a.find_element(By.CSS_SELECTOR, "span.NMnSM").text.strip()
             except NoSuchElementException:
-                name  = ""
+                name = ""
+
+            # sigle
             try:
                 sigle = a.find_element(By.CSS_SELECTOR, "span.HUcap").text.strip()
             except NoSuchElementException:
                 sigle = ""
 
-            if name or sigle:
-                teams.append({"name": name or sigle, "sigle": sigle, "team_id": team_id})
+            # fallback nom = alt de l'image
+            if not name:
+                try:
+                    name = a.find_element(By.CSS_SELECTOR, "img").get_attribute("alt") or ""
+                except NoSuchElementException:
+                    pass
 
+            teams.append({"name": name, "sigle": sigle, "team_id": team_id})
+
+    except NoSuchElementException:
+        pass
     except Exception as e:
         print(f"    ⚠️  Erreur équipes gamestrip : {e}")
 
@@ -118,42 +114,51 @@ def extract_teams(driver):
 
 # ─────────────────────────────────────────────
 # ÉQUIPES EN GRAS DANS LE CLASSEMENT
-# featuredTeam = équipes qui jouent ce match
+# a.AnchorLink.featuredTeam → équipes du match
+# data-clubhouse-uid="s:600~t:9969" → team_id
+# span.Standings__TeamName           → nom
 # ─────────────────────────────────────────────
 
-def extract_featured_teams_standings(driver):
+def extract_featured_standings(driver):
     """
-    Dans le tableau de classement, les équipes du match
-    ont la classe 'featuredTeam' (affichées en gras).
-    Retourne leurs noms dans l'ordre du classement (pas forcément home/away).
+    Retourne la liste des équipes marquées featuredTeam dans le tableau
+    de classement, avec leur nom et team_id.
     """
-    teams = []
+    featured = []
     try:
-        els = driver.find_elements(
+        links = driver.find_elements(
             By.CSS_SELECTOR,
-            "a.AnchorLink.featuredTeam span.Standings__TeamName"
+            "a.AnchorLink.featuredTeam[data-clubhouse-uid]"
         )
-        for el in els:
-            t = el.text.strip()
-            if t and t not in teams:
-                teams.append(t)
+        for a in links:
+            uid = a.get_attribute("data-clubhouse-uid") or ""
+            m   = re.search(r"t:(\d+)", uid)
+            team_id = m.group(1) if m else None
+
+            try:
+                name = a.find_element(By.CSS_SELECTOR, "span.Standings__TeamName").text.strip()
+            except NoSuchElementException:
+                name = ""
+
+            if name or team_id:
+                featured.append({"name": name, "team_id": team_id})
+
     except Exception as e:
         print(f"    ⚠️  Erreur featured standings : {e}")
-    return teams
+
+    return featured
 
 # ─────────────────────────────────────────────
 # SCORE ET STATUT
+# div.uCTxv   → chiffre du score (home=1er, away=2ème)
+# span.zRALO  → statut "FT" / "HT" / "45'" etc.
 # ─────────────────────────────────────────────
 
 def extract_score(driver):
-    """
-    Score home/away depuis les div.uCTxv du Gamestrip.
-    Statut (FT / HT / XX') depuis span.zRALO.
-    """
     home_score = away_score = status = None
     try:
         score_els = driver.find_elements(By.CSS_SELECTOR, "div.uCTxv")
-        scores = [s.text.strip() for s in score_els if re.match(r"^\d+$", s.text.strip())]
+        scores = [el.text.strip() for el in score_els if re.match(r"^\d+$", el.text.strip())]
         if len(scores) >= 2:
             home_score, away_score = scores[0], scores[1]
         elif len(scores) == 1:
@@ -162,8 +167,8 @@ def extract_score(driver):
         print(f"    ⚠️  Erreur score : {e}")
 
     try:
-        st_els  = driver.find_elements(By.CSS_SELECTOR, "span.zRALO")
-        statuses = [s.text.strip() for s in st_els if s.text.strip()]
+        st_els   = driver.find_elements(By.CSS_SELECTOR, "span.zRALO")
+        statuses = [el.text.strip() for el in st_els if el.text.strip()]
         if statuses:
             status = statuses[0]
     except Exception:
@@ -173,50 +178,55 @@ def extract_score(driver):
 
 # ─────────────────────────────────────────────
 # ÉVÉNEMENTS (buts, cartons)
+# Chaque événement = div.VZTD.ZLXw.yvbRH.JLJBa.CLwPV.ucZkc
+#   texte  : div.awXxV.rlVU.vXdaT
+#   icône  : svg[data-icon]
+#     "soccer-goal02" → but
+#     "soccer-card03" → carton
+#       fill="#FF3232" → rouge  /  sinon jaune
 # ─────────────────────────────────────────────
 
 def extract_events(driver):
-    """
-    Récupère les événements affichés dans le Gamestrip :
-    - Buts : icône data-icon="soccer-goal02"
-    - Cartons : icône data-icon="soccer-card03"
-      → rouge si fill contient #FF3232 / red
-      → jaune sinon
-    """
     events = []
     try:
-        # Chaque bloc événement = div contenant texte + svg icône
         blocks = driver.find_elements(
             By.CSS_SELECTOR,
             "div.VZTD.ZLXw.yvbRH.JLJBa.CLwPV.ucZkc"
         )
         for block in blocks:
+            # texte de l'événement
             try:
-                text_el = block.find_element(By.CSS_SELECTOR, "div.awXxV.rlVU.vXdaT")
-                text = text_el.text.strip()
+                text = block.find_element(
+                    By.CSS_SELECTOR, "div.awXxV.rlVU.vXdaT"
+                ).text.strip()
             except NoSuchElementException:
                 continue
+            if not text:
+                continue
 
+            # type via l'icône SVG
             event_type = "unknown"
             try:
-                svg = block.find_element(By.CSS_SELECTOR, "svg[data-icon]")
+                svg       = block.find_element(By.CSS_SELECTOR, "svg[data-icon]")
                 icon_name = svg.get_attribute("data-icon") or ""
+
                 if "goal" in icon_name:
                     event_type = "goal"
                 elif "card" in icon_name:
+                    # couleur du path pour distinguer jaune/rouge
                     try:
-                        path_fill = svg.find_element(By.TAG_NAME, "path").get_attribute("fill") or ""
-                        if "FF3232" in path_fill.upper() or "red" in path_fill.lower():
+                        fill = svg.find_element(By.TAG_NAME, "path").get_attribute("fill") or ""
+                        if "FF3232" in fill.upper() or "red" in fill.lower():
                             event_type = "red_card"
                         else:
                             event_type = "yellow_card"
-                    except Exception:
+                    except NoSuchElementException:
                         event_type = "card"
+
             except NoSuchElementException:
                 pass
 
-            if text:
-                events.append({"type": event_type, "text": text})
+            events.append({"type": event_type, "text": text})
 
     except Exception as e:
         print(f"    ⚠️  Erreur événements : {e}")
@@ -225,6 +235,10 @@ def extract_events(driver):
 
 # ─────────────────────────────────────────────
 # STATS DU MATCH
+# section[data-testid='prism-LayoutCard']
+#   div.LOSQp  → ligne de stat
+#     span.OkRBU         → nom de la stat
+#     span.bLeWt (x2)    → valeur home / away
 # ─────────────────────────────────────────────
 
 def extract_stats(driver):
@@ -261,7 +275,7 @@ def scrape_match(driver, url):
     m = re.search(r"gameId/(\d+)", url)
     game_id = m.group(1) if m else url
 
-    print(f"\n🔍 {url}")
+    print(f"\n🔍 gameId={game_id}  {url}")
 
     try:
         driver.get(url)
@@ -275,35 +289,33 @@ def scrape_match(driver, url):
         print(f"  ⚠️  WebDriver : {e}")
         return None
 
-    time.sleep(1.5)  # laisser le JS finir de rendre
+    time.sleep(1.5)
 
-    home, away                     = extract_teams(driver)
+    home, away             = extract_teams_gamestrip(driver)
     home_score, away_score, status = extract_score(driver)
-    featured                       = extract_featured_teams_standings(driver)
-    events                         = extract_events(driver)
-    stats                          = extract_stats(driver)
+    featured               = extract_featured_standings(driver)
+    events                 = extract_events(driver)
+    stats                  = extract_stats(driver)
 
     result = {
-        "gameId":     game_id,
-        "url":        url,
-        "team_home":  home["name"],
-        "team_away":  away["name"],
-        "team_home_id":  home["team_id"],
-        "team_away_id":  away["team_id"],
-        "team_home_sigle": home["sigle"],
-        "team_away_sigle": away["sigle"],
-        "home_score": home_score,
-        "away_score": away_score,
-        "status":     status,
-        "featured_in_standings": featured,
-        "events":     events,
-        "stats":      stats,
+        "gameId":            game_id,
+        "url":               url,
+        "team_home":         home["name"],
+        "team_home_id":      home["team_id"],
+        "team_home_sigle":   home["sigle"],
+        "team_away":         away["name"],
+        "team_away_id":      away["team_id"],
+        "team_away_sigle":   away["sigle"],
+        "home_score":        home_score,
+        "away_score":        away_score,
+        "status":            status,
+        "featured_standings": featured,
+        "events":            events,
+        "stats":             stats,
     }
 
     print(f"  ✅ {home['name']} (id={home['team_id']}) {home_score} - {away_score} {away['name']} (id={away['team_id']})  [{status}]")
     print(f"  📊 {len(stats)} stats | {len(events)} événements")
-    if featured:
-        print(f"  🔲 En gras dans classement : {featured}")
     for ev in events:
         print(f"     • [{ev['type']}] {ev['text']}")
 
@@ -313,7 +325,7 @@ def scrape_match(driver, url):
 # MAIN
 # ─────────────────────────────────────────────
 
-driver = create_driver()
+driver  = create_driver()
 results = []
 
 try:

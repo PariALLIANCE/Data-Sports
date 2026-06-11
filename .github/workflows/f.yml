@@ -44,4 +44,4 @@ jobs:
         with:
           commit_message: "🤖 Mise à jour games_of_day.json"
           branch: main
-          file_pattern: "data/football/games_of_day.json"
+          file_pattern: "match_details.json"

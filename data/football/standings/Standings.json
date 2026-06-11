@@ -2167,14 +2167,14 @@
                 "position": 3,
                 "name": "Sport",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 6,
-                    "D": 4,
+                    "D": 5,
                     "L": 1,
-                    "F": 15,
-                    "A": 7,
+                    "F": 16,
+                    "A": 8,
                     "GD": 8,
-                    "P": 22
+                    "P": 23
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2201,6 +2201,21 @@
             },
             {
                 "position": 5,
+                "name": "Novorizontino",
+                "stats": {
+                    "GP": 12,
+                    "W": 5,
+                    "D": 5,
+                    "L": 2,
+                    "F": 18,
+                    "A": 11,
+                    "GD": 7,
+                    "P": 20
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
                 "name": "Criciúma",
                 "stats": {
                     "GP": 12,
@@ -2215,7 +2230,7 @@
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Náutico",
                 "stats": {
                     "GP": 12,
@@ -2230,7 +2245,7 @@
                 "zone": null
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 12,
@@ -2245,46 +2260,31 @@
                 "zone": null
             },
             {
-                "position": 8,
-                "name": "Goiás",
-                "stats": {
-                    "GP": 11,
-                    "W": 5,
-                    "D": 2,
-                    "L": 4,
-                    "F": 12,
-                    "A": 13,
-                    "GD": -1,
-                    "P": 17
-                },
-                "zone": null
-            },
-            {
                 "position": 9,
-                "name": "Novorizontino",
+                "name": "Athletic",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 4,
-                    "D": 5,
+                    "D": 6,
                     "L": 2,
                     "F": 14,
-                    "A": 11,
-                    "GD": 3,
-                    "P": 17
+                    "A": 12,
+                    "GD": 2,
+                    "P": 18
                 },
                 "zone": null
             },
             {
                 "position": 10,
-                "name": "Athletic",
+                "name": "Goiás",
                 "stats": {
-                    "GP": 11,
-                    "W": 4,
-                    "D": 5,
-                    "L": 2,
-                    "F": 13,
-                    "A": 11,
-                    "GD": 2,
+                    "GP": 12,
+                    "W": 5,
+                    "D": 2,
+                    "L": 5,
+                    "F": 12,
+                    "A": 17,
+                    "GD": -5,
                     "P": 17
                 },
                 "zone": null
@@ -2306,6 +2306,21 @@
             },
             {
                 "position": 12,
+                "name": "Ceará",
+                "stats": {
+                    "GP": 12,
+                    "W": 4,
+                    "D": 4,
+                    "L": 4,
+                    "F": 14,
+                    "A": 14,
+                    "GD": 0,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 13,
                 "name": "Atlético Goianiense",
                 "stats": {
                     "GP": 12,
@@ -2320,7 +2335,7 @@
                 "zone": null
             },
             {
-                "position": 13,
+                "position": 14,
                 "name": "Cuiabá",
                 "stats": {
                     "GP": 12,
@@ -2335,7 +2350,7 @@
                 "zone": null
             },
             {
-                "position": 14,
+                "position": 15,
                 "name": "CRB",
                 "stats": {
                     "GP": 12,
@@ -2346,21 +2361,6 @@
                     "A": 20,
                     "GD": -1,
                     "P": 14
-                },
-                "zone": null
-            },
-            {
-                "position": 15,
-                "name": "Ceará",
-                "stats": {
-                    "GP": 11,
-                    "W": 3,
-                    "D": 4,
-                    "L": 4,
-                    "F": 12,
-                    "A": 13,
-                    "GD": -1,
-                    "P": 13
                 },
                 "zone": null
             },
@@ -2383,13 +2383,13 @@
                 "position": 17,
                 "name": "Avaí",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 2,
                     "D": 4,
-                    "L": 5,
-                    "F": 11,
-                    "A": 15,
-                    "GD": -4,
+                    "L": 6,
+                    "F": 12,
+                    "A": 17,
+                    "GD": -5,
                     "P": 10
                 },
                 "zone": {
@@ -3831,16 +3831,16 @@
         "standings": [
             {
                 "position": 1,
-                "name": "Paris Saint-Germain",
+                "name": "Angers",
                 "stats": {
-                    "GP": 34,
-                    "W": 24,
-                    "D": 4,
-                    "L": 6,
-                    "F": 74,
-                    "A": 29,
-                    "GD": 45,
-                    "P": 76
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Champions League",
@@ -3849,16 +3849,16 @@
             },
             {
                 "position": 2,
-                "name": "Lens",
+                "name": "AJ Auxerre",
                 "stats": {
-                    "GP": 34,
-                    "W": 22,
-                    "D": 4,
-                    "L": 8,
-                    "F": 66,
-                    "A": 35,
-                    "GD": 31,
-                    "P": 70
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Champions League",
@@ -3867,16 +3867,16 @@
             },
             {
                 "position": 3,
-                "name": "Lille",
+                "name": "Brest",
                 "stats": {
-                    "GP": 34,
-                    "W": 18,
-                    "D": 7,
-                    "L": 9,
-                    "F": 52,
-                    "A": 37,
-                    "GD": 15,
-                    "P": 61
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Champions League",
@@ -3885,16 +3885,16 @@
             },
             {
                 "position": 4,
-                "name": "Lyon",
+                "name": "Le Havre AC",
                 "stats": {
-                    "GP": 34,
-                    "W": 18,
-                    "D": 6,
-                    "L": 10,
-                    "F": 53,
-                    "A": 40,
-                    "GD": 13,
-                    "P": 60
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Champions League Playoff",
@@ -3903,16 +3903,16 @@
             },
             {
                 "position": 5,
-                "name": "Marseille",
+                "name": "Le Mans",
                 "stats": {
-                    "GP": 34,
-                    "W": 18,
-                    "D": 5,
-                    "L": 11,
-                    "F": 63,
-                    "A": 45,
-                    "GD": 18,
-                    "P": 59
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Europa League",
@@ -3921,16 +3921,16 @@
             },
             {
                 "position": 6,
-                "name": "Stade Rennais",
+                "name": "Lens",
                 "stats": {
-                    "GP": 34,
-                    "W": 17,
-                    "D": 8,
-                    "L": 9,
-                    "F": 59,
-                    "A": 50,
-                    "GD": 9,
-                    "P": 59
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Conference League",
@@ -3939,151 +3939,151 @@
             },
             {
                 "position": 7,
-                "name": "AS Monaco",
+                "name": "Lille",
                 "stats": {
-                    "GP": 34,
-                    "W": 16,
-                    "D": 6,
-                    "L": 12,
-                    "F": 60,
-                    "A": 54,
-                    "GD": 6,
-                    "P": 54
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 8,
-                "name": "Strasbourg",
+                "name": "Lorient",
                 "stats": {
-                    "GP": 34,
-                    "W": 15,
-                    "D": 8,
-                    "L": 11,
-                    "F": 58,
-                    "A": 47,
-                    "GD": 11,
-                    "P": 53
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 9,
-                "name": "Lorient",
+                "name": "Lyon",
                 "stats": {
-                    "GP": 34,
-                    "W": 11,
-                    "D": 12,
-                    "L": 11,
-                    "F": 48,
-                    "A": 51,
-                    "GD": -3,
-                    "P": 45
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 10,
-                "name": "Toulouse",
+                "name": "Marseille",
                 "stats": {
-                    "GP": 33,
-                    "W": 12,
-                    "D": 8,
-                    "L": 13,
-                    "F": 47,
-                    "A": 46,
-                    "GD": 1,
-                    "P": 44
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 11,
-                "name": "Paris FC",
+                "name": "AS Monaco",
                 "stats": {
-                    "GP": 34,
-                    "W": 11,
-                    "D": 11,
-                    "L": 12,
-                    "F": 47,
-                    "A": 50,
-                    "GD": -3,
-                    "P": 44
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 12,
-                "name": "Brest",
+                "name": "Nice",
                 "stats": {
-                    "GP": 34,
-                    "W": 10,
-                    "D": 9,
-                    "L": 15,
-                    "F": 43,
-                    "A": 55,
-                    "GD": -12,
-                    "P": 39
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 13,
-                "name": "Angers",
+                "name": "Paris FC",
                 "stats": {
-                    "GP": 34,
-                    "W": 9,
-                    "D": 9,
-                    "L": 16,
-                    "F": 29,
-                    "A": 48,
-                    "GD": -19,
-                    "P": 36
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 14,
-                "name": "Le Havre AC",
+                "name": "Paris Saint-Germain",
                 "stats": {
-                    "GP": 34,
-                    "W": 7,
-                    "D": 14,
-                    "L": 13,
-                    "F": 32,
-                    "A": 44,
-                    "GD": -12,
-                    "P": 35
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 15,
-                "name": "AJ Auxerre",
+                "name": "Stade Rennais",
                 "stats": {
-                    "GP": 34,
-                    "W": 8,
-                    "D": 10,
-                    "L": 16,
-                    "F": 34,
-                    "A": 44,
-                    "GD": -10,
-                    "P": 34
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 16,
-                "name": "Nice",
+                "name": "Strasbourg",
                 "stats": {
-                    "GP": 34,
-                    "W": 7,
-                    "D": 11,
-                    "L": 16,
-                    "F": 37,
-                    "A": 60,
-                    "GD": -23,
-                    "P": 32
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation Playoff",
@@ -4092,16 +4092,16 @@
             },
             {
                 "position": 17,
-                "name": "Nantes",
+                "name": "Toulouse",
                 "stats": {
-                    "GP": 33,
-                    "W": 5,
-                    "D": 8,
-                    "L": 20,
-                    "F": 29,
-                    "A": 52,
-                    "GD": -23,
-                    "P": 23
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation",
@@ -4110,16 +4110,16 @@
             },
             {
                 "position": 18,
-                "name": "Metz",
+                "name": "Troyes",
                 "stats": {
-                    "GP": 34,
-                    "W": 3,
-                    "D": 8,
-                    "L": 23,
-                    "F": 32,
-                    "A": 76,
-                    "GD": -44,
-                    "P": 17
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation",
@@ -4562,16 +4562,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "Toluca",
+                    "name": "Atlante",
                     "stats": {
-                        "GP": 17,
-                        "W": 11,
-                        "D": 4,
-                        "L": 2,
-                        "F": 43,
-                        "A": 18,
-                        "GD": 25,
-                        "P": 37
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4580,16 +4580,16 @@
                 },
                 {
                     "position": 2,
-                    "name": "Tigres UANL",
+                    "name": "Atlas",
                     "stats": {
-                        "GP": 17,
-                        "W": 10,
-                        "D": 6,
-                        "L": 1,
-                        "F": 35,
-                        "A": 16,
-                        "GD": 19,
-                        "P": 36
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4598,16 +4598,16 @@
                 },
                 {
                     "position": 3,
-                    "name": "Cruz Azul",
+                    "name": "Atlético de San Luis",
                     "stats": {
-                        "GP": 17,
-                        "W": 10,
-                        "D": 5,
-                        "L": 2,
-                        "F": 32,
-                        "A": 20,
-                        "GD": 12,
-                        "P": 35
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4618,14 +4618,14 @@
                     "position": 4,
                     "name": "América",
                     "stats": {
-                        "GP": 17,
-                        "W": 10,
-                        "D": 4,
-                        "L": 3,
-                        "F": 33,
-                        "A": 18,
-                        "GD": 15,
-                        "P": 34
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4634,16 +4634,16 @@
                 },
                 {
                     "position": 5,
-                    "name": "Monterrey",
+                    "name": "Cruz Azul",
                     "stats": {
-                        "GP": 17,
-                        "W": 9,
-                        "D": 4,
-                        "L": 4,
-                        "F": 33,
-                        "A": 29,
-                        "GD": 4,
-                        "P": 31
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4654,14 +4654,14 @@
                     "position": 6,
                     "name": "Guadalajara",
                     "stats": {
-                        "GP": 17,
-                        "W": 9,
-                        "D": 2,
-                        "L": 6,
-                        "F": 29,
-                        "A": 22,
-                        "GD": 7,
-                        "P": 29
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Liguilla directe (Quarts de finale)",
@@ -4670,16 +4670,16 @@
                 },
                 {
                     "position": 7,
-                    "name": "Tijuana",
+                    "name": "FC Juarez",
                     "stats": {
-                        "GP": 17,
-                        "W": 6,
-                        "D": 6,
-                        "L": 5,
-                        "F": 29,
-                        "A": 23,
-                        "GD": 6,
-                        "P": 24
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Play-in (Reclasificación)",
@@ -4688,16 +4688,16 @@
                 },
                 {
                     "position": 8,
-                    "name": "FC Juarez",
+                    "name": "León",
                     "stats": {
-                        "GP": 17,
-                        "W": 6,
-                        "D": 5,
-                        "L": 6,
-                        "F": 27,
-                        "A": 28,
-                        "GD": -1,
-                        "P": 23
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Play-in (Reclasificación)",
@@ -4706,16 +4706,16 @@
                 },
                 {
                     "position": 9,
-                    "name": "Pachuca",
+                    "name": "Monterrey",
                     "stats": {
-                        "GP": 17,
-                        "W": 6,
-                        "D": 4,
-                        "L": 7,
-                        "F": 21,
-                        "A": 21,
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
                         "GD": 0,
-                        "P": 22
+                        "P": 0
                     },
                     "zone": {
                         "label": "Play-in (Reclasificación)",
@@ -4724,16 +4724,16 @@
                 },
                 {
                     "position": 10,
-                    "name": "Pumas UNAM",
+                    "name": "Necaxa",
                     "stats": {
-                        "GP": 17,
-                        "W": 5,
-                        "D": 6,
-                        "L": 6,
-                        "F": 24,
-                        "A": 25,
-                        "GD": -1,
-                        "P": 21
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Play-in (Reclasificación)",
@@ -4742,121 +4742,121 @@
                 },
                 {
                     "position": 11,
-                    "name": "Santos",
+                    "name": "Pachuca",
                     "stats": {
-                        "GP": 17,
-                        "W": 6,
-                        "D": 2,
-                        "L": 9,
-                        "F": 22,
-                        "A": 28,
-                        "GD": -6,
-                        "P": 20
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 12,
-                    "name": "Querétaro",
+                    "name": "Puebla",
                     "stats": {
-                        "GP": 17,
-                        "W": 6,
-                        "D": 2,
-                        "L": 9,
-                        "F": 19,
-                        "A": 29,
-                        "GD": -10,
-                        "P": 20
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 13,
-                    "name": "Necaxa",
+                    "name": "Pumas UNAM",
                     "stats": {
-                        "GP": 17,
-                        "W": 4,
-                        "D": 5,
-                        "L": 8,
-                        "F": 24,
-                        "A": 32,
-                        "GD": -8,
-                        "P": 17
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 14,
-                    "name": "Atlas",
+                    "name": "Querétaro",
                     "stats": {
-                        "GP": 17,
-                        "W": 4,
-                        "D": 5,
-                        "L": 8,
-                        "F": 24,
-                        "A": 35,
-                        "GD": -11,
-                        "P": 17
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 15,
-                    "name": "Atlético de San Luis",
+                    "name": "Santos",
                     "stats": {
-                        "GP": 17,
-                        "W": 5,
-                        "D": 1,
-                        "L": 11,
-                        "F": 25,
-                        "A": 29,
-                        "GD": -4,
-                        "P": 16
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 16,
-                    "name": "Mazatlán FC",
+                    "name": "Tigres UANL",
                     "stats": {
-                        "GP": 17,
-                        "W": 2,
-                        "D": 8,
-                        "L": 7,
-                        "F": 20,
-                        "A": 29,
-                        "GD": -9,
-                        "P": 14
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 17,
-                    "name": "León",
+                    "name": "Tijuana",
                     "stats": {
-                        "GP": 17,
-                        "W": 3,
-                        "D": 4,
-                        "L": 10,
-                        "F": 14,
-                        "A": 31,
-                        "GD": -17,
-                        "P": 13
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 18,
-                    "name": "Puebla",
+                    "name": "Toluca",
                     "stats": {
-                        "GP": 17,
-                        "W": 3,
-                        "D": 3,
-                        "L": 11,
-                        "F": 21,
-                        "A": 42,
-                        "GD": -21,
-                        "P": 12
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 }
@@ -4911,16 +4911,16 @@
         "standings": [
             {
                 "position": 1,
-                "name": "PSV Eindhoven",
+                "name": "ADO Den Haag",
                 "stats": {
-                    "GP": 34,
-                    "W": 27,
-                    "D": 3,
-                    "L": 4,
-                    "F": 101,
-                    "A": 45,
-                    "GD": 56,
-                    "P": 84
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Champions League",
@@ -4929,16 +4929,16 @@
             },
             {
                 "position": 2,
-                "name": "Feyenoord Rotterdam",
+                "name": "AZ Alkmaar",
                 "stats": {
-                    "GP": 34,
-                    "W": 19,
-                    "D": 8,
-                    "L": 7,
-                    "F": 70,
-                    "A": 44,
-                    "GD": 26,
-                    "P": 65
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Europa League",
@@ -4947,16 +4947,16 @@
             },
             {
                 "position": 3,
-                "name": "NEC Nijmegen",
+                "name": "Ajax Amsterdam",
                 "stats": {
-                    "GP": 34,
-                    "W": 16,
-                    "D": 11,
-                    "L": 7,
-                    "F": 77,
-                    "A": 53,
-                    "GD": 24,
-                    "P": 59
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Europa League",
@@ -4965,16 +4965,16 @@
             },
             {
                 "position": 4,
-                "name": "FC Twente",
+                "name": "SC Cambuur",
                 "stats": {
-                    "GP": 34,
-                    "W": 15,
-                    "D": 13,
-                    "L": 6,
-                    "F": 59,
-                    "A": 40,
-                    "GD": 19,
-                    "P": 58
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Europa League",
@@ -4983,16 +4983,16 @@
             },
             {
                 "position": 5,
-                "name": "Ajax Amsterdam",
+                "name": "Excelsior",
                 "stats": {
-                    "GP": 34,
-                    "W": 14,
-                    "D": 14,
-                    "L": 6,
-                    "F": 62,
-                    "A": 41,
-                    "GD": 21,
-                    "P": 56
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "UEFA Conference League",
@@ -5001,46 +5001,46 @@
             },
             {
                 "position": 6,
-                "name": "FC Utrecht",
+                "name": "Feyenoord Rotterdam",
                 "stats": {
-                    "GP": 34,
-                    "W": 15,
-                    "D": 8,
-                    "L": 11,
-                    "F": 55,
-                    "A": 42,
-                    "GD": 13,
-                    "P": 53
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 7,
-                "name": "AZ Alkmaar",
+                "name": "Fortuna Sittard",
                 "stats": {
-                    "GP": 34,
-                    "W": 14,
-                    "D": 10,
-                    "L": 10,
-                    "F": 58,
-                    "A": 51,
-                    "GD": 7,
-                    "P": 52
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 8,
-                "name": "Heerenveen",
+                "name": "Go Ahead Eagles",
                 "stats": {
-                    "GP": 34,
-                    "W": 14,
-                    "D": 9,
-                    "L": 11,
-                    "F": 57,
-                    "A": 53,
-                    "GD": 4,
-                    "P": 51
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
@@ -5048,119 +5048,119 @@
                 "position": 9,
                 "name": "FC Groningen",
                 "stats": {
-                    "GP": 34,
-                    "W": 14,
-                    "D": 6,
-                    "L": 14,
-                    "F": 49,
-                    "A": 45,
-                    "GD": 4,
-                    "P": 48
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 10,
-                "name": "Sparta Rotterdam",
+                "name": "Heerenveen",
                 "stats": {
-                    "GP": 34,
-                    "W": 12,
-                    "D": 7,
-                    "L": 15,
-                    "F": 40,
-                    "A": 62,
-                    "GD": -22,
-                    "P": 43
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 11,
-                "name": "Fortuna Sittard",
+                "name": "NEC Nijmegen",
                 "stats": {
-                    "GP": 34,
-                    "W": 11,
-                    "D": 6,
-                    "L": 17,
-                    "F": 49,
-                    "A": 63,
-                    "GD": -14,
-                    "P": 39
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 12,
-                "name": "Go Ahead Eagles",
+                "name": "PEC Zwolle",
                 "stats": {
-                    "GP": 34,
-                    "W": 8,
-                    "D": 14,
-                    "L": 12,
-                    "F": 54,
-                    "A": 53,
-                    "GD": 1,
-                    "P": 38
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 13,
-                "name": "Excelsior",
+                "name": "PSV Eindhoven",
                 "stats": {
-                    "GP": 34,
-                    "W": 10,
-                    "D": 8,
-                    "L": 16,
-                    "F": 43,
-                    "A": 56,
-                    "GD": -13,
-                    "P": 38
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 14,
-                "name": "Telstar",
+                "name": "Sparta Rotterdam",
                 "stats": {
-                    "GP": 34,
-                    "W": 9,
-                    "D": 10,
-                    "L": 15,
-                    "F": 49,
-                    "A": 55,
-                    "GD": -6,
-                    "P": 37
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 15,
-                "name": "PEC Zwolle",
+                "name": "Telstar",
                 "stats": {
-                    "GP": 34,
-                    "W": 9,
-                    "D": 10,
-                    "L": 15,
-                    "F": 44,
-                    "A": 71,
-                    "GD": -27,
-                    "P": 37
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": null
             },
             {
                 "position": 16,
-                "name": "FC Volendam",
+                "name": "FC Twente",
                 "stats": {
-                    "GP": 34,
-                    "W": 8,
-                    "D": 8,
-                    "L": 18,
-                    "F": 35,
-                    "A": 55,
-                    "GD": -20,
-                    "P": 32
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation Playoff",
@@ -5169,16 +5169,16 @@
             },
             {
                 "position": 17,
-                "name": "NAC Breda",
+                "name": "FC Utrecht",
                 "stats": {
-                    "GP": 34,
-                    "W": 6,
-                    "D": 11,
-                    "L": 17,
-                    "F": 35,
-                    "A": 58,
-                    "GD": -23,
-                    "P": 29
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation",
@@ -5187,16 +5187,16 @@
             },
             {
                 "position": 18,
-                "name": "Heracles Almelo",
+                "name": "Willem II",
                 "stats": {
-                    "GP": 34,
-                    "W": 5,
-                    "D": 4,
-                    "L": 25,
-                    "F": 35,
-                    "A": 85,
-                    "GD": -50,
-                    "P": 19
+                    "GP": 0,
+                    "W": 0,
+                    "D": 0,
+                    "L": 0,
+                    "F": 0,
+                    "A": 0,
+                    "GD": 0,
+                    "P": 0
                 },
                 "zone": {
                     "label": "Relégation",

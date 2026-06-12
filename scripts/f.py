@@ -12,7 +12,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 from webdriver_manager.chrome import ChromeDriverManager
 
 MATCH_URLS = [
-    "https://www.espn.com/soccer/match/_/gameId/401873943/avai-ceara",
+    "https://www.espn.com/soccer/match/_/gameId/401860189/crb-atletico-goianiense",
 ]
 
 OUTPUT_FILE = "match_details.json"

@@ -44,9 +44,18 @@ def create_driver():
     return driver
 
 # ─────────────────────────────────────────────
+# URL LOGOS ESPN
+# https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png
+# ─────────────────────────────────────────────
+
+def build_logo_url(team_id, size=500):
+    """Retourne l'URL du logo ESPN pour un team_id donné."""
+    if not team_id:
+        return None
+    return f"https://a.espncdn.com/i/teamlogos/soccer/{size}/{team_id}.png"
+
+# ─────────────────────────────────────────────
 # IDs ÉQUIPES DEPUIS LE GAMESTRIP
-# href="/soccer/team/_/id/9969/ceara" → team_id
-# home = 1er lien, away = 2ème lien
 # ─────────────────────────────────────────────
 
 def extract_team_ids_gamestrip(driver):
@@ -76,10 +85,6 @@ def extract_team_ids_gamestrip(driver):
 
 # ─────────────────────────────────────────────
 # NOMS DEPUIS LE CLASSEMENT
-# Toutes les équipes (featured + non featured)
-# a.AnchorLink[href*='/soccer/team/_/id/']
-#   span.Standings__TeamName → nom affiché
-#   data-clubhouse-uid="s:600~t:9969" → team_id
 # ─────────────────────────────────────────────
 
 def build_standings_name_map(driver):
@@ -113,8 +118,6 @@ def build_standings_name_map(driver):
 
 # ─────────────────────────────────────────────
 # SCORE ET STATUT
-# div.uCTxv  → score home (1er) / away (2ème)
-# span.zRALO → statut FT / HT / XX'
 # ─────────────────────────────────────────────
 
 def extract_score(driver):
@@ -138,34 +141,54 @@ def extract_score(driver):
     return home_score, away_score, status
 
 # ─────────────────────────────────────────────
-# STATS
+# STATS — VERSION ENRICHIE (depuis URL dédiée)
+# Navigue vers /match/_/gameId/{id} pour charger
+# la section stats, puis revient si besoin.
 # ─────────────────────────────────────────────
 
-def extract_stats(driver):
-    stats = {}
+def get_match_stats(driver, game_id):
+    """
+    Charge la page match ESPN et extrait les stats.
+    Retourne un dict {stat_name: {home, away}} ou {}.
+    """
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
-        WebDriverWait(driver, 8).until(
+        driver.get(url)
+        WebDriverWait(driver, 12).until(
             EC.presence_of_element_located(
                 (By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']")
             )
         )
-        rows = driver.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+    except TimeoutException:
+        pass
+    except WebDriverException as e:
+        print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
+        return {}
+
+    try:
+        stats_section = driver.find_element(
+            By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
+        )
+        rows  = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+        stats = {}
         for row in rows:
             try:
-                name = row.find_element(By.CSS_SELECTOR, "span.OkRBU").text.strip()
-                vals = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
-                if name and len(vals) >= 2:
-                    stats[name] = {
-                        "home": vals[0].text.strip(),
-                        "away": vals[1].text.strip()
+                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                values   = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                if name_tag and len(values) >= 2:
+                    stats[name_tag.text.strip()] = {
+                        "home": values[0].text.strip(),
+                        "away": values[1].text.strip()
                     }
             except NoSuchElementException:
                 continue
-    except TimeoutException:
-        pass
+        time.sleep(0.6)
+        return stats
+    except NoSuchElementException:
+        return {}
     except Exception as e:
-        print(f"    ⚠️  Erreur stats : {e}")
-    return stats
+        print(f"    ⚠️  Erreur stats ({game_id}) : {e}")
+        return {}
 
 # ─────────────────────────────────────────────
 # SCRAPING D'UN MATCH
@@ -199,16 +222,24 @@ def scrape_match(driver, url):
     home_name = name_map.get(home_id) if home_id else None
     away_name = name_map.get(away_id) if away_id else None
 
+    # Logos ESPN
+    home_logo = build_logo_url(home_id)
+    away_logo = build_logo_url(away_id)
+
     home_score, away_score, status = extract_score(driver)
-    stats = extract_stats(driver)
+
+    # Stats via la fonction enrichie (recharge la page match si nécessaire)
+    stats = get_match_stats(driver, game_id)
 
     result = {
         "gameId":       game_id,
         "url":          url,
         "team_home":    home_name,
         "team_home_id": home_id,
+        "team_home_logo": home_logo,
         "team_away":    away_name,
         "team_away_id": away_id,
+        "team_away_logo": away_logo,
         "home_score":   home_score,
         "away_score":   away_score,
         "status":       status,
@@ -216,6 +247,7 @@ def scrape_match(driver, url):
     }
 
     print(f"  ✅ {home_name} (id={home_id}) {home_score} - {away_score} {away_name} (id={away_id})  [{status}]")
+    print(f"  🖼️  Logos : {home_logo} | {away_logo}")
     print(f"  📊 {len(stats)} stats")
     return result
 

@@ -1,587 +1,119 @@
 [
   {
-    "gameId": "401873943",
-    "date": "2026-06-10",
-    "time_ci": "03:00",
+    "gameId": "401860189",
+    "date": "2026-06-12",
+    "time_ci": "02:00",
     "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873943/avai-ceara",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401860189/crb-atletico-goianiense",
     "home": {
-      "team": "Ceará",
-      "team_id": "9969",
-      "team_slug": "ceara",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
-      "url": "https://www.espn.com/soccer/team/_/id/9969",
+      "team": "Atlético Goianiense",
+      "team_id": "10357",
+      "team_slug": "atletico-goianiense",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10357.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10357",
       "last_five": [
-        {
-          "date": "2026-05-31",
-          "venue": "vs",
-          "opponent_slug": "operario-pr",
-          "opponent_id": "18187",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/18187/operario-pr",
-          "home_team_id": "9969",
-          "home_team_slug": null,
-          "away_team_id": "18187",
-          "away_team_slug": "operario-pr",
-          "result": "L",
-          "score": "2-1",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860165",
-          "match_slug": "operario-pr-ceara",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860165/operario-pr-ceara"
-        },
-        {
-          "date": "2026-05-23",
-          "venue": "@",
-          "opponent_slug": "novorizontino",
-          "opponent_id": "18127",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/18127/novorizontino",
-          "home_team_id": "18127",
-          "home_team_slug": "novorizontino",
-          "away_team_id": "9969",
-          "away_team_slug": null,
-          "result": "L",
-          "score": "2-1",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860157",
-          "match_slug": "ceara-novorizontino",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860157/ceara-novorizontino"
-        },
-        {
-          "date": "2026-05-17",
-          "venue": "vs",
-          "opponent_slug": "fortaleza",
-          "opponent_id": "6272",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/6272/fortaleza",
-          "home_team_id": "9969",
-          "home_team_slug": null,
-          "away_team_id": "6272",
-          "away_team_slug": "fortaleza",
-          "result": "W",
-          "score": "2-1",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860147",
-          "match_slug": "fortaleza-ceara",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860147/fortaleza-ceara"
-        },
         {
           "date": "2026-05-14",
-          "venue": "vs",
-          "opponent_slug": "atletico-mg",
-          "opponent_id": "7632",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/7632/atletico-mg",
-          "home_team_id": "9969",
-          "home_team_slug": null,
-          "away_team_id": "7632",
-          "away_team_slug": "atletico-mg",
-          "result": "L",
-          "score": "2-1",
           "competition": "2026 Copa do Brasil, Fifth Round",
-          "game_id": "401866362",
-          "match_slug": "atletico-mg-ceara",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401866362/atletico-mg-ceara"
-        },
-        {
-          "date": "2026-05-09",
-          "venue": "vs",
-          "opponent_slug": "atletico-goianiense",
-          "opponent_id": "10357",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/10357/atletico-goianiense",
-          "home_team_id": "9969",
-          "home_team_slug": null,
-          "away_team_id": "10357",
-          "away_team_slug": "atletico-goianiense",
-          "result": "L",
-          "score": "1-0",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860141",
-          "match_slug": "atletico-goianiense-ceara",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860141/atletico-goianiense-ceara"
-        }
-      ]
-    },
-    "away": {
-      "team": "Avaí",
-      "team_id": "9966",
-      "team_slug": "avai",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-      "url": "https://www.espn.com/soccer/team/_/id/9966",
-      "last_five": [
-        {
-          "date": "2026-05-30",
-          "venue": "vs",
-          "opponent_slug": "criciuma",
-          "opponent_id": "9971",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9971/criciuma",
-          "home_team_id": "9966",
-          "home_team_slug": null,
-          "away_team_id": "9971",
-          "away_team_slug": "criciuma",
-          "result": "L",
-          "score": "2-1",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860164",
-          "match_slug": "criciuma-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860164/criciuma-avai"
-        },
-        {
-          "date": "2026-05-24",
-          "venue": "vs",
-          "opponent_slug": "goias",
-          "opponent_id": "3395",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/3395/goias",
-          "home_team_id": "9966",
-          "home_team_slug": null,
-          "away_team_id": "3395",
-          "away_team_slug": "goias",
-          "result": "L",
-          "score": "2-0",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860152",
-          "match_slug": "goias-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860152/goias-avai"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401866349/athletico-paranaense-atletico-goianiense",
+          "result": "L"
         },
         {
           "date": "2026-05-17",
-          "venue": "@",
-          "opponent_slug": "vila-nova",
-          "opponent_id": "9973",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9973/vila-nova",
-          "home_team_id": "9973",
-          "home_team_slug": "vila-nova",
-          "away_team_id": "9966",
-          "away_team_slug": null,
-          "result": "L",
-          "score": "2-0",
           "competition": "Brazilian Serie B",
-          "game_id": "401860151",
-          "match_slug": "avai-vila-nova",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860151/avai-vila-nova"
-        },
-        {
-          "date": "2026-05-10",
-          "venue": "vs",
-          "opponent_slug": "fortaleza",
-          "opponent_id": "6272",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/6272/fortaleza",
-          "home_team_id": "9966",
-          "home_team_slug": null,
-          "away_team_id": "6272",
-          "away_team_slug": "fortaleza",
-          "result": "D",
-          "score": "0-0",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860138",
-          "match_slug": "fortaleza-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860138/fortaleza-avai"
-        },
-        {
-          "date": "2026-05-03",
-          "venue": "vs",
-          "opponent_slug": "novorizontino",
-          "opponent_id": "18127",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/18127/novorizontino",
-          "home_team_id": "9966",
-          "home_team_slug": null,
-          "away_team_id": "18127",
-          "away_team_slug": "novorizontino",
-          "result": "D",
-          "score": "3-3",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860129",
-          "match_slug": "novorizontino-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860129/novorizontino-avai"
-        }
-      ]
-    },
-    "odds": {
-      "home": null,
-      "away": null,
-      "draw": null
-    },
-    "stats": {},
-    "h2h": [
-      {
-        "game_id": "700247",
-        "date": "2024-11-03",
-        "competition": "2024 Brasileiro Serie B",
-        "score": {
-          "home": "2",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ CEA",
-        "h2h_home": {
-          "team_id": "9969",
-          "team_slug": "ceara"
-        },
-        "h2h_away": {
-          "team_id": "9966",
-          "team_slug": "avai"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700247/avai-ceara"
-      },
-      {
-        "game_id": "700064",
-        "date": "2024-07-19",
-        "competition": "2024 Brasileiro Serie B",
-        "score": {
-          "home": "0",
-          "away": "1"
-        },
-        "result_home": "L",
-        "venue": "@ AVA",
-        "h2h_home": {
-          "team_id": "9966",
-          "team_slug": "avai"
-        },
-        "h2h_away": {
-          "team_id": "9969",
-          "team_slug": "ceara"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700064/ceara-avai"
-      },
-      {
-        "game_id": "666523",
-        "date": "2023-10-22",
-        "competition": "2023 Brasileiro Serie B",
-        "score": {
-          "home": "1",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ AVA",
-        "h2h_home": {
-          "team_id": "9966",
-          "team_slug": "avai"
-        },
-        "h2h_away": {
-          "team_id": "9969",
-          "team_slug": "ceara"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666523/ceara-avai"
-      },
-      {
-        "game_id": "666333",
-        "date": "2023-06-28",
-        "competition": "2023 Brasileiro Serie B",
-        "score": {
-          "home": "0",
-          "away": "0"
-        },
-        "result_home": "D",
-        "venue": "@ CEA",
-        "h2h_home": {
-          "team_id": "9969",
-          "team_slug": "ceara"
-        },
-        "h2h_away": {
-          "team_id": "9966",
-          "team_slug": "avai"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666333/avai-ceara"
-      },
-      {
-        "game_id": "630776",
-        "date": "2022-11-09",
-        "competition": "2022 Brasileiro Serie A",
-        "score": {
-          "home": "2",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ AVA",
-        "h2h_home": {
-          "team_id": "9966",
-          "team_slug": "avai"
-        },
-        "h2h_away": {
-          "team_id": "9969",
-          "team_slug": "ceara"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/630776/ceara-avai"
-      }
-    ]
-  },
-  {
-    "gameId": "401873961",
-    "date": "2026-06-10",
-    "time_ci": "03:00",
-    "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873961/novorizontino-goias",
-    "home": {
-      "team": "Goiás",
-      "team_id": "3395",
-      "team_slug": "goias",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3395.png",
-      "url": "https://www.espn.com/soccer/team/_/id/3395",
-      "last_five": [
-        {
-          "date": "2026-05-30",
-          "venue": "@",
-          "opponent_slug": "atletico-goianiense",
-          "opponent_id": "10357",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/10357/atletico-goianiense",
-          "home_team_id": "10357",
-          "home_team_slug": "atletico-goianiense",
-          "away_team_id": "3395",
-          "away_team_slug": null,
-          "result": "D",
-          "score": "1-1",
-          "competition": "Brazilian Serie B",
-          "game_id": "401873876",
-          "match_slug": "goias-atletico-goianiense",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873876/goias-atletico-goianiense"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860146/atletico-goianiense-criciuma",
+          "result": "D"
         },
         {
           "date": "2026-05-24",
-          "venue": "@",
-          "opponent_slug": "avai",
-          "opponent_id": "9966",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9966/avai",
-          "home_team_id": "9966",
-          "home_team_slug": "avai",
-          "away_team_id": "3395",
-          "away_team_slug": null,
-          "result": "W",
-          "score": "2-0",
           "competition": "Brazilian Serie B",
-          "game_id": "401860152",
-          "match_slug": "goias-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860152/goias-avai"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860161/sao-bernardo-atletico-goianiense",
+          "result": "L"
         },
         {
-          "date": "2026-05-16",
-          "venue": "vs",
-          "opponent_slug": "botafogo-sp",
-          "opponent_id": "10281",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/10281/botafogo-sp",
-          "home_team_id": "3395",
-          "home_team_slug": null,
-          "away_team_id": "10281",
-          "away_team_slug": "botafogo-sp",
-          "result": "W",
-          "score": "1-0",
+          "date": "2026-05-30",
           "competition": "Brazilian Serie B",
-          "game_id": "401860144",
-          "match_slug": "botafogo-sp-goias",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860144/botafogo-sp-goias"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873876/goias-atletico-goianiense",
+          "result": "D"
         },
         {
-          "date": "2026-05-13",
-          "venue": "@",
-          "opponent_slug": "cruzeiro",
-          "opponent_id": "2022",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/2022/cruzeiro",
-          "home_team_id": "2022",
-          "home_team_slug": "cruzeiro",
-          "away_team_id": "3395",
-          "away_team_slug": null,
-          "result": "L",
-          "score": "1-0",
-          "competition": "2026 Copa do Brasil, Fifth Round",
-          "game_id": "401866357",
-          "match_slug": "goias-cruzeiro",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401866357/goias-cruzeiro"
-        },
-        {
-          "date": "2026-05-09",
-          "venue": "vs",
-          "opponent_slug": "vila-nova",
-          "opponent_id": "9973",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9973/vila-nova",
-          "home_team_id": "3395",
-          "home_team_slug": null,
-          "away_team_id": "9973",
-          "away_team_slug": "vila-nova",
-          "result": "W",
-          "score": "1-0",
+          "date": "2026-06-08",
           "competition": "Brazilian Serie B",
-          "game_id": "401860133",
-          "match_slug": "vila-nova-goias",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860133/vila-nova-goias"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873960/atletico-goianiense-america-mineiro",
+          "result": "W"
         }
       ]
     },
     "away": {
-      "team": "Novorizontino",
-      "team_id": "18127",
-      "team_slug": "novorizontino",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-      "url": "https://www.espn.com/soccer/team/_/id/18127",
+      "team": "CRB",
+      "team_id": "9970",
+      "team_slug": "crb",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
+      "url": "https://www.espn.com/soccer/team/_/id/9970",
       "last_five": [
         {
+          "date": "2026-05-14",
+          "competition": "2026 Copa do Brasil, Fifth Round",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401866363/fortaleza-crb",
+          "result": "D"
+        },
+        {
+          "date": "2026-05-17",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860149/crb-sport",
+          "result": "W"
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860154/ponte-preta-crb",
+          "result": "W"
+        },
+        {
           "date": "2026-05-31",
-          "venue": "@",
-          "opponent_slug": "sao-bernardo",
-          "opponent_id": "11268",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/11268/sao-bernardo",
-          "home_team_id": "11268",
-          "home_team_slug": "sao-bernardo",
-          "away_team_id": "18127",
-          "away_team_slug": null,
-          "result": "D",
-          "score": "1-1",
           "competition": "Brazilian Serie B",
-          "game_id": "401860166",
-          "match_slug": "novorizontino-sao-bernardo",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860166/novorizontino-sao-bernardo"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860171/crb-cuiaba",
+          "result": "L"
         },
         {
-          "date": "2026-05-23",
-          "venue": "vs",
-          "opponent_slug": "ceara",
-          "opponent_id": "9969",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9969/ceara",
-          "home_team_id": "18127",
-          "home_team_slug": null,
-          "away_team_id": "9969",
-          "away_team_slug": "ceara",
-          "result": "W",
-          "score": "2-1",
+          "date": "2026-06-07",
           "competition": "Brazilian Serie B",
-          "game_id": "401860157",
-          "match_slug": "ceara-novorizontino",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860157/ceara-novorizontino"
-        },
-        {
-          "date": "2026-05-16",
-          "venue": "@",
-          "opponent_slug": "cuiaba",
-          "opponent_id": "17313",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/17313/cuiaba",
-          "home_team_id": "17313",
-          "home_team_slug": "cuiaba",
-          "away_team_id": "18127",
-          "away_team_slug": null,
-          "result": "D",
-          "score": "0-0",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860145",
-          "match_slug": "novorizontino-cuiaba",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860145/novorizontino-cuiaba"
-        },
-        {
-          "date": "2026-05-10",
-          "venue": "vs",
-          "opponent_slug": "botafogo-sp",
-          "opponent_id": "10281",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/10281/botafogo-sp",
-          "home_team_id": "18127",
-          "home_team_slug": null,
-          "away_team_id": "10281",
-          "away_team_slug": "botafogo-sp",
-          "result": "W",
-          "score": "1-0",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860136",
-          "match_slug": "botafogo-sp-novorizontino",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860136/botafogo-sp-novorizontino"
-        },
-        {
-          "date": "2026-05-03",
-          "venue": "@",
-          "opponent_slug": "avai",
-          "opponent_id": "9966",
-          "opponent_url": "https://www.espn.com/soccer/team/_/id/9966/avai",
-          "home_team_id": "9966",
-          "home_team_slug": "avai",
-          "away_team_id": "18127",
-          "away_team_slug": null,
-          "result": "D",
-          "score": "3-3",
-          "competition": "Brazilian Serie B",
-          "game_id": "401860129",
-          "match_slug": "novorizontino-avai",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860129/novorizontino-avai"
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873940/sao-bernardo-crb",
+          "result": "L"
         }
       ]
     },
     "odds": {
-      "home": 2.3,
-      "away": 3.45,
-      "draw": 2.9
+      "home": 2.15,
+      "away": 3.5,
+      "draw": 3.2
     },
     "stats": {},
     "h2h": [
       {
-        "game_id": "733576",
-        "date": "2025-11-16",
+        "date": "2025-10-26",
         "competition": "2025 Brasileiro Serie B",
-        "score": {
-          "home": "1",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ GOI",
-        "h2h_home": {
-          "team_id": "3395",
-          "team_slug": "goias"
-        },
-        "h2h_away": {
-          "team_id": "18127",
-          "team_slug": "novorizontino"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733576/novorizontino-goias"
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733541/atletico-goianiense-crb"
       },
       {
-        "game_id": "733379",
-        "date": "2025-07-23",
+        "date": "2025-07-04",
         "competition": "2025 Brasileiro Serie B",
-        "score": {
-          "home": "1",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ NOV",
-        "h2h_home": {
-          "team_id": "18127",
-          "team_slug": "novorizontino"
-        },
-        "h2h_away": {
-          "team_id": "3395",
-          "team_slug": "goias"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733379/goias-novorizontino"
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733355/crb-atletico-goianiense"
       },
       {
-        "game_id": "700284",
-        "date": "2024-11-24",
-        "competition": "2024 Brasileiro Serie B",
-        "score": {
-          "home": "1",
-          "away": "0"
-        },
-        "result_home": "W",
-        "venue": "@ GOI",
-        "h2h_home": {
-          "team_id": "3395",
-          "team_slug": "goias"
-        },
-        "h2h_away": {
-          "team_id": "18127",
-          "team_slug": "novorizontino"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700284/novorizontino-goias"
+        "date": "2023-08-02",
+        "competition": "2023 Brasileiro Serie B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/666410/atletico-goianiense-crb"
       },
       {
-        "game_id": "700093",
-        "date": "2024-08-04",
-        "competition": "2024 Brasileiro Serie B",
-        "score": {
-          "home": "2",
-          "away": "1"
-        },
-        "result_home": "W",
-        "venue": "@ NOV",
-        "h2h_home": {
-          "team_id": "18127",
-          "team_slug": "novorizontino"
-        },
-        "h2h_away": {
-          "team_id": "3395",
-          "team_slug": "goias"
-        },
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700093/goias-novorizontino"
+        "date": "2023-04-21",
+        "competition": "2023 Brasileiro Serie B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/666213/crb-atletico-goianiense"
+      },
+      {
+        "date": "2019-11-09",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/537516/atletico-goianiense-crb"
       }
     ]
   }

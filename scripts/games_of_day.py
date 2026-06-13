@@ -6,12 +6,18 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 from bs4 import BeautifulSoup, NavigableString
+from webdriver_manager.chrome import ChromeDriverManager
 
-# ================= DRIVER SELENIUM =================
+# ===============================================================
+# DRIVER
+# ===============================================================
+
 def make_driver():
     options = Options()
     options.add_argument("--headless=new")
@@ -19,11 +25,20 @@ def make_driver():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option("useAutomationExtension", False)
     options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0"
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
     )
     options.add_argument("--lang=en-US")
-    driver = webdriver.Chrome(options=options)
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.execute_script(
+        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    )
     driver.implicitly_wait(10)
     return driver
 
@@ -38,13 +53,19 @@ def get_soup(driver, url, wait_selector=None, timeout=15):
             pass
     return BeautifulSoup(driver.page_source, "html.parser")
 
-# ================= DOSSIERS =================
+# ===============================================================
+# DOSSIERS
+# ===============================================================
+
 BASE_DIR      = "data/football"
 STANDINGS_DIR = os.path.join(BASE_DIR, "standings")
 os.makedirs(BASE_DIR, exist_ok=True)
 OUTPUT_FILE = os.path.join(BASE_DIR, "games_of_day.json")
 
-# ================= LIGUES =================
+# ===============================================================
+# LIGUES
+# ===============================================================
+
 LEAGUES = {
     "England_Premier_League":        "eng.1",
     "Spain_Laliga":                  "esp.1",
@@ -91,15 +112,21 @@ LEAGUES = {
 
 BASE_URL = "https://www.espn.com/soccer/schedule/_/date/{date}/league/{league}"
 
-# ================= DATE =================
+# ===============================================================
+# DATE
+# ===============================================================
+
 today_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-# ================= UTILITAIRES =================
+# ===============================================================
+# UTILITAIRES
+# ===============================================================
+
 def convert_date_to_iso(date_text):
     try:
         return datetime.strptime(date_text, "%A, %B %d, %Y").strftime("%Y-%m-%d")
-    except:
+    except Exception:
         return date_text
 
 def convert_time_espn_to_ci(time_str):
@@ -128,7 +155,7 @@ def us_to_decimal(val):
     try:
         n = int(val.replace("+", "").strip())
         return round(1 + (n / 100), 2) if n > 0 else round(1 + (100 / abs(n)), 2)
-    except:
+    except Exception:
         return None
 
 def extract_team_id_from_logo(logo_url):
@@ -155,14 +182,25 @@ def read_direct_text(tag):
     result = "".join(parts).strip()
     return result if result else None
 
-# ================= EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH =================
+def build_logo_url(team_id, size=500):
+    if not team_id:
+        return None
+    return f"https://a.espncdn.com/i/teamlogos/soccer/{size}/{team_id}.png"
+
+# ===============================================================
+# EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH
+# ===============================================================
+
 def extract_logos_from_match_page(soup):
     imgs = soup.select('img[data-testid="prism-image"]')
     logo_home = imgs[0]["src"] if len(imgs) >= 1 else None
     logo_away = imgs[1]["src"] if len(imgs) >= 2 else None
     return logo_home, logo_away
 
-# ================= EXTRACTION COTES ESPN =================
+# ===============================================================
+# EXTRACTION COTES ESPN
+# ===============================================================
+
 def extract_ml_odds(soup):
     try:
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
@@ -178,7 +216,7 @@ def extract_ml_odds(soup):
             try:
                 int(val.replace("+", "").replace("-", ""))
                 return True
-            except:
+            except Exception:
                 return False
 
         home_us = read(cells[0])
@@ -197,7 +235,10 @@ def extract_ml_odds(soup):
         print(f"  ⚠️ Erreur cotes : {e}")
         return None
 
-# ================= EXTRACTION STATS DU MATCH =================
+# ===============================================================
+# EXTRACTION STATS DU MATCH (script 2 — BeautifulSoup)
+# ===============================================================
+
 def extract_match_stats(soup):
     stats = {}
     try:
@@ -220,7 +261,7 @@ def extract_match_stats(soup):
         game_stat_rows = soup.select("div.GameStat")
         if game_stat_rows:
             for row in game_stat_rows:
-                cols = row.select("div")
+                cols  = row.select("div")
                 texts = [c.get_text(strip=True) for c in cols if c.get_text(strip=True)]
                 if len(texts) >= 3:
                     stats[texts[1]] = {"home": texts[0], "away": texts[2]}
@@ -257,11 +298,218 @@ def extract_match_stats(soup):
 
     return {}
 
-# ================= EXTRACTION H2H =================
+# ===============================================================
+# EXTRACTION STATS DU MATCH (script 1 — Selenium CSS avancé)
+# Utilisée pour les pages de matchs passés (last5 / H2H)
+# ===============================================================
+
+def get_match_stats_selenium(driver, game_id):
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
+    try:
+        driver.get(url)
+        WebDriverWait(driver, 12).until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']")
+            )
+        )
+    except TimeoutException:
+        pass
+    except WebDriverException as e:
+        print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
+        return {}
+
+    try:
+        stats_section = driver.find_element(
+            By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
+        )
+        rows  = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+        stats = {}
+        for row in rows:
+            try:
+                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                values   = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                if name_tag and len(values) >= 2:
+                    stats[name_tag.text.strip()] = {
+                        "home": values[0].text.strip(),
+                        "away": values[1].text.strip(),
+                    }
+            except NoSuchElementException:
+                continue
+        time.sleep(0.6)
+        return stats
+    except NoSuchElementException:
+        return {}
+    except Exception as e:
+        print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
+        return {}
+
+# ===============================================================
+# IDs ÉQUIPES DEPUIS LE GAMESTRIP (script 1)
+# ===============================================================
+
+def extract_team_ids_gamestrip(driver):
+    ids = []
+    try:
+        container = driver.find_element(By.CSS_SELECTOR, "div.Gamestrip__Container")
+        links = container.find_elements(
+            By.CSS_SELECTOR, "a[data-clubhouse-uid][href*='/soccer/team/_/id/']"
+        )
+        seen = []
+        for a in links:
+            href = a.get_attribute("href") or ""
+            m = re.search(r"/soccer/team/_/id/(\d+)/", href)
+            if not m:
+                continue
+            tid = m.group(1)
+            if tid not in seen:
+                seen.append(tid)
+        ids = seen
+    except Exception as e:
+        print(f"    ⚠️  Erreur IDs gamestrip : {e}")
+
+    home_id = ids[0] if len(ids) > 0 else None
+    away_id = ids[1] if len(ids) > 1 else None
+    return home_id, away_id
+
+# ===============================================================
+# NOMS DEPUIS LE CLASSEMENT (script 1)
+# ===============================================================
+
+def build_standings_name_map(driver):
+    name_map = {}
+    try:
+        links = driver.find_elements(
+            By.CSS_SELECTOR,
+            "a.AnchorLink[data-clubhouse-uid][href*='/soccer/team/_/id/']"
+        )
+        for a in links:
+            uid = a.get_attribute("data-clubhouse-uid") or ""
+            m   = re.search(r"t:(\d+)", uid)
+            if not m:
+                continue
+            team_id = m.group(1)
+            try:
+                name = a.find_element(
+                    By.CSS_SELECTOR, "span.Standings__TeamName"
+                ).text.strip()
+            except NoSuchElementException:
+                continue
+            if name:
+                name_map[team_id] = name
+    except Exception as e:
+        print(f"    ⚠️  Erreur standings name map : {e}")
+    return name_map
+
+# ===============================================================
+# SCORE ET STATUT (script 1)
+# ===============================================================
+
+def extract_score_and_status(driver):
+    home_score = away_score = status = None
+    try:
+        score_els = driver.find_elements(By.CSS_SELECTOR, "div.uCTxv")
+        scores = [
+            el.text.strip()
+            for el in score_els
+            if re.match(r"^\d+$", el.text.strip())
+        ]
+        if len(scores) >= 2:
+            home_score, away_score = scores[0], scores[1]
+        elif len(scores) == 1:
+            home_score = scores[0]
+    except Exception as e:
+        print(f"    ⚠️  Erreur score : {e}")
+    try:
+        st_els   = driver.find_elements(By.CSS_SELECTOR, "span.zRALO")
+        statuses = [el.text.strip() for el in st_els if el.text.strip()]
+        if statuses:
+            status = statuses[0]
+    except Exception:
+        pass
+    return home_score, away_score, status
+
+# ===============================================================
+# SCRAPING D'UN MATCH PASSÉ (last5 / H2H) — logique script 1
+# ===============================================================
+
+def scrape_past_match(driver, url):
+    """
+    Charge une page de match ESPN et retourne :
+    {
+        gameId, url,
+        team_home, team_home_id, team_home_logo,
+        team_away, team_away_id, team_away_logo,
+        home_score, away_score, status, stats
+    }
+    Retourne None en cas d'échec.
+    """
+    m = re.search(r"gameId/(\d+)", url)
+    if not m:
+        print(f"    ⚠️  gameId introuvable dans : {url}")
+        return None
+    game_id = m.group(1)
+
+    print(f"    🔍 Traitement match passé gameId={game_id}")
+
+    try:
+        driver.get(url)
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.Gamestrip__Container"))
+        )
+    except TimeoutException:
+        print(f"      ⚠️  Timeout gameId={game_id}")
+        return None
+    except WebDriverException as e:
+        print(f"      ⚠️  WebDriver : {e}")
+        return None
+
+    time.sleep(1.2)
+
+    # IDs équipes
+    home_id, away_id = extract_team_ids_gamestrip(driver)
+
+    # Noms depuis classement
+    name_map  = build_standings_name_map(driver)
+    home_name = name_map.get(home_id) if home_id else None
+    away_name = name_map.get(away_id) if away_id else None
+
+    # Logos ESPN CDN
+    home_logo = build_logo_url(home_id)
+    away_logo = build_logo_url(away_id)
+
+    # Score & statut
+    home_score, away_score, status = extract_score_and_status(driver)
+
+    # Stats (méthode Selenium avancée du script 1)
+    stats = get_match_stats_selenium(driver, game_id)
+
+    result = {
+        "gameId":          game_id,
+        "url":             url,
+        "team_home":       home_name,
+        "team_home_id":    home_id,
+        "team_home_logo":  home_logo,
+        "team_away":       away_name,
+        "team_away_id":    away_id,
+        "team_away_logo":  away_logo,
+        "home_score":      home_score,
+        "away_score":      away_score,
+        "status":          status,
+        "stats":           stats,
+    }
+
+    score_str = f"{home_score}-{away_score}" if home_score is not None else "?-?"
+    print(
+        f"      ✅ {home_name} {score_str} {away_name} "
+        f"[{status}] | 📊 {len(stats)} stats"
+    )
+    return result
+
+# ===============================================================
+# EXTRACTION H2H
+# ===============================================================
+
 def extract_h2h(soup, home_team_id, away_team_id):
-    """
-    Retourne uniquement : date, competition, match_url
-    """
     h2h_list = []
     try:
         section = None
@@ -279,12 +527,10 @@ def extract_h2h(soup, home_team_id, away_team_id):
 
         for row in match_rows:
             try:
-                # ── URL ──
                 link_tag   = row.select_one("a[data-game-link='true']")
                 match_href = link_tag.get("href", "") if link_tag else ""
                 match_url  = ("https://www.espn.com" + match_href) if match_href else None
 
-                # ── Métadonnées ──
                 content = row.select_one("div.iEHPA.TzFuW")
                 if not content:
                     continue
@@ -302,7 +548,7 @@ def extract_h2h(soup, home_team_id, away_team_id):
                         try:
                             date_iso = datetime.strptime(date_raw, fmt).strftime("%Y-%m-%d")
                             break
-                        except:
+                        except Exception:
                             continue
                     if not date_iso:
                         date_iso = date_raw
@@ -322,11 +568,11 @@ def extract_h2h(soup, home_team_id, away_team_id):
 
     return h2h_list
 
-# ================= EXTRACTION DERNIERS MATCHS (LAST 5) =================
+# ===============================================================
+# EXTRACTION DERNIERS MATCHS (LAST 5)
+# ===============================================================
+
 def extract_last_five(soup, team_id):
-    """
-    Retourne uniquement : date, competition, match_url, result
-    """
     last_five = []
     try:
         sections = soup.find_all("section", {"data-testid": "lastGames"})
@@ -355,19 +601,17 @@ def extract_last_five(soup, team_id):
                 if len(tds) < 4:
                     continue
 
-                # ── Date ──
                 date_raw = tds[0].get_text(strip=True)
                 date_iso = None
                 for fmt in ("%m/%d/%y", "%m/%d/%Y"):
                     try:
                         date_iso = datetime.strptime(date_raw, fmt).strftime("%Y-%m-%d")
                         break
-                    except:
+                    except Exception:
                         continue
                 if not date_iso:
                     date_iso = date_raw
 
-                # ── Résultat & URL ──
                 result_td   = tds[2]
                 result_link = result_td.select_one("a.AnchorLink")
                 match_href  = result_link.get("href", "") if result_link else ""
@@ -376,7 +620,6 @@ def extract_last_five(soup, team_id):
                 result_span = result_td.select_one("span.GameResults")
                 result      = result_span.get_text(strip=True) if result_span else None
 
-                # ── Compétition ──
                 competition = tds[3].get_text(strip=True)
 
                 last_five.append({
@@ -395,7 +638,10 @@ def extract_last_five(soup, team_id):
 
     return last_five
 
-# ================= CHARGEMENT STANDINGS =================
+# ===============================================================
+# CHARGEMENT STANDINGS
+# ===============================================================
+
 STANDINGS_FILE = os.path.join(STANDINGS_DIR, "Standings.json")
 standings_data = {}
 if os.path.exists(STANDINGS_FILE):
@@ -404,7 +650,10 @@ if os.path.exists(STANDINGS_FILE):
 else:
     print(f"⚠️ Standings introuvables : {STANDINGS_FILE}")
 
-# ================= SCRAPING PRINCIPAL =================
+# ===============================================================
+# SCRAPING PRINCIPAL — MATCHS DU JOUR
+# ===============================================================
+
 games_of_day = {}
 driver = make_driver()
 
@@ -449,8 +698,7 @@ try:
                 team2     = teams[1].text.strip()
                 match_url = "https://www.espn.com" + score_tag["href"]
                 raw_time  = time_tag.text.strip() if time_tag else None
-
-                time_ci = convert_time_espn_to_ci(raw_time) if raw_time else None
+                time_ci   = convert_time_espn_to_ci(raw_time) if raw_time else None
 
                 # ── Chargement de la page du match ──
                 match_soup = get_soup(
@@ -470,18 +718,18 @@ try:
                 team_id_home = extract_team_id_from_logo(logo_home)
                 team_id_away = extract_team_id_from_logo(logo_away)
 
-                # ── Slugs depuis les liens de la page ──
+                # ── Slugs depuis les liens ──
                 slug_home, slug_away = None, None
                 for a_tag in match_soup.select("a[data-clubhouse-uid]"):
                     href = a_tag.get("href", "")
                     if team_id_home and f"/id/{team_id_home}/" in href:
-                        m = re.search(r"/id/\d+/([^/\?]+)$", href)
-                        if m and not slug_home:
-                            slug_home = m.group(1)
+                        m2 = re.search(r"/id/\d+/([^/\?]+)$", href)
+                        if m2 and not slug_home:
+                            slug_home = m2.group(1)
                     if team_id_away and f"/id/{team_id_away}/" in href:
-                        m = re.search(r"/id/\d+/([^/\?]+)$", href)
-                        if m and not slug_away:
-                            slug_away = m.group(1)
+                        m2 = re.search(r"/id/\d+/([^/\?]+)$", href)
+                        if m2 and not slug_away:
+                            slug_away = m2.group(1)
 
                 # ── Cotes ──
                 ml = extract_ml_odds(match_soup)
@@ -552,10 +800,106 @@ try:
                 print(f"  {team1} vs {team2} [{time_ci}] → {odds_str} | {h2h_str} | L5:{l5_str}")
                 time.sleep(0.5)
 
+    # ==============================================================
+    # PHASE 2 — ENRICHISSEMENT DES URLs last5 ET H2H
+    # Collecte d'abord tous les URLs uniques à traiter,
+    # puis charge chacun une seule fois pour éviter les doublons.
+    # ==============================================================
+
+    print("\n" + "=" * 60)
+    print("🔄 PHASE 2 — Enrichissement last5 & H2H")
+    print("=" * 60)
+
+    # ── Collecte de tous les URLs uniques ──
+    urls_to_scrape = {}  # {match_url: None}  →  résultat stocké après scraping
+
+    for gid, gdata in games_of_day.items():
+        for entry in gdata["home"]["last_five"]:
+            u = entry.get("match_url")
+            if u and u not in urls_to_scrape:
+                urls_to_scrape[u] = None
+        for entry in gdata["away"]["last_five"]:
+            u = entry.get("match_url")
+            if u and u not in urls_to_scrape:
+                urls_to_scrape[u] = None
+        for entry in gdata["h2h"]:
+            u = entry.get("match_url")
+            if u and u not in urls_to_scrape:
+                urls_to_scrape[u] = None
+
+    total = len(urls_to_scrape)
+    print(f"  📋 {total} URLs uniques à enrichir\n")
+
+    # ── Scraping de chaque URL unique ──
+    for idx, url in enumerate(urls_to_scrape, 1):
+        print(f"  [{idx}/{total}] {url}")
+        result = scrape_past_match(driver, url)
+        urls_to_scrape[url] = result
+        time.sleep(1)
+
+    # ── Injection des données dans les entrées last5 / H2H ──
+    print("\n  💉 Injection des données enrichies…")
+
+    for gid, gdata in games_of_day.items():
+
+        # Last 5 home
+        for entry in gdata["home"]["last_five"]:
+            u = entry.get("match_url")
+            if u and urls_to_scrape.get(u):
+                d = urls_to_scrape[u]
+                entry["team_home"]      = d.get("team_home")
+                entry["team_home_id"]   = d.get("team_home_id")
+                entry["team_home_logo"] = d.get("team_home_logo")
+                entry["team_away"]      = d.get("team_away")
+                entry["team_away_id"]   = d.get("team_away_id")
+                entry["team_away_logo"] = d.get("team_away_logo")
+                entry["home_score"]     = d.get("home_score")
+                entry["away_score"]     = d.get("away_score")
+                entry["status"]         = d.get("status")
+                entry["stats"]          = d.get("stats", {})
+
+        # Last 5 away
+        for entry in gdata["away"]["last_five"]:
+            u = entry.get("match_url")
+            if u and urls_to_scrape.get(u):
+                d = urls_to_scrape[u]
+                entry["team_home"]      = d.get("team_home")
+                entry["team_home_id"]   = d.get("team_home_id")
+                entry["team_home_logo"] = d.get("team_home_logo")
+                entry["team_away"]      = d.get("team_away")
+                entry["team_away_id"]   = d.get("team_away_id")
+                entry["team_away_logo"] = d.get("team_away_logo")
+                entry["home_score"]     = d.get("home_score")
+                entry["away_score"]     = d.get("away_score")
+                entry["status"]         = d.get("status")
+                entry["stats"]          = d.get("stats", {})
+
+        # H2H
+        for entry in gdata["h2h"]:
+            u = entry.get("match_url")
+            if u and urls_to_scrape.get(u):
+                d = urls_to_scrape[u]
+                entry["team_home"]      = d.get("team_home")
+                entry["team_home_id"]   = d.get("team_home_id")
+                entry["team_home_logo"] = d.get("team_home_logo")
+                entry["team_away"]      = d.get("team_away")
+                entry["team_away_id"]   = d.get("team_away_id")
+                entry["team_away_logo"] = d.get("team_away_logo")
+                entry["home_score"]     = d.get("home_score")
+                entry["away_score"]     = d.get("away_score")
+                entry["status"]         = d.get("status")
+                entry["stats"]          = d.get("stats", {})
+
+    print("  ✅ Injection terminée")
+
 finally:
     driver.quit()
+    print("\n✅ Driver fermé.")
 
-# ================= SAUVEGARDE ATOMIQUE =================
+# ===============================================================
+# SAUVEGARDE ATOMIQUE
+# ===============================================================
+
 tmp_file = OUTPUT_FILE + ".tmp"
 with open(tmp_file, "w", encoding="utf-8") as f:
     json.dump(list(games_of_day.values()), f, indent=2, ensure_ascii=False)

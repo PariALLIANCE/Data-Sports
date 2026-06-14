@@ -2482,14 +2482,14 @@
                 "position": 1,
                 "name": "Colo Colo",
                 "stats": {
-                    "GP": 14,
-                    "W": 11,
+                    "GP": 15,
+                    "W": 12,
                     "D": 0,
                     "L": 3,
-                    "F": 26,
+                    "F": 29,
                     "A": 12,
-                    "GD": 14,
-                    "P": 33
+                    "GD": 17,
+                    "P": 36
                 },
                 "zone": {
                     "label": "CONMEBOL Libertadores",
@@ -2498,6 +2498,42 @@
             },
             {
                 "position": 2,
+                "name": "Coquimbo Unido",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 3,
+                    "L": 5,
+                    "F": 22,
+                    "A": 18,
+                    "GD": 4,
+                    "P": 24
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 3,
+                "name": "Palestino",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 3,
+                    "L": 5,
+                    "F": 23,
+                    "A": 21,
+                    "GD": 2,
+                    "P": 24
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 4,
                 "name": "Universidad Católica",
                 "stats": {
                     "GP": 14,
@@ -2510,42 +2546,6 @@
                     "P": 23
                 },
                 "zone": {
-                    "label": "CONMEBOL Libertadores",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 3,
-                "name": "Coquimbo Unido",
-                "stats": {
-                    "GP": 14,
-                    "W": 7,
-                    "D": 2,
-                    "L": 5,
-                    "F": 22,
-                    "A": 18,
-                    "GD": 4,
-                    "P": 23
-                },
-                "zone": {
-                    "label": "CONMEBOL Libertadores",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 4,
-                "name": "Everton CD",
-                "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 4,
-                    "L": 4,
-                    "F": 18,
-                    "A": 13,
-                    "GD": 5,
-                    "P": 22
-                },
-                "zone": {
                     "label": "CONMEBOL Sudamericana",
                     "type": "avantage"
                 }
@@ -2554,14 +2554,14 @@
                 "position": 5,
                 "name": "Huachipato",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 7,
-                    "D": 1,
+                    "D": 2,
                     "L": 6,
-                    "F": 21,
-                    "A": 20,
+                    "F": 23,
+                    "A": 22,
                     "GD": 1,
-                    "P": 22
+                    "P": 23
                 },
                 "zone": {
                     "label": "CONMEBOL Sudamericana",
@@ -2570,6 +2570,42 @@
             },
             {
                 "position": 6,
+                "name": "Everton CD",
+                "stats": {
+                    "GP": 15,
+                    "W": 6,
+                    "D": 4,
+                    "L": 5,
+                    "F": 19,
+                    "A": 15,
+                    "GD": 4,
+                    "P": 22
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 7,
+                "name": "Ñublense",
+                "stats": {
+                    "GP": 15,
+                    "W": 5,
+                    "D": 7,
+                    "L": 3,
+                    "F": 18,
+                    "A": 19,
+                    "GD": -1,
+                    "P": 22
+                },
+                "zone": {
+                    "label": "CONMEBOL Sudamericana",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 8,
                 "name": "Deportes Limache",
                 "stats": {
                     "GP": 14,
@@ -2579,42 +2615,6 @@
                     "F": 28,
                     "A": 20,
                     "GD": 8,
-                    "P": 21
-                },
-                "zone": {
-                    "label": "CONMEBOL Sudamericana",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 7,
-                "name": "Palestino",
-                "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 3,
-                    "L": 5,
-                    "F": 21,
-                    "A": 20,
-                    "GD": 1,
-                    "P": 21
-                },
-                "zone": {
-                    "label": "CONMEBOL Sudamericana",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 8,
-                "name": "Ñublense",
-                "stats": {
-                    "GP": 14,
-                    "W": 5,
-                    "D": 6,
-                    "L": 3,
-                    "F": 16,
-                    "A": 17,
-                    "GD": -1,
                     "P": 21
                 },
                 "zone": {
@@ -2641,14 +2641,14 @@
                 "position": 10,
                 "name": "O'Higgins",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 6,
-                    "D": 1,
+                    "D": 2,
                     "L": 6,
                     "F": 19,
                     "A": 20,
                     "GD": -1,
-                    "P": 19
+                    "P": 20
                 },
                 "zone": null
             },
@@ -2701,13 +2701,13 @@
                 "position": 14,
                 "name": "Cobresal",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 4,
                     "D": 1,
-                    "L": 9,
+                    "L": 10,
                     "F": 19,
-                    "A": 26,
-                    "GD": -7,
+                    "A": 29,
+                    "GD": -10,
                     "P": 13
                 },
                 "zone": {

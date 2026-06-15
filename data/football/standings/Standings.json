@@ -2129,15 +2129,15 @@
         "standings": [
             {
                 "position": 1,
-                "name": "Vila Nova",
+                "name": "São Bernardo",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 7,
                     "D": 4,
-                    "L": 1,
-                    "F": 18,
-                    "A": 11,
-                    "GD": 7,
+                    "L": 2,
+                    "F": 20,
+                    "A": 10,
+                    "GD": 10,
                     "P": 25
                 },
                 "zone": {
@@ -2147,16 +2147,16 @@
             },
             {
                 "position": 2,
-                "name": "São Bernardo",
+                "name": "Vila Nova",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 7,
-                    "D": 3,
+                    "D": 4,
                     "L": 2,
-                    "F": 20,
-                    "A": 10,
-                    "GD": 10,
-                    "P": 24
+                    "F": 18,
+                    "A": 12,
+                    "GD": 6,
+                    "P": 25
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2167,14 +2167,14 @@
                 "position": 3,
                 "name": "Sport",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 6,
-                    "D": 5,
+                    "D": 6,
                     "L": 1,
                     "F": 16,
                     "A": 8,
                     "GD": 8,
-                    "P": 23
+                    "P": 24
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2203,19 +2203,34 @@
                 "position": 5,
                 "name": "Novorizontino",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 5,
-                    "D": 5,
+                    "D": 6,
                     "L": 2,
-                    "F": 18,
-                    "A": 11,
+                    "F": 20,
+                    "A": 13,
                     "GD": 7,
-                    "P": 20
+                    "P": 21
                 },
                 "zone": null
             },
             {
                 "position": 6,
+                "name": "Náutico",
+                "stats": {
+                    "GP": 13,
+                    "W": 6,
+                    "D": 2,
+                    "L": 5,
+                    "F": 18,
+                    "A": 14,
+                    "GD": 4,
+                    "P": 20
+                },
+                "zone": null
+            },
+            {
+                "position": 7,
                 "name": "Criciúma",
                 "stats": {
                     "GP": 12,
@@ -2230,67 +2245,82 @@
                 "zone": null
             },
             {
-                "position": 7,
-                "name": "Náutico",
-                "stats": {
-                    "GP": 12,
-                    "W": 6,
-                    "D": 1,
-                    "L": 5,
-                    "F": 16,
-                    "A": 12,
-                    "GD": 4,
-                    "P": 19
-                },
-                "zone": null
-            },
-            {
                 "position": 8,
-                "name": "Operário PR",
+                "name": "Juventude",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 5,
                     "D": 4,
-                    "L": 3,
-                    "F": 14,
-                    "A": 15,
-                    "GD": -1,
+                    "L": 4,
+                    "F": 13,
+                    "A": 8,
+                    "GD": 5,
                     "P": 19
                 },
                 "zone": null
             },
             {
                 "position": 9,
-                "name": "Athletic",
+                "name": "Operário PR",
                 "stats": {
-                    "GP": 12,
-                    "W": 4,
-                    "D": 6,
-                    "L": 2,
-                    "F": 14,
-                    "A": 12,
-                    "GD": 2,
-                    "P": 18
+                    "GP": 13,
+                    "W": 5,
+                    "D": 4,
+                    "L": 4,
+                    "F": 15,
+                    "A": 17,
+                    "GD": -2,
+                    "P": 19
                 },
                 "zone": null
             },
             {
                 "position": 10,
-                "name": "Goiás",
+                "name": "Cuiabá",
                 "stats": {
-                    "GP": 12,
-                    "W": 5,
-                    "D": 2,
-                    "L": 5,
-                    "F": 12,
-                    "A": 17,
-                    "GD": -5,
-                    "P": 17
+                    "GP": 13,
+                    "W": 4,
+                    "D": 7,
+                    "L": 2,
+                    "F": 9,
+                    "A": 6,
+                    "GD": 3,
+                    "P": 19
                 },
                 "zone": null
             },
             {
                 "position": 11,
+                "name": "Athletic",
+                "stats": {
+                    "GP": 13,
+                    "W": 4,
+                    "D": 7,
+                    "L": 2,
+                    "F": 15,
+                    "A": 13,
+                    "GD": 2,
+                    "P": 19
+                },
+                "zone": null
+            },
+            {
+                "position": 12,
+                "name": "Goiás",
+                "stats": {
+                    "GP": 13,
+                    "W": 5,
+                    "D": 3,
+                    "L": 5,
+                    "F": 13,
+                    "A": 18,
+                    "GD": -5,
+                    "P": 18
+                },
+                "zone": null
+            },
+            {
+                "position": 13,
                 "name": "Atlético Goianiense",
                 "stats": {
                     "GP": 13,
@@ -2305,22 +2335,7 @@
                 "zone": null
             },
             {
-                "position": 12,
-                "name": "Juventude",
-                "stats": {
-                    "GP": 12,
-                    "W": 4,
-                    "D": 4,
-                    "L": 4,
-                    "F": 10,
-                    "A": 8,
-                    "GD": 2,
-                    "P": 16
-                },
-                "zone": null
-            },
-            {
-                "position": 13,
+                "position": 14,
                 "name": "Ceará",
                 "stats": {
                     "GP": 12,
@@ -2330,21 +2345,6 @@
                     "F": 14,
                     "A": 14,
                     "GD": 0,
-                    "P": 16
-                },
-                "zone": null
-            },
-            {
-                "position": 14,
-                "name": "Cuiabá",
-                "stats": {
-                    "GP": 12,
-                    "W": 3,
-                    "D": 7,
-                    "L": 2,
-                    "F": 8,
-                    "A": 6,
-                    "GD": 2,
                     "P": 16
                 },
                 "zone": null
@@ -2368,14 +2368,14 @@
                 "position": 16,
                 "name": "Botafogo-SP",
                 "stats": {
-                    "GP": 12,
-                    "W": 2,
+                    "GP": 13,
+                    "W": 3,
                     "D": 4,
                     "L": 6,
-                    "F": 11,
-                    "A": 12,
-                    "GD": -1,
-                    "P": 10
+                    "F": 13,
+                    "A": 13,
+                    "GD": 0,
+                    "P": 13
                 },
                 "zone": null
             },
@@ -2419,13 +2419,13 @@
                 "position": 19,
                 "name": "Ponte Preta",
                 "stats": {
-                    "GP": 12,
+                    "GP": 13,
                     "W": 2,
                     "D": 2,
-                    "L": 8,
+                    "L": 9,
                     "F": 10,
-                    "A": 22,
-                    "GD": -12,
+                    "A": 25,
+                    "GD": -15,
                     "P": 8
                 },
                 "zone": {
@@ -2498,6 +2498,24 @@
             },
             {
                 "position": 2,
+                "name": "Universidad Católica",
+                "stats": {
+                    "GP": 15,
+                    "W": 8,
+                    "D": 2,
+                    "L": 5,
+                    "F": 35,
+                    "A": 20,
+                    "GD": 15,
+                    "P": 26
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 3,
                 "name": "Coquimbo Unido",
                 "stats": {
                     "GP": 15,
@@ -2515,7 +2533,7 @@
                 }
             },
             {
-                "position": 3,
+                "position": 4,
                 "name": "Palestino",
                 "stats": {
                     "GP": 15,
@@ -2526,24 +2544,6 @@
                     "A": 21,
                     "GD": 2,
                     "P": 24
-                },
-                "zone": {
-                    "label": "CONMEBOL Libertadores",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 4,
-                "name": "Universidad Católica",
-                "stats": {
-                    "GP": 14,
-                    "W": 7,
-                    "D": 2,
-                    "L": 5,
-                    "F": 30,
-                    "A": 19,
-                    "GD": 11,
-                    "P": 23
                 },
                 "zone": {
                     "label": "CONMEBOL Sudamericana",
@@ -2608,13 +2608,13 @@
                 "position": 8,
                 "name": "Deportes Limache",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 6,
                     "D": 3,
-                    "L": 5,
-                    "F": 28,
-                    "A": 20,
-                    "GD": 8,
+                    "L": 6,
+                    "F": 30,
+                    "A": 23,
+                    "GD": 7,
                     "P": 21
                 },
                 "zone": {
@@ -2626,14 +2626,14 @@
                 "position": 9,
                 "name": "Universidad de Chile",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 5,
-                    "D": 5,
+                    "D": 6,
                     "L": 3,
-                    "F": 13,
-                    "A": 8,
+                    "F": 15,
+                    "A": 10,
                     "GD": 5,
-                    "P": 20
+                    "P": 21
                 },
                 "zone": null
             },
@@ -2656,13 +2656,13 @@
                 "position": 11,
                 "name": "Universidad de Concepción",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 5,
                     "D": 4,
-                    "L": 5,
-                    "F": 12,
-                    "A": 21,
-                    "GD": -9,
+                    "L": 6,
+                    "F": 13,
+                    "A": 26,
+                    "GD": -13,
                     "P": 19
                 },
                 "zone": null
@@ -2699,6 +2699,24 @@
             },
             {
                 "position": 14,
+                "name": "Deportes Concepcion",
+                "stats": {
+                    "GP": 15,
+                    "W": 4,
+                    "D": 2,
+                    "L": 9,
+                    "F": 14,
+                    "A": 23,
+                    "GD": -9,
+                    "P": 14
+                },
+                "zone": {
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
+                }
+            },
+            {
+                "position": 15,
                 "name": "Cobresal",
                 "stats": {
                     "GP": 15,
@@ -2711,24 +2729,6 @@
                     "P": 13
                 },
                 "zone": {
-                    "label": "Relégation Playoff",
-                    "type": "désavantage"
-                }
-            },
-            {
-                "position": 15,
-                "name": "Deportes Concepcion",
-                "stats": {
-                    "GP": 14,
-                    "W": 3,
-                    "D": 2,
-                    "L": 9,
-                    "F": 11,
-                    "A": 21,
-                    "GD": -10,
-                    "P": 11
-                },
-                "zone": {
                     "label": "Relégation",
                     "type": "désavantage"
                 }
@@ -2737,14 +2737,14 @@
                 "position": 16,
                 "name": "Unión La Calera",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 3,
-                    "D": 2,
+                    "D": 3,
                     "L": 9,
-                    "F": 12,
-                    "A": 26,
+                    "F": 14,
+                    "A": 28,
                     "GD": -14,
-                    "P": 11
+                    "P": 12
                 },
                 "zone": {
                     "label": "Relégation",

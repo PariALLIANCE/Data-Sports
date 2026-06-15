@@ -236,11 +236,77 @@ def extract_ml_odds(soup):
         return None
 
 # ===============================================================
-# EXTRACTION STATS DU MATCH (script 2 — BeautifulSoup)
+# EXTRACTION STATS — NOUVELLE STRUCTURE ESPN (ProgressBar / Prism)
+# Structure : home_val | label | away_val avec balises <p class="...">
 # ===============================================================
 
-def extract_match_stats(soup):
+def extract_match_stats_prism(soup):
+    """
+    Extrait les stats depuis la section 'Team Stats' ESPN nouvelle UI.
+    Structure détectée :
+      <section data-testid="prism-LayoutCard">
+        <h2>Team Stats</h2>
+        <div class="THHyw">
+          <div class="jaZjJ">
+            <p ...><span>75%</span></p>   ← home
+            <p ...>Possession</p>          ← label
+            <p ...><span>25%</span></p>   ← away
+          </div>
+          <div data-testid="prism-ProgressBar">...</div>
+        </div>
+        ...
+    """
     stats = {}
+    try:
+        # Cherche la section Team Stats
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "stat" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return stats
+
+        # Chaque stat est dans un div.THHyw
+        stat_blocks = section.select("div.THHyw")
+        for block in stat_blocks:
+            # Les 3 <p> : home, label, away
+            paragraphs = block.select("div.jaZjJ p")
+            if len(paragraphs) < 3:
+                continue
+
+            # home value = span dans 1er p (classe OrMJA = home side)
+            home_span = paragraphs[0].find("span")
+            home_val  = home_span.get_text(strip=True) if home_span else paragraphs[0].get_text(strip=True)
+
+            # label = 2e p (texte direct, souvent dans un span ou texte brut)
+            label = paragraphs[1].get_text(strip=True)
+
+            # away value = span dans 3e p
+            away_span = paragraphs[2].find("span")
+            away_val  = away_span.get_text(strip=True) if away_span else paragraphs[2].get_text(strip=True)
+
+            if label:
+                stats[label] = {"home": home_val, "away": away_val}
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur stats prism : {e}")
+
+    return stats
+
+def extract_match_stats(soup):
+    """
+    Essaie d'abord la nouvelle structure Prism ESPN,
+    puis tombe en fallback sur les anciennes méthodes.
+    """
+    # Méthode 1 : nouvelle UI Prism (ProgressBar)
+    stats = extract_match_stats_prism(soup)
+    if stats:
+        return stats
+
+    # Méthode 2 : StatCellContent (ancienne UI)
     try:
         stat_rows = soup.select("div.StatCellContent")
         if stat_rows:
@@ -257,7 +323,11 @@ def extract_match_stats(soup):
                     i += 1
             if stats:
                 return stats
+    except Exception:
+        pass
 
+    # Méthode 3 : GameStat
+    try:
         game_stat_rows = soup.select("div.GameStat")
         if game_stat_rows:
             for row in game_stat_rows:
@@ -267,34 +337,8 @@ def extract_match_stats(soup):
                     stats[texts[1]] = {"home": texts[0], "away": texts[2]}
             if stats:
                 return stats
-
-        gp_rows = soup.select("div.gamepackage-matchup-charts tr")
-        if gp_rows:
-            for row in gp_rows:
-                cells = row.select("td")
-                if len(cells) == 3:
-                    home_val = cells[0].get_text(strip=True)
-                    label    = cells[1].get_text(strip=True)
-                    away_val = cells[2].get_text(strip=True)
-                    if label:
-                        stats[label] = {"home": home_val, "away": away_val}
-            if stats:
-                return stats
-
-        rows = soup.select("tr[data-stat], div[data-stat]")
-        for row in rows:
-            label    = row.get("data-stat", "")
-            children = row.select("td, div.value")
-            if len(children) >= 2 and label:
-                stats[label] = {
-                    "home": children[0].get_text(strip=True),
-                    "away": children[1].get_text(strip=True),
-                }
-        if stats:
-            return stats
-
-    except Exception as e:
-        print(f"  ⚠️ Erreur stats : {e}")
+    except Exception:
+        pass
 
     return {}
 
@@ -318,12 +362,18 @@ def get_match_stats_selenium(driver, game_id):
         print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
         return {}
 
+    # Tente d'abord la nouvelle structure via BeautifulSoup
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    stats = extract_match_stats_prism(soup)
+    if stats:
+        return stats
+
+    # Fallback : Selenium CSS avancé (ancienne UI)
     try:
         stats_section = driver.find_element(
             By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
         )
         rows  = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
-        stats = {}
         for row in rows:
             try:
                 name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
@@ -342,6 +392,254 @@ def get_match_stats_selenium(driver, game_id):
     except Exception as e:
         print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
         return {}
+
+# ===============================================================
+# EXTRACTION ÉVÉNEMENTS — MATCH TIMELINE
+# Structure ESPN Prism :
+#   <section data-testid="prism-LayoutCard">
+#     <h2>Match Timeline</h2>
+#     <div class="XYehN ThkOQ">          ← rangée home (haut) ou away (bas)
+#       <div role="button" style="left: XX%">
+#         <svg data-icon="soccer-goal02|soccer-card03|soccer-substitution02">
+# Légende :
+#   soccer-goal02         → but
+#   soccer-card03 jaune   → carton jaune  (fill penaltyYellow)
+#   soccer-card03 rouge   → carton rouge  (fill red)
+#   soccer-substitution02 → remplacement
+#
+# Pourcentage left → minute = left% * 90 / 100  (approximation sur 90 min)
+# ===============================================================
+
+def _icon_type_from_svg(svg_tag):
+    """Retourne le type d'événement depuis l'attribut data-icon du SVG."""
+    if not svg_tag:
+        return "unknown"
+    icon = svg_tag.get("data-icon", "")
+    if icon == "soccer-goal02":
+        return "goal"
+    if icon == "soccer-substitution02":
+        return "substitution"
+    if icon == "soccer-card03":
+        # Couleur déterminée par le fill du <path>
+        path = svg_tag.find("path")
+        if path:
+            fill = path.get("fill", "")
+            if "red" in fill.lower() or "ff3232" in fill.lower() or "940005" in fill.lower():
+                return "red_card"
+            if "yellow" in fill.lower() or "ffff00" in fill.lower() or "penaltyyellow" in fill.lower():
+                return "yellow_card"
+        return "card"
+    return "unknown"
+
+def _left_to_minute(left_str):
+    """
+    Convertit le style left: XX.XX% en minute approximative.
+    ESPN étale KO (≈2.4%) à FT (≈97.6%) sur 90 min (+ éventuelles prolongations).
+    On ramène [2.4 ; 97.6] → [0 ; 90].
+    """
+    try:
+        pct = float(left_str.replace("%", "").strip())
+        # KO ≈ 2.44%  FT ≈ 97.56%  → plage utile ≈ 95.12 pts de %
+        minute = round((pct - 2.44) * 90 / 95.12)
+        return max(0, minute)
+    except Exception:
+        return None
+
+def extract_match_events(soup):
+    """
+    Retourne un dict :
+    {
+        "home": [{"minute": 27, "type": "goal"}, ...],
+        "away": [{"minute": 39, "type": "yellow_card"}, ...]
+    }
+    """
+    events = {"home": [], "away": []}
+
+    try:
+        # Trouve la section Match Timeline
+        timeline_section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2:
+                title_text = h2.get_text(strip=True).lower()
+                if "timeline" in title_text or "match" in title_text:
+                    timeline_section = sec
+                    break
+            # Fallback : cherche via le span enfant
+            span = sec.find("span", class_=lambda c: c and "lZur" in c)
+            if span and "timeline" in span.get_text(strip=True).lower():
+                timeline_section = sec
+                break
+
+        if not timeline_section:
+            print("  ℹ️  Section Timeline introuvable")
+            return events
+
+        # Les deux rangées d'événements sont dans des div.XYehN.ThkOQ
+        # Ordre DOM : première rangée = HOME (haut), deuxième = AWAY (bas)
+        rows = timeline_section.select("div.XYehN.ThkOQ")
+
+        for row_idx, row in enumerate(rows):
+            side = "home" if row_idx == 0 else "away"
+
+            # Chaque événement est un div[role="button"] avec un style left:XX%
+            event_divs = row.select("div[role='button'][style]")
+            for ev_div in event_divs:
+                style = ev_div.get("style", "")
+                left_match = re.search(r"left\s*:\s*([\d.]+%)", style)
+                if not left_match:
+                    continue
+                minute = _left_to_minute(left_match.group(1))
+
+                svg = ev_div.find("svg")
+                ev_type = _icon_type_from_svg(svg)
+
+                events[side].append({
+                    "minute": minute,
+                    "type":   ev_type,
+                })
+
+        # Tri par minute
+        events["home"].sort(key=lambda x: x["minute"] or 0)
+        events["away"].sort(key=lambda x: x["minute"] or 0)
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur events timeline : {e}")
+
+    return events
+
+# ===============================================================
+# EXTRACTION CLASSEMENT — POSITIONS ACTUELLES + PROJETÉES
+# Structure ESPN (fournie en doc) :
+#   <a data-clubhouse-uid="s:600~t:XXXX" href="/soccer/team/_/id/XXXX/slug">
+#     <span class="Standings__TeamName">Nom</span>
+#   </a>
+#   TDs suivants : GP W D L GD P
+#
+# Position actuelle  = data-idx + 1
+# Position projetée si victoire :
+#   - On recalcule les points (P+3) et on compte combien d'équipes
+#     ont plus de points que l'équipe après victoire → nouvelle position.
+# ===============================================================
+
+def extract_standings_for_match(soup, team_id_home, team_id_away):
+    """
+    Retourne un dict :
+    {
+        "home": {
+            "position_current": 12,
+            "position_if_win":  10,
+            "played": 13, "won": 4, "drawn": 5, "lost": 4,
+            "gd": 0, "points": 17
+        },
+        "away": { ... }
+    }
+    Retourne None si le classement est introuvable.
+    """
+    result = {"home": None, "away": None}
+
+    try:
+        # Cherche la table de classement dans la page du match
+        # ESPN embarque parfois les standings dans un <section> ou <div class="Card">
+        standings_tables = soup.select(
+            "div.ResponsiveTable.Table__noConference, "
+            "div.ResponsiveTable, "
+            "section.Card table"
+        )
+
+        # On va aussi chercher directement les lignes avec data-clubhouse-uid
+        all_rows = soup.select("tr.Table__TR.Table__TR--sm")
+
+        if not all_rows:
+            return result
+
+        # Reconstruit le tableau complet : liste de dicts par équipe
+        table = []
+        for row in all_rows:
+            uid_td = row.select_one("td a[data-clubhouse-uid]")
+            if not uid_td:
+                continue
+            uid = uid_td.get("data-clubhouse-uid", "")
+            m   = re.search(r"t:(\d+)", uid)
+            if not m:
+                continue
+            tid = m.group(1)
+
+            tds = row.select("td")
+            if len(tds) < 7:
+                continue
+
+            def safe_int(s):
+                try:
+                    return int(s.replace("+", "").replace("−", "-").strip())
+                except Exception:
+                    return 0
+
+            texts = [td.get_text(strip=True) for td in tds]
+            # texts[0] = team name, [1]=GP, [2]=W, [3]=D, [4]=L, [5]=GD, [6]=P
+            table.append({
+                "team_id": tid,
+                "played":  safe_int(texts[1]),
+                "won":     safe_int(texts[2]),
+                "drawn":   safe_int(texts[3]),
+                "lost":    safe_int(texts[4]),
+                "gd":      safe_int(texts[5]),
+                "points":  safe_int(texts[6]),
+            })
+
+        if not table:
+            return result
+
+        # Position actuelle = index dans le tableau (déjà trié par ESPN)
+        for idx, entry in enumerate(table):
+            entry["position_current"] = idx + 1
+
+        def projected_position(team_id, table_snapshot):
+            """
+            Calcule la position projetée si l'équipe team_id gagne (+3 pts).
+            On considère que les autres équipes gardent leurs pts actuels.
+            """
+            proj_points = {}
+            for e in table_snapshot:
+                if e["team_id"] == team_id:
+                    proj_points[e["team_id"]] = e["points"] + 3
+                else:
+                    proj_points[e["team_id"]] = e["points"]
+
+            # Compte combien d'équipes ont STRICTEMENT plus de points
+            my_pts = proj_points[team_id]
+            better = sum(1 for tid, pts in proj_points.items() if pts > my_pts)
+            return better + 1  # position = nb d'équipes devant + 1
+
+        # Cherche home et away dans le tableau
+        for entry in table:
+            if entry["team_id"] == team_id_home:
+                result["home"] = {
+                    "position_current": entry["position_current"],
+                    "position_if_win":  projected_position(team_id_home, table),
+                    "played":  entry["played"],
+                    "won":     entry["won"],
+                    "drawn":   entry["drawn"],
+                    "lost":    entry["lost"],
+                    "gd":      entry["gd"],
+                    "points":  entry["points"],
+                }
+            if entry["team_id"] == team_id_away:
+                result["away"] = {
+                    "position_current": entry["position_current"],
+                    "position_if_win":  projected_position(team_id_away, table),
+                    "played":  entry["played"],
+                    "won":     entry["won"],
+                    "drawn":   entry["drawn"],
+                    "lost":    entry["lost"],
+                    "gd":      entry["gd"],
+                    "points":  entry["points"],
+                }
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur standings extraction : {e}")
+
+    return result
 
 # ===============================================================
 # IDs ÉQUIPES DEPUIS LE GAMESTRIP (script 1)
@@ -429,7 +727,7 @@ def extract_score_and_status(driver):
     return home_score, away_score, status
 
 # ===============================================================
-# SCRAPING D'UN MATCH PASSÉ (last5 / H2H) — logique script 1
+# SCRAPING D'UN MATCH PASSÉ (last5 / H2H) — enrichi avec events
 # ===============================================================
 
 def scrape_past_match(driver, url):
@@ -439,7 +737,8 @@ def scrape_past_match(driver, url):
         gameId, url,
         team_home, team_home_id, team_home_logo,
         team_away, team_away_id, team_away_logo,
-        home_score, away_score, status, stats
+        home_score, away_score, status,
+        stats, events
     }
     Retourne None en cas d'échec.
     """
@@ -465,6 +764,8 @@ def scrape_past_match(driver, url):
 
     time.sleep(1.2)
 
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+
     # IDs équipes
     home_id, away_id = extract_team_ids_gamestrip(driver)
 
@@ -480,8 +781,11 @@ def scrape_past_match(driver, url):
     # Score & statut
     home_score, away_score, status = extract_score_and_status(driver)
 
-    # Stats (méthode Selenium avancée du script 1)
+    # Stats (nouvelle structure Prism en priorité)
     stats = get_match_stats_selenium(driver, game_id)
+
+    # Événements Timeline
+    events = extract_match_events(soup)
 
     result = {
         "gameId":          game_id,
@@ -496,12 +800,14 @@ def scrape_past_match(driver, url):
         "away_score":      away_score,
         "status":          status,
         "stats":           stats,
+        "events":          events,
     }
 
     score_str = f"{home_score}-{away_score}" if home_score is not None else "?-?"
+    ev_str    = f"⚡ {len(events['home'])}H/{len(events['away'])}A events"
     print(
         f"      ✅ {home_name} {score_str} {away_name} "
-        f"[{status}] | 📊 {len(stats)} stats"
+        f"[{status}] | 📊 {len(stats)} stats | {ev_str}"
     )
     return result
 
@@ -734,8 +1040,16 @@ try:
                 # ── Cotes ──
                 ml = extract_ml_odds(match_soup)
 
-                # ── Stats ──
+                # ── Stats (nouvelle structure Prism en priorité) ──
                 match_stats = extract_match_stats(match_soup)
+
+                # ── Événements Timeline ──
+                match_events = extract_match_events(match_soup)
+
+                # ── Classement actuel + projeté ──
+                standings_info = extract_standings_for_match(
+                    match_soup, team_id_home, team_id_away
+                )
 
                 # ── H2H ──
                 h2h = extract_h2h(match_soup, team_id_home, team_id_away)
@@ -768,20 +1082,22 @@ try:
                     "match_url": match_url,
 
                     "home": {
-                        "team":      team1,
-                        "team_id":   team_id_home,
-                        "team_slug": slug_home,
-                        "logo":      logo_home,
-                        "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
-                        "last_five": last5_home,
+                        "team":           team1,
+                        "team_id":        team_id_home,
+                        "team_slug":      slug_home,
+                        "logo":           logo_home,
+                        "url":            f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
+                        "standings":      standings_info.get("home"),   # ← NOUVEAU
+                        "last_five":      last5_home,
                     },
                     "away": {
-                        "team":      team2,
-                        "team_id":   team_id_away,
-                        "team_slug": slug_away,
-                        "logo":      logo_away,
-                        "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
-                        "last_five": last5_away,
+                        "team":           team2,
+                        "team_id":        team_id_away,
+                        "team_slug":      slug_away,
+                        "logo":           logo_away,
+                        "url":            f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
+                        "standings":      standings_info.get("away"),   # ← NOUVEAU
+                        "last_five":      last5_away,
                     },
 
                     "odds": {
@@ -790,28 +1106,31 @@ try:
                         "draw": ml["draw"] if ml else None,
                     },
 
-                    "stats": match_stats,
-                    "h2h":   h2h,
+                    "stats":   match_stats,
+                    "events":  match_events,   # ← NOUVEAU
+                    "h2h":     h2h,
                 }
 
-                odds_str = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
-                h2h_str  = f"🔁 {len(h2h)} H2H" if h2h else "🔁 pas de H2H"
-                l5_str   = f"🏠{len(last5_home)} ✈️{len(last5_away)}"
-                print(f"  {team1} vs {team2} [{time_ci}] → {odds_str} | {h2h_str} | L5:{l5_str}")
+                odds_str  = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
+                h2h_str   = f"🔁 {len(h2h)} H2H" if h2h else "🔁 pas de H2H"
+                l5_str    = f"🏠{len(last5_home)} ✈️{len(last5_away)}"
+                ev_str    = f"⚡{len(match_events['home'])}H/{len(match_events['away'])}A"
+                st_str    = (
+                    f"📊#{standings_info['home']['position_current'] if standings_info['home'] else '?'}"
+                    f"→#{standings_info['home']['position_if_win'] if standings_info['home'] else '?'}"
+                )
+                print(f"  {team1} vs {team2} [{time_ci}] → {odds_str} | {h2h_str} | L5:{l5_str} | {ev_str} | {st_str}")
                 time.sleep(0.5)
 
     # ==============================================================
     # PHASE 2 — ENRICHISSEMENT DES URLs last5 ET H2H
-    # Collecte d'abord tous les URLs uniques à traiter,
-    # puis charge chacun une seule fois pour éviter les doublons.
     # ==============================================================
 
     print("\n" + "=" * 60)
     print("🔄 PHASE 2 — Enrichissement last5 & H2H")
     print("=" * 60)
 
-    # ── Collecte de tous les URLs uniques ──
-    urls_to_scrape = {}  # {match_url: None}  →  résultat stocké après scraping
+    urls_to_scrape = {}
 
     for gid, gdata in games_of_day.items():
         for entry in gdata["home"]["last_five"]:
@@ -830,65 +1149,39 @@ try:
     total = len(urls_to_scrape)
     print(f"  📋 {total} URLs uniques à enrichir\n")
 
-    # ── Scraping de chaque URL unique ──
     for idx, url in enumerate(urls_to_scrape, 1):
         print(f"  [{idx}/{total}] {url}")
         result = scrape_past_match(driver, url)
         urls_to_scrape[url] = result
         time.sleep(1)
 
-    # ── Injection des données dans les entrées last5 / H2H ──
     print("\n  💉 Injection des données enrichies…")
 
     for gid, gdata in games_of_day.items():
 
-        # Last 5 home
+        # Champs injectés pour last5 et H2H (désormais avec events)
+        def inject(entry):
+            u = entry.get("match_url")
+            if u and urls_to_scrape.get(u):
+                d = urls_to_scrape[u]
+                entry["team_home"]       = d.get("team_home")
+                entry["team_home_id"]    = d.get("team_home_id")
+                entry["team_home_logo"]  = d.get("team_home_logo")
+                entry["team_away"]       = d.get("team_away")
+                entry["team_away_id"]    = d.get("team_away_id")
+                entry["team_away_logo"]  = d.get("team_away_logo")
+                entry["home_score"]      = d.get("home_score")
+                entry["away_score"]      = d.get("away_score")
+                entry["status"]          = d.get("status")
+                entry["stats"]           = d.get("stats", {})
+                entry["events"]          = d.get("events", {"home": [], "away": []})  # ← NOUVEAU
+
         for entry in gdata["home"]["last_five"]:
-            u = entry.get("match_url")
-            if u and urls_to_scrape.get(u):
-                d = urls_to_scrape[u]
-                entry["team_home"]      = d.get("team_home")
-                entry["team_home_id"]   = d.get("team_home_id")
-                entry["team_home_logo"] = d.get("team_home_logo")
-                entry["team_away"]      = d.get("team_away")
-                entry["team_away_id"]   = d.get("team_away_id")
-                entry["team_away_logo"] = d.get("team_away_logo")
-                entry["home_score"]     = d.get("home_score")
-                entry["away_score"]     = d.get("away_score")
-                entry["status"]         = d.get("status")
-                entry["stats"]          = d.get("stats", {})
-
-        # Last 5 away
+            inject(entry)
         for entry in gdata["away"]["last_five"]:
-            u = entry.get("match_url")
-            if u and urls_to_scrape.get(u):
-                d = urls_to_scrape[u]
-                entry["team_home"]      = d.get("team_home")
-                entry["team_home_id"]   = d.get("team_home_id")
-                entry["team_home_logo"] = d.get("team_home_logo")
-                entry["team_away"]      = d.get("team_away")
-                entry["team_away_id"]   = d.get("team_away_id")
-                entry["team_away_logo"] = d.get("team_away_logo")
-                entry["home_score"]     = d.get("home_score")
-                entry["away_score"]     = d.get("away_score")
-                entry["status"]         = d.get("status")
-                entry["stats"]          = d.get("stats", {})
-
-        # H2H
+            inject(entry)
         for entry in gdata["h2h"]:
-            u = entry.get("match_url")
-            if u and urls_to_scrape.get(u):
-                d = urls_to_scrape[u]
-                entry["team_home"]      = d.get("team_home")
-                entry["team_home_id"]   = d.get("team_home_id")
-                entry["team_home_logo"] = d.get("team_home_logo")
-                entry["team_away"]      = d.get("team_away")
-                entry["team_away_id"]   = d.get("team_away_id")
-                entry["team_away_logo"] = d.get("team_away_logo")
-                entry["home_score"]     = d.get("home_score")
-                entry["away_score"]     = d.get("away_score")
-                entry["status"]         = d.get("status")
-                entry["stats"]          = d.get("stats", {})
+            inject(entry)
 
     print("  ✅ Injection terminée")
 

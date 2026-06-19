@@ -2167,14 +2167,14 @@
                 "position": 3,
                 "name": "Sport",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 6,
-                    "D": 6,
+                    "D": 7,
                     "L": 1,
-                    "F": 16,
-                    "A": 8,
+                    "F": 17,
+                    "A": 9,
                     "GD": 8,
-                    "P": 24
+                    "P": 25
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2323,14 +2323,14 @@
                 "position": 13,
                 "name": "Atlético Goianiense",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 4,
-                    "D": 5,
+                    "D": 6,
                     "L": 4,
-                    "F": 15,
-                    "A": 15,
+                    "F": 16,
+                    "A": 16,
                     "GD": 0,
-                    "P": 17
+                    "P": 18
                 },
                 "zone": null
             },
@@ -2516,6 +2516,24 @@
             },
             {
                 "position": 3,
+                "name": "Universidad de Chile",
+                "stats": {
+                    "GP": 15,
+                    "W": 6,
+                    "D": 6,
+                    "L": 3,
+                    "F": 17,
+                    "A": 10,
+                    "GD": 7,
+                    "P": 24
+                },
+                "zone": {
+                    "label": "CONMEBOL Libertadores",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 4,
                 "name": "Coquimbo Unido",
                 "stats": {
                     "GP": 15,
@@ -2528,12 +2546,12 @@
                     "P": 24
                 },
                 "zone": {
-                    "label": "CONMEBOL Libertadores",
+                    "label": "CONMEBOL Sudamericana",
                     "type": "avantage"
                 }
             },
             {
-                "position": 4,
+                "position": 5,
                 "name": "Palestino",
                 "stats": {
                     "GP": 15,
@@ -2551,7 +2569,7 @@
                 }
             },
             {
-                "position": 5,
+                "position": 6,
                 "name": "Huachipato",
                 "stats": {
                     "GP": 15,
@@ -2569,7 +2587,7 @@
                 }
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Everton CD",
                 "stats": {
                     "GP": 15,
@@ -2587,7 +2605,7 @@
                 }
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "Ñublense",
                 "stats": {
                     "GP": 15,
@@ -2605,7 +2623,7 @@
                 }
             },
             {
-                "position": 8,
+                "position": 9,
                 "name": "Deportes Limache",
                 "stats": {
                     "GP": 15,
@@ -2617,37 +2635,19 @@
                     "GD": 7,
                     "P": 21
                 },
-                "zone": {
-                    "label": "CONMEBOL Sudamericana",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 9,
-                "name": "Universidad de Chile",
-                "stats": {
-                    "GP": 14,
-                    "W": 5,
-                    "D": 6,
-                    "L": 3,
-                    "F": 15,
-                    "A": 10,
-                    "GD": 5,
-                    "P": 21
-                },
                 "zone": null
             },
             {
                 "position": 10,
                 "name": "O'Higgins",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 6,
                     "D": 2,
-                    "L": 6,
+                    "L": 7,
                     "F": 19,
-                    "A": 20,
-                    "GD": -1,
+                    "A": 22,
+                    "GD": -3,
                     "P": 20
                 },
                 "zone": null

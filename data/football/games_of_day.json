@@ -1,1 +1,596 @@
-[]
+[
+  {
+    "gameId": "401843678",
+    "date": "2026-06-20",
+    "time_ci": "22:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843678/atlanta-almagro",
+    "home": {
+      "team": "Almagro",
+      "team_id": "2",
+      "team_slug": "almagro",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+      "url": "https://www.espn.com/soccer/team/_/id/2",
+      "standings": {
+        "position_current": 15,
+        "position_if_win": 7,
+        "played": 17,
+        "won": 5,
+        "drawn": 4,
+        "lost": 8,
+        "gd": -6,
+        "points": 19
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Atlanta",
+      "team_id": "10146",
+      "team_slug": "atlanta",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10146",
+      "standings": {
+        "position_current": 1,
+        "position_if_win": 1,
+        "played": 17,
+        "won": 10,
+        "drawn": 3,
+        "lost": 4,
+        "gd": 12,
+        "points": 33
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 3.4,
+      "away": 2.25,
+      "draw": 2.8
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843683",
+    "date": "2026-06-20",
+    "time_ci": "22:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843683/estudiantes-buenos-aires-ciudad-de-bolivar",
+    "home": {
+      "team": "Ciudad de Bolívar",
+      "team_id": "21799",
+      "team_slug": "ciudad-de-bolivar",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
+      "url": "https://www.espn.com/soccer/team/_/id/21799",
+      "standings": {
+        "position_current": 5,
+        "position_if_win": 3,
+        "played": 17,
+        "won": 6,
+        "drawn": 9,
+        "lost": 2,
+        "gd": 4,
+        "points": 27
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Estudiantes (Buenos Aires)",
+      "team_id": "17352",
+      "team_slug": "estudiantes-buenos-aires",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17352.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17352",
+      "standings": {
+        "position_current": 9,
+        "position_if_win": 6,
+        "played": 17,
+        "won": 6,
+        "drawn": 5,
+        "lost": 6,
+        "gd": -2,
+        "points": 23
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.7,
+      "away": 2.95,
+      "draw": 2.55
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843684",
+    "date": "2026-06-20",
+    "time_ci": "22:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843684/quilmes-colegiales",
+    "home": {
+      "team": "Colegiales",
+      "team_id": "10149",
+      "team_slug": "colegiales",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10149",
+      "standings": {
+        "position_current": 12,
+        "position_if_win": 7,
+        "played": 17,
+        "won": 5,
+        "drawn": 5,
+        "lost": 7,
+        "gd": -2,
+        "points": 20
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Quilmes",
+      "team_id": "2741",
+      "team_slug": "quilmes",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+      "url": "https://www.espn.com/soccer/team/_/id/2741",
+      "standings": {
+        "position_current": 8,
+        "position_if_win": 7,
+        "played": 17,
+        "won": 5,
+        "drawn": 6,
+        "lost": 6,
+        "gd": 4,
+        "points": 21
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.15,
+      "away": 3.6,
+      "draw": 2.8
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843675",
+    "date": "2026-06-20",
+    "time_ci": "22:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843675/racing-cordoba-san-telmo",
+    "home": {
+      "team": "San Telmo",
+      "team_id": "10157",
+      "team_slug": "san-telmo",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10157.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10157",
+      "standings": {
+        "position_current": 15,
+        "position_if_win": 11,
+        "played": 17,
+        "won": 3,
+        "drawn": 8,
+        "lost": 6,
+        "gd": -4,
+        "points": 17
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Racing (Córdoba)",
+      "team_id": "19145",
+      "team_slug": "racing-cordoba",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19145.png",
+      "url": "https://www.espn.com/soccer/team/_/id/19145",
+      "standings": {
+        "position_current": 11,
+        "position_if_win": 8,
+        "played": 17,
+        "won": 5,
+        "drawn": 5,
+        "lost": 7,
+        "gd": -3,
+        "points": 20
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.7,
+      "away": 3.0,
+      "draw": 2.55
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843677",
+    "date": "2026-06-20",
+    "time_ci": "22:30",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843677/san-miguel-acassuso",
+    "home": {
+      "team": "Acassuso",
+      "team_id": "10145",
+      "team_slug": "acassuso",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10145",
+      "standings": {
+        "position_current": 13,
+        "position_if_win": 10,
+        "played": 17,
+        "won": 5,
+        "drawn": 3,
+        "lost": 9,
+        "gd": -5,
+        "points": 18
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "San Miguel",
+      "team_id": "10058",
+      "team_slug": "san-miguel",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10058",
+      "standings": {
+        "position_current": 10,
+        "position_if_win": 8,
+        "played": 17,
+        "won": 4,
+        "drawn": 9,
+        "lost": 4,
+        "gd": -5,
+        "points": 21
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 3.2,
+      "away": 2.55,
+      "draw": 2.55
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843682",
+    "date": "2026-06-20",
+    "time_ci": "23:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843682/colon-santa-fe-chaco-for-ever",
+    "home": {
+      "team": "Chaco For Ever",
+      "team_id": "11963",
+      "team_slug": "chaco-for-ever",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11963.png",
+      "url": "https://www.espn.com/soccer/team/_/id/11963",
+      "standings": {
+        "position_current": 18,
+        "position_if_win": 18,
+        "played": 17,
+        "won": 1,
+        "drawn": 6,
+        "lost": 10,
+        "gd": -12,
+        "points": 9
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Colón (Santa Fe)",
+      "team_id": "7",
+      "team_slug": "colon-santa-fe",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7",
+      "standings": {
+        "position_current": 4,
+        "position_if_win": 2,
+        "played": 17,
+        "won": 7,
+        "drawn": 8,
+        "lost": 2,
+        "gd": 8,
+        "points": 29
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 3.25,
+      "away": 2.4,
+      "draw": 2.65
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843674",
+    "date": "2026-06-20",
+    "time_ci": "23:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843674/agropecuario-san-martin-san-juan",
+    "home": {
+      "team": "San Martín (San Juan)",
+      "team_id": "7845",
+      "team_slug": "san-martin-san-juan",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7845",
+      "standings": {
+        "position_current": 11,
+        "position_if_win": 7,
+        "played": 16,
+        "won": 5,
+        "drawn": 5,
+        "lost": 6,
+        "gd": -2,
+        "points": 20
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Agropecuario",
+      "team_id": "13913",
+      "team_slug": "agropecuario",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13913.png",
+      "url": "https://www.espn.com/soccer/team/_/id/13913",
+      "standings": {
+        "position_current": 17,
+        "position_if_win": 8,
+        "played": 17,
+        "won": 4,
+        "drawn": 6,
+        "lost": 7,
+        "gd": -6,
+        "points": 18
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 1.87,
+      "away": 4.3,
+      "draw": 3.05
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401843676",
+    "date": "2026-06-20",
+    "time_ci": "23:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843676/san-martin-tucuman-temperley",
+    "home": {
+      "team": "Temperley",
+      "team_id": "10162",
+      "team_slug": "temperley",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10162",
+      "standings": {
+        "position_current": 5,
+        "position_if_win": 3,
+        "played": 17,
+        "won": 6,
+        "drawn": 8,
+        "lost": 3,
+        "gd": 1,
+        "points": 26
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "San Martín (Tucumán)",
+      "team_id": "17814",
+      "team_slug": "san-martin-tucuman",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17814",
+      "standings": {
+        "position_current": 7,
+        "position_if_win": 6,
+        "played": 17,
+        "won": 5,
+        "drawn": 7,
+        "lost": 5,
+        "gd": 0,
+        "points": 22
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.25,
+      "away": 3.55,
+      "draw": 2.65
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401873952",
+    "date": "2026-06-20",
+    "time_ci": "18:00",
+    "league": "Brazil_Serie_B",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873952/athletic-londrina",
+    "home": {
+      "team": "Londrina",
+      "team_id": "17333",
+      "team_slug": "londrina",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17333",
+      "standings": {
+        "position_current": 17,
+        "position_if_win": 16,
+        "played": 13,
+        "won": 3,
+        "drawn": 2,
+        "lost": 8,
+        "gd": -7,
+        "points": 11
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Athletic",
+      "team_id": "20851",
+      "team_slug": "athletic",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+      "url": "https://www.espn.com/soccer/team/_/id/20851",
+      "standings": {
+        "position_current": 11,
+        "position_if_win": 4,
+        "played": 13,
+        "won": 4,
+        "drawn": 7,
+        "lost": 2,
+        "gd": 2,
+        "points": 19
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.55,
+      "away": 2.85,
+      "draw": 3.1
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401873966",
+    "date": "2026-06-20",
+    "time_ci": "02:00",
+    "league": "Brazil_Serie_B",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873966/botafogo-sp-ceara",
+    "home": {
+      "team": "Ceará",
+      "team_id": "9969",
+      "team_slug": "ceara",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
+      "url": "https://www.espn.com/soccer/team/_/id/9969",
+      "standings": {
+        "position_current": 14,
+        "position_if_win": 7,
+        "played": 13,
+        "won": 4,
+        "drawn": 5,
+        "lost": 4,
+        "gd": 0,
+        "points": 17
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Botafogo-SP",
+      "team_id": "10281",
+      "team_slug": "botafogo-sp",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10281",
+      "standings": {
+        "position_current": 16,
+        "position_if_win": 15,
+        "played": 13,
+        "won": 3,
+        "drawn": 4,
+        "lost": 6,
+        "gd": 0,
+        "points": 13
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 1.91,
+      "away": 4.3,
+      "draw": 3.3
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  },
+  {
+    "gameId": "401873974",
+    "date": "2026-06-20",
+    "time_ci": "02:00",
+    "league": "Brazil_Serie_B",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873974/nautico-vila-nova",
+    "home": {
+      "team": "Vila Nova",
+      "team_id": "9973",
+      "team_slug": "vila-nova",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
+      "url": "https://www.espn.com/soccer/team/_/id/9973",
+      "standings": {
+        "position_current": 2,
+        "position_if_win": 1,
+        "played": 13,
+        "won": 7,
+        "drawn": 4,
+        "lost": 2,
+        "gd": 6,
+        "points": 25
+      },
+      "last_five": []
+    },
+    "away": {
+      "team": "Náutico",
+      "team_id": "7633",
+      "team_slug": "nautico",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7633",
+      "standings": {
+        "position_current": 7,
+        "position_if_win": 4,
+        "played": 13,
+        "won": 6,
+        "drawn": 2,
+        "lost": 5,
+        "gd": 4,
+        "points": 20
+      },
+      "last_five": []
+    },
+    "odds": {
+      "home": 2.35,
+      "away": 3.15,
+      "draw": 3.15
+    },
+    "stats": {},
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": []
+  }
+]

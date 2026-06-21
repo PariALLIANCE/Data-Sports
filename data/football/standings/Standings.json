@@ -2129,6 +2129,24 @@
         "standings": [
             {
                 "position": 1,
+                "name": "Vila Nova",
+                "stats": {
+                    "GP": 14,
+                    "W": 8,
+                    "D": 4,
+                    "L": 2,
+                    "F": 22,
+                    "A": 15,
+                    "GD": 7,
+                    "P": 28
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 2,
                 "name": "São Bernardo",
                 "stats": {
                     "GP": 13,
@@ -2138,24 +2156,6 @@
                     "F": 20,
                     "A": 10,
                     "GD": 10,
-                    "P": 25
-                },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 2,
-                "name": "Vila Nova",
-                "stats": {
-                    "GP": 13,
-                    "W": 7,
-                    "D": 4,
-                    "L": 2,
-                    "F": 18,
-                    "A": 12,
-                    "GD": 6,
                     "P": 25
                 },
                 "zone": {
@@ -2233,13 +2233,13 @@
                 "position": 7,
                 "name": "Náutico",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 6,
                     "D": 2,
-                    "L": 5,
-                    "F": 18,
-                    "A": 14,
-                    "GD": 4,
+                    "L": 6,
+                    "F": 21,
+                    "A": 18,
+                    "GD": 3,
                     "P": 20
                 },
                 "zone": null
@@ -2293,13 +2293,13 @@
                 "position": 11,
                 "name": "Athletic",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 4,
                     "D": 7,
-                    "L": 2,
+                    "L": 3,
                     "F": 15,
-                    "A": 13,
-                    "GD": 2,
+                    "A": 15,
+                    "GD": 0,
                     "P": 19
                 },
                 "zone": null
@@ -2338,19 +2338,34 @@
                 "position": 14,
                 "name": "Ceará",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 4,
                     "D": 5,
-                    "L": 4,
+                    "L": 5,
                     "F": 15,
-                    "A": 15,
-                    "GD": 0,
+                    "A": 16,
+                    "GD": -1,
                     "P": 17
                 },
                 "zone": null
             },
             {
                 "position": 15,
+                "name": "Botafogo-SP",
+                "stats": {
+                    "GP": 14,
+                    "W": 4,
+                    "D": 4,
+                    "L": 6,
+                    "F": 14,
+                    "A": 13,
+                    "GD": 1,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 16,
                 "name": "CRB",
                 "stats": {
                     "GP": 13,
@@ -2365,32 +2380,17 @@
                 "zone": null
             },
             {
-                "position": 16,
-                "name": "Botafogo-SP",
-                "stats": {
-                    "GP": 13,
-                    "W": 3,
-                    "D": 4,
-                    "L": 6,
-                    "F": 13,
-                    "A": 13,
-                    "GD": 0,
-                    "P": 13
-                },
-                "zone": null
-            },
-            {
                 "position": 17,
                 "name": "Londrina",
                 "stats": {
-                    "GP": 13,
-                    "W": 3,
+                    "GP": 14,
+                    "W": 4,
                     "D": 2,
                     "L": 8,
-                    "F": 15,
+                    "F": 17,
                     "A": 22,
-                    "GD": -7,
-                    "P": 11
+                    "GD": -5,
+                    "P": 14
                 },
                 "zone": {
                     "label": "Relégation Serie C",

@@ -1,191 +1,1286 @@
 [
   {
-    "gameId": "401873949",
-    "date": "2026-06-22",
-    "time_ci": "03:00",
-    "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873949/novorizontino-ponte-preta",
+    "gameId": "401843672",
+    "date": "2026-06-23",
+    "time_ci": "01:30",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843672/atletico-rafaela-nueva-chicago",
     "home": {
-      "team": "Ponte Preta",
-      "team_id": "3459",
-      "team_slug": "ponte-preta",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-      "url": "https://www.espn.com/soccer/team/_/id/3459",
+      "team": "Nueva Chicago",
+      "team_id": "236",
+      "team_slug": "nueva-chicago",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+      "url": "https://www.espn.com/soccer/team/_/id/236",
       "standings": {
-        "position_current": 19,
-        "position_if_win": 19,
-        "played": 13,
-        "won": 2,
-        "drawn": 2,
-        "lost": 9,
-        "gd": -15,
-        "points": 8
+        "position_current": 13,
+        "position_if_win": 7,
+        "played": 16,
+        "won": 5,
+        "drawn": 6,
+        "lost": 5,
+        "gd": -1,
+        "points": 21
       },
       "last_five": [
         {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873967/ponte-preta-juventude",
+          "date": "2026-06-17",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873898/nueva-chicago-gimnasia-y-esgrima-jujuy",
           "result": "L",
-          "team_home": null,
-          "team_home_id": "6270",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
-          "team_away": null,
-          "team_away_id": "3459",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "home_score": "3",
+          "team_home": "Gimnasia y Esgrima (Jujuy)",
+          "team_home_id": "5263",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "team_away": "Nueva Chicago",
+          "team_away_id": "236",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+          "home_score": "4",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {},
+          "events": {
+            "home": [
+              {
+                "minute": 28,
+                "type": "goal"
+              },
+              {
+                "minute": 43,
+                "type": "goal"
+              },
+              {
+                "minute": 54,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 68,
+                "type": "substitution"
+              },
+              {
+                "minute": 77,
+                "type": "goal"
+              },
+              {
+                "minute": 79,
+                "type": "substitution"
+              },
+              {
+                "minute": 80,
+                "type": "substitution"
+              },
+              {
+                "minute": 83,
+                "type": "substitution"
+              },
+              {
+                "minute": 86,
+                "type": "goal"
+              }
+            ],
+            "away": [
+              {
+                "minute": 46,
+                "type": "substitution"
+              },
+              {
+                "minute": 65,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 72,
+                "type": "substitution"
+              },
+              {
+                "minute": 73,
+                "type": "substitution"
+              },
+              {
+                "minute": 75,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 80,
+                "type": "substitution"
+              },
+              {
+                "minute": 85,
+                "type": "yellow_card"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-06-13",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843927/chacarita-juniors-nueva-chicago",
+          "result": "W",
+          "team_home": "Nueva Chicago",
+          "team_home_id": "236",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+          "team_away": "Chacarita Juniors",
+          "team_away_id": "6",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6.png",
+          "home_score": "2",
           "away_score": "0",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "62%",
-              "away": "38%"
+              "home": "0%",
+              "away": "0%"
             },
             "Shots on Goal": {
-              "home": "9",
-              "away": "1"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
               "home": "0",
               "away": "0"
             },
             "Accurate Passes": {
-              "home": "384",
-              "away": "209"
+              "home": "0",
+              "away": "0"
             },
             "Passes": {
-              "home": "429",
-              "away": "277"
+              "home": "0",
+              "away": "0"
             },
-            "Duels Won": {
+            "Tackles": {
+              "home": "0",
+              "away": "0"
+            },
+            "Clearances": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shots Blocked": {
               "home": "0",
               "away": "0"
             },
             "Saves": {
-              "home": "1",
-              "away": "6"
+              "home": "0",
+              "away": "0"
             },
             "Fouls Committed": {
-              "home": "18",
-              "away": "16"
+              "home": "0",
+              "away": "0"
             }
           },
           "events": {
-            "home": [],
-            "away": []
+            "home": [
+              {
+                "minute": 24,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 56,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 58,
+                "type": "goal"
+              },
+              {
+                "minute": 60,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 65,
+                "type": "substitution"
+              },
+              {
+                "minute": 74,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 77,
+                "type": "substitution"
+              },
+              {
+                "minute": 83,
+                "type": "substitution"
+              },
+              {
+                "minute": 88,
+                "type": "goal"
+              },
+              {
+                "minute": 89,
+                "type": "yellow_card"
+              }
+            ],
+            "away": [
+              {
+                "minute": 56,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 60,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 62,
+                "type": "substitution"
+              },
+              {
+                "minute": 69,
+                "type": "substitution"
+              },
+              {
+                "minute": 85,
+                "type": "substitution"
+              },
+              {
+                "minute": 91,
+                "type": "yellow_card"
+              }
+            ]
           }
         },
         {
-          "date": "2026-06-09",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860173/cuiaba-ponte-preta",
+          "date": "2026-05-23",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843879/temperley-nueva-chicago",
+          "result": "D",
+          "team_home": "Nueva Chicago",
+          "team_home_id": "236",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+          "team_away": "Temperley",
+          "team_away_id": "10162",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {},
+          "events": {
+            "home": [
+              {
+                "minute": 43,
+                "type": "substitution"
+              },
+              {
+                "minute": 47,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 66,
+                "type": "substitution"
+              },
+              {
+                "minute": 79,
+                "type": "substitution"
+              },
+              {
+                "minute": 91,
+                "type": "goal"
+              }
+            ],
+            "away": [
+              {
+                "minute": 27,
+                "type": "goal"
+              },
+              {
+                "minute": 56,
+                "type": "substitution"
+              },
+              {
+                "minute": 68,
+                "type": "substitution"
+              },
+              {
+                "minute": 78,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 83,
+                "type": "substitution"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-05-17",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843857/nueva-chicago-deportivo-maipu",
           "result": "L",
-          "team_home": "Ponte Preta",
-          "team_home_id": "3459",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "team_away": "Cuiabá",
-          "team_away_id": "17313",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "team_home": "Deportivo Maipú",
+          "team_home_id": "11978",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
+          "team_away": "Nueva Chicago",
+          "team_away_id": "236",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {},
+          "events": {
+            "home": [
+              {
+                "minute": 5,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 64,
+                "type": "substitution"
+              },
+              {
+                "minute": 66,
+                "type": "goal"
+              },
+              {
+                "minute": 80,
+                "type": "substitution"
+              },
+              {
+                "minute": 89,
+                "type": "substitution"
+              }
+            ],
+            "away": [
+              {
+                "minute": 26,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 52,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 61,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 64,
+                "type": "substitution"
+              },
+              {
+                "minute": 72,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 73,
+                "type": "substitution"
+              },
+              {
+                "minute": 79,
+                "type": "substitution"
+              },
+              {
+                "minute": 91,
+                "type": "yellow_card"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-05-11",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843842/almagro-nueva-chicago",
+          "result": "L",
+          "team_home": "Nueva Chicago",
+          "team_home_id": "236",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+          "team_away": "Almagro",
+          "team_away_id": "2",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
           "home_score": "1",
           "away_score": "2",
           "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "46%",
-              "away": "54%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "260",
-              "away": "335"
-            },
-            "Passes": {
-              "home": "340",
-              "away": "409"
-            },
-            "Duels Won": {
-              "home": "0",
-              "away": "0"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "12"
-            }
-          },
+          "stats": {},
           "events": {
-            "home": [],
-            "away": []
+            "home": [
+              {
+                "minute": 18,
+                "type": "goal"
+              },
+              {
+                "minute": 53,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 57,
+                "type": "substitution"
+              },
+              {
+                "minute": 65,
+                "type": "substitution"
+              },
+              {
+                "minute": 70,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 79,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 80,
+                "type": "yellow_card"
+              }
+            ],
+            "away": [
+              {
+                "minute": 24,
+                "type": "goal"
+              },
+              {
+                "minute": 39,
+                "type": "goal"
+              },
+              {
+                "minute": 57,
+                "type": "substitution"
+              },
+              {
+                "minute": 65,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 74,
+                "type": "substitution"
+              },
+              {
+                "minute": 80,
+                "type": "substitution"
+              },
+              {
+                "minute": 91,
+                "type": "yellow_card"
+              }
+            ]
           }
-        },
+        }
+      ]
+    },
+    "away": {
+      "team": "Atletico Rafaela",
+      "team_id": "9747",
+      "team_slug": "atletico-rafaela",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+      "url": "https://www.espn.com/soccer/team/_/id/9747",
+      "standings": {
+        "position_current": 6,
+        "position_if_win": 4,
+        "played": 17,
+        "won": 7,
+        "drawn": 5,
+        "lost": 5,
+        "gd": 2,
+        "points": 26
+      },
+      "last_five": [
         {
-          "date": "2026-06-01",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860169/botafogo-sp-ponte-preta",
+          "date": "2026-06-14",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843926/atletico-rafaela-patronato",
           "result": "D",
-          "team_home": "Ponte Preta",
-          "team_home_id": "3459",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "team_away": "Botafogo-SP",
-          "team_away_id": "10281",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
+          "team_home": "Patronato",
+          "team_home_id": "10374",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10374.png",
+          "team_away": "Atletico Rafaela",
+          "team_away_id": "9747",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
           "home_score": "0",
           "away_score": "0",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "32%",
-              "away": "68%"
+              "home": "0%",
+              "away": "0%"
             },
             "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "0",
+              "away": "0"
+            },
+            "Passes": {
+              "home": "0",
+              "away": "0"
+            },
+            "Tackles": {
+              "home": "0",
+              "away": "0"
+            },
+            "Clearances": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shots Blocked": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls Committed": {
+              "home": "0",
+              "away": "0"
+            }
+          },
+          "events": {
+            "home": [
+              {
+                "minute": 24,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 51,
+                "type": "substitution"
+              },
+              {
+                "minute": 68,
+                "type": "substitution"
+              },
+              {
+                "minute": 88,
+                "type": "substitution"
+              }
+            ],
+            "away": [
+              {
+                "minute": 8,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 28,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 31,
+                "type": "substitution"
+              },
+              {
+                "minute": 58,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 73,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 75,
+                "type": "substitution"
+              },
+              {
+                "minute": 77,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 84,
+                "type": "substitution"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-06-06",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843907/colegiales-atletico-rafaela",
+          "result": "W",
+          "team_home": "Atletico Rafaela",
+          "team_home_id": "9747",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "team_away": "Colegiales",
+          "team_away_id": "10149",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {},
+          "events": {
+            "home": [
+              {
+                "minute": 11,
+                "type": "goal"
+              },
+              {
+                "minute": 46,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 47,
+                "type": "substitution"
+              },
+              {
+                "minute": 54,
+                "type": "substitution"
+              },
+              {
+                "minute": 65,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 67,
+                "type": "red_card"
+              },
+              {
+                "minute": 71,
+                "type": "substitution"
+              },
+              {
+                "minute": 75,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 77,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 84,
+                "type": "substitution"
+              }
+            ],
+            "away": [
+              {
+                "minute": 35,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 47,
+                "type": "substitution"
+              },
+              {
+                "minute": 79,
+                "type": "substitution"
+              },
+              {
+                "minute": 82,
+                "type": "substitution"
+              },
+              {
+                "minute": 86,
+                "type": "substitution"
+              },
+              {
+                "minute": 88,
+                "type": "yellow_card"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-05-31",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843890/atletico-rafaela-quilmes",
+          "result": "L",
+          "team_home": "Quilmes",
+          "team_home_id": "2741",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+          "team_away": "Atletico Rafaela",
+          "team_away_id": "9747",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {},
+          "events": {
+            "home": [
+              {
+                "minute": 40,
+                "type": "goal"
+              },
+              {
+                "minute": 70,
+                "type": "goal"
+              },
+              {
+                "minute": 83,
+                "type": "substitution"
+              },
+              {
+                "minute": 90,
+                "type": "substitution"
+              }
+            ],
+            "away": [
+              {
+                "minute": 61,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 64,
+                "type": "substitution"
+              },
+              {
+                "minute": 80,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 82,
+                "type": "substitution"
+              },
+              {
+                "minute": 85,
+                "type": "substitution"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-05-23",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843869/midland-atletico-rafaela",
+          "result": "W",
+          "team_home": "Atletico Rafaela",
+          "team_home_id": "9747",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "team_away": "Midland",
+          "team_away_id": "10109",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shots": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls Committed": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Red Cards": {
               "home": "1",
-              "away": "4"
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          },
+          "events": {
+            "home": [
+              {
+                "minute": 6,
+                "type": "substitution"
+              },
+              {
+                "minute": 57,
+                "type": "goal"
+              },
+              {
+                "minute": 59,
+                "type": "substitution"
+              },
+              {
+                "minute": 63,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 72,
+                "type": "red_card"
+              },
+              {
+                "minute": 76,
+                "type": "substitution"
+              },
+              {
+                "minute": 85,
+                "type": "yellow_card"
+              }
+            ],
+            "away": [
+              {
+                "minute": 61,
+                "type": "substitution"
+              },
+              {
+                "minute": 79,
+                "type": "substitution"
+              },
+              {
+                "minute": 87,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 89,
+                "type": "substitution"
+              }
+            ]
+          }
+        },
+        {
+          "date": "2026-05-16",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843853/atletico-rafaela-atlanta",
+          "result": "L",
+          "team_home": "Atlanta",
+          "team_home_id": "10146",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+          "team_away": "Atletico Rafaela",
+          "team_away_id": "9747",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shots": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls Committed": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          },
+          "events": {
+            "home": [
+              {
+                "minute": 38,
+                "type": "goal"
+              },
+              {
+                "minute": 46,
+                "type": "substitution"
+              },
+              {
+                "minute": 72,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 74,
+                "type": "substitution"
+              },
+              {
+                "minute": 83,
+                "type": "goal"
+              },
+              {
+                "minute": 86,
+                "type": "substitution"
+              },
+              {
+                "minute": 91,
+                "type": "substitution"
+              }
+            ],
+            "away": [
+              {
+                "minute": 46,
+                "type": "substitution"
+              },
+              {
+                "minute": 57,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 60,
+                "type": "substitution"
+              },
+              {
+                "minute": 79,
+                "type": "yellow_card"
+              },
+              {
+                "minute": 89,
+                "type": "substitution"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "odds": {
+      "home": 2.2,
+      "away": 3.75,
+      "draw": 2.7
+    },
+    "stats": {
+      "Average Goals": {
+        "home": "0.94",
+        "away": "0.82"
+      },
+      "Average Goals Conceded": {
+        "home": "1",
+        "away": "0.71"
+      },
+      "Average Goal Differential": {
+        "home": "-0.1",
+        "away": "+0.1"
+      },
+      "Shots On Target Percentage": {
+        "home": "0%",
+        "away": "0%"
+      },
+      "Clean Sheet": {
+        "home": "7",
+        "away": "10"
+      },
+      "Save Percentage": {
+        "home": "0%",
+        "away": "0%"
+      },
+      "Corners Won": {
+        "home": "0",
+        "away": "0"
+      },
+      "Fouls Committed": {
+        "home": "0",
+        "away": "0"
+      }
+    },
+    "events": {
+      "home": [],
+      "away": []
+    },
+    "h2h": [
+      {
+        "date": "2024-07-19",
+        "competition": "2024 Argentine Nacional B, Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/695267/nueva-chicago-atletico-rafaela",
+        "team_home": "Atletico Rafaela",
+        "team_home_id": "9747",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+        "team_away": "Nueva Chicago",
+        "team_away_id": "236",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+        "home_score": "1",
+        "away_score": "5",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2024-03-01",
+        "competition": "2024 Argentine Nacional B, Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/694915/atletico-rafaela-nueva-chicago",
+        "team_home": "Nueva Chicago",
+        "team_home_id": "236",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+        "team_away": "Atletico Rafaela",
+        "team_away_id": "9747",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+        "home_score": "2",
+        "away_score": "0",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2022-04-24",
+        "competition": "2022 Argentine Nacional B, 2022 Argentina Nacional B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/629964/nueva-chicago-atletico-rafaela",
+        "team_home": null,
+        "team_home_id": "9747",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+        "team_away": null,
+        "team_away_id": "236",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+        "home_score": "1",
+        "away_score": "1",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2018-09-29",
+        "competition": "2018/19 Argentina Nacional B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/525044/nueva-chicago-atletico-rafaela",
+        "team_home": null,
+        "team_home_id": "9747",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+        "team_away": null,
+        "team_away_id": "236",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+        "home_score": "0",
+        "away_score": "1",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2017-10-28",
+        "competition": "2017/18 Nacional B, 2017/18 Argentina Nacional B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/494831/nueva-chicago-atletico-rafaela",
+        "team_home": null,
+        "team_home_id": "9747",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+        "team_away": null,
+        "team_away_id": "236",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+        "home_score": "0",
+        "away_score": "0",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [
+            {
+              "minute": 34,
+              "type": "substitution"
+            },
+            {
+              "minute": 38,
+              "type": "yellow_card"
+            },
+            {
+              "minute": 52,
+              "type": "red_card"
+            },
+            {
+              "minute": 60,
+              "type": "substitution"
+            },
+            {
+              "minute": 79,
+              "type": "substitution"
+            }
+          ],
+          "away": [
+            {
+              "minute": 15,
+              "type": "substitution"
+            },
+            {
+              "minute": 54,
+              "type": "yellow_card"
+            },
+            {
+              "minute": 69,
+              "type": "substitution"
+            },
+            {
+              "minute": 81,
+              "type": "substitution"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "gameId": "401873969",
+    "date": "2026-06-23",
+    "time_ci": "03:00",
+    "league": "Brazil_Serie_B",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873969/criciuma-america-mineiro",
+    "home": {
+      "team": "América Mineiro",
+      "team_id": "6154",
+      "team_slug": "america-mineiro",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+      "url": "https://www.espn.com/soccer/team/_/id/6154",
+      "standings": {
+        "position_current": 20,
+        "position_if_win": 19,
+        "played": 13,
+        "won": 1,
+        "drawn": 3,
+        "lost": 9,
+        "gd": -14,
+        "points": 6
+      },
+      "last_five": [
+        {
+          "date": "2026-06-16",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873948/america-mineiro-fortaleza",
+          "result": "W",
+          "team_home": "Fortaleza",
+          "team_home_id": "6272",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
+          "team_away": "América Mineiro",
+          "team_away_id": "6154",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "home_score": "0",
+          "away_score": "3",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "65%",
+              "away": "35%"
+            },
+            "Shots on Goal": {
+              "home": "10",
+              "away": "7"
             },
             "Big Chances Created": {
               "home": "0",
-              "away": "2"
+              "away": "0"
             },
             "Big Chances Missed": {
               "home": "0",
-              "away": "2"
+              "away": "0"
             },
             "Accurate Passes": {
-              "home": "126",
-              "away": "356"
+              "home": "549",
+              "away": "272"
             },
             "Passes": {
-              "home": "199",
-              "away": "411"
+              "home": "610",
+              "away": "340"
             },
             "Duels Won": {
-              "home": "48",
-              "away": "41"
+              "home": "0",
+              "away": "0"
             },
             "Saves": {
               "home": "4",
-              "away": "1"
+              "away": "10"
             },
             "Fouls Committed": {
-              "home": "18",
-              "away": "15"
+              "home": "11",
+              "away": "11"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-06-08",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873960/atletico-goianiense-america-mineiro",
+          "result": "L",
+          "team_home": "América Mineiro",
+          "team_home_id": "6154",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "team_away": "Atlético Goianiense",
+          "team_away_id": "10357",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10357.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "63%",
+              "away": "37%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "7"
+            },
+            "Big Chances Created": {
+              "home": "2",
+              "away": "4"
+            },
+            "Big Chances Missed": {
+              "home": "3",
+              "away": "4"
+            },
+            "Accurate Passes": {
+              "home": "477",
+              "away": "261"
+            },
+            "Passes": {
+              "home": "547",
+              "away": "325"
+            },
+            "Duels Won": {
+              "home": "36",
+              "away": "51"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "4"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "11"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-30",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860167/america-mineiro-juventude",
+          "result": "L",
+          "team_home": "Juventude",
+          "team_home_id": "6270",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
+          "team_away": "América Mineiro",
+          "team_away_id": "6154",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "home_score": "3",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "38%",
+              "away": "62%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "8"
+            },
+            "Shots": {
+              "home": "16",
+              "away": "16"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "5",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "8",
+              "away": "3"
             }
           },
           "events": {
@@ -196,340 +1291,48 @@
         {
           "date": "2026-05-24",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860154/ponte-preta-crb",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860160/vila-nova-america-mineiro",
           "result": "L",
-          "team_home": "CRB",
-          "team_home_id": "9970",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
-          "team_away": "Ponte Preta",
-          "team_away_id": "3459",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "home_score": "4",
+          "team_home": "América Mineiro",
+          "team_home_id": "6154",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "team_away": "Vila Nova",
+          "team_away_id": "9973",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
+          "home_score": "1",
           "away_score": "2",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "11",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "33",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "13",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "12",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "8"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-18",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860142/londrina-ponte-preta",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "3459",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "team_away": null,
-          "team_away_id": "17333",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
-          "home_score": "1",
-          "away_score": "4",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "54%",
-              "away": "46%"
+              "home": "50%",
+              "away": "50%"
             },
             "Shots on Goal": {
               "home": "5",
-              "away": "9"
+              "away": "4"
             },
             "Shots": {
-              "home": "16",
-              "away": "19"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "6",
-              "away": "0"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "11",
-              "away": "4"
-            },
-            "Saves": {
-              "home": "5",
-              "away": "4"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Novorizontino",
-      "team_id": "18127",
-      "team_slug": "novorizontino",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-      "url": "https://www.espn.com/soccer/team/_/id/18127",
-      "standings": {
-        "position_current": 7,
-        "position_if_win": 4,
-        "played": 13,
-        "won": 5,
-        "drawn": 6,
-        "lost": 2,
-        "gd": 7,
-        "points": 21
-      },
-      "last_five": [
-        {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873944/nautico-novorizontino",
-          "result": "D",
-          "team_home": "Novorizontino",
-          "team_home_id": "18127",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "team_away": "Náutico",
-          "team_away_id": "7633",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
-          "home_score": "2",
-          "away_score": "2",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "51%",
-              "away": "49%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "2",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "251",
-              "away": "264"
-            },
-            "Passes": {
-              "home": "337",
-              "away": "339"
-            },
-            "Duels Won": {
-              "home": "59",
-              "away": "39"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "21"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-06-10",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873961/novorizontino-goias",
-          "result": "W",
-          "team_home": "Goiás",
-          "team_home_id": "3395",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3395.png",
-          "team_away": "Novorizontino",
-          "team_away_id": "18127",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "home_score": "0",
-          "away_score": "4",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "71%",
-              "away": "29%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "6"
-            },
-            "Big Chances Created": {
-              "home": "4",
-              "away": "4"
-            },
-            "Big Chances Missed": {
-              "home": "4",
-              "away": "2"
-            },
-            "Accurate Passes": {
-              "home": "430",
-              "away": "145"
-            },
-            "Passes": {
-              "home": "494",
-              "away": "206"
-            },
-            "Duels Won": {
-              "home": "43",
-              "away": "36"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "6"
-            },
-            "Fouls Committed": {
-              "home": "6",
-              "away": "11"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-31",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860166/novorizontino-sao-bernardo",
-          "result": "D",
-          "team_home": "São Bernardo",
-          "team_home_id": "11268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "team_away": "Novorizontino",
-          "team_away_id": "18127",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "54%",
-              "away": "46%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "11",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "16",
+              "home": "17",
               "away": "12"
             },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "1"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "3"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-23",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860157/ceara-novorizontino",
-          "result": "W",
-          "team_home": "Novorizontino",
-          "team_home_id": "18127",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "team_away": "Ceará",
-          "team_away_id": "9969",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "49%",
-              "away": "51%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "1"
-            },
-            "Shots": {
+            "Fouls Committed": {
               "home": "15",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "12"
+              "away": "16"
             },
             "Yellow Cards": {
-              "home": "1",
+              "home": "3",
               "away": "3"
             },
             "Red Cards": {
               "home": "0",
-              "away": "1"
+              "away": "0"
             },
             "Corners Won": {
-              "home": "5",
-              "away": "2"
+              "home": "4",
+              "away": "4"
             },
             "Saves": {
-              "home": "0",
+              "home": "2",
               "away": "4"
             }
           },
@@ -541,36 +1344,222 @@
         {
           "date": "2026-05-16",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860145/novorizontino-cuiaba",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860150/america-mineiro-sao-bernardo",
           "result": "D",
-          "team_home": "Cuiabá",
-          "team_home_id": "17313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "team_away": "Novorizontino",
-          "team_away_id": "18127",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "home_score": "0",
+          "team_home": "São Bernardo",
+          "team_home_id": "11268",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
+          "team_away": "América Mineiro",
+          "team_away_id": "6154",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "49%",
+              "away": "51%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "4"
+            },
+            "Shots": {
+              "home": "15",
+              "away": "11"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "5"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "7"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "3"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Criciúma",
+      "team_id": "9971",
+      "team_slug": "criciuma",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+      "url": "https://www.espn.com/soccer/team/_/id/9971",
+      "standings": {
+        "position_current": 8,
+        "position_if_win": 4,
+        "played": 13,
+        "won": 5,
+        "drawn": 6,
+        "lost": 2,
+        "gd": 4,
+        "points": 21
+      },
+      "last_five": [
+        {
+          "date": "2026-06-16",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873946/ceara-criciuma",
+          "result": "D",
+          "team_home": "Criciúma",
+          "team_home_id": "9971",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "team_away": "Ceará",
+          "team_away_id": "9969",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "58%",
+              "away": "42%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "7"
+            },
+            "Big Chances Created": {
+              "home": "4",
+              "away": "1"
+            },
+            "Big Chances Missed": {
+              "home": "3",
+              "away": "1"
+            },
+            "Accurate Passes": {
+              "home": "375",
+              "away": "213"
+            },
+            "Passes": {
+              "home": "454",
+              "away": "327"
+            },
+            "Duels Won": {
+              "home": "54",
+              "away": "54"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "5"
+            },
+            "Fouls Committed": {
+              "home": "15",
+              "away": "14"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-06-06",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873959/londrina-criciuma",
+          "result": "W",
+          "team_home": "Criciúma",
+          "team_home_id": "9971",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "team_away": "Londrina",
+          "team_away_id": "17333",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+          "home_score": "1",
           "away_score": "0",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "59%",
-              "away": "41%"
+              "home": "60%",
+              "away": "40%"
             },
             "Shots on Goal": {
-              "home": "8",
-              "away": "3"
+              "home": "4",
+              "away": "2"
             },
-            "Shots": {
-              "home": "22",
-              "away": "10"
+            "Big Chances Created": {
+              "home": "1",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "1",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "446",
+              "away": "248"
+            },
+            "Passes": {
+              "home": "506",
+              "away": "331"
+            },
+            "Duels Won": {
+              "home": "49",
+              "away": "55"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
             },
             "Fouls Committed": {
               "home": "14",
-              "away": "13"
+              "away": "11"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-30",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860164/criciuma-avai",
+          "result": "W",
+          "team_home": "Avaí",
+          "team_home_id": "9966",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
+          "team_away": "Criciúma",
+          "team_away_id": "9971",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "57%",
+              "away": "43%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "3"
+            },
+            "Shots": {
+              "home": "11",
+              "away": "16"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "25"
             },
             "Yellow Cards": {
-              "home": "3",
+              "home": "2",
               "away": "2"
             },
             "Red Cards": {
@@ -578,12 +1567,118 @@
               "away": "0"
             },
             "Corners Won": {
+              "home": "3",
+              "away": "9"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "1"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860159/criciuma-operario-pr",
+          "result": "D",
+          "team_home": "Operário PR",
+          "team_home_id": "18187",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "team_away": "Criciúma",
+          "team_away_id": "9971",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "50%",
+              "away": "50%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "20",
+              "away": "13"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "18"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
               "home": "8",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "5",
               "away": "4"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-17",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860146/atletico-goianiense-criciuma",
+          "result": "D",
+          "team_home": "Criciúma",
+          "team_home_id": "9971",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "team_away": "Atlético Goianiense",
+          "team_away_id": "10357",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10357.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "67%",
+              "away": "33%"
+            },
+            "Shots on Goal": {
+              "home": "1",
+              "away": "4"
+            },
+            "Shots": {
+              "home": "13",
+              "away": "18"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "4"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "10"
             },
             "Saves": {
               "home": "3",
-              "away": "8"
+              "away": "1"
             }
           },
           "events": {
@@ -594,46 +1689,46 @@
       ]
     },
     "odds": {
-      "home": 5.0,
-      "away": 1.77,
-      "draw": 3.4
+      "home": 3.0,
+      "away": 2.5,
+      "draw": 3.05
     },
     "stats": {
       "Average Goals": {
         "home": "0.77",
-        "away": "1.54"
+        "away": "1.15"
       },
       "Average Goals Conceded": {
-        "home": "1.92",
-        "away": "1"
+        "home": "1.85",
+        "away": "0.85"
       },
       "Average Goal Differential": {
-        "home": "-1.2",
-        "away": "+0.5"
+        "home": "-1.1",
+        "away": "+0.3"
       },
       "Possession": {
-        "home": "44%",
-        "away": "47%"
+        "home": "55%",
+        "away": "53%"
       },
       "Shots On Target Percentage": {
-        "home": "38%",
-        "away": "37%"
+        "home": "39%",
+        "away": "32%"
       },
       "Big Chances Created": {
-        "home": ".00",
+        "home": ".15",
         "away": ".38"
       },
       "Duel Win Percentage": {
-        "home": "54%",
-        "away": "50%"
+        "home": "43%",
+        "away": "47%"
       },
       "Clean Sheet": {
         "home": "2",
-        "away": "5"
+        "away": "4"
       },
       "Save Percentage": {
-        "home": "68%",
-        "away": "74%"
+        "home": "65%",
+        "away": "77%"
       }
     },
     "events": {
@@ -642,189 +1737,33 @@
     },
     "h2h": [
       {
-        "date": "2025-01-15",
-        "competition": "2025 Campeonato Paulista, Temporada Regular",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/724073/ponte-preta-novorizontino",
-        "team_home": null,
-        "team_home_id": "18127",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-        "team_away": null,
-        "team_away_id": "3459",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-        "home_score": "0",
-        "away_score": "1",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "67%",
-            "away": "33%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "1"
-          },
-          "Shots": {
-            "home": "30",
-            "away": "4"
-          },
-          "Fouls Committed": {
-            "home": "15",
-            "away": "15"
-          },
-          "Yellow Cards": {
-            "home": "3",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "1"
-          },
-          "Corners Won": {
-            "home": "14",
-            "away": "2"
-          },
-          "Saves": {
-            "home": "0",
-            "away": "4"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2024-10-01",
-        "competition": "2024 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700191/ponte-preta-novorizontino",
-        "team_home": "Novorizontino",
-        "team_home_id": "18127",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-        "team_away": "Ponte Preta",
-        "team_away_id": "3459",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
+        "date": "2025-10-12",
+        "competition": "2025 Brasileiro Serie B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733523/america-mineiro-criciuma",
+        "team_home": "Criciúma",
+        "team_home_id": "9971",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+        "team_away": "América Mineiro",
+        "team_away_id": "6154",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
         "home_score": "2",
         "away_score": "1",
         "status": "FT",
         "stats": {
           "Possession": {
-            "home": "35%",
-            "away": "65%"
+            "home": "50%",
+            "away": "50%"
           },
           "Shots on Goal": {
-            "home": "8",
-            "away": "6"
-          },
-          "Shots": {
-            "home": "17",
-            "away": "11"
-          },
-          "Fouls Committed": {
-            "home": "21",
-            "away": "10"
-          },
-          "Yellow Cards": {
-            "home": "4",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "5",
-            "away": "4"
-          },
-          "Saves": {
-            "home": "5",
-            "away": "6"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2024-06-15",
-        "competition": "2024 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700003/novorizontino-ponte-preta",
-        "team_home": "Ponte Preta",
-        "team_home_id": "3459",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-        "team_away": "Novorizontino",
-        "team_away_id": "18127",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-        "home_score": "1",
-        "away_score": "0",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "59%",
-            "away": "41%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "2"
-          },
-          "Shots": {
-            "home": "16",
-            "away": "10"
-          },
-          "Fouls Committed": {
-            "home": "21",
-            "away": "13"
-          },
-          "Yellow Cards": {
-            "home": "6",
-            "away": "7"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "1"
-          },
-          "Corners Won": {
             "home": "4",
             "away": "3"
           },
-          "Saves": {
-            "home": "2",
-            "away": "3"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2024-03-03",
-        "competition": "2024 Campeonato Paulista, Temporada Regular",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/690816/novorizontino-ponte-preta",
-        "team_home": null,
-        "team_home_id": "3459",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-        "team_away": null,
-        "team_away_id": "18127",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-        "home_score": "1",
-        "away_score": "1",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "54%",
-            "away": "46%"
-          },
-          "Shots on Goal": {
-            "home": "1",
-            "away": "7"
-          },
           "Shots": {
-            "home": "12",
-            "away": "14"
+            "home": "13",
+            "away": "6"
           },
           "Fouls Committed": {
-            "home": "14",
+            "home": "21",
             "away": "12"
           },
           "Yellow Cards": {
@@ -837,11 +1776,11 @@
           },
           "Corners Won": {
             "home": "5",
-            "away": "4"
+            "away": "3"
           },
           "Saves": {
-            "home": "6",
-            "away": "0"
+            "home": "2",
+            "away": "2"
           }
         },
         "events": {
@@ -850,50 +1789,140 @@
         }
       },
       {
-        "date": "2023-10-28",
-        "competition": "2023 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666539/ponte-preta-novorizontino",
-        "team_home": "Novorizontino",
-        "team_home_id": "18127",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-        "team_away": "Ponte Preta",
-        "team_away_id": "3459",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-        "home_score": "2",
-        "away_score": "0",
+        "date": "2025-06-21",
+        "competition": "2025 Brasileiro Serie B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733330/criciuma-america-mineiro",
+        "team_home": "América Mineiro",
+        "team_home_id": "6154",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+        "team_away": "Criciúma",
+        "team_away_id": "9971",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+        "home_score": "1",
+        "away_score": "1",
         "status": "FT",
         "stats": {
           "Possession": {
-            "home": "50%",
-            "away": "50%"
+            "home": "60%",
+            "away": "40%"
           },
           "Shots on Goal": {
-            "home": "8",
-            "away": "2"
+            "home": "2",
+            "away": "3"
           },
           "Shots": {
-            "home": "18",
-            "away": "4"
+            "home": "15",
+            "away": "10"
           },
           "Fouls Committed": {
-            "home": "13",
-            "away": "11"
+            "home": "9",
+            "away": "12"
           },
           "Yellow Cards": {
-            "home": "1",
-            "away": "3"
+            "home": "2",
+            "away": "1"
           },
           "Red Cards": {
             "home": "0",
             "away": "0"
           },
           "Corners Won": {
-            "home": "8",
+            "home": "7",
+            "away": "5"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "1"
+          }
+        },
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2021-06-10",
+        "competition": "2021 Copa Do Brasil, Third Round",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/601671/america-mineiro-criciuma",
+        "team_home": null,
+        "team_home_id": "9971",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+        "team_away": null,
+        "team_away_id": "6154",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+        "home_score": "2",
+        "away_score": "2",
+        "status": "FT-Pens",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2021-06-03",
+        "competition": "2021 Copa Do Brasil, Third Round",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/601694/criciuma-america-mineiro",
+        "team_home": null,
+        "team_home_id": "6154",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+        "team_away": null,
+        "team_away_id": "9971",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+        "home_score": "0",
+        "away_score": "0",
+        "status": "FT",
+        "stats": {},
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2019-09-11",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/537638/criciuma-america-mineiro",
+        "team_home": "América Mineiro",
+        "team_home_id": "6154",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+        "team_away": "Criciúma",
+        "team_away_id": "9971",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+        "home_score": "2",
+        "away_score": "1",
+        "status": "FT",
+        "stats": {
+          "Possession": {
+            "home": "43%",
+            "away": "57%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "3"
+          },
+          "Shots": {
+            "home": "10",
+            "away": "8"
+          },
+          "Fouls Committed": {
+            "home": "18",
+            "away": "10"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "5"
+          },
+          "Red Cards": {
+            "home": "0",
+            "away": "1"
+          },
+          "Corners Won": {
+            "home": "5",
             "away": "2"
           },
           "Saves": {
             "home": "2",
-            "away": "6"
+            "away": "1"
           }
         },
         "events": {

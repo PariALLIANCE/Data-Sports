@@ -2183,6 +2183,24 @@
             },
             {
                 "position": 4,
+                "name": "Novorizontino",
+                "stats": {
+                    "GP": 14,
+                    "W": 6,
+                    "D": 6,
+                    "L": 2,
+                    "F": 22,
+                    "A": 13,
+                    "GD": 9,
+                    "P": 24
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
                 "name": "Juventude",
                 "stats": {
                     "GP": 14,
@@ -2194,13 +2212,10 @@
                     "GD": 6,
                     "P": 22
                 },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
+                "zone": null
             },
             {
-                "position": 5,
+                "position": 6,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 14,
@@ -2215,7 +2230,7 @@
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Fortaleza",
                 "stats": {
                     "GP": 14,
@@ -2226,21 +2241,6 @@
                     "A": 15,
                     "GD": 1,
                     "P": 22
-                },
-                "zone": null
-            },
-            {
-                "position": 7,
-                "name": "Novorizontino",
-                "stats": {
-                    "GP": 13,
-                    "W": 5,
-                    "D": 6,
-                    "L": 2,
-                    "F": 20,
-                    "A": 13,
-                    "GD": 7,
-                    "P": 21
                 },
                 "zone": null
             },
@@ -2419,13 +2419,13 @@
                 "position": 19,
                 "name": "Ponte Preta",
                 "stats": {
-                    "GP": 13,
+                    "GP": 14,
                     "W": 2,
                     "D": 2,
-                    "L": 9,
+                    "L": 10,
                     "F": 10,
-                    "A": 25,
-                    "GD": -15,
+                    "A": 27,
+                    "GD": -17,
                     "P": 8
                 },
                 "zone": {

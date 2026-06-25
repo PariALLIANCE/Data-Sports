@@ -18,7 +18,7 @@ def setup_driver():
     chrome_options = Options()
     
     # Options essentielles pour GitHub Actions
-    chrome_options.add_argument("--headless=new")  # Mode headless moderne
+    chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
@@ -59,6 +59,28 @@ def wait_for_element(driver, by, selector, timeout=30):
     except TimeoutException:
         return None
 
+def clean_team_id(team_id):
+    """Nettoie l'ID de l'équipe pour ne garder que le nombre"""
+    if not team_id:
+        return ""
+    # Si l'ID contient un slash, ne garder que la partie avant
+    if '/' in team_id:
+        team_id = team_id.split('/')[0]
+    # Si l'ID contient des lettres, ne garder que les chiffres
+    match = re.search(r'(\d+)', team_id)
+    return match.group(1) if match else team_id
+
+def clean_match_id(match_id):
+    """Nettoie l'ID du match pour ne garder que le nombre"""
+    if not match_id:
+        return ""
+    # Si l'ID contient un slash, ne garder que la partie avant
+    if '/' in match_id:
+        match_id = match_id.split('/')[0]
+    # Si l'ID contient des lettres, ne garder que les chiffres
+    match = re.search(r'(\d+)', match_id)
+    return match.group(1) if match else match_id
+
 def extract_match_info(match_row, month):
     """Extrait les informations d'un match"""
     try:
@@ -70,11 +92,7 @@ def extract_match_info(match_row, month):
         date_element = cells[0].find_element(By.CLASS_NAME, 'matchTeams') if cells[0].find_elements(By.CLASS_NAME, 'matchTeams') else None
         date = date_element.text.strip() if date_element else ""
         
-        # Équipe domicile
-        home_abbr_element = cells[1].find_element(By.CLASS_NAME, 'Table__Team') if cells[1].find_elements(By.CLASS_NAME, 'Table__Team') else None
-        home_abbr = home_abbr_element.text.strip() if home_abbr_element else ""
-        
-        # Score et équipes
+        # Score et équipes (cellule 2)
         score_cell = cells[2]
         score_links = score_cell.find_elements(By.TAG_NAME, 'a')
         images = score_cell.find_elements(By.TAG_NAME, 'img')
@@ -93,16 +111,23 @@ def extract_match_info(match_row, month):
         competition = ""
         
         if len(score_links) >= 3:
+            # Équipe domicile
             home_link = score_links[0]
             home_team = home_link.text.strip()
             home_url = home_link.get_attribute('href') or ""
-            home_team_id = home_url.split('/id/')[-1] if '/id/' in home_url else ""
+            # Extraire l'ID de l'équipe depuis l'URL
+            home_id_match = re.search(r'/id/(\d+)/', home_url)
+            home_team_id = home_id_match.group(1) if home_id_match else ""
             
+            # Score
             score_link = score_links[1]
             score_text = score_link.text.strip()
             match_url = score_link.get_attribute('href') or ""
-            match_id = match_url.split('/gameId/')[-1] if '/gameId/' in match_url else ""
+            # Extraire l'ID du match
+            match_id_match = re.search(r'/gameId/(\d+)', match_url)
+            match_id = match_id_match.group(1) if match_id_match else ""
             
+            # Extraire le score
             score_match = re.search(r'(\d+)\s*[-:]\s*(\d+)', score_text)
             if score_match:
                 home_score = score_match.group(1)
@@ -117,29 +142,31 @@ def extract_match_info(match_row, month):
                 elif 'Pens' in score_text:
                     result = 'FT-Pens'
             
+            # Équipe extérieure
             away_link = score_links[2]
             away_team = away_link.text.strip()
             away_url = away_link.get_attribute('href') or ""
-            away_team_id = away_url.split('/id/')[-1] if '/id/' in away_url else ""
+            away_id_match = re.search(r'/id/(\d+)/', away_url)
+            away_team_id = away_id_match.group(1) if away_id_match else ""
         
+        # Logos
         if len(images) >= 2:
             home_logo = images[0].get_attribute('src') or ""
             away_logo = images[1].get_attribute('src') or ""
         
-        away_abbr_element = cells[3].find_element(By.CLASS_NAME, 'Table__Team') if cells[3].find_elements(By.CLASS_NAME, 'Table__Team') else None
-        away_abbr = away_abbr_element.text.strip() if away_abbr_element else ""
-        
+        # Résultat
         result_elements = cells[4].find_elements(By.TAG_NAME, 'span')
         for elem in result_elements:
             if 'FT' in elem.text or 'Pens' in elem.text:
                 result = elem.text.strip()
                 break
         
+        # Compétition (garder le nom complet)
         competition_elements = cells[5].find_elements(By.TAG_NAME, 'span')
         if competition_elements:
             competition = competition_elements[-1].text.strip()
         
-        # Nettoyer les URLs
+        # Nettoyer les URLs des logos
         if home_logo and not home_logo.startswith('http'):
             if home_logo.startswith('//'):
                 home_logo = f"https:{home_logo}"
@@ -152,38 +179,21 @@ def extract_match_info(match_row, month):
             elif away_logo.startswith('/'):
                 away_logo = f"https://a.espncdn.com{away_logo}"
         
+        # Nettoyer l'URL du match
         if match_url and not match_url.startswith('http'):
             if match_url.startswith('/'):
                 match_url = f"https://www.espn.com{match_url}"
             else:
                 match_url = f"https://www.espn.com/{match_url}"
         
-        # Standardiser les compétitions
-        competition_mapping = {
-            'Brazilian Serie A': 'BRA.1',
-            'Brazilian Serie B': 'BRA.2',
-            'Brazilian Serie C': 'BRA.3',
-            'CONMEBOL Libertadores': 'CONMEBOL.LIBERTADORES',
-            'CONMEBOL Sudamericana': 'CONMEBOL.SUDAMERICANA',
-            'Copa do Brasil': 'BRA.COPA_DO_BRAZIL',
-            'Copa do Nordeste': 'BRA.COPA_DO_NORDESTE'
-        }
-        
-        for key, value in competition_mapping.items():
-            if key in competition:
-                competition = value
-                break
-        
         return {
             'date': date,
             'month': month,
             'home_team': home_team,
-            'home_abbreviation': home_abbr,
             'home_team_id': home_team_id,
             'home_score': home_score,
             'home_logo_url': home_logo,
             'away_team': away_team,
-            'away_abbreviation': away_abbr,
             'away_team_id': away_team_id,
             'away_score': away_score,
             'away_logo_url': away_logo,
@@ -219,7 +229,6 @@ def scrape_with_selenium():
         # Attendre que le contenu soit chargé
         print("⏳ Attente des éléments...")
         try:
-            # Attendre que le body soit chargé
             WebDriverWait(driver, 30).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body"))
             )
@@ -230,22 +239,15 @@ def scrape_with_selenium():
             driver.execute_script("window.scrollTo(0, 0);")
             time.sleep(2)
             
-            # Essayer d'attendre les tableaux
             WebDriverWait(driver, 30).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "ResponsiveTable"))
             )
         except TimeoutException:
             print("⚠️ Timeout: certains éléments peuvent ne pas être chargés")
         
-        # Sauvegarder le HTML pour débogage
-        with open('page_source.html', 'w', encoding='utf-8') as f:
-            f.write(driver.page_source)
-        print("💾 HTML sauvegardé dans 'page_source.html'")
-        
         # Chercher les tableaux avec différents sélecteurs
         result_tables = []
         
-        # Essayer différents sélecteurs
         selectors = [
             "div.ResponsiveTable.Table__results-mobile",
             "div.ResponsiveTable",
@@ -261,7 +263,6 @@ def scrape_with_selenium():
                 break
         
         if not result_tables:
-            # Chercher manuellement
             print("🔍 Recherche manuelle des tableaux...")
             all_divs = driver.find_elements(By.TAG_NAME, "div")
             for div in all_divs:
@@ -273,26 +274,14 @@ def scrape_with_selenium():
         print(f"📊 {len(result_tables)} tableaux trouvés")
         
         if not result_tables:
-            print("❌ Aucun tableau trouvé. Vérification du contenu...")
-            # Vérifier si la page contient du texte
-            body_text = driver.find_element(By.TAG_NAME, "body").text
-            if "Fortaleza" in body_text:
-                print("✅ La page contient 'Fortaleza' mais les tableaux ne sont pas chargés")
-            else:
-                print("⚠️ La page ne contient pas de données Fortaleza")
-            
-            # Sauvegarder une capture d'écran
-            driver.save_screenshot("page_screenshot.png")
-            print("💾 Capture d'écran sauvegardée")
+            print("❌ Aucun tableau trouvé.")
             return []
         
         for table in result_tables:
-            # Récupérer le titre du mois
             month_element = table.find_element(By.CLASS_NAME, "Table__Title") if table.find_elements(By.CLASS_NAME, "Table__Title") else None
             month = month_element.text.strip() if month_element else "Unknown"
             print(f"📅 Traitement: {month}")
             
-            # Récupérer toutes les lignes
             rows = table.find_elements(By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even")
             print(f"   {len(rows)} matchs trouvés")
             
@@ -332,17 +321,6 @@ def scrape_with_selenium():
         print(f"❌ Erreur: {e}")
         import traceback
         traceback.print_exc()
-        
-        # Sauvegarder le HTML en cas d'erreur
-        try:
-            if driver:
-                with open('error_page.html', 'w', encoding='utf-8') as f:
-                    f.write(driver.page_source)
-                driver.save_screenshot("error_screenshot.png")
-                print("💾 Page HTML et screenshot sauvegardés pour débogage")
-        except:
-            pass
-        
         return []
     finally:
         if driver:
@@ -363,13 +341,11 @@ def main():
             comp = match['competition']
             competitions[comp] = competitions.get(comp, 0) + 1
         
-        print("\n📈 Statistiques:")
+        print("\n📈 Statistiques par compétition:")
         for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
             print(f"  {comp}: {count} matchs")
     else:
         print("\n❌ Aucune donnée récupérée")
-        # Ne pas échouer en exit 1 pour éviter de bloquer le workflow
-        # sys.exit(1)
 
 if __name__ == "__main__":
     main()

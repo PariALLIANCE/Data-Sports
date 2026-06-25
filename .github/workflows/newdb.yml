@@ -2,56 +2,49 @@ name: ESPN Soccer Results Scraper
 
 on:
   schedule:
-    - cron: "0 6 * * *" # Tous les jours à 06:00 UTC
+    - cron: '0 6 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   scrape-espn-results:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: "pip"
-
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v1
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium webdriver-manager playwright
+          pip install selenium webdriver-manager
 
-      - name: Install Chromium
-        run: |
-          playwright install chromium --with-deps
+      - name: Install Google Chrome
+        uses: browser-actions/setup-chrome@v1
 
-      - name: Configure Git
+      - name: Verify Chrome
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Sync with remote
-        run: |
-          git pull --rebase origin main
+          google-chrome --version || chrome --version
 
       - name: Run scraper
         run: |
           python scripts/newdb.py
 
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🤖 Update results.json"
-          branch: main
-          file_pattern: data/football/results.json
+      - name: Commit and push results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/football/results.json
+
+          git diff --staged --quiet || exit 0
+
+          git commit -m "Update ESPN results"
+          git push

@@ -2,49 +2,56 @@ name: ESPN Soccer Results Scraper
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *" # Tous les jours à 06:00 UTC
   workflow_dispatch:
 
 jobs:
   scrape-espn-results:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+          cache: "pip"
 
-      - name: Install Chrome & ChromeDriver
+      - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium webdriver-manager
+          pip install selenium webdriver-manager playwright
 
       - name: Install Chromium
-        run: playwright install chromium --with-deps
-
-      - name: Sync with remote main
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          playwright install chromium --with-deps
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync with remote
+        run: |
           git pull --rebase origin main
 
       - name: Run scraper
-        run: python scripts/newdb.py
+        run: |
+          python scripts/newdb.py
 
-      - name: Commit & push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Mise à jour results.json"
+          commit_message: "🤖 Update results.json"
           branch: main
-          file_pattern: "data/football/results.json"
+          file_pattern: data/football/results.json

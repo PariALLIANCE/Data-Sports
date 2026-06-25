@@ -1,48 +1,344 @@
 [
   {
-    "gameId": "401873948",
-    "date": "2026-06-16",
-    "time_ci": "03:00",
+    "gameId": "401873972",
+    "date": "2026-06-25",
+    "time_ci": "03:30",
     "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873948/america-mineiro-fortaleza",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873972/londrina-cuiaba",
     "home": {
-      "team": "Fortaleza",
-      "team_id": "6272",
-      "team_slug": "fortaleza",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6272",
+      "team": "Cuiabá",
+      "team_id": "17313",
+      "team_slug": "cuiaba",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17313",
       "standings": {
-        "position_current": 4,
-        "position_if_win": 3,
-        "played": 12,
-        "won": 6,
-        "drawn": 3,
+        "position_current": 10,
+        "position_if_win": 6,
+        "played": 14,
+        "won": 4,
+        "drawn": 7,
         "lost": 3,
-        "gd": 4,
-        "points": 21
+        "gd": 2,
+        "points": 19
       },
       "last_five": [
         {
-          "date": "2026-06-09",
+          "date": "2026-06-21",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860175/fortaleza-nautico",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "7633",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
-          "team_away": null,
-          "team_away_id": "6272",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-          "home_score": "0",
-          "away_score": "1",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873983/cuiaba-avai",
+          "result": "L",
+          "team_home": "Avaí",
+          "team_home_id": "9966",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
+          "team_away": "Cuiabá",
+          "team_away_id": "17313",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "home_score": "1",
+          "away_score": "0",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "73%",
-              "away": "27%"
+              "home": "39%",
+              "away": "61%"
             },
             "Shots on Goal": {
-              "home": "9",
+              "home": "2",
+              "away": "7"
+            },
+            "Big Chances Created": {
+              "home": "0",
+              "away": "1"
+            },
+            "Big Chances Missed": {
+              "home": "0",
+              "away": "1"
+            },
+            "Accurate Passes": {
+              "home": "222",
+              "away": "372"
+            },
+            "Passes": {
+              "home": "298",
+              "away": "448"
+            },
+            "Duels Won": {
+              "home": "44",
+              "away": "54"
+            },
+            "Saves": {
+              "home": "7",
+              "away": "1"
+            },
+            "Fouls Committed": {
+              "home": "10",
+              "away": "6"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-06-14",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873963/vila-nova-cuiaba",
+          "result": "W",
+          "team_home": "Cuiabá",
+          "team_home_id": "17313",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "team_away": "Vila Nova",
+          "team_away_id": "9973",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "51%",
+              "away": "49%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Big Chances Created": {
+              "home": "3",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "4",
+              "away": "1"
+            },
+            "Accurate Passes": {
+              "home": "383",
+              "away": "358"
+            },
+            "Passes": {
+              "home": "453",
+              "away": "442"
+            },
+            "Duels Won": {
+              "home": "37",
+              "away": "47"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "3"
+            },
+            "Fouls Committed": {
+              "home": "12",
+              "away": "10"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-06-09",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860173/cuiaba-ponte-preta",
+          "result": "W",
+          "team_home": "Ponte Preta",
+          "team_home_id": "3459",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
+          "team_away": "Cuiabá",
+          "team_away_id": "17313",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "46%",
+              "away": "54%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "5"
+            },
+            "Big Chances Created": {
+              "home": "0",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "0",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "260",
+              "away": "335"
+            },
+            "Passes": {
+              "home": "340",
+              "away": "409"
+            },
+            "Duels Won": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "2"
+            },
+            "Fouls Committed": {
+              "home": "18",
+              "away": "12"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-31",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860171/crb-cuiaba",
+          "result": "W",
+          "team_home": "Cuiabá",
+          "team_home_id": "17313",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "team_away": "CRB",
+          "team_away_id": "9970",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "40%",
+              "away": "60%"
+            },
+            "Shots on Goal": {
+              "home": "8",
+              "away": "4"
+            },
+            "Shots": {
+              "home": "14",
+              "away": "14"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "7"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "6"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-22",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860158/cuiaba-nautico",
+          "result": "L",
+          "team_home": "Náutico",
+          "team_home_id": "7633",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
+          "team_away": "Cuiabá",
+          "team_away_id": "17313",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "67%",
+              "away": "33%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "2"
+            },
+            "Shots": {
+              "home": "10",
+              "away": "7"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "20"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "1"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Londrina",
+      "team_id": "17333",
+      "team_slug": "londrina",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17333",
+      "standings": {
+        "position_current": 17,
+        "position_if_win": 14,
+        "played": 14,
+        "won": 4,
+        "drawn": 2,
+        "lost": 8,
+        "gd": -5,
+        "points": 14
+      },
+      "last_five": [
+        {
+          "date": "2026-06-20",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873952/athletic-londrina",
+          "result": "W",
+          "team_home": "Londrina",
+          "team_home_id": "17333",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+          "team_away": "Athletic",
+          "team_away_id": "20851",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "50%",
+              "away": "50%"
+            },
+            "Shots on Goal": {
+              "home": "2",
               "away": "1"
             },
             "Big Chances Created": {
@@ -50,28 +346,85 @@
               "away": "0"
             },
             "Big Chances Missed": {
-              "home": "1",
+              "home": "0",
               "away": "0"
             },
             "Accurate Passes": {
-              "home": "466",
-              "away": "134"
+              "home": "269",
+              "away": "249"
             },
             "Passes": {
-              "home": "509",
-              "away": "193"
+              "home": "330",
+              "away": "320"
             },
             "Duels Won": {
               "home": "53",
-              "away": "39"
+              "away": "40"
             },
             "Saves": {
               "home": "1",
-              "away": "9"
+              "away": "1"
             },
             "Fouls Committed": {
+              "home": "16",
+              "away": "22"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873964/avai-londrina",
+          "result": "W",
+          "team_home": "Londrina",
+          "team_home_id": "17333",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+          "team_away": "Avaí",
+          "team_away_id": "9966",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
+          "home_score": "3",
+          "away_score": "2",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "50%",
+              "away": "50%"
+            },
+            "Shots on Goal": {
               "home": "7",
-              "away": "16"
+              "away": "4"
+            },
+            "Big Chances Created": {
+              "home": "3",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "2",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "232",
+              "away": "249"
+            },
+            "Passes": {
+              "home": "306",
+              "away": "313"
+            },
+            "Duels Won": {
+              "home": "70",
+              "away": "50"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
+            },
+            "Fouls Committed": {
+              "home": "18",
+              "away": "18"
             }
           },
           "events": {
@@ -81,407 +434,160 @@
         },
         {
           "date": "2026-06-06",
-          "competition": "2026 Copa do Nordeste, Finals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874103/fortaleza-vitoria",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873959/londrina-criciuma",
           "result": "L",
-          "team_home": null,
-          "team_home_id": "3457",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3457.png",
-          "team_away": null,
-          "team_away_id": "6272",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-          "home_score": "2",
-          "away_score": "1",
+          "team_home": "Criciúma",
+          "team_home_id": "9971",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "team_away": "Londrina",
+          "team_away_id": "17333",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+          "home_score": "1",
+          "away_score": "0",
           "status": "FT",
-          "stats": {},
+          "stats": {
+            "Possession": {
+              "home": "60%",
+              "away": "40%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "2"
+            },
+            "Big Chances Created": {
+              "home": "1",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "1",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "446",
+              "away": "248"
+            },
+            "Passes": {
+              "home": "506",
+              "away": "331"
+            },
+            "Duels Won": {
+              "home": "49",
+              "away": "55"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "11"
+            }
+          },
           "events": {
             "home": [],
             "away": []
           }
         },
         {
-          "date": "2026-06-03",
-          "competition": "2026 Copa do Nordeste, Finals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874050/vitoria-fortaleza",
+          "date": "2026-05-31",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860168/vila-nova-londrina",
+          "result": "L",
+          "team_home": "Londrina",
+          "team_home_id": "17333",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+          "team_away": "Vila Nova",
+          "team_away_id": "9973",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
+          "home_score": "0",
+          "away_score": "1",
+          "status": "FT",
+          "stats": {
+            "Possession": {
+              "home": "34%",
+              "away": "66%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "3"
+            },
+            "Shots": {
+              "home": "7",
+              "away": "18"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "4"
+            },
+            "Red Cards": {
+              "home": "2",
+              "away": "1"
+            },
+            "Corners Won": {
+              "home": "2",
+              "away": "9"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
+            }
+          },
+          "events": {
+            "home": [],
+            "away": []
+          }
+        },
+        {
+          "date": "2026-05-23",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860155/londrina-fortaleza",
           "result": "L",
           "team_home": null,
           "team_home_id": "6272",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
           "team_away": null,
-          "team_away_id": "3457",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3457.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "stats": {},
-          "events": {
-            "home": [
-              {
-                "minute": 44,
-                "type": "substitution"
-              },
-              {
-                "minute": 91,
-                "type": "substitution"
-              }
-            ],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860162/fortaleza-athletic",
-          "result": "L",
-          "team_home": "Athletic",
-          "team_home_id": "20851",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
-          "team_away": "Fortaleza",
-          "team_away_id": "6272",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "46%",
-              "away": "54%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "13",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "17",
-              "away": "15"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "8",
-              "away": "7"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "1"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-28",
-          "competition": "2026 Copa do Nordeste, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871836/fortaleza-sport",
-          "result": "W",
-          "team_home": "Sport",
-          "team_home_id": "7635",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7635.png",
-          "team_away": "Fortaleza",
-          "team_away_id": "6272",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-          "home_score": "0",
-          "away_score": "2",
-          "status": "FT",
-          "stats": {},
-          "events": {
-            "home": [],
-            "away": []
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "América Mineiro",
-      "team_id": "6154",
-      "team_slug": "america-mineiro",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6154",
-      "standings": {
-        "position_current": 20,
-        "position_if_win": 20,
-        "played": 12,
-        "won": 0,
-        "drawn": 3,
-        "lost": 9,
-        "gd": -17,
-        "points": 3
-      },
-      "last_five": [
-        {
-          "date": "2026-06-08",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873960/atletico-goianiense-america-mineiro",
-          "result": "L",
-          "team_home": "América Mineiro",
-          "team_home_id": "6154",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "team_away": "Atlético Goianiense",
-          "team_away_id": "10357",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10357.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "63%",
-              "away": "37%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "4"
-            },
-            "Big Chances Missed": {
-              "home": "3",
-              "away": "4"
-            },
-            "Accurate Passes": {
-              "home": "477",
-              "away": "261"
-            },
-            "Passes": {
-              "home": "547",
-              "away": "325"
-            },
-            "Duels Won": {
-              "home": "36",
-              "away": "51"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "4"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "11"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860167/america-mineiro-juventude",
-          "result": "L",
-          "team_home": "Juventude",
-          "team_home_id": "6270",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "team_away_id": "17333",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
           "home_score": "3",
           "away_score": "0",
           "status": "FT",
           "stats": {
             "Possession": {
-              "home": "38%",
-              "away": "62%"
+              "home": "52%",
+              "away": "48%"
             },
             "Shots on Goal": {
-              "home": "6",
-              "away": "8"
-            },
-            "Shots": {
-              "home": "16",
-              "away": "16"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "14"
-            },
-            "Yellow Cards": {
-              "home": "0",
+              "home": "4",
               "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "5",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "8",
-              "away": "3"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860160/vila-nova-america-mineiro",
-          "result": "L",
-          "team_home": "América Mineiro",
-          "team_home_id": "6154",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "team_away": "Vila Nova",
-          "team_away_id": "9973",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "50%",
-              "away": "50%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "4"
             },
             "Shots": {
               "home": "17",
-              "away": "12"
+              "away": "9"
             },
             "Fouls Committed": {
-              "home": "15",
-              "away": "16"
+              "home": "14",
+              "away": "15"
             },
             "Yellow Cards": {
               "home": "3",
-              "away": "3"
+              "away": "4"
             },
             "Red Cards": {
               "home": "0",
               "away": "0"
             },
             "Corners Won": {
-              "home": "4",
-              "away": "4"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "4"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-16",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860150/america-mineiro-sao-bernardo",
-          "result": "D",
-          "team_home": "São Bernardo",
-          "team_home_id": "11268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "49%",
-              "away": "51%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "15",
-              "away": "11"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "16"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "5"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "7"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            }
-          },
-          "events": {
-            "home": [],
-            "away": []
-          }
-        },
-        {
-          "date": "2026-05-10",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860134/america-mineiro-nautico",
-          "result": "L",
-          "team_home": "Náutico",
-          "team_home_id": "7633",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "home_score": "4",
-          "away_score": "0",
-          "status": "FT",
-          "stats": {
-            "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "0"
-            },
-            "Shots": {
-              "home": "18",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "19",
-              "away": "16"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "0",
+              "home": "5",
               "away": "1"
             },
-            "Corners Won": {
-              "home": "3",
-              "away": "3"
-            },
             "Saves": {
-              "home": "0",
-              "away": "3"
+              "home": "2",
+              "away": "1"
             }
           },
           "events": {
@@ -492,46 +598,46 @@
       ]
     },
     "odds": {
-      "home": 1.59,
-      "away": 6.0,
-      "draw": 3.85
+      "home": 1.8,
+      "away": 5.0,
+      "draw": 3.3
     },
     "stats": {
       "Average Goals": {
-        "home": "1.25",
-        "away": "0.58"
+        "home": "0.64",
+        "away": "1.21"
       },
       "Average Goals Conceded": {
-        "home": "0.92",
-        "away": "2"
+        "home": "0.5",
+        "away": "1.57"
       },
       "Average Goal Differential": {
-        "home": "+0.3",
-        "away": "-1.4"
+        "home": "+0.1",
+        "away": "-0.4"
       },
       "Possession": {
-        "home": "46%",
-        "away": "57%"
+        "home": "48%",
+        "away": "46%"
       },
       "Shots On Target Percentage": {
-        "home": "29%",
-        "away": "36%"
+        "home": "41%",
+        "away": "33%"
       },
       "Big Chances Created": {
-        "home": ".25",
-        "away": ".17"
+        "home": ".36",
+        "away": ".36"
       },
       "Duel Win Percentage": {
-        "home": "43%",
-        "away": "43%"
+        "home": "47%",
+        "away": "57%"
       },
       "Clean Sheet": {
-        "home": "6",
-        "away": "1"
+        "home": "8",
+        "away": "2"
       },
       "Save Percentage": {
-        "home": "20%",
-        "away": "21%"
+        "home": "79%",
+        "away": "64%"
       }
     },
     "events": {
@@ -540,211 +646,102 @@
     },
     "h2h": [
       {
-        "date": "2023-10-08",
-        "competition": "2023 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666072/america-mineiro-fortaleza",
-        "team_home": null,
-        "team_home_id": "6272",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-        "team_away": null,
-        "team_away_id": "6154",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "home_score": "3",
-        "away_score": "2",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "59%",
-            "away": "41%"
-          },
-          "Shots on Goal": {
-            "home": "5",
-            "away": "3"
-          },
-          "Shots": {
-            "home": "18",
-            "away": "15"
-          },
-          "Fouls Committed": {
-            "home": "11",
-            "away": "12"
-          },
-          "Yellow Cards": {
-            "home": "2",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "9",
-            "away": "2"
-          },
-          "Saves": {
-            "home": "1",
-            "away": "2"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2023-08-31",
-        "competition": "2023 CONMEBOL Sudamericana, Quarterfinals",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/685746/america-mineiro-fortaleza",
-        "team_home": null,
-        "team_home_id": "6272",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-        "team_away": null,
-        "team_away_id": "6154",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "home_score": "2",
+        "date": "2019-10-05",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/537601/londrina-cuiaba",
+        "team_home": "Cuiabá",
+        "team_home_id": "17313",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+        "team_away": "Londrina",
+        "team_away_id": "17333",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+        "home_score": "0",
         "away_score": "1",
         "status": "FT",
         "stats": {
           "Possession": {
-            "home": "50%",
-            "away": "50%"
+            "home": "69%",
+            "away": "31%"
           },
           "Shots on Goal": {
-            "home": "8",
-            "away": "3"
+            "home": "2",
+            "away": "2"
           },
           "Shots": {
-            "home": "13",
-            "away": "8"
+            "home": "24",
+            "away": "4"
           },
           "Fouls Committed": {
-            "home": "13",
+            "home": "16",
             "away": "15"
           },
           "Yellow Cards": {
-            "home": "2",
-            "away": "3"
+            "home": "4",
+            "away": "4"
           },
           "Red Cards": {
             "home": "0",
             "away": "0"
           },
           "Corners Won": {
-            "home": "4",
-            "away": "3"
-          },
-          "Saves": {
-            "home": "2",
-            "away": "6"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2023-08-24",
-        "competition": "2023 CONMEBOL Sudamericana, Quarterfinals",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/685742/fortaleza-america-mineiro",
-        "team_home": null,
-        "team_home_id": "6154",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "team_away": null,
-        "team_away_id": "6272",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-        "home_score": "1",
-        "away_score": "3",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "57%",
-            "away": "43%"
-          },
-          "Shots on Goal": {
-            "home": "5",
-            "away": "3"
-          },
-          "Shots": {
-            "home": "9",
-            "away": "13"
-          },
-          "Fouls Committed": {
-            "home": "9",
-            "away": "10"
-          },
-          "Yellow Cards": {
-            "home": "2",
+            "home": "8",
             "away": "2"
           },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "2",
-            "away": "3"
-          },
           "Saves": {
-            "home": "0",
-            "away": "4"
-          }
-        },
-        "events": {
-          "home": [],
-          "away": []
-        }
-      },
-      {
-        "date": "2023-05-20",
-        "competition": "2023 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/665878/fortaleza-america-mineiro"
-      },
-      {
-        "date": "2022-10-15",
-        "competition": "2022 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/630829/fortaleza-america-mineiro",
-        "team_home": null,
-        "team_home_id": "6154",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "team_away": null,
-        "team_away_id": "6272",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-        "home_score": "1",
-        "away_score": "2",
-        "status": "FT",
-        "stats": {
-          "Possession": {
-            "home": "67%",
-            "away": "33%"
-          },
-          "Shots on Goal": {
-            "home": "7",
-            "away": "4"
-          },
-          "Shots": {
-            "home": "19",
-            "away": "9"
-          },
-          "Fouls Committed": {
-            "home": "10",
-            "away": "24"
-          },
-          "Yellow Cards": {
             "home": "1",
             "away": "2"
+          }
+        },
+        "events": {
+          "home": [],
+          "away": []
+        }
+      },
+      {
+        "date": "2019-06-07",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/537787/cuiaba-londrina",
+        "team_home": "Londrina",
+        "team_home_id": "17333",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
+        "team_away": "Cuiabá",
+        "team_away_id": "17313",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
+        "home_score": "1",
+        "away_score": "0",
+        "status": "FT",
+        "stats": {
+          "Possession": {
+            "home": "42%",
+            "away": "58%"
+          },
+          "Shots on Goal": {
+            "home": "4",
+            "away": "5"
+          },
+          "Shots": {
+            "home": "13",
+            "away": "15"
+          },
+          "Fouls Committed": {
+            "home": "14",
+            "away": "21"
+          },
+          "Yellow Cards": {
+            "home": "2",
+            "away": "3"
           },
           "Red Cards": {
             "home": "0",
-            "away": "1"
+            "away": "0"
           },
           "Corners Won": {
             "home": "4",
-            "away": "8"
+            "away": "3"
           },
           "Saves": {
-            "home": "2",
-            "away": "6"
+            "home": "4",
+            "away": "3"
           }
         },
         "events": {

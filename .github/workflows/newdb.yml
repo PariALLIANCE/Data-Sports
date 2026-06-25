@@ -35,7 +35,7 @@ jobs:
           git pull --rebase origin main
 
       - name: Run scraper
-        run: python scripts/espn_results.py
+        run: python scripts/newdb.py
 
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4

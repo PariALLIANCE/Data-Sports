@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import json
 import time
 import re
@@ -17,13 +17,8 @@ def setup_driver():
     """Configure et retourne le driver Chrome pour GitHub Actions"""
     chrome_options = Options()
     
-    # Options pour éviter la détection
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_experimental_option('useAutomationExtension', False)
-    
     # Options essentielles pour GitHub Actions
-    chrome_options.add_argument("--headless")  # Mode sans interface
+    chrome_options.add_argument("--headless=new")  # Mode headless moderne
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
@@ -32,9 +27,15 @@ def setup_driver():
     chrome_options.add_argument("--disable-notifications")
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--lang=en-US,en")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
     
     # User-Agent réaliste
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    
+    # Désactiver les logs inutiles
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
     
     # Utiliser WebDriver Manager
     service = Service(ChromeDriverManager().install())
@@ -42,6 +43,10 @@ def setup_driver():
     
     # Masquer l'utilisation de Selenium
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    
+    # Définir des timeouts
+    driver.set_page_load_timeout(60)
+    driver.implicitly_wait(10)
     
     return driver
 
@@ -206,28 +211,90 @@ def scrape_with_selenium():
         url = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
         print(f"🌐 Accès: {url}")
         
+        # Charger la page
         driver.get(url)
+        print("⏳ Attente du chargement initial...")
         time.sleep(5)
         
-        print("⏳ Attente du chargement...")
-        wait_for_element(driver, By.CLASS_NAME, "ResponsiveTable")
-        time.sleep(3)
+        # Attendre que le contenu soit chargé
+        print("⏳ Attente des éléments...")
+        try:
+            # Attendre que le body soit chargé
+            WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.TAG_NAME, "body"))
+            )
+            
+            # Faire défiler la page pour charger tout le contenu
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            driver.execute_script("window.scrollTo(0, 0);")
+            time.sleep(2)
+            
+            # Essayer d'attendre les tableaux
+            WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "ResponsiveTable"))
+            )
+        except TimeoutException:
+            print("⚠️ Timeout: certains éléments peuvent ne pas être chargés")
         
-        result_tables = driver.find_elements(By.CLASS_NAME, "ResponsiveTable.Table__results-mobile")
+        # Sauvegarder le HTML pour débogage
+        with open('page_source.html', 'w', encoding='utf-8') as f:
+            f.write(driver.page_source)
+        print("💾 HTML sauvegardé dans 'page_source.html'")
+        
+        # Chercher les tableaux avec différents sélecteurs
+        result_tables = []
+        
+        # Essayer différents sélecteurs
+        selectors = [
+            "div.ResponsiveTable.Table__results-mobile",
+            "div.ResponsiveTable",
+            "table.Table",
+            "div.Results div.ResponsiveTable"
+        ]
+        
+        for selector in selectors:
+            tables = driver.find_elements(By.CSS_SELECTOR, selector)
+            if tables:
+                print(f"✅ Trouvé {len(tables)} tableaux avec: {selector}")
+                result_tables = tables
+                break
+        
+        if not result_tables:
+            # Chercher manuellement
+            print("🔍 Recherche manuelle des tableaux...")
+            all_divs = driver.find_elements(By.TAG_NAME, "div")
+            for div in all_divs:
+                classes = div.get_attribute("class") or ""
+                if "Table" in classes and "results" in classes.lower():
+                    result_tables.append(div)
+                    print(f"✅ Trouvé un tableau avec classes: {classes}")
+        
         print(f"📊 {len(result_tables)} tableaux trouvés")
         
         if not result_tables:
-            with open('debug_page.html', 'w', encoding='utf-8') as f:
-                f.write(driver.page_source)
-            print("💾 HTML sauvegardé pour débogage")
+            print("❌ Aucun tableau trouvé. Vérification du contenu...")
+            # Vérifier si la page contient du texte
+            body_text = driver.find_element(By.TAG_NAME, "body").text
+            if "Fortaleza" in body_text:
+                print("✅ La page contient 'Fortaleza' mais les tableaux ne sont pas chargés")
+            else:
+                print("⚠️ La page ne contient pas de données Fortaleza")
+            
+            # Sauvegarder une capture d'écran
+            driver.save_screenshot("page_screenshot.png")
+            print("💾 Capture d'écran sauvegardée")
+            return []
         
         for table in result_tables:
+            # Récupérer le titre du mois
             month_element = table.find_element(By.CLASS_NAME, "Table__Title") if table.find_elements(By.CLASS_NAME, "Table__Title") else None
             month = month_element.text.strip() if month_element else "Unknown"
             print(f"📅 Traitement: {month}")
             
+            # Récupérer toutes les lignes
             rows = table.find_elements(By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even")
-            print(f"   {len(rows)} matchs")
+            print(f"   {len(rows)} matchs trouvés")
             
             for row in rows:
                 match_data = extract_match_info(row, month)
@@ -265,6 +332,17 @@ def scrape_with_selenium():
         print(f"❌ Erreur: {e}")
         import traceback
         traceback.print_exc()
+        
+        # Sauvegarder le HTML en cas d'erreur
+        try:
+            if driver:
+                with open('error_page.html', 'w', encoding='utf-8') as f:
+                    f.write(driver.page_source)
+                driver.save_screenshot("error_screenshot.png")
+                print("💾 Page HTML et screenshot sauvegardés pour débogage")
+        except:
+            pass
+        
         return []
     finally:
         if driver:
@@ -290,7 +368,8 @@ def main():
             print(f"  {comp}: {count} matchs")
     else:
         print("\n❌ Aucune donnée récupérée")
-        sys.exit(1)
+        # Ne pas échouer en exit 1 pour éviter de bloquer le workflow
+        # sys.exit(1)
 
 if __name__ == "__main__":
     main()

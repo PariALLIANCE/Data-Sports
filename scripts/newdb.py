@@ -5,18 +5,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 import json
 import time
 import re
 from datetime import datetime
-import os
-import sys
 
 def setup_driver():
-    """Configure et retourne le driver Chrome pour GitHub Actions"""
     chrome_options = Options()
-    
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -27,310 +23,309 @@ def setup_driver():
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--lang=en-US,en")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_experimental_option('useAutomationExtension', False)
-    
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    
+    chrome_options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    )
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
+    chrome_options.add_experimental_option("useAutomationExtension", False)
+
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
-    
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-    
     driver.set_page_load_timeout(60)
     driver.implicitly_wait(10)
-    
     return driver
 
+
+def fix_url(url, base="https://www.espn.com"):
+    """Normalise une URL relative en URL absolue."""
+    if not url:
+        return ""
+    if url.startswith("http"):
+        return url
+    if url.startswith("//"):
+        return f"https:{url}"
+    return f"{base}{url}"
+
+
+def team_name_from_href(href):
+    """Extrait le nom lisible depuis l'URL de l'équipe ESPN.
+    Ex: /soccer/team/_/id/6086/botafogo → Botafogo
+    """
+    if not href:
+        return ""
+    slug = href.rstrip("/").split("/")[-1]
+    return slug.replace("-", " ").title()
+
+
 def extract_match_info(match_row, month):
-    """Extrait les informations d'un match"""
+    """
+    Structure réelle ESPN (6 <td>) :
+      [0] Date   → <div data-testid="date">
+      [1] Équipe locale  → <div data-testid="localTeam"><a href="/soccer/team/_/id/ID/slug">ABBR</a>
+      [2] Score + logos  → <span data-testid="score">
+                              <a><img logo_local></a>
+                              <a href="/soccer/match/_/gameId/ID/...">X - Y</a>
+                              <a><img logo_away></a>
+                           </span>
+      [3] Équipe away    → <div data-testid="awayTeam"><a href="/soccer/team/_/id/ID/slug">ABBR</a>
+      [4] Résultat       → <span data-testid="result"><a>FT</a>
+      [5] Compétition    → <span>...</span>
+    """
     try:
-        cells = match_row.find_elements(By.TAG_NAME, 'td')
+        cells = match_row.find_elements(By.TAG_NAME, "td")
         if len(cells) < 6:
             return None
-        
-        # Date
-        date_element = cells[0].find_element(By.CLASS_NAME, 'matchTeams') if cells[0].find_elements(By.CLASS_NAME, 'matchTeams') else None
-        date = date_element.text.strip() if date_element else ""
-        
-        # Score et équipes (cellule 2)
-        score_cell = cells[2]
-        score_links = score_cell.find_elements(By.TAG_NAME, 'a')
-        images = score_cell.find_elements(By.TAG_NAME, 'img')
-        
-        home_team = ""
-        away_team = ""
+
+        # ── [0] DATE ──────────────────────────────────────────────────
+        date_els = cells[0].find_elements(By.CSS_SELECTOR, '[data-testid="date"]')
+        date = date_els[0].text.strip() if date_els else ""
+
+        # ── [1] ÉQUIPE LOCALE ─────────────────────────────────────────
+        local_links = cells[1].find_elements(By.TAG_NAME, "a")
+        if not local_links:
+            return None
+        local_link = local_links[0]
+        local_abbr = local_link.text.strip()
+        local_href = local_link.get_attribute("href") or ""
+        local_id_m = re.search(r"/id/(\d+)/", local_href)
+        local_team_id = local_id_m.group(1) if local_id_m else ""
+        local_team_name = team_name_from_href(local_href)
+
+        # ── [2] SCORE + LOGOS ─────────────────────────────────────────
+        score_links = cells[2].find_elements(By.TAG_NAME, "a")
+        images = cells[2].find_elements(By.TAG_NAME, "img")
+
         home_score = ""
         away_score = ""
-        home_team_id = ""
-        away_team_id = ""
-        home_logo = ""
-        away_logo = ""
         match_url = ""
         match_id = ""
-        result = ""
-        competition = ""
-        
+        local_logo = ""
+        away_logo = ""
+
+        # score_links[0] = lien logo local, [1] = lien score/match, [2] = lien logo away
         if len(score_links) >= 3:
-            # Équipe domicile
-            home_link = score_links[0]
-            home_team = home_link.text.strip()
-            home_url = home_link.get_attribute('href') or ""
-            home_id_match = re.search(r'/id/(\d+)/', home_url)
-            home_team_id = home_id_match.group(1) if home_id_match else ""
-            
-            # Score
-            score_link = score_links[1]
-            score_text = score_link.text.strip()
-            match_url = score_link.get_attribute('href') or ""
-            match_id_match = re.search(r'/gameId/(\d+)', match_url)
-            match_id = match_id_match.group(1) if match_id_match else ""
-            
-            # Extraire le score
-            score_match = re.search(r'(\d+)\s*[-:]\s*(\d+)', score_text)
-            if score_match:
-                home_score = score_match.group(1)
-                away_score = score_match.group(2)
-            else:
-                score_parts = score_text.split(' - ')
-                if len(score_parts) == 2:
-                    home_score = score_parts[0].strip()
-                    away_score = score_parts[1].strip()
-                elif 'FT' in score_text:
-                    result = 'FT'
-                elif 'Pens' in score_text:
-                    result = 'FT-Pens'
-            
-            # Équipe extérieure
-            away_link = score_links[2]
-            away_team = away_link.text.strip()
-            away_url = away_link.get_attribute('href') or ""
-            away_id_match = re.search(r'/id/(\d+)/', away_url)
-            away_team_id = away_id_match.group(1) if away_id_match else ""
-        
-        # Logos
+            score_text = score_links[1].text.strip()
+            match_url = fix_url(score_links[1].get_attribute("href") or "")
+            mid_m = re.search(r"/gameId/(\d+)", match_url)
+            match_id = mid_m.group(1) if mid_m else ""
+
+            score_m = re.search(r"(\d+)\s*[-:]\s*(\d+)", score_text)
+            if score_m:
+                home_score = score_m.group(1)   # score équipe locale
+                away_score = score_m.group(2)   # score équipe away
+
         if len(images) >= 2:
-            home_logo = images[0].get_attribute('src') or ""
-            away_logo = images[1].get_attribute('src') or ""
-        
-        # Résultat
-        result_elements = cells[4].find_elements(By.TAG_NAME, 'span')
-        for elem in result_elements:
-            if 'FT' in elem.text or 'Pens' in elem.text:
-                result = elem.text.strip()
-                break
-        
-        # Compétition
-        competition_elements = cells[5].find_elements(By.TAG_NAME, 'span')
-        if competition_elements:
-            competition = competition_elements[-1].text.strip()
-        
-        # Nettoyer les URLs des logos
-        if home_logo and not home_logo.startswith('http'):
-            if home_logo.startswith('//'):
-                home_logo = f"https:{home_logo}"
-            elif home_logo.startswith('/'):
-                home_logo = f"https://a.espncdn.com{home_logo}"
-        
-        if away_logo and not away_logo.startswith('http'):
-            if away_logo.startswith('//'):
-                away_logo = f"https:{away_logo}"
-            elif away_logo.startswith('/'):
-                away_logo = f"https://a.espncdn.com{away_logo}"
-        
-        # Nettoyer l'URL du match
-        if match_url and not match_url.startswith('http'):
-            if match_url.startswith('/'):
-                match_url = f"https://www.espn.com{match_url}"
-            else:
-                match_url = f"https://www.espn.com/{match_url}"
-        
+            local_logo = fix_url(images[0].get_attribute("src") or "", "https://a.espncdn.com")
+            away_logo  = fix_url(images[1].get_attribute("src") or "", "https://a.espncdn.com")
+
+        # ── [3] ÉQUIPE AWAY ───────────────────────────────────────────
+        away_links = cells[3].find_elements(By.TAG_NAME, "a")
+        if not away_links:
+            return None
+        away_link = away_links[0]
+        away_abbr = away_link.text.strip()
+        away_href = away_link.get_attribute("href") or ""
+        away_id_m = re.search(r"/id/(\d+)/", away_href)
+        away_team_id = away_id_m.group(1) if away_id_m else ""
+        away_team_name = team_name_from_href(away_href)
+
+        # ── [4] RÉSULTAT ──────────────────────────────────────────────
+        result = ""
+        result_els = cells[4].find_elements(By.CSS_SELECTOR, '[data-testid="result"]')
+        if result_els:
+            result = result_els[0].text.strip()
+        else:
+            # Fallback : premier lien dans la cellule
+            result_links = cells[4].find_elements(By.TAG_NAME, "a")
+            if result_links:
+                result = result_links[0].text.strip()
+
+        # ── [5] COMPÉTITION ───────────────────────────────────────────
+        competition = ""
+        comp_spans = cells[5].find_elements(By.TAG_NAME, "span")
+        if comp_spans:
+            competition = comp_spans[-1].text.strip()
+
         return {
-            'date': date,
-            'month': month,
-            'home_team': home_team,
-            'home_team_id': home_team_id,
-            'home_score': home_score,
-            'home_logo_url': home_logo,
-            'away_team': away_team,
-            'away_team_id': away_team_id,
-            'away_score': away_score,
-            'away_logo_url': away_logo,
-            'match_url': match_url,
-            'match_id': match_id,
-            'result': result,
-            'competition': competition,
-            'season': '2025'
+            "date": date,
+            "month": month,
+            "home_team": local_team_name,
+            "home_team_abbr": local_abbr,
+            "home_team_id": local_team_id,
+            "home_score": home_score,
+            "home_logo_url": local_logo,
+            "away_team": away_team_name,
+            "away_team_abbr": away_abbr,
+            "away_team_id": away_team_id,
+            "away_score": away_score,
+            "away_logo_url": away_logo,
+            "match_url": match_url,
+            "match_id": match_id,
+            "result": result,
+            "competition": competition,
+            "season": "2025",
         }
-        
+
     except Exception as e:
-        print(f"⚠️ Erreur extraction: {str(e)[:100]}")
+        print(f"⚠️ Erreur extraction: {str(e)[:120]}")
         return None
 
+
 def scrape_with_selenium():
-    """Scrape les données avec Selenium"""
     driver = None
     all_matches = []
-    
+
     try:
         print("🚀 Démarrage du navigateur (headless)...")
         driver = setup_driver()
         print("✅ Navigateur démarré")
-        
+
         url = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
         print(f"🌐 Accès: {url}")
-        
         driver.get(url)
-        print("⏳ Attente du chargement initial...")
+
+        print("⏳ Attente du chargement initial (5s)...")
         time.sleep(5)
-        
-        print("⏳ Attente des éléments...")
+
+        # Scroll pour déclencher le lazy-load
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
+        driver.execute_script("window.scrollTo(0, 0);")
+        time.sleep(1)
+
         try:
             WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((By.TAG_NAME, "body"))
+                EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
             )
-            
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
-            driver.execute_script("window.scrollTo(0, 0);")
-            time.sleep(2)
-            
-            WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "ResponsiveTable"))
-            )
+            print("✅ Tables détectées")
         except TimeoutException:
-            print("⚠️ Timeout: certains éléments peuvent ne pas être chargés")
-        
-        # Chercher les tableaux
-        result_tables = []
-        
-        selectors = [
-            "div.ResponsiveTable.Table__results-mobile",
-            "div.ResponsiveTable",
-            "table.Table",
-            "div.Results div.ResponsiveTable"
-        ]
-        
-        for selector in selectors:
-            tables = driver.find_elements(By.CSS_SELECTOR, selector)
-            if tables:
-                print(f"✅ Trouvé {len(tables)} tableaux avec: {selector}")
-                result_tables = tables
-                break
-        
+            print("⚠️ Timeout en attendant les tables — tentative quand même…")
+
+        # ── Récupérer tous les blocs mensuels ─────────────────────────
+        result_tables = driver.find_elements(
+            By.CSS_SELECTOR, "div.ResponsiveTable.Table__results-mobile"
+        )
+
         if not result_tables:
-            print("🔍 Recherche manuelle des tableaux...")
-            all_divs = driver.find_elements(By.TAG_NAME, "div")
-            for div in all_divs:
-                classes = div.get_attribute("class") or ""
-                if "Table" in classes and "results" in classes.lower():
-                    result_tables.append(div)
-                    print(f"✅ Trouvé un tableau avec classes: {classes}")
-        
-        print(f"📊 {len(result_tables)} tableaux trouvés")
-        
+            # Fallback plus large
+            result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+
+        print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s)")
+
         if not result_tables:
-            print("❌ Aucun tableau trouvé.")
+            print("❌ Aucun tableau trouvé. Vérifiez le sélecteur ou le chargement JS.")
             return []
-        
+
         for table in result_tables:
-            month_element = table.find_element(By.CLASS_NAME, "Table__Title") if table.find_elements(By.CLASS_NAME, "Table__Title") else None
-            month = month_element.text.strip() if month_element else "Unknown"
-            print(f"📅 Traitement: {month}")
-            
-            rows = table.find_elements(By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even")
-            print(f"   {len(rows)} matchs trouvés")
-            
+            # Titre du mois
+            month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
+            month = month_els[0].text.strip() if month_els else "Unknown"
+            print(f"\n📅 Mois: {month}")
+
+            rows = table.find_elements(
+                By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
+            )
+            print(f"   → {len(rows)} ligne(s) trouvée(s)")
+
             for row in rows:
                 match_data = extract_match_info(row, month)
                 if match_data:
                     all_matches.append(match_data)
-        
-        # Filtrer les doublons
-        unique_matches = []
+                    print(
+                        f"   ✅ {match_data['home_team']} {match_data['home_score']}"
+                        f" - {match_data['away_score']} {match_data['away_team']}"
+                        f"  [{match_data['competition']}]"
+                    )
+                else:
+                    print("   ⚠️ Ligne ignorée (extraction échouée)")
+
+        # ── Dédoublonnage ─────────────────────────────────────────────
         seen = set()
-        for match in all_matches:
-            key = f"{match['match_id']}_{match['date']}"
-            if key not in seen and match['match_id']:
+        unique_matches = []
+        for m in all_matches:
+            key = f"{m['match_id']}_{m['date']}"
+            if key not in seen and m["match_id"]:
                 seen.add(key)
-                unique_matches.append(match)
-        
-        print(f"✅ {len(unique_matches)} matchs uniques")
-        
-        # Trier par date (du plus récent au plus ancien)
-        # Extraire le mois et l'année pour un tri correct
-        month_order = {
-            'January': 1, 'February': 2, 'March': 3, 'April': 4,
-            'May': 5, 'June': 6, 'July': 7, 'August': 8,
-            'September': 9, 'October': 10, 'November': 11, 'December': 12
+                unique_matches.append(m)
+
+        print(f"\n✅ {len(unique_matches)} matchs uniques (sur {len(all_matches)} extraits)")
+
+        # ── Tri : du plus récent au plus ancien ───────────────────────
+        MONTH_ORDER = {
+            "January": 1, "February": 2, "March": 3, "April": 4,
+            "May": 5, "June": 6, "July": 7, "August": 8,
+            "September": 9, "October": 10, "November": 11, "December": 12,
         }
-        
-        def get_date_sort_key(match):
-            month_str = match['month'].split(',')[0].strip()
-            month_num = month_order.get(month_str, 0)
-            day_match = re.search(r'(\d+)', match['date'])
-            day = int(day_match.group(1)) if day_match else 0
+
+        def sort_key(m):
+            month_str = m["month"].split(",")[0].strip()
+            month_num = MONTH_ORDER.get(month_str, 0)
+            day_m = re.search(r"(\d+)", m["date"])
+            day = int(day_m.group(1)) if day_m else 0
             return (month_num, day)
-        
-        unique_matches.sort(key=get_date_sort_key, reverse=True)
-        
-        # Construire la structure finale
+
+        unique_matches.sort(key=sort_key, reverse=True)
+
+        # ── Sauvegarde JSON ───────────────────────────────────────────
         output = {
-            'team_name': 'Fortaleza',
-            'team_id': '6272',
-            'season': '2025',
-            'total_matches': len(unique_matches),
-            'scraped_at': datetime.now().isoformat(),
-            'matches': unique_matches
+            "team_name": "Fortaleza",
+            "team_id": "6272",
+            "season": "2025",
+            "total_matches": len(unique_matches),
+            "scraped_at": datetime.now().isoformat(),
+            "matches": unique_matches,
         }
-        
-        # Sauvegarder avec indentation pour lisibilité
-        with open('newdb.json', 'w', encoding='utf-8') as f:
+
+        with open("newdb.json", "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
-        
+
         print("💾 newdb.json sauvegardé")
-        
-        # Afficher les statistiques
-        competitions = {}
-        for match in unique_matches:
-            comp = match['competition']
-            competitions[comp] = competitions.get(comp, 0) + 1
-        
+
+        # ── Stats par compétition ─────────────────────────────────────
+        competitions: dict[str, int] = {}
+        for m in unique_matches:
+            competitions[m["competition"]] = competitions.get(m["competition"], 0) + 1
+
         print("\n📊 Statistiques par compétition:")
         for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
-            print(f"  {comp}: {count} matchs")
-        
+            print(f"   {comp}: {count} match(s)")
+
         return unique_matches
-        
+
     except Exception as e:
-        print(f"❌ Erreur: {e}")
+        print(f"❌ Erreur globale: {e}")
         import traceback
         traceback.print_exc()
         return []
     finally:
         if driver:
-            print("🧹 Fermeture du navigateur...")
+            print("\n🧹 Fermeture du navigateur…")
             driver.quit()
+
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER - FORTALEZA RESULTS")
+    print("⚽ ESPN SCRAPER — FORTALEZA RESULTS")
     print("=" * 60)
-    
+
     results = scrape_with_selenium()
-    
+
     if results:
-        print(f"\n✅ {len(results)} matchs récupérés")
-        
-        # Afficher les 5 premiers matchs
-        print("\n📊 Aperçu des 5 premiers matchs:")
-        for i, match in enumerate(results[:5]):
-            print(f"  {i+1}. {match['home_team']} {match['home_score']}-{match['away_score']} {match['away_team']}")
-            print(f"     📅 {match['date']} | 🏆 {match['competition']}")
+        print(f"\n✅ {len(results)} matchs récupérés au total")
+        print("\n📋 Aperçu des 5 premiers matchs:")
+        for i, m in enumerate(results[:5]):
+            print(
+                f"  {i+1}. [{m['date']} — {m['month']}] "
+                f"{m['home_team']} ({m['home_team_abbr']}) "
+                f"{m['home_score']}-{m['away_score']} "
+                f"{m['away_team']} ({m['away_team_abbr']})"
+            )
+            print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
     else:
         print("\n❌ Aucune donnée récupérée")
+
 
 if __name__ == "__main__":
     main()

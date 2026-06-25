@@ -17,7 +17,6 @@ def setup_driver():
     """Configure et retourne le driver Chrome pour GitHub Actions"""
     chrome_options = Options()
     
-    # Options essentielles pour GitHub Actions
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -31,55 +30,19 @@ def setup_driver():
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', False)
     
-    # User-Agent réaliste
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
-    # Désactiver les logs inutiles
     chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
     
-    # Utiliser WebDriver Manager
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
-    # Masquer l'utilisation de Selenium
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     
-    # Définir des timeouts
     driver.set_page_load_timeout(60)
     driver.implicitly_wait(10)
     
     return driver
-
-def wait_for_element(driver, by, selector, timeout=30):
-    """Attend qu'un élément soit présent"""
-    try:
-        return WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((by, selector))
-        )
-    except TimeoutException:
-        return None
-
-def clean_team_id(team_id):
-    """Nettoie l'ID de l'équipe pour ne garder que le nombre"""
-    if not team_id:
-        return ""
-    # Si l'ID contient un slash, ne garder que la partie avant
-    if '/' in team_id:
-        team_id = team_id.split('/')[0]
-    # Si l'ID contient des lettres, ne garder que les chiffres
-    match = re.search(r'(\d+)', team_id)
-    return match.group(1) if match else team_id
-
-def clean_match_id(match_id):
-    """Nettoie l'ID du match pour ne garder que le nombre"""
-    if not match_id:
-        return ""
-    # Si l'ID contient un slash, ne garder que la partie avant
-    if '/' in match_id:
-        match_id = match_id.split('/')[0]
-    # Si l'ID contient des lettres, ne garder que les chiffres
-    match = re.search(r'(\d+)', match_id)
-    return match.group(1) if match else match_id
 
 def extract_match_info(match_row, month):
     """Extrait les informations d'un match"""
@@ -115,7 +78,6 @@ def extract_match_info(match_row, month):
             home_link = score_links[0]
             home_team = home_link.text.strip()
             home_url = home_link.get_attribute('href') or ""
-            # Extraire l'ID de l'équipe depuis l'URL
             home_id_match = re.search(r'/id/(\d+)/', home_url)
             home_team_id = home_id_match.group(1) if home_id_match else ""
             
@@ -123,7 +85,6 @@ def extract_match_info(match_row, month):
             score_link = score_links[1]
             score_text = score_link.text.strip()
             match_url = score_link.get_attribute('href') or ""
-            # Extraire l'ID du match
             match_id_match = re.search(r'/gameId/(\d+)', match_url)
             match_id = match_id_match.group(1) if match_id_match else ""
             
@@ -161,7 +122,7 @@ def extract_match_info(match_row, month):
                 result = elem.text.strip()
                 break
         
-        # Compétition (garder le nom complet)
+        # Compétition
         competition_elements = cells[5].find_elements(By.TAG_NAME, 'span')
         if competition_elements:
             competition = competition_elements[-1].text.strip()
@@ -221,19 +182,16 @@ def scrape_with_selenium():
         url = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
         print(f"🌐 Accès: {url}")
         
-        # Charger la page
         driver.get(url)
         print("⏳ Attente du chargement initial...")
         time.sleep(5)
         
-        # Attendre que le contenu soit chargé
         print("⏳ Attente des éléments...")
         try:
             WebDriverWait(driver, 30).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body"))
             )
             
-            # Faire défiler la page pour charger tout le contenu
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(2)
             driver.execute_script("window.scrollTo(0, 0);")
@@ -245,7 +203,7 @@ def scrape_with_selenium():
         except TimeoutException:
             print("⚠️ Timeout: certains éléments peuvent ne pas être chargés")
         
-        # Chercher les tableaux avec différents sélecteurs
+        # Chercher les tableaux
         result_tables = []
         
         selectors = [
@@ -301,20 +259,49 @@ def scrape_with_selenium():
         
         print(f"✅ {len(unique_matches)} matchs uniques")
         
-        # Sauvegarder
+        # Trier par date (du plus récent au plus ancien)
+        # Extraire le mois et l'année pour un tri correct
+        month_order = {
+            'January': 1, 'February': 2, 'March': 3, 'April': 4,
+            'May': 5, 'June': 6, 'July': 7, 'August': 8,
+            'September': 9, 'October': 10, 'November': 11, 'December': 12
+        }
+        
+        def get_date_sort_key(match):
+            month_str = match['month'].split(',')[0].strip()
+            month_num = month_order.get(month_str, 0)
+            day_match = re.search(r'(\d+)', match['date'])
+            day = int(day_match.group(1)) if day_match else 0
+            return (month_num, day)
+        
+        unique_matches.sort(key=get_date_sort_key, reverse=True)
+        
+        # Construire la structure finale
         output = {
             'team_name': 'Fortaleza',
             'team_id': '6272',
             'season': '2025',
             'total_matches': len(unique_matches),
-            'matches': unique_matches,
-            'scraped_at': datetime.now().isoformat()
+            'scraped_at': datetime.now().isoformat(),
+            'matches': unique_matches
         }
         
+        # Sauvegarder avec indentation pour lisibilité
         with open('newdb.json', 'w', encoding='utf-8') as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
         
         print("💾 newdb.json sauvegardé")
+        
+        # Afficher les statistiques
+        competitions = {}
+        for match in unique_matches:
+            comp = match['competition']
+            competitions[comp] = competitions.get(comp, 0) + 1
+        
+        print("\n📊 Statistiques par compétition:")
+        for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
+            print(f"  {comp}: {count} matchs")
+        
         return unique_matches
         
     except Exception as e:
@@ -329,21 +316,19 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER - FORTALEZA RESULTS (GitHub Actions)")
+    print("⚽ ESPN SCRAPER - FORTALEZA RESULTS")
     print("=" * 60)
     
     results = scrape_with_selenium()
     
     if results:
         print(f"\n✅ {len(results)} matchs récupérés")
-        competitions = {}
-        for match in results:
-            comp = match['competition']
-            competitions[comp] = competitions.get(comp, 0) + 1
         
-        print("\n📈 Statistiques par compétition:")
-        for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
-            print(f"  {comp}: {count} matchs")
+        # Afficher les 5 premiers matchs
+        print("\n📊 Aperçu des 5 premiers matchs:")
+        for i, match in enumerate(results[:5]):
+            print(f"  {i+1}. {match['home_team']} {match['home_score']}-{match['away_score']} {match['away_team']}")
+            print(f"     📅 {match['date']} | 🏆 {match['competition']}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

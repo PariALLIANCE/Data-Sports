@@ -1,11 +1,12 @@
 import asyncio
 import json
+import os
 import re
 from datetime import datetime
 from playwright.async_api import async_playwright
 
 TARGET_URL = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
-OUTPUT_FILE = "results.json"
+OUTPUT_FILE = "data/football/results.json"
 
 async def scrape_espn_results():
     async with async_playwright() as p:
@@ -51,6 +52,9 @@ async def scrape_espn_results():
                     print(f"  ✗ Erreur sur une ligne : {e}")
 
         await browser.close()
+
+        # Crée le dossier si nécessaire
+        os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(matches, f, ensure_ascii=False, indent=2)
@@ -135,10 +139,6 @@ async def parse_row(row, month_label: str) -> dict | None:
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
 def _id_from_href(href: str) -> str:
-    """
-    Extrait l'ID numérique ESPN depuis un href.
-    Ex: /soccer/team/_/id/6086/botafogo  →  "6086"
-    """
     if not href:
         return ""
     m = re.search(r"/id/(\d+)/", href)
@@ -146,10 +146,6 @@ def _id_from_href(href: str) -> str:
 
 
 def _name_from_href(href: str) -> str:
-    """
-    Extrait le nom depuis le slug ESPN.
-    Ex: /soccer/team/_/id/6086/botafogo  →  "Botafogo"
-    """
     if not href:
         return ""
     parts = href.rstrip("/").split("/")

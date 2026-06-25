@@ -7,29 +7,27 @@ on:
   # Exécution automatique tous les jours à 10h UTC
   schedule:
     - cron: '0 10 * * *'
-  
-  # Exécution sur push vers main (optionnel)
-  # push:
-  #   branches:
-  #     - main
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Permission d'écrire dans le repo
     
     steps:
       # 1. Checkout du code
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       # 2. Configurer Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
       
-      # 3. Installer les dépendances
+      # 3. Installer les dépendances directement
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -45,7 +43,7 @@ jobs:
       - name: Show versions
         run: |
           python --version
-          pip list
+          pip list | grep -E "selenium|webdriver-manager"
           google-chrome --version || echo "Chrome not found"
       
       # 6. Exécuter le script
@@ -53,24 +51,52 @@ jobs:
         run: |
           python scripts/newdb.py
         env:
-          # Options pour Selenium en mode headless
           DISPLAY: ':99'
       
-      # 7. Upload du fichier JSON (artefact)
-      - name: Upload JSON results
-        uses: actions/upload-artifact@v4
-        with:
-          name: fortaleza-results
-          path: newdb.json
-          retention-days: 30
-      
-      # 8. Sauvegarder dans le repo (optionnel)
+      # 7. Commit et push des résultats dans le repo
       - name: Commit and push results
         run: |
+          # Configurer l'identité Git
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          
+          # Ajouter le fichier JSON
           git add newdb.json
-          git diff --staged --quiet || git commit -m "🤖 Update Fortaleza results [skip ci]"
-          git push
+          
+          # Vérifier s'il y a des changements
+          if git diff --staged --quiet; then
+            echo "📝 Aucun changement détecté dans newdb.json"
+          else
+            # Commit avec la date
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+            git commit -m "🤖 Update Fortaleza results - $TIMESTAMP [skip ci]"
+            
+            # Push
+            git push
+            echo "✅ newdb.json mis à jour et pushé dans le repo"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 8. Afficher un résumé
+      - name: Display summary
+        if: always()
+        run: |
+          echo "## 📊 Résultats du scraping" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "newdb.json" ]; then
+            # Compter les matchs
+            TOTAL=$(grep -o '"match_id"' newdb.json | wc -l)
+            echo "✅ **$TOTAL** matchs récupérés" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📁 Fichier: \`newdb.json\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Aperçu:" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            head -n 25 newdb.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Fichier newdb.json non trouvé" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi

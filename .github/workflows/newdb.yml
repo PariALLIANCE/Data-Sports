@@ -1,10 +1,7 @@
 name: ESPN Scraper - Fortaleza Results
 
 on:
-  # Exécution manuelle depuis l'interface GitHub
   workflow_dispatch:
-  
-  # Exécution automatique tous les jours à 10h UTC
   schedule:
     - cron: '0 10 * * *'
 
@@ -12,91 +9,74 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Permission d'écrire dans le repo
+      contents: write
     
     steps:
-      # 1. Checkout du code
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       
-      # 2. Configurer Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
-      # 3. Installer les dépendances directement
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install selenium webdriver-manager
       
-      # 4. Installer Chrome
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 'stable'
       
-      # 5. Afficher les versions (debug)
-      - name: Show versions
+      - name: Show debug info
         run: |
+          echo "Python version:"
           python --version
-          pip list | grep -E "selenium|webdriver-manager"
+          echo "Chrome version:"
           google-chrome --version || echo "Chrome not found"
+          echo "Installed packages:"
+          pip list | grep -E "selenium|webdriver"
       
-      # 6. Exécuter le script
       - name: Run scraper
         run: |
           python scripts/newdb.py
         env:
           DISPLAY: ':99'
+          PYTHONUNBUFFERED: 1
       
-      # 7. Commit et push des résultats dans le repo
+      - name: Upload debug files (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-files
+          path: |
+            page_source.html
+            error_page.html
+            page_screenshot.png
+            error_screenshot.png
+          retention-days: 7
+      
       - name: Commit and push results
         run: |
-          # Configurer l'identité Git
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Ajouter le fichier JSON
-          git add newdb.json
-          
-          # Vérifier s'il y a des changements
-          if git diff --staged --quiet; then
-            echo "📝 Aucun changement détecté dans newdb.json"
+          if [ -f "newdb.json" ]; then
+            git add newdb.json
+            if ! git diff --staged --quiet; then
+              TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+              git commit -m "🤖 Update Fortaleza results - $TIMESTAMP [skip ci]"
+              git push
+              echo "✅ newdb.json mis à jour"
+            else
+              echo "📝 Aucun changement"
+            fi
           else
-            # Commit avec la date
-            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-            git commit -m "🤖 Update Fortaleza results - $TIMESTAMP [skip ci]"
-            
-            # Push
-            git push
-            echo "✅ newdb.json mis à jour et pushé dans le repo"
+            echo "⚠️ newdb.json non trouvé"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      # 8. Afficher un résumé
-      - name: Display summary
-        if: always()
-        run: |
-          echo "## 📊 Résultats du scraping" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          if [ -f "newdb.json" ]; then
-            # Compter les matchs
-            TOTAL=$(grep -o '"match_id"' newdb.json | wc -l)
-            echo "✅ **$TOTAL** matchs récupérés" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "📁 Fichier: \`newdb.json\`" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### Aperçu:" >> $GITHUB_STEP_SUMMARY
-            echo '```json' >> $GITHUB_STEP_SUMMARY
-            head -n 25 newdb.json >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Fichier newdb.json non trouvé" >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi

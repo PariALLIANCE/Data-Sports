@@ -1,92 +1,107 @@
-import asyncio
 import json
 import os
 import re
+import time
 from datetime import datetime
-from playwright.async_api import async_playwright
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 
 TARGET_URL = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
 OUTPUT_FILE = "data/football/results.json"
 
 STEALTH_JS = """
 Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
+Object.defineProperty(navigator, 'plugins',   { get: () => [1, 2, 3] });
 Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
 window.chrome = { runtime: {} };
-Object.defineProperty(navigator, 'permissions', {
-  get: () => ({ query: () => Promise.resolve({ state: 'granted' }) })
-});
 """
 
-async def scrape_espn_results():
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=True,
-            args=[
-                "--no-sandbox",
-                "--disable-setuid-sandbox",
-                "--disable-blink-features=AutomationControlled",
-                "--disable-infobars",
-                "--disable-dev-shm-usage",
-                "--disable-gpu",
-                "--window-size=1280,900",
-            ],
-        )
-        context = await browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            ),
-            viewport={"width": 1280, "height": 900},
-            locale="en-US",
-            java_script_enabled=True,
-            ignore_https_errors=True,
-        )
 
-        await context.add_init_script(STEALTH_JS)
+def build_driver() -> webdriver.Chrome:
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-setuid-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1280,900")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--disable-infobars")
+    options.add_argument("--lang=en-US")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    )
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option("useAutomationExtension", False)
 
-        page = await context.new_page()
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
 
+    # Masquer navigator.webdriver
+    driver.execute_cdp_cmd(
+        "Page.addScriptToEvaluateOnNewDocument",
+        {"source": STEALTH_JS},
+    )
+
+    return driver
+
+
+def scrape_espn_results():
+    driver = build_driver()
+
+    try:
         print(f"→ Chargement de {TARGET_URL}")
+        driver.get(TARGET_URL)
 
-        await page.goto(TARGET_URL, wait_until="domcontentloaded", timeout=60_000)
+        # Pause initiale pour laisser le JS s'exécuter
+        time.sleep(6)
 
-        await asyncio.sleep(5)
+        # Scroll progressif pour déclencher le lazy-load
+        for _ in range(6):
+            driver.execute_script("window.scrollBy(0, 600)")
+            time.sleep(1)
 
-        for _ in range(5):
-            await page.evaluate("window.scrollBy(0, 600)")
-            await asyncio.sleep(1)
+        driver.execute_script("window.scrollTo(0, 0)")
+        time.sleep(2)
 
-        await page.evaluate("window.scrollTo(0, 0)")
-        await asyncio.sleep(2)
-
+        # Attendre le tableau
         try:
-            await page.wait_for_selector(".Table__results-mobile", timeout=45_000)
+            WebDriverWait(driver, 45).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".Table__results-mobile"))
+            )
         except Exception:
             os.makedirs("data/football", exist_ok=True)
-            await page.screenshot(path="data/football/debug_screenshot.png", full_page=True)
-            html_dump = await page.content()
+            driver.save_screenshot("data/football/debug_screenshot.png")
             with open("data/football/debug_page.html", "w", encoding="utf-8") as f:
-                f.write(html_dump)
+                f.write(driver.page_source)
             print("❌ Sélecteur introuvable — screenshot et HTML sauvegardés pour debug")
-            await browser.close()
             raise
 
         matches = []
 
-        month_blocks = await page.query_selector_all(".Table__results-mobile")
+        month_blocks = driver.find_elements(By.CSS_SELECTOR, ".Table__results-mobile")
         print(f"→ {len(month_blocks)} bloc(s) mensuel(s) trouvé(s)")
 
         for block in month_blocks:
-            title_el = await block.query_selector(".Table__Title")
-            month_label = await title_el.inner_text() if title_el else "Unknown"
+            # Titre du bloc mensuel
+            try:
+                month_label = block.find_element(By.CSS_SELECTOR, ".Table__Title").text
+            except Exception:
+                month_label = "Unknown"
 
-            rows = await block.query_selector_all("tbody.Table__TBODY tr.Table__TR--sm")
+            rows = block.find_elements(By.CSS_SELECTOR, "tbody.Table__TBODY tr.Table__TR--sm")
 
             for row in rows:
                 try:
-                    match = await parse_row(row, month_label)
+                    match = parse_row(row, month_label)
                     if match:
                         matches.append(match)
                         print(
@@ -97,87 +112,108 @@ async def scrape_espn_results():
                 except Exception as e:
                     print(f"  ✗ Erreur sur une ligne : {e}")
 
-        await browser.close()
+    finally:
+        driver.quit()
 
-        os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(matches, f, ensure_ascii=False, indent=2)
 
-        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            json.dump(matches, f, ensure_ascii=False, indent=2)
-
-        print(f"\n✅ {len(matches)} match(s) exporté(s) dans '{OUTPUT_FILE}'")
-        return matches
+    print(f"\n✅ {len(matches)} match(s) exporté(s) dans '{OUTPUT_FILE}'")
+    return matches
 
 
-async def parse_row(row, month_label: str) -> dict | None:
-    cells = await row.query_selector_all("td.Table__TD")
+def parse_row(row, month_label: str) -> dict | None:
+    cells = row.find_elements(By.CSS_SELECTOR, "td.Table__TD")
     if len(cells) < 6:
         return None
 
     # ── DATE ──────────────────────────────────────────────────────────────────
-    date_el = await cells[0].query_selector("[data-testid='date']")
-    raw_date = await date_el.inner_text() if date_el else ""
+    try:
+        raw_date = cells[0].find_element(By.CSS_SELECTOR, "[data-testid='date']").text.strip()
+    except Exception:
+        raw_date = ""
+
     year_match = re.search(r"\d{4}", month_label)
     year = year_match.group(0) if year_match else str(datetime.now().year)
-    date_str = f"{raw_date.strip()}, {year}"
+    date_str = f"{raw_date}, {year}"
 
     # ── ÉQUIPES ───────────────────────────────────────────────────────────────
-    home_el = await cells[1].query_selector("[data-testid='formattedTeam']")
-    away_el = await cells[3].query_selector("[data-testid='formattedTeam']")
+    try:
+        home_el = cells[1].find_element(By.CSS_SELECTOR, "[data-testid='formattedTeam']")
+        home_href = home_el.get_attribute("href") or ""
+    except Exception:
+        home_href = ""
 
-    home_href = await home_el.get_attribute("href") if home_el else ""
-    away_href = await away_el.get_attribute("href") if away_el else ""
+    try:
+        away_el = cells[3].find_element(By.CSS_SELECTOR, "[data-testid='formattedTeam']")
+        away_href = away_el.get_attribute("href") or ""
+    except Exception:
+        away_href = ""
 
     home_name = _name_from_href(home_href)
     away_name = _name_from_href(away_href)
-    home_id = _id_from_href(home_href)
-    away_id = _id_from_href(away_href)
+    home_id   = _id_from_href(home_href)
+    away_id   = _id_from_href(away_href)
 
     # ── CELLULE SCORE ─────────────────────────────────────────────────────────
-    score_cell = await cells[2].query_selector("[data-testid='score']")
-    score_links = await score_cell.query_selector_all("a.AnchorLink") if score_cell else []
-
     home_logo_url = ""
     away_logo_url = ""
-    home_score = ""
-    away_score = ""
-    match_url = ""
+    home_score    = ""
+    away_score    = ""
+    match_url     = ""
 
-    if len(score_links) >= 3:
-        img_home = await score_links[0].query_selector("img")
-        if img_home:
-            home_logo_url = await img_home.get_attribute("src") or ""
+    try:
+        score_cell  = cells[2].find_element(By.CSS_SELECTOR, "[data-testid='score']")
+        score_links = score_cell.find_elements(By.CSS_SELECTOR, "a.AnchorLink")
 
-        score_text = (await score_links[1].inner_text()).strip()
-        rel_match_url = await score_links[1].get_attribute("href") or ""
-        match_url = _absolute(rel_match_url)
-        home_score, away_score = _parse_score(score_text)
+        if len(score_links) >= 3:
+            # Logo équipe locale
+            try:
+                home_logo_url = score_links[0].find_element(By.TAG_NAME, "img").get_attribute("src") or ""
+            except Exception:
+                pass
 
-        img_away = await score_links[2].query_selector("img")
-        if img_away:
-            away_logo_url = await img_away.get_attribute("src") or ""
+            # Score + URL du match
+            score_text = score_links[1].text.strip()
+            rel_url    = score_links[1].get_attribute("href") or ""
+            match_url  = _absolute(rel_url)
+            home_score, away_score = _parse_score(score_text)
+
+            # Logo équipe extérieure
+            try:
+                away_logo_url = score_links[2].find_element(By.TAG_NAME, "img").get_attribute("src") or ""
+            except Exception:
+                pass
+    except Exception:
+        pass
 
     # ── RÉSULTAT (FT / AET / PEN …) ──────────────────────────────────────────
-    result_el = await cells[4].query_selector("[data-testid='result'] a")
-    result_status = await result_el.inner_text() if result_el else ""
+    try:
+        result_status = cells[4].find_element(By.CSS_SELECTOR, "[data-testid='result'] a").text.strip()
+    except Exception:
+        result_status = ""
 
     # ── COMPÉTITION ───────────────────────────────────────────────────────────
-    comp_el = await cells[5].query_selector("span")
-    competition = await comp_el.inner_text() if comp_el else ""
+    try:
+        competition = cells[5].find_element(By.TAG_NAME, "span").text.strip()
+    except Exception:
+        competition = ""
 
     return {
-        "date": date_str,
-        "month_block": month_label,
-        "home_team": home_name,
-        "home_id": home_id,
-        "home_score": home_score,
-        "away_score": away_score,
-        "away_team": away_name,
-        "away_id": away_id,
+        "date":          date_str,
+        "month_block":   month_label,
+        "home_team":     home_name,
+        "home_id":       home_id,
+        "home_score":    home_score,
+        "away_score":    away_score,
+        "away_team":     away_name,
+        "away_id":       away_id,
         "result_status": result_status,
-        "competition": competition,
+        "competition":   competition,
         "home_logo_url": home_logo_url,
         "away_logo_url": away_logo_url,
-        "match_url": match_url,
+        "match_url":     match_url,
     }
 
 
@@ -215,4 +251,4 @@ def _parse_score(score_text: str) -> tuple[str, str]:
 # ── Point d'entrée ─────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    asyncio.run(scrape_espn_results())
+    scrape_espn_results()

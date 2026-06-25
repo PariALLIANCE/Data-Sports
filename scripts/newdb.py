@@ -8,9 +8,31 @@ from playwright.async_api import async_playwright
 TARGET_URL = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
 OUTPUT_FILE = "data/football/results.json"
 
+# JS injecté pour masquer les traces de Playwright / headless
+STEALTH_JS = """
+Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
+Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+window.chrome = { runtime: {} };
+Object.defineProperty(navigator, 'permissions', {
+  get: () => ({ query: () => Promise.resolve({ state: 'granted' }) })
+});
+"""
+
 async def scrape_espn_results():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--window-size=1280,900",
+            ],
+        )
         context = await browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -19,13 +41,48 @@ async def scrape_espn_results():
             ),
             viewport={"width": 1280, "height": 900},
             locale="en-US",
+            java_script_enabled=True,
+            ignore_https_errors=True,
+            extra_http_headers={
+                "Accept-Language": "en-US,en;q=0.9",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            },
         )
+
+        # Injecter le JS stealth avant chaque page
+        await context.add_init_script(STEALTH_JS)
+
         page = await context.new_page()
 
         print(f"→ Chargement de {TARGET_URL}")
-        await page.goto(TARGET_URL, wait_until="networkidle", timeout=60_000)
 
-        await page.wait_for_selector(".Table__results-mobile", timeout=30_000)
+        # domcontentloaded est plus fiable que networkidle sur ESPN
+        await page.goto(TARGET_URL, wait_until="domcontentloaded", timeout=60_000)
+
+        # Laisser le JS s'exécuter
+        await asyncio.sleep(5)
+
+        # Scroll progressif pour déclencher le lazy-load
+        for _ in range(5):
+            await page.evaluate("window.scrollBy(0, 600)")
+            await asyncio.sleep(1)
+
+        await page.evaluate("window.scrollTo(0, 0)")
+        await asyncio.sleep(2)
+
+        # Attendre le sélecteur avec un timeout plus long
+        try:
+            await page.wait_for_selector(".Table__results-mobile", timeout=45_000)
+        except Exception:
+            # Screenshot de debug en cas d'échec
+            os.makedirs("data/football", exist_ok=True)
+            await page.screenshot(path="data/football/debug_screenshot.png", full_page=True)
+            html_dump = await page.content()
+            with open("data/football/debug_page.html", "w", encoding="utf-8") as f:
+                f.write(html_dump)
+            print("❌ Sélecteur introuvable — screenshot et HTML sauvegardés pour debug")
+            await browser.close()
+            raise
 
         matches = []
 
@@ -53,7 +110,6 @@ async def scrape_espn_results():
 
         await browser.close()
 
-        # Crée le dossier si nécessaire
         os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

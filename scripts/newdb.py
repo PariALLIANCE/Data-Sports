@@ -59,17 +59,22 @@ def team_name_from_href(href):
     return slug.replace("-", " ").title()
 
 
+def build_logo_url(team_id):
+    """Construit l'URL du logo ESPN à partir de l'ID d'équipe."""
+    if not team_id:
+        return ""
+    return f"https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
+
+
 def extract_match_info(match_row, month):
     """
     Structure réelle ESPN (6 <td>) :
       [0] Date   → <div data-testid="date">
-      [1] Équipe locale  → <div data-testid="localTeam"><a href="/soccer/team/_/id/ID/slug">ABBR</a>
+      [1] Équipe locale  → <div data-testid="localTeam"><a href="/soccer/team/_/id/ID/slug">
       [2] Score + logos  → <span data-testid="score">
-                              <a><img logo_local></a>
                               <a href="/soccer/match/_/gameId/ID/...">X - Y</a>
-                              <a><img logo_away></a>
                            </span>
-      [3] Équipe away    → <div data-testid="awayTeam"><a href="/soccer/team/_/id/ID/slug">ABBR</a>
+      [3] Équipe away    → <div data-testid="awayTeam"><a href="/soccer/team/_/id/ID/slug">
       [4] Résultat       → <span data-testid="result"><a>FT</a>
       [5] Compétition    → <span>...</span>
     """
@@ -86,23 +91,18 @@ def extract_match_info(match_row, month):
         local_links = cells[1].find_elements(By.TAG_NAME, "a")
         if not local_links:
             return None
-        local_link = local_links[0]
-        local_abbr = local_link.text.strip()
-        local_href = local_link.get_attribute("href") or ""
+        local_href = local_links[0].get_attribute("href") or ""
         local_id_m = re.search(r"/id/(\d+)/", local_href)
         local_team_id = local_id_m.group(1) if local_id_m else ""
         local_team_name = team_name_from_href(local_href)
 
-        # ── [2] SCORE + LOGOS ─────────────────────────────────────────
+        # ── [2] SCORE ─────────────────────────────────────────────────
         score_links = cells[2].find_elements(By.TAG_NAME, "a")
-        images = cells[2].find_elements(By.TAG_NAME, "img")
 
         home_score = ""
         away_score = ""
         match_url = ""
         match_id = ""
-        local_logo = ""
-        away_logo = ""
 
         # score_links[0] = lien logo local, [1] = lien score/match, [2] = lien logo away
         if len(score_links) >= 3:
@@ -113,20 +113,14 @@ def extract_match_info(match_row, month):
 
             score_m = re.search(r"(\d+)\s*[-:]\s*(\d+)", score_text)
             if score_m:
-                home_score = score_m.group(1)   # score équipe locale
-                away_score = score_m.group(2)   # score équipe away
-
-        if len(images) >= 2:
-            local_logo = fix_url(images[0].get_attribute("src") or "", "https://a.espncdn.com")
-            away_logo  = fix_url(images[1].get_attribute("src") or "", "https://a.espncdn.com")
+                home_score = score_m.group(1)
+                away_score = score_m.group(2)
 
         # ── [3] ÉQUIPE AWAY ───────────────────────────────────────────
         away_links = cells[3].find_elements(By.TAG_NAME, "a")
         if not away_links:
             return None
-        away_link = away_links[0]
-        away_abbr = away_link.text.strip()
-        away_href = away_link.get_attribute("href") or ""
+        away_href = away_links[0].get_attribute("href") or ""
         away_id_m = re.search(r"/id/(\d+)/", away_href)
         away_team_id = away_id_m.group(1) if away_id_m else ""
         away_team_name = team_name_from_href(away_href)
@@ -137,7 +131,6 @@ def extract_match_info(match_row, month):
         if result_els:
             result = result_els[0].text.strip()
         else:
-            # Fallback : premier lien dans la cellule
             result_links = cells[4].find_elements(By.TAG_NAME, "a")
             if result_links:
                 result = result_links[0].text.strip()
@@ -152,15 +145,13 @@ def extract_match_info(match_row, month):
             "date": date,
             "month": month,
             "home_team": local_team_name,
-            "home_team_abbr": local_abbr,
             "home_team_id": local_team_id,
+            "home_logo_url": build_logo_url(local_team_id),
             "home_score": home_score,
-            "home_logo_url": local_logo,
-            "away_team": away_team_name,
-            "away_team_abbr": away_abbr,
-            "away_team_id": away_team_id,
             "away_score": away_score,
-            "away_logo_url": away_logo,
+            "away_team": away_team_name,
+            "away_team_id": away_team_id,
+            "away_logo_url": build_logo_url(away_team_id),
             "match_url": match_url,
             "match_id": match_id,
             "result": result,
@@ -209,7 +200,6 @@ def scrape_with_selenium():
         )
 
         if not result_tables:
-            # Fallback plus large
             result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
 
         print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s)")
@@ -219,7 +209,6 @@ def scrape_with_selenium():
             return []
 
         for table in result_tables:
-            # Titre du mois
             month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
             month = month_els[0].text.strip() if month_els else "Unknown"
             print(f"\n📅 Mois: {month}")
@@ -318,9 +307,9 @@ def main():
         for i, m in enumerate(results[:5]):
             print(
                 f"  {i+1}. [{m['date']} — {m['month']}] "
-                f"{m['home_team']} ({m['home_team_abbr']}) "
+                f"{m['home_team']} "
                 f"{m['home_score']}-{m['away_score']} "
-                f"{m['away_team']} ({m['away_team_abbr']})"
+                f"{m['away_team']}"
             )
             print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
     else:

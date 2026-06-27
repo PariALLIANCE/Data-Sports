@@ -4,6 +4,7 @@ import re
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -75,7 +76,12 @@ def create_driver():
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/120.0.0.0 Safari/537.36"
     )
-    driver = webdriver.Chrome(options=options)
+
+    # Chromium sur GitHub Actions
+    options.binary_location = "/usr/bin/chromium-browser"
+    service = Service("/usr/bin/chromedriver")
+
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 

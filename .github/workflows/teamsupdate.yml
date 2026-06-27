@@ -6,6 +6,13 @@ on:
     # Tous les jours à 00:25 UTC
     - cron: '25 0 * * *'
 
+concurrency:
+  group: data-sports
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
 jobs:
   scrape-teams:
     runs-on: ubuntu-latest
@@ -19,9 +26,9 @@ jobs:
 
       # 2️⃣ Setup Python 3.12
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       # 3️⃣ Installer Chrome + Chromedriver
       - name: Install Chrome and Chromedriver
@@ -35,39 +42,57 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install selenium requests beautifulsoup4
 
-      # 5️⃣ Rebase AVANT toute écriture
+      # 5️⃣ Configurer Git
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # 6️⃣ Synchroniser avec main
       - name: Sync with remote main
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main || true
+          git fetch origin
+          git checkout main
+          git reset --hard origin/main
 
-      # 6️⃣ Script NHL – MATCHS DU JOUR
+      # 7️⃣ Script NHL – MATCHS DU JOUR
       - name: Run NHL games scraper
         run: |
           python scripts/NHL/games_of_days_nhl.py
 
-      # 7️⃣ Commit & push NHL games
+      # 8️⃣ Commit & push NHL games
       - name: Commit and push NHL games
         run: |
           git add data/hockey/games_of_days_nhl.json
-          git commit -m "Update NHL games of day" || echo "No changes to commit"
-          git push origin main
 
-      # 8️⃣ Rebase avant teams
+          if git diff --cached --quiet; then
+            echo "No NHL changes."
+          else
+            git commit -m "Update NHL games of day"
+            git push origin main
+          fi
+
+      # 9️⃣ Re-synchroniser avant le second script
       - name: Sync with remote main before teams
         run: |
-          git pull --rebase origin main || true
+          git fetch origin
+          git checkout main
+          git reset --hard origin/main
 
-      # 9️⃣ Script TEAMS – Football + NHL
+      # 🔟 Script Teams
       - name: Run teams scraper
         run: |
           python scripts/teams.py
 
-      # 🔟 Commit & push teams
-      - name: Commit and push teams
+      # 1️⃣1️⃣ Commit & push Teams
+      - name: Commit and push Teams
         run: |
           git add data/football/teams/football_teams.json
           git add data/hockey/teams/hockey_NHL_teams.json
-          git commit -m "Update Football + NHL teams" || echo "No changes to commit"
-          git push origin main
+
+          if git diff --cached --quiet; then
+            echo "No Teams changes."
+          else
+            git commit -m "Update Football + NHL teams"
+            git push origin main
+          fi

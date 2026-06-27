@@ -5,22 +5,26 @@ on:
     - cron: '59 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   fetch-games-of-day:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install Chrome & ChromeDriver
+      - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
@@ -30,18 +34,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install selenium beautifulsoup4 webdriver-manager
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Sync with remote main
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
+          git fetch origin
+          git checkout main
+          git reset --hard origin/main
 
       - name: Run update script
-        run: python scripts/games_of_day.py
+        run: |
+          python scripts/games_of_day.py
 
-      - name: Commit & push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "🤖 Mise à jour games_of_day.json"
-          branch: main
-          file_pattern: "data/football/games_of_day.json"
+      - name: Commit changes
+        run: |
+          git add data/football/games_of_day.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "🤖 Mise à jour games_of_day.json"
+
+      - name: Push changes
+        run: |
+          git push origin main

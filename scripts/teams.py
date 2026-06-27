@@ -18,34 +18,45 @@ FOOTBALL_OUTPUT_DIR = "data/football/teams"
 FOOTBALL_OUTPUT_FILE = "football_teams.json"
 
 FOOTBALL_LEAGUES = {
-  "England_Premier_League":        {"id": "eng.1"},
-  "Spain_Laliga":                  {"id": "esp.1"},
-  "Germany_Bundesliga":            {"id": "ger.1"},
-  "Austria_Bundesliga":            {"id": "aut.1"},
-  "Belgium_Jupiler_Pro_League":    {"id": "bel.1"},
-  "Brazil_Serie_A":                {"id": "bra.1"},
-  "Brazil_Serie_B":                {"id": "bra.2"},
-  "Chile_Primera_Division":        {"id": "chi.1"},
-  "China_Super_League":            {"id": "chn.1"},
-  "Colombia_Primera_A":            {"id": "col.1"},
-  "England_National_League":       {"id": "eng.5"},
-  "France_Ligue_1":                {"id": "fra.1"},
-  "Greece_Super_League_1":         {"id": "gre.1"},
-  "Italy_Serie_A":                 {"id": "ita.1"},
-  "Japan_J1_League":               {"id": "jpn.1"},
-  "Mexico_Liga_MX":                {"id": "mex.1"},
-  "Netherlands_Eredivisie":        {"id": "ned.1"},
-  "Paraguay_Division_Profesional": {"id": "par.1"},
-  "Peru_Primera_Division":         {"id": "per.1"},
-  "Portugal_Primeira_Liga":        {"id": "por.1"},
-  "Romania_Liga_I":                {"id": "rou.1"},
-  "Russia_Premier_League":         {"id": "rus.1"},
-  "Saudi_Arabia_Pro_League":       {"id": "ksa.1"},
-  "Sweden_Allsvenskan":            {"id": "swe.1"},
-  "Switzerland_Super_League":      {"id": "sui.1"},
-  "Turkey_Super_Lig":              {"id": "tur.1"},
-  "USA_Major_League_Soccer":       {"id": "usa.1"},
-  "Venezuela_Primera_Division":    {"id": "ven.1"},
+  "England_Premier_League":        {"id": "eng.1",  "country": "England"},
+  "England_Championship":          {"id": "eng.2",  "country": "England"},
+  "England_League_One":            {"id": "eng.3",  "country": "England"},
+  "England_League_Two":            {"id": "eng.4",  "country": "England"},
+  "England_National_League":       {"id": "eng.5",  "country": "England"},
+  "Spain_Laliga":                  {"id": "esp.1",  "country": "Spain"},
+  "Spain_Laliga2":                 {"id": "esp.2",  "country": "Spain"},
+  "Germany_Bundesliga":            {"id": "ger.1",  "country": "Germany"},
+  "Germany_2_Bundesliga":          {"id": "ger.2",  "country": "Germany"},
+  "Austria_Bundesliga":            {"id": "aut.1",  "country": "Austria"},
+  "Belgium_Jupiler_Pro_League":    {"id": "bel.1",  "country": "Belgium"},
+  "Brazil_Serie_A":                {"id": "bra.1",  "country": "Brazil"},
+  "Brazil_Serie_B":                {"id": "bra.2",  "country": "Brazil"},
+  "Chile_Primera_Division":        {"id": "chi.1",  "country": "Chile"},
+  "China_Super_League":            {"id": "chn.1",  "country": "China"},
+  "Colombia_Primera_A":            {"id": "col.1",  "country": "Colombia"},
+  "France_Ligue_1":                {"id": "fra.1",  "country": "France"},
+  "France_Ligue_2":                {"id": "fra.2",  "country": "France"},
+  "Greece_Super_League_1":         {"id": "gre.1",  "country": "Greece"},
+  "Italy_Serie_A":                 {"id": "ita.1",  "country": "Italy"},
+  "Italy_Serie_B":                 {"id": "ita.2",  "country": "Italy"},
+  "Japan_J1_League":               {"id": "jpn.1",  "country": "Japan"},
+  "Mexico_Liga_MX":                {"id": "mex.1",  "country": "Mexico"},
+  "Netherlands_Eredivisie":        {"id": "ned.1",  "country": "Netherlands"},
+  "Paraguay_Division_Profesional": {"id": "par.1",  "country": "Paraguay"},
+  "Peru_Primera_Division":         {"id": "per.1",  "country": "Peru"},
+  "Portugal_Primeira_Liga":        {"id": "por.1",  "country": "Portugal"},
+  "Romania_Liga_I":                {"id": "rou.1",  "country": "Romania"},
+  "Russia_Premier_League":         {"id": "rus.1",  "country": "Russia"},
+  "Saudi_Arabia_Pro_League":       {"id": "ksa.1",  "country": "Saudi_Arabia"},
+  "Scotland_Premiership":          {"id": "sco.1",  "country": "Scotland"},
+  "Scotland_Championship":         {"id": "sco.2",  "country": "Scotland"},
+  "Sweden_Allsvenskan":            {"id": "swe.1",  "country": "Sweden"},
+  "Switzerland_Super_League":      {"id": "sui.1",  "country": "Switzerland"},
+  "Turkey_Super_Lig":              {"id": "tur.1",  "country": "Turkey"},
+  "USA_Major_League_Soccer":       {"id": "usa.1",  "country": "USA"},
+  "Venezuela_Primera_Division":    {"id": "ven.1",  "country": "Venezuela"},
+  "Argentina_Liga_Profesional":    {"id": "arg.1",  "country": "Argentina"},
+  "Argentina_Primera_B":           {"id": "arg.3",  "country": "Argentina"},
 }
 
 # HOCKEY NHL
@@ -84,7 +95,7 @@ def get_football_teams_for_league(league_id):
 def merge_teams(existing_teams, new_teams):
     """
     Conserve les équipes existantes et ajoute les nouvelles.
-    La fusion se fait par team_id pour éviter les doublons.
+    Fusion par team_id pour éviter les doublons inter-ligues.
     """
     existing_by_id = {t["team_id"]: t for t in existing_teams}
 
@@ -103,7 +114,6 @@ def merge_teams(existing_teams, new_teams):
 def scrape_football_teams():
     output_path = os.path.join(FOOTBALL_OUTPUT_DIR, FOOTBALL_OUTPUT_FILE)
 
-    # Charger le JSON existant si disponible
     if os.path.exists(output_path):
         with open(output_path, "r", encoding="utf-8") as f:
             existing_data = json.load(f)
@@ -114,17 +124,18 @@ def scrape_football_teams():
 
     for league_name, league_info in FOOTBALL_LEAGUES.items():
         league_id = league_info["id"]
-        print(f"🏆 Football : Scraping {league_name} ({league_id})")
+        country = league_info["country"]
+        print(f"🏆 [{country}] Scraping {league_name} ({league_id})")
         try:
             new_teams = get_football_teams_for_league(league_id)
-            existing_teams = existing_data.get(league_name, [])
+            existing_teams = existing_data.get(country, [])
             merged = merge_teams(existing_teams, new_teams)
-            existing_data[league_name] = merged
-            print(f"   → {len(new_teams)} scrapées | {len(merged)} total après fusion")
+            existing_data[country] = merged
+            print(f"   → {len(new_teams)} scrapées | {len(merged)} total pour {country}")
         except Exception as e:
             print(f"❌ Erreur pour {league_name} : {e}")
-            if league_name not in existing_data:
-                existing_data[league_name] = []
+            if country not in existing_data:
+                existing_data[country] = []
         time.sleep(1)
 
     os.makedirs(FOOTBALL_OUTPUT_DIR, exist_ok=True)

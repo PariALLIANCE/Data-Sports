@@ -2131,13 +2131,13 @@
                 "position": 1,
                 "name": "Vila Nova",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 8,
                     "D": 4,
-                    "L": 2,
-                    "F": 22,
-                    "A": 15,
-                    "GD": 7,
+                    "L": 3,
+                    "F": 23,
+                    "A": 17,
+                    "GD": 6,
                     "P": 28
                 },
                 "zone": {
@@ -2147,6 +2147,24 @@
             },
             {
                 "position": 2,
+                "name": "Novorizontino",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 6,
+                    "L": 2,
+                    "F": 24,
+                    "A": 14,
+                    "GD": 10,
+                    "P": 27
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 3,
                 "name": "São Bernardo",
                 "stats": {
                     "GP": 14,
@@ -2164,7 +2182,7 @@
                 }
             },
             {
-                "position": 3,
+                "position": 4,
                 "name": "Sport",
                 "stats": {
                     "GP": 14,
@@ -2175,24 +2193,6 @@
                     "A": 9,
                     "GD": 8,
                     "P": 25
-                },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 4,
-                "name": "Novorizontino",
-                "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 6,
-                    "L": 2,
-                    "F": 22,
-                    "A": 13,
-                    "GD": 9,
-                    "P": 24
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2831,13 +2831,13 @@
                 "position": 4,
                 "name": "Yunnan Yukun",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 6,
                     "D": 3,
-                    "L": 6,
-                    "F": 27,
-                    "A": 24,
-                    "GD": 3,
+                    "L": 7,
+                    "F": 29,
+                    "A": 28,
+                    "GD": 1,
                     "P": 21
                 },
                 "zone": {
@@ -2877,12 +2877,12 @@
             },
             {
                 "position": 7,
-                "name": "Liaoning Tieren",
+                "name": "Zhejiang Professional FC",
                 "stats": {
                     "GP": 15,
-                    "W": 5,
-                    "D": 2,
-                    "L": 8,
+                    "W": 6,
+                    "D": 4,
+                    "L": 5,
                     "F": 20,
                     "A": 23,
                     "GD": -3,
@@ -2892,12 +2892,12 @@
             },
             {
                 "position": 8,
-                "name": "Zhejiang Professional FC",
+                "name": "Liaoning Tieren",
                 "stats": {
                     "GP": 15,
-                    "W": 6,
-                    "D": 4,
-                    "L": 5,
+                    "W": 5,
+                    "D": 2,
+                    "L": 8,
                     "F": 20,
                     "A": 23,
                     "GD": -3,
@@ -2967,6 +2967,21 @@
             },
             {
                 "position": 13,
+                "name": "Qingdao Hainiu",
+                "stats": {
+                    "GP": 16,
+                    "W": 6,
+                    "D": 2,
+                    "L": 8,
+                    "F": 26,
+                    "A": 27,
+                    "GD": -1,
+                    "P": 13
+                },
+                "zone": null
+            },
+            {
+                "position": 14,
                 "name": "Shanghai Port",
                 "stats": {
                     "GP": 15,
@@ -2977,21 +2992,6 @@
                     "A": 21,
                     "GD": 2,
                     "P": 12
-                },
-                "zone": null
-            },
-            {
-                "position": 14,
-                "name": "Qingdao Hainiu",
-                "stats": {
-                    "GP": 15,
-                    "W": 5,
-                    "D": 2,
-                    "L": 8,
-                    "F": 22,
-                    "A": 25,
-                    "GD": -3,
-                    "P": 10
                 },
                 "zone": {
                     "label": "Relégation",

@@ -23,42 +23,48 @@ jobs:
         with:
           python-version: '3.12'
 
-      # 3️⃣ Installer les dépendances
-      - name: Install dependencies
+      # 3️⃣ Installer Chrome + Chromedriver
+      - name: Install Chrome and Chromedriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser chromium-chromedriver
+
+      # 4️⃣ Installer les dépendances Python
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install requests beautifulsoup4
+          python -m pip install selenium requests beautifulsoup4
 
-      # 4️⃣ 🔥 Rebase AVANT toute écriture
+      # 5️⃣ Rebase AVANT toute écriture
       - name: Sync with remote main
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git pull --rebase origin main || true
 
-      # 5️⃣ Script NHL – MATCHS DU JOUR
+      # 6️⃣ Script NHL – MATCHS DU JOUR
       - name: Run NHL games scraper
         run: |
           python scripts/NHL/games_of_days_nhl.py
 
-      # 6️⃣ Commit & push NHL games
+      # 7️⃣ Commit & push NHL games
       - name: Commit and push NHL games
         run: |
           git add data/hockey/games_of_days_nhl.json
           git commit -m "Update NHL games of day" || echo "No changes to commit"
           git push origin main
 
-      # 7️⃣ Rebase avant teams (au cas où un autre workflow aurait pushé)
+      # 8️⃣ Rebase avant teams
       - name: Sync with remote main before teams
         run: |
           git pull --rebase origin main || true
 
-      # 8️⃣ Script TEAMS – Football + NHL
+      # 9️⃣ Script TEAMS – Football + NHL
       - name: Run teams scraper
         run: |
           python scripts/teams.py
 
-      # 9️⃣ Commit & push teams
+      # 🔟 Commit & push teams
       - name: Commit and push teams
         run: |
           git add data/football/teams/football_teams.json

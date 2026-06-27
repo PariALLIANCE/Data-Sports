@@ -2,16 +2,13 @@ import os
 import json
 import re
 import time
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # -------------------- CONFIG --------------------
-HEADERS = {
-    "User-Agent": "Mozilla/5.0",
-    "Accept-Language": "en-US,en;q=0.9"
-}
-
-# FOOTBALL
 FOOTBALL_BASE_URL = "https://www.espn.com/soccer/teams/_/league/"
 FOOTBALL_LOGO_URL = "https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
 FOOTBALL_OUTPUT_DIR = "data/football/teams"
@@ -56,47 +53,115 @@ FOOTBALL_LEAGUES = {
   "USA_Major_League_Soccer":       {"id": "usa.1",  "country": "USA"},
   "Venezuela_Primera_Division":    {"id": "ven.1",  "country": "Venezuela"},
   "Argentina_Liga_Profesional":    {"id": "arg.1",  "country": "Argentina"},
+  "Argentina_Nacional_B":          {"id": "arg.2",  "country": "Argentina"},
   "Argentina_Primera_B":           {"id": "arg.3",  "country": "Argentina"},
 }
 
-# HOCKEY NHL
 NHL_URL = "https://www.espn.com/nhl/teams"
 NHL_OUTPUT_FILE = "data/hockey/teams/hockey_NHL_teams.json"
 
 
+# -------------------- DRIVER --------------------
+def create_driver():
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--lang=en-US")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    )
+    driver = webdriver.Chrome(options=options)
+    return driver
+
+
 # -------------------- FONCTIONS --------------------
-def get_football_teams_for_league(league_id):
+def get_football_teams_for_league(driver, league_id):
     url = FOOTBALL_BASE_URL + league_id
-    response = requests.get(url, headers=HEADERS, timeout=20)
-    response.raise_for_status()
+    driver.get(url)
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    try:
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "section.TeamLinks"))
+        )
+    except Exception:
+        print(f"   ⚠️ Timeout ou aucune section trouvée pour {league_id}")
+        return []
+
+    time.sleep(2)
+
     teams = []
+    sections = driver.find_elements(By.CSS_SELECTOR, "section.TeamLinks")
 
-    sections = soup.select("section.TeamLinks")
     for section in sections:
-        name_tag = section.select_one("h2")
-        link_tag = section.select_one("a[href*='/soccer/team/_/id/']")
-        if not (name_tag and link_tag):
+        try:
+            name_tag = section.find_element(By.TAG_NAME, "h2")
+            team_name = name_tag.text.strip()
+        except Exception:
             continue
 
-        team_name = name_tag.get_text(strip=True)
-        match = re.search(r"/id/(\d+)", link_tag["href"])
-        if not match:
+        try:
+            links = section.find_elements(By.CSS_SELECTOR, "a[href*='/soccer/team/_/id/']")
+            if not links:
+                continue
+            href = links[0].get_attribute("href")
+            match = re.search(r"/id/(\d+)", href)
+            if not match:
+                continue
+            team_id = match.group(1)
+        except Exception:
             continue
 
-        team_id = match.group(1)
         logo_url = FOOTBALL_LOGO_URL.format(team_id=team_id)
         teams.append({"team": team_name, "team_id": team_id, "logo": logo_url})
 
     return teams
 
 
+def get_nhl_teams(driver):
+    driver.get(NHL_URL)
+
+    try:
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "section.TeamLinks"))
+        )
+    except Exception:
+        print("   ⚠️ Timeout ou aucune section NHL trouvée")
+        return []
+
+    time.sleep(2)
+
+    teams = []
+    sections = driver.find_elements(By.CSS_SELECTOR, "section.TeamLinks")
+
+    for section in sections:
+        try:
+            name_tag = section.find_element(By.TAG_NAME, "h2")
+            team_name = name_tag.text.strip()
+        except Exception:
+            continue
+
+        try:
+            link = section.find_element(By.TAG_NAME, "a")
+            href = link.get_attribute("href")
+            parts = href.strip("/").split("/")
+            if "name" not in parts:
+                continue
+            team_id = parts[parts.index("name") + 1]
+        except Exception:
+            continue
+
+        logo_url = f"https://a.espncdn.com/i/teamlogos/nhl/500/{team_id}.png"
+        teams.append({"team": team_name, "team_id": team_id, "logo": logo_url})
+
+    return teams
+
+
 def merge_teams(existing_teams, new_teams):
-    """
-    Conserve les équipes existantes et ajoute les nouvelles.
-    Fusion par team_id pour éviter les doublons inter-ligues.
-    """
     existing_by_id = {t["team_id"]: t for t in existing_teams}
 
     for team in new_teams:
@@ -111,7 +176,7 @@ def merge_teams(existing_teams, new_teams):
     return list(existing_by_id.values())
 
 
-def scrape_football_teams():
+def scrape_football_teams(driver):
     output_path = os.path.join(FOOTBALL_OUTPUT_DIR, FOOTBALL_OUTPUT_FILE)
 
     if os.path.exists(output_path):
@@ -127,7 +192,7 @@ def scrape_football_teams():
         country = league_info["country"]
         print(f"🏆 [{country}] Scraping {league_name} ({league_id})")
         try:
-            new_teams = get_football_teams_for_league(league_id)
+            new_teams = get_football_teams_for_league(driver, league_id)
             existing_teams = existing_data.get(country, [])
             merged = merge_teams(existing_teams, new_teams)
             existing_data[country] = merged
@@ -136,7 +201,7 @@ def scrape_football_teams():
             print(f"❌ Erreur pour {league_name} : {e}")
             if country not in existing_data:
                 existing_data[country] = []
-        time.sleep(1)
+        time.sleep(2)
 
     os.makedirs(FOOTBALL_OUTPUT_DIR, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
@@ -144,44 +209,8 @@ def scrape_football_teams():
     print(f"\n✅ Fichier football mis à jour : {output_path}")
 
 
-def extract_nhl_team_id(href):
-    parts = href.strip("/").split("/")
-    if "name" in parts:
-        return parts[parts.index("name") + 1]
-    return None
-
-
-def merge_nhl_teams(existing_teams, new_teams):
-    existing_by_id = {t["team_id"]: t for t in existing_teams}
-
-    for team in new_teams:
-        tid = team["team_id"]
-        if tid not in existing_by_id:
-            existing_by_id[tid] = team
-            print(f"   ➕ Nouvelle équipe NHL ajoutée : {team['team']} (ID {tid})")
-        else:
-            existing_by_id[tid]["team"] = team["team"]
-            existing_by_id[tid]["logo"] = team["logo"]
-
-    return list(existing_by_id.values())
-
-
-def scrape_nhl_teams():
-    response = requests.get(NHL_URL, headers=HEADERS, timeout=20)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    new_teams = []
-    for section in soup.select("section.TeamLinks"):
-        link = section.find("a", href=True)
-        name_tag = section.find("h2")
-        if not (link and name_tag):
-            continue
-        team_id = extract_nhl_team_id(link["href"])
-        if not team_id:
-            continue
-        logo_url = f"https://a.espncdn.com/i/teamlogos/nhl/500/{team_id}.png"
-        new_teams.append({"team": name_tag.text.strip(), "team_id": team_id, "logo": logo_url})
+def scrape_nhl_teams(driver):
+    print("🏒 Scraping équipes NHL...")
 
     if os.path.exists(NHL_OUTPUT_FILE):
         with open(NHL_OUTPUT_FILE, "r", encoding="utf-8") as f:
@@ -192,7 +221,8 @@ def scrape_nhl_teams():
         existing_teams = []
         print("📂 Aucun fichier NHL existant, création d'un nouveau.")
 
-    merged = merge_nhl_teams(existing_teams, new_teams)
+    new_teams = get_nhl_teams(driver)
+    merged = merge_teams(existing_teams, new_teams)
 
     os.makedirs(os.path.dirname(NHL_OUTPUT_FILE), exist_ok=True)
     with open(NHL_OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -202,7 +232,12 @@ def scrape_nhl_teams():
 
 # -------------------- MAIN --------------------
 if __name__ == "__main__":
-    print("=== DÉBUT DU SCRAPING FOOTBALL ===")
-    scrape_football_teams()
-    print("\n=== DÉBUT DU SCRAPING NHL ===")
-    scrape_nhl_teams()
+    driver = create_driver()
+    try:
+        print("=== DÉBUT DU SCRAPING FOOTBALL ===")
+        scrape_football_teams(driver)
+        print("\n=== DÉBUT DU SCRAPING NHL ===")
+        scrape_nhl_teams(driver)
+    finally:
+        driver.quit()
+        print("\n🔒 Driver fermé.")

@@ -2165,16 +2165,16 @@
             },
             {
                 "position": 3,
-                "name": "São Bernardo",
+                "name": "Criciúma",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 7,
-                    "D": 4,
-                    "L": 3,
-                    "F": 20,
+                    "D": 6,
+                    "L": 2,
+                    "F": 17,
                     "A": 11,
-                    "GD": 9,
-                    "P": 25
+                    "GD": 6,
+                    "P": 27
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2183,6 +2183,39 @@
             },
             {
                 "position": 4,
+                "name": "São Bernardo",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 4,
+                    "L": 4,
+                    "F": 20,
+                    "A": 12,
+                    "GD": 8,
+                    "P": 25
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
+                "name": "Operário PR",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 4,
+                    "L": 4,
+                    "F": 19,
+                    "A": 17,
+                    "GD": 2,
+                    "P": 25
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
                 "name": "Sport",
                 "stats": {
                     "GP": 14,
@@ -2194,28 +2227,10 @@
                     "GD": 8,
                     "P": 25
                 },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 5,
-                "name": "Criciúma",
-                "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 6,
-                    "L": 2,
-                    "F": 16,
-                    "A": 11,
-                    "GD": 5,
-                    "P": 24
-                },
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Juventude",
                 "stats": {
                     "GP": 14,
@@ -2225,21 +2240,6 @@
                     "F": 14,
                     "A": 8,
                     "GD": 6,
-                    "P": 22
-                },
-                "zone": null
-            },
-            {
-                "position": 7,
-                "name": "Operário PR",
-                "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 4,
-                    "L": 4,
-                    "F": 18,
-                    "A": 17,
-                    "GD": 1,
                     "P": 22
                 },
                 "zone": null
@@ -2437,13 +2437,13 @@
                 "position": 20,
                 "name": "América Mineiro",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 1,
                     "D": 3,
-                    "L": 10,
+                    "L": 11,
                     "F": 10,
-                    "A": 25,
-                    "GD": -15,
+                    "A": 26,
+                    "GD": -16,
                     "P": 6
                 },
                 "zone": {
@@ -2777,14 +2777,14 @@
                 "position": 1,
                 "name": "Chengdu Rongcheng",
                 "stats": {
-                    "GP": 15,
-                    "W": 12,
+                    "GP": 16,
+                    "W": 13,
                     "D": 1,
                     "L": 2,
-                    "F": 33,
-                    "A": 13,
-                    "GD": 20,
-                    "P": 37
+                    "F": 36,
+                    "A": 15,
+                    "GD": 21,
+                    "P": 40
                 },
                 "zone": {
                     "label": "AFC Champions League",
@@ -2795,14 +2795,14 @@
                 "position": 2,
                 "name": "Chongqing Tonglianglong",
                 "stats": {
-                    "GP": 15,
-                    "W": 6,
+                    "GP": 16,
+                    "W": 7,
                     "D": 6,
                     "L": 3,
-                    "F": 19,
+                    "F": 20,
                     "A": 16,
-                    "GD": 3,
-                    "P": 24
+                    "GD": 4,
+                    "P": 27
                 },
                 "zone": {
                     "label": "AFC Champions League",
@@ -2829,6 +2829,24 @@
             },
             {
                 "position": 4,
+                "name": "Shandong Taishan",
+                "stats": {
+                    "GP": 16,
+                    "W": 8,
+                    "D": 3,
+                    "L": 5,
+                    "F": 30,
+                    "A": 26,
+                    "GD": 4,
+                    "P": 21
+                },
+                "zone": {
+                    "label": "AFC Challenge League",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
                 "name": "Yunnan Yukun",
                 "stats": {
                     "GP": 16,
@@ -2840,28 +2858,25 @@
                     "GD": 1,
                     "P": 21
                 },
-                "zone": {
-                    "label": "AFC Challenge League",
-                    "type": "avantage"
-                }
+                "zone": null
             },
             {
-                "position": 5,
-                "name": "Shandong Taishan",
+                "position": 6,
+                "name": "Beijing Guoan",
                 "stats": {
-                    "GP": 15,
-                    "W": 7,
-                    "D": 3,
+                    "GP": 16,
+                    "W": 6,
+                    "D": 5,
                     "L": 5,
-                    "F": 25,
-                    "A": 25,
-                    "GD": 0,
+                    "F": 27,
+                    "A": 23,
+                    "GD": 4,
                     "P": 18
                 },
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "Qingdao West Coast",
                 "stats": {
                     "GP": 15,
@@ -2876,7 +2891,7 @@
                 "zone": null
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "Zhejiang Professional FC",
                 "stats": {
                     "GP": 15,
@@ -2891,67 +2906,67 @@
                 "zone": null
             },
             {
-                "position": 8,
-                "name": "Liaoning Tieren",
-                "stats": {
-                    "GP": 15,
-                    "W": 5,
-                    "D": 2,
-                    "L": 8,
-                    "F": 20,
-                    "A": 23,
-                    "GD": -3,
-                    "P": 17
-                },
-                "zone": null
-            },
-            {
                 "position": 9,
                 "name": "Shenzhen Xinpengcheng",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 5,
                     "D": 2,
-                    "L": 8,
-                    "F": 20,
-                    "A": 25,
-                    "GD": -5,
+                    "L": 9,
+                    "F": 22,
+                    "A": 28,
+                    "GD": -6,
                     "P": 17
                 },
                 "zone": null
             },
             {
                 "position": 10,
-                "name": "Beijing Guoan",
+                "name": "Liaoning Tieren",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
+                    "W": 5,
+                    "D": 2,
+                    "L": 9,
+                    "F": 21,
+                    "A": 28,
+                    "GD": -7,
+                    "P": 17
+                },
+                "zone": null
+            },
+            {
+                "position": 11,
+                "name": "Shanghai Port",
+                "stats": {
+                    "GP": 16,
                     "W": 5,
                     "D": 5,
-                    "L": 5,
-                    "F": 26,
-                    "A": 23,
+                    "L": 6,
+                    "F": 25,
+                    "A": 22,
                     "GD": 3,
                     "P": 15
                 },
                 "zone": null
             },
             {
-                "position": 11,
+                "position": 12,
                 "name": "Henan Songshan Longmen",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 6,
                     "D": 3,
-                    "L": 6,
-                    "F": 16,
-                    "A": 18,
-                    "GD": -2,
+                    "L": 7,
+                    "F": 17,
+                    "A": 20,
+                    "GD": -3,
                     "P": 15
                 },
                 "zone": null
             },
             {
-                "position": 12,
+                "position": 13,
                 "name": "Shanghai Shenhua",
                 "stats": {
                     "GP": 15,
@@ -2966,7 +2981,7 @@
                 "zone": null
             },
             {
-                "position": 13,
+                "position": 14,
                 "name": "Qingdao Hainiu",
                 "stats": {
                     "GP": 16,
@@ -2978,21 +2993,6 @@
                     "GD": -1,
                     "P": 13
                 },
-                "zone": null
-            },
-            {
-                "position": 14,
-                "name": "Shanghai Port",
-                "stats": {
-                    "GP": 15,
-                    "W": 4,
-                    "D": 5,
-                    "L": 6,
-                    "F": 23,
-                    "A": 21,
-                    "GD": 2,
-                    "P": 12
-                },
                 "zone": {
                     "label": "Relégation",
                     "type": "désavantage"
@@ -3002,13 +3002,13 @@
                 "position": 15,
                 "name": "Wuhan Three Towns",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 2,
                     "D": 7,
-                    "L": 6,
+                    "L": 7,
                     "F": 22,
-                    "A": 30,
-                    "GD": -8,
+                    "A": 31,
+                    "GD": -9,
                     "P": 8
                 },
                 "zone": {
@@ -3020,13 +3020,13 @@
                 "position": 16,
                 "name": "Tianjin Jinmen Tiger",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 3,
                     "D": 6,
-                    "L": 6,
+                    "L": 7,
                     "F": 19,
-                    "A": 21,
-                    "GD": -2,
+                    "A": 22,
+                    "GD": -3,
                     "P": 5
                 },
                 "zone": {

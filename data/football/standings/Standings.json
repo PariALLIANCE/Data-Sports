@@ -2201,6 +2201,21 @@
             },
             {
                 "position": 5,
+                "name": "Juventude",
+                "stats": {
+                    "GP": 15,
+                    "W": 7,
+                    "D": 4,
+                    "L": 4,
+                    "F": 16,
+                    "A": 8,
+                    "GD": 8,
+                    "P": 25
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 15,
@@ -2215,43 +2230,43 @@
                 "zone": null
             },
             {
-                "position": 6,
-                "name": "Sport",
+                "position": 7,
+                "name": "Fortaleza",
                 "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 7,
-                    "L": 1,
-                    "F": 17,
-                    "A": 9,
-                    "GD": 8,
+                    "GP": 15,
+                    "W": 7,
+                    "D": 4,
+                    "L": 4,
+                    "F": 18,
+                    "A": 16,
+                    "GD": 2,
                     "P": 25
                 },
                 "zone": null
             },
             {
-                "position": 7,
-                "name": "Juventude",
+                "position": 8,
+                "name": "Sport",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 6,
-                    "D": 4,
-                    "L": 4,
-                    "F": 14,
-                    "A": 8,
-                    "GD": 6,
-                    "P": 22
+                    "D": 7,
+                    "L": 2,
+                    "F": 18,
+                    "A": 11,
+                    "GD": 7,
+                    "P": 25
                 },
                 "zone": null
             },
             {
-                "position": 8,
-                "name": "Fortaleza",
+                "position": 9,
+                "name": "Athletic",
                 "stats": {
-                    "GP": 14,
-                    "W": 6,
-                    "D": 4,
-                    "L": 4,
+                    "GP": 15,
+                    "W": 5,
+                    "D": 7,
+                    "L": 3,
                     "F": 16,
                     "A": 15,
                     "GD": 1,
@@ -2260,22 +2275,52 @@
                 "zone": null
             },
             {
-                "position": 9,
+                "position": 10,
+                "name": "Goiás",
+                "stats": {
+                    "GP": 15,
+                    "W": 6,
+                    "D": 3,
+                    "L": 6,
+                    "F": 14,
+                    "A": 21,
+                    "GD": -7,
+                    "P": 21
+                },
+                "zone": null
+            },
+            {
+                "position": 11,
+                "name": "Atlético Goianiense",
+                "stats": {
+                    "GP": 15,
+                    "W": 5,
+                    "D": 6,
+                    "L": 4,
+                    "F": 18,
+                    "A": 16,
+                    "GD": 2,
+                    "P": 21
+                },
+                "zone": null
+            },
+            {
+                "position": 12,
                 "name": "Náutico",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 6,
                     "D": 2,
-                    "L": 6,
+                    "L": 7,
                     "F": 21,
-                    "A": 18,
-                    "GD": 3,
+                    "A": 19,
+                    "GD": 2,
                     "P": 20
                 },
                 "zone": null
             },
             {
-                "position": 10,
+                "position": 13,
                 "name": "Cuiabá",
                 "stats": {
                     "GP": 15,
@@ -2290,61 +2335,16 @@
                 "zone": null
             },
             {
-                "position": 11,
-                "name": "Athletic",
-                "stats": {
-                    "GP": 14,
-                    "W": 4,
-                    "D": 7,
-                    "L": 3,
-                    "F": 15,
-                    "A": 15,
-                    "GD": 0,
-                    "P": 19
-                },
-                "zone": null
-            },
-            {
-                "position": 12,
-                "name": "Goiás",
-                "stats": {
-                    "GP": 14,
-                    "W": 5,
-                    "D": 3,
-                    "L": 6,
-                    "F": 13,
-                    "A": 21,
-                    "GD": -8,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
-                "position": 13,
-                "name": "Atlético Goianiense",
-                "stats": {
-                    "GP": 14,
-                    "W": 4,
-                    "D": 6,
-                    "L": 4,
-                    "F": 16,
-                    "A": 16,
-                    "GD": 0,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
                 "position": 14,
                 "name": "Ceará",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 4,
                     "D": 5,
-                    "L": 5,
+                    "L": 6,
                     "F": 15,
-                    "A": 16,
-                    "GD": -1,
+                    "A": 18,
+                    "GD": -3,
                     "P": 17
                 },
                 "zone": null
@@ -2401,13 +2401,13 @@
                 "position": 18,
                 "name": "Avaí",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 3,
                     "D": 4,
-                    "L": 7,
+                    "L": 8,
                     "F": 15,
-                    "A": 20,
-                    "GD": -5,
+                    "A": 21,
+                    "GD": -6,
                     "P": 13
                 },
                 "zone": {
@@ -2419,13 +2419,13 @@
                 "position": 19,
                 "name": "Ponte Preta",
                 "stats": {
-                    "GP": 14,
+                    "GP": 15,
                     "W": 2,
                     "D": 2,
-                    "L": 10,
+                    "L": 11,
                     "F": 10,
-                    "A": 27,
-                    "GD": -17,
+                    "A": 29,
+                    "GD": -19,
                     "P": 8
                 },
                 "zone": {
@@ -2813,13 +2813,13 @@
                 "position": 3,
                 "name": "Dalian Yingbo",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 7,
                     "D": 1,
-                    "L": 7,
-                    "F": 21,
-                    "A": 25,
-                    "GD": -4,
+                    "L": 8,
+                    "F": 22,
+                    "A": 29,
+                    "GD": -7,
                     "P": 22
                 },
                 "zone": {
@@ -2862,6 +2862,21 @@
             },
             {
                 "position": 6,
+                "name": "Qingdao West Coast",
+                "stats": {
+                    "GP": 16,
+                    "W": 4,
+                    "D": 9,
+                    "L": 3,
+                    "F": 20,
+                    "A": 24,
+                    "GD": -4,
+                    "P": 21
+                },
+                "zone": null
+            },
+            {
+                "position": 7,
                 "name": "Beijing Guoan",
                 "stats": {
                     "GP": 16,
@@ -2876,31 +2891,16 @@
                 "zone": null
             },
             {
-                "position": 7,
-                "name": "Qingdao West Coast",
-                "stats": {
-                    "GP": 15,
-                    "W": 3,
-                    "D": 9,
-                    "L": 3,
-                    "F": 17,
-                    "A": 23,
-                    "GD": -6,
-                    "P": 18
-                },
-                "zone": null
-            },
-            {
                 "position": 8,
                 "name": "Zhejiang Professional FC",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 6,
                     "D": 4,
-                    "L": 5,
-                    "F": 20,
-                    "A": 23,
-                    "GD": -3,
+                    "L": 6,
+                    "F": 21,
+                    "A": 26,
+                    "GD": -5,
                     "P": 17
                 },
                 "zone": null
@@ -2937,6 +2937,21 @@
             },
             {
                 "position": 11,
+                "name": "Shanghai Shenhua",
+                "stats": {
+                    "GP": 16,
+                    "W": 7,
+                    "D": 5,
+                    "L": 4,
+                    "F": 33,
+                    "A": 25,
+                    "GD": 8,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 12,
                 "name": "Shanghai Port",
                 "stats": {
                     "GP": 16,
@@ -2951,7 +2966,7 @@
                 "zone": null
             },
             {
-                "position": 12,
+                "position": 13,
                 "name": "Henan Songshan Longmen",
                 "stats": {
                     "GP": 16,
@@ -2962,21 +2977,6 @@
                     "A": 20,
                     "GD": -3,
                     "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 13,
-                "name": "Shanghai Shenhua",
-                "stats": {
-                    "GP": 15,
-                    "W": 6,
-                    "D": 5,
-                    "L": 4,
-                    "F": 29,
-                    "A": 24,
-                    "GD": 5,
-                    "P": 13
                 },
                 "zone": null
             },

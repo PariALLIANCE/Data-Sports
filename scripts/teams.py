@@ -86,7 +86,7 @@ def create_driver():
 
 
 # -------------------- FONCTIONS --------------------
-def get_football_teams_for_league(driver, league_id):
+def get_football_teams_for_league(driver, league_id, league_name):
     url = FOOTBALL_BASE_URL + league_id
     driver.get(url)
 
@@ -123,7 +123,13 @@ def get_football_teams_for_league(driver, league_id):
             continue
 
         logo_url = FOOTBALL_LOGO_URL.format(team_id=team_id)
-        teams.append({"team": team_name, "team_id": team_id, "logo": logo_url})
+        teams.append({
+            "team": team_name,
+            "team_id": team_id,
+            "logo": logo_url,
+            "league_id": league_id,
+            "league_name": league_name,
+        })
 
     return teams
 
@@ -162,7 +168,13 @@ def get_nhl_teams(driver):
             continue
 
         logo_url = f"https://a.espncdn.com/i/teamlogos/nhl/500/{team_id}.png"
-        teams.append({"team": team_name, "team_id": team_id, "logo": logo_url})
+        teams.append({
+            "team": team_name,
+            "team_id": team_id,
+            "logo": logo_url,
+            "league_id": "nhl",
+            "league_name": "NHL",
+        })
 
     return teams
 
@@ -174,10 +186,12 @@ def merge_teams(existing_teams, new_teams):
         tid = team["team_id"]
         if tid not in existing_by_id:
             existing_by_id[tid] = team
-            print(f"      ➕ Nouvelle équipe ajoutée : {team['team']} (ID {tid})")
+            print(f"      ➕ Nouvelle équipe ajoutée : {team['team']} (ID {tid}, ligue {team.get('league_name')})")
         else:
             existing_by_id[tid]["team"] = team["team"]
             existing_by_id[tid]["logo"] = team["logo"]
+            existing_by_id[tid]["league_id"] = team["league_id"]
+            existing_by_id[tid]["league_name"] = team["league_name"]
 
     return list(existing_by_id.values())
 
@@ -198,7 +212,7 @@ def scrape_football_teams(driver):
         country = league_info["country"]
         print(f"🏆 [{country}] Scraping {league_name} ({league_id})")
         try:
-            new_teams = get_football_teams_for_league(driver, league_id)
+            new_teams = get_football_teams_for_league(driver, league_id, league_name)
             existing_teams = existing_data.get(country, [])
             merged = merge_teams(existing_teams, new_teams)
             existing_data[country] = merged

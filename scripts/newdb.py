@@ -9,7 +9,14 @@ from selenium.common.exceptions import TimeoutException
 import json
 import time
 import re
+import urllib.request
 from datetime import datetime
+
+TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/main/data/football/teams/football_teams.json"
+TARGET_COUNTRY = "England"
+TARGET_LEAGUE = "England_Premier_League"
+NB_TEAMS = 3
+
 
 def setup_driver():
     chrome_options = Options()
@@ -64,6 +71,29 @@ def build_logo_url(team_id):
     if not team_id:
         return ""
     return f"https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
+
+
+def fetch_target_teams():
+    """
+    Récupère le fichier football_teams.json depuis GitHub, et retourne
+    les NB_TEAMS premières équipes de TARGET_COUNTRY / TARGET_LEAGUE.
+    """
+    print(f"🌐 Téléchargement de {TEAMS_JSON_URL}")
+    req = urllib.request.Request(TEAMS_JSON_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+
+    country_teams = data.get(TARGET_COUNTRY, [])
+    league_teams = [t for t in country_teams if t.get("league_name") == TARGET_LEAGUE]
+
+    selected = league_teams[:NB_TEAMS]
+
+    print(f"📋 {len(league_teams)} équipe(s) trouvée(s) pour {TARGET_LEAGUE}")
+    print(f"✅ {len(selected)} équipe(s) sélectionnée(s):")
+    for t in selected:
+        print(f"   - {t['team']} (id={t['team_id']})")
+
+    return selected
 
 
 def extract_match_info(match_row, month):
@@ -164,124 +194,169 @@ def extract_match_info(match_row, month):
         return None
 
 
-def scrape_with_selenium():
-    driver = None
+def scrape_team_results(driver, team_name, team_id):
+    """
+    Scrape les résultats d'une équipe ESPN donnée (team_id) pour la saison 2025.
+    Retourne la liste des matchs uniques triés du plus récent au plus ancien.
+    """
     all_matches = []
 
+    url = f"https://www.espn.com/soccer/team/results/_/id/{team_id}/season/2025"
+    print(f"\n🌐 Accès: {url}")
+    driver.get(url)
+
+    print("⏳ Attente du chargement initial (5s)...")
+    time.sleep(5)
+
+    # Scroll pour déclencher le lazy-load
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
+    driver.execute_script("window.scrollTo(0, 0);")
+    time.sleep(1)
+
     try:
-        print("🚀 Démarrage du navigateur (headless)...")
+        WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
+        )
+        print("✅ Tables détectées")
+    except TimeoutException:
+        print("⚠️ Timeout en attendant les tables — tentative quand même…")
+
+    # ── Récupérer tous les blocs mensuels ─────────────────────────
+    result_tables = driver.find_elements(
+        By.CSS_SELECTOR, "div.ResponsiveTable.Table__results-mobile"
+    )
+
+    if not result_tables:
+        result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+
+    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s)")
+
+    if not result_tables:
+        print("❌ Aucun tableau trouvé. Vérifiez le sélecteur ou le chargement JS.")
+        return []
+
+    for table in result_tables:
+        month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
+        month = month_els[0].text.strip() if month_els else "Unknown"
+        print(f"\n📅 Mois: {month}")
+
+        rows = table.find_elements(
+            By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
+        )
+        print(f"   → {len(rows)} ligne(s) trouvée(s)")
+
+        for row in rows:
+            match_data = extract_match_info(row, month)
+            if match_data:
+                all_matches.append(match_data)
+                print(
+                    f"   ✅ {match_data['home_team']} {match_data['home_score']}"
+                    f" - {match_data['away_score']} {match_data['away_team']}"
+                    f"  [{match_data['competition']}]"
+                )
+            else:
+                print("   ⚠️ Ligne ignorée (extraction échouée)")
+
+    # ── Dédoublonnage ─────────────────────────────────────────────
+    seen = set()
+    unique_matches = []
+    for m in all_matches:
+        key = f"{m['match_id']}_{m['date']}"
+        if key not in seen and m["match_id"]:
+            seen.add(key)
+            unique_matches.append(m)
+
+    print(f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} (sur {len(all_matches)} extraits)")
+
+    # ── Tri : du plus récent au plus ancien ───────────────────────
+    MONTH_ORDER = {
+        "January": 1, "February": 2, "March": 3, "April": 4,
+        "May": 5, "June": 6, "July": 7, "August": 8,
+        "September": 9, "October": 10, "November": 11, "December": 12,
+    }
+
+    def sort_key(m):
+        month_str = m["month"].split(",")[0].strip()
+        month_num = MONTH_ORDER.get(month_str, 0)
+        day_m = re.search(r"(\d+)", m["date"])
+        day = int(day_m.group(1)) if day_m else 0
+        return (month_num, day)
+
+    unique_matches.sort(key=sort_key, reverse=True)
+
+    return unique_matches
+
+
+def scrape_with_selenium():
+    driver = None
+    output_data = []
+
+    try:
+        teams = fetch_target_teams()
+        if not teams:
+            print("❌ Aucune équipe sélectionnée. Vérifiez TARGET_COUNTRY/TARGET_LEAGUE.")
+            return []
+
+        print("\n🚀 Démarrage du navigateur (headless)...")
         driver = setup_driver()
         print("✅ Navigateur démarré")
 
-        url = "https://www.espn.com/soccer/team/results/_/id/6272/season/2025"
-        print(f"🌐 Accès: {url}")
-        driver.get(url)
+        for team in teams:
+            team_name = team.get("team", "")
+            team_id = team.get("team_id", "")
 
-        print("⏳ Attente du chargement initial (5s)...")
-        time.sleep(5)
+            print("\n" + "=" * 60)
+            print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
+            print("=" * 60)
 
-        # Scroll pour déclencher le lazy-load
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2)
-        driver.execute_script("window.scrollTo(0, 0);")
-        time.sleep(1)
+            try:
+                unique_matches = scrape_team_results(driver, team_name, team_id)
+            except Exception as e:
+                print(f"❌ Erreur lors du scraping de {team_name}: {e}")
+                import traceback
+                traceback.print_exc()
+                unique_matches = []
 
-        try:
-            WebDriverWait(driver, 30).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
-            )
-            print("✅ Tables détectées")
-        except TimeoutException:
-            print("⚠️ Timeout en attendant les tables — tentative quand même…")
+            team_output = {
+                "team_name": team_name,
+                "team_id": team_id,
+                "logo": team.get("logo", build_logo_url(team_id)),
+                "league_id": team.get("league_id", ""),
+                "league_name": team.get("league_name", ""),
+                "country": TARGET_COUNTRY,
+                "season": "2025",
+                "total_matches": len(unique_matches),
+                "scraped_at": datetime.now().isoformat(),
+                "matches": unique_matches,
+            }
 
-        # ── Récupérer tous les blocs mensuels ─────────────────────────
-        result_tables = driver.find_elements(
-            By.CSS_SELECTOR, "div.ResponsiveTable.Table__results-mobile"
-        )
+            output_data.append(team_output)
 
-        if not result_tables:
-            result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+            # ── Stats par compétition pour cette équipe ────────────
+            competitions: dict[str, int] = {}
+            for m in unique_matches:
+                competitions[m["competition"]] = competitions.get(m["competition"], 0) + 1
 
-        print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s)")
+            print(f"\n📊 Statistiques par compétition ({team_name}):")
+            for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
+                print(f"   {comp}: {count} match(s)")
 
-        if not result_tables:
-            print("❌ Aucun tableau trouvé. Vérifiez le sélecteur ou le chargement JS.")
-            return []
-
-        for table in result_tables:
-            month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
-            month = month_els[0].text.strip() if month_els else "Unknown"
-            print(f"\n📅 Mois: {month}")
-
-            rows = table.find_elements(
-                By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
-            )
-            print(f"   → {len(rows)} ligne(s) trouvée(s)")
-
-            for row in rows:
-                match_data = extract_match_info(row, month)
-                if match_data:
-                    all_matches.append(match_data)
-                    print(
-                        f"   ✅ {match_data['home_team']} {match_data['home_score']}"
-                        f" - {match_data['away_score']} {match_data['away_team']}"
-                        f"  [{match_data['competition']}]"
-                    )
-                else:
-                    print("   ⚠️ Ligne ignorée (extraction échouée)")
-
-        # ── Dédoublonnage ─────────────────────────────────────────────
-        seen = set()
-        unique_matches = []
-        for m in all_matches:
-            key = f"{m['match_id']}_{m['date']}"
-            if key not in seen and m["match_id"]:
-                seen.add(key)
-                unique_matches.append(m)
-
-        print(f"\n✅ {len(unique_matches)} matchs uniques (sur {len(all_matches)} extraits)")
-
-        # ── Tri : du plus récent au plus ancien ───────────────────────
-        MONTH_ORDER = {
-            "January": 1, "February": 2, "March": 3, "April": 4,
-            "May": 5, "June": 6, "July": 7, "August": 8,
-            "September": 9, "October": 10, "November": 11, "December": 12,
-        }
-
-        def sort_key(m):
-            month_str = m["month"].split(",")[0].strip()
-            month_num = MONTH_ORDER.get(month_str, 0)
-            day_m = re.search(r"(\d+)", m["date"])
-            day = int(day_m.group(1)) if day_m else 0
-            return (month_num, day)
-
-        unique_matches.sort(key=sort_key, reverse=True)
-
-        # ── Sauvegarde JSON ───────────────────────────────────────────
-        output = {
-            "team_name": "Fortaleza",
-            "team_id": "6272",
-            "season": "2025",
-            "total_matches": len(unique_matches),
+        # ── Sauvegarde JSON globale ─────────────────────────────────
+        final_output = {
+            "country": TARGET_COUNTRY,
+            "league_name": TARGET_LEAGUE,
+            "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
-            "matches": unique_matches,
+            "teams": output_data,
         }
 
         with open("newdb.json", "w", encoding="utf-8") as f:
-            json.dump(output, f, ensure_ascii=False, indent=2)
+            json.dump(final_output, f, ensure_ascii=False, indent=2)
 
-        print("💾 newdb.json sauvegardé")
+        print("\n💾 newdb.json sauvegardé")
 
-        # ── Stats par compétition ─────────────────────────────────────
-        competitions: dict[str, int] = {}
-        for m in unique_matches:
-            competitions[m["competition"]] = competitions.get(m["competition"], 0) + 1
-
-        print("\n📊 Statistiques par compétition:")
-        for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
-            print(f"   {comp}: {count} match(s)")
-
-        return unique_matches
+        return output_data
 
     except Exception as e:
         print(f"❌ Erreur globale: {e}")
@@ -296,22 +371,25 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER — FORTALEZA RESULTS")
+    print("⚽ ESPN SCRAPER — PREMIER LEAGUE (3 PREMIÈRES ÉQUIPES)")
     print("=" * 60)
 
     results = scrape_with_selenium()
 
     if results:
-        print(f"\n✅ {len(results)} matchs récupérés au total")
-        print("\n📋 Aperçu des 5 premiers matchs:")
-        for i, m in enumerate(results[:5]):
-            print(
-                f"  {i+1}. [{m['date']} — {m['month']}] "
-                f"{m['home_team']} "
-                f"{m['home_score']}-{m['away_score']} "
-                f"{m['away_team']}"
-            )
-            print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
+        total_matches = sum(len(t["matches"]) for t in results)
+        print(f"\n✅ {len(results)} équipe(s) traitée(s), {total_matches} matchs récupérés au total")
+
+        for team_output in results:
+            print(f"\n📋 {team_output['team_name']} — {team_output['total_matches']} matchs")
+            for i, m in enumerate(team_output["matches"][:5]):
+                print(
+                    f"  {i+1}. [{m['date']} — {m['month']}] "
+                    f"{m['home_team']} "
+                    f"{m['home_score']}-{m['away_score']} "
+                    f"{m['away_team']}"
+                )
+                print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

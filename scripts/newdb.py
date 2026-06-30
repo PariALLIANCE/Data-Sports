@@ -17,6 +17,9 @@ TARGET_COUNTRY = "England"
 TARGET_LEAGUE = "England_Premier_League"
 NB_TEAMS = 3
 
+START_SEASON = 2022
+END_SEASON = datetime.now().year  # saison actuelle incluse
+
 
 def setup_driver():
     chrome_options = Options()
@@ -96,7 +99,14 @@ def fetch_target_teams():
     return selected
 
 
-def extract_match_info(match_row, month):
+MONTH_ORDER = {
+    "January": 1, "February": 2, "March": 3, "April": 4,
+    "May": 5, "June": 6, "July": 7, "August": 8,
+    "September": 9, "October": 10, "November": 11, "December": 12,
+}
+
+
+def extract_match_info(match_row, month, season):
     """
     Structure réelle ESPN (6 <td>) :
       [0] Date   → <div data-testid="date">
@@ -107,6 +117,9 @@ def extract_match_info(match_row, month):
       [3] Équipe away    → <div data-testid="awayTeam"><a href="/soccer/team/_/id/ID/slug">
       [4] Résultat       → <span data-testid="result"><a>FT</a>
       [5] Compétition    → <span>...</span>
+
+    `season` correspond à la saison interrogée sur ESPN (paramètre d'URL),
+    utilisée comme valeur de repli si l'année n'est pas détectable dans le texte.
     """
     try:
         cells = match_row.find_elements(By.TAG_NAME, "td")
@@ -171,9 +184,16 @@ def extract_match_info(match_row, month):
         if comp_spans:
             competition = comp_spans[-1].text.strip()
 
+        # ── ANNÉE RÉELLE DU MATCH ────────────────────────────────────
+        # Le bloc "month" ressemble parfois à "August, 2022". On essaie d'en
+        # extraire l'année réelle, sinon on retombe sur la saison interrogée.
+        year_m = re.search(r"(\d{4})", month)
+        match_year = year_m.group(1) if year_m else str(season)
+
         return {
             "date": date,
             "month": month,
+            "year": match_year,
             "home_team": local_team_name,
             "home_team_id": local_team_id,
             "home_logo_url": build_logo_url(local_team_id),
@@ -186,7 +206,7 @@ def extract_match_info(match_row, month):
             "match_id": match_id,
             "result": result,
             "competition": competition,
-            "season": "2025",
+            "season": str(season),
         }
 
     except Exception as e:
@@ -194,14 +214,14 @@ def extract_match_info(match_row, month):
         return None
 
 
-def scrape_team_results(driver, team_name, team_id):
+def scrape_team_results_for_season(driver, team_name, team_id, season):
     """
-    Scrape les résultats d'une équipe ESPN donnée (team_id) pour la saison 2025.
-    Retourne la liste des matchs uniques triés du plus récent au plus ancien.
+    Scrape les résultats d'une équipe ESPN donnée (team_id) pour UNE saison.
+    Retourne la liste des matchs (non dédupliqués entre saisons).
     """
     all_matches = []
 
-    url = f"https://www.espn.com/soccer/team/results/_/id/{team_id}/season/2025"
+    url = f"https://www.espn.com/soccer/team/results/_/id/{team_id}/season/{season}"
     print(f"\n🌐 Accès: {url}")
     driver.get(url)
 
@@ -230,10 +250,10 @@ def scrape_team_results(driver, team_name, team_id):
     if not result_tables:
         result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
 
-    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s)")
+    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s) pour la saison {season}")
 
     if not result_tables:
-        print("❌ Aucun tableau trouvé. Vérifiez le sélecteur ou le chargement JS.")
+        print(f"❌ Aucun tableau trouvé pour la saison {season}.")
         return []
 
     for table in result_tables:
@@ -247,7 +267,7 @@ def scrape_team_results(driver, team_name, team_id):
         print(f"   → {len(rows)} ligne(s) trouvée(s)")
 
         for row in rows:
-            match_data = extract_match_info(row, month)
+            match_data = extract_match_info(row, month, season)
             if match_data:
                 all_matches.append(match_data)
                 print(
@@ -258,30 +278,51 @@ def scrape_team_results(driver, team_name, team_id):
             else:
                 print("   ⚠️ Ligne ignorée (extraction échouée)")
 
-    # ── Dédoublonnage ─────────────────────────────────────────────
+    return all_matches
+
+
+def scrape_team_results_all_seasons(driver, team_name, team_id):
+    """
+    Scrape les résultats d'une équipe ESPN pour toutes les saisons de
+    START_SEASON à END_SEASON, déduplique sur l'ensemble des saisons,
+    puis trie du plus récent au plus ancien.
+    """
+    combined_matches = []
+
+    for season in range(START_SEASON, END_SEASON + 1):
+        print(f"\n📆 Saison {season} — {team_name}")
+        try:
+            season_matches = scrape_team_results_for_season(driver, team_name, team_id, season)
+        except Exception as e:
+            print(f"❌ Erreur lors du scraping de {team_name} (saison {season}): {e}")
+            import traceback
+            traceback.print_exc()
+            season_matches = []
+
+        combined_matches.extend(season_matches)
+
+    # ── Dédoublonnage sur l'ensemble des saisons ───────────────────
     seen = set()
     unique_matches = []
-    for m in all_matches:
-        key = f"{m['match_id']}_{m['date']}"
-        if key not in seen and m["match_id"]:
+    for m in combined_matches:
+        key = m["match_id"] if m["match_id"] else f"{m['home_team']}_{m['away_team']}_{m['date']}_{m['month']}"
+        if key not in seen:
             seen.add(key)
             unique_matches.append(m)
 
-    print(f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} (sur {len(all_matches)} extraits)")
+    print(
+        f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} "
+        f"(sur {len(combined_matches)} extraits, saisons {START_SEASON}-{END_SEASON})"
+    )
 
-    # ── Tri : du plus récent au plus ancien ───────────────────────
-    MONTH_ORDER = {
-        "January": 1, "February": 2, "March": 3, "April": 4,
-        "May": 5, "June": 6, "July": 7, "August": 8,
-        "September": 9, "October": 10, "November": 11, "December": 12,
-    }
-
+    # ── Tri : du plus récent au plus ancien (année > mois > jour) ──
     def sort_key(m):
+        year = int(m["year"]) if m["year"].isdigit() else 0
         month_str = m["month"].split(",")[0].strip()
         month_num = MONTH_ORDER.get(month_str, 0)
         day_m = re.search(r"(\d+)", m["date"])
         day = int(day_m.group(1)) if day_m else 0
-        return (month_num, day)
+        return (year, month_num, day)
 
     unique_matches.sort(key=sort_key, reverse=True)
 
@@ -308,15 +349,10 @@ def scrape_with_selenium():
 
             print("\n" + "=" * 60)
             print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
+            print(f"📆 Saisons: {START_SEASON} → {END_SEASON}")
             print("=" * 60)
 
-            try:
-                unique_matches = scrape_team_results(driver, team_name, team_id)
-            except Exception as e:
-                print(f"❌ Erreur lors du scraping de {team_name}: {e}")
-                import traceback
-                traceback.print_exc()
-                unique_matches = []
+            unique_matches = scrape_team_results_all_seasons(driver, team_name, team_id)
 
             team_output = {
                 "team_name": team_name,
@@ -325,7 +361,7 @@ def scrape_with_selenium():
                 "league_id": team.get("league_id", ""),
                 "league_name": team.get("league_name", ""),
                 "country": TARGET_COUNTRY,
-                "season": "2025",
+                "seasons": f"{START_SEASON}-{END_SEASON}",
                 "total_matches": len(unique_matches),
                 "scraped_at": datetime.now().isoformat(),
                 "matches": unique_matches,
@@ -346,6 +382,7 @@ def scrape_with_selenium():
         final_output = {
             "country": TARGET_COUNTRY,
             "league_name": TARGET_LEAGUE,
+            "seasons": f"{START_SEASON}-{END_SEASON}",
             "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
             "teams": output_data,
@@ -371,7 +408,8 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER — PREMIER LEAGUE (3 PREMIÈRES ÉQUIPES)")
+    print(f"⚽ ESPN SCRAPER — PREMIER LEAGUE ({NB_TEAMS} PREMIÈRES ÉQUIPES)")
+    print(f"📆 Saisons {START_SEASON} à {END_SEASON}, sans doublons")
     print("=" * 60)
 
     results = scrape_with_selenium()

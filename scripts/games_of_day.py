@@ -188,6 +188,30 @@ def build_logo_url(team_id, size=500):
     return f"https://a.espncdn.com/i/teamlogos/soccer/{size}/{team_id}.png"
 
 # ===============================================================
+# FORME EN CHAMPIONNAT + JOURNÉE ACTUELLE (à partir du classement)
+# ===============================================================
+
+def compute_form_and_matchday(standings_entry):
+    """
+    À partir d'une entrée standings (won/drawn/lost/played), retourne :
+    - form : chaîne "V-N-D" (victoires-nuls-défaites) en championnat
+    - matchday : journée actuelle = matchs joués + 1
+    Retourne (None, None) si l'entrée est absente.
+    """
+    if not standings_entry:
+        return None, None
+
+    won    = standings_entry.get("won", 0)
+    drawn  = standings_entry.get("drawn", 0)
+    lost   = standings_entry.get("lost", 0)
+    played = standings_entry.get("played", 0)
+
+    form     = f"{won}-{drawn}-{lost}"
+    matchday = played + 1
+
+    return form, matchday
+
+# ===============================================================
 # EXTRACTION LOGOS DEPUIS LA PAGE DU MATCH
 # ===============================================================
 
@@ -914,6 +938,10 @@ try:
                         print(f"  ℹ️  Standings complets non trouvés dans Standings.json, "
                               f"utilisation du tableau ESPN ({len(full_standings)} équipes)")
 
+                # ── Forme en championnat + journée actuelle ──
+                form_home, matchday_home = compute_form_and_matchday(standings_info.get("home"))
+                form_away, matchday_away = compute_form_and_matchday(standings_info.get("away"))
+
                 # ── H2H ──
                 h2h = extract_h2h(match_soup, team_id_home, team_id_away)
 
@@ -951,6 +979,8 @@ try:
                         "logo":      logo_home,
                         "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_home}" if team_id_home else None,
                         "standings": standings_info.get("home"),
+                        "form":      form_home,        # ← NOUVEAU : forme V-N-D en championnat
+                        "matchday":  matchday_home,     # ← NOUVEAU : journée actuelle (joués + 1)
                         "last_five": last5_home,
                     },
                     "away": {
@@ -960,6 +990,8 @@ try:
                         "logo":      logo_away,
                         "url":       f"https://www.espn.com/soccer/team/_/id/{team_id_away}" if team_id_away else None,
                         "standings": standings_info.get("away"),
+                        "form":      form_away,        # ← NOUVEAU : forme V-N-D en championnat
+                        "matchday":  matchday_away,     # ← NOUVEAU : journée actuelle (joués + 1)
                         "last_five": last5_away,
                     },
 
@@ -971,7 +1003,7 @@ try:
 
                     "stats":          match_stats,
                     "h2h":            h2h,
-                    "full_standings": full_standings,   # ← NOUVEAU : classement complet de la ligue
+                    "full_standings": full_standings,
                 }
 
                 odds_str = f"✅ {ml['home']} / {ml['draw']} / {ml['away']}" if ml else "ℹ️  pas de cotes"
@@ -982,7 +1014,8 @@ try:
                     f"→#{standings_info['home']['position_if_win'] if standings_info['home'] else '?'}"
                 )
                 fs_str   = f"📋{len(full_standings) if full_standings else 0} équipes"
-                print(f"  {team1} vs {team2} [{time_ci}] → {odds_str} | {h2h_str} | L5:{l5_str} | {st_str} | {fs_str}")
+                form_str = f"📈 {form_home or '?'} (J{matchday_home or '?'}) vs {form_away or '?'} (J{matchday_away or '?'})"
+                print(f"  {team1} vs {team2} [{time_ci}] → {odds_str} | {h2h_str} | L5:{l5_str} | {st_str} | {fs_str} | {form_str}")
                 time.sleep(0.5)
 
     # ==============================================================
@@ -1035,7 +1068,7 @@ try:
                 entry["home_score"]     = d.get("home_score")
                 entry["away_score"]     = d.get("away_score")
                 entry["status"]         = d.get("status")
-                entry["odds"]           = d.get("odds", {           # ← NOUVEAU
+                entry["odds"]           = d.get("odds", {
                     "home": None,
                     "away": None,
                     "draw": None,

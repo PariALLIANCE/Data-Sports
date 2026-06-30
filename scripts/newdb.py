@@ -5,7 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
+from bs4 import BeautifulSoup
 import json
 import time
 import re
@@ -207,6 +208,7 @@ def extract_match_info(match_row, month, season):
             "result": result,
             "competition": competition,
             "season": str(season),
+            "stats": {},  # ← rempli plus tard lors de la phase d'enrichissement
         }
 
     except Exception as e:
@@ -329,6 +331,192 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
     return unique_matches
 
 
+# ===============================================================
+# STATISTIQUES DE MATCH (structure Prism ESPN, avec fallbacks)
+# ===============================================================
+
+def extract_match_stats_prism(soup):
+    """
+    Extrait les statistiques du match depuis la nouvelle structure
+    Prism d'ESPN (section data-testid="prism-LayoutCard" contenant "stat"
+    dans son titre h2).
+    """
+    stats = {}
+    try:
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "stat" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return stats
+
+        stat_blocks = section.select("div.THHyw")
+        for block in stat_blocks:
+            paragraphs = block.select("div.jaZjJ p")
+            if len(paragraphs) < 3:
+                continue
+
+            home_span = paragraphs[0].find("span")
+            home_val = home_span.get_text(strip=True) if home_span else paragraphs[0].get_text(strip=True)
+
+            label = paragraphs[1].get_text(strip=True)
+
+            away_span = paragraphs[2].find("span")
+            away_val = away_span.get_text(strip=True) if away_span else paragraphs[2].get_text(strip=True)
+
+            if label:
+                stats[label] = {"home": home_val, "away": away_val}
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur stats prism : {e}")
+
+    return stats
+
+
+def extract_match_stats(soup):
+    """
+    Extrait les statistiques du match avec plusieurs méthodes de repli,
+    pour couvrir les différentes versions de l'UI ESPN.
+    """
+    # Méthode 1 : nouvelle UI Prism
+    stats = extract_match_stats_prism(soup)
+    if stats:
+        return stats
+
+    # Méthode 2 : StatCellContent (ancienne UI)
+    try:
+        stat_rows = soup.select("div.StatCellContent")
+        if stat_rows:
+            values = [el.get_text(strip=True) for el in stat_rows]
+            i = 0
+            while i + 2 < len(values):
+                home_val = values[i]
+                label = values[i + 1]
+                away_val = values[i + 2]
+                if label and not label.replace(" ", "").isdigit():
+                    stats[label] = {"home": home_val, "away": away_val}
+                    i += 3
+                else:
+                    i += 1
+            if stats:
+                return stats
+    except Exception:
+        pass
+
+    # Méthode 3 : GameStat
+    try:
+        game_stat_rows = soup.select("div.GameStat")
+        if game_stat_rows:
+            for row in game_stat_rows:
+                cols = row.select("div")
+                texts = [c.get_text(strip=True) for c in cols if c.get_text(strip=True)]
+                if len(texts) >= 3:
+                    stats[texts[1]] = {"home": texts[0], "away": texts[2]}
+            if stats:
+                return stats
+    except Exception:
+        pass
+
+    return {}
+
+
+def get_match_stats_selenium(driver, game_id):
+    """
+    Charge la page du match via Selenium (gameId) et retourne les
+    statistiques extraites (méthode Prism en priorité, puis fallback
+    via sélecteurs CSS avancés).
+    """
+    url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
+    try:
+        driver.get(url)
+        WebDriverWait(driver, 12).until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']")
+            )
+        )
+    except TimeoutException:
+        pass
+    except WebDriverException as e:
+        print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
+        return {}
+
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    stats = extract_match_stats_prism(soup)
+    if stats:
+        return stats
+
+    try:
+        stats_section = driver.find_element(
+            By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
+        )
+        rows = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+        for row in rows:
+            try:
+                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                values = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                if name_tag and len(values) >= 2:
+                    stats[name_tag.text.strip()] = {
+                        "home": values[0].text.strip(),
+                        "away": values[1].text.strip(),
+                    }
+            except NoSuchElementException:
+                continue
+        time.sleep(0.6)
+        return stats
+    except NoSuchElementException:
+        return {}
+    except Exception as e:
+        print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
+        return {}
+
+
+def enrich_matches_with_stats(driver, all_matches_by_team):
+    """
+    Phase d'enrichissement : visite chaque match unique (par match_id)
+    une seule fois pour récupérer ses statistiques, puis injecte le
+    résultat dans toutes les occurrences de ce match (au cas où deux
+    équipes suivies se sont affrontées, le match apparaît deux fois).
+    """
+    # ── Construction de la liste des game_id uniques ───────────────
+    unique_game_ids = []
+    seen_ids = set()
+    for matches in all_matches_by_team.values():
+        for m in matches:
+            gid = m.get("match_id")
+            if gid and gid not in seen_ids:
+                seen_ids.add(gid)
+                unique_game_ids.append(gid)
+
+    total = len(unique_game_ids)
+    print("\n" + "=" * 60)
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques ({total} match(s) unique(s))")
+    print("=" * 60)
+
+    stats_by_game_id = {}
+    for idx, gid in enumerate(unique_game_ids, 1):
+        print(f"\n  [{idx}/{total}] gameId={gid}")
+        try:
+            stats = get_match_stats_selenium(driver, gid)
+        except Exception as e:
+            print(f"    ⚠️ Erreur stats gameId={gid}: {e}")
+            stats = {}
+        stats_by_game_id[gid] = stats
+        print(f"    📊 {len(stats)} statistique(s) récupérée(s)")
+        time.sleep(0.8)
+
+    # ── Injection dans tous les matchs (toutes équipes confondues) ──
+    for matches in all_matches_by_team.values():
+        for m in matches:
+            gid = m.get("match_id")
+            if gid and gid in stats_by_game_id:
+                m["stats"] = stats_by_game_id[gid]
+
+    print("\n  ✅ Injection des statistiques terminée")
+
+
 def scrape_with_selenium():
     driver = None
     output_data = []
@@ -343,6 +531,9 @@ def scrape_with_selenium():
         driver = setup_driver()
         print("✅ Navigateur démarré")
 
+        matches_by_team = {}  # team_id -> liste de matchs (pour la phase d'enrichissement)
+        team_meta = {}        # team_id -> métadonnées de l'équipe
+
         for team in teams:
             team_name = team.get("team", "")
             team_id = team.get("team_id", "")
@@ -353,6 +544,17 @@ def scrape_with_selenium():
             print("=" * 60)
 
             unique_matches = scrape_team_results_all_seasons(driver, team_name, team_id)
+
+            matches_by_team[team_id] = unique_matches
+            team_meta[team_id] = team
+
+        # ── Phase d'enrichissement : statistiques de chaque match ──
+        enrich_matches_with_stats(driver, matches_by_team)
+
+        # ── Construction de la sortie finale ────────────────────────
+        for team_id, unique_matches in matches_by_team.items():
+            team = team_meta[team_id]
+            team_name = team.get("team", "")
 
             team_output = {
                 "team_name": team_name,
@@ -409,7 +611,7 @@ def scrape_with_selenium():
 def main():
     print("=" * 60)
     print(f"⚽ ESPN SCRAPER — PREMIER LEAGUE ({NB_TEAMS} PREMIÈRES ÉQUIPES)")
-    print(f"📆 Saisons {START_SEASON} à {END_SEASON}, sans doublons")
+    print(f"📆 Saisons {START_SEASON} à {END_SEASON}, sans doublons, avec statistiques")
     print("=" * 60)
 
     results = scrape_with_selenium()
@@ -428,6 +630,7 @@ def main():
                     f"{m['away_team']}"
                 )
                 print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
+                print(f"       📊 {len(m['stats'])} statistique(s)")
     else:
         print("\n❌ Aucune donnée récupérée")
 

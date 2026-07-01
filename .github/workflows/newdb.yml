@@ -10,28 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium webdriver-manager
-      
+          pip install selenium webdriver-manager beautifulsoup4
+
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 'stable'
-      
+
       - name: Show debug info
         run: |
           echo "Python version:"
@@ -39,15 +39,15 @@ jobs:
           echo "Chrome version:"
           google-chrome --version || echo "Chrome not found"
           echo "Installed packages:"
-          pip list | grep -E "selenium|webdriver"
-      
+          pip list | grep -E "selenium|webdriver|beautifulsoup4|bs4"
+
       - name: Run scraper
         run: |
           python scripts/newdb.py
         env:
           DISPLAY: ':99'
           PYTHONUNBUFFERED: 1
-      
+
       - name: Upload debug files (if failed)
         if: failure()
         uses: actions/upload-artifact@v4
@@ -59,17 +59,17 @@ jobs:
             page_screenshot.png
             error_screenshot.png
           retention-days: 7
-      
+
       - name: Commit and push results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
           if [ -f "newdb.json" ]; then
             git add newdb.json
             if ! git diff --staged --quiet; then
               TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-              git commit -m "🤖 Update Fortaleza results - $TIMESTAMP [skip ci]"
+              git commit -m "🤖 Update Premier League teams results - $TIMESTAMP [skip ci]"
               git push
               echo "✅ newdb.json mis à jour"
             else

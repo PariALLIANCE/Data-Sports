@@ -16,7 +16,7 @@ from datetime import datetime
 TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/main/data/football/teams/football_teams.json"
 TARGET_COUNTRY = "England"
 TARGET_LEAGUE = "England_Premier_League"
-NB_TEAMS = 1
+NB_TEAMS = 3
 
 START_SEASON = 2022
 END_SEASON = datetime.now().year  # saison actuelle incluse
@@ -75,15 +75,6 @@ def build_logo_url(team_id):
     if not team_id:
         return ""
     return f"https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
-
-
-def season_label(season):
-    """
-    Formate une saison ESPN (paramètre d'URL, ex: 2022) en libellé réel
-    de saison sportive 'YYYY/YYYY+1'.
-    Ex: 2022 → '2022/2023', 2025 → '2025/2026'.
-    """
-    return f"{season}/{season + 1}"
 
 
 def fetch_target_teams():
@@ -216,9 +207,7 @@ def extract_match_info(match_row, month, season):
             "match_id": match_id,
             "result": result,
             "competition": competition,
-            "season": season_label(season),
-            "matchday": None,  # ← rempli plus tard lors de la phase d'enrichissement
-            "odds": {"home": None, "away": None, "draw": None},  # ← rempli plus tard
+            "season": str(season),
             "stats": {},  # ← rempli plus tard lors de la phase d'enrichissement
         }
 
@@ -263,10 +252,10 @@ def scrape_team_results_for_season(driver, team_name, team_id, season):
     if not result_tables:
         result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
 
-    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s) pour la saison {season_label(season)}")
+    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s) pour la saison {season}")
 
     if not result_tables:
-        print(f"❌ Aucun tableau trouvé pour la saison {season_label(season)}.")
+        print(f"❌ Aucun tableau trouvé pour la saison {season}.")
         return []
 
     for table in result_tables:
@@ -303,11 +292,11 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
     combined_matches = []
 
     for season in range(START_SEASON, END_SEASON + 1):
-        print(f"\n📆 Saison {season_label(season)} — {team_name}")
+        print(f"\n📆 Saison {season} — {team_name}")
         try:
             season_matches = scrape_team_results_for_season(driver, team_name, team_id, season)
         except Exception as e:
-            print(f"❌ Erreur lors du scraping de {team_name} (saison {season_label(season)}): {e}")
+            print(f"❌ Erreur lors du scraping de {team_name} (saison {season}): {e}")
             import traceback
             traceback.print_exc()
             season_matches = []
@@ -325,7 +314,7 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
 
     print(
         f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} "
-        f"(sur {len(combined_matches)} extraits, saisons {season_label(START_SEASON)}-{season_label(END_SEASON)})"
+        f"(sur {len(combined_matches)} extraits, saisons {START_SEASON}-{END_SEASON})"
     )
 
     # ── Tri : du plus récent au plus ancien (année > mois > jour) ──
@@ -434,206 +423,13 @@ def extract_match_stats(soup):
     return {}
 
 
-# ===============================================================
-# COTES ESPN (moneyline)
-# ===============================================================
-
-def us_to_decimal(val):
-    if not val:
-        return None
-    try:
-        n = int(val.replace("+", "").strip())
-        return round(1 + (n / 100), 2) if n > 0 else round(1 + (100 / abs(n)), 2)
-    except Exception:
-        return None
-
-
-def extract_ml_odds(soup):
-    try:
-        cells = soup.find_all("div", {"data-testid": "OddsCell"})
-        if len(cells) < 7:
-            return None
-
-        def read(cell):
-            return cell.get_text(strip=True) or None
-
-        def is_valid(val):
-            if not val:
-                return False
-            try:
-                int(val.replace("+", "").replace("-", ""))
-                return True
-            except Exception:
-                return False
-
-        home_us = read(cells[0])
-        away_us = read(cells[3])
-        draw_us = read(cells[6])
-
-        if not all(is_valid(v) for v in [home_us, away_us, draw_us]):
-            return None
-
-        return {
-            "home": us_to_decimal(home_us),
-            "away": us_to_decimal(away_us),
-            "draw": us_to_decimal(draw_us),
-        }
-    except Exception as e:
-        print(f"  ⚠️ Erreur cotes : {e}")
-        return None
-
-
-# ===============================================================
-# CLASSEMENT / JOURNÉE (matchday) — depuis la page du match
-# ===============================================================
-
-def extract_standings_for_match(soup, team_id_home, team_id_away):
+def get_match_stats_selenium(driver, game_id):
     """
-    Retourne un dict avec les infos des deux équipes + le tableau complet :
-    {
-        "home": { position_current, position_if_win, played, won, drawn, lost, gd, points },
-        "away": { ... },
-        "full_table": [ { position, team_id, team, played, won, drawn, lost, gd, points }, ... ]
-    }
-    """
-    result = {"home": None, "away": None, "full_table": []}
-
-    def safe_int(s):
-        try:
-            return int(s.replace("+", "").replace("−", "-").strip())
-        except Exception:
-            return 0
-
-    try:
-        all_rows = soup.select("tr.Table__TR.Table__TR--sm")
-        if not all_rows:
-            return result
-
-        table = []
-        for idx, row in enumerate(all_rows):
-            uid_td = row.select_one("td a[data-clubhouse-uid]")
-            if not uid_td:
-                continue
-            uid = uid_td.get("data-clubhouse-uid", "")
-            m = re.search(r"t:(\d+)", uid)
-            if not m:
-                continue
-            tid = m.group(1)
-
-            name_span = uid_td.select_one("span.Standings__TeamName")
-            team_name = name_span.get_text(strip=True) if name_span else uid_td.get_text(strip=True)
-
-            tds = row.select("td")
-            if len(tds) < 7:
-                continue
-
-            texts = [td.get_text(strip=True) for td in tds]
-            table.append({
-                "team_id": tid,
-                "team": team_name,
-                "played": safe_int(texts[1]),
-                "won": safe_int(texts[2]),
-                "drawn": safe_int(texts[3]),
-                "lost": safe_int(texts[4]),
-                "gd": safe_int(texts[5]),
-                "points": safe_int(texts[6]),
-            })
-
-        if not table:
-            return result
-
-        for pos_idx, entry in enumerate(table):
-            entry["position"] = pos_idx + 1
-
-        result["full_table"] = [
-            {
-                "position": e["position"],
-                "team_id": e["team_id"],
-                "team": e["team"],
-                "played": e["played"],
-                "won": e["won"],
-                "drawn": e["drawn"],
-                "lost": e["lost"],
-                "gd": e["gd"],
-                "points": e["points"],
-            }
-            for e in table
-        ]
-
-        def projected_position(team_id, table_snapshot):
-            proj_points = {}
-            for e in table_snapshot:
-                if e["team_id"] == team_id:
-                    proj_points[e["team_id"]] = e["points"] + 3
-                else:
-                    proj_points[e["team_id"]] = e["points"]
-            my_pts = proj_points[team_id]
-            better = sum(1 for tid, pts in proj_points.items() if pts > my_pts)
-            return better + 1
-
-        for entry in table:
-            if entry["team_id"] == team_id_home:
-                result["home"] = {
-                    "position_current": entry["position"],
-                    "position_if_win": projected_position(team_id_home, table),
-                    "played": entry["played"],
-                    "won": entry["won"],
-                    "drawn": entry["drawn"],
-                    "lost": entry["lost"],
-                    "gd": entry["gd"],
-                    "points": entry["points"],
-                }
-            if entry["team_id"] == team_id_away:
-                result["away"] = {
-                    "position_current": entry["position"],
-                    "position_if_win": projected_position(team_id_away, table),
-                    "played": entry["played"],
-                    "won": entry["won"],
-                    "drawn": entry["drawn"],
-                    "lost": entry["lost"],
-                    "gd": entry["gd"],
-                    "points": entry["points"],
-                }
-
-    except Exception as e:
-        print(f"  ⚠️ Erreur standings extraction : {e}")
-
-    return result
-
-
-def compute_form_and_matchday(standings_entry):
-    """
-    À partir d'une entrée standings (won/drawn/lost/played), retourne :
-    - form : chaîne "V-N-D" (victoires-nuls-défaites) en championnat
-    - matchday : journée actuelle = matchs joués + 1
-    Retourne (None, None) si l'entrée est absente.
-    """
-    if not standings_entry:
-        return None, None
-
-    won = standings_entry.get("won", 0)
-    drawn = standings_entry.get("drawn", 0)
-    lost = standings_entry.get("lost", 0)
-    played = standings_entry.get("played", 0)
-
-    form = f"{won}-{drawn}-{lost}"
-    matchday = played + 1
-
-    return form, matchday
-
-
-def get_match_extra_data_selenium(driver, game_id, home_team_id, away_team_id):
-    """
-    Charge la page du match (gameId) une seule fois et retourne :
-      - stats     : dict de statistiques (Prism en priorité, fallback CSS avancé)
-      - odds      : dict {"home": .., "away": .., "draw": ..} (cotes moneyline)
-      - matchday  : int ou None — journée du match, déterminée à partir des matchs
-                    joués (classement) de chaque équipe sur la page ; on retient
-                    la valeur la plus élevée entre l'équipe locale et l'équipe visiteuse.
+    Charge la page du match via Selenium (gameId) et retourne les
+    statistiques extraites (méthode Prism en priorité, puis fallback
+    via sélecteurs CSS avancés).
     """
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
-    empty_odds = {"home": None, "away": None, "draw": None}
-
     try:
         driver.get(url)
         WebDriverWait(driver, 12).until(
@@ -644,93 +440,81 @@ def get_match_extra_data_selenium(driver, game_id, home_team_id, away_team_id):
     except TimeoutException:
         pass
     except WebDriverException as e:
-        print(f"    ⚠️  WebDriver erreur données ({game_id}) : {e}")
-        return {}, empty_odds, None
+        print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
+        return {}
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
-
-    # ── Statistiques (Prism en priorité, fallback CSS avancé) ──────
     stats = extract_match_stats_prism(soup)
-    if not stats:
-        try:
-            stats_section = driver.find_element(
-                By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
-            )
-            rows = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
-            for row in rows:
-                try:
-                    name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
-                    values = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
-                    if name_tag and len(values) >= 2:
-                        stats[name_tag.text.strip()] = {
-                            "home": values[0].text.strip(),
-                            "away": values[1].text.strip(),
-                        }
-                except NoSuchElementException:
-                    continue
-        except NoSuchElementException:
-            pass
-        except Exception as e:
-            print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
+    if stats:
+        return stats
 
-    # ── Cotes moneyline ──────────────────────────────────────────
-    odds = extract_ml_odds(soup) or dict(empty_odds)
-
-    # ── Journée (matchday) via le classement présent sur la page ──
-    standings_info = extract_standings_for_match(soup, home_team_id, away_team_id)
-    _, matchday_home = compute_form_and_matchday(standings_info.get("home"))
-    _, matchday_away = compute_form_and_matchday(standings_info.get("away"))
-
-    matchday_candidates = [md for md in (matchday_home, matchday_away) if md is not None]
-    matchday = max(matchday_candidates) if matchday_candidates else None
-
-    time.sleep(0.6)
-    return stats, odds, matchday
+    try:
+        stats_section = driver.find_element(
+            By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
+        )
+        rows = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+        for row in rows:
+            try:
+                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                values = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                if name_tag and len(values) >= 2:
+                    stats[name_tag.text.strip()] = {
+                        "home": values[0].text.strip(),
+                        "away": values[1].text.strip(),
+                    }
+            except NoSuchElementException:
+                continue
+        time.sleep(0.6)
+        return stats
+    except NoSuchElementException:
+        return {}
+    except Exception as e:
+        print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
+        return {}
 
 
 def enrich_matches_with_stats(driver, all_matches_by_team):
     """
     Phase d'enrichissement : visite chaque match unique (par match_id)
-    une seule fois pour récupérer ses statistiques, ses cotes et sa
-    journée (matchday), puis injecte le résultat dans toutes les
-    occurrences de ce match (au cas où deux équipes suivies se sont
-    affrontées, le match apparaît deux fois).
+    une seule fois pour récupérer ses statistiques, puis injecte le
+    résultat dans toutes les occurrences de ce match (au cas où deux
+    équipes suivies se sont affrontées, le match apparaît deux fois).
     """
-    # ── Construction de la liste des matchs uniques (avec IDs équipes) ──
-    unique_matches_map = {}
+    # ── Construction de la liste des game_id uniques ───────────────
+    unique_game_ids = []
+    seen_ids = set()
     for matches in all_matches_by_team.values():
         for m in matches:
             gid = m.get("match_id")
-            if gid and gid not in unique_matches_map:
-                unique_matches_map[gid] = (m.get("home_team_id"), m.get("away_team_id"))
+            if gid and gid not in seen_ids:
+                seen_ids.add(gid)
+                unique_game_ids.append(gid)
 
-    total = len(unique_matches_map)
+    total = len(unique_game_ids)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, cotes & journée ({total} match(s) unique(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques ({total} match(s) unique(s))")
     print("=" * 60)
 
-    data_by_game_id = {}
-    for idx, (gid, (home_id, away_id)) in enumerate(unique_matches_map.items(), 1):
+    stats_by_game_id = {}
+    for idx, gid in enumerate(unique_game_ids, 1):
         print(f"\n  [{idx}/{total}] gameId={gid}")
         try:
-            stats, odds, matchday = get_match_extra_data_selenium(driver, gid, home_id, away_id)
+            stats = get_match_stats_selenium(driver, gid)
         except Exception as e:
-            print(f"    ⚠️ Erreur données gameId={gid}: {e}")
-            stats, odds, matchday = {}, {"home": None, "away": None, "draw": None}, None
-        data_by_game_id[gid] = {"stats": stats, "odds": odds, "matchday": matchday}
-        print(f"    📊 {len(stats)} statistique(s)  |  💰 {odds}  |  📅 journée={matchday}")
+            print(f"    ⚠️ Erreur stats gameId={gid}: {e}")
+            stats = {}
+        stats_by_game_id[gid] = stats
+        print(f"    📊 {len(stats)} statistique(s) récupérée(s)")
+        time.sleep(0.8)
 
     # ── Injection dans tous les matchs (toutes équipes confondues) ──
     for matches in all_matches_by_team.values():
         for m in matches:
             gid = m.get("match_id")
-            if gid and gid in data_by_game_id:
-                d = data_by_game_id[gid]
-                m["stats"] = d["stats"]
-                m["odds"] = d["odds"]
-                m["matchday"] = d["matchday"]
+            if gid and gid in stats_by_game_id:
+                m["stats"] = stats_by_game_id[gid]
 
-    print("\n  ✅ Injection des statistiques, cotes et journées terminée")
+    print("\n  ✅ Injection des statistiques terminée")
 
 
 def scrape_with_selenium():
@@ -756,7 +540,7 @@ def scrape_with_selenium():
 
             print("\n" + "=" * 60)
             print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
-            print(f"📆 Saisons: {season_label(START_SEASON)} → {season_label(END_SEASON)}")
+            print(f"📆 Saisons: {START_SEASON} → {END_SEASON}")
             print("=" * 60)
 
             unique_matches = scrape_team_results_all_seasons(driver, team_name, team_id)
@@ -764,7 +548,7 @@ def scrape_with_selenium():
             matches_by_team[team_id] = unique_matches
             team_meta[team_id] = team
 
-        # ── Phase d'enrichissement : statistiques, cotes et journées ──
+        # ── Phase d'enrichissement : statistiques de chaque match ──
         enrich_matches_with_stats(driver, matches_by_team)
 
         # ── Construction de la sortie finale ────────────────────────
@@ -779,7 +563,7 @@ def scrape_with_selenium():
                 "league_id": team.get("league_id", ""),
                 "league_name": team.get("league_name", ""),
                 "country": TARGET_COUNTRY,
-                "seasons": f"{season_label(START_SEASON)}-{season_label(END_SEASON)}",
+                "seasons": f"{START_SEASON}-{END_SEASON}",
                 "total_matches": len(unique_matches),
                 "scraped_at": datetime.now().isoformat(),
                 "matches": unique_matches,
@@ -800,7 +584,7 @@ def scrape_with_selenium():
         final_output = {
             "country": TARGET_COUNTRY,
             "league_name": TARGET_LEAGUE,
-            "seasons": f"{season_label(START_SEASON)}-{season_label(END_SEASON)}",
+            "seasons": f"{START_SEASON}-{END_SEASON}",
             "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
             "teams": output_data,
@@ -827,7 +611,7 @@ def scrape_with_selenium():
 def main():
     print("=" * 60)
     print(f"⚽ ESPN SCRAPER — PREMIER LEAGUE ({NB_TEAMS} PREMIÈRES ÉQUIPES)")
-    print(f"📆 Saisons {season_label(START_SEASON)} à {season_label(END_SEASON)}, sans doublons, avec statistiques, cotes et journée")
+    print(f"📆 Saisons {START_SEASON} à {END_SEASON}, sans doublons, avec statistiques")
     print("=" * 60)
 
     results = scrape_with_selenium()
@@ -846,7 +630,7 @@ def main():
                     f"{m['away_team']}"
                 )
                 print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
-                print(f"       📊 {len(m['stats'])} statistique(s)  |  📅 Journée {m['matchday']}  |  💰 {m['odds']}")
+                print(f"       📊 {len(m['stats'])} statistique(s)")
     else:
         print("\n❌ Aucune donnée récupérée")
 

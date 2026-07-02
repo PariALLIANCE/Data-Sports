@@ -107,6 +107,27 @@ MONTH_ORDER = {
 }
 
 
+def format_season(season):
+    """
+    Convertit une saison ESPN (année de départ, ex: 2022) en libellé
+    "YYYY/YYYY+1". Ex: 2022 → "2022/2023", 2025 → "2025/2026".
+    """
+    season = int(season)
+    return f"{season}/{season + 1}"
+
+
+def target_league_label():
+    """
+    Dérive le libellé de compétition ESPN correspondant à TARGET_LEAGUE
+    (ex: "England_Premier_League" → "Premier League"). Utilisé pour
+    repérer les matchs de championnat lors du calcul de la journée.
+    """
+    parts = TARGET_LEAGUE.split("_")
+    if len(parts) > 1 and parts[0] == TARGET_COUNTRY:
+        parts = parts[1:]
+    return " ".join(parts)
+
+
 def extract_match_info(match_row, month, season):
     """
     Structure réelle ESPN (6 <td>) :
@@ -207,7 +228,9 @@ def extract_match_info(match_row, month, season):
             "match_id": match_id,
             "result": result,
             "competition": competition,
-            "season": str(season),
+            "season": format_season(season),
+            "matchday": None,  # ← rempli plus tard par compute_matchdays_for_team
+            "odds": {"home": None, "away": None, "draw": None},  # ← rempli lors de l'enrichissement
             "stats": {},  # ← rempli plus tard lors de la phase d'enrichissement
         }
 
@@ -283,11 +306,44 @@ def scrape_team_results_for_season(driver, team_name, team_id, season):
     return all_matches
 
 
+def compute_matchdays_for_team(matches):
+    """
+    Calcule la journée (matchday) de championnat pour chaque match d'une
+    équipe, en se basant sur l'ordre chronologique croissant des matchs
+    de championnat (compétition == ligue ciblée), saison par saison.
+    Les matchs hors championnat (coupes, C1, etc.) reçoivent matchday = None.
+    """
+    league_label = target_league_label().lower()
+
+    def sort_key_asc(m):
+        year = int(m["year"]) if m["year"].isdigit() else 0
+        month_str = m["month"].split(",")[0].strip()
+        month_num = MONTH_ORDER.get(month_str, 0)
+        day_m = re.search(r"(\d+)", m["date"])
+        day = int(day_m.group(1)) if day_m else 0
+        return (year, month_num, day)
+
+    matches_asc = sorted(matches, key=sort_key_asc)
+
+    counters = {}  # saison (ex: "2022/2023") → compteur de journées
+    for m in matches_asc:
+        season_key = m.get("season")
+        competition = (m.get("competition") or "").lower()
+        if league_label in competition:
+            counters[season_key] = counters.get(season_key, 0) + 1
+            m["matchday"] = counters[season_key]
+        else:
+            m["matchday"] = None
+
+    return matches
+
+
 def scrape_team_results_all_seasons(driver, team_name, team_id):
     """
     Scrape les résultats d'une équipe ESPN pour toutes les saisons de
     START_SEASON à END_SEASON, déduplique sur l'ensemble des saisons,
-    puis trie du plus récent au plus ancien.
+    trie du plus récent au plus ancien, puis calcule la journée de
+    championnat de chaque match.
     """
     combined_matches = []
 
@@ -314,7 +370,7 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
 
     print(
         f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} "
-        f"(sur {len(combined_matches)} extraits, saisons {START_SEASON}-{END_SEASON})"
+        f"(sur {len(combined_matches)} extraits, saisons {format_season(START_SEASON)}-{format_season(END_SEASON)})"
     )
 
     # ── Tri : du plus récent au plus ancien (année > mois > jour) ──
@@ -327,6 +383,9 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
         return (year, month_num, day)
 
     unique_matches.sort(key=sort_key, reverse=True)
+
+    # ── Calcul des journées de championnat (matchday) ──────────────
+    unique_matches = compute_matchdays_for_team(unique_matches)
 
     return unique_matches
 
@@ -423,11 +482,71 @@ def extract_match_stats(soup):
     return {}
 
 
-def get_match_stats_selenium(driver, game_id):
+# ===============================================================
+# COTES (Moneyline)
+# ===============================================================
+
+def us_to_decimal(val):
     """
-    Charge la page du match via Selenium (gameId) et retourne les
-    statistiques extraites (méthode Prism en priorité, puis fallback
-    via sélecteurs CSS avancés).
+    Convertit une cote américaine (ex: "-150", "+120") en cote décimale.
+    """
+    if not val:
+        return None
+    try:
+        n = int(val.replace("+", "").strip())
+        return round(1 + (n / 100), 2) if n > 0 else round(1 + (100 / abs(n)), 2)
+    except Exception:
+        return None
+
+
+def extract_ml_odds(soup):
+    """
+    Extrait les cotes 1X2 (Moneyline) depuis la page du match, si elles
+    sont disponibles (généralement absentes pour les matchs déjà joués
+    depuis longtemps).
+    """
+    try:
+        cells = soup.find_all("div", {"data-testid": "OddsCell"})
+        if len(cells) < 7:
+            return None
+
+        def read(cell):
+            return cell.get_text(strip=True) or None
+
+        def is_valid(val):
+            if not val:
+                return False
+            try:
+                int(val.replace("+", "").replace("-", ""))
+                return True
+            except Exception:
+                return False
+
+        home_us = read(cells[0])
+        away_us = read(cells[3])
+        draw_us = read(cells[6])
+
+        if not all(is_valid(v) for v in [home_us, away_us, draw_us]):
+            return None
+
+        return {
+            "home": us_to_decimal(home_us),
+            "away": us_to_decimal(away_us),
+            "draw": us_to_decimal(draw_us),
+        }
+    except Exception as e:
+        print(f"  ⚠️ Erreur cotes : {e}")
+        return None
+
+
+def get_match_details_selenium(driver, game_id):
+    """
+    Charge la page du match via Selenium (gameId) et retourne un tuple
+    (stats, odds) :
+      - stats : dict des statistiques du match (structure Prism en
+        priorité, puis fallback via sélecteurs CSS avancés)
+      - odds  : dict des cotes 1X2 {"home", "away", "draw"} (valeurs
+        None si indisponibles)
     """
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
@@ -440,13 +559,23 @@ def get_match_stats_selenium(driver, game_id):
     except TimeoutException:
         pass
     except WebDriverException as e:
-        print(f"    ⚠️  WebDriver erreur stats ({game_id}) : {e}")
-        return {}
+        print(f"    ⚠️  WebDriver erreur ({game_id}) : {e}")
+        return {}, {"home": None, "away": None, "draw": None}
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
+
+    # ── Cotes ────────────────────────────────────────────────────
+    ml = extract_ml_odds(soup)
+    odds = {
+        "home": ml["home"] if ml else None,
+        "away": ml["away"] if ml else None,
+        "draw": ml["draw"] if ml else None,
+    }
+
+    # ── Statistiques (méthode Prism en priorité) ───────────────────
     stats = extract_match_stats_prism(soup)
     if stats:
-        return stats
+        return stats, odds
 
     try:
         stats_section = driver.find_element(
@@ -465,20 +594,44 @@ def get_match_stats_selenium(driver, game_id):
             except NoSuchElementException:
                 continue
         time.sleep(0.6)
-        return stats
+        return stats, odds
     except NoSuchElementException:
-        return {}
+        return {}, odds
     except Exception as e:
         print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
-        return {}
+        return {}, odds
 
 
-def enrich_matches_with_stats(driver, all_matches_by_team):
+def reconcile_matchdays(matches_by_team):
+    """
+    Un même match peut apparaître dans les listes de deux équipes suivies
+    (ex: affrontement entre deux équipes cibles). Dans ce cas, on retient
+    la journée (matchday) la plus élevée trouvée pour ce match parmi les
+    deux occurrences, et on l'applique aux deux.
+    """
+    best_matchday = {}
+    for matches in matches_by_team.values():
+        for m in matches:
+            gid = m.get("match_id")
+            md = m.get("matchday")
+            if gid and md is not None:
+                if gid not in best_matchday or md > best_matchday[gid]:
+                    best_matchday[gid] = md
+
+    for matches in matches_by_team.values():
+        for m in matches:
+            gid = m.get("match_id")
+            if gid and gid in best_matchday:
+                m["matchday"] = best_matchday[gid]
+
+
+def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
     """
     Phase d'enrichissement : visite chaque match unique (par match_id)
-    une seule fois pour récupérer ses statistiques, puis injecte le
-    résultat dans toutes les occurrences de ce match (au cas où deux
-    équipes suivies se sont affrontées, le match apparaît deux fois).
+    une seule fois pour récupérer ses statistiques et ses cotes, puis
+    injecte le résultat dans toutes les occurrences de ce match (au cas
+    où deux équipes suivies se sont affrontées, le match apparaît deux
+    fois).
     """
     # ── Construction de la liste des game_id uniques ───────────────
     unique_game_ids = []
@@ -492,19 +645,26 @@ def enrich_matches_with_stats(driver, all_matches_by_team):
 
     total = len(unique_game_ids)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques ({total} match(s) unique(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques & cotes ({total} match(s) unique(s))")
     print("=" * 60)
 
     stats_by_game_id = {}
+    odds_by_game_id = {}
     for idx, gid in enumerate(unique_game_ids, 1):
         print(f"\n  [{idx}/{total}] gameId={gid}")
         try:
-            stats = get_match_stats_selenium(driver, gid)
+            stats, odds = get_match_details_selenium(driver, gid)
         except Exception as e:
-            print(f"    ⚠️ Erreur stats gameId={gid}: {e}")
-            stats = {}
+            print(f"    ⚠️ Erreur stats/cotes gameId={gid}: {e}")
+            stats, odds = {}, {"home": None, "away": None, "draw": None}
         stats_by_game_id[gid] = stats
-        print(f"    📊 {len(stats)} statistique(s) récupérée(s)")
+        odds_by_game_id[gid] = odds
+        odds_str = (
+            f"💰 {odds['home']}/{odds['draw']}/{odds['away']}"
+            if odds.get("home") is not None
+            else "ℹ️ pas de cotes"
+        )
+        print(f"    📊 {len(stats)} statistique(s) récupérée(s)  |  {odds_str}")
         time.sleep(0.8)
 
     # ── Injection dans tous les matchs (toutes équipes confondues) ──
@@ -513,8 +673,10 @@ def enrich_matches_with_stats(driver, all_matches_by_team):
             gid = m.get("match_id")
             if gid and gid in stats_by_game_id:
                 m["stats"] = stats_by_game_id[gid]
+            if gid and gid in odds_by_game_id:
+                m["odds"] = odds_by_game_id[gid]
 
-    print("\n  ✅ Injection des statistiques terminée")
+    print("\n  ✅ Injection des statistiques et des cotes terminée")
 
 
 def scrape_with_selenium():
@@ -540,7 +702,7 @@ def scrape_with_selenium():
 
             print("\n" + "=" * 60)
             print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
-            print(f"📆 Saisons: {START_SEASON} → {END_SEASON}")
+            print(f"📆 Saisons: {format_season(START_SEASON)} → {format_season(END_SEASON)}")
             print("=" * 60)
 
             unique_matches = scrape_team_results_all_seasons(driver, team_name, team_id)
@@ -548,8 +710,11 @@ def scrape_with_selenium():
             matches_by_team[team_id] = unique_matches
             team_meta[team_id] = team
 
-        # ── Phase d'enrichissement : statistiques de chaque match ──
-        enrich_matches_with_stats(driver, matches_by_team)
+        # ── Réconciliation des journées entre équipes cibles ────────
+        reconcile_matchdays(matches_by_team)
+
+        # ── Phase d'enrichissement : statistiques et cotes ──────────
+        enrich_matches_with_stats_and_odds(driver, matches_by_team)
 
         # ── Construction de la sortie finale ────────────────────────
         for team_id, unique_matches in matches_by_team.items():
@@ -563,7 +728,6 @@ def scrape_with_selenium():
                 "league_id": team.get("league_id", ""),
                 "league_name": team.get("league_name", ""),
                 "country": TARGET_COUNTRY,
-                "seasons": f"{START_SEASON}-{END_SEASON}",
                 "total_matches": len(unique_matches),
                 "scraped_at": datetime.now().isoformat(),
                 "matches": unique_matches,
@@ -584,7 +748,6 @@ def scrape_with_selenium():
         final_output = {
             "country": TARGET_COUNTRY,
             "league_name": TARGET_LEAGUE,
-            "seasons": f"{START_SEASON}-{END_SEASON}",
             "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
             "teams": output_data,
@@ -611,7 +774,7 @@ def scrape_with_selenium():
 def main():
     print("=" * 60)
     print(f"⚽ ESPN SCRAPER — PREMIER LEAGUE ({NB_TEAMS} PREMIÈRES ÉQUIPES)")
-    print(f"📆 Saisons {START_SEASON} à {END_SEASON}, sans doublons, avec statistiques")
+    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, sans doublons, avec statistiques, journées et cotes")
     print("=" * 60)
 
     results = scrape_with_selenium()
@@ -630,7 +793,8 @@ def main():
                     f"{m['away_team']}"
                 )
                 print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
-                print(f"       📊 {len(m['stats'])} statistique(s)")
+                journee = m['matchday'] if m['matchday'] is not None else "-"
+                print(f"       📊 {len(m['stats'])} statistique(s)  |  📅 Journée {journee}  |  💰 {m['odds']}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

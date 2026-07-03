@@ -354,7 +354,8 @@ def compute_matchdays_for_team(matches):
     date_sort_key) des matchs de championnat (compétition == ligue
     ciblée), saison par saison. Les matchs hors championnat (coupes,
     C1, etc.) reçoivent matchday = None (complété plus tard via le
-    round normalisé récupéré sur la page du match).
+    round normalisé, sous forme numérique, récupéré sur la page du
+    match).
     """
     league_label = target_league_label().lower()
 
@@ -415,6 +416,22 @@ def scrape_team_results_all_seasons(driver, team_name, team_id):
     unique_matches = compute_matchdays_for_team(unique_matches)
 
     return unique_matches
+
+
+def group_matches_by_season(matches):
+    """
+    Regroupe une liste de matchs (déjà triée du plus récent au plus
+    ancien) par saison, sous forme de dict ordonné :
+      {"2024/2025": [...matchs...], "2023/2024": [...matchs...]}
+    Les saisons les plus récentes apparaissent en premier (l'ordre
+    d'insertion suit l'ordre de la liste d'entrée), et les matchs de
+    chaque saison conservent leur tri du plus récent au plus ancien.
+    """
+    grouped = {}
+    for m in matches:
+        season_key = m.get("season") or "Unknown"
+        grouped.setdefault(season_key, []).append(m)
+    return grouped
 
 
 # ===============================================================
@@ -510,6 +527,82 @@ def extract_match_stats(soup):
 
 
 # ===============================================================
+# MI-TEMPS / 2NDE MI-TEMPS (structure "Match Timeline" Prism ESPN)
+# ===============================================================
+
+def extract_match_timeline_halftime(soup):
+    """
+    Extrait le score à la mi-temps et à la 2nde mi-temps depuis la
+    section "Match Timeline" de la page match ESPN, en comptant les
+    icônes de but ("soccer-goal02") positionnées sur la frise
+    chronologique, avant/après le marqueur "HT" (mi-temps), pour
+    l'équipe locale (1re ligne d'icônes) et l'équipe visiteuse (2e
+    ligne d'icônes).
+
+    Retourne un tuple (halftime, second_half), chacun un dict
+    {"home": int, "away": int} représentant le nombre de buts marqués
+    pendant cette période, ou (None, None) si la frise est absente ou
+    n'a pas pu être interprétée.
+    """
+    try:
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "match timeline" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return None, None
+
+        # ── Repérage du marqueur "HT" sur la frise ──────────────────
+        ht_percent = None
+        for span in section.find_all("span"):
+            if span.get_text(strip=True).upper() == "HT":
+                style = span.get("style", "")
+                m = re.search(r"left:\s*([\d.]+)%", style)
+                if m:
+                    ht_percent = float(m.group(1))
+                break
+        if ht_percent is None:
+            ht_percent = 50.0  # repli raisonnable si le marqueur est introuvable
+
+        # ── Repérage des deux lignes d'icônes (locale puis visiteuse) ──
+        icon_rows = section.select("div.XYehN.ThkOQ.lZur")
+        if len(icon_rows) < 2:
+            return None, None
+
+        def count_goals(row):
+            first_half = 0
+            second_half = 0
+            for icon_div in row.select('div[role="button"]'):
+                svg = icon_div.find("svg", attrs={"data-icon": "soccer-goal02"})
+                if not svg:
+                    continue
+                style = icon_div.get("style", "")
+                m = re.search(r"left:\s*([\d.]+)%", style)
+                pos = float(m.group(1)) if m else None
+                if pos is None:
+                    continue
+                if pos <= ht_percent:
+                    first_half += 1
+                else:
+                    second_half += 1
+            return first_half, second_half
+
+        home_ht, home_2h = count_goals(icon_rows[0])
+        away_ht, away_2h = count_goals(icon_rows[1])
+
+        halftime = {"home": home_ht, "away": away_ht}
+        second_half = {"home": home_2h, "away": away_2h}
+        return halftime, second_half
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction mi-temps (timeline) : {e}")
+        return None, None
+
+
+# ===============================================================
 # COTES (Moneyline)
 # ===============================================================
 
@@ -567,7 +660,7 @@ def extract_ml_odds(soup):
 
 
 # ===============================================================
-# ROUND (repli pour matchday hors championnat ciblé)
+# ROUND (repli numérique pour matchday hors championnat ciblé)
 # ===============================================================
 
 ROUND_ORDINALS = {
@@ -578,34 +671,42 @@ ROUND_ORDINALS = {
 
 def normalize_round_label(round_text):
     """
-    Normalise un libellé de round ESPN brut (ex: "Round of 32",
-    "Fifth Round", "Quarterfinals", "Semifinals", "Final",
-    "Knockout Round Playoffs") en un code compact et standardisé
-    (façon ISO), utilisé comme valeur de repli pour matchday sur les
-    matchs hors championnat ciblé (coupes, compétitions continentales).
+    Convertit un libellé de round ESPN brut en nombre entier, utilisé
+    comme valeur de repli pour matchday sur les matchs hors championnat
+    ciblé (coupes, compétitions continentales), au format demandé
+    (32, 16, 8, 4, 2, 0…) :
+      "Round of 32"              → 32
+      "Round of 16"               → 16
+      "Quarterfinals"              → 8
+      "Semifinals"                  → 4
+      "Final"                        → 2
+      "Fifth Round"                    → 5
+      "Third Round"                      → 3
+      libellé non reconnu (ex.
+      "Knockout Round Playoffs",
+      "Group Stage")                       → 0
 
-    Exemples de mapping :
-      "Round of 32"              → "R32"
-      "Round of 16"               → "R16"
-      "Fifth Round"                → "R5"
-      "Fourth Round"                → "R4"
-      "Third Round"                  → "R3"
-      "Quarterfinals"                  → "QF"
-      "Semifinals"                      → "SF"
-      "Final"                           → "F"
-      "Knockout Round Playoffs"         → "PO"
+    Retourne None si round_text est vide.
     """
     if not round_text:
         return None
 
     text = round_text.strip().lower()
 
-    # "Round of N" → "RN"
+    # "Round of N" → N
     m = re.search(r"round of (\d+)", text)
     if m:
-        return f"R{m.group(1)}"
+        return int(m.group(1))
 
-    # "Nth Round" (ex: "Fifth Round", "Third Round") → "RN"
+    # Étapes à élimination directe nommées → taille du tableau restant
+    if "quarterfinal" in text:
+        return 8
+    if "semifinal" in text:
+        return 4
+    if "final" in text:
+        return 2
+
+    # "Nth Round" (ex: "Fifth Round", "Third Round") → N
     m = re.search(
         r"(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+round",
         text,
@@ -613,20 +714,10 @@ def normalize_round_label(round_text):
     if m:
         n = ROUND_ORDINALS.get(m.group(1))
         if n:
-            return f"R{n}"
+            return n
 
-    # Étapes à élimination directe nommées
-    if "quarterfinal" in text:
-        return "QF"
-    if "semifinal" in text:
-        return "SF"
-    if "knockout round playoffs" in text or "playoff" in text:
-        return "PO"
-    if "final" in text:
-        return "F"
-
-    # Repli : aucun motif reconnu, on garde le texte original tel quel
-    return round_text.strip()
+    # Repli générique pour tout libellé non reconnu (playoffs, poules, etc.)
+    return 0
 
 
 def extract_round_info(soup):
@@ -650,9 +741,9 @@ def extract_round_info(soup):
 def extract_round_label(round_text):
     """
     Isole la partie "round" du libellé complet (ex: "Copa Do Brazil,
-    Fifth Round" → "Fifth Round"), puis la normalise en code compact
-    via normalize_round_label (ex: "Fifth Round" → "R5"). Retourne
-    None si absent.
+    Fifth Round" → "Fifth Round"), puis la normalise en nombre entier
+    via normalize_round_label (ex: "Fifth Round" → 5,
+    "Round of 32" → 32). Retourne None si absent.
     """
     if not round_text:
         return None
@@ -666,10 +757,12 @@ def get_match_details_selenium(driver, game_id):
     Charge la page du match via Selenium (gameId) et retourne un tuple
     (stats, odds, round_label) :
       - stats       : dict des statistiques du match (structure Prism en
-        priorité, puis fallback via sélecteurs CSS avancés)
+        priorité, puis fallback via sélecteurs CSS avancés), enrichi des
+        entrées "Score 1ère mi-temps" et "Score 2nde mi-temps" issues de
+        la frise "Match Timeline"
       - odds        : dict des cotes 1X2 {"home", "away", "draw"} (None
         si indisponibles)
-      - round_label : code de round normalisé (ex: "R5", "QF", "F"),
+      - round_label : nombre entier de round (ex: 5, 8, 4, 2, 0),
         utilisé en repli pour matchday quand le match n'appartient pas
         au championnat ciblé
     """
@@ -697,45 +790,60 @@ def get_match_details_selenium(driver, game_id):
         "draw": ml["draw"] if ml else None,
     }
 
-    # ── Round (repli pour matchday, déjà normalisé en code) ────────
+    # ── Round (repli pour matchday, déjà normalisé en nombre) ──────
     round_label = extract_round_label(extract_round_info(soup))
 
     # ── Statistiques (méthode Prism en priorité) ───────────────────
     stats = extract_match_stats_prism(soup)
-    if stats:
-        return stats, odds, round_label
+    if not stats:
+        try:
+            stats_section = driver.find_element(
+                By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
+            )
+            rows = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
+            for row in rows:
+                try:
+                    name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
+                    values = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
+                    if name_tag and len(values) >= 2:
+                        stats[name_tag.text.strip()] = {
+                            "home": values[0].text.strip(),
+                            "away": values[1].text.strip(),
+                        }
+                except NoSuchElementException:
+                    continue
+            time.sleep(0.6)
+        except NoSuchElementException:
+            pass
+        except Exception as e:
+            print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
 
+    # ── Mi-temps / 2nde mi-temps (frise "Match Timeline") ───────────
     try:
-        stats_section = driver.find_element(
-            By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"
-        )
-        rows = stats_section.find_elements(By.CSS_SELECTOR, "div.LOSQp")
-        for row in rows:
-            try:
-                name_tag = row.find_element(By.CSS_SELECTOR, "span.OkRBU")
-                values = row.find_elements(By.CSS_SELECTOR, "span.bLeWt")
-                if name_tag and len(values) >= 2:
-                    stats[name_tag.text.strip()] = {
-                        "home": values[0].text.strip(),
-                        "away": values[1].text.strip(),
-                    }
-            except NoSuchElementException:
-                continue
-        time.sleep(0.6)
-        return stats, odds, round_label
-    except NoSuchElementException:
-        return {}, odds, round_label
+        halftime, second_half = extract_match_timeline_halftime(soup)
+        if halftime is not None:
+            stats["Score 1ère mi-temps"] = {
+                "home": str(halftime["home"]),
+                "away": str(halftime["away"]),
+            }
+        if second_half is not None:
+            stats["Score 2nde mi-temps"] = {
+                "home": str(second_half["home"]),
+                "away": str(second_half["away"]),
+            }
     except Exception as e:
-        print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
-        return {}, odds, round_label
+        print(f"    ⚠️  Erreur injection mi-temps ({game_id}) : {e}")
+
+    return stats, odds, round_label
 
 
 def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
     """
     Phase d'enrichissement : visite chaque match unique (par match_id)
-    une seule fois pour récupérer ses statistiques, ses cotes et, si
-    besoin, son round normalisé (repli pour matchday), puis injecte le
-    résultat dans l'occurrence correspondante.
+    une seule fois pour récupérer ses statistiques (incluant les scores
+    de mi-temps / 2nde mi-temps), ses cotes et, si besoin, son round
+    normalisé en nombre (repli pour matchday), puis injecte le résultat
+    dans l'occurrence correspondante.
     """
     # ── Construction de la liste des game_id uniques ───────────────
     unique_game_ids = []
@@ -749,7 +857,7 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
 
     total = len(unique_game_ids)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, cotes & rounds ({total} match(s) unique(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, mi-temps, cotes & rounds ({total} match(s) unique(s))")
     print("=" * 60)
 
     stats_by_game_id = {}
@@ -770,7 +878,7 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
             if odds.get("home") is not None
             else "ℹ️ pas de cotes"
         )
-        round_str = f"🔁 {round_label}" if round_label else "🔁 pas de round"
+        round_str = f"🔁 {round_label}" if round_label is not None else "🔁 pas de round"
         print(f"    📊 {len(stats)} statistique(s) récupérée(s)  |  {odds_str}  |  {round_str}")
         time.sleep(0.8)
 
@@ -782,10 +890,10 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
                 m["stats"] = stats_by_game_id[gid]
             if gid and gid in odds_by_game_id:
                 m["odds"] = odds_by_game_id[gid]
-            if gid and m.get("matchday") is None and round_by_game_id.get(gid):
+            if gid and m.get("matchday") is None and round_by_game_id.get(gid) is not None:
                 m["matchday"] = round_by_game_id[gid]
 
-    print("\n  ✅ Injection des statistiques, des cotes et des rounds terminée")
+    print("\n  ✅ Injection des statistiques, mi-temps, cotes et rounds terminée")
 
 
 def scrape_with_selenium():
@@ -819,10 +927,10 @@ def scrape_with_selenium():
             matches_by_team[team_id] = unique_matches
             team_meta[team_id] = team
 
-        # ── Phase d'enrichissement : statistiques, cotes et rounds ──
+        # ── Phase d'enrichissement : statistiques, mi-temps, cotes et rounds ──
         enrich_matches_with_stats_and_odds(driver, matches_by_team)
 
-        # ── Construction de la sortie finale ────────────────────────
+        # ── Construction de la sortie finale (matchs structurés par saison) ──
         for team_id, unique_matches in matches_by_team.items():
             team = team_meta[team_id]
             team_name = team.get("team", "")
@@ -836,7 +944,7 @@ def scrape_with_selenium():
                 "country": TARGET_COUNTRY,
                 "total_matches": len(unique_matches),
                 "scraped_at": datetime.now().isoformat(),
-                "matches": unique_matches,
+                "matches_by_season": group_matches_by_season(unique_matches),
             }
 
             output_data.append(team_output)
@@ -880,27 +988,30 @@ def scrape_with_selenium():
 def main():
     print("=" * 60)
     print("⚽ ESPN SCRAPER — PREMIER LEAGUE (1 ÉQUIPE)")
-    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, sans doublons, avec statistiques, journées, cotes et dates ISO")
+    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, sans doublons, avec statistiques, mi-temps, journées, cotes, dates ISO, structuré par saison")
     print("=" * 60)
 
     results = scrape_with_selenium()
 
     if results:
-        total_matches = sum(len(t["matches"]) for t in results)
+        total_matches = sum(t["total_matches"] for t in results)
         print(f"\n✅ {len(results)} équipe(s) traitée(s), {total_matches} matchs récupérés au total")
 
         for team_output in results:
             print(f"\n📋 {team_output['team_name']} — {team_output['total_matches']} matchs")
-            for i, m in enumerate(team_output["matches"][:5]):
-                print(
-                    f"  {i+1}. [{m['date']}] "
-                    f"{m['home_team']} "
-                    f"{m['home_score']}-{m['away_score']} "
-                    f"{m['away_team']}"
-                )
-                print(f"       🏆 {m['competition']}  |  🔗 {m['match_url']}")
-                journee = m['matchday'] if m['matchday'] is not None else "-"
-                print(f"       📊 {len(m['stats'])} statistique(s)  |  📅 Journée {journee}  |  💰 {m['odds']}")
+            for season_key, season_matches in team_output["matches_by_season"].items():
+                print(f"\n  📆 Saison {season_key} — {len(season_matches)} match(s)")
+                for i, m in enumerate(season_matches[:5]):
+                    print(
+                        f"    {i+1}. [{m['date']}] "
+                        f"{m['home_team']} "
+                        f"{m['home_score']}-{m['away_score']} "
+                        f"{m['away_team']}"
+                    )
+                    print(f"         🏆 {m['competition']}  |  🔗 {m['match_url']}")
+                    journee = m['matchday'] if m['matchday'] is not None else "-"
+                    ht = m['stats'].get("Score 1ère mi-temps", "-")
+                    print(f"         📊 {len(m['stats'])} statistique(s)  |  📅 Journée {journee}  |  ⏱️ MT {ht}  |  💰 {m['odds']}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

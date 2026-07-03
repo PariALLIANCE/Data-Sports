@@ -671,20 +671,17 @@ ROUND_ORDINALS = {
 
 def normalize_round_label(round_text):
     """
-    Convertit un libellé de round ESPN brut en nombre entier, utilisé
-    comme valeur de repli pour matchday sur les matchs hors championnat
-    ciblé (coupes, compétitions continentales), au format demandé
-    (32, 16, 8, 4, 2, 0…) :
-      "Round of 32"              → 32
-      "Round of 16"               → 16
-      "Quarterfinals"              → 8
-      "Semifinals"                  → 4
-      "Final"                        → 2
-      "Fifth Round"                    → 5
-      "Third Round"                      → 3
-      libellé non reconnu (ex.
-      "Knockout Round Playoffs",
-      "Group Stage")                       → 0
+    Convertit un libellé de round ESPN brut en nombre entier, selon le
+    mapping demandé :
+      "Round of 32"                → 32
+      "Round of 16"                 → 16
+      "Quarter-finals" / "Quarterfinals" → 8
+      "Semi-finals" / "Semifinals"          → 4
+      "Final"                                → 2
+      "Winner" / "Champion"                    → 1
+      "Third Round", "Fourth Round",
+      "Fifth Round"... ("Nth Round")             → N
+      libellé non reconnu                          → 0
 
     Retourne None si round_text est vide.
     """
@@ -698,15 +695,17 @@ def normalize_round_label(round_text):
     if m:
         return int(m.group(1))
 
-    # Étapes à élimination directe nommées → taille du tableau restant
-    if "quarterfinal" in text:
+    # Étapes à élimination directe nommées (avec ou sans trait d'union)
+    if "quarter-final" in text or "quarterfinal" in text:
         return 8
-    if "semifinal" in text:
+    if "semi-final" in text or "semifinal" in text:
         return 4
+    if "winner" in text or "champion" in text:
+        return 1
     if "final" in text:
         return 2
 
-    # "Nth Round" (ex: "Fifth Round", "Third Round") → N
+    # "Nth Round" (ex: "Third Round", "Fifth Round") → N
     m = re.search(
         r"(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+round",
         text,
@@ -743,7 +742,7 @@ def extract_round_label(round_text):
     Isole la partie "round" du libellé complet (ex: "Copa Do Brazil,
     Fifth Round" → "Fifth Round"), puis la normalise en nombre entier
     via normalize_round_label (ex: "Fifth Round" → 5,
-    "Round of 32" → 32). Retourne None si absent.
+    "Round of 32" → 32, "Final" → 2). Retourne None si absent.
     """
     if not round_text:
         return None
@@ -762,7 +761,7 @@ def get_match_details_selenium(driver, game_id):
         la frise "Match Timeline"
       - odds        : dict des cotes 1X2 {"home", "away", "draw"} (None
         si indisponibles)
-      - round_label : nombre entier de round (ex: 5, 8, 4, 2, 0),
+      - round_label : nombre entier de round (32, 16, 8, 4, 2, 1, 0…),
         utilisé en repli pour matchday quand le match n'appartient pas
         au championnat ciblé
     """
@@ -896,6 +895,38 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
     print("\n  ✅ Injection des statistiques, mi-temps, cotes et rounds terminée")
 
 
+# ===============================================================
+# SORTIE JSON — ordre des clés propre et lisible
+# ===============================================================
+
+MATCH_KEY_ORDER = [
+    "date", "season", "matchday", "competition",
+    "home_team", "home_team_id", "home_logo_url", "home_score",
+    "away_team", "away_team_id", "away_logo_url", "away_score",
+    "result", "odds", "stats", "match_id", "match_url",
+]
+
+TEAM_KEY_ORDER = [
+    "team_name", "team_id", "logo", "league_id", "league_name",
+    "country", "total_matches", "scraped_at", "matches_by_season",
+]
+
+
+def clean_match(m):
+    """Réordonne les clés d'un match selon MATCH_KEY_ORDER pour un JSON lisible."""
+    return {k: m.get(k) for k in MATCH_KEY_ORDER}
+
+
+def clean_team_output(team_output):
+    """Réordonne les clés d'une équipe selon TEAM_KEY_ORDER pour un JSON lisible."""
+    cleaned = {k: team_output.get(k) for k in TEAM_KEY_ORDER}
+    cleaned["matches_by_season"] = {
+        season: [clean_match(m) for m in season_matches]
+        for season, season_matches in cleaned["matches_by_season"].items()
+    }
+    return cleaned
+
+
 def scrape_with_selenium():
     driver = None
     output_data = []
@@ -947,7 +978,7 @@ def scrape_with_selenium():
                 "matches_by_season": group_matches_by_season(unique_matches),
             }
 
-            output_data.append(team_output)
+            output_data.append(clean_team_output(team_output))
 
             # ── Stats par compétition pour cette équipe ────────────
             competitions: dict[str, int] = {}
@@ -958,7 +989,7 @@ def scrape_with_selenium():
             for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
                 print(f"   {comp}: {count} match(s)")
 
-        # ── Sauvegarde JSON globale ─────────────────────────────────
+        # ── Sauvegarde JSON globale (propre, indentée, clés ordonnées) ──
         final_output = {
             "country": TARGET_COUNTRY,
             "league_name": TARGET_LEAGUE,
@@ -968,7 +999,13 @@ def scrape_with_selenium():
         }
 
         with open("newdb.json", "w", encoding="utf-8") as f:
-            json.dump(final_output, f, ensure_ascii=False, indent=2)
+            json.dump(
+                final_output,
+                f,
+                ensure_ascii=False,
+                indent=2,
+                separators=(",", ": "),
+            )
 
         print("\n💾 newdb.json sauvegardé")
 

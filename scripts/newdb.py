@@ -18,7 +18,7 @@ TARGET_COUNTRY = "England"
 TARGET_LEAGUE = "England_Premier_League"
 NB_TEAMS = 1  # ← une seule équipe désormais
 
-START_SEASON = 2022
+START_SEASON = 2023
 END_SEASON = datetime.now().year  # saison actuelle incluse
 
 
@@ -354,7 +354,7 @@ def compute_matchdays_for_team(matches):
     date_sort_key) des matchs de championnat (compétition == ligue
     ciblée), saison par saison. Les matchs hors championnat (coupes,
     C1, etc.) reçoivent matchday = None (complété plus tard via le
-    round récupéré sur la page du match).
+    round normalisé récupéré sur la page du match).
     """
     league_label = target_league_label().lower()
 
@@ -570,6 +570,65 @@ def extract_ml_odds(soup):
 # ROUND (repli pour matchday hors championnat ciblé)
 # ===============================================================
 
+ROUND_ORDINALS = {
+    "first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5,
+    "sixth": 6, "seventh": 7, "eighth": 8, "ninth": 9, "tenth": 10,
+}
+
+
+def normalize_round_label(round_text):
+    """
+    Normalise un libellé de round ESPN brut (ex: "Round of 32",
+    "Fifth Round", "Quarterfinals", "Semifinals", "Final",
+    "Knockout Round Playoffs") en un code compact et standardisé
+    (façon ISO), utilisé comme valeur de repli pour matchday sur les
+    matchs hors championnat ciblé (coupes, compétitions continentales).
+
+    Exemples de mapping :
+      "Round of 32"              → "R32"
+      "Round of 16"               → "R16"
+      "Fifth Round"                → "R5"
+      "Fourth Round"                → "R4"
+      "Third Round"                  → "R3"
+      "Quarterfinals"                  → "QF"
+      "Semifinals"                      → "SF"
+      "Final"                           → "F"
+      "Knockout Round Playoffs"         → "PO"
+    """
+    if not round_text:
+        return None
+
+    text = round_text.strip().lower()
+
+    # "Round of N" → "RN"
+    m = re.search(r"round of (\d+)", text)
+    if m:
+        return f"R{m.group(1)}"
+
+    # "Nth Round" (ex: "Fifth Round", "Third Round") → "RN"
+    m = re.search(
+        r"(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+round",
+        text,
+    )
+    if m:
+        n = ROUND_ORDINALS.get(m.group(1))
+        if n:
+            return f"R{n}"
+
+    # Étapes à élimination directe nommées
+    if "quarterfinal" in text:
+        return "QF"
+    if "semifinal" in text:
+        return "SF"
+    if "knockout round playoffs" in text or "playoff" in text:
+        return "PO"
+    if "final" in text:
+        return "F"
+
+    # Repli : aucun motif reconnu, on garde le texte original tel quel
+    return round_text.strip()
+
+
 def extract_round_info(soup):
     """
     Extrait le libellé "Compétition, Round" affiché sur la page du match
@@ -591,12 +650,15 @@ def extract_round_info(soup):
 def extract_round_label(round_text):
     """
     Isole la partie "round" du libellé complet (ex: "Copa Do Brazil,
-    Fifth Round" → "Fifth Round"). Retourne None si absent.
+    Fifth Round" → "Fifth Round"), puis la normalise en code compact
+    via normalize_round_label (ex: "Fifth Round" → "R5"). Retourne
+    None si absent.
     """
     if not round_text:
         return None
     parts = round_text.split(",")
-    return parts[-1].strip() if parts else None
+    raw_label = parts[-1].strip() if parts else None
+    return normalize_round_label(raw_label)
 
 
 def get_match_details_selenium(driver, game_id):
@@ -607,9 +669,9 @@ def get_match_details_selenium(driver, game_id):
         priorité, puis fallback via sélecteurs CSS avancés)
       - odds        : dict des cotes 1X2 {"home", "away", "draw"} (None
         si indisponibles)
-      - round_label : libellé du round (ex: "Fifth Round"), utilisé en
-        repli pour matchday quand le match n'appartient pas au
-        championnat ciblé
+      - round_label : code de round normalisé (ex: "R5", "QF", "F"),
+        utilisé en repli pour matchday quand le match n'appartient pas
+        au championnat ciblé
     """
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
@@ -635,7 +697,7 @@ def get_match_details_selenium(driver, game_id):
         "draw": ml["draw"] if ml else None,
     }
 
-    # ── Round (repli pour matchday) ────────────────────────────────
+    # ── Round (repli pour matchday, déjà normalisé en code) ────────
     round_label = extract_round_label(extract_round_info(soup))
 
     # ── Statistiques (méthode Prism en priorité) ───────────────────
@@ -672,8 +734,8 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
     """
     Phase d'enrichissement : visite chaque match unique (par match_id)
     une seule fois pour récupérer ses statistiques, ses cotes et, si
-    besoin, son round (repli pour matchday), puis injecte le résultat
-    dans l'occurrence correspondante.
+    besoin, son round normalisé (repli pour matchday), puis injecte le
+    résultat dans l'occurrence correspondante.
     """
     # ── Construction de la liste des game_id uniques ───────────────
     unique_game_ids = []

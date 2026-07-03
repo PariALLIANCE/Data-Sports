@@ -1,300 +1,126 @@
 [
   {
-    "gameId": "401873977",
-    "date": "2026-07-02",
-    "time_ci": "03:00",
-    "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873977/america-mineiro-cuiaba",
+    "gameId": "401861410",
+    "date": "2026-07-03",
+    "time_ci": "16:00",
+    "league": "China_Super_League",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401861410/henan-songshan-longmen-yunnan-yukun",
     "home": {
-      "team": "Cuiabá",
-      "team_id": "17313",
-      "team_slug": "cuiaba",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-      "url": "https://www.espn.com/soccer/team/_/id/17313",
+      "team": "Yunnan Yukun",
+      "team_id": "22536",
+      "team_slug": "yunnan-yukun",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+      "url": "https://www.espn.com/soccer/team/_/id/22536",
       "standings": {
-        "position_current": 13,
-        "position_if_win": 9,
-        "played": 15,
-        "won": 4,
-        "drawn": 8,
-        "lost": 3,
-        "gd": 2,
-        "points": 20
+        "position_current": 5,
+        "position_if_win": 3,
+        "played": 16,
+        "won": 6,
+        "drawn": 3,
+        "lost": 7,
+        "gd": 1,
+        "points": 21
       },
-      "form": "4-8-3",
-      "matchday": 16,
+      "form": "6-3-7",
+      "matchday": 17,
       "last_five": [
         {
-          "date": "2026-06-25",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873972/londrina-cuiaba",
-          "result": "D",
-          "team_home": "Cuiabá",
-          "team_home_id": "17313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "team_away": "Londrina",
-          "team_away_id": "17333",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
-          "home_score": "2",
+          "date": "2026-06-26",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861404/yunnan-yukun-qingdao-hainiu",
+          "result": "L",
+          "team_home": "Qingdao Hainiu",
+          "team_home_id": "21910",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21910.png",
+          "team_away": "Yunnan Yukun",
+          "team_away_id": "22536",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+          "home_score": "4",
           "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 1.77,
-            "away": 5.75,
-            "draw": 3.15
+            "home": 2.8,
+            "away": 2.25,
+            "draw": 3.85
           },
           "stats": {
             "Possession": {
-              "home": "66%",
-              "away": "34%"
+              "home": "47%",
+              "away": "53%"
             },
             "Shots on Goal": {
               "home": "6",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "439",
-              "away": "196"
-            },
-            "Passes": {
-              "home": "515",
-              "away": "271"
-            },
-            "Duels Won": {
-              "home": "51",
-              "away": "58"
-            },
-            "Saves": {
-              "home": "1",
               "away": "4"
             },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-21",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873983/cuiaba-avai",
-          "result": "L",
-          "team_home": "Avaí",
-          "team_home_id": "9966",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-          "team_away": "Cuiabá",
-          "team_away_id": "17313",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.9,
-            "away": 2.8,
-            "draw": 2.8
-          },
-          "stats": {
-            "Possession": {
-              "home": "39%",
-              "away": "61%"
+            "Accurate Passes": {
+              "home": "308",
+              "away": "339"
             },
-            "Shots on Goal": {
-              "home": "2",
+            "Passes": {
+              "home": "374",
+              "away": "408"
+            },
+            "Tackles": {
+              "home": "16",
+              "away": "10"
+            },
+            "Clearances": {
+              "home": "35",
+              "away": "27"
+            },
+            "Shots Blocked": {
+              "home": "1",
               "away": "7"
             },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "222",
-              "away": "372"
-            },
-            "Passes": {
-              "home": "298",
-              "away": "448"
-            },
-            "Duels Won": {
-              "home": "44",
-              "away": "54"
-            },
             "Saves": {
-              "home": "7",
-              "away": "1"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873963/vila-nova-cuiaba",
-          "result": "W",
-          "team_home": "Cuiabá",
-          "team_home_id": "17313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "team_away": "Vila Nova",
-          "team_away_id": "9973",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.05,
-            "away": 4.5,
-            "draw": 2.9
-          },
-          "stats": {
-            "Possession": {
-              "home": "51%",
-              "away": "49%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "3",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "4",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "383",
-              "away": "358"
-            },
-            "Passes": {
-              "home": "453",
-              "away": "442"
-            },
-            "Duels Won": {
-              "home": "37",
-              "away": "47"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-09",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860173/cuiaba-ponte-preta",
-          "result": "W",
-          "team_home": "Ponte Preta",
-          "team_home_id": "3459",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "team_away": "Cuiabá",
-          "team_away_id": "17313",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 3.5,
-            "away": 2.4,
-            "draw": 2.8
-          },
-          "stats": {
-            "Possession": {
-              "home": "46%",
-              "away": "54%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "260",
-              "away": "335"
-            },
-            "Passes": {
-              "home": "340",
-              "away": "409"
-            },
-            "Duels Won": {
-              "home": "0",
-              "away": "0"
-            },
-            "Saves": {
-              "home": "3",
+              "home": "2",
               "away": "2"
             },
             "Fouls Committed": {
-              "home": "18",
-              "away": "12"
+              "home": "15",
+              "away": "14"
             }
           }
         },
         {
           "date": "2026-05-31",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860171/crb-cuiaba",
-          "result": "W",
-          "team_home": "Cuiabá",
-          "team_home_id": "17313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "team_away": "CRB",
-          "team_away_id": "9970",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
-          "home_score": "2",
-          "away_score": "0",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861403/yunnan-yukun-wuhan-three-towns",
+          "result": "D",
+          "team_home": "Wuhan Three Towns",
+          "team_home_id": "21506",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21506.png",
+          "team_away": "Yunnan Yukun",
+          "team_away_id": "22536",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+          "home_score": "1",
+          "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 2.3,
-            "away": 3.55,
-            "draw": 2.95
+            "home": 2.1,
+            "away": 3.05,
+            "draw": 3.9
           },
           "stats": {
             "Possession": {
-              "home": "40%",
-              "away": "60%"
+              "home": "54%",
+              "away": "46%"
             },
             "Shots on Goal": {
-              "home": "8",
-              "away": "4"
+              "home": "4",
+              "away": "2"
             },
             "Shots": {
-              "home": "14",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "13",
+              "home": "12",
               "away": "7"
             },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "15"
+            },
             "Yellow Cards": {
-              "home": "2",
-              "away": "0"
+              "home": "5",
+              "away": "4"
             },
             "Red Cards": {
               "home": "0",
@@ -305,49 +131,211 @@
               "away": "3"
             },
             "Saves": {
-              "home": "4",
+              "home": "1",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861395/qingdao-west-coast-yunnan-yukun",
+          "result": "L",
+          "team_home": "Yunnan Yukun",
+          "team_home_id": "22536",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+          "team_away": "Qingdao West Coast",
+          "team_away_id": "22198",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22198.png",
+          "home_score": "2",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 1.69,
+            "away": 4.5,
+            "draw": 4.1
+          },
+          "stats": {
+            "Possession": {
+              "home": "61%",
+              "away": "39%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "7"
+            },
+            "Shots": {
+              "home": "21",
+              "away": "12"
+            },
+            "Fouls Committed": {
+              "home": "10",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "7"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "5"
+            }
+          }
+        },
+        {
+          "date": "2026-05-20",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861540/yunnan-yukun-chongqing-tonglianglong",
+          "result": "D",
+          "team_home": "Chongqing Tonglianglong",
+          "team_home_id": "131704",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131704.png",
+          "team_away": "Yunnan Yukun",
+          "team_away_id": "22536",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+          "home_score": "0",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 2.6,
+            "away": 2.65,
+            "draw": 3.45
+          },
+          "stats": {
+            "Possession": {
+              "home": "52%",
+              "away": "48%"
+            },
+            "Shots on Goal": {
+              "home": "1",
+              "away": "1"
+            },
+            "Shots": {
+              "home": "7",
+              "away": "4"
+            },
+            "Fouls Committed": {
+              "home": "11",
+              "away": "17"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "1"
+            }
+          }
+        },
+        {
+          "date": "2026-05-16",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861385/shanghai-shenhua-yunnan-yukun",
+          "result": "W",
+          "team_home": "Yunnan Yukun",
+          "team_home_id": "22536",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+          "team_away": "Shanghai Shenhua",
+          "team_away_id": "977",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/977.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.91,
+            "away": 3.5,
+            "draw": 4.0
+          },
+          "stats": {
+            "Possession": {
+              "home": "56%",
+              "away": "44%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shots": {
+              "home": "13",
+              "away": "12"
+            },
+            "Fouls Committed": {
+              "home": "5",
               "away": "6"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "3",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "5"
             }
           }
         }
       ]
     },
     "away": {
-      "team": "América Mineiro",
-      "team_id": "6154",
-      "team_slug": "america-mineiro",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6154",
+      "team": "Henan Songshan Longmen",
+      "team_id": "8240",
+      "team_slug": "henan-songshan-longmen",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+      "url": "https://www.espn.com/soccer/team/_/id/8240",
       "standings": {
-        "position_current": 20,
-        "position_if_win": 19,
-        "played": 15,
-        "won": 1,
+        "position_current": 13,
+        "position_if_win": 7,
+        "played": 16,
+        "won": 6,
         "drawn": 3,
-        "lost": 11,
-        "gd": -16,
-        "points": 6
+        "lost": 7,
+        "gd": -3,
+        "points": 15
       },
-      "form": "1-3-11",
-      "matchday": 16,
+      "form": "6-3-7",
+      "matchday": 17,
       "last_five": [
         {
           "date": "2026-06-27",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873953/america-mineiro-operario-pr",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861405/shanghai-port-henan-songshan-longmen",
           "result": "L",
-          "team_home": "Operário PR",
-          "team_home_id": "18187",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "team_home": "Henan Songshan Longmen",
+          "team_home_id": "8240",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+          "team_away": "Shanghai Port",
+          "team_away_id": "15515",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15515.png",
           "home_score": "1",
-          "away_score": "0",
+          "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 1.83,
-            "away": 4.6,
+            "home": 2.5,
+            "away": 2.8,
             "draw": 3.35
           },
           "stats": {
@@ -356,32 +344,32 @@
               "away": "56%"
             },
             "Shots on Goal": {
-              "home": "7",
-              "away": "5"
+              "home": "6",
+              "away": "3"
             },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "1"
+            "Accurate Passes": {
+              "home": "237",
+              "away": "334"
             },
-            "Big Chances Missed": {
+            "Passes": {
+              "home": "327",
+              "away": "415"
+            },
+            "Tackles": {
+              "home": "8",
+              "away": "8"
+            },
+            "Clearances": {
+              "home": "20",
+              "away": "23"
+            },
+            "Shots Blocked": {
               "home": "1",
               "away": "2"
             },
-            "Accurate Passes": {
-              "home": "256",
-              "away": "343"
-            },
-            "Passes": {
-              "home": "321",
-              "away": "414"
-            },
-            "Duels Won": {
-              "home": "38",
-              "away": "42"
-            },
             "Saves": {
-              "home": "4",
-              "away": "6"
+              "home": "1",
+              "away": "5"
             },
             "Fouls Committed": {
               "home": "17",
@@ -390,81 +378,23 @@
           }
         },
         {
-          "date": "2026-06-23",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873969/criciuma-america-mineiro",
+          "date": "2026-05-30",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861398/zhejiang-professional-fc-henan-songshan-longmen",
           "result": "L",
-          "team_home": "América Mineiro",
-          "team_home_id": "6154",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "team_away": "Criciúma",
-          "team_away_id": "9971",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "team_home": "Henan Songshan Longmen",
+          "team_home_id": "8240",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+          "team_away": "Zhejiang Professional FC",
+          "team_away_id": "18203",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18203.png",
           "home_score": "0",
-          "away_score": "1",
+          "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 3.15,
-            "away": 2.45,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "50%",
-              "away": "50%"
-            },
-            "Shots on Goal": {
-              "home": "1",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "1",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "344",
-              "away": "327"
-            },
-            "Passes": {
-              "home": "408",
-              "away": "397"
-            },
-            "Duels Won": {
-              "home": "48",
-              "away": "59"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "1"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "15"
-            }
-          }
-        },
-        {
-          "date": "2026-06-16",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873948/america-mineiro-fortaleza",
-          "result": "W",
-          "team_home": "Fortaleza",
-          "team_home_id": "6272",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "home_score": "0",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 1.65,
-            "away": 5.75,
-            "draw": 3.6
+            "home": 2.15,
+            "away": 3.05,
+            "draw": 3.7
           },
           "stats": {
             "Possession": {
@@ -472,57 +402,53 @@
               "away": "35%"
             },
             "Shots on Goal": {
-              "home": "10",
-              "away": "7"
+              "home": "6",
+              "away": "4"
             },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "549",
-              "away": "272"
-            },
-            "Passes": {
-              "home": "610",
-              "away": "340"
-            },
-            "Duels Won": {
-              "home": "0",
-              "away": "0"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "10"
+            "Shots": {
+              "home": "20",
+              "away": "6"
             },
             "Fouls Committed": {
               "home": "11",
-              "away": "11"
+              "away": "17"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "5"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "5"
             }
           }
         },
         {
-          "date": "2026-06-08",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873960/atletico-goianiense-america-mineiro",
-          "result": "L",
-          "team_home": "América Mineiro",
-          "team_home_id": "6154",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "team_away": "Atlético Goianiense",
-          "team_away_id": "10357",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10357.png",
+          "date": "2026-05-23",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861393/henan-songshan-longmen-beijing-guoan",
+          "result": "W",
+          "team_home": "Beijing Guoan",
+          "team_home_id": "2052",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2052.png",
+          "team_away": "Henan Songshan Longmen",
+          "team_away_id": "8240",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
           "home_score": "1",
           "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 2.45,
-            "away": 3.2,
-            "draw": 2.95
+            "home": 1.65,
+            "away": 4.8,
+            "draw": 4.1
           },
           "stats": {
             "Possession": {
@@ -530,77 +456,19 @@
               "away": "37%"
             },
             "Shots on Goal": {
-              "home": "5",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "4"
-            },
-            "Big Chances Missed": {
-              "home": "3",
-              "away": "4"
-            },
-            "Accurate Passes": {
-              "home": "477",
-              "away": "261"
-            },
-            "Passes": {
-              "home": "547",
-              "away": "325"
-            },
-            "Duels Won": {
-              "home": "36",
-              "away": "51"
-            },
-            "Saves": {
               "home": "4",
-              "away": "4"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "11"
-            }
-          }
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860167/america-mineiro-juventude",
-          "result": "L",
-          "team_home": "Juventude",
-          "team_home_id": "6270",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
-          "team_away": "América Mineiro",
-          "team_away_id": "6154",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-          "home_score": "3",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.95,
-            "away": 4.6,
-            "draw": 3.05
-          },
-          "stats": {
-            "Possession": {
-              "home": "38%",
-              "away": "62%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "8"
+              "away": "3"
             },
             "Shots": {
-              "home": "16",
-              "away": "16"
+              "home": "13",
+              "away": "9"
             },
             "Fouls Committed": {
-              "home": "16",
-              "away": "14"
+              "home": "19",
+              "away": "19"
             },
             "Yellow Cards": {
-              "home": "0",
+              "home": "1",
               "away": "2"
             },
             "Red Cards": {
@@ -608,179 +476,177 @@
               "away": "0"
             },
             "Corners Won": {
-              "home": "5",
+              "home": "4",
               "away": "5"
             },
             "Saves": {
-              "home": "8",
+              "home": "2",
               "away": "3"
+            }
+          }
+        },
+        {
+          "date": "2026-05-19",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861387/henan-songshan-longmen-tianjin-jinmen-tiger",
+          "result": "W",
+          "team_home": "Tianjin Jinmen Tiger",
+          "team_home_id": "8239",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8239.png",
+          "team_away": "Henan Songshan Longmen",
+          "team_away_id": "8240",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 4.0,
+            "away": 2.05,
+            "draw": 3.05
+          },
+          "stats": {
+            "Possession": {
+              "home": "51%",
+              "away": "49%"
+            },
+            "Shots on Goal": {
+              "home": "2",
+              "away": "3"
+            },
+            "Shots": {
+              "home": "9",
+              "away": "8"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "4",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "1"
+            }
+          }
+        },
+        {
+          "date": "2026-05-15",
+          "competition": "Chinese Super League",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401861382/shenzhen-xinpengcheng-henan-songshan-longmen",
+          "result": "W",
+          "team_home": "Henan Songshan Longmen",
+          "team_home_id": "8240",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+          "team_away": "Shenzhen Xinpengcheng",
+          "team_away_id": "22199",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22199.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.5,
+            "away": 6.0,
+            "draw": 4.3
+          },
+          "stats": {
+            "Possession": {
+              "home": "61%",
+              "away": "39%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "1"
+            },
+            "Shots": {
+              "home": "21",
+              "away": "6"
+            },
+            "Fouls Committed": {
+              "home": "7",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "10",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
             }
           }
         }
       ]
     },
     "odds": {
-      "home": 1.83,
-      "away": 4.8,
-      "draw": 3.3
+      "home": 2.45,
+      "away": 2.7,
+      "draw": 3.65
     },
     "stats": {
       "Average Goals": {
-        "home": "0.73",
-        "away": "0.67"
+        "home": "1.81",
+        "away": "1.06"
       },
       "Average Goals Conceded": {
-        "home": "0.6",
-        "away": "1.73"
+        "home": "1.75",
+        "away": "1.25"
       },
       "Average Goal Differential": {
         "home": "+0.1",
-        "away": "-1.1"
-      },
-      "Possession": {
-        "home": "49%",
-        "away": "55%"
+        "away": "-0.2"
       },
       "Shots On Target Percentage": {
-        "home": "41%",
-        "away": "41%"
-      },
-      "Big Chances Created": {
-        "home": ".40",
-        "away": ".27"
-      },
-      "Duel Win Percentage": {
-        "home": "47%",
-        "away": "46%"
+        "home": "36%",
+        "away": "34%"
       },
       "Clean Sheet": {
-        "home": "8",
-        "away": "2"
+        "home": "3",
+        "away": "3"
       },
       "Save Percentage": {
-        "home": "76%",
-        "away": "67%"
+        "home": "61%",
+        "away": "64%"
+      },
+      "Corners Won": {
+        "home": "68",
+        "away": "90"
+      },
+      "Fouls Committed": {
+        "home": "197",
+        "away": "197"
       }
     },
     "h2h": [
       {
-        "date": "2025-11-16",
-        "competition": "2025 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733569/cuiaba-america-mineiro",
-        "team_home": "América Mineiro",
-        "team_home_id": "6154",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "team_away": "Cuiabá",
-        "team_away_id": "17313",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-        "home_score": "1",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "58%",
-            "away": "42%"
-          },
-          "Shots on Goal": {
-            "home": "2",
-            "away": "2"
-          },
-          "Shots": {
-            "home": "10",
-            "away": "9"
-          },
-          "Fouls Committed": {
-            "home": "17",
-            "away": "14"
-          },
-          "Yellow Cards": {
-            "home": "2",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "3",
-            "away": "1"
-          },
-          "Saves": {
-            "home": "1",
-            "away": "1"
-          }
-        }
-      },
-      {
-        "date": "2025-07-24",
-        "competition": "2025 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733384/america-mineiro-cuiaba",
-        "team_home": "Cuiabá",
-        "team_home_id": "17313",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-        "team_away": "América Mineiro",
-        "team_away_id": "6154",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "home_score": "3",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "33%",
-            "away": "67%"
-          },
-          "Shots on Goal": {
-            "home": "5",
-            "away": "6"
-          },
-          "Shots": {
-            "home": "8",
-            "away": "14"
-          },
-          "Fouls Committed": {
-            "home": "10",
-            "away": "12"
-          },
-          "Yellow Cards": {
-            "home": "3",
-            "away": "2"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "1"
-          },
-          "Corners Won": {
-            "home": "2",
-            "away": "10"
-          },
-          "Saves": {
-            "home": "3",
-            "away": "2"
-          }
-        }
-      },
-      {
-        "date": "2023-09-15",
-        "competition": "2023 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666040/america-mineiro-cuiaba",
-        "team_home": null,
-        "team_home_id": "17313",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-        "team_away": null,
-        "team_away_id": "6154",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+        "date": "2026-03-15",
+        "competition": "2026 Chinese Super League",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/401861323/yunnan-yukun-henan-songshan-longmen",
+        "team_home": "Henan Songshan Longmen",
+        "team_home_id": "8240",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+        "team_away": "Yunnan Yukun",
+        "team_away_id": "22536",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
         "home_score": "2",
-        "away_score": "2",
+        "away_score": "1",
         "status": "FT",
         "odds": {
           "home": null,
@@ -789,80 +655,27 @@
         },
         "stats": {
           "Possession": {
-            "home": "63%",
-            "away": "37%"
+            "home": "44%",
+            "away": "56%"
           },
           "Shots on Goal": {
-            "home": "8",
-            "away": "3"
-          },
-          "Shots": {
-            "home": "20",
-            "away": "7"
-          },
-          "Fouls Committed": {
-            "home": "11",
-            "away": "18"
-          },
-          "Yellow Cards": {
-            "home": "1",
-            "away": "4"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "1"
-          },
-          "Corners Won": {
-            "home": "9",
-            "away": "1"
-          },
-          "Saves": {
-            "home": "1",
+            "home": "6",
             "away": "6"
-          }
-        }
-      },
-      {
-        "date": "2023-05-07",
-        "competition": "2023 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/665851/cuiaba-america-mineiro",
-        "team_home": null,
-        "team_home_id": "6154",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "team_away": null,
-        "team_away_id": "17313",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-        "home_score": "1",
-        "away_score": "2",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "46%",
-            "away": "54%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "5"
           },
           "Shots": {
             "home": "15",
-            "away": "9"
+            "away": "20"
           },
           "Fouls Committed": {
-            "home": "19",
-            "away": "12"
+            "home": "7",
+            "away": "14"
           },
           "Yellow Cards": {
-            "home": "3",
-            "away": "4"
+            "home": "0",
+            "away": "3"
           },
           "Red Cards": {
-            "home": "1",
+            "home": "0",
             "away": "0"
           },
           "Corners Won": {
@@ -870,22 +683,22 @@
             "away": "6"
           },
           "Saves": {
-            "home": "4",
-            "away": "3"
+            "home": "5",
+            "away": "4"
           }
         }
       },
       {
-        "date": "2022-09-29",
-        "competition": "2022 Brasileiro Serie A",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/630863/america-mineiro-cuiaba",
-        "team_home": null,
-        "team_home_id": "17313",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-        "team_away": null,
-        "team_away_id": "6154",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
-        "home_score": "2",
+        "date": "2025-11-22",
+        "competition": "2025 Chinese Super League",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/731943/yunnan-yukun-henan-songshan-longmen",
+        "team_home": "Henan Songshan Longmen",
+        "team_home_id": "8240",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+        "team_away": "Yunnan Yukun",
+        "team_away_id": "22536",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+        "home_score": "1",
         "away_score": "1",
         "status": "FT",
         "odds": {
@@ -895,16 +708,16 @@
         },
         "stats": {
           "Possession": {
-            "home": "42%",
-            "away": "58%"
+            "home": "62%",
+            "away": "38%"
           },
           "Shots on Goal": {
-            "home": "3",
-            "away": "8"
+            "home": "6",
+            "away": "2"
           },
           "Shots": {
-            "home": "11",
-            "away": "18"
+            "home": "7",
+            "away": "10"
           },
           "Fouls Committed": {
             "home": "13",
@@ -912,7 +725,60 @@
           },
           "Yellow Cards": {
             "home": "1",
-            "away": "6"
+            "away": "3"
+          },
+          "Red Cards": {
+            "home": "0",
+            "away": "0"
+          },
+          "Corners Won": {
+            "home": "3",
+            "away": "4"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "4"
+          }
+        }
+      },
+      {
+        "date": "2025-06-26",
+        "competition": "2025 Chinese Super League",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/731829/henan-songshan-longmen-yunnan-yukun",
+        "team_home": "Yunnan Yukun",
+        "team_home_id": "22536",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22536.png",
+        "team_away": "Henan Songshan Longmen",
+        "team_away_id": "8240",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8240.png",
+        "home_score": "2",
+        "away_score": "1",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {
+          "Possession": {
+            "home": "35%",
+            "away": "65%"
+          },
+          "Shots on Goal": {
+            "home": "3",
+            "away": "7"
+          },
+          "Shots": {
+            "home": "8",
+            "away": "20"
+          },
+          "Fouls Committed": {
+            "home": "14",
+            "away": "10"
+          },
+          "Yellow Cards": {
+            "home": "5",
+            "away": "1"
           },
           "Red Cards": {
             "home": "0",
@@ -920,351 +786,1396 @@
           },
           "Corners Won": {
             "home": "2",
-            "away": "4"
+            "away": "6"
           },
           "Saves": {
-            "home": "7",
-            "away": "1"
+            "home": "6",
+            "away": "3"
           }
         }
       }
     ],
     "full_standings": {
-      "total_journees": 38,
+      "total_journees": 30,
       "position_zones": [
         {
-          "positions": "1-4",
-          "label": "Promotion Serie A",
+          "positions": "1-2",
+          "label": "AFC Champions League",
           "type": "avantage"
         },
         {
-          "positions": "17-20",
-          "label": "Relégation Serie C",
+          "positions": "3-4",
+          "label": "AFC Challenge League",
+          "type": "avantage"
+        },
+        {
+          "positions": "14-16",
+          "label": "Relégation",
           "type": "désavantage"
         }
       ],
       "standings": [
         {
           "position": 1,
-          "name": "Vila Nova",
+          "name": "Chengdu Rongcheng",
           "stats": {
-            "GP": 15,
-            "W": 8,
-            "D": 4,
-            "L": 3,
-            "F": 23,
-            "A": 17,
-            "GD": 6,
-            "P": 28
+            "GP": 16,
+            "W": 13,
+            "D": 1,
+            "L": 2,
+            "F": 36,
+            "A": 15,
+            "GD": 21,
+            "P": 40
           },
           "zone": {
-            "label": "Promotion Serie A",
+            "label": "AFC Champions League",
             "type": "avantage"
           }
         },
         {
           "position": 2,
-          "name": "Novorizontino",
+          "name": "Chongqing Tonglianglong",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 7,
             "D": 6,
-            "L": 2,
-            "F": 24,
-            "A": 14,
-            "GD": 10,
+            "L": 3,
+            "F": 20,
+            "A": 16,
+            "GD": 4,
             "P": 27
           },
           "zone": {
-            "label": "Promotion Serie A",
+            "label": "AFC Champions League",
             "type": "avantage"
           }
         },
         {
           "position": 3,
-          "name": "Criciúma",
+          "name": "Dalian Yingbo",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 7,
-            "D": 6,
-            "L": 2,
-            "F": 17,
-            "A": 11,
-            "GD": 6,
-            "P": 27
+            "D": 1,
+            "L": 8,
+            "F": 22,
+            "A": 29,
+            "GD": -7,
+            "P": 22
           },
           "zone": {
-            "label": "Promotion Serie A",
+            "label": "AFC Challenge League",
             "type": "avantage"
           }
         },
         {
           "position": 4,
-          "name": "São Bernardo",
+          "name": "Shandong Taishan",
           "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 20,
-            "A": 12,
-            "GD": 8,
-            "P": 25
+            "GP": 16,
+            "W": 8,
+            "D": 3,
+            "L": 5,
+            "F": 30,
+            "A": 26,
+            "GD": 4,
+            "P": 21
           },
           "zone": {
-            "label": "Promotion Serie A",
+            "label": "AFC Challenge League",
             "type": "avantage"
           }
         },
         {
           "position": 5,
-          "name": "Juventude",
+          "name": "Yunnan Yukun",
           "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 16,
-            "A": 8,
-            "GD": 8,
-            "P": 25
+            "GP": 16,
+            "W": 6,
+            "D": 3,
+            "L": 7,
+            "F": 29,
+            "A": 28,
+            "GD": 1,
+            "P": 21
           },
           "zone": null
         },
         {
           "position": 6,
-          "name": "Operário PR",
+          "name": "Qingdao West Coast",
           "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 19,
-            "A": 17,
-            "GD": 2,
-            "P": 25
+            "GP": 16,
+            "W": 4,
+            "D": 9,
+            "L": 3,
+            "F": 20,
+            "A": 24,
+            "GD": -4,
+            "P": 21
           },
           "zone": null
         },
         {
           "position": 7,
-          "name": "Fortaleza",
+          "name": "Beijing Guoan",
           "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 18,
-            "A": 16,
-            "GD": 2,
-            "P": 25
+            "GP": 16,
+            "W": 6,
+            "D": 5,
+            "L": 5,
+            "F": 27,
+            "A": 23,
+            "GD": 4,
+            "P": 18
           },
           "zone": null
         },
         {
           "position": 8,
-          "name": "Sport",
+          "name": "Zhejiang Professional FC",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 6,
-            "D": 7,
-            "L": 2,
-            "F": 18,
-            "A": 11,
-            "GD": 7,
-            "P": 25
-          },
-          "zone": null
-        },
-        {
-          "position": 9,
-          "name": "Athletic",
-          "stats": {
-            "GP": 15,
-            "W": 5,
-            "D": 7,
-            "L": 3,
-            "F": 16,
-            "A": 15,
-            "GD": 1,
-            "P": 22
-          },
-          "zone": null
-        },
-        {
-          "position": 10,
-          "name": "Goiás",
-          "stats": {
-            "GP": 15,
-            "W": 6,
-            "D": 3,
-            "L": 6,
-            "F": 14,
-            "A": 21,
-            "GD": -7,
-            "P": 21
-          },
-          "zone": null
-        },
-        {
-          "position": 11,
-          "name": "Atlético Goianiense",
-          "stats": {
-            "GP": 15,
-            "W": 5,
-            "D": 6,
-            "L": 4,
-            "F": 18,
-            "A": 16,
-            "GD": 2,
-            "P": 21
-          },
-          "zone": null
-        },
-        {
-          "position": 12,
-          "name": "Náutico",
-          "stats": {
-            "GP": 15,
-            "W": 6,
-            "D": 2,
-            "L": 7,
-            "F": 21,
-            "A": 19,
-            "GD": 2,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 13,
-          "name": "Cuiabá",
-          "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 8,
-            "L": 3,
-            "F": 11,
-            "A": 9,
-            "GD": 2,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 14,
-          "name": "CRB",
-          "stats": {
-            "GP": 15,
-            "W": 5,
             "D": 4,
             "L": 6,
-            "F": 24,
-            "A": 24,
-            "GD": 0,
-            "P": 19
-          },
-          "zone": null
-        },
-        {
-          "position": 15,
-          "name": "Ceará",
-          "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 5,
-            "L": 6,
-            "F": 15,
-            "A": 18,
-            "GD": -3,
+            "F": 21,
+            "A": 26,
+            "GD": -5,
             "P": 17
           },
           "zone": null
         },
         {
-          "position": 16,
-          "name": "Botafogo-SP",
+          "position": 9,
+          "name": "Shenzhen Xinpengcheng",
           "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 4,
-            "L": 7,
-            "F": 14,
-            "A": 14,
-            "GD": 0,
+            "GP": 16,
+            "W": 5,
+            "D": 2,
+            "L": 9,
+            "F": 22,
+            "A": 28,
+            "GD": -6,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "Liaoning Tieren",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 2,
+            "L": 9,
+            "F": 21,
+            "A": 28,
+            "GD": -7,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Shanghai Shenhua",
+          "stats": {
+            "GP": 16,
+            "W": 7,
+            "D": 5,
+            "L": 4,
+            "F": 33,
+            "A": 25,
+            "GD": 8,
             "P": 16
           },
           "zone": null
         },
         {
-          "position": 17,
-          "name": "Londrina",
+          "position": 12,
+          "name": "Shanghai Port",
           "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 3,
-            "L": 8,
-            "F": 19,
-            "A": 24,
-            "GD": -5,
+            "GP": 16,
+            "W": 5,
+            "D": 5,
+            "L": 6,
+            "F": 25,
+            "A": 22,
+            "GD": 3,
             "P": 15
           },
-          "zone": {
-            "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
+          "zone": null
         },
         {
-          "position": 18,
-          "name": "Avaí",
+          "position": 13,
+          "name": "Henan Songshan Longmen",
           "stats": {
-            "GP": 15,
-            "W": 3,
-            "D": 4,
+            "GP": 16,
+            "W": 6,
+            "D": 3,
+            "L": 7,
+            "F": 17,
+            "A": 20,
+            "GD": -3,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "Qingdao Hainiu",
+          "stats": {
+            "GP": 16,
+            "W": 6,
+            "D": 2,
             "L": 8,
-            "F": 15,
-            "A": 21,
-            "GD": -6,
+            "F": 26,
+            "A": 27,
+            "GD": -1,
             "P": 13
           },
           "zone": {
-            "label": "Relégation Serie C",
+            "label": "Relégation",
             "type": "désavantage"
           }
         },
         {
-          "position": 19,
-          "name": "Ponte Preta",
+          "position": 15,
+          "name": "Wuhan Three Towns",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 2,
-            "D": 2,
-            "L": 11,
-            "F": 10,
-            "A": 29,
-            "GD": -19,
+            "D": 7,
+            "L": 7,
+            "F": 22,
+            "A": 31,
+            "GD": -9,
             "P": 8
           },
           "zone": {
-            "label": "Relégation Serie C",
+            "label": "Relégation",
             "type": "désavantage"
           }
         },
         {
-          "position": 20,
-          "name": "América Mineiro",
+          "position": 16,
+          "name": "Tianjin Jinmen Tiger",
           "stats": {
-            "GP": 15,
+            "GP": 16,
+            "W": 3,
+            "D": 6,
+            "L": 7,
+            "F": 19,
+            "A": 22,
+            "GD": -3,
+            "P": 5
+          },
+          "zone": {
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "gameId": "401842745",
+    "date": "2026-07-03",
+    "time_ci": "21:00",
+    "league": "Sweden_Allsvenskan",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401842745/mjallby-aif-ik-sirius",
+    "home": {
+      "team": "IK Sirius",
+      "team_id": "8547",
+      "team_slug": "ik-sirius",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+      "url": "https://www.espn.com/soccer/team/_/id/8547",
+      "standings": {
+        "position_current": 1,
+        "position_if_win": 1,
+        "played": 10,
+        "won": 9,
+        "drawn": 1,
+        "lost": 0,
+        "gd": 17,
+        "points": 28
+      },
+      "form": "9-1-0",
+      "matchday": 11,
+      "last_five": [
+        {
+          "date": "2026-05-30",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842730/ik-sirius-aik",
+          "result": "W",
+          "team_home": "AIK",
+          "team_home_id": "994",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/994.png",
+          "team_away": "IK Sirius",
+          "team_away_id": "8547",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+          "home_score": "0",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 3.3,
+            "away": 2.05,
+            "draw": 3.75
+          },
+          "stats": {
+            "Possession": {
+              "home": "57%",
+              "away": "43%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "19",
+              "away": "11"
+            },
+            "Fouls Committed": {
+              "home": "12",
+              "away": "13"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "9",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842724/gais-ik-sirius",
+          "result": "W",
+          "team_home": "IK Sirius",
+          "team_home_id": "8547",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+          "team_away": "GAIS",
+          "team_away_id": "8222",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.71,
+            "away": 4.5,
+            "draw": 3.95
+          },
+          "stats": {
+            "Possession": {
+              "home": "44%",
+              "away": "56%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "4"
+            },
+            "Shots": {
+              "home": "15",
+              "away": "9"
+            },
+            "Fouls Committed": {
+              "home": "11",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "1",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-18",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842715/ik-sirius-djurgarden",
+          "result": "W",
+          "team_home": "Djurgården",
+          "team_home_id": "2339",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
+          "team_away": "IK Sirius",
+          "team_away_id": "8547",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+          "home_score": "2",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 2.1,
+            "away": 3.05,
+            "draw": 3.85
+          },
+          "stats": {
+            "Possession": {
+              "home": "60%",
+              "away": "40%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "9"
+            },
+            "Shots": {
+              "home": "13",
+              "away": "14"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "4"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "3"
+            }
+          }
+        },
+        {
+          "date": "2026-05-11",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842707/orgryte-is-ik-sirius",
+          "result": "W",
+          "team_home": "IK Sirius",
+          "team_home_id": "8547",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+          "team_away": "Örgryte IS",
+          "team_away_id": "131552",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131552.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.2,
+            "away": 11.0,
+            "draw": 7.5
+          },
+          "stats": {
+            "Possession": {
+              "home": "59%",
+              "away": "41%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "1"
+            },
+            "Shots": {
+              "home": "23",
+              "away": "7"
+            },
+            "Fouls Committed": {
+              "home": "8",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-02",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842700/kalmar-ff-ik-sirius",
+          "result": "W",
+          "team_home": "IK Sirius",
+          "team_home_id": "8547",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+          "team_away": "Kalmar FF",
+          "team_away_id": "3052",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3052.png",
+          "home_score": "3",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 1.45,
+            "away": 6.5,
+            "draw": 4.6
+          },
+          "stats": {
+            "Possession": {
+              "home": "57%",
+              "away": "43%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "15",
+              "away": "17"
+            },
+            "Fouls Committed": {
+              "home": "6",
+              "away": "20"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "6"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Mjällby AIF",
+      "team_id": "20301",
+      "team_slug": "mjallby-aif",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+      "url": "https://www.espn.com/soccer/team/_/id/20301",
+      "standings": {
+        "position_current": 6,
+        "position_if_win": 3,
+        "played": 10,
+        "won": 4,
+        "drawn": 3,
+        "lost": 3,
+        "gd": 3,
+        "points": 15
+      },
+      "form": "4-3-3",
+      "matchday": 11,
+      "last_five": [
+        {
+          "date": "2026-05-25",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842727/mjallby-aif-ifk-goteborg",
+          "result": "D",
+          "team_home": "IFK Göteborg",
+          "team_home_id": "2556",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2556.png",
+          "team_away": "Mjällby AIF",
+          "team_away_id": "20301",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.45,
+            "away": 2.9,
+            "draw": 3.3
+          },
+          "stats": {
+            "Possession": {
+              "home": "48%",
+              "away": "52%"
+            },
+            "Shots on Goal": {
+              "home": "8",
+              "away": "5"
+            },
+            "Shots": {
+              "home": "19",
+              "away": "13"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "6",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "2",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "7"
+            }
+          }
+        },
+        {
+          "date": "2026-05-21",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842777/mjallby-aif-if-elfsborg",
+          "result": "D",
+          "team_home": "IF Elfsborg",
+          "team_home_id": "529",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/529.png",
+          "team_away": "Mjällby AIF",
+          "team_away_id": "20301",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.15,
+            "away": 3.5,
+            "draw": 3.25
+          },
+          "stats": {
+            "Possession": {
+              "home": "43%",
+              "away": "57%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Shots": {
+              "home": "13",
+              "away": "10"
+            },
+            "Fouls Committed": {
+              "home": "10",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "4",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
+            }
+          }
+        },
+        {
+          "date": "2026-05-17",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842720/bk-hacken-mjallby-aif",
+          "result": "L",
+          "team_home": "Mjällby AIF",
+          "team_home_id": "20301",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+          "team_away": "BK Häcken",
+          "team_away_id": "7834",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
+          "home_score": "0",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.35,
+            "away": 2.85,
+            "draw": 3.55
+          },
+          "stats": {
+            "Possession": {
+              "home": "41%",
+              "away": "59%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "5"
+            },
+            "Shots": {
+              "home": "6",
+              "away": "18"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "19"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "1",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "5",
+              "away": "7"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-09",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842712/mjallby-aif-degerfors-if",
+          "result": "W",
+          "team_home": "Degerfors IF",
+          "team_home_id": "20856",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20856.png",
+          "team_away": "Mjällby AIF",
+          "team_away_id": "20301",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+          "home_score": "1",
+          "away_score": "4",
+          "status": "FT",
+          "odds": {
+            "home": 3.5,
+            "away": 2.1,
+            "draw": 3.3
+          },
+          "stats": {
+            "Possession": {
+              "home": "42%",
+              "away": "58%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "17",
+              "away": "10"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "3",
+              "away": "5"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "2"
+            }
+          }
+        },
+        {
+          "date": "2026-05-03",
+          "competition": "Swedish Allsvenskan",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842701/mjallby-aif-malmo-ff",
+          "result": "W",
+          "team_home": "Malmö FF",
+          "team_home_id": "2720",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2720.png",
+          "team_away": "Mjällby AIF",
+          "team_away_id": "20301",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+          "home_score": "2",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 2.6,
+            "away": 2.65,
+            "draw": 3.3
+          },
+          "stats": {
+            "Possession": {
+              "home": "52%",
+              "away": "48%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "8"
+            },
+            "Shots": {
+              "home": "22",
+              "away": "11"
+            },
+            "Fouls Committed": {
+              "home": "12",
+              "away": "16"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "5",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "3"
+            }
+          }
+        }
+      ]
+    },
+    "odds": {
+      "home": 1.62,
+      "away": 5.0,
+      "draw": 4.0
+    },
+    "stats": {
+      "Average Goals": {
+        "home": "2.70",
+        "away": "1.40"
+      },
+      "Average Goals Conceded": {
+        "home": "1",
+        "away": "1.1"
+      },
+      "Average Goal Differential": {
+        "home": "+1.7",
+        "away": "+0.3"
+      },
+      "Shots On Target Percentage": {
+        "home": "38%",
+        "away": "43%"
+      },
+      "Clean Sheet": {
+        "home": "4",
+        "away": "3"
+      },
+      "Save Percentage": {
+        "home": "20%",
+        "away": "22%"
+      },
+      "Corners Won": {
+        "home": "0",
+        "away": "0"
+      },
+      "Fouls Committed": {
+        "home": "123",
+        "away": "122"
+      }
+    },
+    "h2h": [
+      {
+        "date": "2025-07-27",
+        "competition": "2025 Allsvenskan",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/725936/ik-sirius-mjallby-aif",
+        "team_home": "Mjällby AIF",
+        "team_home_id": "20301",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+        "team_away": "IK Sirius",
+        "team_away_id": "8547",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+        "home_score": "2",
+        "away_score": "1",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {
+          "Possession": {
+            "home": "57%",
+            "away": "43%"
+          },
+          "Shots on Goal": {
+            "home": "7",
+            "away": "2"
+          },
+          "Shots": {
+            "home": "19",
+            "away": "10"
+          },
+          "Fouls Committed": {
+            "home": "13",
+            "away": "13"
+          },
+          "Yellow Cards": {
+            "home": "0",
+            "away": "0"
+          },
+          "Red Cards": {
+            "home": "0",
+            "away": "0"
+          },
+          "Corners Won": {
+            "home": "10",
+            "away": "2"
+          },
+          "Saves": {
+            "home": "1",
+            "away": "4"
+          }
+        }
+      },
+      {
+        "date": "2025-07-14",
+        "competition": "2025 Allsvenskan",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/725920/mjallby-aif-ik-sirius",
+        "team_home": "IK Sirius",
+        "team_home_id": "8547",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+        "team_away": "Mjällby AIF",
+        "team_away_id": "20301",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+        "home_score": "1",
+        "away_score": "2",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {
+          "Possession": {
+            "home": "54%",
+            "away": "46%"
+          },
+          "Shots on Goal": {
+            "home": "7",
+            "away": "4"
+          },
+          "Shots": {
+            "home": "15",
+            "away": "9"
+          },
+          "Fouls Committed": {
+            "home": "9",
+            "away": "12"
+          },
+          "Yellow Cards": {
+            "home": "0",
+            "away": "1"
+          },
+          "Red Cards": {
+            "home": "0",
+            "away": "0"
+          },
+          "Corners Won": {
+            "home": "6",
+            "away": "3"
+          },
+          "Saves": {
+            "home": "2",
+            "away": "6"
+          }
+        }
+      },
+      {
+        "date": "2024-11-03",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/691774/mjallby-aif-ik-sirius",
+        "team_home": "IK Sirius",
+        "team_home_id": "8547",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+        "team_away": "Mjällby AIF",
+        "team_away_id": "20301",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+        "home_score": "1",
+        "away_score": "1",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {
+          "Possession": {
+            "home": "52%",
+            "away": "48%"
+          },
+          "Shots on Goal": {
+            "home": "2",
+            "away": "5"
+          },
+          "Shots": {
+            "home": "14",
+            "away": "15"
+          },
+          "Fouls Committed": {
+            "home": "16",
+            "away": "15"
+          },
+          "Yellow Cards": {
+            "home": "1",
+            "away": "3"
+          },
+          "Red Cards": {
+            "home": "0",
+            "away": "0"
+          },
+          "Corners Won": {
+            "home": "4",
+            "away": "8"
+          },
+          "Saves": {
+            "home": "3",
+            "away": "1"
+          }
+        }
+      },
+      {
+        "date": "2024-07-06",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/691645/ik-sirius-mjallby-aif",
+        "team_home": "Mjällby AIF",
+        "team_home_id": "20301",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+        "team_away": "IK Sirius",
+        "team_away_id": "8547",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+        "home_score": "3",
+        "away_score": "2",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {}
+      },
+      {
+        "date": "2023-07-24",
+        "competition": "Regular Season",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/658511/mjallby-aif-ik-sirius",
+        "team_home": "IK Sirius",
+        "team_home_id": "8547",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
+        "team_away": "Mjällby AIF",
+        "team_away_id": "20301",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+        "home_score": "2",
+        "away_score": "3",
+        "status": "FT",
+        "odds": {
+          "home": null,
+          "away": null,
+          "draw": null
+        },
+        "stats": {}
+      }
+    ],
+    "full_standings": {
+      "total_journees": 30,
+      "position_zones": [
+        {
+          "positions": "1",
+          "label": "UEFA Conference League",
+          "type": "avantage"
+        },
+        {
+          "positions": "14",
+          "label": "Relégation Playoff",
+          "type": "désavantage"
+        },
+        {
+          "positions": "15-16",
+          "label": "Relégation",
+          "type": "désavantage"
+        }
+      ],
+      "standings": [
+        {
+          "position": 1,
+          "name": "IK Sirius",
+          "stats": {
+            "GP": 10,
+            "W": 9,
+            "D": 1,
+            "L": 0,
+            "F": 27,
+            "A": 10,
+            "GD": 17,
+            "P": 28
+          },
+          "zone": {
+            "label": "UEFA Conference League",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
+          "name": "BK Häcken",
+          "stats": {
+            "GP": 10,
+            "W": 5,
+            "D": 5,
+            "L": 0,
+            "F": 20,
+            "A": 14,
+            "GD": 6,
+            "P": 20
+          },
+          "zone": null
+        },
+        {
+          "position": 3,
+          "name": "IF Elfsborg",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 6,
+            "L": 1,
+            "F": 16,
+            "A": 11,
+            "GD": 5,
+            "P": 18
+          },
+          "zone": null
+        },
+        {
+          "position": 4,
+          "name": "Hammarby IF",
+          "stats": {
+            "GP": 11,
+            "W": 5,
+            "D": 2,
+            "L": 4,
+            "F": 24,
+            "A": 13,
+            "GD": 11,
+            "P": 17
+          },
+          "zone": null
+        },
+        {
+          "position": 5,
+          "name": "GAIS",
+          "stats": {
+            "GP": 11,
+            "W": 4,
+            "D": 3,
+            "L": 4,
+            "F": 16,
+            "A": 11,
+            "GD": 5,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 6,
+          "name": "Mjällby AIF",
+          "stats": {
+            "GP": 10,
+            "W": 4,
+            "D": 3,
+            "L": 3,
+            "F": 14,
+            "A": 11,
+            "GD": 3,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 7,
+          "name": "IF Brommapojkarna",
+          "stats": {
+            "GP": 10,
+            "W": 4,
+            "D": 3,
+            "L": 3,
+            "F": 15,
+            "A": 16,
+            "GD": -1,
+            "P": 15
+          },
+          "zone": null
+        },
+        {
+          "position": 8,
+          "name": "Djurgården",
+          "stats": {
+            "GP": 9,
+            "W": 4,
+            "D": 1,
+            "L": 4,
+            "F": 19,
+            "A": 13,
+            "GD": 6,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 9,
+          "name": "Malmö FF",
+          "stats": {
+            "GP": 10,
+            "W": 4,
+            "D": 1,
+            "L": 5,
+            "F": 20,
+            "A": 20,
+            "GD": 0,
+            "P": 13
+          },
+          "zone": null
+        },
+        {
+          "position": 10,
+          "name": "AIK",
+          "stats": {
+            "GP": 10,
+            "W": 3,
+            "D": 3,
+            "L": 4,
+            "F": 12,
+            "A": 16,
+            "GD": -4,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 11,
+          "name": "Västerås SK",
+          "stats": {
+            "GP": 10,
+            "W": 3,
+            "D": 3,
+            "L": 4,
+            "F": 17,
+            "A": 22,
+            "GD": -5,
+            "P": 12
+          },
+          "zone": null
+        },
+        {
+          "position": 12,
+          "name": "Degerfors IF",
+          "stats": {
+            "GP": 10,
+            "W": 2,
+            "D": 4,
+            "L": 4,
+            "F": 12,
+            "A": 16,
+            "GD": -4,
+            "P": 10
+          },
+          "zone": null
+        },
+        {
+          "position": 13,
+          "name": "Kalmar FF",
+          "stats": {
+            "GP": 10,
+            "W": 3,
+            "D": 1,
+            "L": 6,
+            "F": 11,
+            "A": 15,
+            "GD": -4,
+            "P": 10
+          },
+          "zone": null
+        },
+        {
+          "position": 14,
+          "name": "IFK Göteborg",
+          "stats": {
+            "GP": 10,
+            "W": 2,
+            "D": 4,
+            "L": 4,
+            "F": 13,
+            "A": 22,
+            "GD": -9,
+            "P": 10
+          },
+          "zone": {
+            "label": "Relégation Playoff",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 15,
+          "name": "Halmstads BK",
+          "stats": {
+            "GP": 10,
             "W": 1,
             "D": 3,
-            "L": 11,
-            "F": 10,
-            "A": 26,
-            "GD": -16,
+            "L": 6,
+            "F": 9,
+            "A": 20,
+            "GD": -11,
             "P": 6
           },
           "zone": {
-            "label": "Relégation Serie C",
+            "label": "Relégation",
+            "type": "désavantage"
+          }
+        },
+        {
+          "position": 16,
+          "name": "Örgryte IS",
+          "stats": {
+            "GP": 10,
+            "W": 1,
+            "D": 3,
+            "L": 6,
+            "F": 10,
+            "A": 25,
+            "GD": -15,
+            "P": 6
+          },
+          "zone": {
+            "label": "Relégation",
             "type": "désavantage"
           }
         }

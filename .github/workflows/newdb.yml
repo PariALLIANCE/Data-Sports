@@ -70,7 +70,20 @@ jobs:
             if ! git diff --staged --quiet; then
               TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
               git commit -m "🤖 Update Premier League teams results - $TIMESTAMP [skip ci]"
-              git push
+
+              # ── Retry avec rebase en cas de push concurrent ──────────
+              MAX_RETRIES=5
+              ATTEMPT=1
+              until git push; do
+                if [ $ATTEMPT -ge $MAX_RETRIES ]; then
+                  echo "❌ Échec du push après $MAX_RETRIES tentatives"
+                  exit 1
+                fi
+                echo "⚠️ Push rejeté, tentative $ATTEMPT/$MAX_RETRIES — pull --rebase puis nouvel essai"
+                git pull --rebase origin main
+                ATTEMPT=$((ATTEMPT + 1))
+              done
+
               echo "✅ data_teams.json mis à jour"
             else
               echo "📝 Aucun changement"

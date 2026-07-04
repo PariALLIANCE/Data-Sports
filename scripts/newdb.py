@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 import json
 import time
 import re
+import shutil
+import os
 import urllib.request
 from datetime import datetime
 
@@ -20,6 +22,32 @@ NB_TEAMS = 1  # ← une seule équipe désormais
 
 START_SEASON = 2023
 END_SEASON = datetime.now().year  # saison actuelle incluse
+
+# ── Chemins de sortie / nettoyage ───────────────────────────────
+LEAGUES_DIR = os.path.join("data", "football", "leagues")
+DATASET_TMP_DIR = "dataset_tmp"
+OUTPUT_JSON_PATH = os.path.join(LEAGUES_DIR, "data_teams.json")
+
+
+def reset_output_directories():
+    """
+    Supprime puis recrée le dossier data/football/leagues (destination
+    finale du JSON), et supprime le dossier dataset_tmp s'il existe
+    (nettoyage des fichiers temporaires d'une exécution précédente).
+    """
+    # ── Suppression + recréation de data/football/leagues ──────────
+    if os.path.isdir(LEAGUES_DIR):
+        print(f"🗑️  Suppression du dossier existant: {LEAGUES_DIR}")
+        shutil.rmtree(LEAGUES_DIR)
+    os.makedirs(LEAGUES_DIR, exist_ok=True)
+    print(f"📁 Dossier recréé: {LEAGUES_DIR}")
+
+    # ── Suppression de dataset_tmp ──────────────────────────────────
+    if os.path.isdir(DATASET_TMP_DIR):
+        print(f"🗑️  Suppression du dossier temporaire: {DATASET_TMP_DIR}")
+        shutil.rmtree(DATASET_TMP_DIR)
+    else:
+        print(f"ℹ️  Aucun dossier temporaire {DATASET_TMP_DIR} à supprimer")
 
 
 def setup_driver():
@@ -1190,7 +1218,7 @@ def scrape_with_selenium():
             "teams": output_data,
         }
 
-        with open("newdb.json", "w", encoding="utf-8") as f:
+        with open(OUTPUT_JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(
                 final_output,
                 f,
@@ -1199,7 +1227,7 @@ def scrape_with_selenium():
                 separators=(",", ": "),
             )
 
-        print("\n💾 newdb.json sauvegardé")
+        print(f"\n💾 {OUTPUT_JSON_PATH} sauvegardé")
 
         return output_data
 
@@ -1219,6 +1247,8 @@ def main():
     print("⚽ ESPN SCRAPER — PREMIER LEAGUE (1 ÉQUIPE)")
     print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, stats entièrement en int, matchday/round séparés, has_full_stats, structuré par saison")
     print("=" * 60)
+
+    reset_output_directories()
 
     results = scrape_with_selenium()
 

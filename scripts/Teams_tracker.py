@@ -336,6 +336,7 @@ def extract_match_info(match_row, month, season):
             "odds": {"home": None, "away": None, "draw": None},  # ← rempli lors de l'enrichissement
             "has_full_stats": False,  # ← rempli lors de l'enrichissement
             "stats": {},  # ← rempli plus tard lors de la phase d'enrichissement
+            "next_game": None,  # ← rempli après calcul
         }
 
     except Exception as e:
@@ -1111,6 +1112,212 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
 
 
 # ===============================================================
+# RÉCUPÉRATION DU PROCHAIN MATCH (FIXTURES)
+# ===============================================================
+
+def scrape_next_game(driver, team_id):
+    """
+    Scrape le prochain match de l'équipe depuis la page fixtures.
+    Retourne un dict avec:
+    - context: "Premier League" ou "FA Cup" ou autre
+    - matchday: numéro de journée (si Premier League) ou None
+    - round: numéro de round (si coupe) ou None
+    - opponent: nom de l'adversaire
+    - date: date du match
+    - home_or_away: "home" ou "away"
+    - match_url: URL du match
+    """
+    url = f"https://www.espn.com/soccer/team/fixtures/_/id/{team_id}"
+    print(f"\n🌐 Accès fixtures: {url}")
+    driver.get(url)
+
+    print("⏳ Attente du chargement des fixtures...")
+    time.sleep(5)
+
+    # Scroll pour déclencher le lazy-load
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
+    driver.execute_script("window.scrollTo(0, 0);")
+    time.sleep(1)
+
+    try:
+        WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
+        )
+        print("✅ Tables de fixtures détectées")
+    except TimeoutException:
+        print("⚠️ Timeout en attendant les tables de fixtures")
+        return None
+
+    # Récupérer tous les blocs mensuels
+    fixture_tables = driver.find_elements(
+        By.CSS_SELECTOR, "div.ResponsiveTable.Table__fixtures-mobile"
+    )
+    if not fixture_tables:
+        fixture_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+
+    print(f"📊 {len(fixture_tables)} bloc(s) de fixtures trouvé(s)")
+
+    if not fixture_tables:
+        print("❌ Aucun fixture trouvé")
+        return None
+
+    # Parcourir les tables pour trouver le prochain match
+    for table in fixture_tables:
+        month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
+        month = month_els[0].text.strip() if month_els else "Unknown"
+        print(f"\n📅 Mois: {month}")
+
+        rows = table.find_elements(
+            By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
+        )
+
+        for row in rows:
+            try:
+                cells = row.find_elements(By.TAG_NAME, "td")
+                if len(cells) < 6:
+                    continue
+
+                # ── [0] DATE ──────────────────────────────────────────
+                date_els = cells[0].find_elements(By.CSS_SELECTOR, '[data-testid="date"]')
+                date_text = date_els[0].text.strip() if date_els else ""
+
+                # ── [1] ÉQUIPE LOCALE ────────────────────────────────
+                local_links = cells[1].find_elements(By.TAG_NAME, "a")
+                local_href = local_links[0].get_attribute("href") if local_links else ""
+                local_name = team_name_from_href(local_href)
+
+                # ── [2] SCORE (encore non joué) ──────────────────────
+                # Pour les fixtures, le score est vide ou "vs"
+                score_text = cells[2].text.strip()
+
+                # ── [3] ÉQUIPE AWAY ──────────────────────────────────
+                away_links = cells[3].find_elements(By.TAG_NAME, "a")
+                away_href = away_links[0].get_attribute("href") if away_links else ""
+                away_name = team_name_from_href(away_href)
+
+                # ── [5] COMPÉTITION ──────────────────────────────────
+                competition = ""
+                comp_spans = cells[5].find_elements(By.TAG_NAME, "span")
+                if comp_spans:
+                    competition = comp_spans[-1].text.strip()
+
+                # Vérifier si c'est un match non joué (score vide ou "vs")
+                if not score_text or score_text.lower() == "vs":
+                    # Construire la date ISO
+                    year_m = re.search(r"(\d{4})", month)
+                    match_year = year_m.group(1) if year_m else str(datetime.now().year)
+                    iso_date = build_iso_date(date_text, month, match_year)
+
+                    # Déterminer si l'équipe joue à domicile ou à l'extérieur
+                    league_label = target_league_label()
+                    is_home = True  # par défaut
+
+                    # Trouver l'équipe cible dans la ligne (via l'ID)
+                    team_found = False
+                    for link in local_links + away_links:
+                        href = link.get_attribute("href") or ""
+                        if f"/id/{team_id}/" in href:
+                            team_found = True
+                            # Si l'équipe est dans les liens locaux => home
+                            if link in local_links:
+                                is_home = True
+                            else:
+                                is_home = False
+                            break
+
+                    if not team_found:
+                        continue
+
+                    # Déterminer le contexte
+                    context = "Unknown"
+                    matchday = None
+                    round_num = None
+
+                    if league_label.lower() in competition.lower():
+                        context = "Premier League"
+                        # On essaie d'extrapoler la journée
+                        # Récupérer le matchday depuis l'URL ou le contexte
+                        # Pour les fixtures, ESPN n'indique pas toujours le matchday
+                        # On peut essayer de le déterminer plus tard
+                    elif "fa cup" in competition.lower():
+                        context = "FA Cup"
+                        # Extraire le round depuis la page du match si possible
+                        # ou depuis la compétition
+                    else:
+                        context = competition
+
+                    # Construire l'objet next_game
+                    next_game = {
+                        "context": context,
+                        "matchday": matchday,
+                        "round": round_num,
+                        "opponent": away_name if is_home else local_name,
+                        "home_or_away": "home" if is_home else "away",
+                        "date": iso_date,
+                        "competition": competition,
+                    }
+
+                    print(f"   ✅ Prochain match trouvé: {next_game}")
+                    return next_game
+
+            except Exception as e:
+                print(f"   ⚠️ Erreur extraction fixture: {e}")
+                continue
+
+    print("❌ Aucun prochain match trouvé")
+    return None
+
+
+def compute_next_games(all_matches_by_team, driver, team_id):
+    """
+    Calcule le next_game pour chaque match :
+    - Pour chaque match sauf le plus récent, le next_game est le match précédent (plus récent)
+    - Pour le match le plus récent, le next_game est récupéré depuis les fixtures
+    """
+    for team_matches in all_matches_by_team.values():
+        if not team_matches:
+            continue
+
+        # Les matchs sont déjà triés du plus récent au plus ancien
+        # Le plus récent est à l'index 0
+        for i, match in enumerate(team_matches):
+            if i == 0:
+                # Match le plus récent → récupérer depuis les fixtures
+                next_game = scrape_next_game(driver, team_id)
+                match["next_game"] = next_game
+            else:
+                # Match précédent (plus récent) → next_game
+                # On utilise le match à l'index i-1
+                previous_match = team_matches[i-1]
+                # Déterminer le contexte du match précédent
+                competition = previous_match.get("competition", "")
+                league_label = target_league_label()
+
+                if league_label.lower() in competition.lower():
+                    context = "Premier League"
+                    matchday = previous_match.get("matchday")
+                    round_num = None
+                else:
+                    context = competition
+                    matchday = None
+                    round_num = previous_match.get("round")
+
+                next_game = {
+                    "context": context,
+                    "matchday": matchday,
+                    "round": round_num,
+                    "opponent": previous_match.get("home_team") if previous_match.get("home_team_id") == team_id else previous_match.get("away_team"),
+                    "home_or_away": "home" if previous_match.get("home_team_id") == team_id else "away",
+                    "date": previous_match.get("date"),
+                    "competition": competition,
+                }
+                match["next_game"] = next_game
+
+    return all_matches_by_team
+
+
+# ===============================================================
 # SORTIE JSON — ordre des clés propre et lisible
 # ===============================================================
 
@@ -1120,6 +1327,7 @@ MATCH_KEY_ORDER = [
     "away_team", "away_team_id", "away_logo_url", "away_score",
     "result", "decided_by_penalties", "penalty_winner", "team_result",
     "odds", "has_full_stats", "stats", "match_id", "match_url",
+    "next_game",
 ]
 
 TEAM_KEY_ORDER = [
@@ -1176,6 +1384,16 @@ def scrape_with_selenium():
 
         # ── Phase d'enrichissement : statistiques, mi-temps, cotes, rounds, pens ──
         enrich_matches_with_stats_and_odds(driver, matches_by_team)
+
+        # ── Phase de calcul des next_games ──────────────────────────────
+        print("\n" + "=" * 60)
+        print("🔄 CALCUL DES PROCHAINS MATCHS (next_game)")
+        print("=" * 60)
+
+        for team_id, matches in matches_by_team.items():
+            print(f"\n📋 Calcul des next_game pour team_id={team_id}")
+            compute_next_games({team_id: matches}, driver, team_id)
+            print(f"   ✅ {len(matches)} match(s) enrichis avec next_game")
 
         # ── Construction de la sortie finale (matchs structurés par saison) ──
         for team_id, unique_matches in matches_by_team.items():
@@ -1277,6 +1495,9 @@ def main():
                         f"         📊 {stats_flag} {len(m['stats'])} statistique(s)  |  "
                         f"📅 Journée {journee}  |  🔁 Round {round_val}  |  ⏱️ MT {ht}  |  💰 {m['odds']}{pens}"
                     )
+                    if m.get("next_game"):
+                        ng = m["next_game"]
+                        print(f"         ⏭️ Prochain match: {ng.get('context')} vs {ng.get('opponent')} ({ng.get('home_or_away')}) le {ng.get('date')}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

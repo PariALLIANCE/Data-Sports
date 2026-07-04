@@ -1115,6 +1115,56 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
 # RÉCUPÉRATION DU PROCHAIN MATCH (FIXTURES)
 # ===============================================================
 
+def extract_matchday_from_match_page(driver, match_url):
+    """
+    Extrait le matchday depuis la page d'un match en utilisant les sélecteurs
+    fournis. La structure montre que le matchday est affiché dans un élément
+    avec le texte "Matchday X" ou dans l'URL.
+    """
+    try:
+        driver.get(match_url)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.uUds"))
+        )
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        
+        # Recherche dans le texte de la page
+        matchday_patterns = [
+            r"Matchday\s*(\d+)",
+            r"Week\s*(\d+)",
+            r"Journée\s*(\d+)",
+            r"Round\s*(\d+)",
+        ]
+        
+        # Chercher dans tous les textes visibles
+        all_text = soup.get_text()
+        for pattern in matchday_patterns:
+            m = re.search(pattern, all_text, re.IGNORECASE)
+            if m:
+                return int(m.group(1))
+        
+        # Chercher dans les métadonnées
+        for meta in soup.find_all("meta"):
+            if meta.get("name") == "description" or meta.get("property") == "og:description":
+                desc = meta.get("content", "")
+                for pattern in matchday_patterns:
+                    m = re.search(pattern, desc, re.IGNORECASE)
+                    if m:
+                        return int(m.group(1))
+        
+        # Chercher dans les éléments spécifiques
+        elements = soup.find_all(string=re.compile(r"Matchday|Week", re.IGNORECASE))
+        for el in elements:
+            m = re.search(r"(\d+)", el)
+            if m:
+                return int(m.group(1))
+                
+    except Exception as e:
+        print(f"    ⚠️ Erreur extraction matchday depuis page match: {e}")
+    
+    return None
+
+
 def scrape_next_game(driver, team_id):
     """
     Scrape le prochain match de l'équipe depuis la page fixtures.
@@ -1219,6 +1269,9 @@ def scrape_next_game(driver, team_id):
                 away_id_m = re.search(r"/id/(\d+)/", away_href)
                 away_team_id = away_id_m.group(1) if away_id_m else ""
 
+                # ── [4] HEURE ─────────────────────────────────────────
+                time_text = cells[4].text.strip() if len(cells) > 4 else ""
+
                 # ── [5] COMPÉTITION ──────────────────────────────────
                 competition = ""
                 comp_spans = cells[5].find_elements(By.TAG_NAME, "span")
@@ -1228,12 +1281,11 @@ def scrape_next_game(driver, team_id):
                 # Vérifier si c'est un match non joué (fixture)
                 # Le texte du score est "v" ou "vs" pour les matchs à venir
                 is_fixture = False
-                if score_text.lower() in ["v", "vs", ""]:
+                if score_text.lower() in ["v", "vs", ""] and time_text:
                     is_fixture = True
-                else:
-                    # Vérifier s'il y a un lien vers le match mais pas de score
-                    # Parfois le texte est "v" sans lien
-                    pass
+                elif not score_text or ":" not in score_text:
+                    # Si pas de score et pas d'heure, c'est probablement un fixture
+                    is_fixture = True
 
                 if not is_fixture:
                     continue
@@ -1268,11 +1320,14 @@ def scrape_next_game(driver, team_id):
 
                 if league_label.lower() in competition.lower():
                     context = "Premier League"
-                    # Essayer d'extraire le matchday depuis l'URL
+                    # Essayer d'extraire le matchday depuis l'URL d'abord
                     if match_url:
                         md_m = re.search(r"/matchday/(\d+)", match_url)
                         if md_m:
                             matchday = int(md_m.group(1))
+                        else:
+                            # Essayer d'extraire depuis la page du match
+                            matchday = extract_matchday_from_match_page(driver, match_url)
                 elif "fa cup" in competition.lower():
                     context = "FA Cup"
                     # Essayer d'extraire le round depuis l'URL ou la page du match
@@ -1320,36 +1375,6 @@ def scrape_next_game(driver, team_id):
                 continue
 
     print("❌ Aucun prochain match trouvé")
-    return None
-
-
-def get_matchday_from_fixture(driver, match_url):
-    """
-    Essaie d'extraire le matchday depuis la page du match pour un fixture.
-    """
-    try:
-        driver.get(match_url)
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "div.uUds"))
-        )
-        soup = BeautifulSoup(driver.page_source, "html.parser")
-        
-        # Chercher le matchday dans le texte
-        matchday_text = soup.find(string=re.compile(r"Matchday|Week", re.IGNORECASE))
-        if matchday_text:
-            md_m = re.search(r"(\d+)", matchday_text)
-            if md_m:
-                return int(md_m.group(1))
-        
-        # Autre approche: chercher dans les métadonnées
-        for meta in soup.find_all("meta"):
-            if meta.get("name") == "description" or meta.get("property") == "og:description":
-                desc = meta.get("content", "")
-                md_m = re.search(r"Matchday (\d+)", desc, re.IGNORECASE)
-                if md_m:
-                    return int(md_m.group(1))
-    except:
-        pass
     return None
 
 
@@ -1592,7 +1617,9 @@ def main():
                     )
                     if m.get("next_game"):
                         ng = m["next_game"]
-                        print(f"         ⏭️ Prochain match: {ng.get('context')} vs {ng.get('opponent')} ({ng.get('home_or_away')}) le {ng.get('date')}")
+                        md = ng.get('matchday') if ng.get('matchday') is not None else "-"
+                        rd = ng.get('round') if ng.get('round') is not None else "-"
+                        print(f"         ⏭️ Prochain match: {ng.get('context')} (Journée {md}) vs {ng.get('opponent')} ({ng.get('home_or_away')}) le {ng.get('date')}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

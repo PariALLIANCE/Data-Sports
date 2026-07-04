@@ -3046,6 +3046,24 @@
             },
             {
                 "position": 3,
+                "name": "Yunnan Yukun",
+                "stats": {
+                    "GP": 17,
+                    "W": 7,
+                    "D": 3,
+                    "L": 7,
+                    "F": 31,
+                    "A": 29,
+                    "GD": 2,
+                    "P": 24
+                },
+                "zone": {
+                    "label": "AFC Challenge League",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 4,
                 "name": "Dalian Yingbo",
                 "stats": {
                     "GP": 16,
@@ -3063,7 +3081,7 @@
                 }
             },
             {
-                "position": 4,
+                "position": 5,
                 "name": "Shandong Taishan",
                 "stats": {
                     "GP": 16,
@@ -3073,24 +3091,6 @@
                     "F": 30,
                     "A": 26,
                     "GD": 4,
-                    "P": 21
-                },
-                "zone": {
-                    "label": "AFC Challenge League",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 5,
-                "name": "Yunnan Yukun",
-                "stats": {
-                    "GP": 16,
-                    "W": 6,
-                    "D": 3,
-                    "L": 7,
-                    "F": 29,
-                    "A": 28,
-                    "GD": 1,
                     "P": 21
                 },
                 "zone": null
@@ -3202,15 +3202,15 @@
             },
             {
                 "position": 13,
-                "name": "Henan Songshan Longmen",
+                "name": "Henan",
                 "stats": {
-                    "GP": 16,
+                    "GP": 17,
                     "W": 6,
                     "D": 3,
-                    "L": 7,
-                    "F": 17,
-                    "A": 20,
-                    "GD": -3,
+                    "L": 8,
+                    "F": 18,
+                    "A": 22,
+                    "GD": -4,
                     "P": 15
                 },
                 "zone": null
@@ -7260,14 +7260,14 @@
                 "position": 1,
                 "name": "IK Sirius",
                 "stats": {
-                    "GP": 10,
+                    "GP": 11,
                     "W": 9,
-                    "D": 1,
+                    "D": 2,
                     "L": 0,
-                    "F": 27,
-                    "A": 10,
+                    "F": 31,
+                    "A": 14,
                     "GD": 17,
-                    "P": 28
+                    "P": 29
                 },
                 "zone": {
                     "label": "UEFA Conference League",
@@ -7321,6 +7321,21 @@
             },
             {
                 "position": 5,
+                "name": "Mjällby AIF",
+                "stats": {
+                    "GP": 11,
+                    "W": 4,
+                    "D": 4,
+                    "L": 3,
+                    "F": 18,
+                    "A": 15,
+                    "GD": 3,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
                 "name": "GAIS",
                 "stats": {
                     "GP": 11,
@@ -7330,21 +7345,6 @@
                     "F": 16,
                     "A": 11,
                     "GD": 5,
-                    "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 6,
-                "name": "Mjällby AIF",
-                "stats": {
-                    "GP": 10,
-                    "W": 4,
-                    "D": 3,
-                    "L": 3,
-                    "F": 14,
-                    "A": 11,
-                    "GD": 3,
                     "P": 15
                 },
                 "zone": null

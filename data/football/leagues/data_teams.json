@@ -2,7 +2,7 @@
   "country": "England",
   "league_name": "England_Premier_League",
   "nb_teams": 1,
-  "scraped_at": "2026-07-04T16:39:14.525402",
+  "scraped_at": "2026-07-04T17:54:47.516534",
   "teams": [
     {
       "team_name": "AFC Bournemouth",
@@ -12,7 +12,7 @@
       "league_name": "England_Premier_League",
       "country": "England",
       "total_matches": 133,
-      "scraped_at": "2026-07-04T16:39:14.524865",
+      "scraped_at": "2026-07-04T17:54:47.516137",
       "matches_by_season": {
         "2025/2026": [
           {
@@ -83,7 +83,18 @@
             },
             "match_id": "740972",
             "match_url": "https://www.espn.com/soccer/match/_/gameId/740972/afc-bournemouth-nottingham-forest",
-            "next_game": null
+            "next_game": {
+              "context": "Premier League",
+              "matchday": null,
+              "round": null,
+              "opponent": "Manchester City",
+              "opponent_id": "382",
+              "home_or_away": "away",
+              "date": "2026-08-23",
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/401879320/afc-bournemouth-manchester-city",
+              "game_id": "401879320"
+            }
           },
           {
             "date": "2026-05-19",
@@ -157,10 +168,13 @@
               "context": "Premier League",
               "matchday": 38,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "away",
               "date": "2026-05-24",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740972/afc-bournemouth-nottingham-forest",
+              "game_id": "740972"
             }
           },
           {
@@ -235,10 +249,13 @@
               "context": "Premier League",
               "matchday": 37,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "home",
               "date": "2026-05-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740958/manchester-city-afc-bournemouth",
+              "game_id": "740958"
             }
           },
           {
@@ -313,10 +330,13 @@
               "context": "Premier League",
               "matchday": 36,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "away",
               "date": "2026-05-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740949/afc-bournemouth-fulham",
+              "game_id": "740949"
             }
           },
           {
@@ -391,10 +411,13 @@
               "context": "Premier League",
               "matchday": 35,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "home",
               "date": "2026-05-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740938/crystal-palace-afc-bournemouth",
+              "game_id": "740938"
             }
           },
           {
@@ -469,10 +492,13 @@
               "context": "Premier League",
               "matchday": 34,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Leeds United",
+              "opponent_id": "357",
               "home_or_away": "home",
               "date": "2026-04-22",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740926/leeds-united-afc-bournemouth",
+              "game_id": "740926"
             }
           },
           {
@@ -547,10 +573,13 @@
               "context": "Premier League",
               "matchday": 33,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "away",
               "date": "2026-04-18",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740918/afc-bournemouth-newcastle-united",
+              "game_id": "740918"
             }
           },
           {
@@ -625,10 +654,13 @@
               "context": "Premier League",
               "matchday": 32,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "away",
               "date": "2026-04-11",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740908/afc-bournemouth-arsenal",
+              "game_id": "740908"
             }
           },
           {
@@ -703,10 +735,13 @@
               "context": "Premier League",
               "matchday": 31,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "home",
               "date": "2026-03-20",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740897/manchester-united-afc-bournemouth",
+              "game_id": "740897"
             }
           },
           {
@@ -781,10 +816,13 @@
               "context": "Premier League",
               "matchday": 30,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Burnley",
+              "opponent_id": "379",
               "home_or_away": "away",
               "date": "2026-03-14",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740888/afc-bournemouth-burnley",
+              "game_id": "740888"
             }
           },
           {
@@ -859,10 +897,13 @@
               "context": "Premier League",
               "matchday": 29,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "home",
               "date": "2026-03-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740877/brentford-afc-bournemouth",
+              "game_id": "740877"
             }
           },
           {
@@ -937,10 +978,13 @@
               "context": "Premier League",
               "matchday": 28,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Sunderland",
+              "opponent_id": "366",
               "home_or_away": "home",
               "date": "2026-02-28",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740873/sunderland-afc-bournemouth",
+              "game_id": "740873"
             }
           },
           {
@@ -1015,10 +1059,13 @@
               "context": "Premier League",
               "matchday": 27,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "away",
               "date": "2026-02-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740861/afc-bournemouth-west-ham-united",
+              "game_id": "740861"
             }
           },
           {
@@ -1093,10 +1140,13 @@
               "context": "Premier League",
               "matchday": 26,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "away",
               "date": "2026-02-10",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740852/afc-bournemouth-everton",
+              "game_id": "740852"
             }
           },
           {
@@ -1171,10 +1221,13 @@
               "context": "Premier League",
               "matchday": 25,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "home",
               "date": "2026-02-07",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740837/aston-villa-afc-bournemouth",
+              "game_id": "740837"
             }
           },
           {
@@ -1249,10 +1302,13 @@
               "context": "Premier League",
               "matchday": 24,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "away",
               "date": "2026-01-31",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740827/afc-bournemouth-wolverhampton-wanderers",
+              "game_id": "740827"
             }
           },
           {
@@ -1327,10 +1383,13 @@
               "context": "Premier League",
               "matchday": 23,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "home",
               "date": "2026-01-24",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740817/liverpool-afc-bournemouth",
+              "game_id": "740817"
             }
           },
           {
@@ -1373,10 +1432,13 @@
               "context": "Premier League",
               "matchday": 22,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "away",
               "date": "2026-01-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740807/afc-bournemouth-brighton-hove-albion",
+              "game_id": "740807"
             }
           },
           {
@@ -1451,10 +1513,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 3,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "away",
               "date": "2026-01-10",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/762499/afc-bournemouth-newcastle-united",
+              "game_id": "762499"
             }
           },
           {
@@ -1529,10 +1594,13 @@
               "context": "Premier League",
               "matchday": 21,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "home",
               "date": "2026-01-07",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740797/tottenham-hotspur-afc-bournemouth",
+              "game_id": "740797"
             }
           },
           {
@@ -1607,10 +1675,13 @@
               "context": "Premier League",
               "matchday": 20,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "home",
               "date": "2026-01-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740788/arsenal-afc-bournemouth",
+              "game_id": "740788"
             }
           },
           {
@@ -1685,10 +1756,13 @@
               "context": "Premier League",
               "matchday": 19,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "away",
               "date": "2025-12-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740779/afc-bournemouth-chelsea",
+              "game_id": "740779"
             }
           },
           {
@@ -1763,10 +1837,13 @@
               "context": "Premier League",
               "matchday": 18,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "away",
               "date": "2025-12-27",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740774/afc-bournemouth-brentford",
+              "game_id": "740774"
             }
           },
           {
@@ -1841,10 +1918,13 @@
               "context": "Premier League",
               "matchday": 17,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Burnley",
+              "opponent_id": "379",
               "home_or_away": "home",
               "date": "2025-12-20",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740764/burnley-afc-bournemouth",
+              "game_id": "740764"
             }
           },
           {
@@ -1919,10 +1999,13 @@
               "context": "Premier League",
               "matchday": 16,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "away",
               "date": "2025-12-15",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740751/afc-bournemouth-manchester-united",
+              "game_id": "740751"
             }
           },
           {
@@ -1997,10 +2080,13 @@
               "context": "Premier League",
               "matchday": 15,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "home",
               "date": "2025-12-06",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740743/chelsea-afc-bournemouth",
+              "game_id": "740743"
             }
           },
           {
@@ -2075,10 +2161,13 @@
               "context": "Premier League",
               "matchday": 14,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "home",
               "date": "2025-12-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740733/everton-afc-bournemouth",
+              "game_id": "740733"
             }
           },
           {
@@ -2153,10 +2242,13 @@
               "context": "Premier League",
               "matchday": 13,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Sunderland",
+              "opponent_id": "366",
               "home_or_away": "away",
               "date": "2025-11-29",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740724/afc-bournemouth-sunderland",
+              "game_id": "740724"
             }
           },
           {
@@ -2231,10 +2323,13 @@
               "context": "Premier League",
               "matchday": 12,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "home",
               "date": "2025-11-22",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740715/west-ham-united-afc-bournemouth",
+              "game_id": "740715"
             }
           },
           {
@@ -2309,10 +2404,13 @@
               "context": "Premier League",
               "matchday": 11,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "away",
               "date": "2025-11-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740697/afc-bournemouth-aston-villa",
+              "game_id": "740697"
             }
           },
           {
@@ -2387,10 +2485,13 @@
               "context": "Premier League",
               "matchday": 10,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "away",
               "date": "2025-11-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740691/afc-bournemouth-manchester-city",
+              "game_id": "740691"
             }
           },
           {
@@ -2465,10 +2566,13 @@
               "context": "Premier League",
               "matchday": 9,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "home",
               "date": "2025-10-26",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740678/nottingham-forest-afc-bournemouth",
+              "game_id": "740678"
             }
           },
           {
@@ -2543,10 +2647,13 @@
               "context": "Premier League",
               "matchday": 8,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "away",
               "date": "2025-10-18",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740668/afc-bournemouth-crystal-palace",
+              "game_id": "740668"
             }
           },
           {
@@ -2621,10 +2728,13 @@
               "context": "Premier League",
               "matchday": 7,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "home",
               "date": "2025-10-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740658/fulham-afc-bournemouth",
+              "game_id": "740658"
             }
           },
           {
@@ -2699,10 +2809,13 @@
               "context": "Premier League",
               "matchday": 6,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Leeds United",
+              "opponent_id": "357",
               "home_or_away": "away",
               "date": "2025-09-27",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740655/afc-bournemouth-leeds-united",
+              "game_id": "740655"
             }
           },
           {
@@ -2777,10 +2890,13 @@
               "context": "Premier League",
               "matchday": 5,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "home",
               "date": "2025-09-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740644/newcastle-united-afc-bournemouth",
+              "game_id": "740644"
             }
           },
           {
@@ -2855,10 +2971,13 @@
               "context": "Premier League",
               "matchday": 4,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "home",
               "date": "2025-09-13",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740635/brighton-hove-albion-afc-bournemouth",
+              "game_id": "740635"
             }
           },
           {
@@ -2901,10 +3020,13 @@
               "context": "Premier League",
               "matchday": 3,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "away",
               "date": "2025-08-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740620/afc-bournemouth-tottenham-hotspur",
+              "game_id": "740620"
             }
           },
           {
@@ -2979,10 +3101,13 @@
               "context": "English Carabao Cup",
               "matchday": null,
               "round": 2,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "home",
               "date": "2025-08-26",
-              "competition": "English Carabao Cup"
+              "competition": "English Carabao Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/756247/brentford-afc-bournemouth",
+              "game_id": "756247"
             }
           },
           {
@@ -3057,10 +3182,13 @@
               "context": "Premier League",
               "matchday": 2,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "home",
               "date": "2025-08-23",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740607/wolverhampton-wanderers-afc-bournemouth",
+              "game_id": "740607"
             }
           },
           {
@@ -3094,10 +3222,13 @@
               "context": "Premier League",
               "matchday": 1,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "away",
               "date": "2025-08-15",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/740596/afc-bournemouth-liverpool",
+              "game_id": "740596"
             }
           },
           {
@@ -3131,10 +3262,13 @@
               "context": "Club Friendly",
               "matchday": null,
               "round": 0,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "home",
               "date": "2025-08-03",
-              "competition": "Club Friendly"
+              "competition": "Club Friendly",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/754184/west-ham-united-afc-bournemouth",
+              "game_id": "754184"
             }
           },
           {
@@ -3168,10 +3302,13 @@
               "context": "Club Friendly",
               "matchday": null,
               "round": 0,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "away",
               "date": "2025-07-31",
-              "competition": "Club Friendly"
+              "competition": "Club Friendly",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/754183/afc-bournemouth-manchester-united",
+              "game_id": "754183"
             }
           }
         ],
@@ -3248,10 +3385,13 @@
               "context": "Club Friendly",
               "matchday": null,
               "round": 0,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "away",
               "date": "2025-07-26",
-              "competition": "Club Friendly"
+              "competition": "Club Friendly",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/754180/afc-bournemouth-everton",
+              "game_id": "754180"
             }
           },
           {
@@ -3326,10 +3466,13 @@
               "context": "Premier League",
               "matchday": 38,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Leicester City",
+              "opponent_id": "375",
               "home_or_away": "home",
               "date": "2025-05-25",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704649/leicester-city-afc-bournemouth",
+              "game_id": "704649"
             }
           },
           {
@@ -3404,10 +3547,13 @@
               "context": "Premier League",
               "matchday": 37,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "away",
               "date": "2025-05-20",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704647/afc-bournemouth-manchester-city",
+              "game_id": "704647"
             }
           },
           {
@@ -3482,10 +3628,13 @@
               "context": "Premier League",
               "matchday": 36,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "home",
               "date": "2025-05-10",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704629/aston-villa-afc-bournemouth",
+              "game_id": "704629"
             }
           },
           {
@@ -3560,10 +3709,13 @@
               "context": "Premier League",
               "matchday": 35,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "away",
               "date": "2025-05-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704619/afc-bournemouth-arsenal",
+              "game_id": "704619"
             }
           },
           {
@@ -3638,10 +3790,13 @@
               "context": "Premier League",
               "matchday": 34,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "home",
               "date": "2025-04-27",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704609/manchester-united-afc-bournemouth",
+              "game_id": "704609"
             }
           },
           {
@@ -3716,10 +3871,13 @@
               "context": "Premier League",
               "matchday": 33,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "away",
               "date": "2025-04-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704605/afc-bournemouth-crystal-palace",
+              "game_id": "704605"
             }
           },
           {
@@ -3794,10 +3952,13 @@
               "context": "Premier League",
               "matchday": 32,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "home",
               "date": "2025-04-14",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704596/fulham-afc-bournemouth",
+              "game_id": "704596"
             }
           },
           {
@@ -3872,10 +4033,13 @@
               "context": "Premier League",
               "matchday": 31,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "away",
               "date": "2025-04-05",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704582/afc-bournemouth-west-ham-united",
+              "game_id": "704582"
             }
           },
           {
@@ -3918,10 +4082,13 @@
               "context": "Premier League",
               "matchday": 30,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Ipswich Town",
+              "opponent_id": "373",
               "home_or_away": "home",
               "date": "2025-04-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704570/ipswich-town-afc-bournemouth",
+              "game_id": "704570"
             }
           },
           {
@@ -3996,10 +4163,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 8,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "home",
               "date": "2025-03-30",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/733959/manchester-city-afc-bournemouth",
+              "game_id": "733959"
             }
           },
           {
@@ -4074,10 +4244,13 @@
               "context": "Premier League",
               "matchday": 29,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "home",
               "date": "2025-03-15",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704566/brentford-afc-bournemouth",
+              "game_id": "704566"
             }
           },
           {
@@ -4120,10 +4293,13 @@
               "context": "Premier League",
               "matchday": 28,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "away",
               "date": "2025-03-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704558/afc-bournemouth-tottenham-hotspur",
+              "game_id": "704558"
             }
           },
           {
@@ -4198,10 +4374,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 5,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "home",
               "date": "2025-03-01",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/732571/wolverhampton-wanderers-afc-bournemouth",
+              "game_id": "732571"
             }
           },
           {
@@ -4276,10 +4455,13 @@
               "context": "Premier League",
               "matchday": 27,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "away",
               "date": "2025-02-25",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704542/afc-bournemouth-brighton-hove-albion",
+              "game_id": "704542"
             }
           },
           {
@@ -4354,10 +4536,13 @@
               "context": "Premier League",
               "matchday": 26,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "home",
               "date": "2025-02-22",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704529/wolverhampton-wanderers-afc-bournemouth",
+              "game_id": "704529"
             }
           },
           {
@@ -4400,10 +4585,13 @@
               "context": "Premier League",
               "matchday": 25,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Southampton",
+              "opponent_id": "376",
               "home_or_away": "away",
               "date": "2025-02-15",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704528/afc-bournemouth-southampton",
+              "game_id": "704528"
             }
           },
           {
@@ -4478,10 +4666,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 4,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "away",
               "date": "2025-02-08",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/730043/afc-bournemouth-everton",
+              "game_id": "730043"
             }
           },
           {
@@ -4556,10 +4747,13 @@
               "context": "Premier League",
               "matchday": 24,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "home",
               "date": "2025-02-01",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704511/liverpool-afc-bournemouth",
+              "game_id": "704511"
             }
           },
           {
@@ -4634,10 +4828,13 @@
               "context": "Premier League",
               "matchday": 23,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "home",
               "date": "2025-01-25",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704507/nottingham-forest-afc-bournemouth",
+              "game_id": "704507"
             }
           },
           {
@@ -4712,10 +4909,13 @@
               "context": "Premier League",
               "matchday": 22,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "away",
               "date": "2025-01-18",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704496/afc-bournemouth-newcastle-united",
+              "game_id": "704496"
             }
           },
           {
@@ -4758,10 +4958,13 @@
               "context": "Premier League",
               "matchday": 21,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "away",
               "date": "2025-01-14",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704487/afc-bournemouth-chelsea",
+              "game_id": "704487"
             }
           },
           {
@@ -4836,10 +5039,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 3,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Bromwich Albion",
+              "opponent_id": "383",
               "home_or_away": "home",
               "date": "2025-01-11",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/724012/west-bromwich-albion-afc-bournemouth",
+              "game_id": "724012"
             }
           },
           {
@@ -4914,10 +5120,13 @@
               "context": "Premier League",
               "matchday": 20,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "home",
               "date": "2025-01-04",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704469/everton-afc-bournemouth",
+              "game_id": "704469"
             }
           },
           {
@@ -4992,10 +5201,13 @@
               "context": "Premier League",
               "matchday": 19,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "away",
               "date": "2024-12-29",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704460/afc-bournemouth-fulham",
+              "game_id": "704460"
             }
           },
           {
@@ -5070,10 +5282,13 @@
               "context": "Premier League",
               "matchday": 18,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "home",
               "date": "2024-12-26",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704458/crystal-palace-afc-bournemouth",
+              "game_id": "704458"
             }
           },
           {
@@ -5148,10 +5363,13 @@
               "context": "Premier League",
               "matchday": 17,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "away",
               "date": "2024-12-22",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704440/afc-bournemouth-manchester-united",
+              "game_id": "704440"
             }
           },
           {
@@ -5226,10 +5444,13 @@
               "context": "Premier League",
               "matchday": 16,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "home",
               "date": "2024-12-16",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704430/west-ham-united-afc-bournemouth",
+              "game_id": "704430"
             }
           },
           {
@@ -5304,10 +5525,13 @@
               "context": "Premier League",
               "matchday": 15,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Ipswich Town",
+              "opponent_id": "373",
               "home_or_away": "away",
               "date": "2024-12-08",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704427/afc-bournemouth-ipswich-town",
+              "game_id": "704427"
             }
           },
           {
@@ -5382,10 +5606,13 @@
               "context": "Premier League",
               "matchday": 14,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "home",
               "date": "2024-12-05",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704414/tottenham-hotspur-afc-bournemouth",
+              "game_id": "704414"
             }
           },
           {
@@ -5460,10 +5687,13 @@
               "context": "Premier League",
               "matchday": 13,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "away",
               "date": "2024-11-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704403/afc-bournemouth-wolverhampton-wanderers",
+              "game_id": "704403"
             }
           },
           {
@@ -5538,10 +5768,13 @@
               "context": "Premier League",
               "matchday": 12,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "home",
               "date": "2024-11-23",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704395/brighton-hove-albion-afc-bournemouth",
+              "game_id": "704395"
             }
           },
           {
@@ -5616,10 +5849,13 @@
               "context": "Premier League",
               "matchday": 11,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "away",
               "date": "2024-11-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704382/afc-bournemouth-brentford",
+              "game_id": "704382"
             }
           },
           {
@@ -5694,10 +5930,13 @@
               "context": "Premier League",
               "matchday": 10,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "home",
               "date": "2024-11-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704377/manchester-city-afc-bournemouth",
+              "game_id": "704377"
             }
           },
           {
@@ -5772,10 +6011,13 @@
               "context": "Premier League",
               "matchday": 9,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "away",
               "date": "2024-10-26",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704368/afc-bournemouth-aston-villa",
+              "game_id": "704368"
             }
           },
           {
@@ -5850,10 +6092,13 @@
               "context": "Premier League",
               "matchday": 8,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "home",
               "date": "2024-10-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704351/arsenal-afc-bournemouth",
+              "game_id": "704351"
             }
           },
           {
@@ -5928,10 +6173,13 @@
               "context": "Premier League",
               "matchday": 7,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Leicester City",
+              "opponent_id": "375",
               "home_or_away": "away",
               "date": "2024-10-05",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704339/afc-bournemouth-leicester-city",
+              "game_id": "704339"
             }
           },
           {
@@ -6006,10 +6254,13 @@
               "context": "Premier League",
               "matchday": 6,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Southampton",
+              "opponent_id": "376",
               "home_or_away": "home",
               "date": "2024-09-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704330/southampton-afc-bournemouth",
+              "game_id": "704330"
             }
           },
           {
@@ -6084,10 +6335,13 @@
               "context": "Premier League",
               "matchday": 5,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "away",
               "date": "2024-09-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704324/afc-bournemouth-liverpool",
+              "game_id": "704324"
             }
           },
           {
@@ -6162,10 +6416,13 @@
               "context": "Premier League",
               "matchday": 4,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "home",
               "date": "2024-09-14",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704310/chelsea-afc-bournemouth",
+              "game_id": "704310"
             }
           },
           {
@@ -6240,10 +6497,13 @@
               "context": "Premier League",
               "matchday": 3,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "away",
               "date": "2024-08-31",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704302/afc-bournemouth-everton",
+              "game_id": "704302"
             }
           },
           {
@@ -6318,10 +6578,13 @@
               "context": "English Carabao Cup",
               "matchday": null,
               "round": 2,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "away",
               "date": "2024-08-28",
-              "competition": "English Carabao Cup"
+              "competition": "English Carabao Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/718819/afc-bournemouth-west-ham-united",
+              "game_id": "718819"
             }
           },
           {
@@ -6396,10 +6659,13 @@
               "context": "Premier League",
               "matchday": 2,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "home",
               "date": "2024-08-25",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704290/newcastle-united-afc-bournemouth",
+              "game_id": "704290"
             }
           },
           {
@@ -6442,10 +6708,13 @@
               "context": "Premier League",
               "matchday": 1,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "away",
               "date": "2024-08-17",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/704284/afc-bournemouth-nottingham-forest",
+              "game_id": "704284"
             }
           },
           {
@@ -6479,10 +6748,13 @@
               "context": "Club Friendly",
               "matchday": null,
               "round": 0,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "away",
               "date": "2024-07-25",
-              "competition": "Club Friendly"
+              "competition": "Club Friendly",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/711285/afc-bournemouth-arsenal",
+              "game_id": "711285"
             }
           }
         ],
@@ -6559,10 +6831,13 @@
               "context": "Club Friendly",
               "matchday": null,
               "round": 0,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wrexham",
+              "opponent_id": "352",
               "home_or_away": "away",
               "date": "2024-07-20",
-              "competition": "Club Friendly"
+              "competition": "Club Friendly",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/715391/afc-bournemouth-wrexham",
+              "game_id": "715391"
             }
           },
           {
@@ -6637,10 +6912,13 @@
               "context": "Premier League",
               "matchday": 38,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "away",
               "date": "2024-05-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671410/afc-bournemouth-chelsea",
+              "game_id": "671410"
             }
           },
           {
@@ -6715,10 +6993,13 @@
               "context": "Premier League",
               "matchday": 37,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "home",
               "date": "2024-05-11",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671392/brentford-afc-bournemouth",
+              "game_id": "671392"
             }
           },
           {
@@ -6793,10 +7074,13 @@
               "context": "Premier League",
               "matchday": 36,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "away",
               "date": "2024-05-04",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671381/afc-bournemouth-arsenal",
+              "game_id": "671381"
             }
           },
           {
@@ -6871,10 +7155,13 @@
               "context": "Premier League",
               "matchday": 35,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "home",
               "date": "2024-04-28",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671379/brighton-hove-albion-afc-bournemouth",
+              "game_id": "671379"
             }
           },
           {
@@ -6949,10 +7236,13 @@
               "context": "Premier League",
               "matchday": 34,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "away",
               "date": "2024-04-24",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671319/afc-bournemouth-wolverhampton-wanderers",
+              "game_id": "671319"
             }
           },
           {
@@ -7027,10 +7317,13 @@
               "context": "Premier League",
               "matchday": 33,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "away",
               "date": "2024-04-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671368/afc-bournemouth-aston-villa",
+              "game_id": "671368"
             }
           },
           {
@@ -7105,10 +7398,13 @@
               "context": "Premier League",
               "matchday": 32,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "home",
               "date": "2024-04-13",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671352/manchester-united-afc-bournemouth",
+              "game_id": "671352"
             }
           },
           {
@@ -7183,10 +7479,13 @@
               "context": "Premier League",
               "matchday": 31,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Luton Town",
+              "opponent_id": "301",
               "home_or_away": "away",
               "date": "2024-04-06",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671346/afc-bournemouth-luton-town",
+              "game_id": "671346"
             }
           },
           {
@@ -7261,10 +7560,13 @@
               "context": "Premier League",
               "matchday": 30,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "home",
               "date": "2024-04-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671332/crystal-palace-afc-bournemouth",
+              "game_id": "671332"
             }
           },
           {
@@ -7339,10 +7641,13 @@
               "context": "Premier League",
               "matchday": 29,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "home",
               "date": "2024-03-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671330/everton-afc-bournemouth",
+              "game_id": "671330"
             }
           },
           {
@@ -7417,10 +7722,13 @@
               "context": "Premier League",
               "matchday": 28,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Luton Town",
+              "opponent_id": "301",
               "home_or_away": "home",
               "date": "2024-03-13",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671194/luton-town-afc-bournemouth",
+              "game_id": "671194"
             }
           },
           {
@@ -7495,10 +7803,13 @@
               "context": "Premier League",
               "matchday": 27,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Sheffield United",
+              "opponent_id": "398",
               "home_or_away": "home",
               "date": "2024-03-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671303/sheffield-united-afc-bournemouth",
+              "game_id": "671303"
             }
           },
           {
@@ -7573,10 +7884,13 @@
               "context": "Premier League",
               "matchday": 26,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Burnley",
+              "opponent_id": "379",
               "home_or_away": "away",
               "date": "2024-03-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671294/afc-bournemouth-burnley",
+              "game_id": "671294"
             }
           },
           {
@@ -7651,10 +7965,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 5,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Leicester City",
+              "opponent_id": "375",
               "home_or_away": "home",
               "date": "2024-02-27",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/698130/leicester-city-afc-bournemouth",
+              "game_id": "698130"
             }
           },
           {
@@ -7729,10 +8046,13 @@
               "context": "Premier League",
               "matchday": 25,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "home",
               "date": "2024-02-24",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671288/manchester-city-afc-bournemouth",
+              "game_id": "671288"
             }
           },
           {
@@ -7807,10 +8127,13 @@
               "context": "Premier League",
               "matchday": 24,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "away",
               "date": "2024-02-17",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671274/afc-bournemouth-newcastle-united",
+              "game_id": "671274"
             }
           },
           {
@@ -7885,10 +8208,13 @@
               "context": "Premier League",
               "matchday": 23,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "away",
               "date": "2024-02-10",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671268/afc-bournemouth-fulham",
+              "game_id": "671268"
             }
           },
           {
@@ -7963,10 +8289,13 @@
               "context": "Premier League",
               "matchday": 22,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "home",
               "date": "2024-02-04",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671258/nottingham-forest-afc-bournemouth",
+              "game_id": "671258"
             }
           },
           {
@@ -8041,10 +8370,13 @@
               "context": "Premier League",
               "matchday": 21,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "away",
               "date": "2024-02-01",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671242/afc-bournemouth-west-ham-united",
+              "game_id": "671242"
             }
           },
           {
@@ -8119,10 +8451,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 4,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Swansea City",
+              "opponent_id": "318",
               "home_or_away": "home",
               "date": "2024-01-25",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/694703/swansea-city-afc-bournemouth",
+              "game_id": "694703"
             }
           },
           {
@@ -8197,10 +8532,13 @@
               "context": "Premier League",
               "matchday": 20,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "home",
               "date": "2024-01-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671232/liverpool-afc-bournemouth",
+              "game_id": "671232"
             }
           },
           {
@@ -8275,10 +8613,13 @@
               "context": "English FA Cup",
               "matchday": null,
               "round": 3,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Queens Park Rangers",
+              "opponent_id": "334",
               "home_or_away": "away",
               "date": "2024-01-06",
-              "competition": "English FA Cup"
+              "competition": "English FA Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/690655/afc-bournemouth-queens-park-rangers",
+              "game_id": "690655"
             }
           },
           {
@@ -8353,10 +8694,13 @@
               "context": "Premier League",
               "matchday": 19,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "away",
               "date": "2023-12-31",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671224/afc-bournemouth-tottenham-hotspur",
+              "game_id": "671224"
             }
           },
           {
@@ -8431,10 +8775,13 @@
               "context": "Premier League",
               "matchday": 18,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Fulham",
+              "opponent_id": "370",
               "home_or_away": "home",
               "date": "2023-12-26",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671219/fulham-afc-bournemouth",
+              "game_id": "671219"
             }
           },
           {
@@ -8509,10 +8856,13 @@
               "context": "Premier League",
               "matchday": 17,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Nottingham Forest",
+              "opponent_id": "393",
               "home_or_away": "away",
               "date": "2023-12-23",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671204/afc-bournemouth-nottingham-forest",
+              "game_id": "671204"
             }
           },
           {
@@ -8587,10 +8937,13 @@
               "context": "Premier League",
               "matchday": 16,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester United",
+              "opponent_id": "360",
               "home_or_away": "away",
               "date": "2023-12-09",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671184/afc-bournemouth-manchester-united",
+              "game_id": "671184"
             }
           },
           {
@@ -8665,10 +9018,13 @@
               "context": "Premier League",
               "matchday": 15,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Crystal Palace",
+              "opponent_id": "384",
               "home_or_away": "away",
               "date": "2023-12-06",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671179/afc-bournemouth-crystal-palace",
+              "game_id": "671179"
             }
           },
           {
@@ -8743,10 +9099,13 @@
               "context": "Premier League",
               "matchday": 14,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Aston Villa",
+              "opponent_id": "362",
               "home_or_away": "home",
               "date": "2023-12-03",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671161/aston-villa-afc-bournemouth",
+              "game_id": "671161"
             }
           },
           {
@@ -8821,10 +9180,13 @@
               "context": "Premier League",
               "matchday": 13,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Sheffield United",
+              "opponent_id": "398",
               "home_or_away": "away",
               "date": "2023-11-25",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671159/afc-bournemouth-sheffield-united",
+              "game_id": "671159"
             }
           },
           {
@@ -8899,10 +9261,13 @@
               "context": "Premier League",
               "matchday": 12,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Newcastle United",
+              "opponent_id": "361",
               "home_or_away": "home",
               "date": "2023-11-11",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671148/newcastle-united-afc-bournemouth",
+              "game_id": "671148"
             }
           },
           {
@@ -8977,10 +9342,13 @@
               "context": "Premier League",
               "matchday": 11,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Manchester City",
+              "opponent_id": "382",
               "home_or_away": "away",
               "date": "2023-11-04",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671136/afc-bournemouth-manchester-city",
+              "game_id": "671136"
             }
           },
           {
@@ -9055,10 +9423,13 @@
               "context": "English Carabao Cup",
               "matchday": null,
               "round": 4,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "home",
               "date": "2023-11-01",
-              "competition": "English Carabao Cup"
+              "competition": "English Carabao Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/688408/liverpool-afc-bournemouth",
+              "game_id": "688408"
             }
           },
           {
@@ -9133,10 +9504,13 @@
               "context": "Premier League",
               "matchday": 10,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Burnley",
+              "opponent_id": "379",
               "home_or_away": "home",
               "date": "2023-10-28",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671123/burnley-afc-bournemouth",
+              "game_id": "671123"
             }
           },
           {
@@ -9211,10 +9585,13 @@
               "context": "Premier League",
               "matchday": 9,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Wolverhampton Wanderers",
+              "opponent_id": "380",
               "home_or_away": "home",
               "date": "2023-10-21",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671112/wolverhampton-wanderers-afc-bournemouth",
+              "game_id": "671112"
             }
           },
           {
@@ -9289,10 +9666,13 @@
               "context": "Premier League",
               "matchday": 8,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Everton",
+              "opponent_id": "368",
               "home_or_away": "away",
               "date": "2023-10-07",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671110/afc-bournemouth-everton",
+              "game_id": "671110"
             }
           },
           {
@@ -9367,10 +9747,13 @@
               "context": "Premier League",
               "matchday": 7,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Arsenal",
+              "opponent_id": "359",
               "home_or_away": "home",
               "date": "2023-09-30",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671099/arsenal-afc-bournemouth",
+              "game_id": "671099"
             }
           },
           {
@@ -9445,10 +9828,13 @@
               "context": "English Carabao Cup",
               "matchday": null,
               "round": 3,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Stoke City",
+              "opponent_id": "336",
               "home_or_away": "home",
               "date": "2023-09-27",
-              "competition": "English Carabao Cup"
+              "competition": "English Carabao Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/687501/stoke-city-afc-bournemouth",
+              "game_id": "687501"
             }
           },
           {
@@ -9523,10 +9909,13 @@
               "context": "Premier League",
               "matchday": 6,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brighton Hove Albion",
+              "opponent_id": "331",
               "home_or_away": "away",
               "date": "2023-09-24",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671087/afc-bournemouth-brighton-hove-albion",
+              "game_id": "671087"
             }
           },
           {
@@ -9601,10 +9990,13 @@
               "context": "Premier League",
               "matchday": 5,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Chelsea",
+              "opponent_id": "363",
               "home_or_away": "home",
               "date": "2023-09-17",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671072/chelsea-afc-bournemouth",
+              "game_id": "671072"
             }
           },
           {
@@ -9679,10 +10071,13 @@
               "context": "Premier League",
               "matchday": 4,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Brentford",
+              "opponent_id": "337",
               "home_or_away": "away",
               "date": "2023-09-02",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671068/afc-bournemouth-brentford",
+              "game_id": "671068"
             }
           },
           {
@@ -9757,10 +10152,13 @@
               "context": "English Carabao Cup",
               "matchday": null,
               "round": 2,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Swansea City",
+              "opponent_id": "318",
               "home_or_away": "away",
               "date": "2023-08-29",
-              "competition": "English Carabao Cup"
+              "competition": "English Carabao Cup",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/685717/afc-bournemouth-swansea-city",
+              "game_id": "685717"
             }
           },
           {
@@ -9835,10 +10233,13 @@
               "context": "Premier League",
               "matchday": 3,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Tottenham Hotspur",
+              "opponent_id": "367",
               "home_or_away": "home",
               "date": "2023-08-26",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671052/tottenham-hotspur-afc-bournemouth",
+              "game_id": "671052"
             }
           },
           {
@@ -9913,10 +10314,13 @@
               "context": "Premier League",
               "matchday": 2,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "Liverpool",
+              "opponent_id": "364",
               "home_or_away": "away",
               "date": "2023-08-19",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671044/afc-bournemouth-liverpool",
+              "game_id": "671044"
             }
           },
           {
@@ -9991,10 +10395,13 @@
               "context": "Premier League",
               "matchday": 1,
               "round": null,
-              "opponent": "AFC Bournemouth",
+              "opponent": "West Ham United",
+              "opponent_id": "371",
               "home_or_away": "home",
               "date": "2023-08-12",
-              "competition": "English Premier League"
+              "competition": "English Premier League",
+              "match_url": "https://www.espn.com/soccer/match/_/gameId/671033/west-ham-united-afc-bournemouth",
+              "game_id": "671033"
             }
           }
         ]

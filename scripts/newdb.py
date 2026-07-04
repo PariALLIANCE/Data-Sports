@@ -204,8 +204,8 @@ def extract_match_info(match_row, month, season):
         # ── [2] SCORE ─────────────────────────────────────────────────
         score_links = cells[2].find_elements(By.TAG_NAME, "a")
 
-        home_score = ""
-        away_score = ""
+        home_score_raw = ""
+        away_score_raw = ""
         match_url = ""
         match_id = ""
 
@@ -218,8 +218,8 @@ def extract_match_info(match_row, month, season):
 
             score_m = re.search(r"(\d+)\s*[-:]\s*(\d+)", score_text)
             if score_m:
-                home_score = score_m.group(1)
-                away_score = score_m.group(2)
+                home_score_raw = score_m.group(1)
+                away_score_raw = score_m.group(2)
 
         # ── [3] ÉQUIPE AWAY ───────────────────────────────────────────
         away_links = cells[3].find_elements(By.TAG_NAME, "a")
@@ -231,14 +231,19 @@ def extract_match_info(match_row, month, season):
         away_team_name = team_name_from_href(away_href)
 
         # ── [4] RÉSULTAT ──────────────────────────────────────────────
-        result = ""
+        result_raw = ""
         result_els = cells[4].find_elements(By.CSS_SELECTOR, '[data-testid="result"]')
         if result_els:
-            result = result_els[0].text.strip()
+            result_raw = result_els[0].text.strip()
         else:
             result_links = cells[4].find_elements(By.TAG_NAME, "a")
             if result_links:
-                result = result_links[0].text.strip()
+                result_raw = result_links[0].text.strip()
+
+        # ── RÉSULTAT NET + DÉTECTION TIRS AU BUT ────────────────────
+        # Ex: "FT-Pens" → result="FT", decided_by_penalties=True
+        decided_by_penalties = bool(re.search(r"pens", result_raw, re.IGNORECASE))
+        clean_result = re.sub(r"[\s-]*pens", "", result_raw, flags=re.IGNORECASE).strip()
 
         # ── [5] COMPÉTITION ───────────────────────────────────────────
         competition = ""
@@ -260,14 +265,17 @@ def extract_match_info(match_row, month, season):
             "home_team": local_team_name,
             "home_team_id": local_team_id,
             "home_logo_url": build_logo_url(local_team_id),
-            "home_score": home_score,
-            "away_score": away_score,
+            "home_score": int(home_score_raw) if home_score_raw.isdigit() else None,
+            "away_score": int(away_score_raw) if away_score_raw.isdigit() else None,
             "away_team": away_team_name,
             "away_team_id": away_team_id,
             "away_logo_url": build_logo_url(away_team_id),
             "match_url": match_url,
             "match_id": match_id,
-            "result": result,
+            "result": clean_result,
+            "decided_by_penalties": decided_by_penalties,
+            "penalty_winner": None,  # ← rempli lors de l'enrichissement si decided_by_penalties
+            "team_result": None,     # ← rempli plus tard (V/N/D du point de vue de l'équipe scrapée)
             "competition": competition,
             "season": format_season(season),
             "matchday": None,  # ← rempli plus tard (compute_matchdays_for_team / round de repli)
@@ -374,6 +382,37 @@ def compute_matchdays_for_team(matches):
     return matches
 
 
+def compute_team_result(match, team_id):
+    """
+    Détermine le résultat du match ("V", "N", "D") du point de vue de
+    l'équipe team_id (celle dont on scrape les résultats). Si le score
+    est à égalité mais que le match a été décidé aux tirs au but, le
+    résultat retenu suit le vainqueur des penalties (V ou D) plutôt
+    qu'un match nul.
+    """
+    home_score = match.get("home_score")
+    away_score = match.get("away_score")
+    if home_score is None or away_score is None:
+        return None
+
+    is_home = match.get("home_team_id") == team_id
+    is_away = match.get("away_team_id") == team_id
+    if not is_home and not is_away:
+        return None
+
+    if home_score == away_score:
+        if match.get("decided_by_penalties") and match.get("penalty_winner"):
+            winner_is_home = match["penalty_winner"] == "home"
+            if is_home:
+                return "V" if winner_is_home else "D"
+            return "D" if winner_is_home else "V"
+        return "N"
+
+    team_score = home_score if is_home else away_score
+    opp_score = away_score if is_home else home_score
+    return "V" if team_score > opp_score else "D"
+
+
 def scrape_team_results_all_seasons(driver, team_name, team_id):
     """
     Scrape les résultats d'une équipe ESPN pour toutes les saisons de
@@ -437,6 +476,41 @@ def group_matches_by_season(matches):
 # ===============================================================
 # STATISTIQUES DE MATCH (structure Prism ESPN, avec fallbacks)
 # ===============================================================
+
+def normalize_stat_value(label, value):
+    """
+    Convertit la valeur d'une statistique en entier lorsque cela est
+    pertinent — notamment pour la possession ("55%" → 55) — sinon
+    retourne la valeur telle quelle (ex: "3 / 5" reste une chaîne).
+    """
+    if value is None:
+        return value
+    text = str(value).strip()
+    if "possession" in (label or "").lower():
+        m = re.search(r"(\d+)", text)
+        if m:
+            return int(m.group(1))
+    return value
+
+
+def finalize_stats(stats):
+    """
+    Passe finale de nettoyage sur le dict de statistiques d'un match :
+    convertit les valeurs de possession en entier (%) via
+    normalize_stat_value. Les scores de mi-temps sont déjà stockés en
+    int directement à leur création.
+    """
+    cleaned = {}
+    for label, vals in stats.items():
+        if not isinstance(vals, dict):
+            cleaned[label] = vals
+            continue
+        cleaned[label] = {
+            "home": normalize_stat_value(label, vals.get("home")),
+            "away": normalize_stat_value(label, vals.get("away")),
+        }
+    return cleaned
+
 
 def extract_match_stats_prism(soup):
     """
@@ -603,6 +677,54 @@ def extract_match_timeline_halftime(soup):
 
 
 # ===============================================================
+# VAINQUEUR AUX TIRS AU BUT (icône triangle à côté du score)
+# ===============================================================
+
+def extract_penalty_winner(soup, home_team_id, away_team_id):
+    """
+    Détecte le vainqueur d'un match décidé aux tirs au but ("-Pens") en
+    repérant la petite icône triangle ("arrows-triangleLeft") affichée
+    à côté du score de l'équipe gagnante sur la page du match.
+
+    Remonte depuis l'icône jusqu'au plus petit ancêtre contenant un
+    lien vers UNE SEULE des deux équipes (home ou away) ; si l'ancêtre
+    contient les deux (portée trop large / ambiguë), la détection est
+    abandonnée plutôt que de risquer une mauvaise attribution.
+
+    Retourne "home", "away" ou None si l'icône ou l'équipe associée
+    n'a pas pu être identifiée avec certitude.
+    """
+    try:
+        icon = soup.find("svg", attrs={"data-icon": "arrows-triangleLeft"})
+        if not icon:
+            return None
+
+        node = icon
+        for _ in range(15):
+            node = node.parent
+            if node is None or not hasattr(node, "find_all"):
+                break
+
+            links = node.find_all("a", href=re.compile(r"/soccer/team/_/id/\d+/"))
+            hrefs = {l.get("href", "") for l in links}
+
+            has_home = any(f"/id/{home_team_id}/" in h for h in hrefs) if home_team_id else False
+            has_away = any(f"/id/{away_team_id}/" in h for h in hrefs) if away_team_id else False
+
+            if has_home and has_away:
+                return None  # portée ambiguë, on ne devine pas
+            if has_home:
+                return "home"
+            if has_away:
+                return "away"
+
+        return None
+    except Exception as e:
+        print(f"  ⚠️ Erreur détection vainqueur tirs au but : {e}")
+        return None
+
+
+# ===============================================================
 # COTES (Moneyline)
 # ===============================================================
 
@@ -751,19 +873,17 @@ def extract_round_label(round_text):
     return normalize_round_label(raw_label)
 
 
-def get_match_details_selenium(driver, game_id):
+def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=None, decided_by_penalties=False):
     """
     Charge la page du match via Selenium (gameId) et retourne un tuple
-    (stats, odds, round_label) :
-      - stats       : dict des statistiques du match (structure Prism en
-        priorité, puis fallback via sélecteurs CSS avancés), enrichi des
-        entrées "Score 1ère mi-temps" et "Score 2nde mi-temps" issues de
-        la frise "Match Timeline"
-      - odds        : dict des cotes 1X2 {"home", "away", "draw"} (None
-        si indisponibles)
-      - round_label : nombre entier de round (32, 16, 8, 4, 2, 1, 0…),
-        utilisé en repli pour matchday quand le match n'appartient pas
-        au championnat ciblé
+    (stats, odds, round_label, penalty_winner) :
+      - stats           : dict des statistiques du match (Prism en
+        priorité, fallback CSS sinon), avec possession normalisée en
+        int (%) et scores de mi-temps / 2nde mi-temps en int
+      - odds            : dict des cotes 1X2 {"home", "away", "draw"}
+      - round_label     : nombre entier de round (32, 16, 8, 4, 2, 1, 0…)
+      - penalty_winner  : "home"/"away"/None, rempli uniquement si
+        decided_by_penalties est True
     """
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
@@ -777,7 +897,7 @@ def get_match_details_selenium(driver, game_id):
         pass
     except WebDriverException as e:
         print(f"    ⚠️  WebDriver erreur ({game_id}) : {e}")
-        return {}, {"home": None, "away": None, "draw": None}, None
+        return {}, {"home": None, "away": None, "draw": None}, None, None
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
@@ -791,6 +911,11 @@ def get_match_details_selenium(driver, game_id):
 
     # ── Round (repli pour matchday, déjà normalisé en nombre) ──────
     round_label = extract_round_label(extract_round_info(soup))
+
+    # ── Vainqueur aux tirs au but (uniquement si nécessaire) ────────
+    penalty_winner = None
+    if decided_by_penalties:
+        penalty_winner = extract_penalty_winner(soup, home_team_id, away_team_id)
 
     # ── Statistiques (méthode Prism en priorité) ───────────────────
     stats = extract_match_stats_prism(soup)
@@ -821,64 +946,76 @@ def get_match_details_selenium(driver, game_id):
     try:
         halftime, second_half = extract_match_timeline_halftime(soup)
         if halftime is not None:
-            stats["Score 1ère mi-temps"] = {
-                "home": str(halftime["home"]),
-                "away": str(halftime["away"]),
-            }
+            stats["Score 1ère mi-temps"] = {"home": halftime["home"], "away": halftime["away"]}
         if second_half is not None:
-            stats["Score 2nde mi-temps"] = {
-                "home": str(second_half["home"]),
-                "away": str(second_half["away"]),
-            }
+            stats["Score 2nde mi-temps"] = {"home": second_half["home"], "away": second_half["away"]}
     except Exception as e:
         print(f"    ⚠️  Erreur injection mi-temps ({game_id}) : {e}")
 
-    return stats, odds, round_label
+    # ── Nettoyage final (possession en int, etc.) ───────────────────
+    stats = finalize_stats(stats)
+
+    return stats, odds, round_label, penalty_winner
 
 
 def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
     """
     Phase d'enrichissement : visite chaque match unique (par match_id)
-    une seule fois pour récupérer ses statistiques (incluant les scores
-    de mi-temps / 2nde mi-temps), ses cotes et, si besoin, son round
-    normalisé en nombre (repli pour matchday), puis injecte le résultat
-    dans l'occurrence correspondante.
+    une seule fois pour récupérer ses statistiques (dont mi-temps et
+    possession en int), ses cotes, son round normalisé et, si le match
+    a été décidé aux tirs au but, le vainqueur des penalties. Injecte
+    ensuite le résultat dans toutes les occurrences correspondantes.
     """
-    # ── Construction de la liste des game_id uniques ───────────────
-    unique_game_ids = []
-    seen_ids = set()
+    # ── Construction des métadonnées par match unique ───────────────
+    game_meta = {}
     for matches in all_matches_by_team.values():
         for m in matches:
             gid = m.get("match_id")
-            if gid and gid not in seen_ids:
-                seen_ids.add(gid)
-                unique_game_ids.append(gid)
+            if gid and gid not in game_meta:
+                game_meta[gid] = {
+                    "home_team_id": m.get("home_team_id"),
+                    "away_team_id": m.get("away_team_id"),
+                    "decided_by_penalties": m.get("decided_by_penalties", False),
+                }
 
+    unique_game_ids = list(game_meta.keys())
     total = len(unique_game_ids)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, mi-temps, cotes & rounds ({total} match(s) unique(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, mi-temps, cotes, rounds & pens ({total} match(s) unique(s))")
     print("=" * 60)
 
     stats_by_game_id = {}
     odds_by_game_id = {}
     round_by_game_id = {}
+    penalty_winner_by_game_id = {}
+
     for idx, gid in enumerate(unique_game_ids, 1):
+        meta = game_meta[gid]
         print(f"\n  [{idx}/{total}] gameId={gid}")
         try:
-            stats, odds, round_label = get_match_details_selenium(driver, gid)
+            stats, odds, round_label, penalty_winner = get_match_details_selenium(
+                driver, gid,
+                home_team_id=meta["home_team_id"],
+                away_team_id=meta["away_team_id"],
+                decided_by_penalties=meta["decided_by_penalties"],
+            )
         except Exception as e:
-            print(f"    ⚠️ Erreur stats/cotes/round gameId={gid}: {e}")
-            stats, odds, round_label = {}, {"home": None, "away": None, "draw": None}, None
+            print(f"    ⚠️ Erreur stats/cotes/round/pens gameId={gid}: {e}")
+            stats, odds, round_label, penalty_winner = {}, {"home": None, "away": None, "draw": None}, None, None
+
         stats_by_game_id[gid] = stats
         odds_by_game_id[gid] = odds
         round_by_game_id[gid] = round_label
+        penalty_winner_by_game_id[gid] = penalty_winner
+
         odds_str = (
             f"💰 {odds['home']}/{odds['draw']}/{odds['away']}"
             if odds.get("home") is not None
             else "ℹ️ pas de cotes"
         )
         round_str = f"🔁 {round_label}" if round_label is not None else "🔁 pas de round"
-        print(f"    📊 {len(stats)} statistique(s) récupérée(s)  |  {odds_str}  |  {round_str}")
+        pens_str = f"🥅 pens: {penalty_winner}" if meta["decided_by_penalties"] else ""
+        print(f"    📊 {len(stats)} statistique(s) récupérée(s)  |  {odds_str}  |  {round_str}  {pens_str}")
         time.sleep(0.8)
 
     # ── Injection dans tous les matchs ──────────────────────────────
@@ -891,8 +1028,10 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
                 m["odds"] = odds_by_game_id[gid]
             if gid and m.get("matchday") is None and round_by_game_id.get(gid) is not None:
                 m["matchday"] = round_by_game_id[gid]
+            if gid and m.get("decided_by_penalties"):
+                m["penalty_winner"] = penalty_winner_by_game_id.get(gid)
 
-    print("\n  ✅ Injection des statistiques, mi-temps, cotes et rounds terminée")
+    print("\n  ✅ Injection des statistiques, mi-temps, cotes, rounds et tirs au but terminée")
 
 
 # ===============================================================
@@ -903,7 +1042,8 @@ MATCH_KEY_ORDER = [
     "date", "season", "matchday", "competition",
     "home_team", "home_team_id", "home_logo_url", "home_score",
     "away_team", "away_team_id", "away_logo_url", "away_score",
-    "result", "odds", "stats", "match_id", "match_url",
+    "result", "decided_by_penalties", "penalty_winner", "team_result",
+    "odds", "stats", "match_id", "match_url",
 ]
 
 TEAM_KEY_ORDER = [
@@ -958,13 +1098,17 @@ def scrape_with_selenium():
             matches_by_team[team_id] = unique_matches
             team_meta[team_id] = team
 
-        # ── Phase d'enrichissement : statistiques, mi-temps, cotes et rounds ──
+        # ── Phase d'enrichissement : statistiques, mi-temps, cotes, rounds, pens ──
         enrich_matches_with_stats_and_odds(driver, matches_by_team)
 
         # ── Construction de la sortie finale (matchs structurés par saison) ──
         for team_id, unique_matches in matches_by_team.items():
             team = team_meta[team_id]
             team_name = team.get("team", "")
+
+            # ── Résultat (V/N/D) du point de vue de l'équipe scrapée ────
+            for m in unique_matches:
+                m["team_result"] = compute_team_result(m, team_id)
 
             team_output = {
                 "team_name": team_name,
@@ -1025,7 +1169,7 @@ def scrape_with_selenium():
 def main():
     print("=" * 60)
     print("⚽ ESPN SCRAPER — PREMIER LEAGUE (1 ÉQUIPE)")
-    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, sans doublons, avec statistiques, mi-temps, journées, cotes, dates ISO, structuré par saison")
+    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, sans doublons, avec statistiques, mi-temps, journées, cotes, pens, résultat V/N/D, structuré par saison")
     print("=" * 60)
 
     results = scrape_with_selenium()
@@ -1043,12 +1187,13 @@ def main():
                         f"    {i+1}. [{m['date']}] "
                         f"{m['home_team']} "
                         f"{m['home_score']}-{m['away_score']} "
-                        f"{m['away_team']}"
+                        f"{m['away_team']}  ({m['team_result']})"
                     )
                     print(f"         🏆 {m['competition']}  |  🔗 {m['match_url']}")
                     journee = m['matchday'] if m['matchday'] is not None else "-"
                     ht = m['stats'].get("Score 1ère mi-temps", "-")
-                    print(f"         📊 {len(m['stats'])} statistique(s)  |  📅 Journée {journee}  |  ⏱️ MT {ht}  |  💰 {m['odds']}")
+                    pens = f" | 🥅 pens: {m['penalty_winner']}" if m['decided_by_penalties'] else ""
+                    print(f"         📊 {len(m['stats'])} statistique(s)  |  📅 Journée {journee}  |  ⏱️ MT {ht}  |  💰 {m['odds']}{pens}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

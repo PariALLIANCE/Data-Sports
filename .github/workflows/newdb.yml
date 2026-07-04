@@ -43,7 +43,7 @@ jobs:
 
       - name: Run scraper
         run: |
-          python scripts/newdb.py
+          python scripts/Teams_tracker.py
         env:
           DISPLAY: ':99'
           PYTHONUNBUFFERED: 1
@@ -65,18 +65,18 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          if [ -f "newdb.json" ]; then
-            git add newdb.json
+          if [ -f "data/football/leagues/data_teams.json" ]; then
+            git add data/football/leagues/data_teams.json
             if ! git diff --staged --quiet; then
               TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
               git commit -m "🤖 Update Premier League teams results - $TIMESTAMP [skip ci]"
               git push
-              echo "✅ newdb.json mis à jour"
+              echo "✅ data_teams.json mis à jour"
             else
               echo "📝 Aucun changement"
             fi
           else
-            echo "⚠️ newdb.json non trouvé"
+            echo "⚠️ data_teams.json non trouvé"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

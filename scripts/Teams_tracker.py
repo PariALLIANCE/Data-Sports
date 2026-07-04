@@ -1126,6 +1126,7 @@ def scrape_next_game(driver, team_id):
     - date: date du match
     - home_or_away: "home" ou "away"
     - match_url: URL du match
+    - game_id: ID du match
     """
     url = f"https://www.espn.com/soccer/team/fixtures/_/id/{team_id}"
     print(f"\n🌐 Accès fixtures: {url}")
@@ -1162,6 +1163,8 @@ def scrape_next_game(driver, team_id):
         print("❌ Aucun fixture trouvé")
         return None
 
+    league_label = target_league_label()
+
     # Parcourir les tables pour trouver le prochain match
     for table in fixture_tables:
         month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
@@ -1184,17 +1187,37 @@ def scrape_next_game(driver, team_id):
 
                 # ── [1] ÉQUIPE LOCALE ────────────────────────────────
                 local_links = cells[1].find_elements(By.TAG_NAME, "a")
-                local_href = local_links[0].get_attribute("href") if local_links else ""
+                if not local_links:
+                    continue
+                local_href = local_links[0].get_attribute("href") or ""
                 local_name = team_name_from_href(local_href)
+                local_id_m = re.search(r"/id/(\d+)/", local_href)
+                local_team_id = local_id_m.group(1) if local_id_m else ""
 
-                # ── [2] SCORE (encore non joué) ──────────────────────
-                # Pour les fixtures, le score est vide ou "vs"
+                # ── [2] SCORE / INFOS MATCH ──────────────────────────
+                # Structure: [logo home] [lien match avec "v"] [logo away]
+                score_links = cells[2].find_elements(By.TAG_NAME, "a")
+                match_url = ""
+                game_id = ""
                 score_text = cells[2].text.strip()
+
+                for link in score_links:
+                    href = link.get_attribute("href") or ""
+                    if href and "/soccer/match/" in href:
+                        match_url = fix_url(href)
+                        mid_m = re.search(r"/gameId/(\d+)", match_url)
+                        if mid_m:
+                            game_id = mid_m.group(1)
+                        break
 
                 # ── [3] ÉQUIPE AWAY ──────────────────────────────────
                 away_links = cells[3].find_elements(By.TAG_NAME, "a")
-                away_href = away_links[0].get_attribute("href") if away_links else ""
+                if not away_links:
+                    continue
+                away_href = away_links[0].get_attribute("href") or ""
                 away_name = team_name_from_href(away_href)
+                away_id_m = re.search(r"/id/(\d+)/", away_href)
+                away_team_id = away_id_m.group(1) if away_id_m else ""
 
                 # ── [5] COMPÉTITION ──────────────────────────────────
                 competition = ""
@@ -1202,70 +1225,131 @@ def scrape_next_game(driver, team_id):
                 if comp_spans:
                     competition = comp_spans[-1].text.strip()
 
-                # Vérifier si c'est un match non joué (score vide ou "vs")
-                if not score_text or score_text.lower() == "vs":
-                    # Construire la date ISO
-                    year_m = re.search(r"(\d{4})", month)
-                    match_year = year_m.group(1) if year_m else str(datetime.now().year)
-                    iso_date = build_iso_date(date_text, month, match_year)
+                # Vérifier si c'est un match non joué (fixture)
+                # Le texte du score est "v" ou "vs" pour les matchs à venir
+                is_fixture = False
+                if score_text.lower() in ["v", "vs", ""]:
+                    is_fixture = True
+                else:
+                    # Vérifier s'il y a un lien vers le match mais pas de score
+                    # Parfois le texte est "v" sans lien
+                    pass
 
-                    # Déterminer si l'équipe joue à domicile ou à l'extérieur
-                    league_label = target_league_label()
-                    is_home = True  # par défaut
+                if not is_fixture:
+                    continue
 
-                    # Trouver l'équipe cible dans la ligne (via l'ID)
-                    team_found = False
-                    for link in local_links + away_links:
-                        href = link.get_attribute("href") or ""
-                        if f"/id/{team_id}/" in href:
-                            team_found = True
-                            # Si l'équipe est dans les liens locaux => home
-                            if link in local_links:
-                                is_home = True
-                            else:
-                                is_home = False
-                            break
+                # Vérifier si c'est un match de l'équipe cible
+                team_found = False
+                is_home = False
 
-                    if not team_found:
-                        continue
+                if str(team_id) == local_team_id:
+                    team_found = True
+                    is_home = True
+                    opponent_name = away_name
+                    opponent_id = away_team_id
+                elif str(team_id) == away_team_id:
+                    team_found = True
+                    is_home = False
+                    opponent_name = local_name
+                    opponent_id = local_team_id
 
-                    # Déterminer le contexte
-                    context = "Unknown"
-                    matchday = None
-                    round_num = None
+                if not team_found:
+                    continue
 
-                    if league_label.lower() in competition.lower():
-                        context = "Premier League"
-                        # On essaie d'extrapoler la journée
-                        # Récupérer le matchday depuis l'URL ou le contexte
-                        # Pour les fixtures, ESPN n'indique pas toujours le matchday
-                        # On peut essayer de le déterminer plus tard
-                    elif "fa cup" in competition.lower():
-                        context = "FA Cup"
-                        # Extraire le round depuis la page du match si possible
-                        # ou depuis la compétition
-                    else:
-                        context = competition
+                # Construire la date ISO
+                year_m = re.search(r"(\d{4})", month)
+                match_year = year_m.group(1) if year_m else str(datetime.now().year)
+                iso_date = build_iso_date(date_text, month, match_year)
 
-                    # Construire l'objet next_game
-                    next_game = {
-                        "context": context,
-                        "matchday": matchday,
-                        "round": round_num,
-                        "opponent": away_name if is_home else local_name,
-                        "home_or_away": "home" if is_home else "away",
-                        "date": iso_date,
-                        "competition": competition,
-                    }
+                # Déterminer le contexte et le matchday/round
+                context = "Unknown"
+                matchday = None
+                round_num = None
 
-                    print(f"   ✅ Prochain match trouvé: {next_game}")
-                    return next_game
+                if league_label.lower() in competition.lower():
+                    context = "Premier League"
+                    # Essayer d'extraire le matchday depuis l'URL
+                    if match_url:
+                        md_m = re.search(r"/matchday/(\d+)", match_url)
+                        if md_m:
+                            matchday = int(md_m.group(1))
+                elif "fa cup" in competition.lower():
+                    context = "FA Cup"
+                    # Essayer d'extraire le round depuis l'URL ou la page du match
+                    if match_url:
+                        try:
+                            # Aller sur la page du match pour extraire le round
+                            driver.execute_script(f"window.open('{match_url}', '_blank');")
+                            driver.switch_to.window(driver.window_handles[-1])
+                            time.sleep(3)
+                            try:
+                                WebDriverWait(driver, 10).until(
+                                    EC.presence_of_element_located((By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"))
+                                )
+                                soup = BeautifulSoup(driver.page_source, "html.parser")
+                                round_text = extract_round_info(soup)
+                                if round_text:
+                                    round_num = extract_round_label(round_text)
+                            except:
+                                pass
+                            driver.close()
+                            driver.switch_to.window(driver.window_handles[0])
+                        except:
+                            pass
+                else:
+                    context = competition
+
+                next_game = {
+                    "context": context,
+                    "matchday": matchday,
+                    "round": round_num,
+                    "opponent": opponent_name,
+                    "opponent_id": opponent_id,
+                    "home_or_away": "home" if is_home else "away",
+                    "date": iso_date,
+                    "competition": competition,
+                    "match_url": match_url,
+                    "game_id": game_id,
+                }
+
+                print(f"   ✅ Prochain match trouvé: {next_game}")
+                return next_game
 
             except Exception as e:
                 print(f"   ⚠️ Erreur extraction fixture: {e}")
                 continue
 
     print("❌ Aucun prochain match trouvé")
+    return None
+
+
+def get_matchday_from_fixture(driver, match_url):
+    """
+    Essaie d'extraire le matchday depuis la page du match pour un fixture.
+    """
+    try:
+        driver.get(match_url)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.uUds"))
+        )
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        
+        # Chercher le matchday dans le texte
+        matchday_text = soup.find(string=re.compile(r"Matchday|Week", re.IGNORECASE))
+        if matchday_text:
+            md_m = re.search(r"(\d+)", matchday_text)
+            if md_m:
+                return int(md_m.group(1))
+        
+        # Autre approche: chercher dans les métadonnées
+        for meta in soup.find_all("meta"):
+            if meta.get("name") == "description" or meta.get("property") == "og:description":
+                desc = meta.get("content", "")
+                md_m = re.search(r"Matchday (\d+)", desc, re.IGNORECASE)
+                if md_m:
+                    return int(md_m.group(1))
+    except:
+        pass
     return None
 
 
@@ -1288,9 +1372,7 @@ def compute_next_games(all_matches_by_team, driver, team_id):
                 match["next_game"] = next_game
             else:
                 # Match précédent (plus récent) → next_game
-                # On utilise le match à l'index i-1
                 previous_match = team_matches[i-1]
-                # Déterminer le contexte du match précédent
                 competition = previous_match.get("competition", "")
                 league_label = target_league_label()
 
@@ -1303,14 +1385,27 @@ def compute_next_games(all_matches_by_team, driver, team_id):
                     matchday = None
                     round_num = previous_match.get("round")
 
+                # Déterminer l'adversaire
+                if previous_match.get("home_team_id") == team_id:
+                    opponent = previous_match.get("away_team")
+                    opponent_id = previous_match.get("away_team_id")
+                    home_or_away = "home"
+                else:
+                    opponent = previous_match.get("home_team")
+                    opponent_id = previous_match.get("home_team_id")
+                    home_or_away = "away"
+
                 next_game = {
                     "context": context,
                     "matchday": matchday,
                     "round": round_num,
-                    "opponent": previous_match.get("home_team") if previous_match.get("home_team_id") == team_id else previous_match.get("away_team"),
-                    "home_or_away": "home" if previous_match.get("home_team_id") == team_id else "away",
+                    "opponent": opponent,
+                    "opponent_id": opponent_id,
+                    "home_or_away": home_or_away,
                     "date": previous_match.get("date"),
                     "competition": competition,
+                    "match_url": previous_match.get("match_url"),
+                    "game_id": previous_match.get("match_id"),
                 }
                 match["next_game"] = next_game
 

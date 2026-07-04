@@ -231,6 +231,7 @@ def extract_match_info(match_row, month, season):
         away_team_name = team_name_from_href(away_href)
 
         # ── [4] RÉSULTAT ──────────────────────────────────────────────
+        # On garde le libellé brut ESPN tel quel ("FT" ou "FT-Pens").
         result_raw = ""
         result_els = cells[4].find_elements(By.CSS_SELECTOR, '[data-testid="result"]')
         if result_els:
@@ -240,10 +241,8 @@ def extract_match_info(match_row, month, season):
             if result_links:
                 result_raw = result_links[0].text.strip()
 
-        # ── RÉSULTAT NET + DÉTECTION TIRS AU BUT ────────────────────
-        # Ex: "FT-Pens" → result="FT", decided_by_penalties=True
+        # ── DÉTECTION TIRS AU BUT (à partir du même libellé brut) ───
         decided_by_penalties = bool(re.search(r"pens", result_raw, re.IGNORECASE))
-        clean_result = re.sub(r"[\s-]*pens", "", result_raw, flags=re.IGNORECASE).strip()
 
         # ── [5] COMPÉTITION ───────────────────────────────────────────
         competition = ""
@@ -272,7 +271,7 @@ def extract_match_info(match_row, month, season):
             "away_logo_url": build_logo_url(away_team_id),
             "match_url": match_url,
             "match_id": match_id,
-            "result": clean_result,
+            "result": result_raw,  # ← garde "FT" ou "FT-Pens" tel quel
             "decided_by_penalties": decided_by_penalties,
             "penalty_winner": None,  # ← rempli lors de l'enrichissement si decided_by_penalties
             "team_result": None,     # ← rempli plus tard (V/N/D du point de vue de l'équipe scrapée)
@@ -1187,7 +1186,7 @@ def main():
                         f"    {i+1}. [{m['date']}] "
                         f"{m['home_team']} "
                         f"{m['home_score']}-{m['away_score']} "
-                        f"{m['away_team']}  ({m['team_result']})"
+                        f"{m['away_team']}  ({m['team_result']})  [{m['result']}]"
                     )
                     print(f"         🏆 {m['competition']}  |  🔗 {m['match_url']}")
                     journee = m['matchday'] if m['matchday'] is not None else "-"

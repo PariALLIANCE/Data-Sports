@@ -18,7 +18,7 @@ from datetime import datetime
 TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/main/data/football/teams/football_teams.json"
 TARGET_COUNTRY = "England"
 TARGET_LEAGUE = "England_Premier_League"
-NB_TEAMS = 1  # ← une seule équipe désormais
+NB_TEAMS = 1  # ← une seule équipe désormais (logique déjà prête pour plusieurs)
 
 START_SEASON = 2023
 END_SEASON = datetime.now().year  # saison actuelle incluse
@@ -28,26 +28,91 @@ LEAGUES_DIR = os.path.join("data", "football", "leagues")
 DATASET_TMP_DIR = "dataset_tmp"
 OUTPUT_JSON_PATH = os.path.join(LEAGUES_DIR, "data_teams.json")
 
+# ── Préfixes de nationalité à retirer pour obtenir un libellé court ──
+COUNTRY_ADJECTIVES = [
+    "English", "Spanish", "Italian", "German", "French", "Portuguese",
+    "Dutch", "Scottish", "Brazilian", "Turkish", "Belgian",
+]
+
 
 def reset_output_directories():
     """
-    Supprime puis recrée le dossier data/football/leagues (destination
-    finale du JSON), et supprime le dossier dataset_tmp s'il existe
-    (nettoyage des fichiers temporaires d'une exécution précédente).
+    Prépare l'environnement de sortie SANS supprimer l'historique déjà
+    trackée : data/football/leagues n'est plus supprimé. Seul
+    dataset_tmp est supprimé.
     """
-    # ── Suppression + recréation de data/football/leagues ──────────
-    if os.path.isdir(LEAGUES_DIR):
-        print(f"🗑️  Suppression du dossier existant: {LEAGUES_DIR}")
-        shutil.rmtree(LEAGUES_DIR)
     os.makedirs(LEAGUES_DIR, exist_ok=True)
-    print(f"📁 Dossier recréé: {LEAGUES_DIR}")
+    print(f"📁 Dossier prêt (non réinitialisé): {LEAGUES_DIR}")
 
-    # ── Suppression de dataset_tmp ──────────────────────────────────
     if os.path.isdir(DATASET_TMP_DIR):
         print(f"🗑️  Suppression du dossier temporaire: {DATASET_TMP_DIR}")
         shutil.rmtree(DATASET_TMP_DIR)
     else:
         print(f"ℹ️  Aucun dossier temporaire {DATASET_TMP_DIR} à supprimer")
+
+
+def load_existing_data():
+    """
+    Charge le JSON existant s'il existe, et retourne un dict
+    {team_id: team_entry}.
+    """
+    if not os.path.isfile(OUTPUT_JSON_PATH):
+        print(f"ℹ️ Aucun fichier existant ({OUTPUT_JSON_PATH}) — toutes les équipes seront traitées comme non trackées")
+        return {}
+    try:
+        with open(OUTPUT_JSON_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"⚠️ Erreur lecture JSON existant : {e} — traité comme absent")
+        return {}
+
+    by_id = {}
+    for team_entry in data.get("teams", []):
+        tid = team_entry.get("team_id")
+        if tid:
+            by_id[tid] = team_entry
+
+    print(f"📂 {len(by_id)} équipe(s) déjà trackée(s) trouvée(s) dans le JSON existant")
+    return by_id
+
+
+def flatten_existing_matches(team_entry):
+    """Aplati matches_by_season d'une entrée existante en liste simple."""
+    flat = []
+    for season_matches in team_entry.get("matches_by_season", {}).values():
+        flat.extend(season_matches)
+    return flat
+
+
+def merge_matches(existing_matches, new_matches):
+    """
+    Fusionne les matchs déjà connus avec les matchs fraîchement
+    scrapés. Retourne (merged_matches, new_match_ids).
+    """
+    existing_by_id = {}
+    no_id_existing = []
+    for m in existing_matches:
+        mid = m.get("match_id")
+        if mid:
+            existing_by_id[mid] = m
+        else:
+            no_id_existing.append(m)
+
+    merged_by_id = dict(existing_by_id)
+    new_match_ids = set()
+    no_id_new = []
+
+    for m in new_matches:
+        mid = m.get("match_id")
+        if mid:
+            if mid not in existing_by_id:
+                new_match_ids.add(mid)
+            merged_by_id[mid] = m
+        else:
+            no_id_new.append(m)
+
+    merged = list(merged_by_id.values()) + no_id_existing + no_id_new
+    return merged, new_match_ids
 
 
 def setup_driver():
@@ -88,7 +153,6 @@ def fix_url(url, base="https://www.espn.com"):
     return f"{base}{url}"
 
 
-# ── Acronymes de clubs à mettre en majuscules (compatibilité de noms) ──
 KNOWN_TEAM_ACRONYMS = {
     "afc", "fc", "cf", "fk", "sc", "ac", "ca", "cd", "us", "as",
     "ud", "sv", "vfb", "vfl", "tsv", "bsc", "rc", "rcd", "cfc",
@@ -96,12 +160,7 @@ KNOWN_TEAM_ACRONYMS = {
 
 
 def normalize_team_name(name):
-    """
-    Met en majuscules les acronymes connus au sein d'un nom d'équipe,
-    pour assurer la compatibilité avec les libellés officiels (ex:
-    "Afc Bournemouth" → "AFC Bournemouth", "Fc Barcelona" → "FC Barcelona").
-    Les autres mots conservent leur casse Title (déjà appliquée en amont).
-    """
+    """Met en majuscules les acronymes connus au sein d'un nom d'équipe."""
     if not name:
         return name
     words = name.split(" ")
@@ -113,15 +172,19 @@ def normalize_team_name(name):
 
 
 def team_name_from_href(href):
-    """Extrait le nom lisible depuis l'URL de l'équipe ESPN.
-    Ex: /soccer/team/_/id/6086/botafogo → Botafogo
-    Ex: /soccer/team/_/id/349/afc-bournemouth → AFC Bournemouth
-    """
+    """Extrait le nom lisible depuis l'URL de l'équipe ESPN."""
     if not href:
         return ""
     slug = href.rstrip("/").split("/")[-1]
     raw_name = slug.replace("-", " ").title()
     return normalize_team_name(raw_name)
+
+
+def build_team_slug(team_name):
+    """Construit un slug simplifié pour l'URL des fixtures ESPN."""
+    if not team_name:
+        return ""
+    return re.sub(r"[^a-zA-Z0-9]+", "-", team_name.strip().lower()).strip("-")
 
 
 def build_logo_url(team_id):
@@ -131,10 +194,24 @@ def build_logo_url(team_id):
     return f"https://a.espncdn.com/i/teamlogos/soccer/500/{team_id}.png"
 
 
+def simplify_competition_label(competition):
+    """
+    Retire un préfixe de nationalité connu d'un libellé de compétition
+    (ex: "English Premier League" → "Premier League").
+    """
+    if not competition:
+        return competition
+    text = competition.strip()
+    for adj in COUNTRY_ADJECTIVES:
+        if text.startswith(adj + " "):
+            return text[len(adj) + 1:].strip()
+    return text
+
+
 def fetch_target_teams():
     """
-    Récupère le fichier football_teams.json depuis GitHub, et retourne
-    la (les) NB_TEAMS première(s) équipe(s) de TARGET_COUNTRY / TARGET_LEAGUE.
+    Récupère football_teams.json depuis GitHub, retourne la (les)
+    NB_TEAMS première(s) équipe(s) de TARGET_COUNTRY / TARGET_LEAGUE.
     """
     print(f"🌐 Téléchargement de {TEAMS_JSON_URL}")
     req = urllib.request.Request(TEAMS_JSON_URL, headers={"User-Agent": "Mozilla/5.0"})
@@ -162,20 +239,13 @@ MONTH_ORDER = {
 
 
 def format_season(season):
-    """
-    Convertit une saison ESPN (année de départ, ex: 2022) en libellé
-    "YYYY/YYYY+1". Ex: 2022 → "2022/2023", 2025 → "2025/2026".
-    """
+    """Convertit une saison ESPN en libellé "YYYY/YYYY+1"."""
     season = int(season)
     return f"{season}/{season + 1}"
 
 
 def target_league_label():
-    """
-    Dérive le libellé de compétition ESPN correspondant à TARGET_LEAGUE
-    (ex: "England_Premier_League" → "Premier League"). Utilisé pour
-    repérer les matchs de championnat lors du calcul de la journée.
-    """
+    """Dérive le libellé ESPN correspondant à TARGET_LEAGUE."""
     parts = TARGET_LEAGUE.split("_")
     if len(parts) > 1 and parts[0] == TARGET_COUNTRY:
         parts = parts[1:]
@@ -183,14 +253,7 @@ def target_league_label():
 
 
 def build_iso_date(date_text, month_text, year_str):
-    """
-    Construit une date ISO (YYYY-MM-DD) à partir des champs bruts ESPN :
-    - date_text  : texte du jour (contient le numéro du jour du mois)
-    - month_text : texte du bloc mensuel (ex. "August, 2022"), utilisé
-      pour déterminer le mois
-    - year_str   : année réelle du match (déjà résolue en amont)
-    Retourne None si la date ne peut pas être reconstituée.
-    """
+    """Construit une date ISO (YYYY-MM-DD) à partir des champs bruts ESPN."""
     month_str = (month_text or "").split(",")[0].strip()
     month_num = MONTH_ORDER.get(month_str, 0)
 
@@ -208,10 +271,7 @@ def build_iso_date(date_text, month_text, year_str):
 
 
 def date_sort_key(m):
-    """
-    Clé de tri chronologique basée sur le champ "date" ISO (YYYY-MM-DD).
-    Retourne (0, 0, 0) si la date est absente ou invalide.
-    """
+    """Clé de tri chronologique basée sur le champ "date" ISO."""
     d = m.get("date")
     if not d:
         return (0, 0, 0)
@@ -223,30 +283,15 @@ def date_sort_key(m):
 
 
 def extract_match_info(match_row, month, season):
-    """
-    Structure réelle ESPN (6 <td>) :
-      [0] Date   → <div data-testid="date">
-      [1] Équipe locale  → <div data-testid="localTeam"><a href="/soccer/team/_/id/ID/slug">
-      [2] Score + logos  → <span data-testid="score">
-                              <a href="/soccer/match/_/gameId/ID/...">X - Y</a>
-                           </span>
-      [3] Équipe away    → <div data-testid="awayTeam"><a href="/soccer/team/_/id/ID/slug">
-      [4] Résultat       → <span data-testid="result"><a>FT</a>
-      [5] Compétition    → <span>...</span>
-
-    `season` correspond à la saison interrogée sur ESPN (paramètre d'URL),
-    utilisée comme valeur de repli si l'année n'est pas détectable dans le texte.
-    """
+    """Structure réelle ESPN (6 <td>) pour la page résultats."""
     try:
         cells = match_row.find_elements(By.TAG_NAME, "td")
         if len(cells) < 6:
             return None
 
-        # ── [0] DATE ──────────────────────────────────────────────────
         date_els = cells[0].find_elements(By.CSS_SELECTOR, '[data-testid="date"]')
         date = date_els[0].text.strip() if date_els else ""
 
-        # ── [1] ÉQUIPE LOCALE ─────────────────────────────────────────
         local_links = cells[1].find_elements(By.TAG_NAME, "a")
         if not local_links:
             return None
@@ -255,7 +300,6 @@ def extract_match_info(match_row, month, season):
         local_team_id = local_id_m.group(1) if local_id_m else ""
         local_team_name = team_name_from_href(local_href)
 
-        # ── [2] SCORE ─────────────────────────────────────────────────
         score_links = cells[2].find_elements(By.TAG_NAME, "a")
 
         home_score_raw = ""
@@ -263,7 +307,6 @@ def extract_match_info(match_row, month, season):
         match_url = ""
         match_id = ""
 
-        # score_links[0] = lien logo local, [1] = lien score/match, [2] = lien logo away
         if len(score_links) >= 3:
             score_text = score_links[1].text.strip()
             match_url = fix_url(score_links[1].get_attribute("href") or "")
@@ -275,7 +318,6 @@ def extract_match_info(match_row, month, season):
                 home_score_raw = score_m.group(1)
                 away_score_raw = score_m.group(2)
 
-        # ── [3] ÉQUIPE AWAY ───────────────────────────────────────────
         away_links = cells[3].find_elements(By.TAG_NAME, "a")
         if not away_links:
             return None
@@ -284,8 +326,6 @@ def extract_match_info(match_row, month, season):
         away_team_id = away_id_m.group(1) if away_id_m else ""
         away_team_name = team_name_from_href(away_href)
 
-        # ── [4] RÉSULTAT ──────────────────────────────────────────────
-        # On garde le libellé brut ESPN tel quel ("FT" ou "FT-Pens").
         result_raw = ""
         result_els = cells[4].find_elements(By.CSS_SELECTOR, '[data-testid="result"]')
         if result_els:
@@ -295,22 +335,16 @@ def extract_match_info(match_row, month, season):
             if result_links:
                 result_raw = result_links[0].text.strip()
 
-        # ── DÉTECTION TIRS AU BUT (à partir du même libellé brut) ───
         decided_by_penalties = bool(re.search(r"pens", result_raw, re.IGNORECASE))
 
-        # ── [5] COMPÉTITION ───────────────────────────────────────────
         competition = ""
         comp_spans = cells[5].find_elements(By.TAG_NAME, "span")
         if comp_spans:
             competition = comp_spans[-1].text.strip()
 
-        # ── ANNÉE RÉELLE DU MATCH ────────────────────────────────────
-        # Le bloc "month" ressemble parfois à "August, 2022". On essaie d'en
-        # extraire l'année réelle, sinon on retombe sur la saison interrogée.
         year_m = re.search(r"(\d{4})", month)
         match_year = year_m.group(1) if year_m else str(season)
 
-        # ── DATE ISO ────────────────────────────────────────────────
         iso_date = build_iso_date(date, month, match_year)
 
         return {
@@ -325,18 +359,18 @@ def extract_match_info(match_row, month, season):
             "away_logo_url": build_logo_url(away_team_id),
             "match_url": match_url,
             "match_id": match_id,
-            "result": result_raw,  # ← garde "FT" ou "FT-Pens" tel quel
+            "result": result_raw,
             "decided_by_penalties": decided_by_penalties,
-            "penalty_winner": None,  # ← rempli lors de l'enrichissement si decided_by_penalties
-            "team_result": None,     # ← rempli plus tard (V/N/D du point de vue de l'équipe scrapée)
+            "penalty_winner": None,
+            "team_result": None,
             "competition": competition,
             "season": format_season(season),
-            "matchday": None,  # ← journée de championnat uniquement (None pour les coupes)
-            "round": None,     # ← round de coupe uniquement (None pour le championnat)
-            "odds": {"home": None, "away": None, "draw": None},  # ← rempli lors de l'enrichissement
-            "has_full_stats": False,  # ← rempli lors de l'enrichissement
-            "stats": {},  # ← rempli plus tard lors de la phase d'enrichissement
-            "next_game": None,  # ← rempli après calcul
+            "matchday": None,
+            "round": None,
+            "odds": {"home": None, "away": None, "draw": None},
+            "has_full_stats": False,
+            "stats": {},
+            "next_game": None,  # ← rempli en fin de traitement (match suivant chronologique)
         }
 
     except Exception as e:
@@ -344,87 +378,101 @@ def extract_match_info(match_row, month, season):
         return None
 
 
-def scrape_team_results_for_season(driver, team_name, team_id, season):
+def scrape_team_results_for_seasons(driver, team_name, team_id, seasons):
     """
-    Scrape les résultats d'une équipe ESPN donnée (team_id) pour UNE saison.
-    Retourne la liste des matchs (non dédupliqués entre saisons).
+    Scrape les résultats d'une équipe ESPN pour la liste de saisons
+    donnée.
     """
-    all_matches = []
+    combined_matches = []
 
-    url = f"https://www.espn.com/soccer/team/results/_/id/{team_id}/season/{season}"
-    print(f"\n🌐 Accès: {url}")
-    driver.get(url)
+    for season in seasons:
+        print(f"\n📆 Saison {season} — {team_name}")
 
-    print("⏳ Attente du chargement initial (5s)...")
-    time.sleep(5)
+        url = f"https://www.espn.com/soccer/team/results/_/id/{team_id}/season/{season}"
+        print(f"🌐 Accès: {url}")
+        try:
+            driver.get(url)
+            print("⏳ Attente du chargement initial (5s)...")
+            time.sleep(5)
 
-    # Scroll pour déclencher le lazy-load
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
-    driver.execute_script("window.scrollTo(0, 0);")
-    time.sleep(1)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            driver.execute_script("window.scrollTo(0, 0);")
+            time.sleep(1)
 
-    try:
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
-        )
-        print("✅ Tables détectées")
-    except TimeoutException:
-        print("⚠️ Timeout en attendant les tables — tentative quand même…")
-
-    # ── Récupérer tous les blocs mensuels ─────────────────────────
-    result_tables = driver.find_elements(
-        By.CSS_SELECTOR, "div.ResponsiveTable.Table__results-mobile"
-    )
-
-    if not result_tables:
-        result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
-
-    print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s) pour la saison {season}")
-
-    if not result_tables:
-        print(f"❌ Aucun tableau trouvé pour la saison {season}.")
-        return []
-
-    for table in result_tables:
-        month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
-        month = month_els[0].text.strip() if month_els else "Unknown"
-        print(f"\n📅 Mois: {month}")
-
-        rows = table.find_elements(
-            By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
-        )
-        print(f"   → {len(rows)} ligne(s) trouvée(s)")
-
-        for row in rows:
-            match_data = extract_match_info(row, month, season)
-            if match_data:
-                all_matches.append(match_data)
-                print(
-                    f"   ✅ {match_data['home_team']} {match_data['home_score']}"
-                    f" - {match_data['away_score']} {match_data['away_team']}"
-                    f"  [{match_data['competition']}]"
+            try:
+                WebDriverWait(driver, 30).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
                 )
-            else:
-                print("   ⚠️ Ligne ignorée (extraction échouée)")
+                print("✅ Tables détectées")
+            except TimeoutException:
+                print("⚠️ Timeout en attendant les tables — tentative quand même…")
 
-    return all_matches
+            result_tables = driver.find_elements(
+                By.CSS_SELECTOR, "div.ResponsiveTable.Table__results-mobile"
+            )
+            if not result_tables:
+                result_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+
+            print(f"📊 {len(result_tables)} bloc(s) mensuel(s) trouvé(s) pour la saison {season}")
+
+            if not result_tables:
+                print(f"❌ Aucun tableau trouvé pour la saison {season}.")
+                continue
+
+            for table in result_tables:
+                month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
+                month = month_els[0].text.strip() if month_els else "Unknown"
+                print(f"\n📅 Mois: {month}")
+
+                rows = table.find_elements(
+                    By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
+                )
+                print(f"   → {len(rows)} ligne(s) trouvée(s)")
+
+                for row in rows:
+                    match_data = extract_match_info(row, month, season)
+                    if match_data:
+                        combined_matches.append(match_data)
+                        print(
+                            f"   ✅ {match_data['home_team']} {match_data['home_score']}"
+                            f" - {match_data['away_score']} {match_data['away_team']}"
+                            f"  [{match_data['competition']}]"
+                        )
+                    else:
+                        print("   ⚠️ Ligne ignorée (extraction échouée)")
+
+        except Exception as e:
+            print(f"❌ Erreur lors du scraping de {team_name} (saison {season}): {e}")
+            import traceback
+            traceback.print_exc()
+
+    seen = set()
+    unique_matches = []
+    for m in combined_matches:
+        key = m["match_id"] if m["match_id"] else f"{m['home_team']}_{m['away_team']}_{m['date']}"
+        if key not in seen:
+            seen.add(key)
+            unique_matches.append(m)
+
+    print(f"\n✅ {len(unique_matches)} match(s) unique(s) scrapé(s) pour {team_name} (saisons demandées: {seasons})")
+
+    unique_matches.sort(key=date_sort_key, reverse=True)
+
+    return unique_matches
 
 
 def compute_matchdays_for_team(matches):
     """
-    Calcule la journée (matchday) de championnat pour chaque match d'une
-    équipe, en se basant sur l'ordre chronologique croissant (via
-    date_sort_key) des matchs de championnat (compétition == ligue
-    ciblée), saison par saison. Les matchs hors championnat (coupes,
-    C1, etc.) gardent matchday = None : leur numéro de round sera
-    renseigné séparément dans le champ "round" lors de l'enrichissement.
+    Calcule la journée (matchday) de championnat pour chaque match,
+    saison par saison. Les matchs hors championnat gardent
+    matchday = None.
     """
     league_label = target_league_label().lower()
 
     matches_asc = sorted(matches, key=date_sort_key)
 
-    counters = {}  # saison (ex: "2022/2023") → compteur de journées
+    counters = {}
     for m in matches_asc:
         season_key = m.get("season")
         competition = (m.get("competition") or "").lower()
@@ -440,10 +488,7 @@ def compute_matchdays_for_team(matches):
 def compute_team_result(match, team_id):
     """
     Détermine le résultat du match ("V", "N", "D") du point de vue de
-    l'équipe team_id (celle dont on scrape les résultats). Si le score
-    est à égalité mais que le match a été décidé aux tirs au but, le
-    résultat retenu suit le vainqueur des penalties (V ou D) plutôt
-    qu'un match nul.
+    l'équipe team_id.
     """
     home_score = match.get("home_score")
     away_score = match.get("away_score")
@@ -468,59 +513,8 @@ def compute_team_result(match, team_id):
     return "V" if team_score > opp_score else "D"
 
 
-def scrape_team_results_all_seasons(driver, team_name, team_id):
-    """
-    Scrape les résultats d'une équipe ESPN pour toutes les saisons de
-    START_SEASON à END_SEASON, déduplique sur l'ensemble des saisons,
-    trie du plus récent au plus ancien, puis calcule la journée de
-    championnat de chaque match.
-    """
-    combined_matches = []
-
-    for season in range(START_SEASON, END_SEASON + 1):
-        print(f"\n📆 Saison {season} — {team_name}")
-        try:
-            season_matches = scrape_team_results_for_season(driver, team_name, team_id, season)
-        except Exception as e:
-            print(f"❌ Erreur lors du scraping de {team_name} (saison {season}): {e}")
-            import traceback
-            traceback.print_exc()
-            season_matches = []
-
-        combined_matches.extend(season_matches)
-
-    # ── Dédoublonnage sur l'ensemble des saisons ───────────────────
-    seen = set()
-    unique_matches = []
-    for m in combined_matches:
-        key = m["match_id"] if m["match_id"] else f"{m['home_team']}_{m['away_team']}_{m['date']}"
-        if key not in seen:
-            seen.add(key)
-            unique_matches.append(m)
-
-    print(
-        f"\n✅ {len(unique_matches)} matchs uniques pour {team_name} "
-        f"(sur {len(combined_matches)} extraits, saisons {format_season(START_SEASON)}-{format_season(END_SEASON)})"
-    )
-
-    # ── Tri : du plus récent au plus ancien ─────────────────────────
-    unique_matches.sort(key=date_sort_key, reverse=True)
-
-    # ── Calcul des journées de championnat (matchday) ──────────────
-    unique_matches = compute_matchdays_for_team(unique_matches)
-
-    return unique_matches
-
-
 def group_matches_by_season(matches):
-    """
-    Regroupe une liste de matchs (déjà triée du plus récent au plus
-    ancien) par saison, sous forme de dict ordonné :
-      {"2024/2025": [...matchs...], "2023/2024": [...matchs...]}
-    Les saisons les plus récentes apparaissent en premier (l'ordre
-    d'insertion suit l'ordre de la liste d'entrée), et les matchs de
-    chaque saison conservent leur tri du plus récent au plus ancien.
-    """
+    """Regroupe une liste de matchs par saison (récentes en premier)."""
     grouped = {}
     for m in matches:
         season_key = m.get("season") or "Unknown"
@@ -533,30 +527,19 @@ def group_matches_by_season(matches):
 # ===============================================================
 
 def to_int_stat(value):
-    """
-    Convertit une valeur de statistique brute en entier lorsque cela
-    est possible : gère les nombres simples ("12" → 12), les
-    pourcentages ("55%" → 55), et les espaces parasites. Toute valeur
-    qui n'est pas purement numérique (ex: ratios "5 of 12", horaires,
-    textes libres) est retournée inchangée (str).
-    """
+    """Convertit une valeur de statistique brute en entier si possible."""
     if value is None:
         return None
     text = str(value).strip().replace("%", "").replace(",", "").strip()
     if re.fullmatch(r"-?\d+", text):
         return int(text)
-    # Valeurs décimales éventuelles (rares en stats de match) → arrondi entier
     if re.fullmatch(r"-?\d+\.\d+", text):
         return int(round(float(text)))
     return value
 
 
 def finalize_stats(stats):
-    """
-    Passe finale de nettoyage sur le dict de statistiques d'un match :
-    convertit systématiquement chaque valeur "home"/"away" en int via
-    to_int_stat, quel que soit le libellé de la statistique.
-    """
+    """Convertit systématiquement chaque valeur home/away en int."""
     cleaned = {}
     for label, vals in stats.items():
         if not isinstance(vals, dict):
@@ -570,11 +553,7 @@ def finalize_stats(stats):
 
 
 def extract_match_stats_prism(soup):
-    """
-    Extrait les statistiques du match depuis la nouvelle structure
-    Prism d'ESPN (section data-testid="prism-LayoutCard" contenant "stat"
-    dans son titre h2).
-    """
+    """Extrait les statistiques du match depuis la structure Prism ESPN."""
     stats = {}
     try:
         section = None
@@ -610,70 +589,14 @@ def extract_match_stats_prism(soup):
     return stats
 
 
-def extract_match_stats(soup):
-    """
-    Extrait les statistiques du match avec plusieurs méthodes de repli,
-    pour couvrir les différentes versions de l'UI ESPN.
-    """
-    # Méthode 1 : nouvelle UI Prism
-    stats = extract_match_stats_prism(soup)
-    if stats:
-        return stats
-
-    # Méthode 2 : StatCellContent (ancienne UI)
-    try:
-        stat_rows = soup.select("div.StatCellContent")
-        if stat_rows:
-            values = [el.get_text(strip=True) for el in stat_rows]
-            i = 0
-            while i + 2 < len(values):
-                home_val = values[i]
-                label = values[i + 1]
-                away_val = values[i + 2]
-                if label and not label.replace(" ", "").isdigit():
-                    stats[label] = {"home": home_val, "away": away_val}
-                    i += 3
-                else:
-                    i += 1
-            if stats:
-                return stats
-    except Exception:
-        pass
-
-    # Méthode 3 : GameStat
-    try:
-        game_stat_rows = soup.select("div.GameStat")
-        if game_stat_rows:
-            for row in game_stat_rows:
-                cols = row.select("div")
-                texts = [c.get_text(strip=True) for c in cols if c.get_text(strip=True)]
-                if len(texts) >= 3:
-                    stats[texts[1]] = {"home": texts[0], "away": texts[2]}
-            if stats:
-                return stats
-    except Exception:
-        pass
-
-    return {}
-
-
 # ===============================================================
-# MI-TEMPS / 2NDE MI-TEMPS (structure "Match Timeline" Prism ESPN)
+# MI-TEMPS / 2NDE MI-TEMPS
 # ===============================================================
 
 def extract_match_timeline_halftime(soup):
     """
     Extrait le score à la mi-temps et à la 2nde mi-temps depuis la
-    section "Match Timeline" de la page match ESPN, en comptant les
-    icônes de but ("soccer-goal02") positionnées sur la frise
-    chronologique, avant/après le marqueur "HT" (mi-temps), pour
-    l'équipe locale (1re ligne d'icônes) et l'équipe visiteuse (2e
-    ligne d'icônes).
-
-    Retourne un tuple (halftime, second_half), chacun un dict
-    {"home": int, "away": int} représentant le nombre de buts marqués
-    pendant cette période, ou (None, None) si la frise est absente ou
-    n'a pas pu être interprétée.
+    frise "Match Timeline".
     """
     try:
         section = None
@@ -686,7 +609,6 @@ def extract_match_timeline_halftime(soup):
         if not section:
             return None, None
 
-        # ── Repérage du marqueur "HT" sur la frise ──────────────────
         ht_percent = None
         for span in section.find_all("span"):
             if span.get_text(strip=True).upper() == "HT":
@@ -696,9 +618,8 @@ def extract_match_timeline_halftime(soup):
                     ht_percent = float(m.group(1))
                 break
         if ht_percent is None:
-            ht_percent = 50.0  # repli raisonnable si le marqueur est introuvable
+            ht_percent = 50.0
 
-        # ── Repérage des deux lignes d'icônes (locale puis visiteuse) ──
         icon_rows = section.select("div.XYehN.ThkOQ.lZur")
         if len(icon_rows) < 2:
             return None, None
@@ -724,9 +645,7 @@ def extract_match_timeline_halftime(soup):
         home_ht, home_2h = count_goals(icon_rows[0])
         away_ht, away_2h = count_goals(icon_rows[1])
 
-        halftime = {"home": home_ht, "away": away_ht}
-        second_half = {"home": home_2h, "away": away_2h}
-        return halftime, second_half
+        return {"home": home_ht, "away": away_ht}, {"home": home_2h, "away": away_2h}
 
     except Exception as e:
         print(f"  ⚠️ Erreur extraction mi-temps (timeline) : {e}")
@@ -734,22 +653,13 @@ def extract_match_timeline_halftime(soup):
 
 
 # ===============================================================
-# VAINQUEUR AUX TIRS AU BUT (icône triangle à côté du score)
+# VAINQUEUR AUX TIRS AU BUT
 # ===============================================================
 
 def extract_penalty_winner(soup, home_team_id, away_team_id):
     """
-    Détecte le vainqueur d'un match décidé aux tirs au but ("-Pens") en
-    repérant la petite icône triangle ("arrows-triangleLeft") affichée
-    à côté du score de l'équipe gagnante sur la page du match.
-
-    Remonte depuis l'icône jusqu'au plus petit ancêtre contenant un
-    lien vers UNE SEULE des deux équipes (home ou away) ; si l'ancêtre
-    contient les deux (portée trop large / ambiguë), la détection est
-    abandonnée plutôt que de risquer une mauvaise attribution.
-
-    Retourne "home", "away" ou None si l'icône ou l'équipe associée
-    n'a pas pu être identifiée avec certitude.
+    Détecte le vainqueur d'un match décidé aux tirs au but via l'icône
+    triangle affichée à côté du score gagnant.
     """
     try:
         icon = soup.find("svg", attrs={"data-icon": "arrows-triangleLeft"})
@@ -769,7 +679,7 @@ def extract_penalty_winner(soup, home_team_id, away_team_id):
             has_away = any(f"/id/{away_team_id}/" in h for h in hrefs) if away_team_id else False
 
             if has_home and has_away:
-                return None  # portée ambiguë, on ne devine pas
+                return None
             if has_home:
                 return "home"
             if has_away:
@@ -786,9 +696,7 @@ def extract_penalty_winner(soup, home_team_id, away_team_id):
 # ===============================================================
 
 def us_to_decimal(val):
-    """
-    Convertit une cote américaine (ex: "-150", "+120") en cote décimale.
-    """
+    """Convertit une cote américaine en cote décimale."""
     if not val:
         return None
     try:
@@ -799,11 +707,7 @@ def us_to_decimal(val):
 
 
 def extract_ml_odds(soup):
-    """
-    Extrait les cotes 1X2 (Moneyline) depuis la page du match, si elles
-    sont disponibles (généralement absentes pour les matchs déjà joués
-    depuis longtemps).
-    """
+    """Extrait les cotes 1X2 (Moneyline) depuis la page du match."""
     try:
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
         if len(cells) < 7:
@@ -850,31 +754,17 @@ ROUND_ORDINALS = {
 
 def normalize_round_label(round_text):
     """
-    Convertit un libellé de round ESPN brut en nombre entier, selon le
-    mapping demandé :
-      "Round of 32"                → 32
-      "Round of 16"                 → 16
-      "Quarter-finals" / "Quarterfinals" → 8
-      "Semi-finals" / "Semifinals"          → 4
-      "Final"                                → 2
-      "Winner" / "Champion"                    → 1
-      "Third Round", "Fourth Round",
-      "Fifth Round"... ("Nth Round")             → N
-      libellé non reconnu                          → 0
-
-    Retourne None si round_text est vide.
+    Convertit un libellé de round ESPN brut en nombre entier.
     """
     if not round_text:
         return None
 
     text = round_text.strip().lower()
 
-    # "Round of N" → N
     m = re.search(r"round of (\d+)", text)
     if m:
         return int(m.group(1))
 
-    # Étapes à élimination directe nommées (avec ou sans trait d'union)
     if "quarter-final" in text or "quarterfinal" in text:
         return 8
     if "semi-final" in text or "semifinal" in text:
@@ -884,7 +774,6 @@ def normalize_round_label(round_text):
     if "final" in text:
         return 2
 
-    # "Nth Round" (ex: "Third Round", "Fifth Round") → N
     m = re.search(
         r"(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\s+round",
         text,
@@ -894,17 +783,11 @@ def normalize_round_label(round_text):
         if n:
             return n
 
-    # Repli générique pour tout libellé non reconnu (playoffs, poules, etc.)
     return 0
 
 
 def extract_round_info(soup):
-    """
-    Extrait le libellé "Compétition, Round" affiché sur la page du match
-    (ex: "Copa Do Brazil, Fifth Round"), utilisé pour renseigner le
-    numéro de round des matchs qui ne font pas partie du championnat
-    ciblé (coupes, compétitions continentales, etc.).
-    """
+    """Extrait le libellé "Compétition, Round" affiché sur la page du match."""
     try:
         el = soup.select_one("div.uUds.htRtm.pmgYE.WHJnO.qTCQv span")
         if not el:
@@ -917,12 +800,7 @@ def extract_round_info(soup):
 
 
 def extract_round_label(round_text):
-    """
-    Isole la partie "round" du libellé complet (ex: "Copa Do Brazil,
-    Fifth Round" → "Fifth Round"), puis la normalise en nombre entier
-    via normalize_round_label (ex: "Fifth Round" → 5,
-    "Round of 32" → 32, "Final" → 2). Retourne None si absent.
-    """
+    """Isole et normalise la partie "round" d'un libellé complet."""
     if not round_text:
         return None
     parts = round_text.split(",")
@@ -930,20 +808,61 @@ def extract_round_label(round_text):
     return normalize_round_label(raw_label)
 
 
+# ===============================================================
+# BILAN D'ÉQUIPE (W-D-L) SUR LA PAGE DU MATCH — pour matchday à venir
+# ===============================================================
+
+def extract_team_games_played(soup, team_id):
+    """
+    Extrait, sur la page d'un match, le nombre de matchs déjà joués par
+    une équipe (team_id) à partir de son bilan affiché "W-D-L" (ex:
+    "0-0-0"), situé dans le bloc d'en-tête de l'équipe (sélecteur
+    data-testid="prism-linkbase" pointant vers /soccer/team/_/id/{id}/).
+    Retourne le nombre total de matchs (W+D+L), ou None si introuvable.
+    """
+    if not team_id:
+        return None
+    try:
+        links = soup.find_all("a", href=re.compile(rf"/soccer/team/_/id/{team_id}/"))
+        for link in links:
+            node = link
+            for _ in range(8):
+                node = node.parent
+                if node is None or not hasattr(node, "find_all"):
+                    break
+                for span in node.find_all("span"):
+                    text = span.get_text(strip=True)
+                    m = re.match(r"^(\d+)-(\d+)-(\d+)$", text)
+                    if m:
+                        w, d, l = (int(x) for x in m.groups())
+                        return w + d + l
+        return None
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction bilan équipe ({team_id}) : {e}")
+        return None
+
+
+def compute_upcoming_matchday(soup, home_team_id, away_team_id):
+    """
+    Calcule le matchday du prochain match de championnat : nombre de
+    matchs déjà joués par chaque équipe (via son bilan W-D-L sur la
+    page du match), puis matchday = max(des deux) + 1 — même logique
+    "+1 au plus élevé" que pour l'historique des matchs déjà joués.
+    Retourne None si ni l'une ni l'autre équipe n'a de bilan exploitable.
+    """
+    home_games = extract_team_games_played(soup, home_team_id)
+    away_games = extract_team_games_played(soup, away_team_id)
+
+    candidates = [g for g in (home_games, away_games) if g is not None]
+    if not candidates:
+        return None
+    return max(candidates) + 1
+
+
 def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=None, decided_by_penalties=False):
     """
-    Charge la page du match via Selenium (gameId) et retourne un tuple
-    (stats, odds, round_label, penalty_winner, has_full_stats) :
-      - stats           : dict des statistiques du match (Prism en
-        priorité, fallback CSS sinon), toutes les valeurs numériques
-        converties en int, incluant les scores de mi-temps
-      - odds            : dict des cotes 1X2 {"home", "away", "draw"}
-      - round_label     : nombre entier de round (32, 16, 8, 4, 2, 1, 0…)
-      - penalty_winner  : "home"/"away"/None, rempli uniquement si
-        decided_by_penalties est True
-      - has_full_stats  : True si des statistiques détaillées (tirs,
-        possession, corners…) ont été trouvées ; False si seules les
-        données de mi-temps ont pu être extraites (ou aucune donnée)
+    Charge la page du match via Selenium et retourne
+    (stats, odds, round_label, penalty_winner, has_full_stats).
     """
     url = f"https://www.espn.com/soccer/match/_/gameId/{game_id}"
     try:
@@ -961,7 +880,6 @@ def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
-    # ── Cotes ────────────────────────────────────────────────────
     ml = extract_ml_odds(soup)
     odds = {
         "home": ml["home"] if ml else None,
@@ -969,15 +887,12 @@ def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=
         "draw": ml["draw"] if ml else None,
     }
 
-    # ── Round (numéro de coupe, déjà normalisé en nombre) ───────────
     round_label = extract_round_label(extract_round_info(soup))
 
-    # ── Vainqueur aux tirs au but (uniquement si nécessaire) ────────
     penalty_winner = None
     if decided_by_penalties:
         penalty_winner = extract_penalty_winner(soup, home_team_id, away_team_id)
 
-    # ── Statistiques (méthode Prism en priorité) ───────────────────
     stats = extract_match_stats_prism(soup)
     if not stats:
         try:
@@ -1002,10 +917,8 @@ def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=
         except Exception as e:
             print(f"    ⚠️  Erreur stats selenium ({game_id}) : {e}")
 
-    # ── Flag : stats détaillées trouvées avant l'ajout de la mi-temps ──
     has_full_stats = len(stats) > 0
 
-    # ── Mi-temps / 2nde mi-temps (frise "Match Timeline") ───────────
     try:
         halftime, second_half = extract_match_timeline_halftime(soup)
         if halftime is not None:
@@ -1015,38 +928,34 @@ def get_match_details_selenium(driver, game_id, home_team_id=None, away_team_id=
     except Exception as e:
         print(f"    ⚠️  Erreur injection mi-temps ({game_id}) : {e}")
 
-    # ── Nettoyage final (toutes les valeurs numériques en int) ──────
     stats = finalize_stats(stats)
 
     return stats, odds, round_label, penalty_winner, has_full_stats
 
 
-def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
+def enrich_matches_with_stats_and_odds(driver, all_matches_by_team, only_match_ids=None):
     """
-    Phase d'enrichissement : visite chaque match unique (par match_id)
-    une seule fois pour récupérer ses statistiques (dont mi-temps, en
-    int), ses cotes, son numéro de round et, si le match a été décidé
-    aux tirs au but, le vainqueur des penalties. Injecte ensuite le
-    résultat dans toutes les occurrences correspondantes. Le champ
-    "matchday" n'est jamais modifié ici : le round de coupe est injecté
-    dans le nouveau champ "round".
+    Phase d'enrichissement : visite chaque match unique une seule fois
+    pour récupérer stats, cotes, round et vainqueur aux pens.
     """
-    # ── Construction des métadonnées par match unique ───────────────
     game_meta = {}
     for matches in all_matches_by_team.values():
         for m in matches:
             gid = m.get("match_id")
-            if gid and gid not in game_meta:
-                game_meta[gid] = {
-                    "home_team_id": m.get("home_team_id"),
-                    "away_team_id": m.get("away_team_id"),
-                    "decided_by_penalties": m.get("decided_by_penalties", False),
-                }
+            if not gid or gid in game_meta:
+                continue
+            if only_match_ids is not None and gid not in only_match_ids:
+                continue
+            game_meta[gid] = {
+                "home_team_id": m.get("home_team_id"),
+                "away_team_id": m.get("away_team_id"),
+                "decided_by_penalties": m.get("decided_by_penalties", False),
+            }
 
     unique_game_ids = list(game_meta.keys())
     total = len(unique_game_ids)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, mi-temps, cotes, rounds & pens ({total} match(s) unique(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Statistiques, mi-temps, cotes, rounds & pens ({total} nouveau(x) match(s))")
     print("=" * 60)
 
     stats_by_game_id = {}
@@ -1090,7 +999,6 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
         print(f"    📊 {len(stats)} statistique(s)  |  {full_str}  |  {odds_str}  |  {round_str}  {pens_str}")
         time.sleep(0.8)
 
-    # ── Injection dans tous les matchs ──────────────────────────────
     for matches in all_matches_by_team.values():
         for m in matches:
             gid = m.get("match_id")
@@ -1102,7 +1010,6 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
                 m["odds"] = odds_by_game_id[gid]
             if gid in has_full_stats_by_game_id:
                 m["has_full_stats"] = has_full_stats_by_game_id[gid]
-            # Le round de coupe ne va JAMAIS dans matchday : champ séparé.
             if m.get("matchday") is None and round_by_game_id.get(gid) is not None:
                 m["round"] = round_by_game_id[gid]
             if m.get("decided_by_penalties"):
@@ -1112,329 +1019,217 @@ def enrich_matches_with_stats_and_odds(driver, all_matches_by_team):
 
 
 # ===============================================================
-# RÉCUPÉRATION DU PROCHAIN MATCH (FIXTURES)
+# PROCHAIN MATCH — PAR MATCH (chaînage chronologique)
 # ===============================================================
 
-def extract_matchday_from_match_page(driver, match_url):
+def build_next_game_from_match(next_match, team_id):
     """
-    Extrait le matchday depuis la page d'un match en utilisant les sélecteurs
-    fournis. La structure montre que le matchday est affiché dans un élément
-    avec le texte "Matchday X" ou dans l'URL.
+    Construit l'objet next_game à partir d'un match déjà connu qui
+    suit chronologiquement celui pour lequel on calcule next_game.
     """
+    is_home = next_match.get("home_team_id") == team_id
+    opponent = next_match.get("away_team") if is_home else next_match.get("home_team")
+    opponent_id = next_match.get("away_team_id") if is_home else next_match.get("home_team_id")
+
+    competition = next_match.get("competition")
+    context = simplify_competition_label(competition)
+
+    return {
+        "context": context,
+        "matchday": next_match.get("matchday"),
+        "round": next_match.get("round"),
+        "opponent": opponent,
+        "opponent_id": opponent_id,
+        "home_or_away": "home" if is_home else "away",
+        "date": next_match.get("date"),
+        "competition": competition,
+        "match_url": next_match.get("match_url"),
+        "game_id": next_match.get("match_id"),
+    }
+
+
+def extract_next_game_row(row):
+    """
+    Parse une ligne <tr> de la page fixtures ESPN, structure réelle :
+      [0] Date (data-testid="date")
+      [1] Équipe locale (data-testid="localTeam")
+      [2] Score/match (data-testid="score", 3 <a>: logo, "v", logo)
+      [3] Équipe away (data-testid="awayTeam")
+      [4] Heure (<a> avec href gameId)
+      [5] Compétition (<span>)
+      [6] TV (vide)
+    """
+    cells = row.find_all("td")
+    if len(cells) < 6:
+        return None
+
+    date_el = cells[0].select_one('[data-testid="date"]')
+    date_text = date_el.get_text(strip=True) if date_el else None
+
+    local_container = cells[1].select_one('[data-testid="localTeam"]') or cells[1]
+    home_links = local_container.find_all("a")
+    home_href = home_links[0].get("href") if home_links else ""
+    home_id_m = re.search(r"/id/(\d+)/", home_href)
+    home_team_id = home_id_m.group(1) if home_id_m else None
+    home_team_name = team_name_from_href(home_href) if home_href else None
+
+    away_container = cells[3].select_one('[data-testid="awayTeam"]') or cells[3]
+    away_links = away_container.find_all("a")
+    away_href = away_links[0].get("href") if away_links else ""
+    away_id_m = re.search(r"/id/(\d+)/", away_href)
+    away_team_id = away_id_m.group(1) if away_id_m else None
+    away_team_name = team_name_from_href(away_href) if away_href else None
+
+    match_url = None
+    game_id = None
+    score_container = cells[2].select_one('[data-testid="score"]') or cells[2]
+    score_links = score_container.find_all("a")
+    for link in score_links:
+        href = link.get("href", "")
+        if "/soccer/match/_/gameId/" in href:
+            match_url = fix_url(href)
+            gid_m = re.search(r"/gameId/(\d+)", match_url)
+            game_id = gid_m.group(1) if gid_m else None
+            break
+    if not game_id:
+        # Repli : colonne "TIME" (cells[4]) contient aussi un lien vers le match
+        time_link = cells[4].find("a", href=re.compile(r"/soccer/match/_/gameId/\d+")) if len(cells) > 4 else None
+        if time_link:
+            match_url = fix_url(time_link.get("href"))
+            gid_m = re.search(r"/gameId/(\d+)", match_url)
+            game_id = gid_m.group(1) if gid_m else None
+
+    competition = ""
+    if len(cells) > 5:
+        comp_span = cells[5].find("span")
+        if comp_span:
+            competition = comp_span.get_text(strip=True)
+
+    return {
+        "date": date_text,
+        "home_team": home_team_name,
+        "home_team_id": home_team_id,
+        "away_team": away_team_name,
+        "away_team_id": away_team_id,
+        "competition": competition,
+        "match_url": match_url,
+        "match_id": game_id,
+    }
+
+
+def fetch_next_game_from_fixtures(driver, team_id, team_name, league_label):
+    """
+    Récupère le vrai prochain match à venir depuis la page fixtures
+    ESPN, puis va chercher sur la page du match lui-même :
+      - si championnat : le matchday, déduit du bilan W-D-L des deux
+        équipes (max des deux + 1)
+      - sinon (coupe) : le round, via le libellé "Compétition, Round"
+    Retourne un dict au schéma next_game, ou None si indisponible.
+    """
+    slug = build_team_slug(team_name)
+    url = f"https://www.espn.com/soccer/team/fixtures/_/id/{team_id}/{slug}"
+    print(f"\n📅 Récupération du prochain match — {url}")
+
     try:
-        driver.get(match_url)
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "div.uUds"))
-        )
-        soup = BeautifulSoup(driver.page_source, "html.parser")
-        
-        # Recherche dans le texte de la page
-        matchday_patterns = [
-            r"Matchday\s*(\d+)",
-            r"Week\s*(\d+)",
-            r"Journée\s*(\d+)",
-            r"Round\s*(\d+)",
-        ]
-        
-        # Chercher dans tous les textes visibles
-        all_text = soup.get_text()
-        for pattern in matchday_patterns:
-            m = re.search(pattern, all_text, re.IGNORECASE)
-            if m:
-                return int(m.group(1))
-        
-        # Chercher dans les métadonnées
-        for meta in soup.find_all("meta"):
-            if meta.get("name") == "description" or meta.get("property") == "og:description":
-                desc = meta.get("content", "")
-                for pattern in matchday_patterns:
-                    m = re.search(pattern, desc, re.IGNORECASE)
-                    if m:
-                        return int(m.group(1))
-        
-        # Chercher dans les éléments spécifiques
-        elements = soup.find_all(string=re.compile(r"Matchday|Week", re.IGNORECASE))
-        for el in elements:
-            m = re.search(r"(\d+)", el)
-            if m:
-                return int(m.group(1))
-                
-    except Exception as e:
-        print(f"    ⚠️ Erreur extraction matchday depuis page match: {e}")
-    
-    return None
-
-
-def scrape_next_game(driver, team_id):
-    """
-    Scrape le prochain match de l'équipe depuis la page fixtures.
-    Retourne un dict avec:
-    - context: "Premier League" ou "FA Cup" ou autre
-    - matchday: numéro de journée (si Premier League) ou None
-    - round: numéro de round (si coupe) ou None
-    - opponent: nom de l'adversaire
-    - date: date du match
-    - home_or_away: "home" ou "away"
-    - match_url: URL du match
-    - game_id: ID du match
-    """
-    url = f"https://www.espn.com/soccer/team/fixtures/_/id/{team_id}"
-    print(f"\n🌐 Accès fixtures: {url}")
-    driver.get(url)
-
-    print("⏳ Attente du chargement des fixtures...")
-    time.sleep(5)
-
-    # Scroll pour déclencher le lazy-load
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
-    driver.execute_script("window.scrollTo(0, 0);")
-    time.sleep(1)
-
-    try:
+        driver.get(url)
+        time.sleep(3)
         WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "div.ResponsiveTable"))
         )
-        print("✅ Tables de fixtures détectées")
     except TimeoutException:
-        print("⚠️ Timeout en attendant les tables de fixtures")
+        print(f"    ⚠️ Timeout fixtures pour {team_name}")
+    except Exception as e:
+        print(f"    ⚠️ Erreur accès fixtures {team_name}: {e}")
         return None
 
-    # Récupérer tous les blocs mensuels
-    fixture_tables = driver.find_elements(
-        By.CSS_SELECTOR, "div.ResponsiveTable.Table__fixtures-mobile"
-    )
-    if not fixture_tables:
-        fixture_tables = driver.find_elements(By.CSS_SELECTOR, "div.ResponsiveTable")
+    soup = BeautifulSoup(driver.page_source, "html.parser")
 
-    print(f"📊 {len(fixture_tables)} bloc(s) de fixtures trouvé(s)")
-
-    if not fixture_tables:
-        print("❌ Aucun fixture trouvé")
+    tables = soup.select("div.ResponsiveTable")
+    if not tables:
+        print("    ⚠️ Aucune table de fixtures trouvée")
         return None
 
-    league_label = target_league_label()
+    row_info = None
+    for table in tables:
+        rows = table.select("tr.Table__TR")
+        for r in rows:
+            info = extract_next_game_row(r)
+            if info and (info.get("home_team_id") or info.get("away_team_id")):
+                row_info = info
+                break
+        if row_info:
+            break
 
-    # Parcourir les tables pour trouver le prochain match
-    for table in fixture_tables:
-        month_els = table.find_elements(By.CSS_SELECTOR, "div.Table__Title")
-        month = month_els[0].text.strip() if month_els else "Unknown"
-        print(f"\n📅 Mois: {month}")
+    if not row_info:
+        print("    ⚠️ Aucune ligne de prochain match exploitable")
+        return None
 
-        rows = table.find_elements(
-            By.CSS_SELECTOR, "tr.Table__TR.Table__TR--sm.Table__even"
-        )
+    competition = row_info.get("competition") or ""
+    is_league_match = league_label.lower() in competition.lower()
 
-        for row in rows:
-            try:
-                cells = row.find_elements(By.TAG_NAME, "td")
-                if len(cells) < 6:
-                    continue
+    matchday = None
+    round_val = None
 
-                # ── [0] DATE ──────────────────────────────────────────
-                date_els = cells[0].find_elements(By.CSS_SELECTOR, '[data-testid="date"]')
-                date_text = date_els[0].text.strip() if date_els else ""
+    if row_info.get("match_id"):
+        try:
+            driver.get(f"https://www.espn.com/soccer/match/_/gameId/{row_info['match_id']}")
+            WebDriverWait(driver, 12).until(
+                EC.presence_of_element_located((By.TAG_NAME, "body"))
+            )
+            time.sleep(1)
+            match_soup = BeautifulSoup(driver.page_source, "html.parser")
 
-                # ── [1] ÉQUIPE LOCALE ────────────────────────────────
-                local_links = cells[1].find_elements(By.TAG_NAME, "a")
-                if not local_links:
-                    continue
-                local_href = local_links[0].get_attribute("href") or ""
-                local_name = team_name_from_href(local_href)
-                local_id_m = re.search(r"/id/(\d+)/", local_href)
-                local_team_id = local_id_m.group(1) if local_id_m else ""
-
-                # ── [2] SCORE / INFOS MATCH ──────────────────────────
-                # Structure: [logo home] [lien match avec "v"] [logo away]
-                score_links = cells[2].find_elements(By.TAG_NAME, "a")
-                match_url = ""
-                game_id = ""
-                score_text = cells[2].text.strip()
-
-                for link in score_links:
-                    href = link.get_attribute("href") or ""
-                    if href and "/soccer/match/" in href:
-                        match_url = fix_url(href)
-                        mid_m = re.search(r"/gameId/(\d+)", match_url)
-                        if mid_m:
-                            game_id = mid_m.group(1)
-                        break
-
-                # ── [3] ÉQUIPE AWAY ──────────────────────────────────
-                away_links = cells[3].find_elements(By.TAG_NAME, "a")
-                if not away_links:
-                    continue
-                away_href = away_links[0].get_attribute("href") or ""
-                away_name = team_name_from_href(away_href)
-                away_id_m = re.search(r"/id/(\d+)/", away_href)
-                away_team_id = away_id_m.group(1) if away_id_m else ""
-
-                # ── [4] HEURE ─────────────────────────────────────────
-                time_text = cells[4].text.strip() if len(cells) > 4 else ""
-
-                # ── [5] COMPÉTITION ──────────────────────────────────
-                competition = ""
-                comp_spans = cells[5].find_elements(By.TAG_NAME, "span")
-                if comp_spans:
-                    competition = comp_spans[-1].text.strip()
-
-                # Vérifier si c'est un match non joué (fixture)
-                # Le texte du score est "v" ou "vs" pour les matchs à venir
-                is_fixture = False
-                if score_text.lower() in ["v", "vs", ""] and time_text:
-                    is_fixture = True
-                elif not score_text or ":" not in score_text:
-                    # Si pas de score et pas d'heure, c'est probablement un fixture
-                    is_fixture = True
-
-                if not is_fixture:
-                    continue
-
-                # Vérifier si c'est un match de l'équipe cible
-                team_found = False
-                is_home = False
-
-                if str(team_id) == local_team_id:
-                    team_found = True
-                    is_home = True
-                    opponent_name = away_name
-                    opponent_id = away_team_id
-                elif str(team_id) == away_team_id:
-                    team_found = True
-                    is_home = False
-                    opponent_name = local_name
-                    opponent_id = local_team_id
-
-                if not team_found:
-                    continue
-
-                # Construire la date ISO
-                year_m = re.search(r"(\d{4})", month)
-                match_year = year_m.group(1) if year_m else str(datetime.now().year)
-                iso_date = build_iso_date(date_text, month, match_year)
-
-                # Déterminer le contexte et le matchday/round
-                context = "Unknown"
-                matchday = None
-                round_num = None
-
-                if league_label.lower() in competition.lower():
-                    context = "Premier League"
-                    # Essayer d'extraire le matchday depuis l'URL d'abord
-                    if match_url:
-                        md_m = re.search(r"/matchday/(\d+)", match_url)
-                        if md_m:
-                            matchday = int(md_m.group(1))
-                        else:
-                            # Essayer d'extraire depuis la page du match
-                            matchday = extract_matchday_from_match_page(driver, match_url)
-                elif "fa cup" in competition.lower():
-                    context = "FA Cup"
-                    # Essayer d'extraire le round depuis l'URL ou la page du match
-                    if match_url:
-                        try:
-                            # Aller sur la page du match pour extraire le round
-                            driver.execute_script(f"window.open('{match_url}', '_blank');")
-                            driver.switch_to.window(driver.window_handles[-1])
-                            time.sleep(3)
-                            try:
-                                WebDriverWait(driver, 10).until(
-                                    EC.presence_of_element_located((By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']"))
-                                )
-                                soup = BeautifulSoup(driver.page_source, "html.parser")
-                                round_text = extract_round_info(soup)
-                                if round_text:
-                                    round_num = extract_round_label(round_text)
-                            except:
-                                pass
-                            driver.close()
-                            driver.switch_to.window(driver.window_handles[0])
-                        except:
-                            pass
-                else:
-                    context = competition
-
-                next_game = {
-                    "context": context,
-                    "matchday": matchday,
-                    "round": round_num,
-                    "opponent": opponent_name,
-                    "opponent_id": opponent_id,
-                    "home_or_away": "home" if is_home else "away",
-                    "date": iso_date,
-                    "competition": competition,
-                    "match_url": match_url,
-                    "game_id": game_id,
-                }
-
-                print(f"   ✅ Prochain match trouvé: {next_game}")
-                return next_game
-
-            except Exception as e:
-                print(f"   ⚠️ Erreur extraction fixture: {e}")
-                continue
-
-    print("❌ Aucun prochain match trouvé")
-    return None
-
-
-def compute_next_games(all_matches_by_team, driver, team_id):
-    """
-    Calcule le next_game pour chaque match :
-    - Pour chaque match sauf le plus récent, le next_game est le match précédent (plus récent)
-    - Pour le match le plus récent, le next_game est récupéré depuis les fixtures
-    """
-    for team_matches in all_matches_by_team.values():
-        if not team_matches:
-            continue
-
-        # Les matchs sont déjà triés du plus récent au plus ancien
-        # Le plus récent est à l'index 0
-        for i, match in enumerate(team_matches):
-            if i == 0:
-                # Match le plus récent → récupérer depuis les fixtures
-                next_game = scrape_next_game(driver, team_id)
-                match["next_game"] = next_game
+            if is_league_match:
+                matchday = compute_upcoming_matchday(
+                    match_soup, row_info.get("home_team_id"), row_info.get("away_team_id")
+                )
+                print(f"    ✅ Prochain match (championnat) — matchday calculé (bilan W-D-L +1): {matchday}")
             else:
-                # Match précédent (plus récent) → next_game
-                previous_match = team_matches[i-1]
-                competition = previous_match.get("competition", "")
-                league_label = target_league_label()
+                round_val = extract_round_label(extract_round_info(match_soup))
+                print(f"    ✅ Prochain match (coupe) — round: {round_val}")
+        except Exception as e:
+            print(f"    ⚠️ Erreur récupération matchday/round prochain match : {e}")
+    else:
+        print("    ⚠️ Aucun gameId identifiable pour le prochain match")
 
-                if league_label.lower() in competition.lower():
-                    context = "Premier League"
-                    matchday = previous_match.get("matchday")
-                    round_num = None
-                else:
-                    context = competition
-                    matchday = None
-                    round_num = previous_match.get("round")
+    is_home = row_info.get("home_team_id") == team_id
+    opponent = row_info.get("away_team") if is_home else row_info.get("home_team")
+    opponent_id = row_info.get("away_team_id") if is_home else row_info.get("home_team_id")
 
-                # Déterminer l'adversaire
-                if previous_match.get("home_team_id") == team_id:
-                    opponent = previous_match.get("away_team")
-                    opponent_id = previous_match.get("away_team_id")
-                    home_or_away = "home"
-                else:
-                    opponent = previous_match.get("home_team")
-                    opponent_id = previous_match.get("home_team_id")
-                    home_or_away = "away"
+    return {
+        "context": simplify_competition_label(competition) or None,
+        "matchday": matchday,
+        "round": round_val,
+        "opponent": opponent,
+        "opponent_id": opponent_id,
+        "home_or_away": "home" if is_home else "away",
+        "date": row_info.get("date"),
+        "competition": competition or None,
+        "match_url": row_info.get("match_url"),
+        "game_id": row_info.get("match_id"),
+    }
 
-                next_game = {
-                    "context": context,
-                    "matchday": matchday,
-                    "round": round_num,
-                    "opponent": opponent,
-                    "opponent_id": opponent_id,
-                    "home_or_away": home_or_away,
-                    "date": previous_match.get("date"),
-                    "competition": competition,
-                    "match_url": previous_match.get("match_url"),
-                    "game_id": previous_match.get("match_id"),
-                }
-                match["next_game"] = next_game
 
-    return all_matches_by_team
+def apply_next_game_chain(driver, matches, team_id, team_name, league_label):
+    """
+    Pour chaque match de l'équipe (triés chronologiquement), injecte
+    dans son champ "next_game" les infos du match immédiatement
+    suivant (chronologique). Pour le tout dernier match connu, le
+    "prochain match" est le futur match réel, récupéré depuis la page
+    fixtures ESPN (avec matchday/round calculé sur la page du match).
+    """
+    matches_asc = sorted(matches, key=date_sort_key)
+
+    for i in range(len(matches_asc) - 1):
+        current = matches_asc[i]
+        following = matches_asc[i + 1]
+        current["next_game"] = build_next_game_from_match(following, team_id)
+
+    if matches_asc:
+        most_recent = matches_asc[-1]
+        most_recent["next_game"] = fetch_next_game_from_fixtures(driver, team_id, team_name, league_label)
+
+    return matches_asc
 
 
 # ===============================================================
@@ -1446,8 +1241,7 @@ MATCH_KEY_ORDER = [
     "home_team", "home_team_id", "home_logo_url", "home_score",
     "away_team", "away_team_id", "away_logo_url", "away_score",
     "result", "decided_by_penalties", "penalty_winner", "team_result",
-    "odds", "has_full_stats", "stats", "match_id", "match_url",
-    "next_game",
+    "odds", "has_full_stats", "stats", "next_game", "match_id", "match_url",
 ]
 
 TEAM_KEY_ORDER = [
@@ -1457,12 +1251,12 @@ TEAM_KEY_ORDER = [
 
 
 def clean_match(m):
-    """Réordonne les clés d'un match selon MATCH_KEY_ORDER pour un JSON lisible."""
+    """Réordonne les clés d'un match selon MATCH_KEY_ORDER."""
     return {k: m.get(k) for k in MATCH_KEY_ORDER}
 
 
 def clean_team_output(team_output):
-    """Réordonne les clés d'une équipe selon TEAM_KEY_ORDER pour un JSON lisible."""
+    """Réordonne les clés d'une équipe selon TEAM_KEY_ORDER."""
     cleaned = {k: team_output.get(k) for k in TEAM_KEY_ORDER}
     cleaned["matches_by_season"] = {
         season: [clean_match(m) for m in season_matches]
@@ -1473,7 +1267,6 @@ def clean_team_output(team_output):
 
 def scrape_with_selenium():
     driver = None
-    output_data = []
 
     try:
         teams = fetch_target_teams()
@@ -1481,48 +1274,65 @@ def scrape_with_selenium():
             print("❌ Aucune équipe sélectionnée. Vérifiez TARGET_COUNTRY/TARGET_LEAGUE.")
             return []
 
+        existing_teams_by_id = load_existing_data()
+
         print("\n🚀 Démarrage du navigateur (headless)...")
         driver = setup_driver()
         print("✅ Navigateur démarré")
 
-        matches_by_team = {}  # team_id -> liste de matchs (pour la phase d'enrichissement)
-        team_meta = {}        # team_id -> métadonnées de l'équipe
+        matches_by_team = {}
+        team_meta = {}
+        new_match_ids_global = set()
 
         for team in teams:
             team_name = team.get("team", "")
             team_id = team.get("team_id", "")
 
+            existing_entry = existing_teams_by_id.get(team_id)
+            is_tracked = existing_entry is not None
+
             print("\n" + "=" * 60)
             print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
-            print(f"📆 Saisons: {format_season(START_SEASON)} → {format_season(END_SEASON)}")
+            if is_tracked:
+                print(f"🔁 Équipe déjà trackée — mise à jour saison en cours uniquement ({format_season(END_SEASON)})")
+                seasons_to_scrape = [END_SEASON]
+            else:
+                print(f"🆕 Équipe jamais trackée — scraping complet depuis {format_season(START_SEASON)}")
+                seasons_to_scrape = list(range(START_SEASON, END_SEASON + 1))
             print("=" * 60)
 
-            unique_matches = scrape_team_results_all_seasons(driver, team_name, team_id)
+            newly_scraped = scrape_team_results_for_seasons(driver, team_name, team_id, seasons_to_scrape)
+            newly_scraped = compute_matchdays_for_team(newly_scraped)
 
-            matches_by_team[team_id] = unique_matches
+            existing_matches_flat = flatten_existing_matches(existing_entry) if is_tracked else []
+
+            merged_matches, new_match_ids = merge_matches(existing_matches_flat, newly_scraped)
+            merged_matches.sort(key=date_sort_key, reverse=True)
+
+            print(f"\n📦 {team_name}: {len(merged_matches)} match(s) au total, {len(new_match_ids)} nouveau(x)")
+
+            matches_by_team[team_id] = merged_matches
             team_meta[team_id] = team
+            new_match_ids_global |= new_match_ids
 
-        # ── Phase d'enrichissement : statistiques, mi-temps, cotes, rounds, pens ──
-        enrich_matches_with_stats_and_odds(driver, matches_by_team)
+        if new_match_ids_global:
+            enrich_matches_with_stats_and_odds(driver, matches_by_team, only_match_ids=new_match_ids_global)
+        else:
+            print("\nℹ️ Aucun nouveau match à enrichir")
 
-        # ── Phase de calcul des next_games ──────────────────────────────
-        print("\n" + "=" * 60)
-        print("🔄 CALCUL DES PROCHAINS MATCHS (next_game)")
-        print("=" * 60)
+        league_label = target_league_label()
+        newly_processed_by_id = {}
 
-        for team_id, matches in matches_by_team.items():
-            print(f"\n📋 Calcul des next_game pour team_id={team_id}")
-            compute_next_games({team_id: matches}, driver, team_id)
-            print(f"   ✅ {len(matches)} match(s) enrichis avec next_game")
-
-        # ── Construction de la sortie finale (matchs structurés par saison) ──
         for team_id, unique_matches in matches_by_team.items():
             team = team_meta[team_id]
             team_name = team.get("team", "")
 
-            # ── Résultat (V/N/D) du point de vue de l'équipe scrapée ────
             for m in unique_matches:
                 m["team_result"] = compute_team_result(m, team_id)
+
+            # ── Chaînage next_game (match suivant chronologique par match) ──
+            unique_matches = apply_next_game_chain(driver, unique_matches, team_id, team_name, league_label)
+            unique_matches.sort(key=date_sort_key, reverse=True)
 
             team_output = {
                 "team_name": team_name,
@@ -1536,18 +1346,20 @@ def scrape_with_selenium():
                 "matches_by_season": group_matches_by_season(unique_matches),
             }
 
-            output_data.append(clean_team_output(team_output))
+            newly_processed_by_id[team_id] = clean_team_output(team_output)
 
-            # ── Stats par compétition pour cette équipe ────────────
-            competitions: dict[str, int] = {}
+            competitions = {}
             for m in unique_matches:
                 competitions[m["competition"]] = competitions.get(m["competition"], 0) + 1
-
             print(f"\n📊 Statistiques par compétition ({team_name}):")
             for comp, count in sorted(competitions.items(), key=lambda x: x[1], reverse=True):
                 print(f"   {comp}: {count} match(s)")
 
-        # ── Sauvegarde JSON globale (propre, indentée, clés ordonnées) ──
+        # ── Fusion avec les équipes déjà trackées non retraitées cette exécution ──
+        final_teams_by_id = dict(existing_teams_by_id)
+        final_teams_by_id.update(newly_processed_by_id)
+        output_data = list(final_teams_by_id.values())
+
         final_output = {
             "country": TARGET_COUNTRY,
             "league_name": TARGET_LEAGUE,
@@ -1565,9 +1377,9 @@ def scrape_with_selenium():
                 separators=(",", ": "),
             )
 
-        print(f"\n💾 {OUTPUT_JSON_PATH} sauvegardé")
+        print(f"\n💾 {OUTPUT_JSON_PATH} sauvegardé ({len(output_data)} équipe(s) au total)")
 
-        return output_data
+        return list(newly_processed_by_id.values())
 
     except Exception as e:
         print(f"❌ Erreur globale: {e}")
@@ -1582,8 +1394,8 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER — PREMIER LEAGUE (1 ÉQUIPE)")
-    print(f"📆 Saisons {format_season(START_SEASON)} à {format_season(END_SEASON)}, stats entièrement en int, matchday/round séparés, has_full_stats, structuré par saison")
+    print("⚽ ESPN SCRAPER — TRACKING INCRÉMENTAL (1 ÉQUIPE)")
+    print("📆 Scraping complet si jamais trackée, sinon mise à jour saison en cours + next_game chaîné par match")
     print("=" * 60)
 
     reset_output_directories()
@@ -1592,34 +1404,24 @@ def main():
 
     if results:
         total_matches = sum(t["total_matches"] for t in results)
-        print(f"\n✅ {len(results)} équipe(s) traitée(s), {total_matches} matchs récupérés au total")
+        print(f"\n✅ {len(results)} équipe(s) traitée(s) cette exécution, {total_matches} match(s) au total")
 
         for team_output in results:
             print(f"\n📋 {team_output['team_name']} — {team_output['total_matches']} matchs")
             for season_key, season_matches in team_output["matches_by_season"].items():
                 print(f"\n  📆 Saison {season_key} — {len(season_matches)} match(s)")
-                for i, m in enumerate(season_matches[:5]):
+                for i, m in enumerate(season_matches[:3]):
+                    ng = m.get("next_game")
+                    ng_str = (
+                        f"→ prochain: {ng.get('opponent')} ({ng.get('home_or_away')}) "
+                        f"[{ng.get('context')} — MD/R {ng.get('matchday') or ng.get('round')}]"
+                        if ng else "→ prochain: -"
+                    )
                     print(
                         f"    {i+1}. [{m['date']}] "
-                        f"{m['home_team']} "
-                        f"{m['home_score']}-{m['away_score']} "
-                        f"{m['away_team']}  ({m['team_result']})  [{m['result']}]"
+                        f"{m['home_team']} {m['home_score']}-{m['away_score']} {m['away_team']}  "
+                        f"({m['team_result']})  {ng_str}"
                     )
-                    print(f"         🏆 {m['competition']}  |  🔗 {m['match_url']}")
-                    journee = m['matchday'] if m['matchday'] is not None else "-"
-                    round_val = m['round'] if m['round'] is not None else "-"
-                    stats_flag = "✅" if m['has_full_stats'] else "⚠️"
-                    ht = m['stats'].get("Score 1ère mi-temps", "-")
-                    pens = f" | 🥅 pens: {m['penalty_winner']}" if m['decided_by_penalties'] else ""
-                    print(
-                        f"         📊 {stats_flag} {len(m['stats'])} statistique(s)  |  "
-                        f"📅 Journée {journee}  |  🔁 Round {round_val}  |  ⏱️ MT {ht}  |  💰 {m['odds']}{pens}"
-                    )
-                    if m.get("next_game"):
-                        ng = m["next_game"]
-                        md = ng.get('matchday') if ng.get('matchday') is not None else "-"
-                        rd = ng.get('round') if ng.get('round') is not None else "-"
-                        print(f"         ⏭️ Prochain match: {ng.get('context')} (Journée {md}) vs {ng.get('opponent')} ({ng.get('home_or_away')}) le {ng.get('date')}")
     else:
         print("\n❌ Aucune donnée récupérée")
 

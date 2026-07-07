@@ -2364,6 +2364,24 @@
         "standings": [
             {
                 "position": 1,
+                "name": "Vila Nova",
+                "stats": {
+                    "GP": 16,
+                    "W": 9,
+                    "D": 4,
+                    "L": 3,
+                    "F": 25,
+                    "A": 18,
+                    "GD": 7,
+                    "P": 31
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 2,
                 "name": "Novorizontino",
                 "stats": {
                     "GP": 16,
@@ -2381,7 +2399,7 @@
                 }
             },
             {
-                "position": 2,
+                "position": 3,
                 "name": "Criciúma",
                 "stats": {
                     "GP": 16,
@@ -2392,24 +2410,6 @@
                     "A": 11,
                     "GD": 7,
                     "P": 30
-                },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 3,
-                "name": "Vila Nova",
-                "stats": {
-                    "GP": 15,
-                    "W": 8,
-                    "D": 4,
-                    "L": 3,
-                    "F": 23,
-                    "A": 17,
-                    "GD": 6,
-                    "P": 28
                 },
                 "zone": {
                     "label": "Promotion Serie A",
@@ -2453,13 +2453,13 @@
                 "position": 6,
                 "name": "São Bernardo",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 7,
                     "D": 4,
-                    "L": 4,
-                    "F": 20,
-                    "A": 12,
-                    "GD": 8,
+                    "L": 5,
+                    "F": 21,
+                    "A": 14,
+                    "GD": 7,
                     "P": 25
                 },
                 "zone": null
@@ -2571,6 +2571,21 @@
             },
             {
                 "position": 14,
+                "name": "Botafogo-SP",
+                "stats": {
+                    "GP": 16,
+                    "W": 5,
+                    "D": 4,
+                    "L": 7,
+                    "F": 17,
+                    "A": 15,
+                    "GD": 2,
+                    "P": 19
+                },
+                "zone": null
+            },
+            {
+                "position": 15,
                 "name": "CRB",
                 "stats": {
                     "GP": 16,
@@ -2585,7 +2600,7 @@
                 "zone": null
             },
             {
-                "position": 15,
+                "position": 16,
                 "name": "Londrina",
                 "stats": {
                     "GP": 16,
@@ -2600,7 +2615,7 @@
                 "zone": null
             },
             {
-                "position": 16,
+                "position": 17,
                 "name": "Ceará",
                 "stats": {
                     "GP": 16,
@@ -2612,21 +2627,6 @@
                     "GD": -5,
                     "P": 17
                 },
-                "zone": null
-            },
-            {
-                "position": 17,
-                "name": "Botafogo-SP",
-                "stats": {
-                    "GP": 15,
-                    "W": 4,
-                    "D": 4,
-                    "L": 7,
-                    "F": 14,
-                    "A": 14,
-                    "GD": 0,
-                    "P": 16
-                },
                 "zone": {
                     "label": "Relégation Serie C",
                     "type": "désavantage"
@@ -2636,13 +2636,13 @@
                 "position": 18,
                 "name": "Avaí",
                 "stats": {
-                    "GP": 15,
+                    "GP": 16,
                     "W": 3,
                     "D": 4,
-                    "L": 8,
-                    "F": 15,
-                    "A": 21,
-                    "GD": -6,
+                    "L": 9,
+                    "F": 16,
+                    "A": 24,
+                    "GD": -8,
                     "P": 13
                 },
                 "zone": {
@@ -7293,13 +7293,13 @@
                 "position": 3,
                 "name": "BK Häcken",
                 "stats": {
-                    "GP": 10,
+                    "GP": 11,
                     "W": 5,
                     "D": 5,
-                    "L": 0,
-                    "F": 20,
-                    "A": 14,
-                    "GD": 6,
+                    "L": 1,
+                    "F": 22,
+                    "A": 18,
+                    "GD": 4,
                     "P": 20
                 },
                 "zone": null
@@ -7321,6 +7321,36 @@
             },
             {
                 "position": 5,
+                "name": "Djurgården",
+                "stats": {
+                    "GP": 10,
+                    "W": 5,
+                    "D": 1,
+                    "L": 4,
+                    "F": 23,
+                    "A": 15,
+                    "GD": 8,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
+                "name": "GAIS",
+                "stats": {
+                    "GP": 12,
+                    "W": 4,
+                    "D": 4,
+                    "L": 4,
+                    "F": 17,
+                    "A": 12,
+                    "GD": 5,
+                    "P": 16
+                },
+                "zone": null
+            },
+            {
+                "position": 7,
                 "name": "Mjällby AIF",
                 "stats": {
                     "GP": 11,
@@ -7335,7 +7365,7 @@
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 8,
                 "name": "Malmö FF",
                 "stats": {
                     "GP": 11,
@@ -7350,37 +7380,22 @@
                 "zone": null
             },
             {
-                "position": 7,
-                "name": "GAIS",
+                "position": 9,
+                "name": "IF Brommapojkarna",
                 "stats": {
                     "GP": 11,
                     "W": 4,
-                    "D": 3,
-                    "L": 4,
-                    "F": 16,
-                    "A": 11,
-                    "GD": 5,
-                    "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 8,
-                "name": "IF Brommapojkarna",
-                "stats": {
-                    "GP": 10,
-                    "W": 4,
-                    "D": 3,
+                    "D": 4,
                     "L": 3,
-                    "F": 15,
-                    "A": 16,
+                    "F": 16,
+                    "A": 17,
                     "GD": -1,
-                    "P": 15
+                    "P": 16
                 },
                 "zone": null
             },
             {
-                "position": 9,
+                "position": 10,
                 "name": "Västerås SK",
                 "stats": {
                     "GP": 11,
@@ -7395,7 +7410,7 @@
                 "zone": null
             },
             {
-                "position": 10,
+                "position": 11,
                 "name": "AIK",
                 "stats": {
                     "GP": 11,
@@ -7406,21 +7421,6 @@
                     "A": 17,
                     "GD": -3,
                     "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 11,
-                "name": "Djurgården",
-                "stats": {
-                    "GP": 9,
-                    "W": 4,
-                    "D": 1,
-                    "L": 4,
-                    "F": 19,
-                    "A": 13,
-                    "GD": 6,
-                    "P": 13
                 },
                 "zone": null
             },

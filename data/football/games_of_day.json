@@ -1,345 +1,34 @@
 [
   {
-    "gameId": "401873996",
-    "date": "2026-07-06",
-    "time_ci": "02:00",
+    "gameId": "401873987",
+    "date": "2026-07-07",
+    "time_ci": "03:00",
     "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873996/avai-botafogo-sp",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873987/operario-pr-athletic",
     "home": {
-      "team": "Botafogo-SP",
-      "team_id": "10281",
-      "team_slug": "botafogo-sp",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-      "url": "https://www.espn.com/soccer/team/_/id/10281",
+      "team": "Athletic",
+      "team_id": "20851",
+      "team_slug": "athletic",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+      "url": "https://www.espn.com/soccer/team/_/id/20851",
       "standings": {
-        "position_current": 17,
-        "position_if_win": 14,
+        "position_current": 11,
+        "position_if_win": 6,
         "played": 15,
-        "won": 4,
-        "drawn": 4,
-        "lost": 7,
-        "gd": 0,
-        "points": 16
+        "won": 5,
+        "drawn": 7,
+        "lost": 3,
+        "gd": 1,
+        "points": 22
       },
-      "form": "4-4-7",
-      "matchday": 16,
-      "last_five": [
-        {
-          "date": "2026-06-30",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873978/crb-botafogo-sp",
-          "result": "L",
-          "team_home": "Botafogo-SP",
-          "team_home_id": "10281",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "team_away": "CRB",
-          "team_away_id": "9970",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.4,
-            "away": 3.05,
-            "draw": 3.15
-          },
-          "stats": {
-            "Possession": {
-              "home": "60%",
-              "away": "40%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "419",
-              "away": "260"
-            },
-            "Passes": {
-              "home": "486",
-              "away": "338"
-            },
-            "Duels Won": {
-              "home": "55",
-              "away": "52"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "6"
-            },
-            "Fouls Committed": {
-              "home": "17",
-              "away": "16"
-            }
-          }
-        },
-        {
-          "date": "2026-06-20",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873966/botafogo-sp-ceara",
-          "result": "W",
-          "team_home": "Ceará",
-          "team_home_id": "9969",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
-          "team_away": "Botafogo-SP",
-          "team_away_id": "10281",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.87,
-            "away": 4.5,
-            "draw": 3.3
-          },
-          "stats": {
-            "Possession": {
-              "home": "55%",
-              "away": "45%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "3"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "3"
-            },
-            "Accurate Passes": {
-              "home": "307",
-              "away": "245"
-            },
-            "Passes": {
-              "home": "385",
-              "away": "317"
-            },
-            "Duels Won": {
-              "home": "59",
-              "away": "64"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "17"
-            }
-          }
-        },
-        {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873976/operario-pr-botafogo-sp",
-          "result": "W",
-          "team_home": "Botafogo-SP",
-          "team_home_id": "10281",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "team_away": "Operário PR",
-          "team_away_id": "18187",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.45,
-            "away": 3.25,
-            "draw": 2.9
-          },
-          "stats": {
-            "Possession": {
-              "home": "47%",
-              "away": "53%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "1",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "307",
-              "away": "343"
-            },
-            "Passes": {
-              "home": "362",
-              "away": "408"
-            },
-            "Duels Won": {
-              "home": "49",
-              "away": "49"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "15"
-            }
-          }
-        },
-        {
-          "date": "2026-06-08",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873942/botafogo-sp-vila-nova",
-          "result": "L",
-          "team_home": "Vila Nova",
-          "team_home_id": "9973",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "team_away": "Botafogo-SP",
-          "team_away_id": "10281",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.25,
-            "away": 3.6,
-            "draw": 2.95
-          },
-          "stats": {
-            "Possession": {
-              "home": "50%",
-              "away": "50%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "1"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "229",
-              "away": "206"
-            },
-            "Passes": {
-              "home": "298",
-              "away": "290"
-            },
-            "Duels Won": {
-              "home": "58",
-              "away": "48"
-            },
-            "Saves": {
-              "home": "0",
-              "away": "4"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "16"
-            }
-          }
-        },
-        {
-          "date": "2026-06-01",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860169/botafogo-sp-ponte-preta",
-          "result": "D",
-          "team_home": "Ponte Preta",
-          "team_home_id": "3459",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3459.png",
-          "team_away": "Botafogo-SP",
-          "team_away_id": "10281",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "home_score": "0",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 3.6,
-            "away": 2.25,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "32%",
-              "away": "68%"
-            },
-            "Shots on Goal": {
-              "home": "1",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "2"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "2"
-            },
-            "Accurate Passes": {
-              "home": "126",
-              "away": "356"
-            },
-            "Passes": {
-              "home": "199",
-              "away": "411"
-            },
-            "Duels Won": {
-              "home": "48",
-              "away": "41"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "1"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "15"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Avaí",
-      "team_id": "9966",
-      "team_slug": "avai",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-      "url": "https://www.espn.com/soccer/team/_/id/9966",
-      "standings": {
-        "position_current": 18,
-        "position_if_win": 17,
-        "played": 15,
-        "won": 3,
-        "drawn": 4,
-        "lost": 8,
-        "gd": -6,
-        "points": 13
-      },
-      "form": "3-4-8",
+      "form": "5-7-3",
       "matchday": 16,
       "last_five": [
         {
           "date": "2026-06-28",
           "competition": "Brazilian Serie B",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401873982/avai-athletic",
-          "result": "L",
+          "result": "W",
           "team_home": "Athletic",
           "team_home_id": "20851",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
@@ -394,76 +83,18 @@
           }
         },
         {
-          "date": "2026-06-21",
+          "date": "2026-06-20",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873983/cuiaba-avai",
-          "result": "W",
-          "team_home": "Avaí",
-          "team_home_id": "9966",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-          "team_away": "Cuiabá",
-          "team_away_id": "17313",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.9,
-            "away": 2.8,
-            "draw": 2.8
-          },
-          "stats": {
-            "Possession": {
-              "home": "39%",
-              "away": "61%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "222",
-              "away": "372"
-            },
-            "Passes": {
-              "home": "298",
-              "away": "448"
-            },
-            "Duels Won": {
-              "home": "44",
-              "away": "54"
-            },
-            "Saves": {
-              "home": "7",
-              "away": "1"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-06-16",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873964/avai-londrina",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873952/athletic-londrina",
           "result": "L",
           "team_home": "Londrina",
           "team_home_id": "17333",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
-          "team_away": "Avaí",
-          "team_away_id": "9966",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-          "home_score": "3",
-          "away_score": "2",
+          "team_away": "Athletic",
+          "team_away_id": "20851",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+          "home_score": "2",
+          "away_score": "0",
           "status": "FT",
           "odds": {
             "home": 2.4,
@@ -476,209 +107,574 @@
               "away": "50%"
             },
             "Shots on Goal": {
-              "home": "7",
-              "away": "4"
+              "home": "2",
+              "away": "1"
             },
             "Big Chances Created": {
-              "home": "3",
+              "home": "1",
               "away": "0"
             },
             "Big Chances Missed": {
-              "home": "2",
+              "home": "0",
               "away": "0"
             },
             "Accurate Passes": {
-              "home": "232",
+              "home": "269",
               "away": "249"
             },
             "Passes": {
-              "home": "306",
-              "away": "313"
+              "home": "330",
+              "away": "320"
             },
             "Duels Won": {
-              "home": "70",
-              "away": "50"
+              "home": "53",
+              "away": "40"
             },
             "Saves": {
-              "home": "2",
-              "away": "5"
+              "home": "1",
+              "away": "1"
             },
             "Fouls Committed": {
-              "home": "18",
-              "away": "18"
+              "home": "16",
+              "away": "22"
             }
           }
         },
         {
-          "date": "2026-06-10",
+          "date": "2026-06-14",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873943/avai-ceara",
-          "result": "L",
-          "team_home": "Ceará",
-          "team_home_id": "9969",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
-          "team_away": "Avaí",
-          "team_away_id": "9966",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-          "home_score": "2",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873962/goias-athletic",
+          "result": "D",
+          "team_home": "Athletic",
+          "team_home_id": "20851",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+          "team_away": "Goiás",
+          "team_away_id": "3395",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3395.png",
+          "home_score": "1",
           "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 1.91,
-            "away": 4.3,
-            "draw": 3.25
+            "home": 2.2,
+            "away": 3.6,
+            "draw": 3.05
           },
           "stats": {
             "Possession": {
-              "home": "42%",
-              "away": "58%"
+              "home": "56%",
+              "away": "44%"
             },
             "Shots on Goal": {
-              "home": "4",
-              "away": "2"
+              "home": "2",
+              "away": "1"
             },
             "Big Chances Created": {
               "home": "2",
               "away": "0"
             },
             "Big Chances Missed": {
-              "home": "1",
+              "home": "3",
               "away": "0"
             },
             "Accurate Passes": {
-              "home": "208",
-              "away": "344"
+              "home": "382",
+              "away": "285"
             },
             "Passes": {
-              "home": "282",
-              "away": "405"
+              "home": "448",
+              "away": "351"
             },
             "Duels Won": {
-              "home": "51",
-              "away": "62"
+              "home": "56",
+              "away": "41"
             },
             "Saves": {
-              "home": "1",
-              "away": "2"
+              "home": "0",
+              "away": "1"
             },
             "Fouls Committed": {
-              "home": "14",
-              "away": "11"
+              "home": "13",
+              "away": "15"
+            }
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873941/athletic-sport",
+          "result": "D",
+          "team_home": "Sport",
+          "team_home_id": "7635",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7635.png",
+          "team_away": "Athletic",
+          "team_away_id": "20851",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.95,
+            "away": 4.3,
+            "draw": 3.15
+          },
+          "stats": {
+            "Possession": {
+              "home": "66%",
+              "away": "34%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "3"
+            },
+            "Big Chances Created": {
+              "home": "3",
+              "away": "2"
+            },
+            "Big Chances Missed": {
+              "home": "4",
+              "away": "2"
+            },
+            "Accurate Passes": {
+              "home": "503",
+              "away": "228"
+            },
+            "Passes": {
+              "home": "572",
+              "away": "288"
+            },
+            "Duels Won": {
+              "home": "48",
+              "away": "27"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "3"
+            },
+            "Fouls Committed": {
+              "home": "4",
+              "away": "13"
             }
           }
         },
         {
           "date": "2026-05-30",
           "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860164/criciuma-avai",
-          "result": "L",
-          "team_home": "Avaí",
-          "team_home_id": "9966",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-          "team_away": "Criciúma",
-          "team_away_id": "9971",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860162/fortaleza-athletic",
+          "result": "W",
+          "team_home": "Athletic",
+          "team_home_id": "20851",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+          "team_away": "Fortaleza",
+          "team_away_id": "6272",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6272.png",
           "home_score": "1",
-          "away_score": "2",
+          "away_score": "0",
           "status": "FT",
           "odds": {
-            "home": 2.8,
-            "away": 2.8,
+            "home": 2.65,
+            "away": 2.9,
             "draw": 2.95
           },
           "stats": {
             "Possession": {
-              "home": "57%",
-              "away": "43%"
+              "home": "46%",
+              "away": "54%"
             },
             "Shots on Goal": {
-              "home": "3",
-              "away": "3"
+              "home": "2",
+              "away": "4"
             },
             "Shots": {
-              "home": "11",
-              "away": "16"
+              "home": "13",
+              "away": "14"
             },
             "Fouls Committed": {
-              "home": "16",
-              "away": "25"
+              "home": "17",
+              "away": "15"
             },
             "Yellow Cards": {
-              "home": "2",
-              "away": "2"
+              "home": "0",
+              "away": "1"
             },
             "Red Cards": {
               "home": "0",
               "away": "0"
             },
             "Corners Won": {
-              "home": "3",
-              "away": "9"
+              "home": "8",
+              "away": "7"
             },
             "Saves": {
-              "home": "1",
+              "home": "4",
               "away": "1"
             }
           }
         }
       ]
     },
+    "away": {
+      "team": "Operário PR",
+      "team_id": "18187",
+      "team_slug": "operario-pr",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+      "url": "https://www.espn.com/soccer/team/_/id/18187",
+      "standings": {
+        "position_current": 7,
+        "position_if_win": 4,
+        "played": 15,
+        "won": 7,
+        "drawn": 4,
+        "lost": 4,
+        "gd": 2,
+        "points": 25
+      },
+      "form": "7-4-4",
+      "matchday": 16,
+      "last_five": [
+        {
+          "date": "2026-06-27",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873953/america-mineiro-operario-pr",
+          "result": "W",
+          "team_home": "Operário PR",
+          "team_home_id": "18187",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "team_away": "América Mineiro",
+          "team_away_id": "6154",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6154.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.83,
+            "away": 4.6,
+            "draw": 3.35
+          },
+          "stats": {
+            "Possession": {
+              "home": "44%",
+              "away": "56%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "5"
+            },
+            "Big Chances Created": {
+              "home": "2",
+              "away": "1"
+            },
+            "Big Chances Missed": {
+              "home": "1",
+              "away": "2"
+            },
+            "Accurate Passes": {
+              "home": "256",
+              "away": "343"
+            },
+            "Passes": {
+              "home": "321",
+              "away": "414"
+            },
+            "Duels Won": {
+              "home": "38",
+              "away": "42"
+            },
+            "Saves": {
+              "home": "4",
+              "away": "6"
+            },
+            "Fouls Committed": {
+              "home": "17",
+              "away": "15"
+            }
+          }
+        },
+        {
+          "date": "2026-06-21",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873951/operario-pr-goias",
+          "result": "W",
+          "team_home": "Goiás",
+          "team_home_id": "3395",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3395.png",
+          "team_away": "Operário PR",
+          "team_away_id": "18187",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "home_score": "0",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 2.3,
+            "away": 3.35,
+            "draw": 3.1
+          },
+          "stats": {
+            "Possession": {
+              "home": "59%",
+              "away": "41%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "3"
+            },
+            "Big Chances Created": {
+              "home": "1",
+              "away": "1"
+            },
+            "Big Chances Missed": {
+              "home": "1",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "458",
+              "away": "308"
+            },
+            "Passes": {
+              "home": "506",
+              "away": "364"
+            },
+            "Duels Won": {
+              "home": "48",
+              "away": "48"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "5"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "20"
+            }
+          }
+        },
+        {
+          "date": "2026-06-14",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873976/operario-pr-botafogo-sp",
+          "result": "L",
+          "team_home": "Botafogo-SP",
+          "team_home_id": "10281",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
+          "team_away": "Operário PR",
+          "team_away_id": "18187",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.45,
+            "away": 3.25,
+            "draw": 2.9
+          },
+          "stats": {
+            "Possession": {
+              "home": "47%",
+              "away": "53%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "4"
+            },
+            "Big Chances Created": {
+              "home": "2",
+              "away": "0"
+            },
+            "Big Chances Missed": {
+              "home": "1",
+              "away": "0"
+            },
+            "Accurate Passes": {
+              "home": "307",
+              "away": "343"
+            },
+            "Passes": {
+              "home": "362",
+              "away": "408"
+            },
+            "Duels Won": {
+              "home": "49",
+              "away": "49"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "3"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "15"
+            }
+          }
+        },
+        {
+          "date": "2026-06-05",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873965/juventude-operario-pr",
+          "result": "W",
+          "team_home": "Operário PR",
+          "team_home_id": "18187",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "team_away": "Juventude",
+          "team_away_id": "6270",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.4,
+            "away": 3.4,
+            "draw": 2.85
+          },
+          "stats": {
+            "Possession": {
+              "home": "51%",
+              "away": "49%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "6"
+            },
+            "Big Chances Created": {
+              "home": "3",
+              "away": "1"
+            },
+            "Big Chances Missed": {
+              "home": "2",
+              "away": "2"
+            },
+            "Accurate Passes": {
+              "home": "336",
+              "away": "319"
+            },
+            "Passes": {
+              "home": "388",
+              "away": "377"
+            },
+            "Duels Won": {
+              "home": "38",
+              "away": "49"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "1"
+            },
+            "Fouls Committed": {
+              "home": "17",
+              "away": "17"
+            }
+          }
+        },
+        {
+          "date": "2026-05-31",
+          "competition": "Brazilian Serie B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860165/operario-pr-ceara",
+          "result": "W",
+          "team_home": "Ceará",
+          "team_home_id": "9969",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9969.png",
+          "team_away": "Operário PR",
+          "team_away_id": "18187",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 2.05,
+            "away": 4.1,
+            "draw": 3.05
+          },
+          "stats": {
+            "Possession": {
+              "home": "53%",
+              "away": "47%"
+            },
+            "Shots on Goal": {
+              "home": "8",
+              "away": "2"
+            },
+            "Shots": {
+              "home": "20",
+              "away": "9"
+            },
+            "Fouls Committed": {
+              "home": "18",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "4"
+            },
+            "Red Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "2"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "7"
+            }
+          }
+        }
+      ]
+    },
     "odds": {
-      "home": 1.95,
-      "away": 4.0,
-      "draw": 3.3
+      "home": 2.45,
+      "away": 3.15,
+      "draw": 3.0
     },
     "stats": {
       "Average Goals": {
-        "home": "0.93",
-        "away": "1.00"
+        "home": "1.07",
+        "away": "1.27"
       },
       "Average Goals Conceded": {
-        "home": "0.93",
-        "away": "1.4"
+        "home": "1",
+        "away": "1.13"
       },
       "Average Goal Differential": {
-        "home": "+0.0",
-        "away": "-0.4"
+        "home": "+0.1",
+        "away": "+0.1"
       },
       "Possession": {
-        "home": "50%",
-        "away": "49%"
+        "home": "44%",
+        "away": "51%"
       },
       "Shots On Target Percentage": {
-        "home": "39%",
-        "away": "34%"
+        "home": "41%",
+        "away": "40%"
       },
       "Big Chances Created": {
-        "home": ".53",
-        "away": ".00"
+        "home": ".40",
+        "away": ".47"
       },
       "Duel Win Percentage": {
-        "home": "49%",
-        "away": "48%"
+        "home": "50%",
+        "away": "50%"
       },
       "Clean Sheet": {
         "home": "3",
-        "away": "5"
+        "away": "7"
       },
       "Save Percentage": {
-        "home": "70%",
-        "away": "75%"
+        "home": "75%",
+        "away": "74%"
       }
     },
     "h2h": [
       {
-        "date": "2025-11-23",
+        "date": "2025-10-08",
         "competition": "2025 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733582/avai-botafogo-sp",
-        "team_home": "Botafogo-SP",
-        "team_home_id": "10281",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-        "team_away": "Avaí",
-        "team_away_id": "9966",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-        "home_score": "0",
-        "away_score": "0",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733517/athletic-operario-pr",
+        "team_home": "Operário PR",
+        "team_home_id": "18187",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+        "team_away": "Athletic",
+        "team_away_id": "20851",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+        "home_score": "1",
+        "away_score": "4",
         "status": "FT",
         "odds": {
           "home": null,
@@ -687,126 +683,20 @@
         },
         "stats": {
           "Possession": {
-            "home": "55%",
-            "away": "45%"
+            "home": "70%",
+            "away": "30%"
           },
           "Shots on Goal": {
             "home": "6",
-            "away": "3"
+            "away": "5"
           },
           "Shots": {
-            "home": "23",
-            "away": "6"
+            "home": "27",
+            "away": "7"
           },
           "Fouls Committed": {
-            "home": "14",
-            "away": "10"
-          },
-          "Yellow Cards": {
-            "home": "2",
-            "away": "2"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "13",
-            "away": "9"
-          },
-          "Saves": {
-            "home": "3",
-            "away": "6"
-          }
-        }
-      },
-      {
-        "date": "2025-07-28",
-        "competition": "2025 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/733391/botafogo-sp-avai",
-        "team_home": "Avaí",
-        "team_home_id": "9966",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-        "team_away": "Botafogo-SP",
-        "team_away_id": "10281",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-        "home_score": "5",
-        "away_score": "0",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "51%",
-            "away": "49%"
-          },
-          "Shots on Goal": {
-            "home": "7",
-            "away": "2"
-          },
-          "Shots": {
-            "home": "12",
-            "away": "14"
-          },
-          "Fouls Committed": {
-            "home": "13",
-            "away": "10"
-          },
-          "Yellow Cards": {
-            "home": "1",
-            "away": "2"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "3",
-            "away": "4"
-          },
-          "Saves": {
-            "home": "2",
-            "away": "2"
-          }
-        }
-      },
-      {
-        "date": "2024-11-19",
-        "competition": "2024 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700266/avai-botafogo-sp",
-        "team_home": "Botafogo-SP",
-        "team_home_id": "10281",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-        "team_away": "Avaí",
-        "team_away_id": "9966",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-        "home_score": "1",
-        "away_score": "3",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "52%",
-            "away": "48%"
-          },
-          "Shots on Goal": {
-            "home": "5",
-            "away": "6"
-          },
-          "Shots": {
-            "home": "7",
-            "away": "14"
-          },
-          "Fouls Committed": {
-            "home": "14",
-            "away": "17"
+            "home": "11",
+            "away": "11"
           },
           "Yellow Cards": {
             "home": "1",
@@ -817,26 +707,26 @@
             "away": "0"
           },
           "Corners Won": {
-            "home": "3",
-            "away": "9"
+            "home": "11",
+            "away": "2"
           },
           "Saves": {
-            "home": "3",
+            "home": "2",
             "away": "4"
           }
         }
       },
       {
-        "date": "2024-07-31",
-        "competition": "2024 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/700076/botafogo-sp-avai",
-        "team_home": "Avaí",
-        "team_home_id": "9966",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-        "team_away": "Botafogo-SP",
-        "team_away_id": "10281",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-        "home_score": "1",
+        "date": "2025-06-14",
+        "competition": "2025 Brasileiro Serie B",
+        "match_url": "https://www.espn.com/soccer/match/_/gameId/733319/operario-pr-athletic",
+        "team_home": "Athletic",
+        "team_home_id": "20851",
+        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20851.png",
+        "team_away": "Operário PR",
+        "team_away_id": "18187",
+        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18187.png",
+        "home_score": "2",
         "away_score": "1",
         "status": "FT",
         "odds": {
@@ -850,85 +740,32 @@
             "away": "43%"
           },
           "Shots on Goal": {
-            "home": "4",
+            "home": "5",
             "away": "3"
           },
           "Shots": {
-            "home": "13",
-            "away": "11"
+            "home": "11",
+            "away": "12"
           },
           "Fouls Committed": {
-            "home": "15",
-            "away": "14"
+            "home": "18",
+            "away": "22"
           },
           "Yellow Cards": {
-            "home": "1",
-            "away": "4"
+            "home": "3",
+            "away": "1"
           },
           "Red Cards": {
             "home": "0",
-            "away": "1"
-          },
-          "Corners Won": {
-            "home": "5",
-            "away": "5"
-          },
-          "Saves": {
-            "home": "2",
-            "away": "3"
-          }
-        }
-      },
-      {
-        "date": "2023-10-07",
-        "competition": "2023 Brasileiro Serie B",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/666503/avai-botafogo-sp",
-        "team_home": "Botafogo-SP",
-        "team_home_id": "10281",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-        "team_away": "Avaí",
-        "team_away_id": "9966",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9966.png",
-        "home_score": "0",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "51%",
-            "away": "49%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "4"
-          },
-          "Shots": {
-            "home": "12",
-            "away": "8"
-          },
-          "Fouls Committed": {
-            "home": "19",
-            "away": "13"
-          },
-          "Yellow Cards": {
-            "home": "1",
-            "away": "3"
-          },
-          "Red Cards": {
-            "home": "1",
             "away": "0"
           },
           "Corners Won": {
-            "home": "2",
+            "home": "5",
             "away": "3"
           },
           "Saves": {
-            "home": "3",
-            "away": "4"
+            "home": "2",
+            "away": "3"
           }
         }
       }
@@ -950,6 +787,24 @@
       "standings": [
         {
           "position": 1,
+          "name": "Vila Nova",
+          "stats": {
+            "GP": 16,
+            "W": 9,
+            "D": 4,
+            "L": 3,
+            "F": 25,
+            "A": 18,
+            "GD": 7,
+            "P": 31
+          },
+          "zone": {
+            "label": "Promotion Serie A",
+            "type": "avantage"
+          }
+        },
+        {
+          "position": 2,
           "name": "Novorizontino",
           "stats": {
             "GP": 16,
@@ -967,7 +822,7 @@
           }
         },
         {
-          "position": 2,
+          "position": 3,
           "name": "Criciúma",
           "stats": {
             "GP": 16,
@@ -978,24 +833,6 @@
             "A": 11,
             "GD": 7,
             "P": 30
-          },
-          "zone": {
-            "label": "Promotion Serie A",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 3,
-          "name": "Vila Nova",
-          "stats": {
-            "GP": 15,
-            "W": 8,
-            "D": 4,
-            "L": 3,
-            "F": 23,
-            "A": 17,
-            "GD": 6,
-            "P": 28
           },
           "zone": {
             "label": "Promotion Serie A",
@@ -1039,13 +876,13 @@
           "position": 6,
           "name": "São Bernardo",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 7,
             "D": 4,
-            "L": 4,
-            "F": 20,
-            "A": 12,
-            "GD": 8,
+            "L": 5,
+            "F": 21,
+            "A": 14,
+            "GD": 7,
             "P": 25
           },
           "zone": null
@@ -1157,6 +994,21 @@
         },
         {
           "position": 14,
+          "name": "Botafogo-SP",
+          "stats": {
+            "GP": 16,
+            "W": 5,
+            "D": 4,
+            "L": 7,
+            "F": 17,
+            "A": 15,
+            "GD": 2,
+            "P": 19
+          },
+          "zone": null
+        },
+        {
+          "position": 15,
           "name": "CRB",
           "stats": {
             "GP": 16,
@@ -1171,7 +1023,7 @@
           "zone": null
         },
         {
-          "position": 15,
+          "position": 16,
           "name": "Londrina",
           "stats": {
             "GP": 16,
@@ -1186,7 +1038,7 @@
           "zone": null
         },
         {
-          "position": 16,
+          "position": 17,
           "name": "Ceará",
           "stats": {
             "GP": 16,
@@ -1198,21 +1050,6 @@
             "GD": -5,
             "P": 17
           },
-          "zone": null
-        },
-        {
-          "position": 17,
-          "name": "Botafogo-SP",
-          "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 4,
-            "L": 7,
-            "F": 14,
-            "A": 14,
-            "GD": 0,
-            "P": 16
-          },
           "zone": {
             "label": "Relégation Serie C",
             "type": "désavantage"
@@ -1222,13 +1059,13 @@
           "position": 18,
           "name": "Avaí",
           "stats": {
-            "GP": 15,
+            "GP": 16,
             "W": 3,
             "D": 4,
-            "L": 8,
-            "F": 15,
-            "A": 21,
-            "GD": -6,
+            "L": 9,
+            "F": 16,
+            "A": 24,
+            "GD": -8,
             "P": 13
           },
           "zone": {
@@ -1269,3218 +1106,6 @@
           },
           "zone": {
             "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "gameId": "401873995",
-    "date": "2026-07-06",
-    "time_ci": "02:00",
-    "league": "Brazil_Serie_B",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401873995/sao-bernardo-vila-nova",
-    "home": {
-      "team": "Vila Nova",
-      "team_id": "9973",
-      "team_slug": "vila-nova",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-      "url": "https://www.espn.com/soccer/team/_/id/9973",
-      "standings": {
-        "position_current": 3,
-        "position_if_win": 1,
-        "played": 15,
-        "won": 8,
-        "drawn": 4,
-        "lost": 3,
-        "gd": 6,
-        "points": 28
-      },
-      "form": "8-4-3",
-      "matchday": 16,
-      "last_five": [
-        {
-          "date": "2026-06-26",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860204/vila-nova-novorizontino",
-          "result": "L",
-          "team_home": "Novorizontino",
-          "team_home_id": "18127",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "team_away": "Vila Nova",
-          "team_away_id": "9973",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.87,
-            "away": 4.4,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "51%",
-              "away": "49%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "3",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "3",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "275",
-              "away": "263"
-            },
-            "Passes": {
-              "home": "373",
-              "away": "363"
-            },
-            "Duels Won": {
-              "home": "66",
-              "away": "52"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "15"
-            }
-          }
-        },
-        {
-          "date": "2026-06-20",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873974/nautico-vila-nova",
-          "result": "W",
-          "team_home": "Vila Nova",
-          "team_home_id": "9973",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "team_away": "Náutico",
-          "team_away_id": "7633",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7633.png",
-          "home_score": "4",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 2.35,
-            "away": 3.35,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "33%",
-              "away": "67%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "195",
-              "away": "441"
-            },
-            "Passes": {
-              "home": "264",
-              "away": "524"
-            },
-            "Duels Won": {
-              "home": "0",
-              "away": "0"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "12"
-            }
-          }
-        },
-        {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873963/vila-nova-cuiaba",
-          "result": "L",
-          "team_home": "Cuiabá",
-          "team_home_id": "17313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17313.png",
-          "team_away": "Vila Nova",
-          "team_away_id": "9973",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.05,
-            "away": 4.5,
-            "draw": 2.9
-          },
-          "stats": {
-            "Possession": {
-              "home": "51%",
-              "away": "49%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "3",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "4",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "383",
-              "away": "358"
-            },
-            "Passes": {
-              "home": "453",
-              "away": "442"
-            },
-            "Duels Won": {
-              "home": "37",
-              "away": "47"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-08",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873942/botafogo-sp-vila-nova",
-          "result": "W",
-          "team_home": "Vila Nova",
-          "team_home_id": "9973",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "team_away": "Botafogo-SP",
-          "team_away_id": "10281",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10281.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.25,
-            "away": 3.6,
-            "draw": 2.95
-          },
-          "stats": {
-            "Possession": {
-              "home": "50%",
-              "away": "50%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "1"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "229",
-              "away": "206"
-            },
-            "Passes": {
-              "home": "298",
-              "away": "290"
-            },
-            "Duels Won": {
-              "home": "58",
-              "away": "48"
-            },
-            "Saves": {
-              "home": "0",
-              "away": "4"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "16"
-            }
-          }
-        },
-        {
-          "date": "2026-05-31",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860168/vila-nova-londrina",
-          "result": "W",
-          "team_home": "Londrina",
-          "team_home_id": "17333",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17333.png",
-          "team_away": "Vila Nova",
-          "team_away_id": "9973",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9973.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.5,
-            "away": 3.0,
-            "draw": 3.1
-          },
-          "stats": {
-            "Possession": {
-              "home": "34%",
-              "away": "66%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "7",
-              "away": "18"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "14"
-            },
-            "Yellow Cards": {
-              "home": "4",
-              "away": "4"
-            },
-            "Red Cards": {
-              "home": "2",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "2",
-              "away": "9"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "5"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "São Bernardo",
-      "team_id": "11268",
-      "team_slug": "sao-bernardo",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-      "url": "https://www.espn.com/soccer/team/_/id/11268",
-      "standings": {
-        "position_current": 6,
-        "position_if_win": 3,
-        "played": 15,
-        "won": 7,
-        "drawn": 4,
-        "lost": 4,
-        "gd": 8,
-        "points": 25
-      },
-      "form": "7-4-4",
-      "matchday": 16,
-      "last_five": [
-        {
-          "date": "2026-06-27",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873970/sao-bernardo-criciuma",
-          "result": "L",
-          "team_home": "Criciúma",
-          "team_home_id": "9971",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9971.png",
-          "team_away": "São Bernardo",
-          "team_away_id": "11268",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.65,
-            "away": 5.75,
-            "draw": 3.55
-          },
-          "stats": {
-            "Possession": {
-              "home": "51%",
-              "away": "49%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "356",
-              "away": "340"
-            },
-            "Passes": {
-              "home": "417",
-              "away": "404"
-            },
-            "Duels Won": {
-              "home": "47",
-              "away": "48"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "15",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-21",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873975/juventude-sao-bernardo",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "11268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "team_away": null,
-          "team_away_id": "6270",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6270.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.75,
-            "away": 2.85,
-            "draw": 2.9
-          },
-          "stats": {
-            "Possession": {
-              "home": "57%",
-              "away": "43%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "2"
-            },
-            "Big Chances Missed": {
-              "home": "1",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "455",
-              "away": "313"
-            },
-            "Passes": {
-              "home": "511",
-              "away": "382"
-            },
-            "Duels Won": {
-              "home": "32",
-              "away": "52"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "13"
-            }
-          }
-        },
-        {
-          "date": "2026-06-14",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873947/sport-sao-bernardo",
-          "result": "D",
-          "team_home": null,
-          "team_home_id": "11268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "team_away": null,
-          "team_away_id": "7635",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7635.png",
-          "home_score": "0",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.4,
-            "away": 3.05,
-            "draw": 3.15
-          },
-          "stats": {
-            "Possession": {
-              "home": "36%",
-              "away": "64%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "6"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "2"
-            },
-            "Big Chances Missed": {
-              "home": "1",
-              "away": "2"
-            },
-            "Accurate Passes": {
-              "home": "240",
-              "away": "456"
-            },
-            "Passes": {
-              "home": "288",
-              "away": "503"
-            },
-            "Duels Won": {
-              "home": "36",
-              "away": "50"
-            },
-            "Saves": {
-              "home": "6",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-07",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873940/sao-bernardo-crb",
-          "result": "W",
-          "team_home": "CRB",
-          "team_home_id": "9970",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9970.png",
-          "team_away": "São Bernardo",
-          "team_away_id": "11268",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {
-            "Possession": {
-              "home": "59%",
-              "away": "41%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "3"
-            },
-            "Big Chances Missed": {
-              "home": "0",
-              "away": "1"
-            },
-            "Accurate Passes": {
-              "home": "338",
-              "away": "232"
-            },
-            "Passes": {
-              "home": "414",
-              "away": "304"
-            },
-            "Duels Won": {
-              "home": "55",
-              "away": "49"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "16"
-            }
-          }
-        },
-        {
-          "date": "2026-05-31",
-          "competition": "Brazilian Serie B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401860166/novorizontino-sao-bernardo",
-          "result": "D",
-          "team_home": "São Bernardo",
-          "team_home_id": "11268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11268.png",
-          "team_away": "Novorizontino",
-          "team_away_id": "18127",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18127.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.65,
-            "away": 2.85,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "54%",
-              "away": "46%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "11",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "12"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "1"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "3"
-            }
-          }
-        }
-      ]
-    },
-    "odds": {
-      "home": 2.05,
-      "away": 3.85,
-      "draw": 3.25
-    },
-    "stats": {
-      "Average Goals": {
-        "home": "1.53",
-        "away": "1.33"
-      },
-      "Average Goals Conceded": {
-        "home": "1.13",
-        "away": "0.8"
-      },
-      "Average Goal Differential": {
-        "home": "+0.4",
-        "away": "+0.5"
-      },
-      "Possession": {
-        "home": "52%",
-        "away": "48%"
-      },
-      "Shots On Target Percentage": {
-        "home": "36%",
-        "away": "43%"
-      },
-      "Big Chances Created": {
-        "home": ".13",
-        "away": ".40"
-      },
-      "Duel Win Percentage": {
-        "home": "49%",
-        "away": "47%"
-      },
-      "Clean Sheet": {
-        "home": "4",
-        "away": "5"
-      },
-      "Save Percentage": {
-        "home": "74%",
-        "away": "82%"
-      }
-    },
-    "h2h": [],
-    "full_standings": {
-      "total_journees": 38,
-      "position_zones": [
-        {
-          "positions": "1-4",
-          "label": "Promotion Serie A",
-          "type": "avantage"
-        },
-        {
-          "positions": "17-20",
-          "label": "Relégation Serie C",
-          "type": "désavantage"
-        }
-      ],
-      "standings": [
-        {
-          "position": 1,
-          "name": "Novorizontino",
-          "stats": {
-            "GP": 16,
-            "W": 8,
-            "D": 6,
-            "L": 2,
-            "F": 27,
-            "A": 14,
-            "GD": 13,
-            "P": 30
-          },
-          "zone": {
-            "label": "Promotion Serie A",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 2,
-          "name": "Criciúma",
-          "stats": {
-            "GP": 16,
-            "W": 8,
-            "D": 6,
-            "L": 2,
-            "F": 18,
-            "A": 11,
-            "GD": 7,
-            "P": 30
-          },
-          "zone": {
-            "label": "Promotion Serie A",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 3,
-          "name": "Vila Nova",
-          "stats": {
-            "GP": 15,
-            "W": 8,
-            "D": 4,
-            "L": 3,
-            "F": 23,
-            "A": 17,
-            "GD": 6,
-            "P": 28
-          },
-          "zone": {
-            "label": "Promotion Serie A",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 4,
-          "name": "Fortaleza",
-          "stats": {
-            "GP": 16,
-            "W": 8,
-            "D": 4,
-            "L": 4,
-            "F": 20,
-            "A": 16,
-            "GD": 4,
-            "P": 28
-          },
-          "zone": {
-            "label": "Promotion Serie A",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 5,
-          "name": "Juventude",
-          "stats": {
-            "GP": 16,
-            "W": 7,
-            "D": 5,
-            "L": 4,
-            "F": 16,
-            "A": 8,
-            "GD": 8,
-            "P": 26
-          },
-          "zone": null
-        },
-        {
-          "position": 6,
-          "name": "São Bernardo",
-          "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 20,
-            "A": 12,
-            "GD": 8,
-            "P": 25
-          },
-          "zone": null
-        },
-        {
-          "position": 7,
-          "name": "Operário PR",
-          "stats": {
-            "GP": 15,
-            "W": 7,
-            "D": 4,
-            "L": 4,
-            "F": 19,
-            "A": 17,
-            "GD": 2,
-            "P": 25
-          },
-          "zone": null
-        },
-        {
-          "position": 8,
-          "name": "Sport",
-          "stats": {
-            "GP": 16,
-            "W": 6,
-            "D": 7,
-            "L": 3,
-            "F": 18,
-            "A": 12,
-            "GD": 6,
-            "P": 25
-          },
-          "zone": null
-        },
-        {
-          "position": 9,
-          "name": "Goiás",
-          "stats": {
-            "GP": 16,
-            "W": 7,
-            "D": 3,
-            "L": 6,
-            "F": 16,
-            "A": 21,
-            "GD": -5,
-            "P": 24
-          },
-          "zone": null
-        },
-        {
-          "position": 10,
-          "name": "Cuiabá",
-          "stats": {
-            "GP": 16,
-            "W": 5,
-            "D": 8,
-            "L": 3,
-            "F": 12,
-            "A": 9,
-            "GD": 3,
-            "P": 23
-          },
-          "zone": null
-        },
-        {
-          "position": 11,
-          "name": "Athletic",
-          "stats": {
-            "GP": 15,
-            "W": 5,
-            "D": 7,
-            "L": 3,
-            "F": 16,
-            "A": 15,
-            "GD": 1,
-            "P": 22
-          },
-          "zone": null
-        },
-        {
-          "position": 12,
-          "name": "Náutico",
-          "stats": {
-            "GP": 16,
-            "W": 6,
-            "D": 3,
-            "L": 7,
-            "F": 21,
-            "A": 19,
-            "GD": 2,
-            "P": 21
-          },
-          "zone": null
-        },
-        {
-          "position": 13,
-          "name": "Atlético Goianiense",
-          "stats": {
-            "GP": 16,
-            "W": 5,
-            "D": 6,
-            "L": 5,
-            "F": 18,
-            "A": 19,
-            "GD": -1,
-            "P": 21
-          },
-          "zone": null
-        },
-        {
-          "position": 14,
-          "name": "CRB",
-          "stats": {
-            "GP": 16,
-            "W": 5,
-            "D": 4,
-            "L": 7,
-            "F": 24,
-            "A": 29,
-            "GD": -5,
-            "P": 19
-          },
-          "zone": null
-        },
-        {
-          "position": 15,
-          "name": "Londrina",
-          "stats": {
-            "GP": 16,
-            "W": 5,
-            "D": 3,
-            "L": 8,
-            "F": 24,
-            "A": 24,
-            "GD": 0,
-            "P": 18
-          },
-          "zone": null
-        },
-        {
-          "position": 16,
-          "name": "Ceará",
-          "stats": {
-            "GP": 16,
-            "W": 4,
-            "D": 5,
-            "L": 7,
-            "F": 15,
-            "A": 20,
-            "GD": -5,
-            "P": 17
-          },
-          "zone": null
-        },
-        {
-          "position": 17,
-          "name": "Botafogo-SP",
-          "stats": {
-            "GP": 15,
-            "W": 4,
-            "D": 4,
-            "L": 7,
-            "F": 14,
-            "A": 14,
-            "GD": 0,
-            "P": 16
-          },
-          "zone": {
-            "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 18,
-          "name": "Avaí",
-          "stats": {
-            "GP": 15,
-            "W": 3,
-            "D": 4,
-            "L": 8,
-            "F": 15,
-            "A": 21,
-            "GD": -6,
-            "P": 13
-          },
-          "zone": {
-            "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 19,
-          "name": "Ponte Preta",
-          "stats": {
-            "GP": 16,
-            "W": 2,
-            "D": 2,
-            "L": 12,
-            "F": 10,
-            "A": 31,
-            "GD": -21,
-            "P": 8
-          },
-          "zone": {
-            "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 20,
-          "name": "América Mineiro",
-          "stats": {
-            "GP": 16,
-            "W": 1,
-            "D": 3,
-            "L": 12,
-            "F": 10,
-            "A": 27,
-            "GD": -17,
-            "P": 6
-          },
-          "zone": {
-            "label": "Relégation Serie C",
-            "type": "désavantage"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "gameId": "401842740",
-    "date": "2026-07-06",
-    "time_ci": "21:00",
-    "league": "Sweden_Allsvenskan",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401842740/djurgarden-bk-hacken",
-    "home": {
-      "team": "BK Häcken",
-      "team_id": "7834",
-      "team_slug": "bk-hacken",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-      "url": "https://www.espn.com/soccer/team/_/id/7834",
-      "standings": {
-        "position_current": 3,
-        "position_if_win": 2,
-        "played": 10,
-        "won": 5,
-        "drawn": 5,
-        "lost": 0,
-        "gd": 6,
-        "points": 20
-      },
-      "form": "5-5-0",
-      "matchday": 11,
-      "last_five": [
-        {
-          "date": "2026-05-31",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842731/hammarby-if-bk-hacken",
-          "result": "W",
-          "team_home": "BK Häcken",
-          "team_home_id": "7834",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-          "team_away": "Hammarby IF",
-          "team_away_id": "2495",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2495.png",
-          "home_score": "3",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.95,
-            "away": 2.25,
-            "draw": 3.7
-          },
-          "stats": {
-            "Possession": {
-              "home": "44%",
-              "away": "56%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "7"
-            },
-            "Shots": {
-              "home": "20",
-              "away": "16"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "7",
-              "away": "8"
-            },
-            "Saves": {
-              "home": "5",
-              "away": "3"
-            }
-          }
-        },
-        {
-          "date": "2026-05-25",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842723/bk-hacken-if-elfsborg",
-          "result": "D",
-          "team_home": "IF Elfsborg",
-          "team_home_id": "529",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/529.png",
-          "team_away": "BK Häcken",
-          "team_away_id": "7834",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.7,
-            "away": 2.5,
-            "draw": 3.45
-          },
-          "stats": {
-            "Possession": {
-              "home": "37%",
-              "away": "63%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "9",
-              "away": "18"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "7"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "1",
-              "away": "6"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-17",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842720/bk-hacken-mjallby-aif",
-          "result": "W",
-          "team_home": "Mjällby AIF",
-          "team_home_id": "20301",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
-          "team_away": "BK Häcken",
-          "team_away_id": "7834",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.35,
-            "away": 2.85,
-            "draw": 3.55
-          },
-          "stats": {
-            "Possession": {
-              "home": "41%",
-              "away": "59%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "5"
-            },
-            "Shots": {
-              "home": "6",
-              "away": "18"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "19"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "1",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "5",
-              "away": "7"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-10",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842710/malmo-ff-bk-hacken",
-          "result": "W",
-          "team_home": "BK Häcken",
-          "team_home_id": "7834",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-          "team_away": "Malmö FF",
-          "team_away_id": "2720",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2720.png",
-          "home_score": "3",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.1,
-            "away": 3.3,
-            "draw": 3.65
-          },
-          "stats": {
-            "Possession": {
-              "home": "40%",
-              "away": "60%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "6"
-            },
-            "Shots": {
-              "home": "15",
-              "away": "17"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "10"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-02",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842705/bk-hacken-degerfors-if",
-          "result": "D",
-          "team_home": "Degerfors IF",
-          "team_home_id": "20856",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20856.png",
-          "team_away": "BK Häcken",
-          "team_away_id": "7834",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.1,
-            "away": 2.3,
-            "draw": 3.35
-          },
-          "stats": {
-            "Possession": {
-              "home": "42%",
-              "away": "58%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "11",
-              "away": "15"
-            },
-            "Fouls Committed": {
-              "home": "21",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "2"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Djurgården",
-      "team_id": "2339",
-      "team_slug": "djurgarden",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-      "url": "https://www.espn.com/soccer/team/_/id/2339",
-      "standings": {
-        "position_current": 11,
-        "position_if_win": 5,
-        "played": 9,
-        "won": 4,
-        "drawn": 1,
-        "lost": 4,
-        "gd": 6,
-        "points": 13
-      },
-      "form": "4-1-4",
-      "matchday": 10,
-      "last_five": [
-        {
-          "date": "2026-05-22",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842722/if-brommapojkarna-djurgarden",
-          "result": "L",
-          "team_home": "Djurgården",
-          "team_home_id": "2339",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "team_away": "IF Brommapojkarna",
-          "team_away_id": "8221",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 1.48,
-            "away": 6.0,
-            "draw": 4.6
-          },
-          "stats": {
-            "Possession": {
-              "home": "62%",
-              "away": "38%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "19",
-              "away": "8"
-            },
-            "Fouls Committed": {
-              "home": "8",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "8"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-05-18",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842715/ik-sirius-djurgarden",
-          "result": "L",
-          "team_home": "Djurgården",
-          "team_home_id": "2339",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "team_away": "IK Sirius",
-          "team_away_id": "8547",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 2.1,
-            "away": 3.05,
-            "draw": 3.85
-          },
-          "stats": {
-            "Possession": {
-              "home": "60%",
-              "away": "40%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "9"
-            },
-            "Shots": {
-              "home": "13",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "15"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "4"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "7",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "6",
-              "away": "3"
-            }
-          }
-        },
-        {
-          "date": "2026-05-10",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842706/djurgarden-aik",
-          "result": "W",
-          "team_home": "AIK",
-          "team_home_id": "994",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/994.png",
-          "team_away": "Djurgården",
-          "team_away_id": "2339",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "home_score": "2",
-          "away_score": "4",
-          "status": "FT",
-          "odds": {
-            "home": 2.7,
-            "away": 2.55,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "10"
-            },
-            "Shots": {
-              "home": "14",
-              "away": "19"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "14"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "7",
-              "away": "9"
-            },
-            "Saves": {
-              "home": "6",
-              "away": "3"
-            }
-          }
-        },
-        {
-          "date": "2026-05-04",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842699/ifk-goteborg-djurgarden",
-          "result": "W",
-          "team_home": "Djurgården",
-          "team_home_id": "2339",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "team_away": "IFK Göteborg",
-          "team_away_id": "2556",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2556.png",
-          "home_score": "6",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.65,
-            "away": 5.0,
-            "draw": 4.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "10",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "23",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "10"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "7",
-              "away": "7"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "5"
-            }
-          }
-        },
-        {
-          "date": "2026-04-26",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842693/hammarby-if-djurgarden",
-          "result": "D",
-          "team_home": "Djurgården",
-          "team_home_id": "2339",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "team_away": "Hammarby IF",
-          "team_away_id": "2495",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2495.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.2,
-            "away": 2.25,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "38%",
-              "away": "62%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "6",
-              "away": "16"
-            },
-            "Fouls Committed": {
-              "home": "20",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "1",
-              "away": "2"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "2"
-            }
-          }
-        }
-      ]
-    },
-    "odds": {
-      "home": 2.5,
-      "away": 2.6,
-      "draw": 3.65
-    },
-    "stats": {
-      "Average Goals": {
-        "home": "2.00",
-        "away": "2.11"
-      },
-      "Average Goals Conceded": {
-        "home": "1.4",
-        "away": "1.44"
-      },
-      "Average Goal Differential": {
-        "home": "+0.6",
-        "away": "+0.7"
-      },
-      "Shots On Target Percentage": {
-        "home": "34%",
-        "away": "36%"
-      },
-      "Clean Sheet": {
-        "home": "2",
-        "away": "2"
-      },
-      "Save Percentage": {
-        "home": "72%",
-        "away": "68%"
-      },
-      "Corners Won": {
-        "home": "56",
-        "away": "59"
-      },
-      "Fouls Committed": {
-        "home": "119",
-        "away": "110"
-      }
-    },
-    "h2h": [
-      {
-        "date": "2025-07-27",
-        "competition": "2025 Allsvenskan",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/725935/djurgarden-bk-hacken",
-        "team_home": "BK Häcken",
-        "team_home_id": "7834",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-        "team_away": "Djurgården",
-        "team_away_id": "2339",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-        "home_score": "1",
-        "away_score": "6",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "49%",
-            "away": "51%"
-          },
-          "Shots on Goal": {
-            "home": "6",
-            "away": "7"
-          },
-          "Shots": {
-            "home": "18",
-            "away": "18"
-          },
-          "Fouls Committed": {
-            "home": "12",
-            "away": "11"
-          },
-          "Yellow Cards": {
-            "home": "3",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "2",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "5",
-            "away": "1"
-          },
-          "Saves": {
-            "home": "1",
-            "away": "5"
-          }
-        }
-      },
-      {
-        "date": "2025-05-25",
-        "competition": "2025 Allsvenskan",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/725886/bk-hacken-djurgarden",
-        "team_home": "Djurgården",
-        "team_home_id": "2339",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-        "team_away": "BK Häcken",
-        "team_away_id": "7834",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-        "home_score": "1",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "46%",
-            "away": "54%"
-          },
-          "Shots on Goal": {
-            "home": "5",
-            "away": "4"
-          },
-          "Shots": {
-            "home": "12",
-            "away": "12"
-          },
-          "Fouls Committed": {
-            "home": "8",
-            "away": "13"
-          },
-          "Yellow Cards": {
-            "home": "1",
-            "away": "3"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "7",
-            "away": "1"
-          },
-          "Saves": {
-            "home": "3",
-            "away": "2"
-          }
-        }
-      },
-      {
-        "date": "2024-09-19",
-        "competition": "Regular Season",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/691681/djurgarden-bk-hacken",
-        "team_home": "BK Häcken",
-        "team_home_id": "7834",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-        "team_away": "Djurgården",
-        "team_away_id": "2339",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-        "home_score": "1",
-        "away_score": "2",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "65%",
-            "away": "35%"
-          },
-          "Shots on Goal": {
-            "home": "6",
-            "away": "5"
-          },
-          "Shots": {
-            "home": "20",
-            "away": "12"
-          },
-          "Fouls Committed": {
-            "home": "18",
-            "away": "13"
-          },
-          "Yellow Cards": {
-            "home": "3",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "4",
-            "away": "2"
-          },
-          "Saves": {
-            "home": "3",
-            "away": "5"
-          }
-        }
-      },
-      {
-        "date": "2024-04-08",
-        "competition": "Regular Season",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/691556/bk-hacken-djurgarden",
-        "team_home": "Djurgården",
-        "team_home_id": "2339",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-        "team_away": "BK Häcken",
-        "team_away_id": "7834",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-        "home_score": "3",
-        "away_score": "3",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {}
-      },
-      {
-        "date": "2023-05-24",
-        "competition": "Regular Season",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/658525/bk-hacken-djurgarden",
-        "team_home": "Djurgården",
-        "team_home_id": "2339",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-        "team_away": "BK Häcken",
-        "team_away_id": "7834",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7834.png",
-        "home_score": "1",
-        "away_score": "0",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {}
-      }
-    ],
-    "full_standings": {
-      "total_journees": 30,
-      "position_zones": [
-        {
-          "positions": "1",
-          "label": "UEFA Conference League",
-          "type": "avantage"
-        },
-        {
-          "positions": "14",
-          "label": "Relégation Playoff",
-          "type": "désavantage"
-        },
-        {
-          "positions": "15-16",
-          "label": "Relégation",
-          "type": "désavantage"
-        }
-      ],
-      "standings": [
-        {
-          "position": 1,
-          "name": "IK Sirius",
-          "stats": {
-            "GP": 11,
-            "W": 9,
-            "D": 2,
-            "L": 0,
-            "F": 31,
-            "A": 14,
-            "GD": 17,
-            "P": 29
-          },
-          "zone": {
-            "label": "UEFA Conference League",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 2,
-          "name": "Hammarby IF",
-          "stats": {
-            "GP": 12,
-            "W": 6,
-            "D": 2,
-            "L": 4,
-            "F": 26,
-            "A": 14,
-            "GD": 12,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 3,
-          "name": "BK Häcken",
-          "stats": {
-            "GP": 10,
-            "W": 5,
-            "D": 5,
-            "L": 0,
-            "F": 20,
-            "A": 14,
-            "GD": 6,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 4,
-          "name": "IF Elfsborg",
-          "stats": {
-            "GP": 12,
-            "W": 4,
-            "D": 6,
-            "L": 2,
-            "F": 17,
-            "A": 13,
-            "GD": 4,
-            "P": 18
-          },
-          "zone": null
-        },
-        {
-          "position": 5,
-          "name": "Mjällby AIF",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 4,
-            "L": 3,
-            "F": 18,
-            "A": 15,
-            "GD": 3,
-            "P": 16
-          },
-          "zone": null
-        },
-        {
-          "position": 6,
-          "name": "Malmö FF",
-          "stats": {
-            "GP": 11,
-            "W": 5,
-            "D": 1,
-            "L": 5,
-            "F": 21,
-            "A": 20,
-            "GD": 1,
-            "P": 16
-          },
-          "zone": null
-        },
-        {
-          "position": 7,
-          "name": "GAIS",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 16,
-            "A": 11,
-            "GD": 5,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 8,
-          "name": "IF Brommapojkarna",
-          "stats": {
-            "GP": 10,
-            "W": 4,
-            "D": 3,
-            "L": 3,
-            "F": 15,
-            "A": 16,
-            "GD": -1,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 9,
-          "name": "Västerås SK",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 20,
-            "A": 23,
-            "GD": -3,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 10,
-          "name": "AIK",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 14,
-            "A": 17,
-            "GD": -3,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 11,
-          "name": "Djurgården",
-          "stats": {
-            "GP": 9,
-            "W": 4,
-            "D": 1,
-            "L": 4,
-            "F": 19,
-            "A": 13,
-            "GD": 6,
-            "P": 13
-          },
-          "zone": null
-        },
-        {
-          "position": 12,
-          "name": "Kalmar FF",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 1,
-            "L": 6,
-            "F": 14,
-            "A": 15,
-            "GD": -1,
-            "P": 13
-          },
-          "zone": null
-        },
-        {
-          "position": 13,
-          "name": "Degerfors IF",
-          "stats": {
-            "GP": 11,
-            "W": 2,
-            "D": 4,
-            "L": 5,
-            "F": 12,
-            "A": 17,
-            "GD": -5,
-            "P": 10
-          },
-          "zone": null
-        },
-        {
-          "position": 14,
-          "name": "IFK Göteborg",
-          "stats": {
-            "GP": 11,
-            "W": 2,
-            "D": 4,
-            "L": 5,
-            "F": 14,
-            "A": 24,
-            "GD": -10,
-            "P": 10
-          },
-          "zone": {
-            "label": "Relégation Playoff",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 15,
-          "name": "Halmstads BK",
-          "stats": {
-            "GP": 11,
-            "W": 1,
-            "D": 3,
-            "L": 7,
-            "F": 10,
-            "A": 23,
-            "GD": -13,
-            "P": 6
-          },
-          "zone": {
-            "label": "Relégation",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 16,
-          "name": "Örgryte IS",
-          "stats": {
-            "GP": 11,
-            "W": 1,
-            "D": 3,
-            "L": 7,
-            "F": 10,
-            "A": 28,
-            "GD": -18,
-            "P": 6
-          },
-          "zone": {
-            "label": "Relégation",
-            "type": "désavantage"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "gameId": "401842744",
-    "date": "2026-07-06",
-    "time_ci": "21:00",
-    "league": "Sweden_Allsvenskan",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401842744/gais-if-brommapojkarna",
-    "home": {
-      "team": "IF Brommapojkarna",
-      "team_id": "8221",
-      "team_slug": "if-brommapojkarna",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-      "url": "https://www.espn.com/soccer/team/_/id/8221",
-      "standings": {
-        "position_current": 8,
-        "position_if_win": 4,
-        "played": 10,
-        "won": 4,
-        "drawn": 3,
-        "lost": 3,
-        "gd": -1,
-        "points": 15
-      },
-      "form": "4-3-3",
-      "matchday": 11,
-      "last_five": [
-        {
-          "date": "2026-05-31",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842736/if-brommapojkarna-degerfors-if",
-          "result": "D",
-          "team_home": "Degerfors IF",
-          "team_home_id": "20856",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20856.png",
-          "team_away": "IF Brommapojkarna",
-          "team_away_id": "8221",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "home_score": "2",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.2,
-            "away": 3.3,
-            "draw": 3.3
-          },
-          "stats": {
-            "Possession": {
-              "home": "42%",
-              "away": "58%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "9"
-            },
-            "Shots": {
-              "home": "11",
-              "away": "16"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "8"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "6",
-              "away": "1"
-            }
-          }
-        },
-        {
-          "date": "2026-05-22",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842722/if-brommapojkarna-djurgarden",
-          "result": "W",
-          "team_home": "Djurgården",
-          "team_home_id": "2339",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2339.png",
-          "team_away": "IF Brommapojkarna",
-          "team_away_id": "8221",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 1.48,
-            "away": 6.0,
-            "draw": 4.6
-          },
-          "stats": {
-            "Possession": {
-              "home": "62%",
-              "away": "38%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "19",
-              "away": "8"
-            },
-            "Fouls Committed": {
-              "home": "8",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "8"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-05-17",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842716/kalmar-ff-if-brommapojkarna",
-          "result": "W",
-          "team_home": "IF Brommapojkarna",
-          "team_home_id": "8221",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "team_away": "Kalmar FF",
-          "team_away_id": "3052",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3052.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.75,
-            "away": 2.5,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "47%",
-              "away": "53%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "9"
-            },
-            "Shots": {
-              "home": "7",
-              "away": "24"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "13"
-            },
-            "Yellow Cards": {
-              "home": "4",
-              "away": "0"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "8",
-              "away": "2"
-            }
-          }
-        },
-        {
-          "date": "2026-05-08",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842711/if-brommapojkarna-if-elfsborg",
-          "result": "L",
-          "team_home": "IF Elfsborg",
-          "team_home_id": "529",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/529.png",
-          "team_away": "IF Brommapojkarna",
-          "team_away_id": "8221",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.83,
-            "away": 4.3,
-            "draw": 3.6
-          },
-          "stats": {
-            "Possession": {
-              "home": "59%",
-              "away": "41%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "13",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "7",
-              "away": "6"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "0"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "5",
-              "away": "8"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-04",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842703/if-brommapojkarna-halmstads-bk",
-          "result": "W",
-          "team_home": "Halmstads BK",
-          "team_home_id": "3017",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3017.png",
-          "team_away": "IF Brommapojkarna",
-          "team_away_id": "8221",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-          "home_score": "1",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 2.95,
-            "away": 2.5,
-            "draw": 3.15
-          },
-          "stats": {
-            "Possession": {
-              "home": "50%",
-              "away": "50%"
-            },
-            "Shots on Goal": {
-              "home": "1",
-              "away": "5"
-            },
-            "Shots": {
-              "home": "14",
-              "away": "16"
-            },
-            "Fouls Committed": {
-              "home": "7",
-              "away": "12"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "1"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "GAIS",
-      "team_id": "8222",
-      "team_slug": "gais",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-      "url": "https://www.espn.com/soccer/team/_/id/8222",
-      "standings": {
-        "position_current": 7,
-        "position_if_win": 4,
-        "played": 11,
-        "won": 4,
-        "drawn": 3,
-        "lost": 4,
-        "gd": 5,
-        "points": 15
-      },
-      "form": "4-3-4",
-      "matchday": 12,
-      "last_five": [
-        {
-          "date": "2026-05-30",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842735/kalmar-ff-gais",
-          "result": "W",
-          "team_home": "GAIS",
-          "team_home_id": "8222",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-          "team_away": "Kalmar FF",
-          "team_away_id": "3052",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3052.png",
-          "home_score": "3",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.1,
-            "away": 3.4,
-            "draw": 3.5
-          },
-          "stats": {
-            "Possession": {
-              "home": "52%",
-              "away": "48%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "2"
-            },
-            "Shots": {
-              "home": "16",
-              "away": "12"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "6"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "8",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "3"
-            }
-          }
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842724/gais-ik-sirius",
-          "result": "L",
-          "team_home": "IK Sirius",
-          "team_home_id": "8547",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8547.png",
-          "team_away": "GAIS",
-          "team_away_id": "8222",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.71,
-            "away": 4.5,
-            "draw": 3.95
-          },
-          "stats": {
-            "Possession": {
-              "home": "44%",
-              "away": "56%"
-            },
-            "Shots on Goal": {
-              "home": "6",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "15",
-              "away": "9"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "1",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "7",
-              "away": "4"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-20",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842774/hammarby-if-gais",
-          "result": "W",
-          "team_home": "GAIS",
-          "team_home_id": "8222",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-          "team_away": "Hammarby IF",
-          "team_away_id": "2495",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2495.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 3.1,
-            "away": 2.3,
-            "draw": 3.35
-          },
-          "stats": {
-            "Possession": {
-              "home": "36%",
-              "away": "64%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "16",
-              "away": "17"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "0"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "2",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "5"
-            }
-          }
-        },
-        {
-          "date": "2026-05-16",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842714/degerfors-if-gais",
-          "result": "D",
-          "team_home": "GAIS",
-          "team_home_id": "8222",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-          "team_away": "Degerfors IF",
-          "team_away_id": "20856",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20856.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.71,
-            "away": 5.0,
-            "draw": 3.55
-          },
-          "stats": {
-            "Possession": {
-              "home": "44%",
-              "away": "56%"
-            },
-            "Shots on Goal": {
-              "home": "1",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "15",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "15",
-              "away": "9"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "0"
-            }
-          }
-        },
-        {
-          "date": "2026-05-09",
-          "competition": "Swedish Allsvenskan",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401842713/gais-vasteras-sk",
-          "result": "W",
-          "team_home": "Västerås SK",
-          "team_home_id": "22163",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22163.png",
-          "team_away": "GAIS",
-          "team_away_id": "8222",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.15,
-            "away": 2.25,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "54%",
-              "away": "46%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "6"
-            },
-            "Shots": {
-              "home": "5",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "8",
-              "away": "16"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "1",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "5",
-              "away": "2"
-            }
-          }
-        }
-      ]
-    },
-    "odds": {
-      "home": 3.15,
-      "away": 2.2,
-      "draw": 3.45
-    },
-    "stats": {
-      "Average Goals": {
-        "home": "1.50",
-        "away": "1.45"
-      },
-      "Average Goals Conceded": {
-        "home": "1.6",
-        "away": "1"
-      },
-      "Average Goal Differential": {
-        "home": "-0.1",
-        "away": "+0.5"
-      },
-      "Shots On Target Percentage": {
-        "home": "40%",
-        "away": "36%"
-      },
-      "Clean Sheet": {
-        "home": "1",
-        "away": "5"
-      },
-      "Save Percentage": {
-        "home": "67%",
-        "away": "72%"
-      },
-      "Corners Won": {
-        "home": "45",
-        "away": "53"
-      },
-      "Fouls Committed": {
-        "home": "104",
-        "away": "170"
-      }
-    },
-    "h2h": [
-      {
-        "date": "2025-10-27",
-        "competition": "2025 Allsvenskan",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/726019/gais-if-brommapojkarna",
-        "team_home": "IF Brommapojkarna",
-        "team_home_id": "8221",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-        "team_away": "GAIS",
-        "team_away_id": "8222",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-        "home_score": "0",
-        "away_score": "2",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "39%",
-            "away": "61%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "3"
-          },
-          "Shots": {
-            "home": "11",
-            "away": "8"
-          },
-          "Fouls Committed": {
-            "home": "8",
-            "away": "15"
-          },
-          "Yellow Cards": {
-            "home": "2",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "4",
-            "away": "2"
-          },
-          "Saves": {
-            "home": "1",
-            "away": "4"
-          }
-        }
-      },
-      {
-        "date": "2025-04-24",
-        "competition": "2025 Allsvenskan",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/725836/if-brommapojkarna-gais",
-        "team_home": "GAIS",
-        "team_home_id": "8222",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-        "team_away": "IF Brommapojkarna",
-        "team_away_id": "8221",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-        "home_score": "1",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "58%",
-            "away": "42%"
-          },
-          "Shots on Goal": {
-            "home": "2",
-            "away": "6"
-          },
-          "Shots": {
-            "home": "21",
-            "away": "11"
-          },
-          "Fouls Committed": {
-            "home": "16",
-            "away": "11"
-          },
-          "Yellow Cards": {
-            "home": "2",
-            "away": "0"
-          },
-          "Red Cards": {
-            "home": "1",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "12",
-            "away": "4"
-          },
-          "Saves": {
-            "home": "5",
-            "away": "1"
-          }
-        }
-      },
-      {
-        "date": "2024-10-05",
-        "competition": "Regular Season",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/691743/gais-if-brommapojkarna",
-        "team_home": "IF Brommapojkarna",
-        "team_home_id": "8221",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-        "team_away": "GAIS",
-        "team_away_id": "8222",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-        "home_score": "2",
-        "away_score": "0",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {
-          "Possession": {
-            "home": "48%",
-            "away": "52%"
-          },
-          "Shots on Goal": {
-            "home": "4",
-            "away": "4"
-          },
-          "Shots": {
-            "home": "11",
-            "away": "13"
-          },
-          "Fouls Committed": {
-            "home": "9",
-            "away": "11"
-          },
-          "Yellow Cards": {
-            "home": "0",
-            "away": "1"
-          },
-          "Red Cards": {
-            "home": "0",
-            "away": "0"
-          },
-          "Corners Won": {
-            "home": "2",
-            "away": "8"
-          },
-          "Saves": {
-            "home": "4",
-            "away": "2"
-          }
-        }
-      },
-      {
-        "date": "2024-03-31",
-        "competition": "Regular Season",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/691546/if-brommapojkarna-gais",
-        "team_home": "GAIS",
-        "team_home_id": "8222",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-        "team_away": "IF Brommapojkarna",
-        "team_away_id": "8221",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-        "home_score": "0",
-        "away_score": "4",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {}
-      },
-      {
-        "date": "2010-08-23",
-        "competition": "2010 Swedish Allsvenskanliga, 2010 Swedish Allsvenskanliga",
-        "match_url": "https://www.espn.com/soccer/match/_/gameId/297785/if-brommapojkarna-gais",
-        "team_home": null,
-        "team_home_id": "8222",
-        "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8222.png",
-        "team_away": null,
-        "team_away_id": "8221",
-        "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8221.png",
-        "home_score": "1",
-        "away_score": "1",
-        "status": "FT",
-        "odds": {
-          "home": null,
-          "away": null,
-          "draw": null
-        },
-        "stats": {}
-      }
-    ],
-    "full_standings": {
-      "total_journees": 30,
-      "position_zones": [
-        {
-          "positions": "1",
-          "label": "UEFA Conference League",
-          "type": "avantage"
-        },
-        {
-          "positions": "14",
-          "label": "Relégation Playoff",
-          "type": "désavantage"
-        },
-        {
-          "positions": "15-16",
-          "label": "Relégation",
-          "type": "désavantage"
-        }
-      ],
-      "standings": [
-        {
-          "position": 1,
-          "name": "IK Sirius",
-          "stats": {
-            "GP": 11,
-            "W": 9,
-            "D": 2,
-            "L": 0,
-            "F": 31,
-            "A": 14,
-            "GD": 17,
-            "P": 29
-          },
-          "zone": {
-            "label": "UEFA Conference League",
-            "type": "avantage"
-          }
-        },
-        {
-          "position": 2,
-          "name": "Hammarby IF",
-          "stats": {
-            "GP": 12,
-            "W": 6,
-            "D": 2,
-            "L": 4,
-            "F": 26,
-            "A": 14,
-            "GD": 12,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 3,
-          "name": "BK Häcken",
-          "stats": {
-            "GP": 10,
-            "W": 5,
-            "D": 5,
-            "L": 0,
-            "F": 20,
-            "A": 14,
-            "GD": 6,
-            "P": 20
-          },
-          "zone": null
-        },
-        {
-          "position": 4,
-          "name": "IF Elfsborg",
-          "stats": {
-            "GP": 12,
-            "W": 4,
-            "D": 6,
-            "L": 2,
-            "F": 17,
-            "A": 13,
-            "GD": 4,
-            "P": 18
-          },
-          "zone": null
-        },
-        {
-          "position": 5,
-          "name": "Mjällby AIF",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 4,
-            "L": 3,
-            "F": 18,
-            "A": 15,
-            "GD": 3,
-            "P": 16
-          },
-          "zone": null
-        },
-        {
-          "position": 6,
-          "name": "Malmö FF",
-          "stats": {
-            "GP": 11,
-            "W": 5,
-            "D": 1,
-            "L": 5,
-            "F": 21,
-            "A": 20,
-            "GD": 1,
-            "P": 16
-          },
-          "zone": null
-        },
-        {
-          "position": 7,
-          "name": "GAIS",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 16,
-            "A": 11,
-            "GD": 5,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 8,
-          "name": "IF Brommapojkarna",
-          "stats": {
-            "GP": 10,
-            "W": 4,
-            "D": 3,
-            "L": 3,
-            "F": 15,
-            "A": 16,
-            "GD": -1,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 9,
-          "name": "Västerås SK",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 20,
-            "A": 23,
-            "GD": -3,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 10,
-          "name": "AIK",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 3,
-            "L": 4,
-            "F": 14,
-            "A": 17,
-            "GD": -3,
-            "P": 15
-          },
-          "zone": null
-        },
-        {
-          "position": 11,
-          "name": "Djurgården",
-          "stats": {
-            "GP": 9,
-            "W": 4,
-            "D": 1,
-            "L": 4,
-            "F": 19,
-            "A": 13,
-            "GD": 6,
-            "P": 13
-          },
-          "zone": null
-        },
-        {
-          "position": 12,
-          "name": "Kalmar FF",
-          "stats": {
-            "GP": 11,
-            "W": 4,
-            "D": 1,
-            "L": 6,
-            "F": 14,
-            "A": 15,
-            "GD": -1,
-            "P": 13
-          },
-          "zone": null
-        },
-        {
-          "position": 13,
-          "name": "Degerfors IF",
-          "stats": {
-            "GP": 11,
-            "W": 2,
-            "D": 4,
-            "L": 5,
-            "F": 12,
-            "A": 17,
-            "GD": -5,
-            "P": 10
-          },
-          "zone": null
-        },
-        {
-          "position": 14,
-          "name": "IFK Göteborg",
-          "stats": {
-            "GP": 11,
-            "W": 2,
-            "D": 4,
-            "L": 5,
-            "F": 14,
-            "A": 24,
-            "GD": -10,
-            "P": 10
-          },
-          "zone": {
-            "label": "Relégation Playoff",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 15,
-          "name": "Halmstads BK",
-          "stats": {
-            "GP": 11,
-            "W": 1,
-            "D": 3,
-            "L": 7,
-            "F": 10,
-            "A": 23,
-            "GD": -13,
-            "P": 6
-          },
-          "zone": {
-            "label": "Relégation",
-            "type": "désavantage"
-          }
-        },
-        {
-          "position": 16,
-          "name": "Örgryte IS",
-          "stats": {
-            "GP": 11,
-            "W": 1,
-            "D": 3,
-            "L": 7,
-            "F": 10,
-            "A": 28,
-            "GD": -18,
-            "P": 6
-          },
-          "zone": {
-            "label": "Relégation",
             "type": "désavantage"
           }
         }

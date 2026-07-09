@@ -2364,6 +2364,24 @@
         "standings": [
             {
                 "position": 1,
+                "name": "Criciúma",
+                "stats": {
+                    "GP": 17,
+                    "W": 9,
+                    "D": 6,
+                    "L": 2,
+                    "F": 20,
+                    "A": 12,
+                    "GD": 8,
+                    "P": 33
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 2,
                 "name": "Vila Nova",
                 "stats": {
                     "GP": 16,
@@ -2381,7 +2399,7 @@
                 }
             },
             {
-                "position": 2,
+                "position": 3,
                 "name": "Novorizontino",
                 "stats": {
                     "GP": 16,
@@ -2391,24 +2409,6 @@
                     "F": 27,
                     "A": 14,
                     "GD": 13,
-                    "P": 30
-                },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
-            },
-            {
-                "position": 3,
-                "name": "Criciúma",
-                "stats": {
-                    "GP": 16,
-                    "W": 8,
-                    "D": 6,
-                    "L": 2,
-                    "F": 18,
-                    "A": 11,
-                    "GD": 7,
                     "P": 30
                 },
                 "zone": {
@@ -2654,13 +2654,13 @@
                 "position": 19,
                 "name": "Ponte Preta",
                 "stats": {
-                    "GP": 16,
+                    "GP": 17,
                     "W": 2,
                     "D": 2,
-                    "L": 12,
-                    "F": 10,
-                    "A": 31,
-                    "GD": -21,
+                    "L": 13,
+                    "F": 11,
+                    "A": 33,
+                    "GD": -22,
                     "P": 8
                 },
                 "zone": {

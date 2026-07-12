@@ -2384,13 +2384,13 @@
                 "position": 2,
                 "name": "Vila Nova",
                 "stats": {
-                    "GP": 16,
+                    "GP": 17,
                     "W": 9,
                     "D": 4,
-                    "L": 3,
+                    "L": 4,
                     "F": 25,
-                    "A": 18,
-                    "GD": 7,
+                    "A": 19,
+                    "GD": 6,
                     "P": 31
                 },
                 "zone": {
@@ -2418,6 +2418,24 @@
             },
             {
                 "position": 4,
+                "name": "Juventude",
+                "stats": {
+                    "GP": 17,
+                    "W": 8,
+                    "D": 5,
+                    "L": 4,
+                    "F": 17,
+                    "A": 8,
+                    "GD": 9,
+                    "P": 29
+                },
+                "zone": {
+                    "label": "Promotion Serie A",
+                    "type": "avantage"
+                }
+            },
+            {
+                "position": 5,
                 "name": "Fortaleza",
                 "stats": {
                     "GP": 16,
@@ -2429,13 +2447,10 @@
                     "GD": 4,
                     "P": 28
                 },
-                "zone": {
-                    "label": "Promotion Serie A",
-                    "type": "avantage"
-                }
+                "zone": null
             },
             {
-                "position": 5,
+                "position": 6,
                 "name": "Operário PR",
                 "stats": {
                     "GP": 16,
@@ -2450,22 +2465,22 @@
                 "zone": null
             },
             {
-                "position": 6,
-                "name": "Juventude",
+                "position": 7,
+                "name": "Sport",
                 "stats": {
-                    "GP": 16,
-                    "W": 7,
-                    "D": 5,
-                    "L": 4,
-                    "F": 16,
-                    "A": 8,
-                    "GD": 8,
+                    "GP": 17,
+                    "W": 6,
+                    "D": 8,
+                    "L": 3,
+                    "F": 21,
+                    "A": 15,
+                    "GD": 6,
                     "P": 26
                 },
                 "zone": null
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "São Bernardo",
                 "stats": {
                     "GP": 16,
@@ -2475,21 +2490,6 @@
                     "F": 21,
                     "A": 14,
                     "GD": 7,
-                    "P": 25
-                },
-                "zone": null
-            },
-            {
-                "position": 8,
-                "name": "Sport",
-                "stats": {
-                    "GP": 16,
-                    "W": 6,
-                    "D": 7,
-                    "L": 3,
-                    "F": 18,
-                    "A": 12,
-                    "GD": 6,
                     "P": 25
                 },
                 "zone": null
@@ -2573,14 +2573,14 @@
                 "position": 14,
                 "name": "Botafogo-SP",
                 "stats": {
-                    "GP": 16,
+                    "GP": 17,
                     "W": 5,
-                    "D": 4,
+                    "D": 5,
                     "L": 7,
-                    "F": 17,
-                    "A": 15,
+                    "F": 20,
+                    "A": 18,
                     "GD": 2,
-                    "P": 19
+                    "P": 20
                 },
                 "zone": null
             },
@@ -3012,14 +3012,14 @@
                 "position": 1,
                 "name": "Chengdu Rongcheng",
                 "stats": {
-                    "GP": 17,
+                    "GP": 18,
                     "W": 13,
-                    "D": 2,
+                    "D": 3,
                     "L": 2,
-                    "F": 37,
-                    "A": 16,
+                    "F": 38,
+                    "A": 17,
                     "GD": 21,
-                    "P": 41
+                    "P": 42
                 },
                 "zone": {
                     "label": "AFC Champions League",
@@ -3030,14 +3030,14 @@
                 "position": 2,
                 "name": "Chongqing Tonglianglong",
                 "stats": {
-                    "GP": 17,
+                    "GP": 18,
                     "W": 7,
-                    "D": 6,
+                    "D": 7,
                     "L": 4,
-                    "F": 21,
-                    "A": 19,
+                    "F": 22,
+                    "A": 20,
                     "GD": 2,
-                    "P": 27
+                    "P": 28
                 },
                 "zone": {
                     "label": "AFC Champions League",
@@ -3099,13 +3099,13 @@
                 "position": 6,
                 "name": "Qingdao West Coast",
                 "stats": {
-                    "GP": 17,
+                    "GP": 18,
                     "W": 5,
                     "D": 9,
-                    "L": 3,
+                    "L": 4,
                     "F": 22,
-                    "A": 25,
-                    "GD": -3,
+                    "A": 28,
+                    "GD": -6,
                     "P": 24
                 },
                 "zone": null
@@ -3142,6 +3142,21 @@
             },
             {
                 "position": 9,
+                "name": "Shenzhen Xinpengcheng",
+                "stats": {
+                    "GP": 18,
+                    "W": 6,
+                    "D": 2,
+                    "L": 10,
+                    "F": 25,
+                    "A": 31,
+                    "GD": -6,
+                    "P": 20
+                },
+                "zone": null
+            },
+            {
+                "position": 10,
                 "name": "Shanghai Shenhua",
                 "stats": {
                     "GP": 17,
@@ -3156,7 +3171,7 @@
                 "zone": null
             },
             {
-                "position": 10,
+                "position": 11,
                 "name": "Zhejiang Professional FC",
                 "stats": {
                     "GP": 17,
@@ -3166,21 +3181,6 @@
                     "F": 23,
                     "A": 29,
                     "GD": -6,
-                    "P": 17
-                },
-                "zone": null
-            },
-            {
-                "position": 11,
-                "name": "Shenzhen Xinpengcheng",
-                "stats": {
-                    "GP": 17,
-                    "W": 5,
-                    "D": 2,
-                    "L": 10,
-                    "F": 22,
-                    "A": 31,
-                    "GD": -9,
                     "P": 17
                 },
                 "zone": null
@@ -7293,13 +7293,13 @@
                 "position": 3,
                 "name": "BK Häcken",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 5,
                     "D": 5,
-                    "L": 1,
-                    "F": 22,
-                    "A": 18,
-                    "GD": 4,
+                    "L": 2,
+                    "F": 25,
+                    "A": 22,
+                    "GD": 3,
                     "P": 20
                 },
                 "zone": null
@@ -7321,6 +7321,21 @@
             },
             {
                 "position": 5,
+                "name": "AIK",
+                "stats": {
+                    "GP": 12,
+                    "W": 5,
+                    "D": 3,
+                    "L": 4,
+                    "F": 16,
+                    "A": 18,
+                    "GD": -2,
+                    "P": 18
+                },
+                "zone": null
+            },
+            {
+                "position": 6,
                 "name": "Djurgården",
                 "stats": {
                     "GP": 10,
@@ -7335,7 +7350,7 @@
                 "zone": null
             },
             {
-                "position": 6,
+                "position": 7,
                 "name": "GAIS",
                 "stats": {
                     "GP": 12,
@@ -7350,22 +7365,22 @@
                 "zone": null
             },
             {
-                "position": 7,
+                "position": 8,
                 "name": "Mjällby AIF",
                 "stats": {
-                    "GP": 11,
+                    "GP": 12,
                     "W": 4,
                     "D": 4,
-                    "L": 3,
-                    "F": 18,
-                    "A": 15,
-                    "GD": 3,
+                    "L": 4,
+                    "F": 19,
+                    "A": 17,
+                    "GD": 2,
                     "P": 16
                 },
                 "zone": null
             },
             {
-                "position": 8,
+                "position": 9,
                 "name": "Malmö FF",
                 "stats": {
                     "GP": 11,
@@ -7380,7 +7395,7 @@
                 "zone": null
             },
             {
-                "position": 9,
+                "position": 10,
                 "name": "IF Brommapojkarna",
                 "stats": {
                     "GP": 11,
@@ -7395,7 +7410,7 @@
                 "zone": null
             },
             {
-                "position": 10,
+                "position": 11,
                 "name": "Västerås SK",
                 "stats": {
                     "GP": 11,
@@ -7404,21 +7419,6 @@
                     "L": 4,
                     "F": 20,
                     "A": 23,
-                    "GD": -3,
-                    "P": 15
-                },
-                "zone": null
-            },
-            {
-                "position": 11,
-                "name": "AIK",
-                "stats": {
-                    "GP": 11,
-                    "W": 4,
-                    "D": 3,
-                    "L": 4,
-                    "F": 14,
-                    "A": 17,
                     "GD": -3,
                     "P": 15
                 },
@@ -7474,6 +7474,24 @@
             },
             {
                 "position": 15,
+                "name": "Örgryte IS",
+                "stats": {
+                    "GP": 12,
+                    "W": 2,
+                    "D": 3,
+                    "L": 7,
+                    "F": 14,
+                    "A": 31,
+                    "GD": -17,
+                    "P": 9
+                },
+                "zone": {
+                    "label": "Relégation",
+                    "type": "désavantage"
+                }
+            },
+            {
+                "position": 16,
                 "name": "Halmstads BK",
                 "stats": {
                     "GP": 11,
@@ -7483,24 +7501,6 @@
                     "F": 10,
                     "A": 23,
                     "GD": -13,
-                    "P": 6
-                },
-                "zone": {
-                    "label": "Relégation",
-                    "type": "désavantage"
-                }
-            },
-            {
-                "position": 16,
-                "name": "Örgryte IS",
-                "stats": {
-                    "GP": 11,
-                    "W": 1,
-                    "D": 3,
-                    "L": 7,
-                    "F": 10,
-                    "A": 28,
-                    "GD": -18,
                     "P": 6
                 },
                 "zone": {

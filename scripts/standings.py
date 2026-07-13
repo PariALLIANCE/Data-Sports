@@ -1,6 +1,7 @@
 import json
 import os
 import time
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -39,9 +40,19 @@ LEAGUES = {
     "USA_Major_League_Soccer": "usa.1",
     "Venezuela_Primera_Division": "ven.1",
     "UEFA_Champions_League": "uefa.champions",
-    "UEFA_Europa_League": "uefa.europa",
-    "FIFA_Club_World_Cup": "fifa.cwc"
 }
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Paramètres de scraping multi-saisons
+# ──────────────────────────────────────────────────────────────────────────────
+START_SEASON = 2023
+CURRENT_YEAR = datetime.now().year
+
+
+def get_historical_seasons(active_season: int) -> list:
+    """Saisons antérieures à la saison active : de START_SEASON à active_season - 1."""
+    return list(range(START_SEASON, active_season))
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Ligues dont la page ESPN utilise des sous-groupes (subgroup-headers).
@@ -50,8 +61,6 @@ SUBGROUP_LEAGUES = set()
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Ligues avec deux phases distinctes.
-# Mexico_Liga_MX : seasontype/1 = Apertura, seasontype/2 = Clausura
-# Belgium_Jupiler_Pro_League : seasontype/1 = saison régulière, seasontype/2 = playoffs
 # ──────────────────────────────────────────────────────────────────────────────
 MULTI_PHASE_LEAGUES = {
     "Belgium_Jupiler_Pro_League": {
@@ -66,8 +75,8 @@ MULTI_PHASE_LEAGUES = {
     "Mexico_Liga_MX": {
         "regular": "https://www.espn.com/soccer/standings/_/league/MEX.1/seasontype/1",
         "playoffs": "https://www.espn.com/soccer/standings/_/league/MEX.1/seasontype/2",
-        "regular_journees": 17,   # Apertura : 17 journées
-        "playoff_max_journees": 17,  # Clausura : 17 journées
+        "regular_journees": 17,
+        "playoff_max_journees": 17,
         "phase1_label": "apertura",
         "phase2_label": "clausura",
         "phase2_is_subgroup": False,
@@ -75,13 +84,11 @@ MULTI_PHASE_LEAGUES = {
 }
 
 LEAGUE_ZONES = {
-    # ── Belgique saison régulière ─────────────────────────────────────────────
     "Belgium_Jupiler_Pro_League": [
         (1,  6,  "Championship Playoffs",  True),
         (7,  12, "European Playoffs",      True),
         (13, 16, "Relegation Playoffs",    False),
     ],
-    # ── Belgique playoffs (classement global 1-16) ────────────────────────────
     "Belgium_Jupiler_Pro_League_Playoffs": [
         (1,  1,  "Champion + UEFA Champions League",   True),
         (2,  2,  "UEFA Champions League",              True),
@@ -94,12 +101,10 @@ LEAGUE_ZONES = {
         (14, 14, "Playoff Relégation vs Challenger",   False),
         (15, 16, "Relégation",                         False),
     ],
-    # ── Mexico Apertura (saison régulière) ────────────────────────────────────
     "Mexico_Liga_MX": [
         (1,  6,  "Liguilla directe (Quarts de finale)", True),
         (7,  10, "Play-in (Reclasificación)",           True),
     ],
-    # ── Mexico Clausura (saison régulière) ────────────────────────────────────
     "Mexico_Liga_MX_Clausura": [
         (1,  6,  "Liguilla directe (Quarts de finale)", True),
         (7,  10, "Play-in (Reclasificación)",           True),
@@ -262,13 +267,6 @@ LEAGUE_ZONES = {
         (17, 24, "Repêchage Europa League",        True),
         (25, 36, "Élimination",                    False),
     ],
-    "UEFA_Europa_League": [
-        (1,  8,  "Huitièmes de finale",            True),
-        (9,  16, "Huitièmes Playoff",              True),
-        (17, 24, "Repêchage Conference League",    True),
-        (25, 36, "Élimination",                    False),
-    ],
-    "FIFA_Club_World_Cup": [],
 }
 
 BASE_DIR = "data/football/standings"
@@ -436,8 +434,9 @@ def fetch_subgroup_standings(url: str) -> list:
         driver.quit()
 
 
-def fetch_standings_with_selenium(league_name: str, league_id: str) -> list:
-    url = f"https://www.espn.com/soccer/standings/_/league/{league_id}"
+def fetch_standings_with_selenium(league_name: str, league_id: str, season: int) -> list:
+    """Scrape le classement d'une ligue simple (une seule phase) pour une saison donnée."""
+    url = f"https://www.espn.com/soccer/standings/_/league/{league_id}/season/{season}"
     if league_name in SUBGROUP_LEAGUES:
         return fetch_subgroup_standings(url)
     return fetch_standings_from_url(url)
@@ -474,12 +473,44 @@ def enrich_standings_with_zones(league_name: str, standings: list) -> list:
     return enriched
 
 
-def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_data: dict) -> dict:
-    """
-    Scrape une ligue à deux phases.
-    Belgique : phase1 = saison régulière, phase2 = playoffs (sous-groupes)
-    Mexique  : phase1 = Apertura (seasontype/1), phase2 = Clausura (seasontype/2)
-    """
+def _season_entry_has_standings(entry: dict, is_multi_phase: bool) -> bool:
+    """Vérifie si une entrée de saison (simple ou multi-phases) contient un classement non vide."""
+    if not entry:
+        return False
+    if is_multi_phase:
+        for key, value in entry.items():
+            if isinstance(value, dict) and value.get("standings"):
+                return True
+        return False
+    return bool(entry.get("standings"))
+
+
+def scrape_single_phase_season(league_name: str, league_id: str, season: int) -> dict:
+    standings = fetch_standings_with_selenium(league_name, league_id, season)
+    num_teams = len(standings)
+
+    if num_teams == 0:
+        return {
+            "saison": season,
+            "total_journees": 0,
+            "position_zones": build_zones_meta(league_name),
+            "standings": []
+        }
+
+    total_journees = num_teams * 2 - 2
+
+    return {
+        "saison": season,
+        "total_journees": total_journees,
+        "position_zones": build_zones_meta(league_name),
+        "standings": enrich_standings_with_zones(league_name, standings)
+    }
+
+
+def scrape_multi_phase_season(league_name: str, phase_config: dict, season: int) -> dict:
+    """Scrape une ligue à deux phases pour une saison donnée. Chaque phase reçoit
+    un indicateur "partie" (1 ou 2) pour savoir si c'est la 1ère ou la 2ème partie
+    du classement."""
     result = {}
     phase1_label = phase_config["phase1_label"]
     phase2_label = phase_config["phase2_label"]
@@ -487,58 +518,91 @@ def scrape_multi_phase_league(league_name: str, phase_config: dict, existing_dat
         if league_name == "Mexico_Liga_MX" \
         else f"{league_name}_Playoffs"
 
-    # ── Phase 1 ───────────────────────────────────────────────────────────────
-    print(f"  📋 Phase 1 ({phase1_label})...")
-    phase1_standings = fetch_standings_from_url(phase_config["regular"])
+    print(f"  📋 Phase 1 ({phase1_label}) - saison {season}...")
+    url_phase1 = f"{phase_config['regular']}/season/{season}"
+    phase1_standings = fetch_standings_from_url(url_phase1)
     time.sleep(2)
 
+    result[phase1_label] = {
+        "partie": 1,
+        "saison": season,
+        "total_journees": phase_config["regular_journees"],
+        "position_zones": build_zones_meta(league_name),
+        "standings": enrich_standings_with_zones(league_name, phase1_standings) if phase1_standings else []
+    }
     if phase1_standings:
-        result[phase1_label] = {
-            "total_journees": phase_config["regular_journees"],
-            "position_zones": build_zones_meta(league_name),
-            "standings": enrich_standings_with_zones(league_name, phase1_standings)
-        }
         print(f"  ✔ {phase1_label} : {len(phase1_standings)} équipes")
-    else:
-        old = existing_data.get(league_name, {}).get(phase1_label)
-        if old:
-            print(f"  ⚠️  Fallback {phase1_label} précédent")
-            result[phase1_label] = old
-        else:
-            result[phase1_label] = {
-                "total_journees": phase_config["regular_journees"],
-                "position_zones": build_zones_meta(league_name),
-                "standings": []
-            }
 
-    # ── Phase 2 ───────────────────────────────────────────────────────────────
-    print(f"  🏆 Phase 2 ({phase2_label})...")
+    print(f"  🏆 Phase 2 ({phase2_label}) - saison {season}...")
+    url_phase2 = f"{phase_config['playoffs']}/season/{season}"
     if phase_config["phase2_is_subgroup"]:
-        phase2_standings = fetch_subgroup_standings(phase_config["playoffs"])
+        phase2_standings = fetch_subgroup_standings(url_phase2)
     else:
-        phase2_standings = fetch_standings_from_url(phase_config["playoffs"])
+        phase2_standings = fetch_standings_from_url(url_phase2)
     time.sleep(2)
 
+    result[phase2_label] = {
+        "partie": 2,
+        "saison": season,
+        "total_journees": phase_config["playoff_max_journees"],
+        "position_zones": build_zones_meta(phase2_zone_key),
+        "standings": enrich_standings_with_zones(phase2_zone_key, phase2_standings) if phase2_standings else []
+    }
     if phase2_standings:
-        result[phase2_label] = {
-            "total_journees": phase_config["playoff_max_journees"],
-            "position_zones": build_zones_meta(phase2_zone_key),
-            "standings": enrich_standings_with_zones(phase2_zone_key, phase2_standings)
-        }
         print(f"  ✔ {phase2_label} : {len(phase2_standings)} équipes")
-    else:
-        old = existing_data.get(league_name, {}).get(phase2_label)
-        if old:
-            print(f"  ⚠️  Fallback {phase2_label} précédent")
-            result[phase2_label] = old
-        else:
-            result[phase2_label] = {
-                "total_journees": phase_config["playoff_max_journees"],
-                "position_zones": build_zones_meta(phase2_zone_key),
-                "standings": []
-            }
 
     return result
+
+
+def scrape_season_entry(league_name, league_id, season, is_multi_phase, phase_config) -> dict:
+    if is_multi_phase:
+        return scrape_multi_phase_season(league_name, phase_config, season)
+    return scrape_single_phase_season(league_name, league_id, season)
+
+
+def determine_active_season(
+    league_name: str,
+    league_id: str,
+    is_multi_phase: bool,
+    phase_config: dict | None,
+    existing_league_data: dict
+) -> tuple[int, dict]:
+    """
+    Détermine quelle saison est actuellement "active" pour cette ligue et scrape
+    cette saison à chaque run (toujours en direct, jamais figée sur du cache) :
+
+    1) On tente CURRENT_YEAR (ex: 2026). Si ça renvoie des données -> c'est la
+       saison active.
+    2) Si CURRENT_YEAR est vide (ex: la saison ESPN 2025-2026 est encore
+       référencée comme "2025"), on retombe sur CURRENT_YEAR - 1 (ex: 2025)
+       et on la RE-SCRAPE à ce run (pas de simple lecture du cache), pour que
+       le classement 2025 continue d'être mis à jour tant que 2026 n'a pas
+       démarré côté ESPN.
+    3) Si même CURRENT_YEAR - 1 échoue au scraping, on garde en dernier recours
+       le cache existant de CURRENT_YEAR - 1 s'il existe.
+    """
+    print(f"  🔎 Tentative saison active {CURRENT_YEAR}...")
+    entry_current = scrape_season_entry(league_name, league_id, CURRENT_YEAR, is_multi_phase, phase_config)
+
+    if _season_entry_has_standings(entry_current, is_multi_phase):
+        return CURRENT_YEAR, entry_current
+
+    print(f"  ⚠️  Saison {CURRENT_YEAR} vide côté ESPN — la saison active est probablement {CURRENT_YEAR - 1}.")
+    fallback_season = CURRENT_YEAR - 1
+    time.sleep(2)
+    print(f"  🔁 Re-scraping de la saison {fallback_season} (mise à jour à chaque run)...")
+    entry_fallback = scrape_season_entry(league_name, league_id, fallback_season, is_multi_phase, phase_config)
+
+    if _season_entry_has_standings(entry_fallback, is_multi_phase):
+        return fallback_season, entry_fallback
+
+    existing_fallback = existing_league_data.get(str(fallback_season))
+    if _season_entry_has_standings(existing_fallback, is_multi_phase):
+        print(f"  ⚠️  Nouveau scraping {fallback_season} vide aussi — conservation du dernier cache disponible.")
+        return fallback_season, existing_fallback
+
+    print(f"  ❌ Aucune donnée disponible ni pour {CURRENT_YEAR} ni pour {fallback_season}.")
+    return CURRENT_YEAR, entry_current
 
 
 def scrape_all_leagues():
@@ -548,47 +612,41 @@ def scrape_all_leagues():
     for league_name, league_id in LEAGUES.items():
         try:
             print(f"🔹 Scraping {league_name}...")
+            existing_league_data = existing_data.get(league_name, {})
+            is_multi_phase = league_name in MULTI_PHASE_LEAGUES
+            phase_config = MULTI_PHASE_LEAGUES.get(league_name)
 
-            if league_name in MULTI_PHASE_LEAGUES:
-                all_data[league_name] = scrape_multi_phase_league(
-                    league_name,
-                    MULTI_PHASE_LEAGUES[league_name],
-                    existing_data
-                )
-                print(f"✔ {league_name} (multi-phases) terminé\n")
-                continue
+            # ── Saison active : toujours scrapée en direct à chaque run ────────
+            active_season, active_entry = determine_active_season(
+                league_name, league_id, is_multi_phase, phase_config, existing_league_data
+            )
 
-            standings = fetch_standings_with_selenium(league_name, league_id)
-            num_teams = len(standings)
+            league_result = {str(active_season): active_entry}
 
-            if num_teams == 0:
-                if league_name in existing_data and existing_data[league_name].get("standings"):
-                    print(f"⚠️  Aucun résultat — conservation du classement précédent pour {league_name}")
-                    all_data[league_name] = existing_data[league_name]
-                else:
-                    print(f"❌  Aucun résultat et aucun classement précédent pour {league_name}")
-                    all_data[league_name] = {
-                        "total_journees": 0,
-                        "position_zones": build_zones_meta(league_name),
-                        "standings": []
-                    }
-                continue
+            # ── Saisons historiques : de START_SEASON jusqu'à active_season - 1 ─
+            # Une fois qu'elles ont des données en cache, elles ne sont plus
+            # re-scrapées (contrairement à la saison active).
+            for season in get_historical_seasons(active_season):
+                season_key = str(season)
+                existing_entry = existing_league_data.get(season_key)
 
-            total_journees = num_teams * 2 - 2
+                if _season_entry_has_standings(existing_entry, is_multi_phase):
+                    print(f"  ⏭️  Saison {season} déjà en cache, non re-scrapée.")
+                    league_result[season_key] = existing_entry
+                    continue
 
-            all_data[league_name] = {
-                "total_journees": total_journees,
-                "position_zones": build_zones_meta(league_name),
-                "standings": enrich_standings_with_zones(league_name, standings)
-            }
-            print(f"✔ {num_teams} équipes — {total_journees} journées — "
-                  f"{len(build_zones_meta(league_name))} zones pour {league_name}\n")
-            time.sleep(2)
+                print(f" 📅 Saison historique manquante {season}, scraping...")
+                fresh_entry = scrape_season_entry(league_name, league_id, season, is_multi_phase, phase_config)
+                time.sleep(2)
+                league_result[season_key] = fresh_entry if _season_entry_has_standings(fresh_entry, is_multi_phase) else (existing_entry or fresh_entry)
+
+            all_data[league_name] = league_result
+            print(f"✔ {league_name} terminé — saison active : {active_season}\n")
 
         except Exception as e:
             print(f"❌ Erreur pour {league_name}: {e}")
-            if league_name in existing_data and existing_data[league_name].get("standings"):
-                print(f"⚠️  Exception — conservation du classement précédent pour {league_name}")
+            if league_name in existing_data:
+                print(f"⚠️  Exception — conservation des données précédentes pour {league_name}")
                 all_data[league_name] = existing_data[league_name]
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

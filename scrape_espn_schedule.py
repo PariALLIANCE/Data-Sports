@@ -159,27 +159,31 @@ def extract_match_row(row, match_date):
     """
     Parse une ligne <tr> de la page schedule ESPN. Structure réelle
     observée (5 <td>) :
-      [0] events__col   -> équipe "away" (classe Table__Team away)
-      [1] colspan__col   -> lien score/match + équipe "local" (domicile)
+      [0] events__col   -> équipe à domicile (classe Table__Team away
+                           dans le HTML ESPN, mais correspond en
+                           réalité au lieu/venue du match, donc au
+                           domicile)
+      [1] colspan__col   -> lien score/match + équipe extérieure
+                           (bloc "local" dans le HTML ESPN)
       [2] teams__col     -> statut (FT, ou heure si match à venir)
       [3] venue__col     -> lieu du match
       [4] attendance__col -> affluence
-    Convention (identique à Teams_tracker.py) : l'équipe dans le bloc
-    "local" est l'équipe à domicile, l'équipe marquée "away" est
-    l'équipe à l'extérieur.
+    Convention : vérifiée empiriquement via le lieu du match — le
+    venue correspond systématiquement à l'équipe de cells[0], donc
+    cells[0] = domicile et l'équipe du bloc "local" = extérieur.
     """
     cells = row.find_all("td")
     if len(cells) < 5:
         return None
 
-    # --- Équipe extérieure (cells[0]) ---
-    away_container = cells[0].select_one("span.Table__Team.away") or cells[0]
-    away_links = away_container.find_all("a")
-    away_href = away_links[0].get("href") if away_links else ""
-    away_team_id = extract_team_id(away_href)
-    away_team_name = team_name_from_href(away_href)
+    # --- Équipe à domicile (cells[0]) ---
+    home_container = cells[0].select_one("span.Table__Team.away") or cells[0]
+    home_links = home_container.find_all("a")
+    home_href = home_links[0].get("href") if home_links else ""
+    home_team_id = extract_team_id(home_href)
+    home_team_name = team_name_from_href(home_href)
 
-    # --- Bloc score + équipe domicile (cells[1]) ---
+    # --- Bloc score + équipe extérieure (cells[1]) ---
     local_div = cells[1].select_one("div.local") or cells[1]
 
     score_link = local_div.select_one("a.at") or local_div.find("a")
@@ -190,11 +194,11 @@ def extract_match_row(row, match_date):
     score_text = score_link.get_text(strip=True) if score_link else ""
     home_score, away_score = parse_score_text(score_text)
 
-    home_container = local_div.select_one("span.Table__Team")
-    home_links = home_container.find_all("a") if home_container else []
-    home_href = home_links[0].get("href") if home_links else ""
-    home_team_id = extract_team_id(home_href)
-    home_team_name = team_name_from_href(home_href)
+    away_container = local_div.select_one("span.Table__Team")
+    away_links = away_container.find_all("a") if away_container else []
+    away_href = away_links[0].get("href") if away_links else ""
+    away_team_id = extract_team_id(away_href)
+    away_team_name = team_name_from_href(away_href)
 
     # --- Statut (cells[2]) : "FT" si terminé, sinon heure du coup d'envoi ---
     status_el = cells[2].find("a") or cells[2]

@@ -1,0 +1,49 @@
+name: Scrape ESPN Schedule
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_slug:
+        description: 'Code de la ligue (ex: eng.1 pour Premier League)'
+        required: true
+        default: 'eng.1'
+      schedule_date:
+        description: 'Date au format YYYYMMDD (ex: 20260520)'
+        required: true
+        default: '20260520'
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+      
+      - name: Install dependencies
+        run: |
+          pip install selenium webdriver-manager beautifulsoup4
+      
+      - name: Run scraper
+        env:
+          LEAGUE_SLUG: ${{ github.event.inputs.league_slug }}
+          SCHEDULE_DATE: ${{ github.event.inputs.schedule_date }}
+        run: python scrape_espn_schedule.py
+      
+      - name: Commit results
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "Scrape ESPN schedule for ${{ github.event.inputs.schedule_date }} - ${{ github.event.inputs.league_slug }}"
+            git push origin HEAD
+          )

@@ -298,13 +298,14 @@ def extract_match_stats(soup):
 def extract_match_odds(soup):
     """
     Extrait les cotes 1X2 (Moneyline) depuis la page du match.
-    Les cellules home/away/draw correspondent respectivement aux
-    index 2, 6 et 10 parmi les div[data-testid="OddsCell"].
+    Reprend exactement la logique validée de Teams_tracker.py :
+    les cellules home/away/draw correspondent aux index 0, 3 et 6
+    parmi les div[data-testid="OddsCell"] (7 cellules minimum).
     """
     empty = {"home": None, "away": None, "draw": None}
     try:
         cells = soup.find_all("div", {"data-testid": "OddsCell"})
-        if len(cells) < 11:
+        if len(cells) < 7:
             return empty
 
         def read(cell):
@@ -319,9 +320,9 @@ def extract_match_odds(soup):
             except Exception:
                 return False
 
-        home_us = read(cells[2])
-        away_us = read(cells[6])
-        draw_us = read(cells[10])
+        home_us = read(cells[0])
+        away_us = read(cells[3])
+        draw_us = read(cells[6])
 
         if not all(is_valid(v) for v in [home_us, away_us, draw_us]):
             return empty
@@ -334,7 +335,6 @@ def extract_match_odds(soup):
     except Exception as e:
         print(f"  ⚠️ Erreur extraction cotes : {e}")
         return empty
-
 
 # ===============================================================
 # VISITE DE LA PAGE DU MATCH — enrichissement stats + cotes

@@ -1,11 +1,12 @@
 {
   "date": "20260520",
   "league": "eng.1",
-  "scraped_at": "2026-07-16T23:13:29.174764",
+  "scraped_at": "2026-07-16T23:43:55.187817",
   "nb_matches": 10,
   "matches": [
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Brighton Hove Albion",
       "home_team_id": "331",
@@ -15,6 +16,7 @@
       "away_team_id": "360",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
       "away_score": 3,
+      "venue": "American Express Stadium, Falmer , England",
       "match_id": "740966",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740966/manchester-united-brighton-hove-albion",
       "stats": {
@@ -49,6 +51,14 @@
         "Saves": {
           "home": 5,
           "away": 2
+        },
+        "Score 1ère mi-temps": {
+          "home": 0,
+          "away": 2
+        },
+        "Score 2nde mi-temps": {
+          "home": 0,
+          "away": 1
         }
       },
       "odds": {
@@ -59,6 +69,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Burnley",
       "home_team_id": "379",
@@ -68,6 +79,7 @@
       "away_team_id": "380",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/380.png",
       "away_score": 1,
+      "venue": "Turf Moor, Burnley , England",
       "match_id": "740967",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740967/wolverhampton-wanderers-burnley",
       "stats": {
@@ -102,6 +114,14 @@
         "Saves": {
           "home": 3,
           "away": 7
+        },
+        "Score 1ère mi-temps": {
+          "home": 0,
+          "away": 1
+        },
+        "Score 2nde mi-temps": {
+          "home": 1,
+          "away": 0
         }
       },
       "odds": {
@@ -112,6 +132,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Crystal Palace",
       "home_team_id": "384",
@@ -121,6 +142,7 @@
       "away_team_id": "359",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
       "away_score": 2,
+      "venue": "Selhurst Park, London , England",
       "match_id": "740968",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740968/arsenal-crystal-palace",
       "stats": {
@@ -155,6 +177,14 @@
         "Saves": {
           "home": 5,
           "away": 2
+        },
+        "Score 1ère mi-temps": {
+          "home": 0,
+          "away": 1
+        },
+        "Score 2nde mi-temps": {
+          "home": 1,
+          "away": 1
         }
       },
       "odds": {
@@ -165,6 +195,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Fulham",
       "home_team_id": "370",
@@ -174,6 +205,7 @@
       "away_team_id": "361",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
       "away_score": 0,
+      "venue": "Craven Cottage, London , England",
       "match_id": "740969",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740969/newcastle-united-fulham",
       "stats": {
@@ -208,6 +240,14 @@
         "Saves": {
           "home": 2,
           "away": 4
+        },
+        "Score 1ère mi-temps": {
+          "home": 1,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 1,
+          "away": 0
         }
       },
       "odds": {
@@ -218,6 +258,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Liverpool",
       "home_team_id": "364",
@@ -227,6 +268,7 @@
       "away_team_id": "337",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
       "away_score": 1,
+      "venue": "Anfield, Liverpool , England",
       "match_id": "740975",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740975/brentford-liverpool",
       "stats": {
@@ -261,6 +303,14 @@
         "Saves": {
           "home": 1,
           "away": 7
+        },
+        "Score 1ère mi-temps": {
+          "home": 0,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 1,
+          "away": 1
         }
       },
       "odds": {
@@ -271,6 +321,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Manchester City",
       "home_team_id": "382",
@@ -280,6 +331,7 @@
       "away_team_id": "362",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
       "away_score": 2,
+      "venue": "Etihad Stadium, Manchester , England",
       "match_id": "740970",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740970/aston-villa-manchester-city",
       "stats": {
@@ -314,6 +366,14 @@
         "Saves": {
           "home": 3,
           "away": 2
+        },
+        "Score 1ère mi-temps": {
+          "home": 1,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 0,
+          "away": 2
         }
       },
       "odds": {
@@ -324,6 +384,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Nottingham Forest",
       "home_team_id": "393",
@@ -333,6 +394,7 @@
       "away_team_id": "349",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
       "away_score": 1,
+      "venue": "The City Ground, Nottingham , England",
       "match_id": "740972",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740972/afc-bournemouth-nottingham-forest",
       "stats": {
@@ -367,6 +429,14 @@
         "Saves": {
           "home": 3,
           "away": 3
+        },
+        "Score 1ère mi-temps": {
+          "home": 1,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 0,
+          "away": 1
         }
       },
       "odds": {
@@ -377,6 +447,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Sunderland",
       "home_team_id": "366",
@@ -386,6 +457,7 @@
       "away_team_id": "363",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
       "away_score": 1,
+      "venue": "Stadium of Light, Sunderland , England",
       "match_id": "740973",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740973/chelsea-sunderland",
       "stats": {
@@ -420,6 +492,14 @@
         "Saves": {
           "home": 2,
           "away": 5
+        },
+        "Score 1ère mi-temps": {
+          "home": 1,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 1,
+          "away": 1
         }
       },
       "odds": {
@@ -430,6 +510,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "Tottenham Hotspur",
       "home_team_id": "367",
@@ -439,6 +520,7 @@
       "away_team_id": "368",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
       "away_score": 0,
+      "venue": "Tottenham Hotspur Stadium, London , England",
       "match_id": "740974",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740974/everton-tottenham-hotspur",
       "stats": {
@@ -473,6 +555,14 @@
         "Saves": {
           "home": 1,
           "away": 1
+        },
+        "Score 1ère mi-temps": {
+          "home": 1,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 0,
+          "away": 0
         }
       },
       "odds": {
@@ -483,6 +573,7 @@
     },
     {
       "date": "2026-05-24",
+      "time": "3:00 PM",
       "status": "FT",
       "home_team": "West Ham United",
       "home_team_id": "371",
@@ -492,6 +583,7 @@
       "away_team_id": "357",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
       "away_score": 0,
+      "venue": "London Stadium, London , England",
       "match_id": "740971",
       "match_url": "https://www.espn.com/soccer/match/_/gameId/740971/leeds-united-west-ham-united",
       "stats": {
@@ -526,6 +618,14 @@
         "Saves": {
           "home": 3,
           "away": 5
+        },
+        "Score 1ère mi-temps": {
+          "home": 0,
+          "away": 0
+        },
+        "Score 2nde mi-temps": {
+          "home": 3,
+          "away": 0
         }
       },
       "odds": {

@@ -1,7 +1,7 @@
 {
   "date": "20260520",
   "league": "eng.1",
-  "scraped_at": "2026-07-15T12:51:39.336423",
+  "scraped_at": "2026-07-16T09:15:12.656319",
   "nb_matches": 10,
   "matches": [
     {
@@ -15,10 +15,47 @@
       "away_team_id": "360",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
       "away_score": 3,
-      "venue": "American Express Stadium, Falmer, England",
-      "attendance": 31729,
       "match_id": "740966",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740966/manchester-united-brighton-hove-albion"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740966/manchester-united-brighton-hove-albion",
+      "stats": {
+        "Possession": {
+          "home": 52,
+          "away": 48
+        },
+        "Shots on Goal": {
+          "home": 2,
+          "away": 7
+        },
+        "Shots": {
+          "home": 13,
+          "away": 11
+        },
+        "Fouls Committed": {
+          "home": 11,
+          "away": 8
+        },
+        "Yellow Cards": {
+          "home": 0,
+          "away": 1
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 0,
+          "away": 3
+        },
+        "Saves": {
+          "home": 5,
+          "away": 2
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -31,10 +68,47 @@
       "away_team_id": "380",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/380.png",
       "away_score": 1,
-      "venue": "Turf Moor, Burnley, England",
-      "attendance": 21057,
       "match_id": "740967",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740967/wolverhampton-wanderers-burnley"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740967/wolverhampton-wanderers-burnley",
+      "stats": {
+        "Possession": {
+          "home": 70,
+          "away": 30
+        },
+        "Shots on Goal": {
+          "home": 8,
+          "away": 4
+        },
+        "Shots": {
+          "home": 16,
+          "away": 16
+        },
+        "Fouls Committed": {
+          "home": 10,
+          "away": 11
+        },
+        "Yellow Cards": {
+          "home": 2,
+          "away": 2
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 7,
+          "away": 7
+        },
+        "Saves": {
+          "home": 3,
+          "away": 7
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -47,10 +121,47 @@
       "away_team_id": "359",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
       "away_score": 2,
-      "venue": "Selhurst Park, London, England",
-      "attendance": null,
       "match_id": "740968",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740968/arsenal-crystal-palace"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740968/arsenal-crystal-palace",
+      "stats": {
+        "Possession": {
+          "home": 40,
+          "away": 60
+        },
+        "Shots on Goal": {
+          "home": 3,
+          "away": 7
+        },
+        "Shots": {
+          "home": 8,
+          "away": 17
+        },
+        "Fouls Committed": {
+          "home": 9,
+          "away": 12
+        },
+        "Yellow Cards": {
+          "home": 0,
+          "away": 1
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 3,
+          "away": 4
+        },
+        "Saves": {
+          "home": 5,
+          "away": 2
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -63,10 +174,47 @@
       "away_team_id": "361",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
       "away_score": 0,
-      "venue": "Craven Cottage, London, England",
-      "attendance": 27442,
       "match_id": "740969",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740969/newcastle-united-fulham"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740969/newcastle-united-fulham",
+      "stats": {
+        "Possession": {
+          "home": 45,
+          "away": 55
+        },
+        "Shots on Goal": {
+          "home": 6,
+          "away": 2
+        },
+        "Shots": {
+          "home": 21,
+          "away": 7
+        },
+        "Fouls Committed": {
+          "home": 13,
+          "away": 6
+        },
+        "Yellow Cards": {
+          "home": 2,
+          "away": 2
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 6,
+          "away": 6
+        },
+        "Saves": {
+          "home": 2,
+          "away": 4
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -79,10 +227,47 @@
       "away_team_id": "337",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
       "away_score": 1,
-      "venue": "Anfield, Liverpool, England",
-      "attendance": 60325,
       "match_id": "740975",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740975/brentford-liverpool"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740975/brentford-liverpool",
+      "stats": {
+        "Possession": {
+          "home": 60,
+          "away": 40
+        },
+        "Shots on Goal": {
+          "home": 8,
+          "away": 2
+        },
+        "Shots": {
+          "home": 24,
+          "away": 11
+        },
+        "Fouls Committed": {
+          "home": 9,
+          "away": 9
+        },
+        "Yellow Cards": {
+          "home": 2,
+          "away": 3
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 14,
+          "away": 2
+        },
+        "Saves": {
+          "home": 1,
+          "away": 7
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -95,10 +280,47 @@
       "away_team_id": "362",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
       "away_score": 2,
-      "venue": "Etihad Stadium, Manchester, England",
-      "attendance": 60332,
       "match_id": "740970",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740970/aston-villa-manchester-city"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740970/aston-villa-manchester-city",
+      "stats": {
+        "Possession": {
+          "home": 52,
+          "away": 48
+        },
+        "Shots on Goal": {
+          "home": 3,
+          "away": 5
+        },
+        "Shots": {
+          "home": 16,
+          "away": 12
+        },
+        "Fouls Committed": {
+          "home": 8,
+          "away": 4
+        },
+        "Yellow Cards": {
+          "home": 1,
+          "away": 0
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 9,
+          "away": 4
+        },
+        "Saves": {
+          "home": 3,
+          "away": 2
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -111,10 +333,47 @@
       "away_team_id": "349",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
       "away_score": 1,
-      "venue": "The City Ground, Nottingham, England",
-      "attendance": 30741,
       "match_id": "740972",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740972/afc-bournemouth-nottingham-forest"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740972/afc-bournemouth-nottingham-forest",
+      "stats": {
+        "Possession": {
+          "home": 45,
+          "away": 55
+        },
+        "Shots on Goal": {
+          "home": 5,
+          "away": 4
+        },
+        "Shots": {
+          "home": 15,
+          "away": 17
+        },
+        "Fouls Committed": {
+          "home": 11,
+          "away": 7
+        },
+        "Yellow Cards": {
+          "home": 1,
+          "away": 1
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 6,
+          "away": 3
+        },
+        "Saves": {
+          "home": 3,
+          "away": 3
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -127,10 +386,47 @@
       "away_team_id": "363",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
       "away_score": 1,
-      "venue": "Stadium of Light, Sunderland, England",
-      "attendance": null,
       "match_id": "740973",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740973/chelsea-sunderland"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740973/chelsea-sunderland",
+      "stats": {
+        "Possession": {
+          "home": 44,
+          "away": 56
+        },
+        "Shots on Goal": {
+          "home": 6,
+          "away": 3
+        },
+        "Shots": {
+          "home": 21,
+          "away": 8
+        },
+        "Fouls Committed": {
+          "home": 15,
+          "away": 12
+        },
+        "Yellow Cards": {
+          "home": 5,
+          "away": 3
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 1
+        },
+        "Corners Won": {
+          "home": 6,
+          "away": 2
+        },
+        "Saves": {
+          "home": 2,
+          "away": 5
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -143,10 +439,47 @@
       "away_team_id": "368",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
       "away_score": 0,
-      "venue": "Tottenham Hotspur Stadium, London, England",
-      "attendance": null,
       "match_id": "740974",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740974/everton-tottenham-hotspur"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740974/everton-tottenham-hotspur",
+      "stats": {
+        "Possession": {
+          "home": 50,
+          "away": 50
+        },
+        "Shots on Goal": {
+          "home": 2,
+          "away": 1
+        },
+        "Shots": {
+          "home": 20,
+          "away": 10
+        },
+        "Fouls Committed": {
+          "home": 15,
+          "away": 18
+        },
+        "Yellow Cards": {
+          "home": 3,
+          "away": 2
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 7,
+          "away": 7
+        },
+        "Saves": {
+          "home": 1,
+          "away": 1
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     },
     {
       "date": "2026-05-24",
@@ -159,10 +492,47 @@
       "away_team_id": "357",
       "away_logo_url": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
       "away_score": 0,
-      "venue": "London Stadium, London, England",
-      "attendance": 62471,
       "match_id": "740971",
-      "match_url": "https://www.espn.com/soccer/match/_/gameId/740971/leeds-united-west-ham-united"
+      "match_url": "https://www.espn.com/soccer/match/_/gameId/740971/leeds-united-west-ham-united",
+      "stats": {
+        "Possession": {
+          "home": 42,
+          "away": 58
+        },
+        "Shots on Goal": {
+          "home": 9,
+          "away": 3
+        },
+        "Shots": {
+          "home": 16,
+          "away": 13
+        },
+        "Fouls Committed": {
+          "home": 11,
+          "away": 14
+        },
+        "Yellow Cards": {
+          "home": 0,
+          "away": 3
+        },
+        "Red Cards": {
+          "home": 0,
+          "away": 0
+        },
+        "Corners Won": {
+          "home": 6,
+          "away": 4
+        },
+        "Saves": {
+          "home": 3,
+          "away": 5
+        }
+      },
+      "odds": {
+        "home": null,
+        "away": null,
+        "draw": null
+      }
     }
   ]
 }

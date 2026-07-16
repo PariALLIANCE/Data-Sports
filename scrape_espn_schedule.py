@@ -58,7 +58,7 @@ def setup_driver():
 
 
 # ===============================================================
-# HELPERS
+# HELPERS GÉNÉRIQUES
 # ===============================================================
 
 def fix_url(url, base=BASE_URL):
@@ -143,37 +143,62 @@ def parse_score_text(score_text):
     return int(m.group(1)), int(m.group(2))
 
 
-def extract_attendance(text):
-    """Convertit un texte d'affluence ("31,729" ou "N/A") en entier ou None."""
-    if not text:
+def to_int_stat(value):
+    """Convertit une valeur de statistique brute en entier si possible."""
+    if value is None:
         return None
-    cleaned = text.strip().replace(",", "")
-    return int(cleaned) if cleaned.isdigit() else None
+    text = str(value).strip().replace("%", "").replace(",", "").strip()
+    if re.fullmatch(r"-?\d+", text):
+        return int(text)
+    if re.fullmatch(r"-?\d+\.\d+", text):
+        return int(round(float(text)))
+    return value
+
+
+def finalize_stats(stats):
+    """Convertit systématiquement chaque valeur home/away en int."""
+    cleaned = {}
+    for label, vals in stats.items():
+        if not isinstance(vals, dict):
+            cleaned[label] = vals
+            continue
+        cleaned[label] = {
+            "home": to_int_stat(vals.get("home")),
+            "away": to_int_stat(vals.get("away")),
+        }
+    return cleaned
+
+
+def us_to_decimal(val):
+    """Convertit une cote américaine en cote décimale."""
+    if not val:
+        return None
+    try:
+        n = int(val.replace("+", "").strip())
+        return round(1 + (n / 100), 2) if n > 0 else round(1 + (100 / abs(n)), 2)
+    except Exception:
+        return None
 
 
 # ===============================================================
-# EXTRACTION D'UNE LIGNE DE MATCH
+# EXTRACTION D'UNE LIGNE DE MATCH (page schedule)
 # ===============================================================
 
 def extract_match_row(row, match_date):
     """
     Parse une ligne <tr> de la page schedule ESPN. Structure réelle
     observée (5 <td>) :
-      [0] events__col   -> équipe à domicile (classe Table__Team away
-                           dans le HTML ESPN, mais correspond en
-                           réalité au lieu/venue du match, donc au
-                           domicile)
-      [1] colspan__col   -> lien score/match + équipe extérieure
-                           (bloc "local" dans le HTML ESPN)
-      [2] teams__col     -> statut (FT, ou heure si match à venir)
-      [3] venue__col     -> lieu du match
-      [4] attendance__col -> affluence
-    Convention : vérifiée empiriquement via le lieu du match — le
-    venue correspond systématiquement à l'équipe de cells[0], donc
-    cells[0] = domicile et l'équipe du bloc "local" = extérieur.
+      [0] events__col    -> équipe à domicile (classe Table__Team away
+                            dans le HTML ESPN, mais correspond en
+                            réalité au lieu du match, donc au domicile)
+      [1] colspan__col    -> lien score/match + équipe extérieure
+                            (bloc "local" dans le HTML ESPN)
+      [2] teams__col      -> statut (FT, ou heure si match à venir)
+      [3] venue__col      -> (ignoré)
+      [4] attendance__col -> (ignoré)
     """
     cells = row.find_all("td")
-    if len(cells) < 5:
+    if len(cells) < 3:
         return None
 
     # --- Équipe à domicile (cells[0]) ---
@@ -204,14 +229,6 @@ def extract_match_row(row, match_date):
     status_el = cells[2].find("a") or cells[2]
     status = status_el.get_text(strip=True) if status_el else None
 
-    # --- Lieu (cells[3]) ---
-    venue_el = cells[3].find("div")
-    venue = venue_el.get_text(strip=True) if venue_el else None
-
-    # --- Affluence (cells[4]) ---
-    attendance_text = cells[4].get_text(strip=True) if len(cells) > 4 else None
-    attendance = extract_attendance(attendance_text)
-
     return {
         "date": match_date,
         "status": status,
@@ -223,11 +240,168 @@ def extract_match_row(row, match_date):
         "away_team_id": away_team_id,
         "away_logo_url": build_logo_url(away_team_id),
         "away_score": away_score,
-        "venue": venue,
-        "attendance": attendance,
         "match_id": game_id,
         "match_url": match_url,
+        "stats": {},
+        "odds": {"home": None, "away": None, "draw": None},
     }
+
+
+# ===============================================================
+# EXTRACTION DES STATS D'ÉQUIPE (page du match, structure Prism)
+# ===============================================================
+
+def extract_match_stats(soup):
+    """
+    Extrait les statistiques d'équipe depuis la section "Team Stats"
+    de la page du match (structure Prism ESPN).
+    """
+    stats = {}
+    try:
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "stat" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return stats
+
+        stat_blocks = section.select("div.THHyw")
+        for block in stat_blocks:
+            paragraphs = block.select("div.jaZjJ p")
+            if len(paragraphs) < 3:
+                continue
+
+            home_span = paragraphs[0].find("span")
+            home_val = home_span.get_text(strip=True) if home_span else paragraphs[0].get_text(strip=True)
+
+            label = paragraphs[1].get_text(strip=True)
+
+            away_span = paragraphs[2].find("span")
+            away_val = away_span.get_text(strip=True) if away_span else paragraphs[2].get_text(strip=True)
+
+            if label:
+                stats[label] = {"home": home_val, "away": away_val}
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction stats : {e}")
+
+    return finalize_stats(stats)
+
+
+# ===============================================================
+# EXTRACTION DES COTES 1X2 (page du match)
+# ===============================================================
+
+def extract_match_odds(soup):
+    """
+    Extrait les cotes 1X2 (Moneyline) depuis la page du match.
+    Les cellules home/away/draw correspondent respectivement aux
+    index 2, 6 et 10 parmi les div[data-testid="OddsCell"].
+    """
+    empty = {"home": None, "away": None, "draw": None}
+    try:
+        cells = soup.find_all("div", {"data-testid": "OddsCell"})
+        if len(cells) < 11:
+            return empty
+
+        def read(cell):
+            return cell.get_text(strip=True) or None
+
+        def is_valid(val):
+            if not val:
+                return False
+            try:
+                int(val.replace("+", "").replace("-", ""))
+                return True
+            except Exception:
+                return False
+
+        home_us = read(cells[2])
+        away_us = read(cells[6])
+        draw_us = read(cells[10])
+
+        if not all(is_valid(v) for v in [home_us, away_us, draw_us]):
+            return empty
+
+        return {
+            "home": us_to_decimal(home_us),
+            "away": us_to_decimal(away_us),
+            "draw": us_to_decimal(draw_us),
+        }
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction cotes : {e}")
+        return empty
+
+
+# ===============================================================
+# VISITE DE LA PAGE DU MATCH — enrichissement stats + cotes
+# ===============================================================
+
+def get_match_details(driver, match_url):
+    """
+    Charge la page du match via Selenium et retourne (stats, odds).
+    """
+    empty_odds = {"home": None, "away": None, "draw": None}
+    if not match_url:
+        return {}, empty_odds
+
+    try:
+        driver.get(match_url)
+        WebDriverWait(driver, 12).until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "section[data-testid='prism-LayoutCard']")
+            )
+        )
+        time.sleep(1)
+    except TimeoutException:
+        pass
+    except WebDriverException as e:
+        print(f"    ⚠️ WebDriver erreur ({match_url}) : {e}")
+        return {}, empty_odds
+
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    stats = extract_match_stats(soup)
+    odds = extract_match_odds(soup)
+    return stats, odds
+
+
+def enrich_matches_with_details(driver, matches):
+    """
+    Visite chaque match (via son match_url) pour récupérer les stats
+    d'équipe et les cotes 1X2, puis les injecte dans chaque dict de
+    match.
+    """
+    total = len(matches)
+    print("\n" + "=" * 60)
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Stats & cotes ({total} match(s))")
+    print("=" * 60)
+
+    for idx, match in enumerate(matches, 1):
+        if not match.get("match_url"):
+            continue
+
+        print(f"\n  [{idx}/{total}] {match['home_team']} vs {match['away_team']} "
+              f"(id={match['match_id']})")
+
+        try:
+            stats, odds = get_match_details(driver, match["match_url"])
+        except Exception as e:
+            print(f"    ⚠️ Erreur enrichissement gameId={match['match_id']}: {e}")
+            stats, odds = {}, {"home": None, "away": None, "draw": None}
+
+        match["stats"] = stats
+        match["odds"] = odds
+
+        odds_str = (
+            f"💰 {odds['home']}/{odds['draw']}/{odds['away']}"
+            if odds.get("home") is not None
+            else "ℹ️ pas de cotes"
+        )
+        print(f"    📊 {len(stats)} statistique(s)  |  {odds_str}")
+        time.sleep(0.8)
 
 
 # ===============================================================
@@ -304,7 +478,7 @@ def scrape_schedule_page(driver, date_str, league_slug):
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue")
+    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue (+ stats & cotes)")
     print(f"📆 Date: {SCHEDULE_DATE}  |  Ligue: {LEAGUE_SLUG}")
     print("=" * 60)
 
@@ -319,6 +493,11 @@ def main():
         print("✅ Navigateur démarré")
 
         matches = scrape_schedule_page(driver, SCHEDULE_DATE, LEAGUE_SLUG)
+
+        if matches:
+            enrich_matches_with_details(driver, matches)
+        else:
+            print("\nℹ️ Aucun match à enrichir")
 
     except WebDriverException as e:
         print(f"❌ Erreur WebDriver: {e}")

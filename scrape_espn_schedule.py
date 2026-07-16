@@ -187,15 +187,15 @@ def us_to_decimal(val):
 def extract_match_row(row, match_date):
     """
     Parse une ligne <tr> de la page schedule ESPN. Structure réelle
-    observée (5 <td>) :
-      [0] events__col    -> équipe à domicile (classe Table__Team away
-                            dans le HTML ESPN, mais correspond en
-                            réalité au lieu du match, donc au domicile)
-      [1] colspan__col    -> lien score/match + équipe extérieure
-                            (bloc "local" dans le HTML ESPN)
-      [2] teams__col      -> statut (FT, ou heure si match à venir)
-      [3] venue__col      -> (ignoré)
-      [4] attendance__col -> (ignoré)
+    observée :
+      [0] events__col -> équipe à domicile (classe Table__Team away
+                         dans le HTML ESPN, mais correspond en
+                         réalité au lieu du match, donc au domicile)
+      [1] colspan__col -> lien score/match + équipe extérieure
+                         (bloc "local" dans le HTML ESPN)
+      [2] teams__col   -> statut (FT, ou heure si match à venir)
+    L'heure et le lieu précis sont récupérés plus tard sur la page
+    du match elle-même (section "Game Information").
     """
     cells = row.find_all("td")
     if len(cells) < 3:
@@ -231,6 +231,7 @@ def extract_match_row(row, match_date):
 
     return {
         "date": match_date,
+        "time": None,
         "status": status,
         "home_team": home_team_name,
         "home_team_id": home_team_id,
@@ -240,6 +241,7 @@ def extract_match_row(row, match_date):
         "away_team_id": away_team_id,
         "away_logo_url": build_logo_url(away_team_id),
         "away_score": away_score,
+        "venue": None,
         "match_id": game_id,
         "match_url": match_url,
         "stats": {},
@@ -288,11 +290,74 @@ def extract_match_stats(soup):
     except Exception as e:
         print(f"  ⚠️ Erreur extraction stats : {e}")
 
-    return finalize_stats(stats)
+    return stats
 
 
 # ===============================================================
-# EXTRACTION DES COTES 1X2 (page du match)
+# MI-TEMPS / 2NDE MI-TEMPS (repris de Teams_tracker.py)
+# ===============================================================
+
+def extract_match_timeline_halftime(soup):
+    """
+    Extrait le score à la mi-temps et à la 2nde mi-temps depuis la
+    frise "Match Timeline".
+    """
+    try:
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "match timeline" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return None, None
+
+        ht_percent = None
+        for span in section.find_all("span"):
+            if span.get_text(strip=True).upper() == "HT":
+                style = span.get("style", "")
+                m = re.search(r"left:\s*([\d.]+)%", style)
+                if m:
+                    ht_percent = float(m.group(1))
+                break
+        if ht_percent is None:
+            ht_percent = 50.0
+
+        icon_rows = section.select("div.XYehN.ThkOQ.lZur")
+        if len(icon_rows) < 2:
+            return None, None
+
+        def count_goals(row):
+            first_half = 0
+            second_half = 0
+            for icon_div in row.select('div[role="button"]'):
+                svg = icon_div.find("svg", attrs={"data-icon": "soccer-goal02"})
+                if not svg:
+                    continue
+                style = icon_div.get("style", "")
+                m = re.search(r"left:\s*([\d.]+)%", style)
+                pos = float(m.group(1)) if m else None
+                if pos is None:
+                    continue
+                if pos <= ht_percent:
+                    first_half += 1
+                else:
+                    second_half += 1
+            return first_half, second_half
+
+        home_ht, home_2h = count_goals(icon_rows[0])
+        away_ht, away_2h = count_goals(icon_rows[1])
+
+        return {"home": home_ht, "away": away_ht}, {"home": home_2h, "away": away_2h}
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction mi-temps (timeline) : {e}")
+        return None, None
+
+
+# ===============================================================
+# COTES 1X2 (repris de Teams_tracker.py)
 # ===============================================================
 
 def extract_match_odds(soup):
@@ -336,17 +401,79 @@ def extract_match_odds(soup):
         print(f"  ⚠️ Erreur extraction cotes : {e}")
         return empty
 
+
 # ===============================================================
-# VISITE DE LA PAGE DU MATCH — enrichissement stats + cotes
+# HEURE ET LIEU DU MATCH (section "Game Information")
+# ===============================================================
+
+def extract_game_time_and_venue(soup):
+    """
+    Extrait l'heure du match et le lieu (stade + ville/pays) depuis
+    la section "Game Information" de la page du match.
+    Retourne (time_str, venue_str). La date n'est pas ré-extraite ici
+    puisqu'elle est déjà connue depuis la page schedule.
+    """
+    time_value = None
+    venue_value = None
+
+    try:
+        section = None
+        for sec in soup.find_all("section", {"data-testid": "prism-LayoutCard"}):
+            h2 = sec.find("h2", {"data-testid": "prism-LayoutCardSlot"})
+            if h2 and "game information" in h2.get_text(strip=True).lower():
+                section = sec
+                break
+
+        if not section:
+            return time_value, venue_value
+
+        # --- Heure (bloc avec l'icône calendrier) ---
+        calendar_icon = section.find("svg", attrs={"data-icon": "misc-calendarOutline"})
+        if calendar_icon:
+            block = calendar_icon.find_parent("div", class_="RbXOe")
+            if block:
+                h4 = block.find("h4")
+                if h4:
+                    raw_text = h4.get_text(strip=True)
+                    # Format observé: "7:00 PM, May 18, 2026"
+                    m = re.match(r"^([\d:]+\s*[APMapm]{2})", raw_text)
+                    time_value = m.group(1).strip() if m else raw_text
+
+        # --- Lieu (bloc avec l'icône de localisation) ---
+        location_icon = section.find("svg", attrs={"data-icon": "misc-locationPin"})
+        if location_icon:
+            block = location_icon.find_parent("div", class_="RbXOe")
+            if block:
+                h4 = block.find("h4")
+                stadium_name = h4.get_text(strip=True) if h4 else ""
+
+                p = block.find("p")
+                city_country = p.get_text(" ", strip=True) if p else ""
+                city_country = re.sub(r"\s+", " ", city_country).strip()
+
+                if stadium_name and city_country:
+                    venue_value = f"{stadium_name}, {city_country}"
+                else:
+                    venue_value = stadium_name or city_country or None
+
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction heure/lieu : {e}")
+
+    return time_value, venue_value
+
+
+# ===============================================================
+# VISITE DE LA PAGE DU MATCH — enrichissement complet
 # ===============================================================
 
 def get_match_details(driver, match_url):
     """
-    Charge la page du match via Selenium et retourne (stats, odds).
+    Charge la page du match via Selenium et retourne
+    (stats, odds, time, venue).
     """
     empty_odds = {"home": None, "away": None, "draw": None}
     if not match_url:
-        return {}, empty_odds
+        return {}, empty_odds, None, None
 
     try:
         driver.get(match_url)
@@ -360,23 +487,38 @@ def get_match_details(driver, match_url):
         pass
     except WebDriverException as e:
         print(f"    ⚠️ WebDriver erreur ({match_url}) : {e}")
-        return {}, empty_odds
+        return {}, empty_odds, None, None
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
+
     stats = extract_match_stats(soup)
     odds = extract_match_odds(soup)
-    return stats, odds
+    match_time, venue = extract_game_time_and_venue(soup)
+
+    try:
+        halftime, second_half = extract_match_timeline_halftime(soup)
+        if halftime is not None:
+            stats["Score 1ère mi-temps"] = {"home": halftime["home"], "away": halftime["away"]}
+        if second_half is not None:
+            stats["Score 2nde mi-temps"] = {"home": second_half["home"], "away": second_half["away"]}
+    except Exception as e:
+        print(f"    ⚠️ Erreur injection mi-temps : {e}")
+
+    stats = finalize_stats(stats)
+
+    return stats, odds, match_time, venue
 
 
 def enrich_matches_with_details(driver, matches):
     """
     Visite chaque match (via son match_url) pour récupérer les stats
-    d'équipe et les cotes 1X2, puis les injecte dans chaque dict de
-    match.
+    d'équipe, les cotes 1X2, les scores de mi-temps/2nde mi-temps,
+    ainsi que l'heure et le lieu du match, puis les injecte dans
+    chaque dict de match.
     """
     total = len(matches)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Stats & cotes ({total} match(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Stats, cotes, mi-temps, heure & lieu ({total} match(s))")
     print("=" * 60)
 
     for idx, match in enumerate(matches, 1):
@@ -387,20 +529,24 @@ def enrich_matches_with_details(driver, matches):
               f"(id={match['match_id']})")
 
         try:
-            stats, odds = get_match_details(driver, match["match_url"])
+            stats, odds, match_time, venue = get_match_details(driver, match["match_url"])
         except Exception as e:
             print(f"    ⚠️ Erreur enrichissement gameId={match['match_id']}: {e}")
-            stats, odds = {}, {"home": None, "away": None, "draw": None}
+            stats = {}
+            odds = {"home": None, "away": None, "draw": None}
+            match_time, venue = None, None
 
         match["stats"] = stats
         match["odds"] = odds
+        match["time"] = match_time
+        match["venue"] = venue
 
         odds_str = (
             f"💰 {odds['home']}/{odds['draw']}/{odds['away']}"
             if odds.get("home") is not None
             else "ℹ️ pas de cotes"
         )
-        print(f"    📊 {len(stats)} statistique(s)  |  {odds_str}")
+        print(f"    📊 {len(stats)} statistique(s)  |  {odds_str}  |  🕒 {match_time}  |  📍 {venue}")
         time.sleep(0.8)
 
 
@@ -478,7 +624,7 @@ def scrape_schedule_page(driver, date_str, league_slug):
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue (+ stats & cotes)")
+    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue (+ stats, cotes, mi-temps, heure & lieu)")
     print(f"📆 Date: {SCHEDULE_DATE}  |  Ligue: {LEAGUE_SLUG}")
     print("=" * 60)
 

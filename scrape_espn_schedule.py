@@ -194,8 +194,8 @@ def extract_match_row(row, match_date):
       [1] colspan__col -> lien score/match + équipe extérieure
                          (bloc "local" dans le HTML ESPN)
       [2] teams__col   -> statut (FT, ou heure si match à venir)
-    L'heure et le lieu précis sont récupérés plus tard sur la page
-    du match elle-même (section "Game Information").
+    L'heure, le lieu et le matchday précis sont récupérés plus tard
+    sur la page du match elle-même.
     """
     cells = row.find_all("td")
     if len(cells) < 3:
@@ -233,6 +233,8 @@ def extract_match_row(row, match_date):
         "date": match_date,
         "time": None,
         "status": status,
+        "competition": "English Premier League",
+        "matchday": None,
         "home_team": home_team_name,
         "home_team_id": home_team_id,
         "home_logo_url": build_logo_url(home_team_id),
@@ -410,8 +412,6 @@ def extract_game_time_and_venue(soup):
     """
     Extrait l'heure du match et le lieu (stade + ville/pays) depuis
     la section "Game Information" de la page du match.
-    Retourne (time_str, venue_str). La date n'est pas ré-extraite ici
-    puisqu'elle est déjà connue depuis la page schedule.
     """
     time_value = None
     venue_value = None
@@ -463,17 +463,74 @@ def extract_game_time_and_venue(soup):
 
 
 # ===============================================================
+# MATCHDAY (bilan W-D-L des deux équipes, repris de Teams_tracker.py)
+# ===============================================================
+
+def extract_team_games_played(soup, team_id):
+    """
+    Extrait, sur la page d'un match, le nombre de matchs déjà joués par
+    une équipe (team_id) à partir de son bilan affiché "W-D-L" (ex:
+    "25-7-5"), situé dans le bloc d'en-tête de l'équipe (sélecteur
+    data-testid="prism-linkbase" pointant vers /soccer/team/_/id/{id}/).
+    Retourne le nombre total de matchs (W+D+L), ou None si introuvable.
+    """
+    if not team_id:
+        return None
+    try:
+        links = soup.find_all("a", href=re.compile(rf"/soccer/team/_/id/{team_id}/"))
+        for link in links:
+            node = link
+            for _ in range(8):
+                node = node.parent
+                if node is None or not hasattr(node, "find_all"):
+                    break
+                for span in node.find_all("span"):
+                    text = span.get_text(strip=True)
+                    m = re.match(r"^(\d+)-(\d+)-(\d+)$", text)
+                    if m:
+                        w, d, l = (int(x) for x in m.groups())
+                        return w + d + l
+                for div in node.find_all("div"):
+                    text = div.get_text(strip=True)
+                    m = re.match(r"^\((\d+)-(\d+)-(\d+)\)$", text)
+                    if m:
+                        w, d, l = (int(x) for x in m.groups())
+                        return w + d + l
+        return None
+    except Exception as e:
+        print(f"  ⚠️ Erreur extraction bilan équipe ({team_id}) : {e}")
+        return None
+
+
+def compute_matchday(soup, home_team_id, away_team_id):
+    """
+    Calcule le matchday du match : nombre de matchs déjà joués par
+    chaque équipe (via son bilan W-D-L sur la page du match). On ne
+    prend que le nombre de matchs le plus élevé des deux équipes, sans
+    addition et sans +1. Retourne None si ni l'une ni l'autre équipe
+    n'a de bilan exploitable.
+    """
+    home_games = extract_team_games_played(soup, home_team_id)
+    away_games = extract_team_games_played(soup, away_team_id)
+
+    candidates = [g for g in (home_games, away_games) if g is not None]
+    if not candidates:
+        return None
+    return max(candidates)
+
+
+# ===============================================================
 # VISITE DE LA PAGE DU MATCH — enrichissement complet
 # ===============================================================
 
-def get_match_details(driver, match_url):
+def get_match_details(driver, match_url, home_team_id=None, away_team_id=None):
     """
     Charge la page du match via Selenium et retourne
-    (stats, odds, time, venue).
+    (stats, odds, time, venue, matchday).
     """
     empty_odds = {"home": None, "away": None, "draw": None}
     if not match_url:
-        return {}, empty_odds, None, None
+        return {}, empty_odds, None, None, None
 
     try:
         driver.get(match_url)
@@ -487,13 +544,14 @@ def get_match_details(driver, match_url):
         pass
     except WebDriverException as e:
         print(f"    ⚠️ WebDriver erreur ({match_url}) : {e}")
-        return {}, empty_odds, None, None
+        return {}, empty_odds, None, None, None
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
     stats = extract_match_stats(soup)
     odds = extract_match_odds(soup)
     match_time, venue = extract_game_time_and_venue(soup)
+    matchday = compute_matchday(soup, home_team_id, away_team_id)
 
     try:
         halftime, second_half = extract_match_timeline_halftime(soup)
@@ -506,19 +564,19 @@ def get_match_details(driver, match_url):
 
     stats = finalize_stats(stats)
 
-    return stats, odds, match_time, venue
+    return stats, odds, match_time, venue, matchday
 
 
 def enrich_matches_with_details(driver, matches):
     """
     Visite chaque match (via son match_url) pour récupérer les stats
     d'équipe, les cotes 1X2, les scores de mi-temps/2nde mi-temps,
-    ainsi que l'heure et le lieu du match, puis les injecte dans
+    l'heure, le lieu et le matchday du match, puis les injecte dans
     chaque dict de match.
     """
     total = len(matches)
     print("\n" + "=" * 60)
-    print(f"🔄 PHASE D'ENRICHISSEMENT — Stats, cotes, mi-temps, heure & lieu ({total} match(s))")
+    print(f"🔄 PHASE D'ENRICHISSEMENT — Stats, cotes, mi-temps, heure, lieu & matchday ({total} match(s))")
     print("=" * 60)
 
     for idx, match in enumerate(matches, 1):
@@ -529,24 +587,32 @@ def enrich_matches_with_details(driver, matches):
               f"(id={match['match_id']})")
 
         try:
-            stats, odds, match_time, venue = get_match_details(driver, match["match_url"])
+            stats, odds, match_time, venue, matchday = get_match_details(
+                driver, match["match_url"],
+                home_team_id=match.get("home_team_id"),
+                away_team_id=match.get("away_team_id"),
+            )
         except Exception as e:
             print(f"    ⚠️ Erreur enrichissement gameId={match['match_id']}: {e}")
             stats = {}
             odds = {"home": None, "away": None, "draw": None}
-            match_time, venue = None, None
+            match_time, venue, matchday = None, None, None
 
         match["stats"] = stats
         match["odds"] = odds
         match["time"] = match_time
         match["venue"] = venue
+        match["matchday"] = matchday
 
         odds_str = (
             f"💰 {odds['home']}/{odds['draw']}/{odds['away']}"
             if odds.get("home") is not None
             else "ℹ️ pas de cotes"
         )
-        print(f"    📊 {len(stats)} statistique(s)  |  {odds_str}  |  🕒 {match_time}  |  📍 {venue}")
+        print(
+            f"    📊 {len(stats)} statistique(s)  |  {odds_str}  |  🕒 {match_time}  |  "
+            f"📍 {venue}  |  🔁 matchday {matchday}"
+        )
         time.sleep(0.8)
 
 
@@ -624,7 +690,7 @@ def scrape_schedule_page(driver, date_str, league_slug):
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue (+ stats, cotes, mi-temps, heure & lieu)")
+    print("⚽ ESPN SCHEDULE SCRAPER — par date / ligue (+ stats, cotes, mi-temps, heure, lieu & matchday)")
     print(f"📆 Date: {SCHEDULE_DATE}  |  Ligue: {LEAGUE_SLUG}")
     print("=" * 60)
 

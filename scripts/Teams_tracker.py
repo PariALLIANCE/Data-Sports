@@ -16,9 +16,15 @@ import urllib.request
 from datetime import datetime
 
 TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/main/data/football/teams/football_teams.json"
-TARGET_COUNTRY = "England"
-TARGET_LEAGUE = "England_Premier_League"
-# ← toutes les équipes de la ligue sont désormais traitées (plus de limite NB_TEAMS)
+
+# ── Sélection des ligues par plage d'index (1-based, inclusif) ──
+# Exemple : LEAGUE_INDEX_START=1, LEAGUE_INDEX_END=1  → uniquement la 1ère ligue
+# Exemple : LEAGUE_INDEX_START=1, LEAGUE_INDEX_END=5  → les 5 premières ligues
+# Exemple : LEAGUE_INDEX_START=3, LEAGUE_INDEX_END=8  → de la 3ème à la 8ème ligue
+# L'ordre des ligues est celui d'apparition dans football_teams.json (liste
+# affichée en console au démarrage pour connaître les index disponibles).
+LEAGUE_INDEX_START = 1
+LEAGUE_INDEX_END = 4
 
 START_SEASON = 2023
 END_SEASON = datetime.now().year  # saison actuelle incluse
@@ -208,27 +214,80 @@ def simplify_competition_label(competition):
     return text
 
 
-def fetch_target_teams():
-    """
-    Récupère football_teams.json depuis GitHub, retourne TOUTES les
-    équipes de TARGET_COUNTRY / TARGET_LEAGUE (plus de limite NB_TEAMS).
-    """
+# ===============================================================
+# DÉCOUVERTE DES LIGUES DISPONIBLES ET SÉLECTION PAR PLAGE D'INDEX
+# ===============================================================
+
+def fetch_teams_json():
+    """Télécharge et retourne le contenu complet de football_teams.json."""
     print(f"🌐 Téléchargement de {TEAMS_JSON_URL}")
     req = urllib.request.Request(TEAMS_JSON_URL, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
+        return json.loads(resp.read().decode("utf-8"))
 
-    country_teams = data.get(TARGET_COUNTRY, [])
-    league_teams = [t for t in country_teams if t.get("league_name") == TARGET_LEAGUE]
 
-    selected = league_teams  # ← toutes les équipes de la ligue
+def list_all_leagues(data):
+    """
+    Construit la liste ordonnée (et dédupliquée) de toutes les ligues
+    présentes dans football_teams.json, dans leur ordre d'apparition
+    (pays par pays, puis équipe par équipe). Chaque entrée est un dict
+    {"country": ..., "league_name": ...}. C'est cette liste, numérotée
+    à partir de 1, qui sert de référence pour LEAGUE_INDEX_START/END.
+    """
+    leagues = []
+    seen = set()
+    for country, teams_list in data.items():
+        for t in teams_list:
+            league_name = t.get("league_name")
+            if league_name and league_name not in seen:
+                seen.add(league_name)
+                leagues.append({"country": country, "league_name": league_name})
+    return leagues
 
-    print(f"📋 {len(league_teams)} équipe(s) trouvée(s) pour {TARGET_LEAGUE}")
-    print(f"✅ {len(selected)} équipe(s) sélectionnée(s):")
-    for t in selected:
+
+def select_leagues_by_range(all_leagues, index_start, index_end):
+    """
+    Sélectionne une plage de ligues (1-based, inclusive) parmi
+    all_leagues, avec clamp automatique sur les bornes valides.
+    """
+    n = len(all_leagues)
+    if n == 0:
+        return []
+
+    start = max(1, index_start)
+    end = min(n, index_end)
+
+    if start > end:
+        print(f"⚠️ Plage invalide (start={index_start}, end={index_end}) — aucune ligue sélectionnée")
+        return []
+
+    return all_leagues[start - 1:end]
+
+
+def target_league_label(league_name, country):
+    """
+    Dérive le libellé ESPN correspondant à un league_name composite
+    (ex: "England_Premier_League" + country="England" → "Premier League").
+    """
+    parts = league_name.split("_")
+    if len(parts) > 1 and parts[0] == country:
+        parts = parts[1:]
+    return " ".join(parts)
+
+
+def fetch_teams_for_league(data, country, league_name):
+    """
+    Retourne TOUTES les équipes d'une ligue donnée (country +
+    league_name) à partir du JSON déjà téléchargé.
+    """
+    country_teams = data.get(country, [])
+    league_teams = [t for t in country_teams if t.get("league_name") == league_name]
+
+    print(f"📋 {len(league_teams)} équipe(s) trouvée(s) pour {league_name}")
+    for t in league_teams:
         print(f"   - {t['team']} (id={t['team_id']})")
 
-    return selected
+    return league_teams
 
 
 MONTH_ORDER = {
@@ -242,14 +301,6 @@ def format_season(season):
     """Convertit une saison ESPN en libellé "YYYY/YYYY+1"."""
     season = int(season)
     return f"{season}/{season + 1}"
-
-
-def target_league_label():
-    """Dérive le libellé ESPN correspondant à TARGET_LEAGUE."""
-    parts = TARGET_LEAGUE.split("_")
-    if len(parts) > 1 and parts[0] == TARGET_COUNTRY:
-        parts = parts[1:]
-    return " ".join(parts)
 
 
 def build_iso_date(date_text, month_text, year_str):
@@ -462,13 +513,13 @@ def scrape_team_results_for_seasons(driver, team_name, team_id, seasons):
     return unique_matches
 
 
-def compute_matchdays_for_team(matches):
+def compute_matchdays_for_team(matches, league_label):
     """
     Calcule la journée (matchday) de championnat pour chaque match,
     saison par saison. Les matchs hors championnat gardent
     matchday = None.
     """
-    league_label = target_league_label().lower()
+    league_label_lower = (league_label or "").lower()
 
     matches_asc = sorted(matches, key=date_sort_key)
 
@@ -476,7 +527,7 @@ def compute_matchdays_for_team(matches):
     for m in matches_asc:
         season_key = m.get("season")
         competition = (m.get("competition") or "").lower()
-        if league_label in competition:
+        if league_label_lower and league_label_lower in competition:
             counters[season_key] = counters.get(season_key, 0) + 1
             m["matchday"] = counters[season_key]
         else:
@@ -1269,10 +1320,21 @@ def scrape_with_selenium():
     driver = None
 
     try:
-        teams = fetch_target_teams()
-        if not teams:
-            print("❌ Aucune équipe sélectionnée. Vérifiez TARGET_COUNTRY/TARGET_LEAGUE.")
+        data = fetch_teams_json()
+
+        all_leagues = list_all_leagues(data)
+        print(f"\n📚 {len(all_leagues)} ligue(s) disponible(s) au total :")
+        for i, lg in enumerate(all_leagues, 1):
+            print(f"   [{i}] {lg['country']} — {lg['league_name']}")
+
+        selected_leagues = select_leagues_by_range(all_leagues, LEAGUE_INDEX_START, LEAGUE_INDEX_END)
+        if not selected_leagues:
+            print(f"❌ Aucune ligue sélectionnée pour la plage [{LEAGUE_INDEX_START}, {LEAGUE_INDEX_END}].")
             return []
+
+        print(f"\n✅ Plage sélectionnée [{LEAGUE_INDEX_START}, {LEAGUE_INDEX_END}] → {len(selected_leagues)} ligue(s) :")
+        for lg in selected_leagues:
+            print(f"   - {lg['country']} — {lg['league_name']}")
 
         existing_teams_by_id = load_existing_data()
 
@@ -1284,48 +1346,65 @@ def scrape_with_selenium():
         team_meta = {}
         new_match_ids_global = set()
 
-        for team in teams:
-            team_name = team.get("team", "")
-            team_id = team.get("team_id", "")
+        # ── Boucle sur chaque ligue sélectionnée, puis chaque équipe de la ligue ──
+        for league in selected_leagues:
+            league_country = league["country"]
+            league_name = league["league_name"]
+            league_label = target_league_label(league_name, league_country)
 
-            existing_entry = existing_teams_by_id.get(team_id)
-            is_tracked = existing_entry is not None
+            print("\n" + "#" * 60)
+            print(f"🏆 LIGUE: {league_country} — {league_name} (libellé ESPN: {league_label})")
+            print("#" * 60)
 
-            print("\n" + "=" * 60)
-            print(f"⚽ ÉQUIPE: {team_name} (id={team_id})")
-            if is_tracked:
-                print(f"🔁 Équipe déjà trackée — mise à jour saison en cours uniquement ({format_season(END_SEASON)})")
-                seasons_to_scrape = [END_SEASON]
-            else:
-                print(f"🆕 Équipe jamais trackée — scraping complet depuis {format_season(START_SEASON)}")
-                seasons_to_scrape = list(range(START_SEASON, END_SEASON + 1))
-            print("=" * 60)
+            teams = fetch_teams_for_league(data, league_country, league_name)
+            if not teams:
+                print(f"⚠️ Aucune équipe trouvée pour {league_name}, ligue ignorée.")
+                continue
 
-            newly_scraped = scrape_team_results_for_seasons(driver, team_name, team_id, seasons_to_scrape)
-            newly_scraped = compute_matchdays_for_team(newly_scraped)
+            for team in teams:
+                team_name = team.get("team", "")
+                team_id = team.get("team_id", "")
 
-            existing_matches_flat = flatten_existing_matches(existing_entry) if is_tracked else []
+                existing_entry = existing_teams_by_id.get(team_id)
+                is_tracked = existing_entry is not None
 
-            merged_matches, new_match_ids = merge_matches(existing_matches_flat, newly_scraped)
-            merged_matches.sort(key=date_sort_key, reverse=True)
+                print("\n" + "=" * 60)
+                print(f"⚽ ÉQUIPE: {team_name} (id={team_id}) — {league_name}")
+                if is_tracked:
+                    print(f"🔁 Équipe déjà trackée — mise à jour saison en cours uniquement ({format_season(END_SEASON)})")
+                    seasons_to_scrape = [END_SEASON]
+                else:
+                    print(f"🆕 Équipe jamais trackée — scraping complet depuis {format_season(START_SEASON)}")
+                    seasons_to_scrape = list(range(START_SEASON, END_SEASON + 1))
+                print("=" * 60)
 
-            print(f"\n📦 {team_name}: {len(merged_matches)} match(s) au total, {len(new_match_ids)} nouveau(x)")
+                newly_scraped = scrape_team_results_for_seasons(driver, team_name, team_id, seasons_to_scrape)
+                newly_scraped = compute_matchdays_for_team(newly_scraped, league_label)
 
-            matches_by_team[team_id] = merged_matches
-            team_meta[team_id] = team
-            new_match_ids_global |= new_match_ids
+                existing_matches_flat = flatten_existing_matches(existing_entry) if is_tracked else []
+
+                merged_matches, new_match_ids = merge_matches(existing_matches_flat, newly_scraped)
+                merged_matches.sort(key=date_sort_key, reverse=True)
+
+                print(f"\n📦 {team_name}: {len(merged_matches)} match(s) au total, {len(new_match_ids)} nouveau(x)")
+
+                matches_by_team[team_id] = merged_matches
+                # On mémorise le pays/la ligue avec l'équipe pour la suite du traitement
+                team_meta[team_id] = {**team, "_league_country": league_country, "_league_label": league_label}
+                new_match_ids_global |= new_match_ids
 
         if new_match_ids_global:
             enrich_matches_with_stats_and_odds(driver, matches_by_team, only_match_ids=new_match_ids_global)
         else:
             print("\nℹ️ Aucun nouveau match à enrichir")
 
-        league_label = target_league_label()
         newly_processed_by_id = {}
 
         for team_id, unique_matches in matches_by_team.items():
             team = team_meta[team_id]
             team_name = team.get("team", "")
+            team_country = team.get("_league_country", "")
+            league_label = team.get("_league_label", "")
 
             for m in unique_matches:
                 m["team_result"] = compute_team_result(m, team_id)
@@ -1340,7 +1419,7 @@ def scrape_with_selenium():
                 "logo": team.get("logo", build_logo_url(team_id)),
                 "league_id": team.get("league_id", ""),
                 "league_name": team.get("league_name", ""),
-                "country": TARGET_COUNTRY,
+                "country": team_country,
                 "total_matches": len(unique_matches),
                 "scraped_at": datetime.now().isoformat(),
                 "matches_by_season": group_matches_by_season(unique_matches),
@@ -1361,8 +1440,7 @@ def scrape_with_selenium():
         output_data = list(final_teams_by_id.values())
 
         final_output = {
-            "country": TARGET_COUNTRY,
-            "league_name": TARGET_LEAGUE,
+            "leagues_processed": selected_leagues,
             "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
             "teams": output_data,
@@ -1394,7 +1472,8 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER — TRACKING INCRÉMENTAL (TOUTES LES ÉQUIPES)")
+    print("⚽ ESPN SCRAPER — TRACKING INCRÉMENTAL (PLAGE DE LIGUES)")
+    print(f"📆 Plage de ligues sélectionnée: [{LEAGUE_INDEX_START}, {LEAGUE_INDEX_END}]")
     print("📆 Scraping complet si jamais trackée, sinon mise à jour saison en cours + next_game chaîné par match")
     print("=" * 60)
 

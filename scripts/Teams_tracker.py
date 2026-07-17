@@ -18,7 +18,7 @@ from datetime import datetime
 TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/main/data/football/teams/football_teams.json"
 TARGET_COUNTRY = "England"
 TARGET_LEAGUE = "England_Premier_League"
-NB_TEAMS = 1  # ← une seule équipe désormais (logique déjà prête pour plusieurs)
+# ← toutes les équipes de la ligue sont désormais traitées (plus de limite NB_TEAMS)
 
 START_SEASON = 2023
 END_SEASON = datetime.now().year  # saison actuelle incluse
@@ -210,8 +210,8 @@ def simplify_competition_label(competition):
 
 def fetch_target_teams():
     """
-    Récupère football_teams.json depuis GitHub, retourne la (les)
-    NB_TEAMS première(s) équipe(s) de TARGET_COUNTRY / TARGET_LEAGUE.
+    Récupère football_teams.json depuis GitHub, retourne TOUTES les
+    équipes de TARGET_COUNTRY / TARGET_LEAGUE (plus de limite NB_TEAMS).
     """
     print(f"🌐 Téléchargement de {TEAMS_JSON_URL}")
     req = urllib.request.Request(TEAMS_JSON_URL, headers={"User-Agent": "Mozilla/5.0"})
@@ -221,7 +221,7 @@ def fetch_target_teams():
     country_teams = data.get(TARGET_COUNTRY, [])
     league_teams = [t for t in country_teams if t.get("league_name") == TARGET_LEAGUE]
 
-    selected = league_teams[:NB_TEAMS]
+    selected = league_teams  # ← toutes les équipes de la ligue
 
     print(f"📋 {len(league_teams)} équipe(s) trouvée(s) pour {TARGET_LEAGUE}")
     print(f"✅ {len(selected)} équipe(s) sélectionnée(s):")
@@ -1394,7 +1394,7 @@ def scrape_with_selenium():
 
 def main():
     print("=" * 60)
-    print("⚽ ESPN SCRAPER — TRACKING INCRÉMENTAL (1 ÉQUIPE)")
+    print("⚽ ESPN SCRAPER — TRACKING INCRÉMENTAL (TOUTES LES ÉQUIPES)")
     print("📆 Scraping complet si jamais trackée, sinon mise à jour saison en cours + next_game chaîné par match")
     print("=" * 60)
 

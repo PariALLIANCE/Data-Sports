@@ -26,7 +26,7 @@ TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/mai
 LEAGUE_INDEX_START = 3
 LEAGUE_INDEX_END = 3
 
-START_SEASON = 2023
+START_SEASON = 2024
 END_SEASON = datetime.now().year  # saison actuelle incluse
 
 # ── Chemins de sortie / nettoyage ───────────────────────────────

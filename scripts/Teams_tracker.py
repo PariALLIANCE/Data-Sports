@@ -23,8 +23,8 @@ TEAMS_JSON_URL = "https://raw.githubusercontent.com/PariALLIANCE/Data-Sports/mai
 # Exemple : LEAGUE_INDEX_START=3, LEAGUE_INDEX_END=8  → de la 3ème à la 8ème ligue
 # L'ordre des ligues est celui d'apparition dans football_teams.json (liste
 # affichée en console au démarrage pour connaître les index disponibles).
-LEAGUE_INDEX_START = 3
-LEAGUE_INDEX_END = 3
+LEAGUE_INDEX_START = 4
+LEAGUE_INDEX_END = 5
 
 START_SEASON = 2024
 END_SEASON = datetime.now().year  # saison actuelle incluse

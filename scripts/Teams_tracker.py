@@ -1316,6 +1316,31 @@ def clean_team_output(team_output):
     return cleaned
 
 
+def build_leagues_processed_from_output(output_data):
+    """
+    Reconstruit "leagues_processed" à partir des équipes réellement
+    présentes dans output_data (cumul de tous les runs GitHub Actions),
+    au lieu de se limiter à "selected_leagues" (la plage
+    LEAGUE_INDEX_START/END du run courant uniquement).
+
+    Avant ce correctif, "leagues_processed" ne listait que la ligue
+    traitée lors du dernier run, alors que "teams" contenait
+    l'historique cumulé de plusieurs ligues différentes — d'où
+    l'incohérence entre les deux champs. Ici, la liste est dérivée
+    directement des couples (country, league_name) réellement présents
+    dans les équipes, donc toujours synchronisée avec "teams".
+    """
+    leagues_seen = {}
+    for team_entry in output_data:
+        key = (team_entry.get("country"), team_entry.get("league_name"))
+        if all(key) and key not in leagues_seen:
+            leagues_seen[key] = {
+                "country": team_entry.get("country"),
+                "league_name": team_entry.get("league_name"),
+            }
+    return sorted(leagues_seen.values(), key=lambda lg: (lg["country"], lg["league_name"]))
+
+
 def scrape_with_selenium():
     driver = None
 
@@ -1439,8 +1464,15 @@ def scrape_with_selenium():
         final_teams_by_id.update(newly_processed_by_id)
         output_data = list(final_teams_by_id.values())
 
+        # ── leagues_processed est désormais dérivé des équipes réellement
+        # présentes dans output_data (cumul de tous les runs), et non plus
+        # de "selected_leagues" (plage du run courant uniquement). Corrige
+        # l'incohérence où le champ ne listait qu'une seule ligue alors que
+        # "teams" en contenait plusieurs.
+        leagues_processed_all = build_leagues_processed_from_output(output_data)
+
         final_output = {
-            "leagues_processed": selected_leagues,
+            "leagues_processed": leagues_processed_all,
             "nb_teams": len(output_data),
             "scraped_at": datetime.now().isoformat(),
             "teams": output_data,

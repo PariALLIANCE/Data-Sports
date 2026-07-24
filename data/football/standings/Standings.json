@@ -7040,6 +7040,24 @@
                 },
                 {
                     "position": 7,
+                    "name": "Corinthians",
+                    "stats": {
+                        "GP": 19,
+                        "W": 7,
+                        "D": 6,
+                        "L": 6,
+                        "F": 21,
+                        "A": 19,
+                        "GD": 2,
+                        "P": 27
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 8,
                     "name": "Cruzeiro",
                     "stats": {
                         "GP": 19,
@@ -7057,7 +7075,25 @@
                     }
                 },
                 {
-                    "position": 8,
+                    "position": 9,
+                    "name": "Botafogo",
+                    "stats": {
+                        "GP": 19,
+                        "W": 7,
+                        "D": 5,
+                        "L": 7,
+                        "F": 33,
+                        "A": 32,
+                        "GD": 1,
+                        "P": 26
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 10,
                     "name": "Coritiba",
                     "stats": {
                         "GP": 19,
@@ -7075,7 +7111,25 @@
                     }
                 },
                 {
-                    "position": 9,
+                    "position": 11,
+                    "name": "Vitória",
+                    "stats": {
+                        "GP": 19,
+                        "W": 7,
+                        "D": 5,
+                        "L": 7,
+                        "F": 22,
+                        "A": 25,
+                        "GD": -3,
+                        "P": 26
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 12,
                     "name": "São Paulo",
                     "stats": {
                         "GP": 19,
@@ -7093,25 +7147,7 @@
                     }
                 },
                 {
-                    "position": 10,
-                    "name": "Botafogo",
-                    "stats": {
-                        "GP": 18,
-                        "W": 7,
-                        "D": 4,
-                        "L": 7,
-                        "F": 33,
-                        "A": 32,
-                        "GD": 1,
-                        "P": 25
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 11,
+                    "position": 13,
                     "name": "Atlético-MG",
                     "stats": {
                         "GP": 19,
@@ -7122,42 +7158,6 @@
                         "A": 24,
                         "GD": -1,
                         "P": 25
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 12,
-                    "name": "Vitória",
-                    "stats": {
-                        "GP": 18,
-                        "W": 7,
-                        "D": 4,
-                        "L": 7,
-                        "F": 22,
-                        "A": 25,
-                        "GD": -3,
-                        "P": 25
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 13,
-                    "name": "Corinthians",
-                    "stats": {
-                        "GP": 18,
-                        "W": 6,
-                        "D": 6,
-                        "L": 6,
-                        "F": 18,
-                        "A": 19,
-                        "GD": -1,
-                        "P": 24
                     },
                     "zone": null
                 },
@@ -7246,13 +7246,13 @@
                     "position": 19,
                     "name": "Remo",
                     "stats": {
-                        "GP": 18,
+                        "GP": 19,
                         "W": 4,
                         "D": 6,
-                        "L": 8,
+                        "L": 9,
                         "F": 21,
-                        "A": 29,
-                        "GD": -8,
+                        "A": 32,
+                        "GD": -11,
                         "P": 18
                     },
                     "zone": {
@@ -8545,6 +8545,21 @@
                 },
                 {
                     "position": 8,
+                    "name": "Atlético Goianiense",
+                    "stats": {
+                        "GP": 19,
+                        "W": 7,
+                        "D": 7,
+                        "L": 5,
+                        "F": 20,
+                        "A": 19,
+                        "GD": 1,
+                        "P": 28
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
                     "name": "Sport",
                     "stats": {
                         "GP": 19,
@@ -8559,22 +8574,37 @@
                     "zone": null
                 },
                 {
-                    "position": 9,
+                    "position": 10,
                     "name": "São Bernardo",
                     "stats": {
-                        "GP": 18,
+                        "GP": 19,
                         "W": 7,
                         "D": 6,
-                        "L": 5,
-                        "F": 24,
-                        "A": 17,
-                        "GD": 7,
+                        "L": 6,
+                        "F": 25,
+                        "A": 19,
+                        "GD": 6,
                         "P": 27
                     },
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 11,
+                    "name": "Athletic",
+                    "stats": {
+                        "GP": 19,
+                        "W": 6,
+                        "D": 9,
+                        "L": 4,
+                        "F": 18,
+                        "A": 17,
+                        "GD": 1,
+                        "P": 27
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
                     "name": "CRB",
                     "stats": {
                         "GP": 19,
@@ -8589,22 +8619,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
-                    "name": "Atlético Goianiense",
-                    "stats": {
-                        "GP": 18,
-                        "W": 6,
-                        "D": 7,
-                        "L": 5,
-                        "F": 19,
-                        "A": 19,
-                        "GD": 0,
-                        "P": 25
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 12,
+                    "position": 13,
                     "name": "Náutico",
                     "stats": {
                         "GP": 19,
@@ -8619,30 +8634,15 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 14,
                     "name": "Cuiabá",
                     "stats": {
-                        "GP": 18,
+                        "GP": 19,
                         "W": 5,
                         "D": 9,
-                        "L": 4,
+                        "L": 5,
                         "F": 14,
-                        "A": 13,
-                        "GD": 1,
-                        "P": 24
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 14,
-                    "name": "Athletic",
-                    "stats": {
-                        "GP": 18,
-                        "W": 5,
-                        "D": 9,
-                        "L": 4,
-                        "F": 16,
-                        "A": 16,
+                        "A": 14,
                         "GD": 0,
                         "P": 24
                     },
@@ -15317,7 +15317,7 @@
                 },
                 {
                     "position": 11,
-                    "name": "PAOK Salonika",
+                    "name": "PAOK",
                     "stats": {
                         "GP": 0,
                         "W": 0,

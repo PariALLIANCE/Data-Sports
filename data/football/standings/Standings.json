@@ -8484,13 +8484,13 @@
                     "position": 4,
                     "name": "Juventude",
                     "stats": {
-                        "GP": 18,
+                        "GP": 19,
                         "W": 9,
                         "D": 5,
-                        "L": 4,
-                        "F": 19,
-                        "A": 8,
-                        "GD": 11,
+                        "L": 5,
+                        "F": 21,
+                        "A": 12,
+                        "GD": 9,
                         "P": 32
                     },
                     "zone": {
@@ -8635,6 +8635,21 @@
                 },
                 {
                     "position": 14,
+                    "name": "Botafogo-SP",
+                    "stats": {
+                        "GP": 19,
+                        "W": 6,
+                        "D": 6,
+                        "L": 7,
+                        "F": 24,
+                        "A": 20,
+                        "GD": 4,
+                        "P": 24
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 15,
                     "name": "Cuiabá",
                     "stats": {
                         "GP": 19,
@@ -8645,21 +8660,6 @@
                         "A": 14,
                         "GD": 0,
                         "P": 24
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 15,
-                    "name": "Botafogo-SP",
-                    "stats": {
-                        "GP": 18,
-                        "W": 5,
-                        "D": 6,
-                        "L": 7,
-                        "F": 20,
-                        "A": 18,
-                        "GD": 2,
-                        "P": 21
                     },
                     "zone": null
                 },
@@ -20973,14 +20973,14 @@
                     "position": 1,
                     "name": "2 de Mayo",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 1,
+                        "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 0,
+                        "F": 1,
                         "A": 0,
-                        "GD": 0,
-                        "P": 0
+                        "GD": 1,
+                        "P": 3
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores",
@@ -21088,21 +21088,6 @@
                 },
                 {
                     "position": 8,
-                    "name": "Rubio Ñú",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 9,
                     "name": "Sportivo Ameliano",
                     "stats": {
                         "GP": 0,
@@ -21117,7 +21102,7 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 9,
                     "name": "Sportivo Luqueño",
                     "stats": {
                         "GP": 0,
@@ -21132,7 +21117,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 10,
                     "name": "Sportivo San Lorenzo",
                     "stats": {
                         "GP": 0,
@@ -21147,7 +21132,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 11,
                     "name": "Sportivo Trinidense",
                     "stats": {
                         "GP": 0,
@@ -21157,6 +21142,21 @@
                         "F": 0,
                         "A": 0,
                         "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Rubio Ñú",
+                    "stats": {
+                        "GP": 1,
+                        "W": 0,
+                        "D": 0,
+                        "L": 1,
+                        "F": 0,
+                        "A": 1,
+                        "GD": -1,
                         "P": 0
                     },
                     "zone": null
@@ -21818,16 +21818,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "Cusco FC",
+                    "name": "Universitario",
                     "stats": {
-                        "GP": 1,
-                        "W": 1,
+                        "GP": 2,
+                        "W": 2,
                         "D": 0,
                         "L": 0,
                         "F": 4,
-                        "A": 1,
-                        "GD": 3,
-                        "P": 3
+                        "A": 2,
+                        "GD": 2,
+                        "P": 6
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores",
@@ -21836,14 +21836,14 @@
                 },
                 {
                     "position": 2,
-                    "name": "Atlético Grau",
+                    "name": "Cusco FC",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 1,
                         "D": 0,
-                        "L": 0,
-                        "F": 3,
-                        "A": 1,
+                        "L": 1,
+                        "F": 5,
+                        "A": 3,
                         "GD": 2,
                         "P": 3
                     },
@@ -21854,7 +21854,7 @@
                 },
                 {
                     "position": 3,
-                    "name": "Melgar",
+                    "name": "Atlético Grau",
                     "stats": {
                         "GP": 1,
                         "W": 1,
@@ -21872,15 +21872,15 @@
                 },
                 {
                     "position": 4,
-                    "name": "Universitario",
+                    "name": "Melgar",
                     "stats": {
                         "GP": 1,
                         "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 2,
+                        "F": 3,
                         "A": 1,
-                        "GD": 1,
+                        "GD": 2,
                         "P": 3
                     },
                     "zone": {
@@ -21905,21 +21905,6 @@
                 },
                 {
                     "position": 6,
-                    "name": "Los Chankas",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 1,
-                        "A": 0,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 7,
                     "name": "Sporting Cristal",
                     "stats": {
                         "GP": 1,
@@ -21934,7 +21919,37 @@
                     "zone": null
                 },
                 {
+                    "position": 7,
+                    "name": "Alianza Atlético",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 4,
+                        "A": 5,
+                        "GD": -1,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
                     "position": 8,
+                    "name": "Los Chankas",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 3,
+                        "GD": -1,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
                     "name": "Comerciantes Unidos",
                     "stats": {
                         "GP": 1,
@@ -21949,7 +21964,7 @@
                     "zone": null
                 },
                 {
-                    "position": 9,
+                    "position": 10,
                     "name": "Deportivo Moquegua",
                     "stats": {
                         "GP": 1,
@@ -21964,7 +21979,7 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 11,
                     "name": "FC Cajamarca",
                     "stats": {
                         "GP": 1,
@@ -21979,7 +21994,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 12,
                     "name": "Juan Pablo II",
                     "stats": {
                         "GP": 1,
@@ -21994,7 +22009,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 13,
                     "name": "Sport Huancayo",
                     "stats": {
                         "GP": 1,
@@ -22009,7 +22024,7 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 14,
                     "name": "ADT",
                     "stats": {
                         "GP": 1,
@@ -22024,7 +22039,7 @@
                     "zone": null
                 },
                 {
-                    "position": 14,
+                    "position": 15,
                     "name": "Deportivo Garcilaso",
                     "stats": {
                         "GP": 1,
@@ -22039,7 +22054,7 @@
                     "zone": null
                 },
                 {
-                    "position": 15,
+                    "position": 16,
                     "name": "Sport Boys",
                     "stats": {
                         "GP": 1,
@@ -22054,23 +22069,8 @@
                     "zone": null
                 },
                 {
-                    "position": 16,
-                    "name": "UTC",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
-                        "A": 3,
-                        "GD": -2,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
                     "position": 17,
-                    "name": "Cienciano del Cusco",
+                    "name": "UTC",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -22088,15 +22088,15 @@
                 },
                 {
                     "position": 18,
-                    "name": "Alianza Atlético",
+                    "name": "Cienciano del Cusco",
                     "stats": {
                         "GP": 1,
                         "W": 0,
                         "D": 0,
                         "L": 1,
                         "F": 1,
-                        "A": 4,
-                        "GD": -3,
+                        "A": 3,
+                        "GD": -2,
                         "P": 0
                     },
                     "zone": {
@@ -24506,6 +24506,24 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "CSKA Moscow",
+                    "stats": {
+                        "GP": 1,
+                        "W": 1,
+                        "D": 0,
+                        "L": 0,
+                        "F": 2,
+                        "A": 1,
+                        "GD": 1,
+                        "P": 3
+                    },
+                    "zone": {
+                        "label": "Playoff Champions",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
                     "name": "Akhmat Grozny",
                     "stats": {
                         "GP": 0,
@@ -24523,7 +24541,7 @@
                     }
                 },
                 {
-                    "position": 2,
+                    "position": 3,
                     "name": "Akron Tolyatti",
                     "stats": {
                         "GP": 0,
@@ -24541,43 +24559,7 @@
                     }
                 },
                 {
-                    "position": 3,
-                    "name": "FC Baltika Kaliningrad",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": {
-                        "label": "Playoff Champions",
-                        "type": "avantage"
-                    }
-                },
-                {
                     "position": 4,
-                    "name": "CSKA Moscow",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": {
-                        "label": "Playoff Champions",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 5,
                     "name": "Dynamo Makhachkala",
                     "stats": {
                         "GP": 0,
@@ -24595,7 +24577,7 @@
                     }
                 },
                 {
-                    "position": 6,
+                    "position": 5,
                     "name": "Dinamo Moscow",
                     "stats": {
                         "GP": 0,
@@ -24613,7 +24595,7 @@
                     }
                 },
                 {
-                    "position": 7,
+                    "position": 6,
                     "name": "Fakel Voronezh",
                     "stats": {
                         "GP": 0,
@@ -24625,10 +24607,13 @@
                         "GD": 0,
                         "P": 0
                     },
-                    "zone": null
+                    "zone": {
+                        "label": "Playoff Champions",
+                        "type": "avantage"
+                    }
                 },
                 {
-                    "position": 8,
+                    "position": 7,
                     "name": "Krasnodar",
                     "stats": {
                         "GP": 0,
@@ -24643,7 +24628,7 @@
                     "zone": null
                 },
                 {
-                    "position": 9,
+                    "position": 8,
                     "name": "Krylia Sovetov",
                     "stats": {
                         "GP": 0,
@@ -24658,7 +24643,7 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 9,
                     "name": "Lokomotiv Moscow",
                     "stats": {
                         "GP": 0,
@@ -24673,7 +24658,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 10,
                     "name": "Gazovik Orenburg",
                     "stats": {
                         "GP": 0,
@@ -24688,7 +24673,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 11,
                     "name": "Rodina Moscow",
                     "stats": {
                         "GP": 0,
@@ -24703,7 +24688,7 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 12,
                     "name": "Rostov",
                     "stats": {
                         "GP": 0,
@@ -24715,13 +24700,10 @@
                         "GD": 0,
                         "P": 0
                     },
-                    "zone": {
-                        "label": "Relégation Playoff",
-                        "type": "désavantage"
-                    }
+                    "zone": null
                 },
                 {
-                    "position": 14,
+                    "position": 13,
                     "name": "Rubin Kazan",
                     "stats": {
                         "GP": 0,
@@ -24739,8 +24721,26 @@
                     }
                 },
                 {
-                    "position": 15,
+                    "position": 14,
                     "name": "Spartak Moscow",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "Relégation Playoff",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 15,
+                    "name": "Zenit St Petersburg",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -24758,15 +24758,15 @@
                 },
                 {
                     "position": 16,
-                    "name": "Zenit St Petersburg",
+                    "name": "FC Baltika Kaliningrad",
                     "stats": {
-                        "GP": 0,
+                        "GP": 1,
                         "W": 0,
                         "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
+                        "L": 1,
+                        "F": 1,
+                        "A": 2,
+                        "GD": -1,
                         "P": 0
                     },
                     "zone": {
@@ -25657,8 +25657,8 @@
         }
     },
     "Saudi_Arabia_Pro_League": {
-        "2025": {
-            "saison": 2025,
+        "2026": {
+            "saison": 2026,
             "total_journees": 34,
             "position_zones": [
                 {
@@ -25680,16 +25680,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "Al Nassr",
+                    "name": "Abha",
                     "stats": {
-                        "GP": 34,
-                        "W": 28,
-                        "D": 2,
-                        "L": 4,
-                        "F": 91,
-                        "A": 28,
-                        "GD": 63,
-                        "P": 86
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "AFC Champions League",
@@ -25698,16 +25698,16 @@
                 },
                 {
                     "position": 2,
-                    "name": "Al Hilal",
+                    "name": "Al Ahli",
                     "stats": {
-                        "GP": 34,
-                        "W": 25,
-                        "D": 9,
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
                         "L": 0,
-                        "F": 85,
-                        "A": 27,
-                        "GD": 58,
-                        "P": 84
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "AFC Champions League",
@@ -25716,16 +25716,16 @@
                 },
                 {
                     "position": 3,
-                    "name": "Al Ahli",
+                    "name": "Al Diriyah",
                     "stats": {
-                        "GP": 34,
-                        "W": 25,
-                        "D": 6,
-                        "L": 3,
-                        "F": 71,
-                        "A": 25,
-                        "GD": 46,
-                        "P": 81
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "AFC Champions League",
@@ -25734,16 +25734,16 @@
                 },
                 {
                     "position": 4,
-                    "name": "Al Qadsiah",
+                    "name": "Al Ettifaq",
                     "stats": {
-                        "GP": 34,
-                        "W": 23,
-                        "D": 8,
-                        "L": 3,
-                        "F": 83,
-                        "A": 34,
-                        "GD": 49,
-                        "P": 77
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "AFC Champions League",
@@ -25752,151 +25752,151 @@
                 },
                 {
                     "position": 5,
-                    "name": "Al Ittihad",
+                    "name": "Al-Faisaly",
                     "stats": {
-                        "GP": 34,
-                        "W": 16,
-                        "D": 7,
-                        "L": 11,
-                        "F": 55,
-                        "A": 48,
-                        "GD": 7,
-                        "P": 55
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 6,
-                    "name": "Al Taawoun",
+                    "name": "Al Fateh",
                     "stats": {
-                        "GP": 34,
-                        "W": 15,
-                        "D": 8,
-                        "L": 11,
-                        "F": 59,
-                        "A": 46,
-                        "GD": 13,
-                        "P": 53
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 7,
-                    "name": "Al Ettifaq",
+                    "name": "Al Fayha",
                     "stats": {
-                        "GP": 34,
-                        "W": 14,
-                        "D": 8,
-                        "L": 12,
-                        "F": 51,
-                        "A": 55,
-                        "GD": -4,
-                        "P": 50
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 8,
-                    "name": "Neom SC",
+                    "name": "Al Hazem",
                     "stats": {
-                        "GP": 34,
-                        "W": 12,
-                        "D": 9,
-                        "L": 13,
-                        "F": 43,
-                        "A": 48,
-                        "GD": -5,
-                        "P": 45
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 9,
-                    "name": "Al Hazem",
+                    "name": "Al Hilal",
                     "stats": {
-                        "GP": 34,
-                        "W": 11,
-                        "D": 9,
-                        "L": 14,
-                        "F": 38,
-                        "A": 57,
-                        "GD": -19,
-                        "P": 42
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 10,
-                    "name": "Al Fayha",
+                    "name": "Al Ittihad",
                     "stats": {
-                        "GP": 34,
-                        "W": 10,
-                        "D": 8,
-                        "L": 16,
-                        "F": 41,
-                        "A": 54,
-                        "GD": -13,
-                        "P": 38
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 11,
-                    "name": "Al Fateh",
+                    "name": "Al Khaleej",
                     "stats": {
-                        "GP": 34,
-                        "W": 9,
-                        "D": 10,
-                        "L": 15,
-                        "F": 41,
-                        "A": 55,
-                        "GD": -14,
-                        "P": 37
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 12,
-                    "name": "Al Khaleej",
+                    "name": "Al Kholood",
                     "stats": {
-                        "GP": 34,
-                        "W": 10,
-                        "D": 7,
-                        "L": 17,
-                        "F": 54,
-                        "A": 62,
-                        "GD": -8,
-                        "P": 37
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 13,
-                    "name": "Al Shabab",
+                    "name": "Al Nassr",
                     "stats": {
-                        "GP": 34,
-                        "W": 8,
-                        "D": 11,
-                        "L": 15,
-                        "F": 44,
-                        "A": 57,
-                        "GD": -13,
-                        "P": 35
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 14,
-                    "name": "Al Kholood",
+                    "name": "Al Qadsiah",
                     "stats": {
-                        "GP": 34,
-                        "W": 9,
-                        "D": 6,
-                        "L": 19,
-                        "F": 39,
-                        "A": 61,
-                        "GD": -22,
-                        "P": 33
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Relégation Playoff",
@@ -25907,14 +25907,14 @@
                     "position": 15,
                     "name": "Al Riyadh",
                     "stats": {
-                        "GP": 34,
-                        "W": 7,
-                        "D": 9,
-                        "L": 18,
-                        "F": 35,
-                        "A": 63,
-                        "GD": -28,
-                        "P": 30
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Relégation",
@@ -25923,16 +25923,16 @@
                 },
                 {
                     "position": 16,
-                    "name": "Damac",
+                    "name": "Al Shabab",
                     "stats": {
-                        "GP": 34,
-                        "W": 6,
-                        "D": 11,
-                        "L": 17,
-                        "F": 32,
-                        "A": 55,
-                        "GD": -23,
-                        "P": 29
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": {
                         "label": "Relégation",
@@ -25941,31 +25941,31 @@
                 },
                 {
                     "position": 17,
-                    "name": "Al Okhdood",
+                    "name": "Al Taawoun",
                     "stats": {
-                        "GP": 34,
-                        "W": 5,
-                        "D": 5,
-                        "L": 24,
-                        "F": 27,
-                        "A": 70,
-                        "GD": -43,
-                        "P": 20
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 18,
-                    "name": "Al Najma",
+                    "name": "Neom SC",
                     "stats": {
-                        "GP": 34,
-                        "W": 3,
-                        "D": 7,
-                        "L": 24,
-                        "F": 32,
-                        "A": 76,
-                        "GD": -44,
-                        "P": 16
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
                     },
                     "zone": null
                 }
@@ -26598,6 +26598,320 @@
                     "zone": null
                 }
             ]
+        },
+        "2025": {
+            "saison": 2025,
+            "total_journees": 34,
+            "position_zones": [
+                {
+                    "positions": "1-4",
+                    "label": "AFC Champions League",
+                    "type": "avantage"
+                },
+                {
+                    "positions": "14",
+                    "label": "Relégation Playoff",
+                    "type": "désavantage"
+                },
+                {
+                    "positions": "15-16",
+                    "label": "Relégation",
+                    "type": "désavantage"
+                }
+            ],
+            "standings": [
+                {
+                    "position": 1,
+                    "name": "Al Nassr",
+                    "stats": {
+                        "GP": 34,
+                        "W": 28,
+                        "D": 2,
+                        "L": 4,
+                        "F": 91,
+                        "A": 28,
+                        "GD": 63,
+                        "P": 86
+                    },
+                    "zone": {
+                        "label": "AFC Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "Al Hilal",
+                    "stats": {
+                        "GP": 34,
+                        "W": 25,
+                        "D": 9,
+                        "L": 0,
+                        "F": 85,
+                        "A": 27,
+                        "GD": 58,
+                        "P": 84
+                    },
+                    "zone": {
+                        "label": "AFC Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
+                    "name": "Al Ahli",
+                    "stats": {
+                        "GP": 34,
+                        "W": 25,
+                        "D": 6,
+                        "L": 3,
+                        "F": 71,
+                        "A": 25,
+                        "GD": 46,
+                        "P": 81
+                    },
+                    "zone": {
+                        "label": "AFC Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
+                    "name": "Al Qadsiah",
+                    "stats": {
+                        "GP": 34,
+                        "W": 23,
+                        "D": 8,
+                        "L": 3,
+                        "F": 83,
+                        "A": 34,
+                        "GD": 49,
+                        "P": 77
+                    },
+                    "zone": {
+                        "label": "AFC Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
+                    "name": "Al Ittihad",
+                    "stats": {
+                        "GP": 34,
+                        "W": 16,
+                        "D": 7,
+                        "L": 11,
+                        "F": 55,
+                        "A": 48,
+                        "GD": 7,
+                        "P": 55
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 6,
+                    "name": "Al Taawoun",
+                    "stats": {
+                        "GP": 34,
+                        "W": 15,
+                        "D": 8,
+                        "L": 11,
+                        "F": 59,
+                        "A": 46,
+                        "GD": 13,
+                        "P": 53
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 7,
+                    "name": "Al Ettifaq",
+                    "stats": {
+                        "GP": 34,
+                        "W": 14,
+                        "D": 8,
+                        "L": 12,
+                        "F": 51,
+                        "A": 55,
+                        "GD": -4,
+                        "P": 50
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 8,
+                    "name": "Neom SC",
+                    "stats": {
+                        "GP": 34,
+                        "W": 12,
+                        "D": 9,
+                        "L": 13,
+                        "F": 43,
+                        "A": 48,
+                        "GD": -5,
+                        "P": 45
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
+                    "name": "Al Hazem",
+                    "stats": {
+                        "GP": 34,
+                        "W": 11,
+                        "D": 9,
+                        "L": 14,
+                        "F": 38,
+                        "A": 57,
+                        "GD": -19,
+                        "P": 42
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 10,
+                    "name": "Al Fayha",
+                    "stats": {
+                        "GP": 34,
+                        "W": 10,
+                        "D": 8,
+                        "L": 16,
+                        "F": 41,
+                        "A": 54,
+                        "GD": -13,
+                        "P": 38
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 11,
+                    "name": "Al Fateh",
+                    "stats": {
+                        "GP": 34,
+                        "W": 9,
+                        "D": 10,
+                        "L": 15,
+                        "F": 41,
+                        "A": 55,
+                        "GD": -14,
+                        "P": 37
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Al Khaleej",
+                    "stats": {
+                        "GP": 34,
+                        "W": 10,
+                        "D": 7,
+                        "L": 17,
+                        "F": 54,
+                        "A": 62,
+                        "GD": -8,
+                        "P": 37
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 13,
+                    "name": "Al Shabab",
+                    "stats": {
+                        "GP": 34,
+                        "W": 8,
+                        "D": 11,
+                        "L": 15,
+                        "F": 44,
+                        "A": 57,
+                        "GD": -13,
+                        "P": 35
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 14,
+                    "name": "Al Kholood",
+                    "stats": {
+                        "GP": 34,
+                        "W": 9,
+                        "D": 6,
+                        "L": 19,
+                        "F": 39,
+                        "A": 61,
+                        "GD": -22,
+                        "P": 33
+                    },
+                    "zone": {
+                        "label": "Relégation Playoff",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 15,
+                    "name": "Al Riyadh",
+                    "stats": {
+                        "GP": 34,
+                        "W": 7,
+                        "D": 9,
+                        "L": 18,
+                        "F": 35,
+                        "A": 63,
+                        "GD": -28,
+                        "P": 30
+                    },
+                    "zone": {
+                        "label": "Relégation",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 16,
+                    "name": "Damac",
+                    "stats": {
+                        "GP": 34,
+                        "W": 6,
+                        "D": 11,
+                        "L": 17,
+                        "F": 32,
+                        "A": 55,
+                        "GD": -23,
+                        "P": 29
+                    },
+                    "zone": {
+                        "label": "Relégation",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 17,
+                    "name": "Al Okhdood",
+                    "stats": {
+                        "GP": 34,
+                        "W": 5,
+                        "D": 5,
+                        "L": 24,
+                        "F": 27,
+                        "A": 70,
+                        "GD": -43,
+                        "P": 20
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 18,
+                    "name": "Al Najma",
+                    "stats": {
+                        "GP": 34,
+                        "W": 3,
+                        "D": 7,
+                        "L": 24,
+                        "F": 32,
+                        "A": 76,
+                        "GD": -44,
+                        "P": 16
+                    },
+                    "zone": null
+                }
+            ]
         }
     },
     "Sweden_Allsvenskan": {
@@ -26672,6 +26986,21 @@
                 },
                 {
                     "position": 4,
+                    "name": "Västerås SK",
+                    "stats": {
+                        "GP": 14,
+                        "W": 6,
+                        "D": 4,
+                        "L": 4,
+                        "F": 24,
+                        "A": 23,
+                        "GD": 1,
+                        "P": 22
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 5,
                     "name": "AIK",
                     "stats": {
                         "GP": 13,
@@ -26686,7 +27015,7 @@
                     "zone": null
                 },
                 {
-                    "position": 5,
+                    "position": 6,
                     "name": "Djurgården",
                     "stats": {
                         "GP": 12,
@@ -26701,7 +27030,7 @@
                     "zone": null
                 },
                 {
-                    "position": 6,
+                    "position": 7,
                     "name": "Malmö FF",
                     "stats": {
                         "GP": 13,
@@ -26716,7 +27045,7 @@
                     "zone": null
                 },
                 {
-                    "position": 7,
+                    "position": 8,
                     "name": "GAIS",
                     "stats": {
                         "GP": 14,
@@ -26726,21 +27055,6 @@
                         "F": 18,
                         "A": 14,
                         "GD": 4,
-                        "P": 19
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 8,
-                    "name": "Västerås SK",
-                    "stats": {
-                        "GP": 13,
-                        "W": 5,
-                        "D": 4,
-                        "L": 4,
-                        "F": 22,
-                        "A": 23,
-                        "GD": -1,
                         "P": 19
                     },
                     "zone": null
@@ -26842,13 +27156,13 @@
                     "position": 15,
                     "name": "Örgryte IS",
                     "stats": {
-                        "GP": 13,
+                        "GP": 14,
                         "W": 2,
                         "D": 4,
-                        "L": 7,
+                        "L": 8,
                         "F": 14,
-                        "A": 31,
-                        "GD": -17,
+                        "A": 33,
+                        "GD": -19,
                         "P": 10
                     },
                     "zone": {

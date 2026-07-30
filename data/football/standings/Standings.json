@@ -6952,14 +6952,14 @@
                     "position": 2,
                     "name": "Flamengo",
                     "stats": {
-                        "GP": 19,
+                        "GP": 20,
                         "W": 11,
-                        "D": 5,
+                        "D": 6,
                         "L": 3,
-                        "F": 36,
-                        "A": 17,
+                        "F": 37,
+                        "A": 18,
                         "GD": 19,
-                        "P": 38
+                        "P": 39
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores (Groupes)",
@@ -7163,6 +7163,21 @@
                 },
                 {
                     "position": 14,
+                    "name": "Mirassol",
+                    "stats": {
+                        "GP": 20,
+                        "W": 6,
+                        "D": 5,
+                        "L": 9,
+                        "F": 23,
+                        "A": 27,
+                        "GD": -4,
+                        "P": 23
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 15,
                     "name": "Santos",
                     "stats": {
                         "GP": 20,
@@ -7177,7 +7192,22 @@
                     "zone": null
                 },
                 {
-                    "position": 15,
+                    "position": 16,
+                    "name": "Internacional",
+                    "stats": {
+                        "GP": 21,
+                        "W": 5,
+                        "D": 7,
+                        "L": 9,
+                        "F": 23,
+                        "A": 27,
+                        "GD": -4,
+                        "P": 22
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 17,
                     "name": "Grêmio",
                     "stats": {
                         "GP": 20,
@@ -7189,25 +7219,13 @@
                         "GD": -4,
                         "P": 22
                     },
-                    "zone": null
+                    "zone": {
+                        "label": "Relégation Serie B",
+                        "type": "désavantage"
+                    }
                 },
                 {
-                    "position": 16,
-                    "name": "Internacional",
-                    "stats": {
-                        "GP": 20,
-                        "W": 5,
-                        "D": 6,
-                        "L": 9,
-                        "F": 22,
-                        "A": 26,
-                        "GD": -4,
-                        "P": 21
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 17,
+                    "position": 18,
                     "name": "Vasco da Gama",
                     "stats": {
                         "GP": 20,
@@ -7225,35 +7243,17 @@
                     }
                 },
                 {
-                    "position": 18,
+                    "position": 19,
                     "name": "Remo",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 5,
                         "D": 6,
-                        "L": 9,
-                        "F": 23,
-                        "A": 32,
-                        "GD": -9,
+                        "L": 10,
+                        "F": 24,
+                        "A": 34,
+                        "GD": -10,
                         "P": 21
-                    },
-                    "zone": {
-                        "label": "Relégation Serie B",
-                        "type": "désavantage"
-                    }
-                },
-                {
-                    "position": 19,
-                    "name": "Mirassol",
-                    "stats": {
-                        "GP": 19,
-                        "W": 5,
-                        "D": 5,
-                        "L": 9,
-                        "F": 21,
-                        "A": 26,
-                        "GD": -5,
-                        "P": 20
                     },
                     "zone": {
                         "label": "Relégation Serie B",
@@ -8446,6 +8446,24 @@
                 },
                 {
                     "position": 2,
+                    "name": "Juventude",
+                    "stats": {
+                        "GP": 20,
+                        "W": 10,
+                        "D": 5,
+                        "L": 5,
+                        "F": 22,
+                        "A": 12,
+                        "GD": 10,
+                        "P": 35
+                    },
+                    "zone": {
+                        "label": "Promotion Serie A",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
                     "name": "Operário PR",
                     "stats": {
                         "GP": 20,
@@ -8463,7 +8481,25 @@
                     }
                 },
                 {
-                    "position": 3,
+                    "position": 4,
+                    "name": "Fortaleza",
+                    "stats": {
+                        "GP": 20,
+                        "W": 10,
+                        "D": 4,
+                        "L": 6,
+                        "F": 23,
+                        "A": 19,
+                        "GD": 4,
+                        "P": 34
+                    },
+                    "zone": {
+                        "label": "Promotion Serie A",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
                     "name": "Vila Nova",
                     "stats": {
                         "GP": 20,
@@ -8475,13 +8511,10 @@
                         "GD": 3,
                         "P": 34
                     },
-                    "zone": {
-                        "label": "Promotion Serie A",
-                        "type": "avantage"
-                    }
+                    "zone": null
                 },
                 {
-                    "position": 4,
+                    "position": 6,
                     "name": "Novorizontino",
                     "stats": {
                         "GP": 20,
@@ -8492,39 +8525,6 @@
                         "A": 19,
                         "GD": 13,
                         "P": 33
-                    },
-                    "zone": {
-                        "label": "Promotion Serie A",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 5,
-                    "name": "Juventude",
-                    "stats": {
-                        "GP": 19,
-                        "W": 9,
-                        "D": 5,
-                        "L": 5,
-                        "F": 21,
-                        "A": 12,
-                        "GD": 9,
-                        "P": 32
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 6,
-                    "name": "Fortaleza",
-                    "stats": {
-                        "GP": 19,
-                        "W": 9,
-                        "D": 4,
-                        "L": 6,
-                        "F": 22,
-                        "A": 19,
-                        "GD": 3,
-                        "P": 31
                     },
                     "zone": null
                 },
@@ -8590,6 +8590,21 @@
                 },
                 {
                     "position": 11,
+                    "name": "Athletic",
+                    "stats": {
+                        "GP": 20,
+                        "W": 6,
+                        "D": 10,
+                        "L": 4,
+                        "F": 19,
+                        "A": 18,
+                        "GD": 1,
+                        "P": 28
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
                     "name": "São Bernardo",
                     "stats": {
                         "GP": 20,
@@ -8599,21 +8614,6 @@
                         "F": 28,
                         "A": 23,
                         "GD": 5,
-                        "P": 27
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 12,
-                    "name": "Athletic",
-                    "stats": {
-                        "GP": 19,
-                        "W": 6,
-                        "D": 9,
-                        "L": 4,
-                        "F": 18,
-                        "A": 17,
-                        "GD": 1,
                         "P": 27
                     },
                     "zone": null
@@ -8652,13 +8652,13 @@
                     "position": 15,
                     "name": "Botafogo-SP",
                     "stats": {
-                        "GP": 19,
+                        "GP": 20,
                         "W": 6,
                         "D": 6,
-                        "L": 7,
+                        "L": 8,
                         "F": 24,
-                        "A": 20,
-                        "GD": 4,
+                        "A": 21,
+                        "GD": 3,
                         "P": 24
                     },
                     "zone": null
@@ -8700,13 +8700,13 @@
                     "position": 18,
                     "name": "Avaí",
                     "stats": {
-                        "GP": 19,
+                        "GP": 20,
                         "W": 5,
                         "D": 5,
-                        "L": 9,
+                        "L": 10,
                         "F": 21,
-                        "A": 26,
-                        "GD": -5,
+                        "A": 27,
+                        "GD": -6,
                         "P": 20
                     },
                     "zone": {
@@ -8736,14 +8736,14 @@
                     "position": 20,
                     "name": "Ponte Preta",
                     "stats": {
-                        "GP": 19,
+                        "GP": 20,
                         "W": 2,
-                        "D": 2,
+                        "D": 3,
                         "L": 15,
-                        "F": 14,
-                        "A": 38,
+                        "F": 15,
+                        "A": 39,
                         "GD": -24,
-                        "P": 8
+                        "P": 9
                     },
                     "zone": {
                         "label": "Relégation Serie C",
@@ -20971,6 +20971,24 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "Sportivo Trinidense",
+                    "stats": {
+                        "GP": 2,
+                        "W": 2,
+                        "D": 0,
+                        "L": 0,
+                        "F": 6,
+                        "A": 2,
+                        "GD": 4,
+                        "P": 6
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
                     "name": "2 de Mayo",
                     "stats": {
                         "GP": 2,
@@ -20988,35 +21006,17 @@
                     }
                 },
                 {
-                    "position": 2,
-                    "name": "Sportivo Luqueño",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 2,
-                        "A": 1,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Libertadores",
-                        "type": "avantage"
-                    }
-                },
-                {
                     "position": 3,
-                    "name": "Sportivo Trinidense",
+                    "name": "Nacional Asunción",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 1,
-                        "D": 0,
+                        "D": 1,
                         "L": 0,
-                        "F": 2,
+                        "F": 3,
                         "A": 1,
-                        "GD": 1,
-                        "P": 3
+                        "GD": 2,
+                        "P": 4
                     },
                     "zone": {
                         "label": "CONMEBOL Sudamericana",
@@ -21043,6 +21043,21 @@
                 },
                 {
                     "position": 5,
+                    "name": "Sportivo Luqueño",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 3,
+                        "A": 5,
+                        "GD": -2,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 6,
                     "name": "Sportivo Ameliano",
                     "stats": {
                         "GP": 2,
@@ -21057,7 +21072,7 @@
                     "zone": null
                 },
                 {
-                    "position": 6,
+                    "position": 7,
                     "name": "Deportivo Recoleta",
                     "stats": {
                         "GP": 1,
@@ -21072,23 +21087,8 @@
                     "zone": null
                 },
                 {
-                    "position": 7,
-                    "name": "Sportivo San Lorenzo",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 1,
-                        "A": 1,
-                        "GD": 0,
-                        "P": 1
-                    },
-                    "zone": null
-                },
-                {
                     "position": 8,
-                    "name": "Nacional Asunción",
+                    "name": "Sportivo San Lorenzo",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -21133,21 +21133,6 @@
                 },
                 {
                     "position": 11,
-                    "name": "Club Olimpia",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 0,
-                        "A": 1,
-                        "GD": -1,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 12,
                     "name": "Cerro Porteño",
                     "stats": {
                         "GP": 2,
@@ -21157,6 +21142,21 @@
                         "F": 2,
                         "A": 4,
                         "GD": -2,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Club Olimpia",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 0,
+                        "L": 2,
+                        "F": 0,
+                        "A": 3,
+                        "GD": -3,
                         "P": 0
                     },
                     "zone": null
@@ -29568,7 +29568,7 @@
     "Venezuela_Primera_Division": {
         "2026": {
             "saison": 2026,
-            "total_journees": 0,
+            "total_journees": 26,
             "position_zones": [
                 {
                     "positions": "1-2",
@@ -29581,7 +29581,230 @@
                     "type": "avantage"
                 }
             ],
-            "standings": []
+            "standings": [
+                {
+                    "position": 1,
+                    "name": "Academia Puerto Cabello",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "Anzoátegui FC",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
+                    "name": "Carabobo",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
+                    "name": "Caracas FC",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
+                    "name": "Deportivo La Guaira",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 6,
+                    "name": "Deportivo Táchira",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 7,
+                    "name": "Estudiantes de Mérida",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 8,
+                    "name": "Metropolitanos",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
+                    "name": "Monagas SC",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 10,
+                    "name": "Portuguesa",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 11,
+                    "name": "Rayo Zuliano",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Trujillanos",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 13,
+                    "name": "UCV FC",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 14,
+                    "name": "Zamora FC",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                }
+            ]
         },
         "2023": {
             "saison": 2023,

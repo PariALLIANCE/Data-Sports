@@ -1,34 +1,259 @@
 [
   {
-    "gameId": "401841171",
-    "date": "2026-07-29",
+    "gameId": "401841174",
+    "date": "2026-07-30",
     "time_ci": "02:30",
     "league": "Brazil_Serie_A",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401841171/flamengo-internacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401841174/athletico-paranaense-corinthians",
     "home": {
-      "team": "Internacional",
-      "team_id": "1936",
-      "team_slug": "internacional",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1936.png",
-      "url": "https://www.espn.com/soccer/team/_/id/1936",
+      "team": "Corinthians",
+      "team_id": "874",
+      "team_slug": "corinthians",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+      "url": "https://www.espn.com/soccer/team/_/id/874",
       "standings": {
-        "position_current": 16,
-        "position_if_win": 14,
+        "position_current": 9,
+        "position_if_win": 6,
         "played": 20,
-        "won": 5,
-        "drawn": 6,
-        "lost": 9,
-        "gd": -4,
-        "points": 21
+        "won": 7,
+        "drawn": 7,
+        "lost": 6,
+        "gd": 2,
+        "points": 28
       },
-      "form": "5-6-9",
+      "form": "7-7-6",
+      "matchday": 21,
+      "last_five": [
+        {
+          "date": "2026-07-26",
+          "competition": "Brazilian Serie A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841159/corinthians-bahia",
+          "result": "D",
+          "team_home": "Bahia",
+          "team_home_id": "9967",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9967.png",
+          "team_away": "Corinthians",
+          "team_away_id": "874",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.35,
+            "away": 3.15,
+            "draw": 3.15
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-23",
+          "competition": "Brazilian Serie A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841151/remo-corinthians",
+          "result": "W",
+          "team_home": "Corinthians",
+          "team_home_id": "874",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+          "team_away": "Remo",
+          "team_away_id": "4936",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
+          "home_score": "3",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.51,
+            "away": 6.5,
+            "draw": 4.1
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-30",
+          "competition": "Brazilian Serie A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841139/corinthians-gremio",
+          "result": "W",
+          "team_home": "Grêmio",
+          "team_home_id": "6273",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6273.png",
+          "team_away": "Corinthians",
+          "team_away_id": "874",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+          "home_score": "1",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 3.1,
+            "away": 2.45,
+            "draw": 3.1
+          },
+          "stats": {
+            "Possession": {
+              "home": "41%",
+              "away": "59%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "9"
+            },
+            "Shots": {
+              "home": "10",
+              "away": "24"
+            },
+            "Fouls Committed": {
+              "home": "23",
+              "away": "20"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "1",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "4",
+              "away": "8"
+            },
+            "Saves": {
+              "home": "6",
+              "away": "1"
+            }
+          }
+        },
+        {
+          "date": "2026-05-28",
+          "competition": "2026 CONMEBOL Libertadores, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
+          "result": "L",
+          "team_home": "Corinthians",
+          "team_home_id": "874",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+          "team_away": "Platense",
+          "team_away_id": "7764",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+          "home_score": "0",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 1.65,
+            "away": 6.0,
+            "draw": 3.45
+          },
+          "stats": {
+            "Possession": {
+              "home": "77%",
+              "away": "23%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "5"
+            },
+            "Shots": {
+              "home": "14",
+              "away": "10"
+            },
+            "Fouls Committed": {
+              "home": "5",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "5",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "5"
+            }
+          }
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "Brazilian Serie A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841128/atletico-mg-corinthians",
+          "result": "W",
+          "team_home": "Corinthians",
+          "team_home_id": "874",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+          "team_away": "Atlético-MG",
+          "team_away_id": "7632",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7632.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.83,
+            "away": 4.8,
+            "draw": 3.3
+          },
+          "stats": {
+            "Possession": {
+              "home": "58%",
+              "away": "42%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "1"
+            },
+            "Shots": {
+              "home": "10",
+              "away": "11"
+            },
+            "Fouls Committed": {
+              "home": "15",
+              "away": "14"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "3",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "1",
+              "away": "3"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Athletico Paranaense",
+      "team_id": "3458",
+      "team_slug": "athletico-paranaense",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3458.png",
+      "url": "https://www.espn.com/soccer/team/_/id/3458",
+      "standings": {
+        "position_current": 3,
+        "position_if_win": 2,
+        "played": 20,
+        "won": 11,
+        "drawn": 3,
+        "lost": 6,
+        "gd": 9,
+        "points": 36
+      },
+      "form": "11-3-6",
       "matchday": 21,
       "last_five": [
         {
           "date": "2026-07-25",
           "competition": "Brazilian Serie A",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401841158/internacional-athletico-paranaense",
-          "result": "L",
+          "result": "W",
           "team_home": "Athletico Paranaense",
           "team_home_id": "3458",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3458.png",
@@ -48,2036 +273,87 @@
         {
           "date": "2026-07-23",
           "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841154/cruzeiro-internacional",
-          "result": "L",
-          "team_home": "Internacional",
-          "team_home_id": "1936",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1936.png",
-          "team_away": "Cruzeiro",
-          "team_away_id": "2022",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2022.png",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841156/athletico-paranaense-sao-paulo",
+          "result": "W",
+          "team_home": "São Paulo",
+          "team_home_id": "2026",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2026.png",
+          "team_away": "Athletico Paranaense",
+          "team_away_id": "3458",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3458.png",
           "home_score": "1",
           "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 2.4,
-            "away": 2.95,
-            "draw": 3.3
+            "home": 2.05,
+            "away": 3.95,
+            "draw": 3.15
           },
           "stats": {}
         },
         {
-          "date": "2026-05-31",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841141/internacional-red-bull-bragantino",
+          "date": "2026-07-09",
+          "competition": "Club Friendly",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401886458/athletico-paranaense-boca-juniors",
           "result": "L",
-          "team_home": "Red Bull Bragantino",
-          "team_home_id": "6079",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6079.png",
-          "team_away": "Internacional",
-          "team_away_id": "1936",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1936.png",
-          "home_score": "3",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {
-            "Possession": {
-              "home": "52%",
-              "away": "48%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "2"
-            },
-            "Shots": {
-              "home": "18",
-              "away": "8"
-            },
-            "Fouls Committed": {
-              "home": "19",
-              "away": "17"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "4"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "1"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "5"
-            }
-          }
-        },
-        {
-          "date": "2026-05-23",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841130/internacional-vitoria",
-          "result": "L",
-          "team_home": "Vitória",
-          "team_home_id": "3457",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3457.png",
-          "team_away": "Internacional",
-          "team_away_id": "1936",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1936.png",
-          "home_score": "2",
+          "team_home": null,
+          "team_home_id": "5",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+          "team_away": null,
+          "team_away_id": "3458",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3458.png",
+          "home_score": "1",
           "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {
-            "Possession": {
-              "home": "44%",
-              "away": "56%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "2"
-            },
-            "Shots": {
-              "home": "7",
-              "away": "20"
-            },
-            "Fouls Committed": {
-              "home": "15",
-              "away": "18"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "6"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "1"
-            }
-          }
-        },
-        {
-          "date": "2026-05-16",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841126/vasco-da-gama-internacional",
-          "result": "W",
-          "team_home": "Internacional",
-          "team_home_id": "1936",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1936.png",
-          "team_away": "Vasco da Gama",
-          "team_away_id": "3454",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3454.png",
-          "home_score": "4",
-          "away_score": "1",
           "status": "FT",
           "odds": {
             "home": 1.95,
-            "away": 4.2,
-            "draw": 3.3
+            "away": 3.95,
+            "draw": 3.2
           },
           "stats": {
             "Possession": {
-              "home": "40%",
-              "away": "60%"
+              "home": "0%",
+              "away": "0%"
             },
             "Shots on Goal": {
-              "home": "7",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "12",
-              "away": "14"
-            },
-            "Fouls Committed": {
-              "home": "17",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "2"
-            },
-            "Red Cards": {
               "home": "0",
-              "away": "1"
+              "away": "0"
             },
-            "Corners Won": {
-              "home": "3",
-              "away": "4"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "3"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Flamengo",
-      "team_id": "819",
-      "team_slug": "flamengo",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-      "url": "https://www.espn.com/soccer/team/_/id/819",
-      "standings": {
-        "position_current": 2,
-        "position_if_win": 2,
-        "played": 19,
-        "won": 11,
-        "drawn": 5,
-        "lost": 3,
-        "gd": 19,
-        "points": 38
-      },
-      "form": "11-5-3",
-      "matchday": 20,
-      "last_five": [
-        {
-          "date": "2026-07-26",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841166/sao-paulo-flamengo",
-          "result": "D",
-          "team_home": "Flamengo",
-          "team_home_id": "819",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-          "team_away": "São Paulo",
-          "team_away_id": "2026",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2026.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.47,
-            "away": 7.0,
-            "draw": 4.3
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-07-23",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841150/flamengo-chapecoense",
-          "result": "W",
-          "team_home": "Chapecoense",
-          "team_home_id": "9318",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9318.png",
-          "team_away": "Flamengo",
-          "team_away_id": "819",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-          "home_score": "0",
-          "away_score": "4",
-          "status": "FT",
-          "odds": {
-            "home": 8.5,
-            "away": 1.37,
-            "draw": 4.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841144/coritiba-flamengo",
-          "result": "W",
-          "team_home": "Flamengo",
-          "team_home_id": "819",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-          "team_away": "Coritiba",
-          "team_away_id": "3456",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3456.png",
-          "home_score": "3",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.32,
-            "away": 9.0,
-            "draw": 5.25
-          },
-          "stats": {
-            "Possession": {
-              "home": "62%",
-              "away": "38%"
-            },
-            "Shots on Goal": {
-              "home": "9",
-              "away": "2"
-            },
-            "Shots": {
-              "home": "21",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "2"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "4"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-05-27",
-          "competition": "2026 CONMEBOL Libertadores, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865555/cusco-fc-flamengo",
-          "result": "W",
-          "team_home": "Flamengo",
-          "team_home_id": "819",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-          "team_away": "Cusco FC",
-          "team_away_id": "11995",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11995.png",
-          "home_score": "3",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.1,
-            "away": 20.0,
-            "draw": 10.5
-          },
-          "stats": {
-            "Possession": {
-              "home": "68%",
-              "away": "32%"
-            },
-            "Shots on Goal": {
-              "home": "15",
-              "away": "1"
-            },
-            "Shots": {
-              "home": "27",
-              "away": "4"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "12"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "5"
-            },
-            "Red Cards": {
+            "Big Chances Created": {
               "home": "0",
               "away": "0"
             },
             "Corners Won": {
-              "home": "9",
-              "away": "2"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841136/palmeiras-flamengo",
-          "result": "L",
-          "team_home": "Flamengo",
-          "team_home_id": "819",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
-          "team_away": "Palmeiras",
-          "team_away_id": "2029",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2029.png",
-          "home_score": "0",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 1.77,
-            "away": 5.0,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "48%",
-              "away": "52%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "6"
-            },
-            "Shots": {
-              "home": "22",
-              "away": "12"
-            },
-            "Fouls Committed": {
-              "home": "9",
-              "away": "19"
-            },
-            "Yellow Cards": {
-              "home": "6",
-              "away": "6"
-            },
-            "Red Cards": {
-              "home": "1",
+              "home": "0",
               "away": "0"
             },
-            "Corners Won": {
-              "home": "8",
-              "away": "4"
+            "Accurate Passes": {
+              "home": "0",
+              "away": "0"
+            },
+            "Passes": {
+              "home": "0",
+              "away": "0"
+            },
+            "Duels Won": {
+              "home": "0",
+              "away": "0"
             },
             "Saves": {
-              "home": "3",
-              "away": "3"
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls Committed": {
+              "home": "0",
+              "away": "0"
             }
           }
-        }
-      ]
-    },
-    "odds": {
-      "home": 4.0,
-      "away": 1.91,
-      "draw": 3.45
-    },
-    "stats": {
-      "Average Goals": {
-        "home": "1.10",
-        "away": "1.89"
-      },
-      "Average Goals Conceded": {
-        "home": "1.3",
-        "away": "0.89"
-      },
-      "Average Goal Differential": {
-        "home": "-0.2",
-        "away": "+1.0"
-      },
-      "Possession": {
-        "home": "51%",
-        "away": "55%"
-      },
-      "Shots On Target Percentage": {
-        "home": "34%",
-        "away": "36%"
-      },
-      "Big Chances Created": {
-        "home": ".15",
-        "away": ".47"
-      },
-      "Duel Win Percentage": {
-        "home": "45%",
-        "away": "50%"
-      },
-      "Clean Sheet": {
-        "home": "4",
-        "away": "8"
-      },
-      "Save Percentage": {
-        "home": "65%",
-        "away": "76%"
-      }
-    },
-    "h2h": [],
-    "full_standings": {
-      "2026": {
-        "saison": 2026,
-        "total_journees": 38,
-        "position_zones": [
-          {
-            "positions": "1-4",
-            "label": "CONMEBOL Libertadores (Groupes)",
-            "type": "avantage"
-          },
-          {
-            "positions": "5-6",
-            "label": "CONMEBOL Libertadores Playoff",
-            "type": "avantage"
-          },
-          {
-            "positions": "7-12",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          },
-          {
-            "positions": "17-20",
-            "label": "Relégation Serie B",
-            "type": "désavantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Palmeiras",
-            "stats": {
-              "GP": 20,
-              "W": 13,
-              "D": 5,
-              "L": 2,
-              "F": 34,
-              "A": 16,
-              "GD": 18,
-              "P": 44
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Flamengo",
-            "stats": {
-              "GP": 19,
-              "W": 11,
-              "D": 5,
-              "L": 3,
-              "F": 36,
-              "A": 17,
-              "GD": 19,
-              "P": 38
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Athletico Paranaense",
-            "stats": {
-              "GP": 20,
-              "W": 11,
-              "D": 3,
-              "L": 6,
-              "F": 28,
-              "A": 19,
-              "GD": 9,
-              "P": 36
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Fluminense",
-            "stats": {
-              "GP": 20,
-              "W": 9,
-              "D": 6,
-              "L": 5,
-              "F": 30,
-              "A": 25,
-              "GD": 5,
-              "P": 33
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Red Bull Bragantino",
-            "stats": {
-              "GP": 20,
-              "W": 9,
-              "D": 4,
-              "L": 7,
-              "F": 26,
-              "A": 20,
-              "GD": 6,
-              "P": 31
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "Bahia",
-            "stats": {
-              "GP": 20,
-              "W": 8,
-              "D": 7,
-              "L": 5,
-              "F": 29,
-              "A": 25,
-              "GD": 4,
-              "P": 31
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 7,
-            "name": "Botafogo",
-            "stats": {
-              "GP": 20,
-              "W": 8,
-              "D": 5,
-              "L": 7,
-              "F": 34,
-              "A": 32,
-              "GD": 2,
-              "P": 29
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 8,
-            "name": "Atlético-MG",
-            "stats": {
-              "GP": 20,
-              "W": 8,
-              "D": 4,
-              "L": 8,
-              "F": 25,
-              "A": 25,
-              "GD": 0,
-              "P": 28
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 9,
-            "name": "Corinthians",
-            "stats": {
-              "GP": 20,
-              "W": 7,
-              "D": 7,
-              "L": 6,
-              "F": 22,
-              "A": 20,
-              "GD": 2,
-              "P": 28
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 10,
-            "name": "Coritiba",
-            "stats": {
-              "GP": 20,
-              "W": 7,
-              "D": 6,
-              "L": 7,
-              "F": 25,
-              "A": 27,
-              "GD": -2,
-              "P": 27
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 11,
-            "name": "Cruzeiro",
-            "stats": {
-              "GP": 20,
-              "W": 7,
-              "D": 6,
-              "L": 7,
-              "F": 26,
-              "A": 30,
-              "GD": -4,
-              "P": 27
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 12,
-            "name": "São Paulo",
-            "stats": {
-              "GP": 20,
-              "W": 7,
-              "D": 5,
-              "L": 8,
-              "F": 25,
-              "A": 23,
-              "GD": 2,
-              "P": 26
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 13,
-            "name": "Vitória",
-            "stats": {
-              "GP": 20,
-              "W": 7,
-              "D": 5,
-              "L": 8,
-              "F": 22,
-              "A": 27,
-              "GD": -5,
-              "P": 26
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "Santos",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 7,
-              "L": 8,
-              "F": 29,
-              "A": 33,
-              "GD": -4,
-              "P": 22
-            },
-            "zone": null
-          },
-          {
-            "position": 15,
-            "name": "Grêmio",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 7,
-              "L": 8,
-              "F": 22,
-              "A": 26,
-              "GD": -4,
-              "P": 22
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Internacional",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 6,
-              "L": 9,
-              "F": 22,
-              "A": 26,
-              "GD": -4,
-              "P": 21
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Vasco da Gama",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 6,
-              "L": 9,
-              "F": 23,
-              "A": 31,
-              "GD": -8,
-              "P": 21
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 18,
-            "name": "Remo",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 6,
-              "L": 9,
-              "F": 23,
-              "A": 32,
-              "GD": -9,
-              "P": 21
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 19,
-            "name": "Mirassol",
-            "stats": {
-              "GP": 19,
-              "W": 5,
-              "D": 5,
-              "L": 9,
-              "F": 21,
-              "A": 26,
-              "GD": -5,
-              "P": 20
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 20,
-            "name": "Chapecoense",
-            "stats": {
-              "GP": 20,
-              "W": 1,
-              "D": 7,
-              "L": 12,
-              "F": 19,
-              "A": 41,
-              "GD": -22,
-              "P": 10
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          }
-        ]
-      },
-      "2023": {
-        "saison": 2023,
-        "total_journees": 38,
-        "position_zones": [
-          {
-            "positions": "1-4",
-            "label": "CONMEBOL Libertadores (Groupes)",
-            "type": "avantage"
-          },
-          {
-            "positions": "5-6",
-            "label": "CONMEBOL Libertadores Playoff",
-            "type": "avantage"
-          },
-          {
-            "positions": "7-12",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          },
-          {
-            "positions": "17-20",
-            "label": "Relégation Serie B",
-            "type": "désavantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Palmeiras",
-            "stats": {
-              "GP": 38,
-              "W": 20,
-              "D": 10,
-              "L": 8,
-              "F": 64,
-              "A": 33,
-              "GD": 31,
-              "P": 70
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Grêmio",
-            "stats": {
-              "GP": 38,
-              "W": 21,
-              "D": 5,
-              "L": 12,
-              "F": 63,
-              "A": 56,
-              "GD": 7,
-              "P": 68
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Atlético-MG",
-            "stats": {
-              "GP": 38,
-              "W": 19,
-              "D": 9,
-              "L": 10,
-              "F": 52,
-              "A": 32,
-              "GD": 20,
-              "P": 66
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Flamengo",
-            "stats": {
-              "GP": 38,
-              "W": 19,
-              "D": 9,
-              "L": 10,
-              "F": 56,
-              "A": 42,
-              "GD": 14,
-              "P": 66
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Botafogo",
-            "stats": {
-              "GP": 38,
-              "W": 18,
-              "D": 10,
-              "L": 10,
-              "F": 58,
-              "A": 37,
-              "GD": 21,
-              "P": 64
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "Red Bull Bragantino",
-            "stats": {
-              "GP": 38,
-              "W": 17,
-              "D": 11,
-              "L": 10,
-              "F": 49,
-              "A": 35,
-              "GD": 14,
-              "P": 62
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 7,
-            "name": "Fluminense",
-            "stats": {
-              "GP": 38,
-              "W": 16,
-              "D": 8,
-              "L": 14,
-              "F": 51,
-              "A": 47,
-              "GD": 4,
-              "P": 56
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 8,
-            "name": "Athletico Paranaense",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 14,
-              "L": 10,
-              "F": 51,
-              "A": 43,
-              "GD": 8,
-              "P": 56
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 9,
-            "name": "Internacional",
-            "stats": {
-              "GP": 38,
-              "W": 15,
-              "D": 10,
-              "L": 13,
-              "F": 46,
-              "A": 45,
-              "GD": 1,
-              "P": 55
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 10,
-            "name": "Fortaleza",
-            "stats": {
-              "GP": 38,
-              "W": 15,
-              "D": 9,
-              "L": 14,
-              "F": 45,
-              "A": 44,
-              "GD": 1,
-              "P": 54
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 11,
-            "name": "São Paulo",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 11,
-              "L": 13,
-              "F": 40,
-              "A": 38,
-              "GD": 2,
-              "P": 53
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 12,
-            "name": "Cuiabá",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 9,
-              "L": 15,
-              "F": 40,
-              "A": 39,
-              "GD": 1,
-              "P": 51
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 13,
-            "name": "Corinthians",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 14,
-              "L": 12,
-              "F": 47,
-              "A": 48,
-              "GD": -1,
-              "P": 50
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "Cruzeiro",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 14,
-              "L": 13,
-              "F": 35,
-              "A": 32,
-              "GD": 3,
-              "P": 47
-            },
-            "zone": null
-          },
-          {
-            "position": 15,
-            "name": "Vasco da Gama",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 9,
-              "L": 17,
-              "F": 41,
-              "A": 51,
-              "GD": -10,
-              "P": 45
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Bahia",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 8,
-              "L": 18,
-              "F": 50,
-              "A": 53,
-              "GD": -3,
-              "P": 44
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Santos",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 10,
-              "L": 17,
-              "F": 39,
-              "A": 64,
-              "GD": -25,
-              "P": 43
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 18,
-            "name": "Goiás",
-            "stats": {
-              "GP": 38,
-              "W": 9,
-              "D": 11,
-              "L": 18,
-              "F": 36,
-              "A": 53,
-              "GD": -17,
-              "P": 38
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 19,
-            "name": "Coritiba",
-            "stats": {
-              "GP": 38,
-              "W": 8,
-              "D": 6,
-              "L": 24,
-              "F": 41,
-              "A": 73,
-              "GD": -32,
-              "P": 30
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 20,
-            "name": "América Mineiro",
-            "stats": {
-              "GP": 38,
-              "W": 5,
-              "D": 9,
-              "L": 24,
-              "F": 42,
-              "A": 81,
-              "GD": -39,
-              "P": 24
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          }
-        ]
-      },
-      "2024": {
-        "saison": 2024,
-        "total_journees": 38,
-        "position_zones": [
-          {
-            "positions": "1-4",
-            "label": "CONMEBOL Libertadores (Groupes)",
-            "type": "avantage"
-          },
-          {
-            "positions": "5-6",
-            "label": "CONMEBOL Libertadores Playoff",
-            "type": "avantage"
-          },
-          {
-            "positions": "7-12",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          },
-          {
-            "positions": "17-20",
-            "label": "Relégation Serie B",
-            "type": "désavantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Botafogo",
-            "stats": {
-              "GP": 38,
-              "W": 23,
-              "D": 10,
-              "L": 5,
-              "F": 59,
-              "A": 29,
-              "GD": 30,
-              "P": 79
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Palmeiras",
-            "stats": {
-              "GP": 38,
-              "W": 22,
-              "D": 7,
-              "L": 9,
-              "F": 60,
-              "A": 33,
-              "GD": 27,
-              "P": 73
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Flamengo",
-            "stats": {
-              "GP": 38,
-              "W": 20,
-              "D": 10,
-              "L": 8,
-              "F": 61,
-              "A": 42,
-              "GD": 19,
-              "P": 70
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Fortaleza",
-            "stats": {
-              "GP": 38,
-              "W": 19,
-              "D": 11,
-              "L": 8,
-              "F": 53,
-              "A": 39,
-              "GD": 14,
-              "P": 68
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Internacional",
-            "stats": {
-              "GP": 38,
-              "W": 18,
-              "D": 11,
-              "L": 9,
-              "F": 53,
-              "A": 36,
-              "GD": 17,
-              "P": 65
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "São Paulo",
-            "stats": {
-              "GP": 38,
-              "W": 17,
-              "D": 8,
-              "L": 13,
-              "F": 53,
-              "A": 43,
-              "GD": 10,
-              "P": 59
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 7,
-            "name": "Corinthians",
-            "stats": {
-              "GP": 38,
-              "W": 15,
-              "D": 11,
-              "L": 12,
-              "F": 54,
-              "A": 45,
-              "GD": 9,
-              "P": 56
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 8,
-            "name": "Bahia",
-            "stats": {
-              "GP": 38,
-              "W": 15,
-              "D": 8,
-              "L": 15,
-              "F": 49,
-              "A": 49,
-              "GD": 0,
-              "P": 53
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 9,
-            "name": "Cruzeiro",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 10,
-              "L": 14,
-              "F": 43,
-              "A": 41,
-              "GD": 2,
-              "P": 52
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 10,
-            "name": "Vasco da Gama",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 8,
-              "L": 16,
-              "F": 43,
-              "A": 56,
-              "GD": -13,
-              "P": 50
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 11,
-            "name": "Vitória",
-            "stats": {
-              "GP": 38,
-              "W": 13,
-              "D": 8,
-              "L": 17,
-              "F": 45,
-              "A": 52,
-              "GD": -7,
-              "P": 47
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 12,
-            "name": "Atlético-MG",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 14,
-              "L": 13,
-              "F": 47,
-              "A": 54,
-              "GD": -7,
-              "P": 47
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 13,
-            "name": "Fluminense",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 10,
-              "L": 16,
-              "F": 33,
-              "A": 39,
-              "GD": -6,
-              "P": 46
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "Grêmio",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 9,
-              "L": 17,
-              "F": 44,
-              "A": 50,
-              "GD": -6,
-              "P": 45
-            },
-            "zone": null
-          },
-          {
-            "position": 15,
-            "name": "Juventude",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 12,
-              "L": 15,
-              "F": 48,
-              "A": 59,
-              "GD": -11,
-              "P": 45
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Red Bull Bragantino",
-            "stats": {
-              "GP": 38,
-              "W": 10,
-              "D": 14,
-              "L": 14,
-              "F": 44,
-              "A": 48,
-              "GD": -4,
-              "P": 44
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Athletico Paranaense",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 9,
-              "L": 18,
-              "F": 40,
-              "A": 46,
-              "GD": -6,
-              "P": 42
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 18,
-            "name": "Criciúma",
-            "stats": {
-              "GP": 38,
-              "W": 9,
-              "D": 11,
-              "L": 18,
-              "F": 42,
-              "A": 61,
-              "GD": -19,
-              "P": 38
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 19,
-            "name": "Atlético Goianiense",
-            "stats": {
-              "GP": 38,
-              "W": 7,
-              "D": 9,
-              "L": 22,
-              "F": 29,
-              "A": 58,
-              "GD": -29,
-              "P": 30
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 20,
-            "name": "Cuiabá",
-            "stats": {
-              "GP": 38,
-              "W": 6,
-              "D": 12,
-              "L": 20,
-              "F": 29,
-              "A": 49,
-              "GD": -20,
-              "P": 30
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          }
-        ]
-      },
-      "2025": {
-        "saison": 2025,
-        "total_journees": 38,
-        "position_zones": [
-          {
-            "positions": "1-4",
-            "label": "CONMEBOL Libertadores (Groupes)",
-            "type": "avantage"
-          },
-          {
-            "positions": "5-6",
-            "label": "CONMEBOL Libertadores Playoff",
-            "type": "avantage"
-          },
-          {
-            "positions": "7-12",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          },
-          {
-            "positions": "17-20",
-            "label": "Relégation Serie B",
-            "type": "désavantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Flamengo",
-            "stats": {
-              "GP": 38,
-              "W": 23,
-              "D": 10,
-              "L": 5,
-              "F": 78,
-              "A": 27,
-              "GD": 51,
-              "P": 79
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Palmeiras",
-            "stats": {
-              "GP": 38,
-              "W": 23,
-              "D": 7,
-              "L": 8,
-              "F": 66,
-              "A": 33,
-              "GD": 33,
-              "P": 76
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Cruzeiro",
-            "stats": {
-              "GP": 38,
-              "W": 19,
-              "D": 13,
-              "L": 6,
-              "F": 55,
-              "A": 31,
-              "GD": 24,
-              "P": 70
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Mirassol",
-            "stats": {
-              "GP": 38,
-              "W": 18,
-              "D": 13,
-              "L": 7,
-              "F": 63,
-              "A": 39,
-              "GD": 24,
-              "P": 67
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores (Groupes)",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Fluminense",
-            "stats": {
-              "GP": 38,
-              "W": 19,
-              "D": 7,
-              "L": 12,
-              "F": 50,
-              "A": 39,
-              "GD": 11,
-              "P": 64
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "Botafogo",
-            "stats": {
-              "GP": 38,
-              "W": 17,
-              "D": 12,
-              "L": 9,
-              "F": 58,
-              "A": 38,
-              "GD": 20,
-              "P": 63
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores Playoff",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 7,
-            "name": "Bahia",
-            "stats": {
-              "GP": 38,
-              "W": 17,
-              "D": 9,
-              "L": 12,
-              "F": 50,
-              "A": 46,
-              "GD": 4,
-              "P": 60
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 8,
-            "name": "São Paulo",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 9,
-              "L": 15,
-              "F": 43,
-              "A": 47,
-              "GD": -4,
-              "P": 51
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 9,
-            "name": "Grêmio",
-            "stats": {
-              "GP": 38,
-              "W": 13,
-              "D": 10,
-              "L": 15,
-              "F": 47,
-              "A": 50,
-              "GD": -3,
-              "P": 49
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 10,
-            "name": "Red Bull Bragantino",
-            "stats": {
-              "GP": 38,
-              "W": 14,
-              "D": 6,
-              "L": 18,
-              "F": 45,
-              "A": 57,
-              "GD": -12,
-              "P": 48
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 11,
-            "name": "Atlético-MG",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 12,
-              "L": 14,
-              "F": 43,
-              "A": 44,
-              "GD": -1,
-              "P": 48
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 12,
-            "name": "Santos",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 11,
-              "L": 15,
-              "F": 45,
-              "A": 50,
-              "GD": -5,
-              "P": 47
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 13,
-            "name": "Corinthians",
-            "stats": {
-              "GP": 38,
-              "W": 12,
-              "D": 11,
-              "L": 15,
-              "F": 42,
-              "A": 47,
-              "GD": -5,
-              "P": 47
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "Vasco da Gama",
-            "stats": {
-              "GP": 38,
-              "W": 13,
-              "D": 6,
-              "L": 19,
-              "F": 55,
-              "A": 60,
-              "GD": -5,
-              "P": 45
-            },
-            "zone": null
-          },
-          {
-            "position": 15,
-            "name": "Vitória",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 12,
-              "L": 15,
-              "F": 35,
-              "A": 52,
-              "GD": -17,
-              "P": 45
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Internacional",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 11,
-              "L": 16,
-              "F": 44,
-              "A": 57,
-              "GD": -13,
-              "P": 44
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Ceará",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 10,
-              "L": 17,
-              "F": 34,
-              "A": 40,
-              "GD": -6,
-              "P": 43
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 18,
-            "name": "Fortaleza",
-            "stats": {
-              "GP": 38,
-              "W": 11,
-              "D": 10,
-              "L": 17,
-              "F": 43,
-              "A": 58,
-              "GD": -15,
-              "P": 43
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 19,
-            "name": "Juventude",
-            "stats": {
-              "GP": 38,
-              "W": 9,
-              "D": 8,
-              "L": 21,
-              "F": 35,
-              "A": 69,
-              "GD": -34,
-              "P": 35
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 20,
-            "name": "Sport",
-            "stats": {
-              "GP": 38,
-              "W": 2,
-              "D": 11,
-              "L": 25,
-              "F": 28,
-              "A": 75,
-              "GD": -47,
-              "P": 17
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          }
-        ]
-      }
-    }
-  },
-  {
-    "gameId": "401841170",
-    "date": "2026-07-29",
-    "time_ci": "02:30",
-    "league": "Brazil_Serie_A",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401841170/remo-mirassol",
-    "home": {
-      "team": "Mirassol",
-      "team_id": "9169",
-      "team_slug": "mirassol",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9169.png",
-      "url": "https://www.espn.com/soccer/team/_/id/9169",
-      "standings": {
-        "position_current": 19,
-        "position_if_win": 14,
-        "played": 19,
-        "won": 5,
-        "drawn": 5,
-        "lost": 9,
-        "gd": -5,
-        "points": 20
-      },
-      "form": "5-5-9",
-      "matchday": 20,
-      "last_five": [
-        {
-          "date": "2026-07-25",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841160/mirassol-vasco-da-gama",
-          "result": "D",
-          "team_home": "Vasco da Gama",
-          "team_home_id": "3454",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3454.png",
-          "team_away": "Mirassol",
-          "team_away_id": "9169",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9169.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.0,
-            "away": 3.85,
-            "draw": 3.35
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-07-17",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841155/gremio-mirassol",
-          "result": "W",
-          "team_home": "Mirassol",
-          "team_home_id": "9169",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9169.png",
-          "team_away": "Grêmio",
-          "team_away_id": "6273",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6273.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.95,
-            "away": 4.1,
-            "draw": 3.3
-          },
-          "stats": {}
         },
         {
           "date": "2026-05-30",
           "competition": "Brazilian Serie A",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401841138/mirassol-athletico-paranaense",
-          "result": "L",
+          "result": "W",
           "team_home": "Athletico Paranaense",
           "team_home_id": "3458",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3458.png",
@@ -2128,235 +404,10 @@
           }
         },
         {
-          "date": "2026-05-26",
-          "competition": "2026 CONMEBOL Libertadores, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865560/mirassol-lanus",
-          "result": "L",
-          "team_home": "Lanús",
-          "team_home_id": "12",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "team_away": "Mirassol",
-          "team_away_id": "9169",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9169.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.0,
-            "away": 4.6,
-            "draw": 2.95
-          },
-          "stats": {
-            "Possession": {
-              "home": "48%",
-              "away": "52%"
-            },
-            "Shots on Goal": {
-              "home": "5",
-              "away": "1"
-            },
-            "Shots": {
-              "home": "22",
-              "away": "6"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "11"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "10",
-              "away": "1"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "4"
-            }
-          }
-        },
-        {
-          "date": "2026-05-23",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841134/fluminense-mirassol",
-          "result": "W",
-          "team_home": "Mirassol",
-          "team_home_id": "9169",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9169.png",
-          "team_away": "Fluminense",
-          "team_away_id": "3445",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.6,
-            "away": 2.95,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "32%",
-              "away": "68%"
-            },
-            "Shots on Goal": {
-              "home": "8",
-              "away": "1"
-            },
-            "Shots": {
-              "home": "13",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "14"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "7"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Remo",
-      "team_id": "4936",
-      "team_slug": "remo",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
-      "url": "https://www.espn.com/soccer/team/_/id/4936",
-      "standings": {
-        "position_current": 18,
-        "position_if_win": 14,
-        "played": 20,
-        "won": 5,
-        "drawn": 6,
-        "lost": 9,
-        "gd": -9,
-        "points": 21
-      },
-      "form": "5-6-9",
-      "matchday": 21,
-      "last_five": [
-        {
-          "date": "2026-07-26",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841162/vitoria-remo",
-          "result": "W",
-          "team_home": "Remo",
-          "team_home_id": "4936",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
-          "team_away": "Vitória",
-          "team_away_id": "3457",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3457.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-07-23",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841151/remo-corinthians",
-          "result": "L",
-          "team_home": "Corinthians",
-          "team_home_id": "874",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
-          "team_away": "Remo",
-          "team_away_id": "4936",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
-          "home_score": "3",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.51,
-            "away": 6.5,
-            "draw": 4.1
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-31",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841147/sao-paulo-remo",
-          "result": "W",
-          "team_home": "Remo",
-          "team_home_id": "4936",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
-          "team_away": "São Paulo",
-          "team_away_id": "2026",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2026.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 3.05,
-            "away": 2.35,
-            "draw": 3.25
-          },
-          "stats": {
-            "Possession": {
-              "home": "39%",
-              "away": "61%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "9",
-              "away": "9"
-            },
-            "Fouls Committed": {
-              "home": "7",
-              "away": "14"
-            },
-            "Yellow Cards": {
-              "home": "1",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "8"
-            },
-            "Saves": {
-              "home": "4",
-              "away": "1"
-            }
-          }
-        },
-        {
           "date": "2026-05-24",
           "competition": "Brazilian Serie A",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401841133/athletico-paranaense-remo",
-          "result": "L",
+          "result": "W",
           "team_home": "Remo",
           "team_home_id": "4936",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
@@ -2405,103 +456,49 @@
               "away": "1"
             }
           }
-        },
-        {
-          "date": "2026-05-17",
-          "competition": "Brazilian Serie A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401841122/remo-chapecoense",
-          "result": "W",
-          "team_home": "Chapecoense",
-          "team_home_id": "9318",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9318.png",
-          "team_away": "Remo",
-          "team_away_id": "4936",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4936.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 2.55,
-            "away": 2.8,
-            "draw": 3.25
-          },
-          "stats": {
-            "Possession": {
-              "home": "52%",
-              "away": "48%"
-            },
-            "Shots on Goal": {
-              "home": "8",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "18",
-              "away": "11"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "6"
-            },
-            "Yellow Cards": {
-              "home": "2",
-              "away": "1"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "9"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "6"
-            }
-          }
         }
       ]
     },
     "odds": {
-      "home": 1.71,
-      "away": 4.9,
-      "draw": 3.75
+      "home": 1.95,
+      "away": 4.2,
+      "draw": 3.25
     },
     "stats": {
       "Average Goals": {
-        "home": "1.11",
-        "away": "1.15"
+        "home": "1.10",
+        "away": "1.40"
       },
       "Average Goals Conceded": {
-        "home": "1.37",
-        "away": "1.6"
+        "home": "1",
+        "away": "0.95"
       },
       "Average Goal Differential": {
-        "home": "-0.3",
-        "away": "-0.5"
+        "home": "+0.1",
+        "away": "+0.5"
       },
       "Possession": {
-        "home": "51%",
-        "away": "42%"
+        "home": "54%",
+        "away": "47%"
       },
       "Shots On Target Percentage": {
-        "home": "35%",
-        "away": "36%"
+        "home": "32%",
+        "away": "41%"
       },
       "Big Chances Created": {
-        "home": ".26",
-        "away": ".10"
+        "home": ".25",
+        "away": ".35"
       },
       "Duel Win Percentage": {
-        "home": "48%",
-        "away": "50%"
+        "home": "55%",
+        "away": "49%"
       },
       "Clean Sheet": {
-        "home": "1",
-        "away": "3"
+        "home": "8",
+        "away": "6"
       },
       "Save Percentage": {
-        "home": "68%",
+        "home": "73%",
         "away": "71%"
       }
     },
@@ -2555,14 +552,14 @@
             "position": 2,
             "name": "Flamengo",
             "stats": {
-              "GP": 19,
+              "GP": 20,
               "W": 11,
-              "D": 5,
+              "D": 6,
               "L": 3,
-              "F": 36,
-              "A": 17,
+              "F": 37,
+              "A": 18,
               "GD": 19,
-              "P": 38
+              "P": 39
             },
             "zone": {
               "label": "CONMEBOL Libertadores (Groupes)",
@@ -2766,6 +763,21 @@
           },
           {
             "position": 14,
+            "name": "Mirassol",
+            "stats": {
+              "GP": 20,
+              "W": 6,
+              "D": 5,
+              "L": 9,
+              "F": 23,
+              "A": 27,
+              "GD": -4,
+              "P": 23
+            },
+            "zone": null
+          },
+          {
+            "position": 15,
             "name": "Santos",
             "stats": {
               "GP": 20,
@@ -2780,7 +792,22 @@
             "zone": null
           },
           {
-            "position": 15,
+            "position": 16,
+            "name": "Internacional",
+            "stats": {
+              "GP": 21,
+              "W": 5,
+              "D": 7,
+              "L": 9,
+              "F": 23,
+              "A": 27,
+              "GD": -4,
+              "P": 22
+            },
+            "zone": null
+          },
+          {
+            "position": 17,
             "name": "Grêmio",
             "stats": {
               "GP": 20,
@@ -2792,25 +819,13 @@
               "GD": -4,
               "P": 22
             },
-            "zone": null
+            "zone": {
+              "label": "Relégation Serie B",
+              "type": "désavantage"
+            }
           },
           {
-            "position": 16,
-            "name": "Internacional",
-            "stats": {
-              "GP": 20,
-              "W": 5,
-              "D": 6,
-              "L": 9,
-              "F": 22,
-              "A": 26,
-              "GD": -4,
-              "P": 21
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
+            "position": 18,
             "name": "Vasco da Gama",
             "stats": {
               "GP": 20,
@@ -2828,35 +843,17 @@
             }
           },
           {
-            "position": 18,
+            "position": 19,
             "name": "Remo",
             "stats": {
-              "GP": 20,
+              "GP": 21,
               "W": 5,
               "D": 6,
-              "L": 9,
-              "F": 23,
-              "A": 32,
-              "GD": -9,
+              "L": 10,
+              "F": 24,
+              "A": 34,
+              "GD": -10,
               "P": 21
-            },
-            "zone": {
-              "label": "Relégation Serie B",
-              "type": "désavantage"
-            }
-          },
-          {
-            "position": 19,
-            "name": "Mirassol",
-            "stats": {
-              "GP": 19,
-              "W": 5,
-              "D": 5,
-              "L": 9,
-              "F": 21,
-              "A": 26,
-              "GD": -5,
-              "P": 20
             },
             "zone": {
               "label": "Relégation Serie B",
@@ -4014,69 +2011,69 @@
     }
   },
   {
-    "gameId": "401888632",
-    "date": "2026-07-29",
+    "gameId": "401888681",
+    "date": "2026-07-30",
     "time_ci": "23:00",
     "league": "Paraguay_Division_Profesional",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401888632/sportivo-trinidense-sportivo-luqueno",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401888681/guarani-sportivo-san-lorenzo",
     "home": {
-      "team": "Sportivo Luqueño",
-      "team_id": "5583",
-      "team_slug": "sportivo-luqueno",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
-      "url": "https://www.espn.com/soccer/team/_/id/5583",
+      "team": "Sportivo San Lorenzo",
+      "team_id": "17671",
+      "team_slug": "sportivo-san-lorenzo",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17671",
       "standings": {
-        "position_current": 2,
-        "position_if_win": 1,
+        "position_current": 8,
+        "position_if_win": 3,
         "played": 1,
-        "won": 1,
-        "drawn": 0,
+        "won": 0,
+        "drawn": 1,
         "lost": 0,
-        "gd": 1,
-        "points": 3
+        "gd": 0,
+        "points": 1
       },
-      "form": "1-0-0",
+      "form": "0-1-0",
       "matchday": 2,
       "last_five": [
         {
-          "date": "2026-07-26",
+          "date": "2026-07-25",
           "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/762425/sportivo-luqueno-guarani",
-          "result": "W",
-          "team_home": "Guaraní",
-          "team_home_id": "7385",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
-          "team_away": "Sportivo Luqueño",
-          "team_away_id": "5583",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/762423/sportivo-san-lorenzo-deportivo-recoleta",
+          "result": "D",
+          "team_home": "Deportivo Recoleta",
+          "team_home_id": "22517",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "team_away": "Sportivo San Lorenzo",
+          "team_away_id": "17671",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
           "home_score": "1",
-          "away_score": "2",
+          "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 2.05,
-            "away": 3.7,
-            "draw": 3.1
+            "home": 2.15,
+            "away": 3.35,
+            "draw": 3.15
           },
           "stats": {}
         },
         {
-          "date": "2026-05-23",
+          "date": "2026-05-22",
           "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848290/club-olimpia-sportivo-luqueno",
-          "result": "L",
-          "team_home": "Sportivo Luqueño",
-          "team_home_id": "5583",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
-          "team_away": "Club Olimpia",
-          "team_away_id": "2675",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
-          "home_score": "1",
-          "away_score": "2",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848285/sportivo-san-lorenzo-2-de-mayo",
+          "result": "W",
+          "team_home": "2 de Mayo",
+          "team_home_id": "6097",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6097.png",
+          "team_away": "Sportivo San Lorenzo",
+          "team_away_id": "17671",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
+          "home_score": "0",
+          "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 3.0,
-            "away": 2.2,
-            "draw": 3.5
+            "home": 1.77,
+            "away": 4.5,
+            "draw": 3.35
           },
           "stats": {}
         },
@@ -4104,177 +2101,177 @@
         {
           "date": "2026-05-10",
           "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848277/libertad-sportivo-luqueno",
-          "result": "L",
-          "team_home": "Sportivo Luqueño",
-          "team_home_id": "5583",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
-          "team_away": "Libertad",
-          "team_away_id": "2670",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 2.5,
-            "away": 2.85,
-            "draw": 3.05
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-02",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848271/sportivo-luqueno-rubio-nu",
-          "result": "D",
-          "team_home": "Rubio Ñú",
-          "team_home_id": "10080",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10080.png",
-          "team_away": "Sportivo Luqueño",
-          "team_away_id": "5583",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
-          "home_score": "0",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848276/club-olimpia-sportivo-san-lorenzo",
+          "result": "W",
+          "team_home": "Sportivo San Lorenzo",
+          "team_home_id": "17671",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
+          "team_away": "Club Olimpia",
+          "team_away_id": "2675",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
+          "home_score": "1",
           "away_score": "0",
           "status": "FT",
           "odds": {
-            "home": 2.45,
-            "away": 2.9,
-            "draw": 3.0
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "away": {
-      "team": "Sportivo Trinidense",
-      "team_id": "7466",
-      "team_slug": "sportivo-trinidense",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-      "url": "https://www.espn.com/soccer/team/_/id/7466",
-      "standings": {
-        "position_current": 3,
-        "position_if_win": 1,
-        "played": 1,
-        "won": 1,
-        "drawn": 0,
-        "lost": 0,
-        "gd": 1,
-        "points": 3
-      },
-      "form": "1-0-0",
-      "matchday": 2,
-      "last_five": [
-        {
-          "date": "2026-07-24",
-          "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/762421/sportivo-trinidense-cerro-porteno",
-          "result": "W",
-          "team_home": "Cerro Porteño",
-          "team_home_id": "2671",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2671.png",
-          "team_away": "Sportivo Trinidense",
-          "team_away_id": "7466",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 1.91,
-            "away": 4.5,
-            "draw": 2.95
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848287/sportivo-trinidense-sportivo-ameliano",
-          "result": "W",
-          "team_home": "Sportivo Ameliano",
-          "team_home_id": "21313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21313.png",
-          "team_away": "Sportivo Trinidense",
-          "team_away_id": "7466",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.65,
-            "away": 2.65,
-            "draw": 3.1
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-15",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848284/cerro-porteno-sportivo-trinidense",
-          "result": "W",
-          "team_home": "Sportivo Trinidense",
-          "team_home_id": "7466",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "team_away": "Cerro Porteño",
-          "team_away_id": "2671",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2671.png",
-          "home_score": "3",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.2,
-            "away": 2.25,
-            "draw": 3.15
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-09",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848275/sportivo-trinidense-nacional-asuncion",
-          "result": "L",
-          "team_home": "Nacional Asunción",
-          "team_home_id": "5584",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "team_away": "Sportivo Trinidense",
-          "team_away_id": "7466",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.15,
-            "away": 3.35,
-            "draw": 3.1
+            "home": 6.5,
+            "away": 1.44,
+            "draw": 4.2
           },
           "stats": {}
         },
         {
           "date": "2026-05-01",
           "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848272/2-de-mayo-sportivo-trinidense",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848268/sportivo-san-lorenzo-libertad",
           "result": "L",
-          "team_home": "Sportivo Trinidense",
-          "team_home_id": "7466",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "team_away": "2 de Mayo",
-          "team_away_id": "6097",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6097.png",
+          "team_home": "Libertad",
+          "team_home_id": "2670",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+          "team_away": "Sportivo San Lorenzo",
+          "team_away_id": "17671",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
+          "home_score": "5",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.87,
+            "away": 4.0,
+            "draw": 3.4
+          },
+          "stats": {}
+        }
+      ]
+    },
+    "away": {
+      "team": "Guaraní",
+      "team_id": "7385",
+      "team_slug": "guarani",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7385",
+      "standings": {
+        "position_current": 10,
+        "position_if_win": 4,
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gd": -1,
+        "points": 0
+      },
+      "form": "0-0-1",
+      "matchday": 2,
+      "last_five": [
+        {
+          "date": "2026-07-26",
+          "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/762425/sportivo-luqueno-guarani",
+          "result": "L",
+          "team_home": "Guaraní",
+          "team_home_id": "7385",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "team_away": "Sportivo Luqueño",
+          "team_away_id": "5583",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
           "home_score": "1",
           "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 1.69,
-            "away": 4.9,
-            "draw": 3.5
+            "home": 2.05,
+            "away": 3.7,
+            "draw": 3.1
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-23",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848288/guarani-deportivo-recoleta",
+          "result": "L",
+          "team_home": "Deportivo Recoleta",
+          "team_home_id": "22517",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "team_away": "Guaraní",
+          "team_away_id": "7385",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 3.7,
+            "away": 1.91,
+            "draw": 3.45
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-16",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848279/sportivo-ameliano-guarani",
+          "result": "W",
+          "team_home": "Guaraní",
+          "team_home_id": "7385",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "team_away": "Sportivo Ameliano",
+          "team_away_id": "21313",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21313.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 2.55,
+            "away": 2.85,
+            "draw": 3.0
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-11",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848273/guarani-cerro-porteno",
+          "result": "D",
+          "team_home": "Cerro Porteño",
+          "team_home_id": "2671",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2671.png",
+          "team_away": "Guaraní",
+          "team_away_id": "7385",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "home_score": "0",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.91,
+            "away": 4.1,
+            "draw": 3.25
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-03",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848267/nacional-asuncion-guarani",
+          "result": "L",
+          "team_home": "Guaraní",
+          "team_home_id": "7385",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "team_away": "Nacional Asunción",
+          "team_away_id": "5584",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
+          "home_score": "0",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.65,
+            "away": 2.75,
+            "draw": 2.95
           },
           "stats": {}
         }
       ]
     },
     "odds": {
-      "home": 3.05,
-      "away": 2.4,
-      "draw": 2.75
+      "home": 3.3,
+      "away": 2.15,
+      "draw": 3.0
     },
     "stats": {},
     "h2h": [],
@@ -4297,6 +2294,24 @@
         "standings": [
           {
             "position": 1,
+            "name": "Sportivo Trinidense",
+            "stats": {
+              "GP": 2,
+              "W": 2,
+              "D": 0,
+              "L": 0,
+              "F": 6,
+              "A": 2,
+              "GD": 4,
+              "P": 6
+            },
+            "zone": {
+              "label": "CONMEBOL Libertadores",
+              "type": "avantage"
+            }
+          },
+          {
+            "position": 2,
             "name": "2 de Mayo",
             "stats": {
               "GP": 2,
@@ -4314,35 +2329,17 @@
             }
           },
           {
-            "position": 2,
-            "name": "Sportivo Luqueño",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
             "position": 3,
-            "name": "Sportivo Trinidense",
+            "name": "Nacional Asunción",
             "stats": {
-              "GP": 1,
+              "GP": 2,
               "W": 1,
-              "D": 0,
+              "D": 1,
               "L": 0,
-              "F": 2,
+              "F": 3,
               "A": 1,
-              "GD": 1,
-              "P": 3
+              "GD": 2,
+              "P": 4
             },
             "zone": {
               "label": "CONMEBOL Sudamericana",
@@ -4369,6 +2366,21 @@
           },
           {
             "position": 5,
+            "name": "Sportivo Luqueño",
+            "stats": {
+              "GP": 2,
+              "W": 1,
+              "D": 0,
+              "L": 1,
+              "F": 3,
+              "A": 5,
+              "GD": -2,
+              "P": 3
+            },
+            "zone": null
+          },
+          {
+            "position": 6,
             "name": "Sportivo Ameliano",
             "stats": {
               "GP": 2,
@@ -4383,7 +2395,7 @@
             "zone": null
           },
           {
-            "position": 6,
+            "position": 7,
             "name": "Deportivo Recoleta",
             "stats": {
               "GP": 1,
@@ -4398,23 +2410,8 @@
             "zone": null
           },
           {
-            "position": 7,
-            "name": "Sportivo San Lorenzo",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 1,
-              "L": 0,
-              "F": 1,
-              "A": 1,
-              "GD": 0,
-              "P": 1
-            },
-            "zone": null
-          },
-          {
             "position": 8,
-            "name": "Nacional Asunción",
+            "name": "Sportivo San Lorenzo",
             "stats": {
               "GP": 1,
               "W": 0,
@@ -4459,21 +2456,6 @@
           },
           {
             "position": 11,
-            "name": "Club Olimpia",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 12,
             "name": "Cerro Porteño",
             "stats": {
               "GP": 2,
@@ -4483,6 +2465,21 @@
               "F": 2,
               "A": 4,
               "GD": -2,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 12,
+            "name": "Club Olimpia",
+            "stats": {
+              "GP": 2,
+              "W": 0,
+              "D": 0,
+              "L": 2,
+              "F": 0,
+              "A": 3,
+              "GD": -3,
               "P": 0
             },
             "zone": null
@@ -5122,161 +3119,35 @@
     }
   },
   {
-    "gameId": "401888682",
-    "date": "2026-07-29",
+    "gameId": "401888631",
+    "date": "2026-07-30",
     "time_ci": "01:30",
     "league": "Paraguay_Division_Profesional",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401888682/club-olimpia-nacional-asuncion",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401888631/deportivo-recoleta-libertad",
     "home": {
-      "team": "Nacional Asunción",
-      "team_id": "5584",
-      "team_slug": "nacional-asuncion",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-      "url": "https://www.espn.com/soccer/team/_/id/5584",
+      "team": "Libertad",
+      "team_id": "2670",
+      "team_slug": "libertad",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+      "url": "https://www.espn.com/soccer/team/_/id/2670",
       "standings": {
-        "position_current": 8,
-        "position_if_win": 2,
+        "position_current": 4,
+        "position_if_win": 1,
         "played": 1,
-        "won": 0,
-        "drawn": 1,
-        "lost": 0,
-        "gd": 0,
-        "points": 1
-      },
-      "form": "0-1-0",
-      "matchday": 2,
-      "last_five": [
-        {
-          "date": "2026-07-25",
-          "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/762422/nacional-asuncion-sportivo-ameliano",
-          "result": "D",
-          "team_home": "Sportivo Ameliano",
-          "team_home_id": "21313",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21313.png",
-          "team_away": "Nacional Asunción",
-          "team_away_id": "5584",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.1,
-            "away": 2.45,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848289/libertad-nacional-asuncion",
-          "result": "W",
-          "team_home": "Nacional Asunción",
-          "team_home_id": "5584",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "team_away": "Libertad",
-          "team_away_id": "2670",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.25,
-            "away": 3.15,
-            "draw": 3.2
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-15",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848282/nacional-asuncion-rubio-nu",
-          "result": "D",
-          "team_home": "Rubio Ñú",
-          "team_home_id": "10080",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10080.png",
-          "team_away": "Nacional Asunción",
-          "team_away_id": "5584",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 3.4,
-            "away": 2.2,
-            "draw": 3.0
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-09",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848275/sportivo-trinidense-nacional-asuncion",
-          "result": "W",
-          "team_home": "Nacional Asunción",
-          "team_home_id": "5584",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "team_away": "Sportivo Trinidense",
-          "team_away_id": "7466",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.15,
-            "away": 3.35,
-            "draw": 3.1
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-03",
-          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848267/nacional-asuncion-guarani",
-          "result": "W",
-          "team_home": "Guaraní",
-          "team_home_id": "7385",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
-          "team_away": "Nacional Asunción",
-          "team_away_id": "5584",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.65,
-            "away": 2.75,
-            "draw": 2.95
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "away": {
-      "team": "Club Olimpia",
-      "team_id": "2675",
-      "team_slug": "club-olimpia",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
-      "url": "https://www.espn.com/soccer/team/_/id/2675",
-      "standings": {
-        "position_current": 11,
-        "position_if_win": 2,
-        "played": 1,
-        "won": 0,
+        "won": 1,
         "drawn": 0,
-        "lost": 1,
-        "gd": -1,
-        "points": 0
+        "lost": 0,
+        "gd": 1,
+        "points": 3
       },
-      "form": "0-0-1",
+      "form": "1-0-0",
       "matchday": 2,
       "last_five": [
         {
           "date": "2026-07-26",
           "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/762424/libertad-club-olimpia",
-          "result": "L",
+          "result": "W",
           "team_home": "Club Olimpia",
           "team_home_id": "2675",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
@@ -5295,42 +3166,42 @@
         },
         {
           "date": "2026-05-27",
-          "competition": "2026 CONMEBOL Sudamericana, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865457/audax-italiano-club-olimpia",
-          "result": "W",
-          "team_home": "Club Olimpia",
-          "team_home_id": "2675",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
-          "team_away": "Audax Italiano",
-          "team_away_id": "4138",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4138.png",
-          "home_score": "3",
+          "competition": "2026 CONMEBOL Libertadores, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865559/ucv-fc-libertad",
+          "result": "L",
+          "team_home": "Libertad",
+          "team_home_id": "2670",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+          "team_away": "UCV FC",
+          "team_away_id": "10094",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
+          "home_score": "0",
           "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 1.51,
-            "away": 6.0,
+            "home": 1.54,
+            "away": 5.5,
             "draw": 4.3
           },
           "stats": {
             "Possession": {
-              "home": "50%",
-              "away": "50%"
+              "home": "55%",
+              "away": "45%"
             },
             "Shots on Goal": {
-              "home": "7",
-              "away": "0"
+              "home": "3",
+              "away": "4"
             },
             "Shots": {
-              "home": "15",
-              "away": "6"
+              "home": "13",
+              "away": "8"
             },
             "Fouls Committed": {
-              "home": "15",
-              "away": "12"
+              "home": "8",
+              "away": "13"
             },
             "Yellow Cards": {
-              "home": "2",
+              "home": "0",
               "away": "3"
             },
             "Red Cards": {
@@ -5338,87 +3209,279 @@
               "away": "0"
             },
             "Corners Won": {
-              "home": "2",
-              "away": "1"
+              "home": "6",
+              "away": "2"
             },
             "Saves": {
-              "home": "0",
+              "home": "3",
+              "away": "3"
+            }
+          }
+        },
+        {
+          "date": "2026-05-24",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848289/libertad-nacional-asuncion",
+          "result": "L",
+          "team_home": "Nacional Asunción",
+          "team_home_id": "5584",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
+          "team_away": "Libertad",
+          "team_away_id": "2670",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.25,
+            "away": 3.15,
+            "draw": 3.2
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-20",
+          "competition": "2026 CONMEBOL Libertadores, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865548/libertad-independiente-del-valle",
+          "result": "L",
+          "team_home": "Independiente del Valle",
+          "team_home_id": "17086",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17086.png",
+          "team_away": "Libertad",
+          "team_away_id": "2670",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+          "home_score": "4",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.26,
+            "away": 10.5,
+            "draw": 6.0
+          },
+          "stats": {
+            "Possession": {
+              "home": "63%",
+              "away": "37%"
+            },
+            "Shots on Goal": {
+              "home": "8",
               "away": "4"
+            },
+            "Shots": {
+              "home": "21",
+              "away": "6"
+            },
+            "Fouls Committed": {
+              "home": "4",
+              "away": "9"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "8",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "4"
+            }
+          }
+        },
+        {
+          "date": "2026-05-14",
+          "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848280/2-de-mayo-libertad",
+          "result": "D",
+          "team_home": "Libertad",
+          "team_home_id": "2670",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+          "team_away": "2 de Mayo",
+          "team_away_id": "6097",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6097.png",
+          "home_score": "0",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.8,
+            "away": 4.3,
+            "draw": 3.45
+          },
+          "stats": {}
+        }
+      ]
+    },
+    "away": {
+      "team": "Deportivo Recoleta",
+      "team_id": "22517",
+      "team_slug": "deportivo-recoleta",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+      "url": "https://www.espn.com/soccer/team/_/id/22517",
+      "standings": {
+        "position_current": 7,
+        "position_if_win": 3,
+        "played": 1,
+        "won": 0,
+        "drawn": 1,
+        "lost": 0,
+        "gd": 0,
+        "points": 1
+      },
+      "form": "0-1-0",
+      "matchday": 2,
+      "last_five": [
+        {
+          "date": "2026-07-25",
+          "competition": "2026 Primera División de Paraguay, Torneo Clausura 2026",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/762423/sportivo-san-lorenzo-deportivo-recoleta",
+          "result": "D",
+          "team_home": "Deportivo Recoleta",
+          "team_home_id": "22517",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "team_away": "Sportivo San Lorenzo",
+          "team_away_id": "17671",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17671.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.15,
+            "away": 3.35,
+            "draw": 3.15
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-27",
+          "competition": "2026 CONMEBOL Sudamericana, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865461/deportivo-recoleta-san-lorenzo",
+          "result": "W",
+          "team_home": "San Lorenzo",
+          "team_home_id": "18",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+          "team_away": "Deportivo Recoleta",
+          "team_away_id": "22517",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "home_score": "0",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.39,
+            "away": 8.5,
+            "draw": 4.6
+          },
+          "stats": {
+            "Possession": {
+              "home": "78%",
+              "away": "22%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "4"
+            },
+            "Shots": {
+              "home": "32",
+              "away": "8"
+            },
+            "Fouls Committed": {
+              "home": "9",
+              "away": "11"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "4"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "4"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "7"
             }
           }
         },
         {
           "date": "2026-05-23",
           "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848290/club-olimpia-sportivo-luqueno",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401848288/guarani-deportivo-recoleta",
           "result": "W",
-          "team_home": "Sportivo Luqueño",
-          "team_home_id": "5583",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5583.png",
-          "team_away": "Club Olimpia",
-          "team_away_id": "2675",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
-          "home_score": "1",
-          "away_score": "2",
+          "team_home": "Deportivo Recoleta",
+          "team_home_id": "22517",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "team_away": "Guaraní",
+          "team_away_id": "7385",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7385.png",
+          "home_score": "2",
+          "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 3.0,
-            "away": 2.2,
-            "draw": 3.5
+            "home": 3.7,
+            "away": 1.91,
+            "draw": 3.45
           },
           "stats": {}
         },
         {
           "date": "2026-05-20",
           "competition": "2026 CONMEBOL Sudamericana, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865447/vasco-da-gama-club-olimpia",
-          "result": "W",
-          "team_home": "Club Olimpia",
-          "team_home_id": "2675",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
-          "team_away": "Vasco da Gama",
-          "team_away_id": "3454",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3454.png",
-          "home_score": "3",
-          "away_score": "1",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865435/deportivo-recoleta-deportivo-cuenca",
+          "result": "D",
+          "team_home": "Deportivo Cuenca",
+          "team_home_id": "4812",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4812.png",
+          "team_away": "Deportivo Recoleta",
+          "team_away_id": "22517",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22517.png",
+          "home_score": "2",
+          "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 1.95,
-            "away": 4.0,
-            "draw": 3.3
+            "home": 1.54,
+            "away": 6.5,
+            "draw": 4.0
           },
           "stats": {
             "Possession": {
-              "home": "76%",
-              "away": "24%"
+              "home": "60%",
+              "away": "40%"
             },
             "Shots on Goal": {
-              "home": "9",
-              "away": "2"
+              "home": "6",
+              "away": "3"
             },
             "Shots": {
-              "home": "29",
-              "away": "6"
+              "home": "16",
+              "away": "15"
             },
             "Fouls Committed": {
-              "home": "3",
-              "away": "5"
+              "home": "13",
+              "away": "17"
             },
             "Yellow Cards": {
-              "home": "2",
-              "away": "4"
+              "home": "1",
+              "away": "3"
             },
             "Red Cards": {
               "home": "0",
-              "away": "1"
+              "away": "0"
             },
             "Corners Won": {
-              "home": "13",
-              "away": "3"
+              "home": "3",
+              "away": "2"
             },
             "Saves": {
               "home": "1",
-              "away": "7"
+              "away": "5"
             }
           }
         },
@@ -5426,7 +3489,7 @@
           "date": "2026-05-15",
           "competition": "2026 Primera División de Paraguay, Torneo Apertura 2026",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401848281/deportivo-recoleta-club-olimpia",
-          "result": "W",
+          "result": "L",
           "team_home": "Club Olimpia",
           "team_home_id": "2675",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2675.png",
@@ -5446,9 +3509,9 @@
       ]
     },
     "odds": {
-      "home": 3.15,
-      "away": 2.3,
-      "draw": 2.8
+      "home": null,
+      "away": null,
+      "draw": null
     },
     "stats": {},
     "h2h": [],
@@ -5471,6 +3534,24 @@
         "standings": [
           {
             "position": 1,
+            "name": "Sportivo Trinidense",
+            "stats": {
+              "GP": 2,
+              "W": 2,
+              "D": 0,
+              "L": 0,
+              "F": 6,
+              "A": 2,
+              "GD": 4,
+              "P": 6
+            },
+            "zone": {
+              "label": "CONMEBOL Libertadores",
+              "type": "avantage"
+            }
+          },
+          {
+            "position": 2,
             "name": "2 de Mayo",
             "stats": {
               "GP": 2,
@@ -5488,35 +3569,17 @@
             }
           },
           {
-            "position": 2,
-            "name": "Sportivo Luqueño",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
             "position": 3,
-            "name": "Sportivo Trinidense",
+            "name": "Nacional Asunción",
             "stats": {
-              "GP": 1,
+              "GP": 2,
               "W": 1,
-              "D": 0,
+              "D": 1,
               "L": 0,
-              "F": 2,
+              "F": 3,
               "A": 1,
-              "GD": 1,
-              "P": 3
+              "GD": 2,
+              "P": 4
             },
             "zone": {
               "label": "CONMEBOL Sudamericana",
@@ -5543,6 +3606,21 @@
           },
           {
             "position": 5,
+            "name": "Sportivo Luqueño",
+            "stats": {
+              "GP": 2,
+              "W": 1,
+              "D": 0,
+              "L": 1,
+              "F": 3,
+              "A": 5,
+              "GD": -2,
+              "P": 3
+            },
+            "zone": null
+          },
+          {
+            "position": 6,
             "name": "Sportivo Ameliano",
             "stats": {
               "GP": 2,
@@ -5557,7 +3635,7 @@
             "zone": null
           },
           {
-            "position": 6,
+            "position": 7,
             "name": "Deportivo Recoleta",
             "stats": {
               "GP": 1,
@@ -5572,23 +3650,8 @@
             "zone": null
           },
           {
-            "position": 7,
-            "name": "Sportivo San Lorenzo",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 1,
-              "L": 0,
-              "F": 1,
-              "A": 1,
-              "GD": 0,
-              "P": 1
-            },
-            "zone": null
-          },
-          {
             "position": 8,
-            "name": "Nacional Asunción",
+            "name": "Sportivo San Lorenzo",
             "stats": {
               "GP": 1,
               "W": 0,
@@ -5633,21 +3696,6 @@
           },
           {
             "position": 11,
-            "name": "Club Olimpia",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 12,
             "name": "Cerro Porteño",
             "stats": {
               "GP": 2,
@@ -5657,6 +3705,21 @@
               "F": 2,
               "A": 4,
               "GD": -2,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 12,
+            "name": "Club Olimpia",
+            "stats": {
+              "GP": 2,
+              "W": 0,
+              "D": 0,
+              "L": 2,
+              "F": 0,
+              "A": 3,
+              "GD": -3,
               "P": 0
             },
             "zone": null

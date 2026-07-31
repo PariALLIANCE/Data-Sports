@@ -6934,14 +6934,14 @@
                     "position": 1,
                     "name": "Palmeiras",
                     "stats": {
-                        "GP": 20,
-                        "W": 13,
+                        "GP": 21,
+                        "W": 14,
                         "D": 5,
                         "L": 2,
-                        "F": 34,
+                        "F": 38,
                         "A": 16,
-                        "GD": 18,
-                        "P": 44
+                        "GD": 22,
+                        "P": 47
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores (Groupes)",
@@ -6970,14 +6970,14 @@
                     "position": 3,
                     "name": "Athletico Paranaense",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 11,
-                        "D": 3,
+                        "D": 4,
                         "L": 6,
                         "F": 28,
                         "A": 19,
                         "GD": 9,
-                        "P": 36
+                        "P": 37
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores (Groupes)",
@@ -6988,14 +6988,14 @@
                     "position": 4,
                     "name": "Fluminense",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 9,
-                        "D": 6,
+                        "D": 7,
                         "L": 5,
                         "F": 30,
                         "A": 25,
                         "GD": 5,
-                        "P": 33
+                        "P": 34
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores (Groupes)",
@@ -7004,6 +7004,24 @@
                 },
                 {
                     "position": 5,
+                    "name": "Bahia",
+                    "stats": {
+                        "GP": 21,
+                        "W": 8,
+                        "D": 8,
+                        "L": 5,
+                        "F": 29,
+                        "A": 25,
+                        "GD": 4,
+                        "P": 32
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores Playoff",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 6,
                     "name": "Red Bull Bragantino",
                     "stats": {
                         "GP": 20,
@@ -7021,25 +7039,25 @@
                     }
                 },
                 {
-                    "position": 6,
-                    "name": "Bahia",
+                    "position": 7,
+                    "name": "Cruzeiro",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 8,
-                        "D": 7,
-                        "L": 5,
-                        "F": 29,
-                        "A": 25,
-                        "GD": 4,
-                        "P": 31
+                        "D": 6,
+                        "L": 7,
+                        "F": 27,
+                        "A": 30,
+                        "GD": -3,
+                        "P": 30
                     },
                     "zone": {
-                        "label": "CONMEBOL Libertadores Playoff",
+                        "label": "CONMEBOL Sudamericana",
                         "type": "avantage"
                     }
                 },
                 {
-                    "position": 7,
+                    "position": 8,
                     "name": "Botafogo",
                     "stats": {
                         "GP": 20,
@@ -7057,7 +7075,25 @@
                     }
                 },
                 {
-                    "position": 8,
+                    "position": 9,
+                    "name": "Corinthians",
+                    "stats": {
+                        "GP": 21,
+                        "W": 7,
+                        "D": 8,
+                        "L": 6,
+                        "F": 22,
+                        "A": 20,
+                        "GD": 2,
+                        "P": 29
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 10,
                     "name": "Atlético-MG",
                     "stats": {
                         "GP": 20,
@@ -7075,52 +7111,16 @@
                     }
                 },
                 {
-                    "position": 9,
-                    "name": "Corinthians",
-                    "stats": {
-                        "GP": 20,
-                        "W": 7,
-                        "D": 7,
-                        "L": 6,
-                        "F": 22,
-                        "A": 20,
-                        "GD": 2,
-                        "P": 28
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 10,
+                    "position": 11,
                     "name": "Coritiba",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 7,
                         "D": 6,
-                        "L": 7,
+                        "L": 8,
                         "F": 25,
-                        "A": 27,
-                        "GD": -2,
-                        "P": 27
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 11,
-                    "name": "Cruzeiro",
-                    "stats": {
-                        "GP": 20,
-                        "W": 7,
-                        "D": 6,
-                        "L": 7,
-                        "F": 26,
-                        "A": 30,
-                        "GD": -4,
+                        "A": 28,
+                        "GD": -3,
                         "P": 27
                     },
                     "zone": {
@@ -7150,13 +7150,13 @@
                     "position": 13,
                     "name": "Vitória",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 7,
                         "D": 5,
-                        "L": 8,
+                        "L": 9,
                         "F": 22,
-                        "A": 27,
-                        "GD": -5,
+                        "A": 31,
+                        "GD": -9,
                         "P": 26
                     },
                     "zone": null
@@ -12147,6 +12147,42 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "Atlético Bucaramanga",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 1,
+                        "L": 0,
+                        "F": 2,
+                        "A": 1,
+                        "GD": 1,
+                        "P": 4
+                    },
+                    "zone": {
+                        "label": "Playoffs Título",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "Llaneros FC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 1,
+                        "L": 0,
+                        "F": 2,
+                        "A": 1,
+                        "GD": 1,
+                        "P": 4
+                    },
+                    "zone": {
+                        "label": "Playoffs Título",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
                     "name": "Once Caldas",
                     "stats": {
                         "GP": 1,
@@ -12164,7 +12200,7 @@
                     }
                 },
                 {
-                    "position": 2,
+                    "position": 4,
                     "name": "América de Cali",
                     "stats": {
                         "GP": 1,
@@ -12182,7 +12218,7 @@
                     }
                 },
                 {
-                    "position": 3,
+                    "position": 5,
                     "name": "Deportivo Cali",
                     "stats": {
                         "GP": 1,
@@ -12200,7 +12236,7 @@
                     }
                 },
                 {
-                    "position": 4,
+                    "position": 6,
                     "name": "Independiente Medellín",
                     "stats": {
                         "GP": 1,
@@ -12218,7 +12254,7 @@
                     }
                 },
                 {
-                    "position": 5,
+                    "position": 7,
                     "name": "Deportes Tolima",
                     "stats": {
                         "GP": 1,
@@ -12236,7 +12272,7 @@
                     }
                 },
                 {
-                    "position": 6,
+                    "position": 8,
                     "name": "Águilas Doradas",
                     "stats": {
                         "GP": 1,
@@ -12245,42 +12281,6 @@
                         "L": 0,
                         "F": 2,
                         "A": 1,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "Playoffs Título",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 7,
-                    "name": "Atlético Bucaramanga",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 1,
-                        "A": 0,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "Playoffs Título",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 8,
-                    "name": "Llaneros FC",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 1,
-                        "A": 0,
                         "GD": 1,
                         "P": 3
                     },
@@ -20989,6 +20989,24 @@
                 },
                 {
                     "position": 2,
+                    "name": "Libertad",
+                    "stats": {
+                        "GP": 2,
+                        "W": 2,
+                        "D": 0,
+                        "L": 0,
+                        "F": 5,
+                        "A": 1,
+                        "GD": 4,
+                        "P": 6
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
                     "name": "2 de Mayo",
                     "stats": {
                         "GP": 2,
@@ -21001,12 +21019,12 @@
                         "P": 6
                     },
                     "zone": {
-                        "label": "CONMEBOL Libertadores",
+                        "label": "CONMEBOL Sudamericana",
                         "type": "avantage"
                     }
                 },
                 {
-                    "position": 3,
+                    "position": 4,
                     "name": "Nacional Asunción",
                     "stats": {
                         "GP": 2,
@@ -21017,24 +21035,6 @@
                         "A": 1,
                         "GD": 2,
                         "P": 4
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 4,
-                    "name": "Libertad",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 1,
-                        "A": 0,
-                        "GD": 1,
-                        "P": 3
                     },
                     "zone": {
                         "label": "CONMEBOL Sudamericana",
@@ -21058,6 +21058,21 @@
                 },
                 {
                     "position": 6,
+                    "name": "Guaraní",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 2,
+                        "GD": 0,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 7,
                     "name": "Sportivo Ameliano",
                     "stats": {
                         "GP": 2,
@@ -21072,38 +21087,8 @@
                     "zone": null
                 },
                 {
-                    "position": 7,
-                    "name": "Deportivo Recoleta",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 1,
-                        "A": 1,
-                        "GD": 0,
-                        "P": 1
-                    },
-                    "zone": null
-                },
-                {
                     "position": 8,
                     "name": "Sportivo San Lorenzo",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 1,
-                        "A": 1,
-                        "GD": 0,
-                        "P": 1
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 9,
-                    "name": "Rubio Ñú",
                     "stats": {
                         "GP": 2,
                         "W": 0,
@@ -21117,17 +21102,32 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
-                    "name": "Guaraní",
+                    "position": 9,
+                    "name": "Deportivo Recoleta",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 0,
-                        "D": 0,
+                        "D": 1,
+                        "L": 1,
+                        "F": 2,
+                        "A": 5,
+                        "GD": -3,
+                        "P": 1
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 10,
+                    "name": "Rubio Ñú",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 1,
                         "L": 1,
                         "F": 1,
                         "A": 2,
                         "GD": -1,
-                        "P": 0
+                        "P": 1
                     },
                     "zone": null
                 },

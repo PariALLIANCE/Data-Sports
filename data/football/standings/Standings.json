@@ -12219,6 +12219,24 @@
                 },
                 {
                     "position": 5,
+                    "name": "Atlético Bucaramanga",
+                    "stats": {
+                        "GP": 3,
+                        "W": 1,
+                        "D": 2,
+                        "L": 0,
+                        "F": 3,
+                        "A": 2,
+                        "GD": 1,
+                        "P": 5
+                    },
+                    "zone": {
+                        "label": "Playoffs Título",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 6,
                     "name": "Once Caldas",
                     "stats": {
                         "GP": 2,
@@ -12228,24 +12246,6 @@
                         "F": 7,
                         "A": 3,
                         "GD": 4,
-                        "P": 4
-                    },
-                    "zone": {
-                        "label": "Playoffs Título",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 6,
-                    "name": "Atlético Bucaramanga",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 1,
-                        "L": 0,
-                        "F": 2,
-                        "A": 1,
-                        "GD": 1,
                         "P": 4
                     },
                     "zone": {
@@ -12381,6 +12381,21 @@
                 },
                 {
                     "position": 15,
+                    "name": "Cúcuta Deportivo",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 1,
+                        "L": 1,
+                        "F": 2,
+                        "A": 6,
+                        "GD": -4,
+                        "P": 1
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 16,
                     "name": "Deportivo Pasto",
                     "stats": {
                         "GP": 2,
@@ -12395,7 +12410,7 @@
                     "zone": null
                 },
                 {
-                    "position": 16,
+                    "position": 17,
                     "name": "Atlético Junior",
                     "stats": {
                         "GP": 2,
@@ -12410,7 +12425,7 @@
                     "zone": null
                 },
                 {
-                    "position": 17,
+                    "position": 18,
                     "name": "Internacional de Bogotá",
                     "stats": {
                         "GP": 1,
@@ -12420,21 +12435,6 @@
                         "F": 0,
                         "A": 2,
                         "GD": -2,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 18,
-                    "name": "Cúcuta Deportivo",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
-                        "A": 5,
-                        "GD": -4,
                         "P": 0
                     },
                     "zone": null
@@ -29584,16 +29584,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "Trujillanos",
+                    "name": "Deportivo Táchira",
                     "stats": {
-                        "GP": 1,
-                        "W": 1,
+                        "GP": 2,
+                        "W": 2,
                         "D": 0,
                         "L": 0,
-                        "F": 2,
+                        "F": 4,
                         "A": 0,
-                        "GD": 2,
-                        "P": 3
+                        "GD": 4,
+                        "P": 6
                     },
                     "zone": {
                         "label": "CONMEBOL Libertadores",
@@ -29602,12 +29602,12 @@
                 },
                 {
                     "position": 2,
-                    "name": "Deportivo La Guaira",
+                    "name": "Carabobo",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 1,
                         "D": 0,
-                        "L": 0,
+                        "L": 1,
                         "F": 2,
                         "A": 1,
                         "GD": 1,
@@ -29620,7 +29620,7 @@
                 },
                 {
                     "position": 3,
-                    "name": "Metropolitanos",
+                    "name": "Deportivo La Guaira",
                     "stats": {
                         "GP": 1,
                         "W": 1,
@@ -29638,7 +29638,7 @@
                 },
                 {
                     "position": 4,
-                    "name": "Zamora FC",
+                    "name": "Metropolitanos",
                     "stats": {
                         "GP": 1,
                         "W": 1,
@@ -29656,14 +29656,14 @@
                 },
                 {
                     "position": 5,
-                    "name": "Portuguesa",
+                    "name": "Zamora FC",
                     "stats": {
                         "GP": 1,
                         "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 1,
-                        "A": 0,
+                        "F": 2,
+                        "A": 1,
                         "GD": 1,
                         "P": 3
                     },
@@ -29671,46 +29671,46 @@
                 },
                 {
                     "position": 6,
-                    "name": "Anzoátegui FC",
+                    "name": "Trujillanos",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 2,
+                        "W": 1,
                         "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 2,
                         "GD": 0,
-                        "P": 0
+                        "P": 3
                     },
                     "zone": null
                 },
                 {
                     "position": 7,
-                    "name": "Caracas FC",
+                    "name": "Portuguesa",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 2,
+                        "W": 1,
                         "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
+                        "L": 1,
+                        "F": 1,
+                        "A": 1,
                         "GD": 0,
-                        "P": 0
+                        "P": 3
                     },
                     "zone": null
                 },
                 {
                     "position": 8,
-                    "name": "Deportivo Táchira",
+                    "name": "UCV FC",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 2,
+                        "W": 1,
                         "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
+                        "L": 1,
+                        "F": 2,
+                        "A": 3,
+                        "GD": -1,
+                        "P": 3
                     },
                     "zone": null
                 },
@@ -29718,35 +29718,35 @@
                     "position": 9,
                     "name": "Estudiantes de Mérida",
                     "stats": {
-                        "GP": 0,
+                        "GP": 1,
                         "W": 0,
-                        "D": 0,
+                        "D": 1,
                         "L": 0,
-                        "F": 0,
-                        "A": 0,
+                        "F": 2,
+                        "A": 2,
                         "GD": 0,
-                        "P": 0
+                        "P": 1
                     },
                     "zone": null
                 },
                 {
                     "position": 10,
-                    "name": "Academia Puerto Cabello",
+                    "name": "Caracas FC",
                     "stats": {
                         "GP": 1,
                         "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
+                        "D": 1,
+                        "L": 0,
+                        "F": 2,
                         "A": 2,
-                        "GD": -1,
-                        "P": 0
+                        "GD": 0,
+                        "P": 1
                     },
                     "zone": null
                 },
                 {
                     "position": 11,
-                    "name": "Monagas SC",
+                    "name": "Academia Puerto Cabello",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -29776,30 +29776,30 @@
                 },
                 {
                     "position": 13,
-                    "name": "Carabobo",
+                    "name": "Monagas SC",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 0,
                         "D": 0,
-                        "L": 1,
-                        "F": 0,
-                        "A": 1,
-                        "GD": -1,
+                        "L": 2,
+                        "F": 2,
+                        "A": 4,
+                        "GD": -2,
                         "P": 0
                     },
                     "zone": null
                 },
                 {
                     "position": 14,
-                    "name": "UCV FC",
+                    "name": "Anzoátegui FC",
                     "stats": {
                         "GP": 1,
                         "W": 0,
                         "D": 0,
                         "L": 1,
                         "F": 0,
-                        "A": 2,
-                        "GD": -2,
+                        "A": 3,
+                        "GD": -3,
                         "P": 0
                     },
                     "zone": null

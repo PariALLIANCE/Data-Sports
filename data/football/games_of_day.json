@@ -1,178 +1,1005 @@
 [
   {
-    "gameId": "401878000",
-    "date": "2026-08-04",
-    "time_ci": "01:10",
-    "league": "Colombia_Primera_A",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401878000/fortaleza-ceif-llaneros-fc",
+    "gameId": "401843981",
+    "date": "2026-08-05",
+    "time_ci": "22:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843981/gimnasia-y-tiro-salta-almagro",
     "home": {
-      "team": "Llaneros FC",
-      "team_id": "7915",
-      "team_slug": "llaneros-fc",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
-      "url": "https://www.espn.com/soccer/team/_/id/7915",
+      "team": "Almagro",
+      "team_id": "2",
+      "team_slug": "almagro",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+      "url": "https://www.espn.com/soccer/team/_/id/2",
       "standings": {
-        "position_current": 7,
-        "position_if_win": 1,
-        "played": 2,
-        "won": 1,
-        "drawn": 1,
-        "lost": 0,
-        "gd": 1,
-        "points": 4
+        "position_current": 12,
+        "position_if_win": 6,
+        "played": 22,
+        "won": 8,
+        "drawn": 5,
+        "lost": 9,
+        "gd": -4,
+        "points": 29
       },
-      "form": "1-1-0",
-      "matchday": 3,
+      "form": "8-5-9",
+      "matchday": 23,
       "last_five": [
         {
-          "date": "2026-07-31",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401878001/llaneros-fc-atletico-bucaramanga",
+          "date": "2026-08-01",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844028/midland-almagro",
           "result": "D",
-          "team_home": "Atlético Bucaramanga",
-          "team_home_id": "6137",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
-          "team_away": "Llaneros FC",
-          "team_away_id": "7915",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
+          "team_home": "Almagro",
+          "team_home_id": "2",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+          "team_away": "Midland",
+          "team_away_id": "10109",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
           "home_score": "1",
           "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 1.62,
-            "away": 5.75,
-            "draw": 3.45
+            "home": 3.25,
+            "away": 2.5,
+            "draw": 2.7
           },
-          "stats": {
-            "Possession": {
-              "home": "60%",
-              "away": "40%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "5"
-            },
-            "Accurate Passes": {
-              "home": "365",
-              "away": "213"
-            },
-            "Passes": {
-              "home": "459",
-              "away": "308"
-            },
-            "Duels Won": {
-              "home": "45",
-              "away": "52"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "8"
-            }
-          }
+          "stats": {}
         },
         {
-          "date": "2026-07-24",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877863/deportivo-pereira-llaneros-fc",
+          "date": "2026-07-27",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843998/almagro-atlanta",
           "result": "W",
-          "team_home": "Llaneros FC",
-          "team_home_id": "7915",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
-          "team_away": "Deportivo Pereira",
-          "team_away_id": "5486",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5486.png",
+          "team_home": "Atlanta",
+          "team_home_id": "10146",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+          "team_away": "Almagro",
+          "team_away_id": "2",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
           "home_score": "1",
-          "away_score": "0",
+          "away_score": "3",
           "status": "FT",
           "odds": {
             "home": 1.62,
             "away": 6.0,
             "draw": 3.3
           },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-12",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843971/almagro-san-martin-tucuman",
+          "result": "L",
+          "team_home": "San Martín (Tucumán)",
+          "team_home_id": "17814",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+          "team_away": "Almagro",
+          "team_away_id": "2",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+          "home_score": "3",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": null,
+            "away": null,
+            "draw": null
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-04",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843939/atletico-rafaela-almagro",
+          "result": "W",
+          "team_home": "Almagro",
+          "team_home_id": "2",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+          "team_away": "Atletico Rafaela",
+          "team_away_id": "9747",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 2.2,
+            "away": 3.8,
+            "draw": 2.7
+          },
           "stats": {
             "Possession": {
-              "home": "46%",
-              "away": "54%"
+              "home": "0%",
+              "away": "0%"
             },
             "Shots on Goal": {
-              "home": "11",
-              "away": "2"
-            },
-            "Big Chances Created": {
-              "home": "1",
+              "home": "0",
               "away": "0"
             },
-            "Corners Won": {
-              "home": "6",
-              "away": "3"
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
             },
-            "Accurate Passes": {
-              "home": "265",
-              "away": "321"
+            "Fouls": {
+              "home": "0",
+              "away": "0"
             },
-            "Passes": {
-              "home": "324",
-              "away": "397"
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
             },
-            "Duels Won": {
-              "home": "36",
-              "away": "28"
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
             },
             "Saves": {
-              "home": "2",
-              "away": "10"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "17"
+              "home": "0",
+              "away": "0"
             }
           }
         },
         {
-          "date": "2026-05-27",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871573/llaneros-fc-boyaca-chico-fc",
+          "date": "2026-06-20",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843678/atlanta-almagro",
           "result": "W",
-          "team_home": "Boyacá Chicó FC",
-          "team_home_id": "5480",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5480.png",
-          "team_away": "Llaneros FC",
-          "team_away_id": "7915",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
-          "home_score": "0",
-          "away_score": "1",
+          "team_home": "Almagro",
+          "team_home_id": "2",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+          "team_away": "Atlanta",
+          "team_away_id": "10146",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 3.45,
+            "away": 2.35,
+            "draw": 2.7
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Gimnasia y Tiro (Salta)",
+      "team_id": "10743",
+      "team_slug": "gimnasia-y-tiro-salta",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10743",
+      "standings": {
+        "position_current": 7,
+        "position_if_win": 5,
+        "played": 22,
+        "won": 8,
+        "drawn": 7,
+        "lost": 7,
+        "gd": 0,
+        "points": 31
+      },
+      "form": "8-7-7",
+      "matchday": 23,
+      "last_five": [
+        {
+          "date": "2026-08-02",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844012/gimnasia-y-tiro-salta-temperley",
+          "result": "W",
+          "team_home": "Temperley",
+          "team_home_id": "10162",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
+          "team_away": "Gimnasia y Tiro (Salta)",
+          "team_away_id": "10743",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "home_score": "1",
+          "away_score": "2",
           "status": "FT",
           "odds": {
             "home": 2.1,
-            "away": 3.75,
+            "away": 4.1,
+            "draw": 2.75
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "0"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844010/deportivo-maipu-gimnasia-y-tiro-salta",
+          "result": "W",
+          "team_home": "Gimnasia y Tiro (Salta)",
+          "team_home_id": "10743",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "team_away": "Deportivo Maipú",
+          "team_away_id": "11978",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.95,
+            "away": 4.2,
             "draw": 3.0
           },
           "stats": {}
         },
         {
-          "date": "2026-05-20",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871564/patriotas-llaneros-fc",
+          "date": "2026-07-12",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843966/patronato-gimnasia-y-tiro-salta",
+          "result": "D",
+          "team_home": "Gimnasia y Tiro (Salta)",
+          "team_home_id": "10743",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "team_away": "Patronato",
+          "team_away_id": "10374",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10374.png",
+          "home_score": "1",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.95,
+            "away": 4.4,
+            "draw": 2.95
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-04",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843951/gimnasia-y-tiro-salta-colegiales",
           "result": "W",
-          "team_home": "Llaneros FC",
-          "team_home_id": "7915",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
-          "team_away": "Patriotas",
-          "team_away_id": "9773",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9773.png",
+          "team_home": "Colegiales",
+          "team_home_id": "10149",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+          "team_away": "Gimnasia y Tiro (Salta)",
+          "team_away_id": "10743",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 1.87,
+            "away": 5.0,
+            "draw": 2.85
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-06-21",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843669/gimnasia-y-tiro-salta-deportivo-maipu",
+          "result": "D",
+          "team_home": "Deportivo Maipú",
+          "team_home_id": "11978",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
+          "team_away": "Gimnasia y Tiro (Salta)",
+          "team_away_id": "10743",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "home_score": "0",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 2.15,
+            "away": 3.6,
+            "draw": 2.95
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "2",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        }
+      ]
+    },
+    "odds": {
+      "home": 2.8,
+      "away": 2.8,
+      "draw": 2.6
+    },
+    "stats": {},
+    "h2h": [],
+    "full_standings": [
+      {
+        "position": 1,
+        "team_id": "5263",
+        "team": "Gimnasia y Esgrima (Jujuy)",
+        "played": 22,
+        "won": 12,
+        "drawn": 5,
+        "lost": 5,
+        "gd": 10,
+        "points": 41
+      },
+      {
+        "position": 2,
+        "team_id": "10162",
+        "team": "Temperley",
+        "played": 23,
+        "won": 9,
+        "drawn": 10,
+        "lost": 4,
+        "gd": 4,
+        "points": 37
+      },
+      {
+        "position": 3,
+        "team_id": "10163",
+        "team": "Tristán Suárez",
+        "played": 21,
+        "won": 9,
+        "drawn": 9,
+        "lost": 3,
+        "gd": 7,
+        "points": 36
+      },
+      {
+        "position": 4,
+        "team_id": "10146",
+        "team": "Atlanta",
+        "played": 22,
+        "won": 11,
+        "drawn": 3,
+        "lost": 8,
+        "gd": 6,
+        "points": 36
+      },
+      {
+        "position": 5,
+        "team_id": "10109",
+        "team": "Midland",
+        "played": 22,
+        "won": 9,
+        "drawn": 7,
+        "lost": 6,
+        "gd": 7,
+        "points": 34
+      },
+      {
+        "position": 6,
+        "team_id": "11978",
+        "team": "Deportivo Maipú",
+        "played": 23,
+        "won": 9,
+        "drawn": 5,
+        "lost": 9,
+        "gd": 7,
+        "points": 32
+      },
+      {
+        "position": 7,
+        "team_id": "10743",
+        "team": "Gimnasia y Tiro (Salta)",
+        "played": 22,
+        "won": 8,
+        "drawn": 7,
+        "lost": 7,
+        "gd": 0,
+        "points": 31
+      },
+      {
+        "position": 8,
+        "team_id": "9747",
+        "team": "Atletico Rafaela",
+        "played": 23,
+        "won": 8,
+        "drawn": 7,
+        "lost": 8,
+        "gd": -2,
+        "points": 31
+      },
+      {
+        "position": 9,
+        "team_id": "17814",
+        "team": "San Martín (Tucumán)",
+        "played": 23,
+        "won": 7,
+        "drawn": 9,
+        "lost": 7,
+        "gd": 2,
+        "points": 30
+      },
+      {
+        "position": 10,
+        "team_id": "10149",
+        "team": "Colegiales",
+        "played": 22,
+        "won": 8,
+        "drawn": 5,
+        "lost": 9,
+        "gd": 0,
+        "points": 29
+      },
+      {
+        "position": 11,
+        "team_id": "236",
+        "team": "Nueva Chicago",
+        "played": 22,
+        "won": 7,
+        "drawn": 8,
+        "lost": 7,
+        "gd": 0,
+        "points": 29
+      },
+      {
+        "position": 12,
+        "team_id": "2",
+        "team": "Almagro",
+        "played": 22,
+        "won": 8,
+        "drawn": 5,
+        "lost": 9,
+        "gd": -4,
+        "points": 29
+      },
+      {
+        "position": 13,
+        "team_id": "7845",
+        "team": "San Martín (San Juan)",
+        "played": 21,
+        "won": 7,
+        "drawn": 6,
+        "lost": 8,
+        "gd": 0,
+        "points": 27
+      },
+      {
+        "position": 14,
+        "team_id": "6",
+        "team": "Chacarita Juniors",
+        "played": 22,
+        "won": 7,
+        "drawn": 5,
+        "lost": 10,
+        "gd": -5,
+        "points": 26
+      },
+      {
+        "position": 15,
+        "team_id": "2741",
+        "team": "Quilmes",
+        "played": 22,
+        "won": 6,
+        "drawn": 7,
+        "lost": 9,
+        "gd": 1,
+        "points": 25
+      },
+      {
+        "position": 16,
+        "team_id": "10374",
+        "team": "Patronato",
+        "played": 22,
+        "won": 4,
+        "drawn": 11,
+        "lost": 7,
+        "gd": -5,
+        "points": 23
+      },
+      {
+        "position": 17,
+        "team_id": "13913",
+        "team": "Agropecuario",
+        "played": 23,
+        "won": 5,
+        "drawn": 8,
+        "lost": 10,
+        "gd": -10,
+        "points": 23
+      },
+      {
+        "position": 18,
+        "team_id": "18284",
+        "team": "Güemes",
+        "played": 21,
+        "won": 5,
+        "drawn": 4,
+        "lost": 12,
+        "gd": -17,
+        "points": 19
+      }
+    ]
+  },
+  {
+    "gameId": "401843990",
+    "date": "2026-08-05",
+    "time_ci": "03:00",
+    "league": "Argentina_Primera_Nacional",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401843990/gimnasia-y-esgrima-jujuy-quilmes",
+    "home": {
+      "team": "Quilmes",
+      "team_id": "2741",
+      "team_slug": "quilmes",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+      "url": "https://www.espn.com/soccer/team/_/id/2741",
+      "standings": {
+        "position_current": 15,
+        "position_if_win": 13,
+        "played": 22,
+        "won": 6,
+        "drawn": 7,
+        "lost": 9,
+        "gd": 1,
+        "points": 25
+      },
+      "form": "6-7-9",
+      "matchday": 23,
+      "last_five": [
+        {
+          "date": "2026-08-01",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844021/quilmes-patronato",
+          "result": "D",
+          "team_home": "Patronato",
+          "team_home_id": "10374",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10374.png",
+          "team_away": "Quilmes",
+          "team_away_id": "2741",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
           "home_score": "3",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 2.35,
+            "away": 3.3,
+            "draw": 2.85
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "7",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844006/colegiales-quilmes",
+          "result": "L",
+          "team_home": "Quilmes",
+          "team_home_id": "2741",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+          "team_away": "Colegiales",
+          "team_away_id": "10149",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+          "home_score": "0",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.91,
+            "away": 4.9,
+            "draw": 2.85
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "5",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-07-12",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843964/quilmes-midland",
+          "result": "L",
+          "team_home": "Midland",
+          "team_home_id": "10109",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "team_away": "Quilmes",
+          "team_away_id": "2741",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": null,
+            "away": null,
+            "draw": null
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-07-04",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843945/atlanta-quilmes",
+          "result": "W",
+          "team_home": "Quilmes",
+          "team_home_id": "2741",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+          "team_away": "Atlanta",
+          "team_away_id": "10146",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.35,
+            "away": 3.5,
+            "draw": 2.65
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "3"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-06-20",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843684/quilmes-colegiales",
+          "result": "L",
+          "team_home": "Colegiales",
+          "team_home_id": "10149",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+          "team_away": "Quilmes",
+          "team_away_id": "2741",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+          "home_score": "3",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.55,
+            "away": 3.25,
+            "draw": 2.6
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Gimnasia y Esgrima (Jujuy)",
+      "team_id": "5263",
+      "team_slug": "gimnasia-y-esgrima-jujuy",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+      "url": "https://www.espn.com/soccer/team/_/id/5263",
+      "standings": {
+        "position_current": 1,
+        "position_if_win": 1,
+        "played": 22,
+        "won": 12,
+        "drawn": 5,
+        "lost": 5,
+        "gd": 10,
+        "points": 41
+      },
+      "form": "12-5-5",
+      "matchday": 23,
+      "last_five": [
+        {
+          "date": "2026-08-01",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844018/gimnasia-y-esgrima-jujuy-colegiales",
+          "result": "L",
+          "team_home": "Colegiales",
+          "team_home_id": "10149",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+          "team_away": "Gimnasia y Esgrima (Jujuy)",
+          "team_away_id": "5263",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 2.1,
+            "away": 3.85,
+            "draw": 2.9
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-26",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401844001/guemes-gimnasia-y-esgrima-jujuy",
+          "result": "W",
+          "team_home": "Gimnasia y Esgrima (Jujuy)",
+          "team_home_id": "5263",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "team_away": "Güemes",
+          "team_away_id": "18284",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18284.png",
+          "home_score": "2",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.39,
+            "away": 8.0,
+            "draw": 4.2
+          },
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "1",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-07-12",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843965/chacarita-juniors-gimnasia-y-esgrima-jujuy",
+          "result": "D",
+          "team_home": "Gimnasia y Esgrima (Jujuy)",
+          "team_home_id": "5263",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "team_away": "Chacarita Juniors",
+          "team_away_id": "6",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6.png",
+          "home_score": "1",
           "away_score": "1",
           "status": "FT",
           "odds": {
@@ -183,223 +1010,77 @@
           "stats": {}
         },
         {
-          "date": "2026-05-12",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871545/llaneros-fc-millonarios",
-          "result": "L",
-          "team_home": "Millonarios",
-          "team_home_id": "5484",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5484.png",
-          "team_away": "Llaneros FC",
-          "team_away_id": "7915",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.36,
-            "away": 9.0,
-            "draw": 4.2
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "away": {
-      "team": "Fortaleza CEIF",
-      "team_id": "4928",
-      "team_slug": "fortaleza-ceif",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-      "url": "https://www.espn.com/soccer/team/_/id/4928",
-      "standings": {
-        "position_current": 11,
-        "position_if_win": 5,
-        "played": 2,
-        "won": 0,
-        "drawn": 2,
-        "lost": 0,
-        "gd": 0,
-        "points": 2
-      },
-      "form": "0-2-0",
-      "matchday": 3,
-      "last_five": [
-        {
-          "date": "2026-08-01",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877856/deportivo-pereira-fortaleza-ceif",
+          "date": "2026-07-05",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401873891/gimnasia-y-esgrima-jujuy-midland",
           "result": "D",
-          "team_home": "Fortaleza CEIF",
-          "team_home_id": "4928",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-          "team_away": "Deportivo Pereira",
-          "team_away_id": "5486",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5486.png",
-          "home_score": "0",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.59,
-            "away": 6.5,
-            "draw": 3.35
-          },
-          "stats": {
-            "Possession": {
-              "home": "59%",
-              "away": "41%"
-            },
-            "Shots on Goal": {
-              "home": "9",
-              "away": "1"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "9",
-              "away": "0"
-            },
-            "Accurate Passes": {
-              "home": "430",
-              "away": "263"
-            },
-            "Passes": {
-              "home": "483",
-              "away": "334"
-            },
-            "Duels Won": {
-              "home": "35",
-              "away": "36"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "9"
-            },
-            "Fouls Committed": {
-              "home": "10",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-07-26",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877853/fortaleza-ceif-alianza-fc",
-          "result": "D",
-          "team_home": "Alianza FC",
-          "team_home_id": "9761",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9761.png",
-          "team_away": "Fortaleza CEIF",
-          "team_away_id": "4928",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
+          "team_home": "Midland",
+          "team_home_id": "10109",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "team_away": "Gimnasia y Esgrima (Jujuy)",
+          "team_away_id": "5263",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
           "home_score": "1",
           "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.95,
-            "away": 4.4,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "56%",
-              "away": "44%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "2"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "5",
-              "away": "3"
-            },
-            "Accurate Passes": {
-              "home": "362",
-              "away": "275"
-            },
-            "Passes": {
-              "home": "427",
-              "away": "353"
-            },
-            "Duels Won": {
-              "home": "42",
-              "away": "50"
-            },
-            "Saves": {
-              "home": "1",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "17"
-            }
-          }
-        },
-        {
-          "date": "2026-05-29",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871569/fortaleza-ceif-cucuta-deportivo",
-          "result": "D",
-          "team_home": "Cúcuta Deportivo",
-          "team_home_id": "6101",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6101.png",
-          "team_away": "Fortaleza CEIF",
-          "team_away_id": "4928",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-          "home_score": "0",
-          "away_score": "0",
           "status": "FT",
           "odds": {
             "home": 2.4,
-            "away": 3.05,
-            "draw": 3.0
+            "away": 3.4,
+            "draw": 2.7
           },
-          "stats": {}
+          "stats": {
+            "Possession": {
+              "home": "0%",
+              "away": "0%"
+            },
+            "Shots on Goal": {
+              "home": "0",
+              "away": "0"
+            },
+            "Shot Attempts": {
+              "home": "0",
+              "away": "0"
+            },
+            "Fouls": {
+              "home": "0",
+              "away": "0"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Corner Kicks": {
+              "home": "0",
+              "away": "0"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "0"
+            }
+          }
         },
         {
-          "date": "2026-05-20",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871567/orsomarso-sc-fortaleza-ceif",
-          "result": "D",
-          "team_home": "Fortaleza CEIF",
-          "team_home_id": "4928",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-          "team_away": "Orsomarso SC",
-          "team_away_id": "18156",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18156.png",
+          "date": "2026-06-21",
+          "competition": "2026 Argentine Nacional B, Regular Season",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401843671/gimnasia-y-esgrima-jujuy-guemes",
+          "result": "W",
+          "team_home": "Güemes",
+          "team_home_id": "18284",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18284.png",
+          "team_away": "Gimnasia y Esgrima (Jujuy)",
+          "team_away_id": "5263",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
           "home_score": "1",
-          "away_score": "1",
+          "away_score": "3",
           "status": "FT",
           "odds": {
-            "home": 1.36,
-            "away": 8.0,
-            "draw": 4.5
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-11",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871547/fortaleza-ceif-independiente-medellin",
-          "result": "L",
-          "team_home": "Independiente Medellín",
-          "team_home_id": "2690",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "team_away": "Fortaleza CEIF",
-          "team_away_id": "4928",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.61,
-            "away": 5.25,
-            "draw": 3.7
+            "home": 4.0,
+            "away": 2.0,
+            "draw": 2.95
           },
           "stats": {}
         }
@@ -407,44 +1088,720 @@
     },
     "odds": {
       "home": 2.05,
-      "away": 3.45,
-      "draw": 3.1
+      "away": 3.65,
+      "draw": 3.0
     },
     "stats": {
       "Average Goals": {
-        "home": "0.90",
-        "away": "1.10"
+        "home": "0.95",
+        "away": "1.59"
       },
       "Average Goals Conceded": {
-        "home": "1",
-        "away": "1.33"
+        "home": "0.91",
+        "away": "1.14"
       },
       "Average Goal Differential": {
-        "home": "-0.1",
-        "away": "-0.2"
-      },
-      "Possession": {
-        "home": "48%",
-        "away": "54%"
+        "home": "+0.0",
+        "away": "+0.5"
       },
       "Shots On Target Percentage": {
-        "home": "35%",
-        "away": "32%"
-      },
-      "Big Chances Created": {
-        "home": ".10",
-        "away": ".00"
-      },
-      "Duel Win Percentage": {
-        "home": "55%",
-        "away": "52%"
+        "home": "0%",
+        "away": "0%"
       },
       "Clean Sheet": {
-        "home": "7",
+        "home": "9",
+        "away": "5"
+      },
+      "Save Percentage": {
+        "home": "0%",
+        "away": "0%"
+      },
+      "Corners Won": {
+        "home": "0",
+        "away": "0"
+      },
+      "Fouls Committed": {
+        "home": "0",
+        "away": "0"
+      }
+    },
+    "h2h": [],
+    "full_standings": [
+      {
+        "position": 1,
+        "team_id": "5263",
+        "team": "Gimnasia y Esgrima (Jujuy)",
+        "played": 22,
+        "won": 12,
+        "drawn": 5,
+        "lost": 5,
+        "gd": 10,
+        "points": 41
+      },
+      {
+        "position": 2,
+        "team_id": "10162",
+        "team": "Temperley",
+        "played": 23,
+        "won": 9,
+        "drawn": 10,
+        "lost": 4,
+        "gd": 4,
+        "points": 37
+      },
+      {
+        "position": 3,
+        "team_id": "10163",
+        "team": "Tristán Suárez",
+        "played": 21,
+        "won": 9,
+        "drawn": 9,
+        "lost": 3,
+        "gd": 7,
+        "points": 36
+      },
+      {
+        "position": 4,
+        "team_id": "10146",
+        "team": "Atlanta",
+        "played": 22,
+        "won": 11,
+        "drawn": 3,
+        "lost": 8,
+        "gd": 6,
+        "points": 36
+      },
+      {
+        "position": 5,
+        "team_id": "10109",
+        "team": "Midland",
+        "played": 22,
+        "won": 9,
+        "drawn": 7,
+        "lost": 6,
+        "gd": 7,
+        "points": 34
+      },
+      {
+        "position": 6,
+        "team_id": "11978",
+        "team": "Deportivo Maipú",
+        "played": 23,
+        "won": 9,
+        "drawn": 5,
+        "lost": 9,
+        "gd": 7,
+        "points": 32
+      },
+      {
+        "position": 7,
+        "team_id": "10743",
+        "team": "Gimnasia y Tiro (Salta)",
+        "played": 22,
+        "won": 8,
+        "drawn": 7,
+        "lost": 7,
+        "gd": 0,
+        "points": 31
+      },
+      {
+        "position": 8,
+        "team_id": "9747",
+        "team": "Atletico Rafaela",
+        "played": 23,
+        "won": 8,
+        "drawn": 7,
+        "lost": 8,
+        "gd": -2,
+        "points": 31
+      },
+      {
+        "position": 9,
+        "team_id": "17814",
+        "team": "San Martín (Tucumán)",
+        "played": 23,
+        "won": 7,
+        "drawn": 9,
+        "lost": 7,
+        "gd": 2,
+        "points": 30
+      },
+      {
+        "position": 10,
+        "team_id": "10149",
+        "team": "Colegiales",
+        "played": 22,
+        "won": 8,
+        "drawn": 5,
+        "lost": 9,
+        "gd": 0,
+        "points": 29
+      },
+      {
+        "position": 11,
+        "team_id": "236",
+        "team": "Nueva Chicago",
+        "played": 22,
+        "won": 7,
+        "drawn": 8,
+        "lost": 7,
+        "gd": 0,
+        "points": 29
+      },
+      {
+        "position": 12,
+        "team_id": "2",
+        "team": "Almagro",
+        "played": 22,
+        "won": 8,
+        "drawn": 5,
+        "lost": 9,
+        "gd": -4,
+        "points": 29
+      },
+      {
+        "position": 13,
+        "team_id": "7845",
+        "team": "San Martín (San Juan)",
+        "played": 21,
+        "won": 7,
+        "drawn": 6,
+        "lost": 8,
+        "gd": 0,
+        "points": 27
+      },
+      {
+        "position": 14,
+        "team_id": "6",
+        "team": "Chacarita Juniors",
+        "played": 22,
+        "won": 7,
+        "drawn": 5,
+        "lost": 10,
+        "gd": -5,
+        "points": 26
+      },
+      {
+        "position": 15,
+        "team_id": "2741",
+        "team": "Quilmes",
+        "played": 22,
+        "won": 6,
+        "drawn": 7,
+        "lost": 9,
+        "gd": 1,
+        "points": 25
+      },
+      {
+        "position": 16,
+        "team_id": "10374",
+        "team": "Patronato",
+        "played": 22,
+        "won": 4,
+        "drawn": 11,
+        "lost": 7,
+        "gd": -5,
+        "points": 23
+      },
+      {
+        "position": 17,
+        "team_id": "13913",
+        "team": "Agropecuario",
+        "played": 23,
+        "won": 5,
+        "drawn": 8,
+        "lost": 10,
+        "gd": -10,
+        "points": 23
+      },
+      {
+        "position": 18,
+        "team_id": "18284",
+        "team": "Güemes",
+        "played": 21,
+        "won": 5,
+        "drawn": 4,
+        "lost": 12,
+        "gd": -17,
+        "points": 19
+      }
+    ]
+  },
+  {
+    "gameId": "401877882",
+    "date": "2026-08-05",
+    "time_ci": "03:15",
+    "league": "Colombia_Primera_A",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401877882/jaguares-de-cordoba-internacional-de-bogota",
+    "home": {
+      "team": "Internacional de Bogotá",
+      "team_id": "7445",
+      "team_slug": "internacional-de-bogota",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+      "url": "https://www.espn.com/soccer/team/_/id/7445",
+      "standings": {
+        "position_current": 17,
+        "position_if_win": 9,
+        "played": 1,
+        "won": 0,
+        "drawn": 0,
+        "lost": 1,
+        "gd": -2,
+        "points": 0
+      },
+      "form": "0-0-1",
+      "matchday": 2,
+      "last_five": [
+        {
+          "date": "2026-07-29",
+          "competition": "2026 Copa Colombia, Stage 1B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871777/internacional-de-bogota-inter-palmira",
+          "result": "W",
+          "team_home": null,
+          "team_home_id": "22184",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22184.png",
+          "team_away": null,
+          "team_away_id": "7445",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 1.95,
+            "away": 3.85,
+            "draw": 3.3
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-07-26",
+          "competition": "2026 Liga BetPlay, Clausura",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877988/america-de-cali-internacional-de-bogota",
+          "result": "L",
+          "team_home": "Internacional de Bogotá",
+          "team_home_id": "7445",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+          "team_away": "América de Cali",
+          "team_away_id": "8109",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8109.png",
+          "home_score": "0",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 2.9,
+            "away": 2.5,
+            "draw": 2.95
+          },
+          "stats": {
+            "Possession": {
+              "home": "45%",
+              "away": "55%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "4"
+            },
+            "Big Chances Created": {
+              "home": "0",
+              "away": "3"
+            },
+            "Corners Won": {
+              "home": "8",
+              "away": "1"
+            },
+            "Accurate Passes": {
+              "home": "303",
+              "away": "402"
+            },
+            "Passes": {
+              "home": "366",
+              "away": "473"
+            },
+            "Duels Won": {
+              "home": "27",
+              "away": "41"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "6"
+            },
+            "Fouls Committed": {
+              "home": "9",
+              "away": "10"
+            }
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "competition": "2026 Copa Colombia, Stage 1B",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871771/inter-palmira-internacional-de-bogota",
+          "result": "W",
+          "team_home": null,
+          "team_home_id": "7445",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+          "team_away": null,
+          "team_away_id": "22184",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22184.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.74,
+            "away": 4.6,
+            "draw": 3.45
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-12",
+          "competition": "2026 Liga BetPlay, Apertura - Quarterfinals",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871522/internacional-de-bogota-atletico-nacional",
+          "result": "L",
+          "team_home": null,
+          "team_home_id": "5264",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
+          "team_away": null,
+          "team_away_id": "7445",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+          "home_score": "7",
+          "away_score": "1",
+          "status": "FT",
+          "odds": {
+            "home": 1.48,
+            "away": 6.0,
+            "draw": 4.1
+          },
+          "stats": {
+            "Possession": {
+              "home": "60%",
+              "away": "40%"
+            },
+            "Shots on Goal": {
+              "home": "15",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "22",
+              "away": "16"
+            },
+            "Fouls Committed": {
+              "home": "13",
+              "away": "3"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "1"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "9",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "8"
+            }
+          }
+        },
+        {
+          "date": "2026-05-09",
+          "competition": "2026 Liga BetPlay, Apertura - Quarterfinals",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871518/atletico-nacional-internacional-de-bogota",
+          "result": "L",
+          "team_home": null,
+          "team_home_id": "7445",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+          "team_away": null,
+          "team_away_id": "5264",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
+          "home_score": "1",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 3.3,
+            "away": 2.2,
+            "draw": 3.1
+          },
+          "stats": {
+            "Possession": {
+              "home": "42%",
+              "away": "58%"
+            },
+            "Shots on Goal": {
+              "home": "4",
+              "away": "6"
+            },
+            "Shots": {
+              "home": "14",
+              "away": "13"
+            },
+            "Fouls Committed": {
+              "home": "10",
+              "away": "12"
+            },
+            "Yellow Cards": {
+              "home": "4",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "5",
+              "away": "3"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Jaguares de Córdoba",
+      "team_id": "10309",
+      "team_slug": "jaguares-de-cordoba",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+      "url": "https://www.espn.com/soccer/team/_/id/10309",
+      "standings": {
+        "position_current": 19,
+        "position_if_win": 9,
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gd": -5,
+        "points": 0
+      },
+      "form": "0-0-2",
+      "matchday": 3,
+      "last_five": [
+        {
+          "date": "2026-08-02",
+          "competition": "2026 Liga BetPlay, Clausura",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877990/atletico-nacional-jaguares-de-cordoba",
+          "result": "L",
+          "team_home": "Jaguares de Córdoba",
+          "team_home_id": "10309",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+          "team_away": "Atlético Nacional",
+          "team_away_id": "5264",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
+          "home_score": "0",
+          "away_score": "3",
+          "status": "FT",
+          "odds": {
+            "home": 5.5,
+            "away": 1.57,
+            "draw": 3.85
+          },
+          "stats": {
+            "Possession": {
+              "home": "39%",
+              "away": "61%"
+            },
+            "Shots on Goal": {
+              "home": "7",
+              "away": "6"
+            },
+            "Big Chances Created": {
+              "home": "1",
+              "away": "2"
+            },
+            "Corners Won": {
+              "home": "8",
+              "away": "4"
+            },
+            "Accurate Passes": {
+              "home": "224",
+              "away": "382"
+            },
+            "Passes": {
+              "home": "265",
+              "away": "435"
+            },
+            "Duels Won": {
+              "home": "24",
+              "away": "31"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "7"
+            },
+            "Fouls Committed": {
+              "home": "16",
+              "away": "10"
+            }
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "competition": "2026 Liga BetPlay, Clausura",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877996/jaguares-de-cordoba-deportivo-cali",
+          "result": "L",
+          "team_home": "Deportivo Cali",
+          "team_home_id": "2672",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2672.png",
+          "team_away": "Jaguares de Córdoba",
+          "team_away_id": "10309",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+          "home_score": "2",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.57,
+            "away": 5.75,
+            "draw": 3.65
+          },
+          "stats": {
+            "Possession": {
+              "home": "60%",
+              "away": "40%"
+            },
+            "Shots on Goal": {
+              "home": "6",
+              "away": "0"
+            },
+            "Big Chances Created": {
+              "home": "1",
+              "away": "1"
+            },
+            "Corners Won": {
+              "home": "6",
+              "away": "3"
+            },
+            "Accurate Passes": {
+              "home": "462",
+              "away": "280"
+            },
+            "Passes": {
+              "home": "529",
+              "away": "356"
+            },
+            "Duels Won": {
+              "home": "38",
+              "away": "41"
+            },
+            "Saves": {
+              "home": "0",
+              "away": "4"
+            },
+            "Fouls Committed": {
+              "home": "14",
+              "away": "15"
+            }
+          }
+        },
+        {
+          "date": "2026-05-26",
+          "competition": "2026 Copa Colombia, Group Stage/1A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871570/jaguares-de-cordoba-deportivo-pereira",
+          "result": "L",
+          "team_home": "Deportivo Pereira",
+          "team_home_id": "5486",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5486.png",
+          "team_away": "Jaguares de Córdoba",
+          "team_away_id": "10309",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+          "home_score": "1",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 2.75,
+            "away": 2.6,
+            "draw": 3.0
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-21",
+          "competition": "2026 Copa Colombia, Group Stage/1A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871565/independiente-yumbo-jaguares-de-cordoba",
+          "result": "W",
+          "team_home": "Jaguares de Córdoba",
+          "team_home_id": "10309",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+          "team_away": "Independiente Yumbo",
+          "team_away_id": "131659",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131659.png",
+          "home_score": "3",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.41,
+            "away": 6.5,
+            "draw": 4.5
+          },
+          "stats": {}
+        },
+        {
+          "date": "2026-05-10",
+          "competition": "2026 Copa Colombia, Group Stage/1A",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871551/jaguares-de-cordoba-aguilas-doradas",
+          "result": "D",
+          "team_home": "Águilas Doradas",
+          "team_home_id": "9762",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9762.png",
+          "team_away": "Jaguares de Córdoba",
+          "team_away_id": "10309",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+          "home_score": "0",
+          "away_score": "0",
+          "status": "FT",
+          "odds": {
+            "home": 1.74,
+            "away": 4.7,
+            "draw": 3.45
+          },
+          "stats": {}
+        }
+      ]
+    },
+    "odds": {
+      "home": 1.56,
+      "away": 5.25,
+      "draw": 3.7
+    },
+    "stats": {
+      "Average Goals": {
+        "home": "1.27",
+        "away": "0.95"
+      },
+      "Average Goals Conceded": {
+        "home": "1.68",
+        "away": "1.81"
+      },
+      "Average Goal Differential": {
+        "home": "-0.4",
+        "away": "-0.9"
+      },
+      "Possession": {
+        "home": "46%",
+        "away": "45%"
+      },
+      "Shots On Target Percentage": {
+        "home": "36%",
+        "away": "33%"
+      },
+      "Big Chances Created": {
+        "home": ".00",
+        "away": ".10"
+      },
+      "Duel Win Percentage": {
+        "home": "40%",
+        "away": "49%"
+      },
+      "Clean Sheet": {
+        "home": "4",
         "away": "4"
       },
       "Save Percentage": {
-        "home": "73%",
+        "home": "66%",
         "away": "65%"
       }
     },
@@ -545,6 +1902,24 @@
           },
           {
             "position": 5,
+            "name": "Atlético Bucaramanga",
+            "stats": {
+              "GP": 3,
+              "W": 1,
+              "D": 2,
+              "L": 0,
+              "F": 3,
+              "A": 2,
+              "GD": 1,
+              "P": 5
+            },
+            "zone": {
+              "label": "Playoffs Título",
+              "type": "avantage"
+            }
+          },
+          {
+            "position": 6,
             "name": "Once Caldas",
             "stats": {
               "GP": 2,
@@ -554,24 +1929,6 @@
               "F": 7,
               "A": 3,
               "GD": 4,
-              "P": 4
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "Atlético Bucaramanga",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 1,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
               "P": 4
             },
             "zone": {
@@ -707,1759 +2064,134 @@
           },
           {
             "position": 15,
-            "name": "Deportivo Pasto",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 3,
-              "A": 5,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Atlético Junior",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 1,
-              "A": 3,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Internacional de Bogotá",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 2,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 18,
             "name": "Cúcuta Deportivo",
             "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 5,
-              "GD": -4,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 19,
-            "name": "Jaguares de Córdoba",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 0,
-              "A": 5,
-              "GD": -5,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 20,
-            "name": "Boyacá Chicó FC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 7,
-              "GD": -7,
-              "P": 0
-            },
-            "zone": null
-          }
-        ]
-      },
-      "2023": {
-        "saison": 2023,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      },
-      "2024": {
-        "saison": 2024,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      },
-      "2025": {
-        "saison": 2025,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      }
-    }
-  },
-  {
-    "gameId": "401878018",
-    "date": "2026-08-04",
-    "time_ci": "03:15",
-    "league": "Colombia_Primera_A",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401878018/independiente-medellin-deportes-tolima",
-    "home": {
-      "team": "Deportes Tolima",
-      "team_id": "5489",
-      "team_slug": "deportes-tolima",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-      "url": "https://www.espn.com/soccer/team/_/id/5489",
-      "standings": {
-        "position_current": 22,
-        "position_if_win": 1,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gd": 0,
-        "points": 0
-      },
-      "form": "0-0-0",
-      "matchday": 1,
-      "last_five": [
-        {
-          "date": "2026-08-01",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877852/deportes-tolima-alianza-fc",
-          "result": "W",
-          "team_home": "Alianza FC",
-          "team_home_id": "9761",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9761.png",
-          "team_away": "Deportes Tolima",
-          "team_away_id": "5489",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-          "home_score": "1",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.75,
-            "away": 2.65,
-            "draw": 2.95
-          },
-          "stats": {
-            "Possession": {
-              "home": "33%",
-              "away": "67%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "5"
-            },
-            "Big Chances Created": {
-              "home": "2",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "2",
-              "away": "2"
-            },
-            "Accurate Passes": {
-              "home": "229",
-              "away": "537"
-            },
-            "Passes": {
-              "home": "295",
-              "away": "606"
-            },
-            "Duels Won": {
-              "home": "40",
-              "away": "30"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "12",
-              "away": "12"
-            }
-          }
-        },
-        {
-          "date": "2026-07-28",
-          "competition": "2026 Copa Colombia, Stage 1B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871775/deportes-tolima-deportes-quindio",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "5487",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5487.png",
-          "team_away": null,
-          "team_away_id": "5489",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT-Pens",
-          "odds": {
-            "home": 3.9,
-            "away": 2.15,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-07-26",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877989/atletico-junior-deportes-tolima",
-          "result": "W",
-          "team_home": "Deportes Tolima",
-          "team_home_id": "5489",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-          "team_away": "Atlético Junior",
-          "team_away_id": "4815",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.05,
-            "away": 3.9,
-            "draw": 3.0
-          },
-          "stats": {
-            "Possession": {
-              "home": "40%",
-              "away": "60%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "3"
-            },
-            "Big Chances Created": {
-              "home": "3",
-              "away": "2"
-            },
-            "Corners Won": {
-              "home": "1",
-              "away": "7"
-            },
-            "Accurate Passes": {
-              "home": "363",
-              "away": "549"
-            },
-            "Passes": {
-              "home": "420",
-              "away": "621"
-            },
-            "Duels Won": {
-              "home": "39",
-              "away": "57"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "14",
-              "away": "8"
-            }
-          }
-        },
-        {
-          "date": "2026-07-21",
-          "competition": "2026 Copa Colombia, Stage 1B",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871505/deportes-quindio-deportes-tolima",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "5489",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-          "team_away": null,
-          "team_away_id": "5487",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5487.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.44,
-            "away": 6.5,
-            "draw": 4.1
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-27",
-          "competition": "2026 CONMEBOL Libertadores, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865550/deportes-tolima-universitario",
-          "result": "D",
-          "team_home": "Universitario",
-          "team_home_id": "2685",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2685.png",
-          "team_away": "Deportes Tolima",
-          "team_away_id": "5489",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-          "home_score": "0",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.1,
-            "away": 3.85,
-            "draw": 3.15
-          },
-          "stats": {
-            "Possession": {
-              "home": "48%",
-              "away": "52%"
-            },
-            "Shots on Goal": {
-              "home": "2",
-              "away": "3"
-            },
-            "Shots": {
-              "home": "11",
-              "away": "7"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "19"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "9",
-              "away": "3"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "2"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Independiente Medellín",
-      "team_id": "2690",
-      "team_slug": "independiente-medellin",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-      "url": "https://www.espn.com/soccer/team/_/id/2690",
-      "standings": {
-        "position_current": 24,
-        "position_if_win": 1,
-        "played": 0,
-        "won": 0,
-        "drawn": 0,
-        "lost": 0,
-        "gd": 0,
-        "points": 0
-      },
-      "form": "0-0-0",
-      "matchday": 1,
-      "last_five": [
-        {
-          "date": "2026-08-01",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877991/deportivo-cali-independiente-medellin",
-          "result": "W",
-          "team_home": "Independiente Medellín",
-          "team_home_id": "2690",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "team_away": "Deportivo Cali",
-          "team_away_id": "2672",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2672.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.35,
-            "away": 3.2,
-            "draw": 2.9
-          },
-          "stats": {
-            "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "2"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "2"
-            },
-            "Accurate Passes": {
-              "home": "436",
-              "away": "286"
-            },
-            "Passes": {
-              "home": "509",
-              "away": "355"
-            },
-            "Duels Won": {
-              "home": "54",
-              "away": "42"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "2"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "17"
-            }
-          }
-        },
-        {
-          "date": "2026-07-29",
-          "competition": "2026 CONMEBOL Sudamericana, Knockout Round Playoffs",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874167/independiente-medellin-vasco-da-gama",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "3454",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3454.png",
-          "team_away": null,
-          "team_away_id": "2690",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 1.48,
-            "away": 7.0,
-            "draw": 4.3
-          },
-          "stats": {
-            "Expected Goals": {
-              "home": "0.00",
-              "away": "0.00"
-            },
-            "Possession": {
-              "home": "60%",
-              "away": "40%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "0"
-            },
-            "Big Chances Created": {
-              "home": "3",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "4"
-            },
-            "Accurate Passes": {
-              "home": "370",
-              "away": "224"
-            },
-            "Duels Won": {
-              "home": "48",
-              "away": "56"
-            },
-            "Saves": {
-              "home": "0",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "16",
-              "away": "16"
-            }
-          }
-        },
-        {
-          "date": "2026-07-25",
-          "competition": "2026 Liga BetPlay, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401877999/deportivo-pasto-independiente-medellin",
-          "result": "W",
-          "team_home": "Independiente Medellín",
-          "team_home_id": "2690",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "team_away": "Deportivo Pasto",
-          "team_away_id": "5485",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5485.png",
-          "home_score": "3",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 1.71,
-            "away": 5.0,
-            "draw": 3.4
-          },
-          "stats": {
-            "Possession": {
-              "home": "45%",
-              "away": "55%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "4"
-            },
-            "Accurate Passes": {
-              "home": "276",
-              "away": "362"
-            },
-            "Passes": {
-              "home": "350",
-              "away": "427"
-            },
-            "Duels Won": {
-              "home": "35",
-              "away": "41"
-            },
-            "Saves": {
-              "home": "2",
-              "away": "0"
-            },
-            "Fouls Committed": {
-              "home": "18",
-              "away": "12"
-            }
-          }
-        },
-        {
-          "date": "2026-07-22",
-          "competition": "2026 CONMEBOL Sudamericana, Knockout Round Playoffs",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874157/vasco-da-gama-independiente-medellin",
-          "result": "D",
-          "team_home": null,
-          "team_home_id": "2690",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "team_away": null,
-          "team_away_id": "3454",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3454.png",
-          "home_score": "2",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 3.05,
-            "away": 2.5,
-            "draw": 3.0
-          },
-          "stats": {
-            "Expected Goals": {
-              "home": "0.00",
-              "away": "0.00"
-            },
-            "Possession": {
-              "home": "47%",
-              "away": "53%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "4"
-            },
-            "Big Chances Created": {
-              "home": "1",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "3",
-              "away": "6"
-            },
-            "Accurate Passes": {
-              "home": "349",
-              "away": "385"
-            },
-            "Duels Won": {
-              "home": "43",
-              "away": "44"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "1"
-            },
-            "Fouls Committed": {
-              "home": "11",
-              "away": "10"
-            }
-          }
-        },
-        {
-          "date": "2026-06-02",
-          "competition": "2026 Copa Colombia, Group Stage/1A",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871566/cucuta-deportivo-independiente-medellin",
-          "result": "W",
-          "team_home": "Independiente Medellín",
-          "team_home_id": "2690",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-          "team_away": "Cúcuta Deportivo",
-          "team_away_id": "6101",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6101.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.4,
-            "away": 7.5,
-            "draw": 4.3
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "odds": {
-      "home": 1.95,
-      "away": 3.8,
-      "draw": 3.15
-    },
-    "stats": {
-      "Average Goals": {
-        "home": "1.40",
-        "away": "1.43"
-      },
-      "Average Goals Conceded": {
-        "home": "0.92",
-        "away": "1.24"
-      },
-      "Average Goal Differential": {
-        "home": "+0.5",
-        "away": "+0.2"
-      },
-      "Possession": {
-        "home": "55%",
-        "away": "53%"
-      },
-      "Shots On Target Percentage": {
-        "home": "35%",
-        "away": "35%"
-      },
-      "Big Chances Created": {
-        "home": ".12",
-        "away": ".10"
-      },
-      "Duel Win Percentage": {
-        "home": "42%",
-        "away": "52%"
-      },
-      "Clean Sheet": {
-        "home": "9",
-        "away": "6"
-      },
-      "Save Percentage": {
-        "home": "74%",
-        "away": "63%"
-      }
-    },
-    "h2h": [],
-    "full_standings": {
-      "2026": {
-        "saison": 2026,
-        "total_journees": 38,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "América de Cali",
-            "stats": {
-              "GP": 2,
-              "W": 2,
-              "D": 0,
-              "L": 0,
-              "F": 9,
-              "A": 0,
-              "GD": 9,
-              "P": 6
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Deportes Tolima",
-            "stats": {
-              "GP": 2,
-              "W": 2,
-              "D": 0,
-              "L": 0,
-              "F": 4,
-              "A": 2,
-              "GD": 2,
-              "P": 6
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Águilas Doradas",
-            "stats": {
-              "GP": 2,
-              "W": 2,
-              "D": 0,
-              "L": 0,
-              "F": 4,
-              "A": 2,
-              "GD": 2,
-              "P": 6
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Independiente Medellín",
-            "stats": {
-              "GP": 2,
-              "W": 2,
-              "D": 0,
-              "L": 0,
-              "F": 4,
-              "A": 2,
-              "GD": 2,
-              "P": 6
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Once Caldas",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 1,
-              "L": 0,
-              "F": 7,
-              "A": 3,
-              "GD": 4,
-              "P": 4
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 6,
-            "name": "Atlético Bucaramanga",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 1,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 4
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 7,
-            "name": "Llaneros FC",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 1,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 4
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 8,
-            "name": "Atlético Nacional",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 3,
-              "A": 0,
-              "GD": 3,
-              "P": 3
-            },
-            "zone": {
-              "label": "Playoffs Título",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 9,
-            "name": "Deportivo Cali",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 0,
-              "L": 1,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": null
-          },
-          {
-            "position": 10,
-            "name": "Millonarios",
-            "stats": {
-              "GP": 2,
-              "W": 1,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 1,
-              "GD": 0,
-              "P": 3
-            },
-            "zone": null
-          },
-          {
-            "position": 11,
-            "name": "Fortaleza CEIF",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 2,
-              "L": 0,
-              "F": 1,
-              "A": 1,
-              "GD": 0,
-              "P": 2
-            },
-            "zone": null
-          },
-          {
-            "position": 12,
-            "name": "Independiente Santa Fe",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 1,
-              "L": 1,
-              "F": 3,
-              "A": 4,
-              "GD": -1,
-              "P": 1
-            },
-            "zone": null
-          },
-          {
-            "position": 13,
-            "name": "Alianza FC",
-            "stats": {
               "GP": 2,
               "W": 0,
               "D": 1,
               "L": 1,
               "F": 2,
-              "A": 3,
-              "GD": -1,
-              "P": 1
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "Deportivo Pereira",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 1,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
-              "P": 1
-            },
-            "zone": null
-          },
-          {
-            "position": 15,
-            "name": "Deportivo Pasto",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 3,
-              "A": 5,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 16,
-            "name": "Atlético Junior",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 1,
-              "A": 3,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 17,
-            "name": "Internacional de Bogotá",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 2,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 18,
-            "name": "Cúcuta Deportivo",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 5,
-              "GD": -4,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 19,
-            "name": "Jaguares de Córdoba",
-            "stats": {
-              "GP": 2,
-              "W": 0,
-              "D": 0,
-              "L": 2,
-              "F": 0,
-              "A": 5,
-              "GD": -5,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 20,
-            "name": "Boyacá Chicó FC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 7,
-              "GD": -7,
-              "P": 0
-            },
-            "zone": null
-          }
-        ]
-      },
-      "2023": {
-        "saison": 2023,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      },
-      "2024": {
-        "saison": 2024,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      },
-      "2025": {
-        "saison": 2025,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-8",
-            "label": "Playoffs Título",
-            "type": "avantage"
-          },
-          {
-            "positions": "1-3",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "4-8",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      }
-    }
-  },
-  {
-    "gameId": "401903391",
-    "date": "2026-08-04",
-    "time_ci": "01:00",
-    "league": "Venezuela_Primera_Division",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401903391/trujillanos-carabobo",
-    "home": {
-      "team": "Carabobo",
-      "team_id": "6037",
-      "team_slug": "carabobo",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6037",
-      "standings": null,
-      "form": null,
-      "matchday": null,
-      "last_five": [
-        {
-          "date": "2026-07-31",
-          "competition": "2026 Liga FUTVE, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401902712/carabobo-portuguesa",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "6762",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "team_away": null,
-          "team_away_id": "6037",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 4.5,
-            "away": 1.95,
-            "draw": 2.9
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-06-07",
-          "competition": "2026 Liga FUTVE, Apertura Final",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874289/academia-puerto-cabello-carabobo",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "6037",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "team_away": null,
-          "team_away_id": "18995",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.15,
-            "away": 4.2,
-            "draw": 2.7
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-31",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871044/carabobo-metropolitanos",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "13481",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
-          "team_away": null,
-          "team_away_id": "6037",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "home_score": "1",
-          "away_score": "5",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-28",
-          "competition": "2026 CONMEBOL Sudamericana, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865464/carabobo-red-bull-bragantino",
-          "result": "L",
-          "team_home": "Red Bull Bragantino",
-          "team_home_id": "6079",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6079.png",
-          "team_away": "Carabobo",
-          "team_away_id": "6037",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": null,
-            "away": null,
-            "draw": null
-          },
-          "stats": {
-            "Possession": {
-              "home": "62%",
-              "away": "38%"
-            },
-            "Shots on Goal": {
-              "home": "7",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "21",
-              "away": "11"
-            },
-            "Fouls Committed": {
-              "home": "13",
-              "away": "4"
-            },
-            "Yellow Cards": {
-              "home": "3",
-              "away": "2"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "4",
-              "away": "5"
-            },
-            "Saves": {
-              "home": "5",
-              "away": "5"
-            }
-          }
-        },
-        {
-          "date": "2026-05-24",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871039/deportivo-tachira-carabobo",
-          "result": "D",
-          "team_home": null,
-          "team_home_id": "6037",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "team_away": null,
-          "team_away_id": "4818",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.1,
-            "away": 3.6,
-            "draw": 3.05
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "away": {
-      "team": "Trujillanos",
-      "team_id": "5268",
-      "team_slug": "trujillanos",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-      "url": "https://www.espn.com/soccer/team/_/id/5268",
-      "standings": null,
-      "form": null,
-      "matchday": null,
-      "last_five": [
-        {
-          "date": "2026-08-01",
-          "competition": "2026 Liga FUTVE, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401902710/ucv-fc-trujillanos",
-          "result": "W",
-          "team_home": "Trujillanos",
-          "team_home_id": "5268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "team_away": "UCV FC",
-          "team_away_id": "10094",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 3.55,
-            "away": 2.25,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-04-25",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850534/deportivo-la-guaira-trujillanos",
-          "result": "L",
-          "team_home": "Trujillanos",
-          "team_home_id": "5268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "team_away": "Deportivo La Guaira",
-          "team_away_id": "17090",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 4.8,
-            "away": 1.83,
-            "draw": 3.05
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-04-21",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850513/trujillanos-academia-puerto-cabello",
-          "result": "L",
-          "team_home": "Academia Puerto Cabello",
-          "team_home_id": "18995",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
-          "team_away": "Trujillanos",
-          "team_away_id": "5268",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "home_score": "3",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.34,
-            "away": 9.0,
-            "draw": 4.6
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-04-12",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850507/estudiantes-de-merida-trujillanos",
-          "result": "L",
-          "team_home": "Trujillanos",
-          "team_home_id": "5268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "team_away": "Estudiantes de Mérida",
-          "team_away_id": "6038",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6038.png",
-          "home_score": "0",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 3.25,
-            "away": 2.2,
-            "draw": 3.15
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-04-04",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850483/trujillanos-rayo-zuliano",
-          "result": "L",
-          "team_home": "Rayo Zuliano",
-          "team_home_id": "21850",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21850.png",
-          "team_away": "Trujillanos",
-          "team_away_id": "5268",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "home_score": "3",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.4,
-            "away": 2.7,
-            "draw": 3.35
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "odds": {
-      "home": 1.48,
-      "away": 7.5,
-      "draw": 3.4
-    },
-    "stats": {},
-    "h2h": [],
-    "full_standings": {
-      "2026": {
-        "saison": 2026,
-        "total_journees": 26,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Trujillanos",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 0,
-              "GD": 2,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Deportivo La Guaira",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Metropolitanos",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Zamora FC",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Portuguesa",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 1,
-              "A": 0,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": null
-          },
-          {
-            "position": 6,
-            "name": "Anzoátegui FC",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 7,
-            "name": "Caracas FC",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 8,
-            "name": "Deportivo Táchira",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 9,
-            "name": "Estudiantes de Mérida",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 10,
-            "name": "Academia Puerto Cabello",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 11,
-            "name": "Monagas SC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 12,
-            "name": "Rayo Zuliano",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 13,
-            "name": "Carabobo",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "UCV FC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 2,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          }
-        ]
-      },
-      "2023": {
-        "saison": 2023,
-        "total_journees": 6,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Deportivo Táchira",
-            "stats": {
-              "GP": 6,
-              "W": 3,
-              "D": 3,
-              "L": 0,
-              "F": 8,
-              "A": 3,
-              "GD": 5,
-              "P": 12
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Caracas FC",
-            "stats": {
-              "GP": 6,
-              "W": 2,
-              "D": 3,
-              "L": 1,
-              "F": 5,
-              "A": 4,
-              "GD": 1,
-              "P": 9
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Portuguesa",
-            "stats": {
-              "GP": 6,
-              "W": 1,
-              "D": 3,
-              "L": 2,
-              "F": 6,
-              "A": 9,
-              "GD": -3,
-              "P": 6
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Academia Puerto Cabello",
-            "stats": {
-              "GP": 6,
-              "W": 0,
-              "D": 3,
-              "L": 3,
-              "F": 3,
               "A": 6,
-              "GD": -3,
-              "P": 3
+              "GD": -4,
+              "P": 1
             },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
+            "zone": null
+          },
+          {
+            "position": 16,
+            "name": "Deportivo Pasto",
+            "stats": {
+              "GP": 2,
+              "W": 0,
+              "D": 0,
+              "L": 2,
+              "F": 3,
+              "A": 5,
+              "GD": -2,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 17,
+            "name": "Atlético Junior",
+            "stats": {
+              "GP": 2,
+              "W": 0,
+              "D": 0,
+              "L": 2,
+              "F": 1,
+              "A": 3,
+              "GD": -2,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 18,
+            "name": "Internacional de Bogotá",
+            "stats": {
+              "GP": 1,
+              "W": 0,
+              "D": 0,
+              "L": 1,
+              "F": 0,
+              "A": 2,
+              "GD": -2,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 19,
+            "name": "Jaguares de Córdoba",
+            "stats": {
+              "GP": 2,
+              "W": 0,
+              "D": 0,
+              "L": 2,
+              "F": 0,
+              "A": 5,
+              "GD": -5,
+              "P": 0
+            },
+            "zone": null
+          },
+          {
+            "position": 20,
+            "name": "Boyacá Chicó FC",
+            "stats": {
+              "GP": 1,
+              "W": 0,
+              "D": 0,
+              "L": 1,
+              "F": 0,
+              "A": 7,
+              "GD": -7,
+              "P": 0
+            },
+            "zone": null
           }
         ]
+      },
+      "2023": {
+        "saison": 2023,
+        "total_journees": 0,
+        "position_zones": [
+          {
+            "positions": "1-8",
+            "label": "Playoffs Título",
+            "type": "avantage"
+          },
+          {
+            "positions": "1-3",
+            "label": "CONMEBOL Libertadores",
+            "type": "avantage"
+          },
+          {
+            "positions": "4-8",
+            "label": "CONMEBOL Sudamericana",
+            "type": "avantage"
+          }
+        ],
+        "standings": []
       },
       "2024": {
         "saison": 2024,
         "total_journees": 0,
         "position_zones": [
           {
-            "positions": "1-2",
+            "positions": "1-8",
+            "label": "Playoffs Título",
+            "type": "avantage"
+          },
+          {
+            "positions": "1-3",
             "label": "CONMEBOL Libertadores",
             "type": "avantage"
           },
           {
-            "positions": "3-4",
+            "positions": "4-8",
             "label": "CONMEBOL Sudamericana",
             "type": "avantage"
           }
@@ -2471,12 +2203,17 @@
         "total_journees": 0,
         "position_zones": [
           {
-            "positions": "1-2",
+            "positions": "1-8",
+            "label": "Playoffs Título",
+            "type": "avantage"
+          },
+          {
+            "positions": "1-3",
             "label": "CONMEBOL Libertadores",
             "type": "avantage"
           },
           {
-            "positions": "3-4",
+            "positions": "4-8",
             "label": "CONMEBOL Sudamericana",
             "type": "avantage"
           }
@@ -2486,268 +2223,26 @@
     }
   },
   {
-    "gameId": "401903390",
-    "date": "2026-08-04",
-    "time_ci": "02:00",
+    "gameId": "401903379",
+    "date": "2026-08-05",
+    "time_ci": "02:30",
     "league": "Venezuela_Primera_Division",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401903390/monagas-sc-ucv-fc",
+    "match_url": "https://www.espn.com/soccer/match/_/gameId/401903379/metropolitanos-deportivo-la-guaira",
     "home": {
-      "team": "UCV FC",
-      "team_id": "10094",
-      "team_slug": "ucv-fc",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-      "url": "https://www.espn.com/soccer/team/_/id/10094",
-      "standings": {
-        "position_current": 13,
-        "position_if_win": 1,
-        "played": 1,
-        "won": 0,
-        "drawn": 0,
-        "lost": 1,
-        "gd": -2,
-        "points": 0
-      },
-      "form": "0-0-1",
-      "matchday": 2,
-      "last_five": [
-        {
-          "date": "2026-08-01",
-          "competition": "2026 Liga FUTVE, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401902710/ucv-fc-trujillanos",
-          "result": "L",
-          "team_home": "Trujillanos",
-          "team_home_id": "5268",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5268.png",
-          "team_away": "UCV FC",
-          "team_away_id": "10094",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "home_score": "2",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 3.55,
-            "away": 2.25,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-07-29",
-          "competition": "2026 CONMEBOL Sudamericana, Knockout Round Playoffs",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874146/ucv-fc-santos",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "2674",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2674.png",
-          "team_away": null,
-          "team_away_id": "10094",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "home_score": "4",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 1.2,
-            "away": 13.0,
-            "draw": 6.5
-          },
-          "stats": {
-            "Expected Goals": {
-              "home": "0.00",
-              "away": "0.00"
-            },
-            "Possession": {
-              "home": "58%",
-              "away": "42%"
-            },
-            "Shots on Goal": {
-              "home": "9",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "4",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "4"
-            },
-            "Accurate Passes": {
-              "home": "417",
-              "away": "275"
-            },
-            "Duels Won": {
-              "home": "44",
-              "away": "31"
-            },
-            "Saves": {
-              "home": "5",
-              "away": "5"
-            },
-            "Fouls Committed": {
-              "home": "8",
-              "away": "7"
-            }
-          }
-        },
-        {
-          "date": "2026-07-22",
-          "competition": "2026 CONMEBOL Sudamericana, Knockout Round Playoffs",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401874072/santos-ucv-fc",
-          "result": "L",
-          "team_home": null,
-          "team_home_id": "10094",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "team_away": null,
-          "team_away_id": "2674",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2674.png",
-          "home_score": "1",
-          "away_score": "4",
-          "status": "FT",
-          "odds": {
-            "home": 5.25,
-            "away": 1.69,
-            "draw": 3.6
-          },
-          "stats": {
-            "Expected Goals": {
-              "home": "0.00",
-              "away": "0.00"
-            },
-            "Possession": {
-              "home": "39%",
-              "away": "61%"
-            },
-            "Shots on Goal": {
-              "home": "4",
-              "away": "7"
-            },
-            "Big Chances Created": {
-              "home": "0",
-              "away": "1"
-            },
-            "Corners Won": {
-              "home": "2",
-              "away": "6"
-            },
-            "Accurate Passes": {
-              "home": "266",
-              "away": "469"
-            },
-            "Duels Won": {
-              "home": "26",
-              "away": "38"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            },
-            "Fouls Committed": {
-              "home": "9",
-              "away": "6"
-            }
-          }
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871041/portuguesa-ucv-fc",
-          "result": "L",
-          "team_home": "UCV FC",
-          "team_home_id": "10094",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "team_away": "Portuguesa",
-          "team_away_id": "6762",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 1.67,
-            "away": 4.6,
-            "draw": 3.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-27",
-          "competition": "2026 CONMEBOL Libertadores, Group Stage",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865559/ucv-fc-libertad",
-          "result": "W",
-          "team_home": "Libertad",
-          "team_home_id": "2670",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
-          "team_away": "UCV FC",
-          "team_away_id": "10094",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "home_score": "0",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.54,
-            "away": 5.5,
-            "draw": 4.3
-          },
-          "stats": {
-            "Possession": {
-              "home": "55%",
-              "away": "45%"
-            },
-            "Shots on Goal": {
-              "home": "3",
-              "away": "4"
-            },
-            "Shots": {
-              "home": "13",
-              "away": "8"
-            },
-            "Fouls Committed": {
-              "home": "8",
-              "away": "13"
-            },
-            "Yellow Cards": {
-              "home": "0",
-              "away": "3"
-            },
-            "Red Cards": {
-              "home": "0",
-              "away": "0"
-            },
-            "Corners Won": {
-              "home": "6",
-              "away": "2"
-            },
-            "Saves": {
-              "home": "3",
-              "away": "3"
-            }
-          }
-        }
-      ]
-    },
-    "away": {
-      "team": "Monagas SC",
-      "team_id": "6041",
-      "team_slug": "monagas-sc",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6041",
-      "standings": {
-        "position_current": 10,
-        "position_if_win": 1,
-        "played": 1,
-        "won": 0,
-        "drawn": 0,
-        "lost": 1,
-        "gd": -1,
-        "points": 0
-      },
-      "form": "0-0-1",
-      "matchday": 2,
+      "team": "Deportivo La Guaira",
+      "team_id": "17090",
+      "team_slug": "deportivo-la-guaira",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
+      "url": "https://www.espn.com/soccer/team/_/id/17090",
+      "standings": null,
+      "form": null,
+      "matchday": null,
       "last_five": [
         {
           "date": "2026-08-01",
           "competition": "2026 Liga FUTVE, Clausura",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401902709/deportivo-la-guaira-monagas-sc",
-          "result": "L",
+          "result": "W",
           "team_home": "Monagas SC",
           "team_home_id": "6041",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
@@ -2765,529 +2260,227 @@
           "stats": {}
         },
         {
-          "date": "2026-04-25",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850530/academia-puerto-cabello-monagas-sc",
-          "result": "D",
-          "team_home": "Monagas SC",
-          "team_home_id": "6041",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
+          "date": "2026-05-31",
+          "competition": "2026 Liga FUTVE, Apertura Semifinals",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871042/academia-puerto-cabello-deportivo-la-guaira",
+          "result": "L",
+          "team_home": "Deportivo La Guaira",
+          "team_home_id": "17090",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
           "team_away": "Academia Puerto Cabello",
           "team_away_id": "18995",
           "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
-          "home_score": "1",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 6.5,
-            "away": 1.51,
-            "draw": 3.85
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-04-19",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850515/monagas-sc-estudiantes-de-merida",
-          "result": "L",
-          "team_home": "Estudiantes de Mérida",
-          "team_home_id": "6038",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6038.png",
-          "team_away": "Monagas SC",
-          "team_away_id": "6041",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
-          "home_score": "3",
+          "home_score": "0",
           "away_score": "2",
           "status": "FT",
           "odds": {
-            "home": 1.74,
-            "away": 4.5,
-            "draw": 3.55
+            "home": 2.5,
+            "away": 3.0,
+            "draw": 2.85
           },
           "stats": {}
         },
         {
-          "date": "2026-04-11",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850504/rayo-zuliano-monagas-sc",
-          "result": "W",
-          "team_home": "Monagas SC",
-          "team_home_id": "6041",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
-          "team_away": "Rayo Zuliano",
-          "team_away_id": "21850",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21850.png",
+          "date": "2026-05-28",
+          "competition": "2026 CONMEBOL Libertadores, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865563/deportivo-la-guaira-fluminense",
+          "result": "L",
+          "team_home": "Fluminense",
+          "team_home_id": "3445",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
+          "team_away": "Deportivo La Guaira",
+          "team_away_id": "17090",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
           "home_score": "3",
-          "away_score": "0",
+          "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 1.5,
-            "away": 5.5,
-            "draw": 4.2
+            "home": 1.14,
+            "away": 17.0,
+            "draw": 8.0
+          },
+          "stats": {
+            "Possession": {
+              "home": "56%",
+              "away": "44%"
+            },
+            "Shots on Goal": {
+              "home": "3",
+              "away": "3"
+            },
+            "Shots": {
+              "home": "7",
+              "away": "10"
+            },
+            "Fouls Committed": {
+              "home": "11",
+              "away": "9"
+            },
+            "Yellow Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "2",
+              "away": "1"
+            },
+            "Saves": {
+              "home": "2",
+              "away": "0"
+            }
+          }
+        },
+        {
+          "date": "2026-05-23",
+          "competition": "2026 Liga FUTVE, Apertura Semifinals",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871038/deportivo-la-guaira-portuguesa",
+          "result": "W",
+          "team_home": "Portuguesa",
+          "team_home_id": "6762",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
+          "team_away": "Deportivo La Guaira",
+          "team_away_id": "17090",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
+          "home_score": "0",
+          "away_score": "2",
+          "status": "FT",
+          "odds": {
+            "home": 2.2,
+            "away": 3.65,
+            "draw": 2.8
           },
           "stats": {}
         },
         {
-          "date": "2026-04-04",
-          "competition": "2026 Liga FUTVE, Apertura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401850494/monagas-sc-zamora-fc",
+          "date": "2026-05-21",
+          "competition": "2026 CONMEBOL Libertadores, Group Stage",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401865535/independiente-rivadavia-deportivo-la-guaira",
           "result": "L",
-          "team_home": "Zamora FC",
-          "team_home_id": "6763",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6763.png",
-          "team_away": "Monagas SC",
-          "team_away_id": "6041",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
+          "team_home": "Deportivo La Guaira",
+          "team_home_id": "17090",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
+          "team_away": "Independiente Rivadavia",
+          "team_away_id": "9744",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+          "home_score": "2",
+          "away_score": "4",
+          "status": "FT",
+          "odds": {
+            "home": 4.6,
+            "away": 1.83,
+            "draw": 3.35
+          },
+          "stats": {
+            "Possession": {
+              "home": "55%",
+              "away": "45%"
+            },
+            "Shots on Goal": {
+              "home": "5",
+              "away": "7"
+            },
+            "Shots": {
+              "home": "15",
+              "away": "15"
+            },
+            "Fouls Committed": {
+              "home": "9",
+              "away": "15"
+            },
+            "Yellow Cards": {
+              "home": "3",
+              "away": "2"
+            },
+            "Red Cards": {
+              "home": "0",
+              "away": "0"
+            },
+            "Corners Won": {
+              "home": "7",
+              "away": "3"
+            },
+            "Saves": {
+              "home": "3",
+              "away": "3"
+            }
+          }
+        }
+      ]
+    },
+    "away": {
+      "team": "Metropolitanos",
+      "team_id": "13481",
+      "team_slug": "metropolitanos",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
+      "url": "https://www.espn.com/soccer/team/_/id/13481",
+      "standings": null,
+      "form": null,
+      "matchday": null,
+      "last_five": [
+        {
+          "date": "2026-08-02",
+          "competition": "2026 Liga FUTVE, Clausura",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401902707/academia-puerto-cabello-metropolitanos",
+          "result": "W",
+          "team_home": "Metropolitanos",
+          "team_home_id": "13481",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
+          "team_away": "Academia Puerto Cabello",
+          "team_away_id": "18995",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
           "home_score": "2",
           "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 1.77,
-            "away": 4.2,
-            "draw": 3.55
+            "home": 3.1,
+            "away": 2.8,
+            "draw": 2.5
           },
           "stats": {}
-        }
-      ]
-    },
-    "odds": {
-      "home": 1.95,
-      "away": 3.5,
-      "draw": 3.3
-    },
-    "stats": {},
-    "h2h": [],
-    "full_standings": {
-      "2026": {
-        "saison": 2026,
-        "total_journees": 26,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Trujillanos",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 0,
-              "GD": 2,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Deportivo La Guaira",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Metropolitanos",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Zamora FC",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 2,
-              "A": 1,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 5,
-            "name": "Portuguesa",
-            "stats": {
-              "GP": 1,
-              "W": 1,
-              "D": 0,
-              "L": 0,
-              "F": 1,
-              "A": 0,
-              "GD": 1,
-              "P": 3
-            },
-            "zone": null
-          },
-          {
-            "position": 6,
-            "name": "Anzoátegui FC",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 7,
-            "name": "Caracas FC",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 8,
-            "name": "Deportivo Táchira",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 9,
-            "name": "Estudiantes de Mérida",
-            "stats": {
-              "GP": 0,
-              "W": 0,
-              "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 10,
-            "name": "Academia Puerto Cabello",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 11,
-            "name": "Monagas SC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 12,
-            "name": "Rayo Zuliano",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
-              "A": 2,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 13,
-            "name": "Carabobo",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
-              "P": 0
-            },
-            "zone": null
-          },
-          {
-            "position": 14,
-            "name": "UCV FC",
-            "stats": {
-              "GP": 1,
-              "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 2,
-              "GD": -2,
-              "P": 0
-            },
-            "zone": null
-          }
-        ]
-      },
-      "2023": {
-        "saison": 2023,
-        "total_journees": 6,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": [
-          {
-            "position": 1,
-            "name": "Deportivo Táchira",
-            "stats": {
-              "GP": 6,
-              "W": 3,
-              "D": 3,
-              "L": 0,
-              "F": 8,
-              "A": 3,
-              "GD": 5,
-              "P": 12
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 2,
-            "name": "Caracas FC",
-            "stats": {
-              "GP": 6,
-              "W": 2,
-              "D": 3,
-              "L": 1,
-              "F": 5,
-              "A": 4,
-              "GD": 1,
-              "P": 9
-            },
-            "zone": {
-              "label": "CONMEBOL Libertadores",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 3,
-            "name": "Portuguesa",
-            "stats": {
-              "GP": 6,
-              "W": 1,
-              "D": 3,
-              "L": 2,
-              "F": 6,
-              "A": 9,
-              "GD": -3,
-              "P": 6
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          },
-          {
-            "position": 4,
-            "name": "Academia Puerto Cabello",
-            "stats": {
-              "GP": 6,
-              "W": 0,
-              "D": 3,
-              "L": 3,
-              "F": 3,
-              "A": 6,
-              "GD": -3,
-              "P": 3
-            },
-            "zone": {
-              "label": "CONMEBOL Sudamericana",
-              "type": "avantage"
-            }
-          }
-        ]
-      },
-      "2024": {
-        "saison": 2024,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      },
-      "2025": {
-        "saison": 2025,
-        "total_journees": 0,
-        "position_zones": [
-          {
-            "positions": "1-2",
-            "label": "CONMEBOL Libertadores",
-            "type": "avantage"
-          },
-          {
-            "positions": "3-4",
-            "label": "CONMEBOL Sudamericana",
-            "type": "avantage"
-          }
-        ],
-        "standings": []
-      }
-    }
-  },
-  {
-    "gameId": "401903389",
-    "date": "2026-08-04",
-    "time_ci": "02:30",
-    "league": "Venezuela_Primera_Division",
-    "match_url": "https://www.espn.com/soccer/match/_/gameId/401903389/portuguesa-deportivo-tachira",
-    "home": {
-      "team": "Deportivo Táchira",
-      "team_id": "4818",
-      "team_slug": "deportivo-tachira",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
-      "url": "https://www.espn.com/soccer/team/_/id/4818",
-      "standings": {
-        "position_current": 1,
-        "position_if_win": 1,
-        "played": 1,
-        "won": 1,
-        "drawn": 0,
-        "lost": 0,
-        "gd": 3,
-        "points": 3
-      },
-      "form": "1-0-0",
-      "matchday": 2,
-      "last_five": [
+        },
         {
           "date": "2026-05-31",
           "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871043/estudiantes-de-merida-deportivo-tachira",
-          "result": "W",
-          "team_home": "Deportivo Táchira",
-          "team_home_id": "4818",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
-          "team_away": "Estudiantes de Mérida",
-          "team_away_id": "6038",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6038.png",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871044/carabobo-metropolitanos",
+          "result": "L",
+          "team_home": null,
+          "team_home_id": "13481",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
+          "team_away": null,
+          "team_away_id": "6037",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
           "home_score": "1",
-          "away_score": "0",
+          "away_score": "5",
           "status": "FT",
           "odds": {
-            "home": 1.29,
-            "away": 10.0,
-            "draw": 4.8
+            "home": null,
+            "away": null,
+            "draw": null
           },
           "stats": {}
         },
         {
           "date": "2026-05-24",
           "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871039/deportivo-tachira-carabobo",
-          "result": "D",
+          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871040/metropolitanos-estudiantes-de-merida",
+          "result": "W",
           "team_home": null,
-          "team_home_id": "6037",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
+          "team_home_id": "6038",
+          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6038.png",
           "team_away": null,
-          "team_away_id": "4818",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
-          "home_score": "1",
+          "team_away_id": "13481",
+          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
+          "home_score": "0",
           "away_score": "1",
           "status": "FT",
           "odds": {
-            "home": 2.1,
-            "away": 3.6,
-            "draw": 3.05
+            "home": 2.7,
+            "away": 2.45,
+            "draw": 3.3
           },
           "stats": {}
         },
@@ -3295,7 +2488,7 @@
           "date": "2026-05-17",
           "competition": "2026 Liga FUTVE, Apertura Semifinals",
           "match_url": "https://www.espn.com/soccer/match/_/gameId/401871036/deportivo-tachira-metropolitanos",
-          "result": "W",
+          "result": "L",
           "team_home": null,
           "team_home_id": "13481",
           "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13481.png",
@@ -3332,160 +2525,13 @@
             "draw": 3.75
           },
           "stats": {}
-        },
-        {
-          "date": "2026-05-10",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871027/carabobo-deportivo-tachira",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "4818",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
-          "team_away": null,
-          "team_away_id": "6037",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "home_score": "3",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 2.05,
-            "away": 4.0,
-            "draw": 2.95
-          },
-          "stats": {}
-        }
-      ]
-    },
-    "away": {
-      "team": "Portuguesa",
-      "team_id": "6762",
-      "team_slug": "portuguesa",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-      "url": "https://www.espn.com/soccer/team/_/id/6762",
-      "standings": {
-        "position_current": 6,
-        "position_if_win": 1,
-        "played": 1,
-        "won": 1,
-        "drawn": 0,
-        "lost": 0,
-        "gd": 1,
-        "points": 3
-      },
-      "form": "1-0-0",
-      "matchday": 2,
-      "last_five": [
-        {
-          "date": "2026-07-31",
-          "competition": "2026 Liga FUTVE, Clausura",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401902712/carabobo-portuguesa",
-          "result": "W",
-          "team_home": null,
-          "team_home_id": "6762",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "team_away": null,
-          "team_away_id": "6037",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 4.5,
-            "away": 1.95,
-            "draw": 2.9
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-30",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871041/portuguesa-ucv-fc",
-          "result": "W",
-          "team_home": "UCV FC",
-          "team_home_id": "10094",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "team_away": "Portuguesa",
-          "team_away_id": "6762",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "home_score": "2",
-          "away_score": "3",
-          "status": "FT",
-          "odds": {
-            "home": 1.67,
-            "away": 4.6,
-            "draw": 3.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-23",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871038/deportivo-la-guaira-portuguesa",
-          "result": "L",
-          "team_home": "Portuguesa",
-          "team_home_id": "6762",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "team_away": "Deportivo La Guaira",
-          "team_away_id": "17090",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
-          "home_score": "0",
-          "away_score": "2",
-          "status": "FT",
-          "odds": {
-            "home": 2.2,
-            "away": 3.65,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-17",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871035/academia-puerto-cabello-portuguesa",
-          "result": "W",
-          "team_home": "Portuguesa",
-          "team_home_id": "6762",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "team_away": "Academia Puerto Cabello",
-          "team_away_id": "18995",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
-          "home_score": "1",
-          "away_score": "0",
-          "status": "FT",
-          "odds": {
-            "home": 2.6,
-            "away": 2.9,
-            "draw": 2.8
-          },
-          "stats": {}
-        },
-        {
-          "date": "2026-05-13",
-          "competition": "2026 Liga FUTVE, Apertura Semifinals",
-          "match_url": "https://www.espn.com/soccer/match/_/gameId/401871032/portuguesa-academia-puerto-cabello",
-          "result": "L",
-          "team_home": "Academia Puerto Cabello",
-          "team_home_id": "18995",
-          "team_home_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
-          "team_away": "Portuguesa",
-          "team_away_id": "6762",
-          "team_away_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6762.png",
-          "home_score": "2",
-          "away_score": "1",
-          "status": "FT",
-          "odds": {
-            "home": 1.8,
-            "away": 4.4,
-            "draw": 3.3
-          },
-          "stats": {}
         }
       ]
     },
     "odds": {
-      "home": 1.48,
-      "away": 6.0,
-      "draw": 3.8
+      "home": 1.8,
+      "away": 4.2,
+      "draw": 3.25
     },
     "stats": {},
     "h2h": [],
@@ -3508,16 +2554,16 @@
         "standings": [
           {
             "position": 1,
-            "name": "Trujillanos",
+            "name": "Deportivo Táchira",
             "stats": {
-              "GP": 1,
-              "W": 1,
+              "GP": 2,
+              "W": 2,
               "D": 0,
               "L": 0,
-              "F": 2,
+              "F": 4,
               "A": 0,
-              "GD": 2,
-              "P": 3
+              "GD": 4,
+              "P": 6
             },
             "zone": {
               "label": "CONMEBOL Libertadores",
@@ -3526,12 +2572,12 @@
           },
           {
             "position": 2,
-            "name": "Deportivo La Guaira",
+            "name": "Carabobo",
             "stats": {
-              "GP": 1,
+              "GP": 2,
               "W": 1,
               "D": 0,
-              "L": 0,
+              "L": 1,
               "F": 2,
               "A": 1,
               "GD": 1,
@@ -3544,7 +2590,7 @@
           },
           {
             "position": 3,
-            "name": "Metropolitanos",
+            "name": "Deportivo La Guaira",
             "stats": {
               "GP": 1,
               "W": 1,
@@ -3562,7 +2608,7 @@
           },
           {
             "position": 4,
-            "name": "Zamora FC",
+            "name": "Metropolitanos",
             "stats": {
               "GP": 1,
               "W": 1,
@@ -3580,14 +2626,14 @@
           },
           {
             "position": 5,
-            "name": "Portuguesa",
+            "name": "Zamora FC",
             "stats": {
               "GP": 1,
               "W": 1,
               "D": 0,
               "L": 0,
-              "F": 1,
-              "A": 0,
+              "F": 2,
+              "A": 1,
               "GD": 1,
               "P": 3
             },
@@ -3595,46 +2641,46 @@
           },
           {
             "position": 6,
-            "name": "Anzoátegui FC",
+            "name": "Trujillanos",
             "stats": {
-              "GP": 0,
-              "W": 0,
+              "GP": 2,
+              "W": 1,
               "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
+              "L": 1,
+              "F": 2,
+              "A": 2,
               "GD": 0,
-              "P": 0
+              "P": 3
             },
             "zone": null
           },
           {
             "position": 7,
-            "name": "Caracas FC",
+            "name": "Portuguesa",
             "stats": {
-              "GP": 0,
-              "W": 0,
+              "GP": 2,
+              "W": 1,
               "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
+              "L": 1,
+              "F": 1,
+              "A": 1,
               "GD": 0,
-              "P": 0
+              "P": 3
             },
             "zone": null
           },
           {
             "position": 8,
-            "name": "Deportivo Táchira",
+            "name": "UCV FC",
             "stats": {
-              "GP": 0,
-              "W": 0,
+              "GP": 2,
+              "W": 1,
               "D": 0,
-              "L": 0,
-              "F": 0,
-              "A": 0,
-              "GD": 0,
-              "P": 0
+              "L": 1,
+              "F": 2,
+              "A": 3,
+              "GD": -1,
+              "P": 3
             },
             "zone": null
           },
@@ -3642,35 +2688,35 @@
             "position": 9,
             "name": "Estudiantes de Mérida",
             "stats": {
-              "GP": 0,
+              "GP": 1,
               "W": 0,
-              "D": 0,
+              "D": 1,
               "L": 0,
-              "F": 0,
-              "A": 0,
+              "F": 2,
+              "A": 2,
               "GD": 0,
-              "P": 0
+              "P": 1
             },
             "zone": null
           },
           {
             "position": 10,
-            "name": "Academia Puerto Cabello",
+            "name": "Caracas FC",
             "stats": {
               "GP": 1,
               "W": 0,
-              "D": 0,
-              "L": 1,
-              "F": 1,
+              "D": 1,
+              "L": 0,
+              "F": 2,
               "A": 2,
-              "GD": -1,
-              "P": 0
+              "GD": 0,
+              "P": 1
             },
             "zone": null
           },
           {
             "position": 11,
-            "name": "Monagas SC",
+            "name": "Academia Puerto Cabello",
             "stats": {
               "GP": 1,
               "W": 0,
@@ -3700,30 +2746,30 @@
           },
           {
             "position": 13,
-            "name": "Carabobo",
+            "name": "Monagas SC",
             "stats": {
-              "GP": 1,
+              "GP": 2,
               "W": 0,
               "D": 0,
-              "L": 1,
-              "F": 0,
-              "A": 1,
-              "GD": -1,
+              "L": 2,
+              "F": 2,
+              "A": 4,
+              "GD": -2,
               "P": 0
             },
             "zone": null
           },
           {
             "position": 14,
-            "name": "UCV FC",
+            "name": "Anzoátegui FC",
             "stats": {
               "GP": 1,
               "W": 0,
               "D": 0,
               "L": 1,
               "F": 0,
-              "A": 2,
-              "GD": -2,
+              "A": 3,
+              "GD": -3,
               "P": 0
             },
             "zone": null

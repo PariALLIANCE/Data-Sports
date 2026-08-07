@@ -12147,6 +12147,24 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "América de Cali",
+                    "stats": {
+                        "GP": 3,
+                        "W": 3,
+                        "D": 0,
+                        "L": 0,
+                        "F": 10,
+                        "A": 0,
+                        "GD": 10,
+                        "P": 9
+                    },
+                    "zone": {
+                        "label": "Playoffs Título",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
                     "name": "Independiente Medellín",
                     "stats": {
                         "GP": 3,
@@ -12164,7 +12182,7 @@
                     }
                 },
                 {
-                    "position": 2,
+                    "position": 3,
                     "name": "Llaneros FC",
                     "stats": {
                         "GP": 3,
@@ -12175,24 +12193,6 @@
                         "A": 2,
                         "GD": 3,
                         "P": 7
-                    },
-                    "zone": {
-                        "label": "Playoffs Título",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 3,
-                    "name": "América de Cali",
-                    "stats": {
-                        "GP": 2,
-                        "W": 2,
-                        "D": 0,
-                        "L": 0,
-                        "F": 9,
-                        "A": 0,
-                        "GD": 9,
-                        "P": 6
                     },
                     "zone": {
                         "label": "Playoffs Título",
@@ -12275,13 +12275,13 @@
                     "position": 8,
                     "name": "Once Caldas",
                     "stats": {
-                        "GP": 2,
+                        "GP": 3,
                         "W": 1,
                         "D": 1,
-                        "L": 0,
+                        "L": 1,
                         "F": 7,
-                        "A": 3,
-                        "GD": 4,
+                        "A": 4,
+                        "GD": 3,
                         "P": 4
                     },
                     "zone": {
@@ -21965,6 +21965,21 @@
                 },
                 {
                     "position": 10,
+                    "name": "Alianza Atlético",
+                    "stats": {
+                        "GP": 4,
+                        "W": 2,
+                        "D": 0,
+                        "L": 2,
+                        "F": 6,
+                        "A": 8,
+                        "GD": -2,
+                        "P": 6
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 11,
                     "name": "Juan Pablo II",
                     "stats": {
                         "GP": 3,
@@ -21979,7 +21994,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 12,
                     "name": "Deportivo Moquegua",
                     "stats": {
                         "GP": 3,
@@ -21994,7 +22009,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 13,
                     "name": "Atlético Grau",
                     "stats": {
                         "GP": 3,
@@ -22009,30 +22024,15 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 14,
                     "name": "Cienciano del Cusco",
                     "stats": {
-                        "GP": 3,
+                        "GP": 4,
                         "W": 1,
                         "D": 0,
-                        "L": 2,
+                        "L": 3,
                         "F": 3,
-                        "A": 5,
-                        "GD": -2,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 14,
-                    "name": "Alianza Atlético",
-                    "stats": {
-                        "GP": 3,
-                        "W": 1,
-                        "D": 0,
-                        "L": 2,
-                        "F": 5,
-                        "A": 8,
+                        "A": 6,
                         "GD": -3,
                         "P": 3
                     },
@@ -29568,7 +29568,7 @@
     "Venezuela_Primera_Division": {
         "2026": {
             "saison": 2026,
-            "total_journees": 26,
+            "total_journees": 0,
             "position_zones": [
                 {
                     "positions": "1-2",
@@ -29581,230 +29581,7 @@
                     "type": "avantage"
                 }
             ],
-            "standings": [
-                {
-                    "position": 1,
-                    "name": "Deportivo Táchira",
-                    "stats": {
-                        "GP": 2,
-                        "W": 2,
-                        "D": 0,
-                        "L": 0,
-                        "F": 4,
-                        "A": 0,
-                        "GD": 4,
-                        "P": 6
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Libertadores",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 2,
-                    "name": "Metropolitanos",
-                    "stats": {
-                        "GP": 2,
-                        "W": 2,
-                        "D": 0,
-                        "L": 0,
-                        "F": 4,
-                        "A": 2,
-                        "GD": 2,
-                        "P": 6
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Libertadores",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 3,
-                    "name": "Carabobo",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 0,
-                        "L": 1,
-                        "F": 2,
-                        "A": 1,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 4,
-                    "name": "Zamora FC",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 2,
-                        "A": 1,
-                        "GD": 1,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 5,
-                    "name": "Deportivo La Guaira",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 0,
-                        "L": 1,
-                        "F": 3,
-                        "A": 3,
-                        "GD": 0,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 6,
-                    "name": "Trujillanos",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 0,
-                        "L": 1,
-                        "F": 2,
-                        "A": 2,
-                        "GD": 0,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 7,
-                    "name": "Portuguesa",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
-                        "A": 1,
-                        "GD": 0,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 8,
-                    "name": "UCV FC",
-                    "stats": {
-                        "GP": 2,
-                        "W": 1,
-                        "D": 0,
-                        "L": 1,
-                        "F": 2,
-                        "A": 3,
-                        "GD": -1,
-                        "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 9,
-                    "name": "Estudiantes de Mérida",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 2,
-                        "A": 2,
-                        "GD": 0,
-                        "P": 1
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 10,
-                    "name": "Caracas FC",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 2,
-                        "A": 2,
-                        "GD": 0,
-                        "P": 1
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 11,
-                    "name": "Academia Puerto Cabello",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
-                        "A": 2,
-                        "GD": -1,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 12,
-                    "name": "Rayo Zuliano",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 1,
-                        "A": 2,
-                        "GD": -1,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 13,
-                    "name": "Monagas SC",
-                    "stats": {
-                        "GP": 2,
-                        "W": 0,
-                        "D": 0,
-                        "L": 2,
-                        "F": 2,
-                        "A": 4,
-                        "GD": -2,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 14,
-                    "name": "Anzoátegui FC",
-                    "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 0,
-                        "L": 1,
-                        "F": 0,
-                        "A": 3,
-                        "GD": -3,
-                        "P": 0
-                    },
-                    "zone": null
-                }
-            ]
+            "standings": []
         },
         "2023": {
             "saison": 2023,

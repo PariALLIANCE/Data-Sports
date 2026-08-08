@@ -4251,6 +4251,24 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "Rapid Vienna",
+                    "stats": {
+                        "GP": 1,
+                        "W": 1,
+                        "D": 0,
+                        "L": 0,
+                        "F": 1,
+                        "A": 0,
+                        "GD": 1,
+                        "P": 3
+                    },
+                    "zone": {
+                        "label": "UEFA Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
                     "name": "LASK Linz",
                     "stats": {
                         "GP": 1,
@@ -4268,7 +4286,7 @@
                     }
                 },
                 {
-                    "position": 2,
+                    "position": 3,
                     "name": "Wolfsberger",
                     "stats": {
                         "GP": 1,
@@ -4278,24 +4296,6 @@
                         "F": 3,
                         "A": 0,
                         "GD": 3,
-                        "P": 3
-                    },
-                    "zone": {
-                        "label": "UEFA Champions League",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 3,
-                    "name": "Rapid Vienna",
-                    "stats": {
-                        "GP": 1,
-                        "W": 1,
-                        "D": 0,
-                        "L": 0,
-                        "F": 1,
-                        "A": 0,
-                        "GD": 1,
                         "P": 3
                     },
                     "zone": {
@@ -4323,16 +4323,16 @@
                 },
                 {
                     "position": 5,
-                    "name": "SV Josko Ried",
+                    "name": "SC Rheindorf Altach",
                     "stats": {
-                        "GP": 1,
-                        "W": 0,
-                        "D": 1,
-                        "L": 0,
-                        "F": 1,
-                        "A": 1,
-                        "GD": 0,
-                        "P": 1
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 3,
+                        "A": 2,
+                        "GD": 1,
+                        "P": 3
                     },
                     "zone": {
                         "label": "UEFA Conference League",
@@ -4341,7 +4341,7 @@
                 },
                 {
                     "position": 6,
-                    "name": "SK Sturm Graz",
+                    "name": "SV Josko Ried",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -4356,7 +4356,7 @@
                 },
                 {
                     "position": 7,
-                    "name": "Austria Lustenau",
+                    "name": "SK Sturm Graz",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -4371,7 +4371,7 @@
                 },
                 {
                     "position": 8,
-                    "name": "WSG Swarovski Tirol",
+                    "name": "Austria Lustenau",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -4386,22 +4386,22 @@
                 },
                 {
                     "position": 9,
-                    "name": "TSV Hartberg",
+                    "name": "WSG Swarovski Tirol",
                     "stats": {
-                        "GP": 1,
+                        "GP": 2,
                         "W": 0,
-                        "D": 0,
+                        "D": 1,
                         "L": 1,
-                        "F": 0,
-                        "A": 1,
-                        "GD": -1,
-                        "P": 0
+                        "F": 2,
+                        "A": 4,
+                        "GD": -2,
+                        "P": 1
                     },
                     "zone": null
                 },
                 {
                     "position": 10,
-                    "name": "SC Rheindorf Altach",
+                    "name": "TSV Hartberg",
                     "stats": {
                         "GP": 1,
                         "W": 0,
@@ -4578,6 +4578,24 @@
                 "standings": [
                     {
                         "position": 1,
+                        "name": "Club Brugge",
+                        "stats": {
+                            "GP": 1,
+                            "W": 1,
+                            "D": 0,
+                            "L": 0,
+                            "F": 3,
+                            "A": 0,
+                            "GD": 3,
+                            "P": 3
+                        },
+                        "zone": {
+                            "label": "Championship Playoffs",
+                            "type": "avantage"
+                        }
+                    },
+                    {
+                        "position": 2,
                         "name": "Anderlecht",
                         "stats": {
                             "GP": 0,
@@ -4595,7 +4613,7 @@
                         }
                     },
                     {
-                        "position": 2,
+                        "position": 3,
                         "name": "Antwerp",
                         "stats": {
                             "GP": 0,
@@ -4613,7 +4631,7 @@
                         }
                     },
                     {
-                        "position": 3,
+                        "position": 4,
                         "name": "Waasland-Beveren",
                         "stats": {
                             "GP": 0,
@@ -4631,26 +4649,8 @@
                         }
                     },
                     {
-                        "position": 4,
-                        "name": "Cercle Brugge KSV",
-                        "stats": {
-                            "GP": 0,
-                            "W": 0,
-                            "D": 0,
-                            "L": 0,
-                            "F": 0,
-                            "A": 0,
-                            "GD": 0,
-                            "P": 0
-                        },
-                        "zone": {
-                            "label": "Championship Playoffs",
-                            "type": "avantage"
-                        }
-                    },
-                    {
                         "position": 5,
-                        "name": "Club Brugge",
+                        "name": "Cercle Brugge KSV",
                         "stats": {
                             "GP": 0,
                             "W": 0,
@@ -4704,24 +4704,6 @@
                     },
                     {
                         "position": 8,
-                        "name": "KV Kortrijk",
-                        "stats": {
-                            "GP": 0,
-                            "W": 0,
-                            "D": 0,
-                            "L": 0,
-                            "F": 0,
-                            "A": 0,
-                            "GD": 0,
-                            "P": 0
-                        },
-                        "zone": {
-                            "label": "European Playoffs",
-                            "type": "avantage"
-                        }
-                    },
-                    {
-                        "position": 9,
                         "name": "Lommel SK",
                         "stats": {
                             "GP": 0,
@@ -4739,7 +4721,7 @@
                         }
                     },
                     {
-                        "position": 10,
+                        "position": 9,
                         "name": "KV Mechelen",
                         "stats": {
                             "GP": 0,
@@ -4757,7 +4739,7 @@
                         }
                     },
                     {
-                        "position": 11,
+                        "position": 10,
                         "name": "Oud-Heverlee Leuven",
                         "stats": {
                             "GP": 0,
@@ -4775,7 +4757,7 @@
                         }
                     },
                     {
-                        "position": 12,
+                        "position": 11,
                         "name": "RAAL La Louvière",
                         "stats": {
                             "GP": 0,
@@ -4793,7 +4775,7 @@
                         }
                     },
                     {
-                        "position": 13,
+                        "position": 12,
                         "name": "Sint-Truidense",
                         "stats": {
                             "GP": 0,
@@ -4806,12 +4788,12 @@
                             "P": 0
                         },
                         "zone": {
-                            "label": "Relegation Playoffs",
-                            "type": "désavantage"
+                            "label": "European Playoffs",
+                            "type": "avantage"
                         }
                     },
                     {
-                        "position": 14,
+                        "position": 13,
                         "name": "Royal Charleroi SC",
                         "stats": {
                             "GP": 0,
@@ -4829,7 +4811,7 @@
                         }
                     },
                     {
-                        "position": 15,
+                        "position": 14,
                         "name": "Standard Liege",
                         "stats": {
                             "GP": 0,
@@ -4847,7 +4829,7 @@
                         }
                     },
                     {
-                        "position": 16,
+                        "position": 15,
                         "name": "Union St.-Gilloise",
                         "stats": {
                             "GP": 0,
@@ -4865,8 +4847,26 @@
                         }
                     },
                     {
-                        "position": 17,
+                        "position": 16,
                         "name": "KVC Westerlo",
+                        "stats": {
+                            "GP": 0,
+                            "W": 0,
+                            "D": 0,
+                            "L": 0,
+                            "F": 0,
+                            "A": 0,
+                            "GD": 0,
+                            "P": 0
+                        },
+                        "zone": {
+                            "label": "Relegation Playoffs",
+                            "type": "désavantage"
+                        }
+                    },
+                    {
+                        "position": 17,
+                        "name": "Zulte-Waregem",
                         "stats": {
                             "GP": 0,
                             "W": 0,
@@ -4881,15 +4881,15 @@
                     },
                     {
                         "position": 18,
-                        "name": "Zulte-Waregem",
+                        "name": "KV Kortrijk",
                         "stats": {
-                            "GP": 0,
+                            "GP": 1,
                             "W": 0,
                             "D": 0,
-                            "L": 0,
+                            "L": 1,
                             "F": 0,
-                            "A": 0,
-                            "GD": 0,
+                            "A": 3,
+                            "GD": -3,
                             "P": 0
                         },
                         "zone": null
@@ -8466,13 +8466,13 @@
                     "position": 3,
                     "name": "Operário PR",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 10,
                         "D": 5,
-                        "L": 5,
-                        "F": 28,
-                        "A": 25,
-                        "GD": 3,
+                        "L": 6,
+                        "F": 29,
+                        "A": 28,
+                        "GD": 1,
                         "P": 35
                     },
                     "zone": {
@@ -8545,6 +8545,21 @@
                 },
                 {
                     "position": 8,
+                    "name": "São Bernardo",
+                    "stats": {
+                        "GP": 21,
+                        "W": 8,
+                        "D": 6,
+                        "L": 7,
+                        "F": 31,
+                        "A": 24,
+                        "GD": 7,
+                        "P": 30
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
                     "name": "CRB",
                     "stats": {
                         "GP": 20,
@@ -8559,7 +8574,7 @@
                     "zone": null
                 },
                 {
-                    "position": 9,
+                    "position": 10,
                     "name": "Goiás",
                     "stats": {
                         "GP": 20,
@@ -8574,7 +8589,7 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 11,
                     "name": "Sport",
                     "stats": {
                         "GP": 20,
@@ -8589,7 +8604,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 12,
                     "name": "Athletic",
                     "stats": {
                         "GP": 20,
@@ -8600,21 +8615,6 @@
                         "A": 18,
                         "GD": 1,
                         "P": 28
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 12,
-                    "name": "São Bernardo",
-                    "stats": {
-                        "GP": 20,
-                        "W": 7,
-                        "D": 6,
-                        "L": 7,
-                        "F": 28,
-                        "A": 23,
-                        "GD": 5,
-                        "P": 27
                     },
                     "zone": null
                 },
@@ -8635,6 +8635,21 @@
                 },
                 {
                     "position": 14,
+                    "name": "Ceará",
+                    "stats": {
+                        "GP": 21,
+                        "W": 6,
+                        "D": 7,
+                        "L": 8,
+                        "F": 22,
+                        "A": 25,
+                        "GD": -3,
+                        "P": 25
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 15,
                     "name": "Cuiabá",
                     "stats": {
                         "GP": 20,
@@ -8649,7 +8664,7 @@
                     "zone": null
                 },
                 {
-                    "position": 15,
+                    "position": 16,
                     "name": "Botafogo-SP",
                     "stats": {
                         "GP": 20,
@@ -8660,21 +8675,6 @@
                         "A": 21,
                         "GD": 3,
                         "P": 24
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 16,
-                    "name": "Ceará",
-                    "stats": {
-                        "GP": 20,
-                        "W": 5,
-                        "D": 7,
-                        "L": 8,
-                        "F": 20,
-                        "A": 25,
-                        "GD": -5,
-                        "P": 22
                     },
                     "zone": null
                 },
@@ -8736,13 +8736,13 @@
                     "position": 20,
                     "name": "Ponte Preta",
                     "stats": {
-                        "GP": 20,
+                        "GP": 21,
                         "W": 2,
                         "D": 3,
-                        "L": 15,
+                        "L": 16,
                         "F": 15,
-                        "A": 39,
-                        "GD": -24,
+                        "A": 41,
+                        "GD": -26,
                         "P": 9
                     },
                     "zone": {
@@ -11045,6 +11045,24 @@
                 },
                 {
                     "position": 3,
+                    "name": "Beijing Guoan",
+                    "stats": {
+                        "GP": 21,
+                        "W": 9,
+                        "D": 7,
+                        "L": 5,
+                        "F": 38,
+                        "A": 27,
+                        "GD": 11,
+                        "P": 29
+                    },
+                    "zone": {
+                        "label": "AFC Challenge League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
                     "name": "Chongqing Tonglianglong",
                     "stats": {
                         "GP": 21,
@@ -11062,7 +11080,7 @@
                     }
                 },
                 {
-                    "position": 4,
+                    "position": 5,
                     "name": "Dalian Yingbo",
                     "stats": {
                         "GP": 20,
@@ -11074,13 +11092,10 @@
                         "GD": -5,
                         "P": 29
                     },
-                    "zone": {
-                        "label": "AFC Challenge League",
-                        "type": "avantage"
-                    }
+                    "zone": null
                 },
                 {
-                    "position": 5,
+                    "position": 6,
                     "name": "Yunnan Yukun",
                     "stats": {
                         "GP": 21,
@@ -11095,7 +11110,7 @@
                     "zone": null
                 },
                 {
-                    "position": 6,
+                    "position": 7,
                     "name": "Shandong Taishan",
                     "stats": {
                         "GP": 21,
@@ -11106,21 +11121,6 @@
                         "A": 36,
                         "GD": 1,
                         "P": 27
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 7,
-                    "name": "Beijing Guoan",
-                    "stats": {
-                        "GP": 20,
-                        "W": 8,
-                        "D": 7,
-                        "L": 5,
-                        "F": 34,
-                        "A": 27,
-                        "GD": 7,
-                        "P": 26
                     },
                     "zone": null
                 },
@@ -11158,13 +11158,13 @@
                     "position": 10,
                     "name": "Shenzhen Xinpengcheng",
                     "stats": {
-                        "GP": 21,
+                        "GP": 22,
                         "W": 7,
                         "D": 2,
-                        "L": 12,
+                        "L": 13,
                         "F": 30,
-                        "A": 37,
-                        "GD": -7,
+                        "A": 41,
+                        "GD": -11,
                         "P": 23
                     },
                     "zone": null
@@ -16951,16 +16951,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "Avispa Fukuoka",
+                    "name": "Gamba Osaka",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 1,
+                        "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
+                        "F": 4,
+                        "A": 3,
+                        "GD": 1,
+                        "P": 3
                     },
                     "zone": {
                         "label": "AFC Champions League (Elite)",
@@ -16969,16 +16969,16 @@
                 },
                 {
                     "position": 2,
-                    "name": "Cerezo Osaka",
+                    "name": "Kashima Antlers",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 1,
+                        "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
+                        "F": 4,
+                        "A": 3,
+                        "GD": 1,
+                        "P": 3
                     },
                     "zone": {
                         "label": "AFC Champions League (Elite)",
@@ -16987,7 +16987,7 @@
                 },
                 {
                     "position": 3,
-                    "name": "Fagiano Okayama",
+                    "name": "Avispa Fukuoka",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -17005,7 +17005,7 @@
                 },
                 {
                     "position": 4,
-                    "name": "Gamba Osaka",
+                    "name": "Cerezo Osaka",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -17020,7 +17020,7 @@
                 },
                 {
                     "position": 5,
-                    "name": "JEF United Ichihara-Chiba",
+                    "name": "Fagiano Okayama",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -17035,7 +17035,7 @@
                 },
                 {
                     "position": 6,
-                    "name": "Kashima Antlers",
+                    "name": "JEF United Ichihara-Chiba",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -17200,7 +17200,7 @@
                 },
                 {
                     "position": 17,
-                    "name": "Urawa Red Diamonds",
+                    "name": "V-Varen Nagasaki",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -17218,24 +17218,6 @@
                 },
                 {
                     "position": 18,
-                    "name": "V-Varen Nagasaki",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": {
-                        "label": "Relégation J2",
-                        "type": "désavantage"
-                    }
-                },
-                {
-                    "position": 19,
                     "name": "Vissel Kobe",
                     "stats": {
                         "GP": 0,
@@ -17253,16 +17235,34 @@
                     }
                 },
                 {
-                    "position": 20,
+                    "position": 19,
                     "name": "Yokohama F. Marinos",
                     "stats": {
-                        "GP": 0,
+                        "GP": 1,
                         "W": 0,
                         "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
+                        "L": 1,
+                        "F": 3,
+                        "A": 4,
+                        "GD": -1,
+                        "P": 0
+                    },
+                    "zone": {
+                        "label": "Relégation J2",
+                        "type": "désavantage"
+                    }
+                },
+                {
+                    "position": 20,
+                    "name": "Urawa Red Diamonds",
+                    "stats": {
+                        "GP": 1,
+                        "W": 0,
+                        "D": 0,
+                        "L": 1,
+                        "F": 3,
+                        "A": 4,
+                        "GD": -1,
                         "P": 0
                     },
                     "zone": {
@@ -19676,16 +19676,16 @@
             "standings": [
                 {
                     "position": 1,
-                    "name": "ADO Den Haag",
+                    "name": "Excelsior",
                     "stats": {
-                        "GP": 0,
-                        "W": 0,
+                        "GP": 1,
+                        "W": 1,
                         "D": 0,
                         "L": 0,
-                        "F": 0,
+                        "F": 4,
                         "A": 0,
-                        "GD": 0,
-                        "P": 0
+                        "GD": 4,
+                        "P": 3
                     },
                     "zone": {
                         "label": "UEFA Champions League",
@@ -19694,7 +19694,7 @@
                 },
                 {
                     "position": 2,
-                    "name": "AZ Alkmaar",
+                    "name": "ADO Den Haag",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19712,7 +19712,7 @@
                 },
                 {
                     "position": 3,
-                    "name": "Ajax Amsterdam",
+                    "name": "AZ Alkmaar",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19730,7 +19730,7 @@
                 },
                 {
                     "position": 4,
-                    "name": "SC Cambuur",
+                    "name": "Ajax Amsterdam",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19748,7 +19748,7 @@
                 },
                 {
                     "position": 5,
-                    "name": "Excelsior",
+                    "name": "Feyenoord Rotterdam",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19766,21 +19766,6 @@
                 },
                 {
                     "position": 6,
-                    "name": "Feyenoord Rotterdam",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 7,
                     "name": "Fortuna Sittard",
                     "stats": {
                         "GP": 0,
@@ -19795,7 +19780,7 @@
                     "zone": null
                 },
                 {
-                    "position": 8,
+                    "position": 7,
                     "name": "Go Ahead Eagles",
                     "stats": {
                         "GP": 0,
@@ -19810,7 +19795,7 @@
                     "zone": null
                 },
                 {
-                    "position": 9,
+                    "position": 8,
                     "name": "FC Groningen",
                     "stats": {
                         "GP": 0,
@@ -19825,7 +19810,7 @@
                     "zone": null
                 },
                 {
-                    "position": 10,
+                    "position": 9,
                     "name": "Heerenveen",
                     "stats": {
                         "GP": 0,
@@ -19840,7 +19825,7 @@
                     "zone": null
                 },
                 {
-                    "position": 11,
+                    "position": 10,
                     "name": "NEC Nijmegen",
                     "stats": {
                         "GP": 0,
@@ -19855,7 +19840,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 11,
                     "name": "PEC Zwolle",
                     "stats": {
                         "GP": 0,
@@ -19870,7 +19855,7 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 12,
                     "name": "PSV Eindhoven",
                     "stats": {
                         "GP": 0,
@@ -19885,7 +19870,7 @@
                     "zone": null
                 },
                 {
-                    "position": 14,
+                    "position": 13,
                     "name": "Sparta Rotterdam",
                     "stats": {
                         "GP": 0,
@@ -19900,7 +19885,7 @@
                     "zone": null
                 },
                 {
-                    "position": 15,
+                    "position": 14,
                     "name": "Telstar",
                     "stats": {
                         "GP": 0,
@@ -19915,8 +19900,23 @@
                     "zone": null
                 },
                 {
-                    "position": 16,
+                    "position": 15,
                     "name": "FC Twente",
+                    "stats": {
+                        "GP": 0,
+                        "W": 0,
+                        "D": 0,
+                        "L": 0,
+                        "F": 0,
+                        "A": 0,
+                        "GD": 0,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 16,
+                    "name": "FC Utrecht",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19934,7 +19934,7 @@
                 },
                 {
                     "position": 17,
-                    "name": "FC Utrecht",
+                    "name": "Willem II",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -19952,15 +19952,15 @@
                 },
                 {
                     "position": 18,
-                    "name": "Willem II",
+                    "name": "SC Cambuur",
                     "stats": {
-                        "GP": 0,
+                        "GP": 1,
                         "W": 0,
                         "D": 0,
-                        "L": 0,
+                        "L": 1,
                         "F": 0,
-                        "A": 0,
-                        "GD": 0,
+                        "A": 4,
+                        "GD": -4,
                         "P": 0
                     },
                     "zone": {
@@ -21007,6 +21007,24 @@
                 },
                 {
                     "position": 3,
+                    "name": "Deportivo Recoleta",
+                    "stats": {
+                        "GP": 4,
+                        "W": 2,
+                        "D": 1,
+                        "L": 1,
+                        "F": 8,
+                        "A": 8,
+                        "GD": 0,
+                        "P": 7
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
                     "name": "Guaraní",
                     "stats": {
                         "GP": 3,
@@ -21024,7 +21042,7 @@
                     }
                 },
                 {
-                    "position": 4,
+                    "position": 5,
                     "name": "Libertad",
                     "stats": {
                         "GP": 3,
@@ -21035,24 +21053,6 @@
                         "A": 3,
                         "GD": 3,
                         "P": 6
-                    },
-                    "zone": {
-                        "label": "CONMEBOL Sudamericana",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 5,
-                    "name": "Deportivo Recoleta",
-                    "stats": {
-                        "GP": 3,
-                        "W": 1,
-                        "D": 1,
-                        "L": 1,
-                        "F": 5,
-                        "A": 7,
-                        "GD": -2,
-                        "P": 4
                     },
                     "zone": null
                 },
@@ -21150,13 +21150,13 @@
                     "position": 12,
                     "name": "Rubio Ñú",
                     "stats": {
-                        "GP": 3,
+                        "GP": 4,
                         "W": 0,
                         "D": 1,
-                        "L": 2,
-                        "F": 1,
-                        "A": 7,
-                        "GD": -6,
+                        "L": 3,
+                        "F": 2,
+                        "A": 10,
+                        "GD": -8,
                         "P": 1
                     },
                     "zone": null
@@ -21836,6 +21836,24 @@
                 },
                 {
                     "position": 2,
+                    "name": "Sport Huancayo",
+                    "stats": {
+                        "GP": 4,
+                        "W": 2,
+                        "D": 1,
+                        "L": 1,
+                        "F": 6,
+                        "A": 3,
+                        "GD": 3,
+                        "P": 7
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
                     "name": "Melgar",
                     "stats": {
                         "GP": 3,
@@ -21848,40 +21866,22 @@
                         "P": 7
                     },
                     "zone": {
-                        "label": "CONMEBOL Libertadores",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 3,
-                    "name": "Cusco FC",
-                    "stats": {
-                        "GP": 3,
-                        "W": 2,
-                        "D": 0,
-                        "L": 1,
-                        "F": 9,
-                        "A": 4,
-                        "GD": 5,
-                        "P": 6
-                    },
-                    "zone": {
                         "label": "CONMEBOL Sudamericana",
                         "type": "avantage"
                     }
                 },
                 {
                     "position": 4,
-                    "name": "Sport Huancayo",
+                    "name": "Los Chankas",
                     "stats": {
-                        "GP": 3,
+                        "GP": 4,
                         "W": 2,
-                        "D": 0,
+                        "D": 1,
                         "L": 1,
-                        "F": 5,
-                        "A": 2,
-                        "GD": 3,
-                        "P": 6
+                        "F": 6,
+                        "A": 6,
+                        "GD": 0,
+                        "P": 7
                     },
                     "zone": {
                         "label": "CONMEBOL Sudamericana",
@@ -21890,6 +21890,21 @@
                 },
                 {
                     "position": 5,
+                    "name": "Cusco FC",
+                    "stats": {
+                        "GP": 4,
+                        "W": 2,
+                        "D": 0,
+                        "L": 2,
+                        "F": 10,
+                        "A": 7,
+                        "GD": 3,
+                        "P": 6
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 6,
                     "name": "Sporting Cristal",
                     "stats": {
                         "GP": 3,
@@ -21904,7 +21919,7 @@
                     "zone": null
                 },
                 {
-                    "position": 6,
+                    "position": 7,
                     "name": "Sport Boys",
                     "stats": {
                         "GP": 3,
@@ -21919,7 +21934,7 @@
                     "zone": null
                 },
                 {
-                    "position": 7,
+                    "position": 8,
                     "name": "Deportivo Garcilaso",
                     "stats": {
                         "GP": 3,
@@ -21929,21 +21944,6 @@
                         "F": 3,
                         "A": 2,
                         "GD": 1,
-                        "P": 6
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 8,
-                    "name": "Los Chankas",
-                    "stats": {
-                        "GP": 3,
-                        "W": 2,
-                        "D": 0,
-                        "L": 1,
-                        "F": 5,
-                        "A": 5,
-                        "GD": 0,
                         "P": 6
                     },
                     "zone": null
@@ -21980,6 +21980,21 @@
                 },
                 {
                     "position": 11,
+                    "name": "Comerciantes Unidos",
+                    "stats": {
+                        "GP": 4,
+                        "W": 1,
+                        "D": 2,
+                        "L": 1,
+                        "F": 9,
+                        "A": 8,
+                        "GD": 1,
+                        "P": 5
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
                     "name": "Juan Pablo II",
                     "stats": {
                         "GP": 3,
@@ -21994,7 +22009,7 @@
                     "zone": null
                 },
                 {
-                    "position": 12,
+                    "position": 13,
                     "name": "Deportivo Moquegua",
                     "stats": {
                         "GP": 3,
@@ -22009,7 +22024,7 @@
                     "zone": null
                 },
                 {
-                    "position": 13,
+                    "position": 14,
                     "name": "Atlético Grau",
                     "stats": {
                         "GP": 3,
@@ -22024,7 +22039,7 @@
                     "zone": null
                 },
                 {
-                    "position": 14,
+                    "position": 15,
                     "name": "Cienciano del Cusco",
                     "stats": {
                         "GP": 4,
@@ -22035,21 +22050,6 @@
                         "A": 6,
                         "GD": -3,
                         "P": 3
-                    },
-                    "zone": null
-                },
-                {
-                    "position": 15,
-                    "name": "Comerciantes Unidos",
-                    "stats": {
-                        "GP": 3,
-                        "W": 0,
-                        "D": 2,
-                        "L": 1,
-                        "F": 6,
-                        "A": 7,
-                        "GD": -1,
-                        "P": 2
                     },
                     "zone": null
                 },
@@ -23104,6 +23104,42 @@
             "standings": [
                 {
                     "position": 1,
+                    "name": "Estoril",
+                    "stats": {
+                        "GP": 1,
+                        "W": 0,
+                        "D": 1,
+                        "L": 0,
+                        "F": 1,
+                        "A": 1,
+                        "GD": 0,
+                        "P": 1
+                    },
+                    "zone": {
+                        "label": "UEFA Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "FC Famalicao",
+                    "stats": {
+                        "GP": 1,
+                        "W": 0,
+                        "D": 1,
+                        "L": 0,
+                        "F": 1,
+                        "A": 1,
+                        "GD": 0,
+                        "P": 1
+                    },
+                    "zone": {
+                        "label": "UEFA Champions League",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
                     "name": "Académico de Viseu",
                     "stats": {
                         "GP": 0,
@@ -23121,7 +23157,7 @@
                     }
                 },
                 {
-                    "position": 2,
+                    "position": 4,
                     "name": "Alverca",
                     "stats": {
                         "GP": 0,
@@ -23139,44 +23175,8 @@
                     }
                 },
                 {
-                    "position": 3,
-                    "name": "Arouca",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": {
-                        "label": "UEFA Champions League",
-                        "type": "avantage"
-                    }
-                },
-                {
-                    "position": 4,
-                    "name": "Benfica",
-                    "stats": {
-                        "GP": 0,
-                        "W": 0,
-                        "D": 0,
-                        "L": 0,
-                        "F": 0,
-                        "A": 0,
-                        "GD": 0,
-                        "P": 0
-                    },
-                    "zone": {
-                        "label": "UEFA Champions League",
-                        "type": "avantage"
-                    }
-                },
-                {
                     "position": 5,
-                    "name": "Casa Pia",
+                    "name": "Arouca",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -23194,7 +23194,7 @@
                 },
                 {
                     "position": 6,
-                    "name": "Estoril",
+                    "name": "Benfica",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -23212,7 +23212,7 @@
                 },
                 {
                     "position": 7,
-                    "name": "Estrela",
+                    "name": "Casa Pia",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -23227,7 +23227,7 @@
                 },
                 {
                     "position": 8,
-                    "name": "FC Famalicao",
+                    "name": "Estrela",
                     "stats": {
                         "GP": 0,
                         "W": 0,
@@ -29568,7 +29568,7 @@
     "Venezuela_Primera_Division": {
         "2026": {
             "saison": 2026,
-            "total_journees": 0,
+            "total_journees": 26,
             "position_zones": [
                 {
                     "positions": "1-2",
@@ -29581,7 +29581,230 @@
                     "type": "avantage"
                 }
             ],
-            "standings": []
+            "standings": [
+                {
+                    "position": 1,
+                    "name": "Deportivo Táchira",
+                    "stats": {
+                        "GP": 2,
+                        "W": 2,
+                        "D": 0,
+                        "L": 0,
+                        "F": 4,
+                        "A": 0,
+                        "GD": 4,
+                        "P": 6
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 2,
+                    "name": "Metropolitanos",
+                    "stats": {
+                        "GP": 2,
+                        "W": 2,
+                        "D": 0,
+                        "L": 0,
+                        "F": 4,
+                        "A": 2,
+                        "GD": 2,
+                        "P": 6
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Libertadores",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 3,
+                    "name": "Estudiantes de Mérida",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 1,
+                        "L": 0,
+                        "F": 3,
+                        "A": 2,
+                        "GD": 1,
+                        "P": 4
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 4,
+                    "name": "Academia Puerto Cabello",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 4,
+                        "A": 3,
+                        "GD": 1,
+                        "P": 3
+                    },
+                    "zone": {
+                        "label": "CONMEBOL Sudamericana",
+                        "type": "avantage"
+                    }
+                },
+                {
+                    "position": 5,
+                    "name": "Carabobo",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 1,
+                        "GD": 1,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 6,
+                    "name": "Deportivo La Guaira",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 3,
+                        "A": 3,
+                        "GD": 0,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 7,
+                    "name": "Trujillanos",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 2,
+                        "GD": 0,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 8,
+                    "name": "Zamora FC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 2,
+                        "GD": 0,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 9,
+                    "name": "Portuguesa",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 1,
+                        "A": 1,
+                        "GD": 0,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 10,
+                    "name": "UCV FC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 2,
+                        "A": 3,
+                        "GD": -1,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 11,
+                    "name": "Anzoátegui FC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 1,
+                        "D": 0,
+                        "L": 1,
+                        "F": 1,
+                        "A": 3,
+                        "GD": -2,
+                        "P": 3
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 12,
+                    "name": "Caracas FC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 1,
+                        "L": 1,
+                        "F": 3,
+                        "A": 5,
+                        "GD": -2,
+                        "P": 1
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 13,
+                    "name": "Monagas SC",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 0,
+                        "L": 2,
+                        "F": 2,
+                        "A": 4,
+                        "GD": -2,
+                        "P": 0
+                    },
+                    "zone": null
+                },
+                {
+                    "position": 14,
+                    "name": "Rayo Zuliano",
+                    "stats": {
+                        "GP": 2,
+                        "W": 0,
+                        "D": 0,
+                        "L": 2,
+                        "F": 1,
+                        "A": 3,
+                        "GD": -2,
+                        "P": 0
+                    },
+                    "zone": null
+                }
+            ]
         },
         "2023": {
             "saison": 2023,

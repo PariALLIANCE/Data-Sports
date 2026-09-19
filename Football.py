@@ -38,6 +38,10 @@ APPGUID = "e3e84e89ad06a492_2"
 CHAMP_EXCLUSIONS = ["Paris spéciaux", "Statistiques", "Vainqueur", "Gagnant", "Statistique"]
 TEAM_EXCLUSIONS = ["à domicile", "a domicile", "Winner"]
 
+# Championnats à traiter (limité à l'Angleterre. Premier League pour l'instant).
+# Ajouter d'autres IDs ici pour élargir le périmètre plus tard.
+CHAMP_IDS = [88637]
+
 # Cache mémoire pour les championnats/stages déjà récupérés durant l'exécution.
 # Clé : nom du championnat (connu à l'avance pour le match principal) ou ID de match
 # (pour les matchs passés, dont le championnat est inconnu tant qu'on n'a pas interrogé l'API).
@@ -198,6 +202,32 @@ def get_matches(host=HOST):
     }
     return session.get(url, headers=headers, params=params, timeout=30)
 
+
+def get_matches_by_champ(champ_ids, host=HOST):
+    """
+    Récupère les matchs filtrés sur un ou plusieurs championnats précis (ex: Premier
+    League = 88637), avec les infos match (lieu, météo, journée) déjà incluses.
+    champ_ids : int, str, ou liste d'IDs (jointe par des virgules).
+    """
+    session = requests.Session()
+    session.mount("https://", TLS13Adapter())
+    d1, d2 = get_date_range()
+    
+    if isinstance(champ_ids, (list, tuple)):
+        champ_ids_str = ",".join(str(c) for c in champ_ids)
+    else:
+        champ_ids_str = str(champ_ids)
+    
+    url = f"https://{host}/MainFeedLine/mobile/v3/gamesByChamp"
+    headers = generate_headers(host)
+    params = {
+        "cfView": "3", "champIds": champ_ids_str, "country": "96",
+        "dateFrom": str(d1), "dateTo": str(d2),
+        "fcountry": "96", "gr": "1357", "lng": "fr_FR",
+        "mode": "2", "ref": "1", "whence": "22"
+    }
+    return session.get(url, headers=headers, params=params, timeout=30)
+
 def get_game_details(game_id, host=HOST):
     session = requests.Session()
     session.mount("https://", TLS13Adapter())
@@ -323,6 +353,73 @@ def extract_all_matches(data):
     
     return results
 
+
+def extract_champ_matches(data):
+    """
+    Extrait les matchs d'une réponse gamesByChamp (déjà filtrée sur un/des championnat(s)
+    précis côté serveur). Récupère aussi :
+    - h2h_id et stage_id (statisticInfo), déjà connus donc pas besoin de les redécouvrir
+      via l'endpoint cotes ensuite
+    - les infos match (journée, lieu, météo) depuis matchInfoObj
+    - les logos des 2 équipes (déjà présents ici, pas besoin d'attendre le H2H)
+    Ne touche PAS aux cotes (eventGroups) : gérées ailleurs via get_game_details.
+    """
+    results = []
+    
+    for liga_block in data.get("data", []):
+        liga = liga_block.get("liga", {})
+        champ_name = liga.get("name", "?")
+        champ_matches = []
+        
+        for game in liga_block.get("games", []):
+            opp1_block = game.get("opponent1", {}) or {}
+            opp2_block = game.get("opponent2", {}) or {}
+            
+            opp1_name = opp1_block.get("fullName", "?")
+            if is_excluded_team(opp1_name):
+                continue
+            
+            match_info = game.get("matchInfoObj", {}) or {}
+            stat_info = game.get("statisticInfo", {}) or {}
+            
+            opp1_logo = None
+            if opp1_block.get("opps"):
+                opp1_logo = opp1_block["opps"][0].get("image")
+            opp2_logo = None
+            if opp2_block.get("opps"):
+                opp2_logo = opp2_block["opps"][0].get("image")
+            
+            champ_matches.append({
+                "opp1": opp1_name,
+                "opp2": opp2_block.get("fullName", "?"),
+                "opp1_logo": opp1_logo,
+                "opp2_logo": opp2_logo,
+                "game_id": game.get("id"),
+                "start_ts": game.get("startTs", 0),
+                "h2h_id": stat_info.get("gameId"),
+                "stage_id": stat_info.get("stageId"),
+                "tournament_stage": match_info.get("tournamentStage"),
+                "location": match_info.get("location"),
+                "location_country": match_info.get("locationCountry"),
+                "stadium_id": match_info.get("stadiumId"),
+                "weather": {
+                    "temperature": match_info.get("temperature"),
+                    "description": match_info.get("weatherDescription"),
+                    "wind": match_info.get("weatherWindDescription"),
+                    "pressure": match_info.get("weatherPressureDescription"),
+                    "humidity": match_info.get("weatherHumidityDescription"),
+                    "precipitation_chance": match_info.get("weatherPrecipitationChanceDescription"),
+                } if match_info else None
+            })
+        
+        if champ_matches:
+            results.append({
+                "champ": champ_name,
+                "matches": champ_matches
+            })
+    
+    return results
+
 # =====================================================
 # Extraction COTES
 # =====================================================
@@ -398,16 +495,17 @@ def build_logo_url(path):
     """
     Construit l'URL complète d'un logo à partir du chemin renvoyé par l'API.
     - Déjà une URL complète -> inchangé
-    - Chemin relatif avec dossier (ex: 'sfiles/logo_teams/12763.png') -> préfixé par HOST
-    - Simple nom de fichier (logos d'équipe, ex: '12763.png') -> on suppose le même
-      dossier 'sfiles/logo_teams/' que les logos de championnat (seule convention
-      observée dans les réponses de l'API à ce jour ; à corriger si un autre dossier
-      est utilisé pour les équipes).
+    - Chemin relatif avec dossier (ex: 'sfiles/logo_teams/12763.png' ou
+      '/sfiles/logo_teams/12763.png') -> préfixé par HOST (slash de tête retiré
+      pour éviter un double slash)
+    - Simple nom de fichier (ex: '12763.png') -> dossier 'sfiles/logo_teams/'
+      (convention confirmée par la réponse gamesByChamp pour les logos d'équipe)
     """
     if not path:
         return None
     if path.startswith("http://") or path.startswith("https://"):
         return path
+    path = path.lstrip("/")
     if "/" in path:
         return f"https://{HOST}/{path}"
     return f"https://{HOST}/sfiles/logo_teams/{path}"
@@ -776,22 +874,38 @@ def print_first_match_full(match, champ_name):
     print(f"🏆 {champ_name}")
     print(f"⚽ {match['opp1']} vs {match['opp2']}")
     print(f"⏰ {heure} | 🆔 Game ID : {game_id}")
+    if match.get("tournament_stage"):
+        print(f"📅 Journée : {match['tournament_stage']}")
+    if match.get("location"):
+        pays = f" ({match['location_country']})" if match.get("location_country") else ""
+        print(f"📍 Lieu : {match['location']}{pays}")
+    if match.get("weather") and match["weather"].get("description"):
+        w = match["weather"]
+        print(f"🌤️ Météo : {w.get('description')} | {w.get('temperature', '?')} | "
+              f"Vent {w.get('wind', '?')} | Humidité {w.get('humidity', '?')}%")
     print("=" * 70)
+    
+    # h2h_id et stage_id sont déjà connus via gamesByChamp (statisticInfo) — pas besoin
+    # de les redécouvrir depuis la réponse cotes. On les garde en repli si absents ici
+    # (ex: si le match provient encore de l'ancien flux ChampsBySport).
+    h2h_id = match.get("h2h_id")
+    stage_id = match.get("stage_id")
     
     # === COTES MAPPÉES ===
     print(f"\n💰 COTES MAPPÉES")
     print("-" * 70)
     
-    h2h_id = None
     mapped_odds = []
     
     odds_resp = get_game_details(game_id)
     if odds_resp.status_code == 200:
         odds_data = odds_resp.json()
         
-        match_data = odds_data.get("data", {})
-        statistic_info = match_data.get("statisticInfo", {})
-        h2h_id = statistic_info.get("gameId")
+        if not h2h_id:
+            # Repli : extraction depuis la réponse cotes (comportement historique)
+            match_data = odds_data.get("data", {})
+            statistic_info = match_data.get("statisticInfo", {})
+            h2h_id = statistic_info.get("gameId")
         
         if h2h_id:
             print(f"   🔑 ID haché (H2H) : {h2h_id}")
@@ -810,14 +924,17 @@ def print_first_match_full(match, champ_name):
         print(f"   ❌ Erreur HTTP: {odds_resp.status_code}")
     
     # === CLASSEMENT / STAGE DU CHAMPIONNAT (mis en cache par nom de championnat) ===
-    # Utilise h2h_id (ID haché 24 caractères), pas game_id : StageNet/StageTTable
-    # attendent le même espace d'ID que les matchs passés (statisticInfo.gameId),
-    # pas l'ID numérique de cotes du feed ChampsBySport/MainFeedLine.
+    # Utilise stage_id (statisticInfo.stageId), PAS h2h_id (statisticInfo.gameId) :
+    # stageId identifie le championnat/la saison (identique pour tous les matchs de
+    # la même compétition), alors que gameId identifie une paire de confrontation H2H
+    # précise. C'est stageId qu'attendent StageNet/StageTTable.
     league_title, league_logo, classification_full = None, None, []
     
-    if h2h_id:
+    stage_lookup_id = stage_id or h2h_id  # repli sur h2h_id si stage_id indisponible
+    
+    if stage_lookup_id:
         was_cached = champ_name in STAGE_CACHE
-        league_title, stage_payload = get_league_name(h2h_id, cache_key=champ_name)
+        league_title, stage_payload = get_league_name(stage_lookup_id, cache_key=champ_name)
         
         if stage_payload:
             source = "cache (déjà récupéré pour cette ligue aujourd'hui)" if was_cached else "requête serveur"
@@ -917,9 +1034,15 @@ def print_first_match_full(match, champ_name):
         "league_logo": league_logo,
         "match": {
             "game_id": game_id,
+            "h2h_id": h2h_id,
+            "stage_id": stage_id,
             "start_ts": match.get("start_ts"),
-            "team1": {"name": match["opp1"], "logo": h2h.get("team1_logo")},
-            "team2": {"name": match["opp2"], "logo": h2h.get("team2_logo")},
+            "tournament_stage": match.get("tournament_stage"),
+            "location": match.get("location"),
+            "location_country": match.get("location_country"),
+            "weather": match.get("weather"),
+            "team1": {"name": match["opp1"], "logo": h2h.get("team1_logo") or to_img_tag(match.get("opp1_logo"))},
+            "team2": {"name": match["opp2"], "logo": h2h.get("team2_logo") or to_img_tag(match.get("opp2_logo"))},
         },
         "odds": mapped_odds,
         "classification": classification_full,
@@ -949,15 +1072,15 @@ if __name__ == "__main__":
     print("=" * 60)
     
     try:
-        print("\n📡 Récupération de tous les matchs...")
-        resp = get_matches()
+        print(f"\n📡 Récupération des matchs (championnats : {CHAMP_IDS})...")
+        resp = get_matches_by_champ(CHAMP_IDS)
         
         if resp.status_code != 200:
             print(f"❌ Erreur HTTP: {resp.status_code}")
             exit(1)
         
         data = resp.json()
-        champ_results = extract_all_matches(data)
+        champ_results = extract_champ_matches(data)
         
         if not champ_results:
             print("❌ Aucun championnat trouvé")

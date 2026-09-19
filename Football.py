@@ -640,16 +640,25 @@ def format_scores_line(stats):
     return " | ".join(f"{s['title']}: {s['score1']}-{s['score2']}" for s in stats["scores"])
 
 
-def get_league_name(match_id, cache_key=None, pause_range=(1, 5)):
+def get_league_name(match_id, cache_key=None, pause_range=(1, 5), max_retries=2, retry_delay=3):
     """
     Récupère le nom du championnat d'un match :
     1) essaie StageTTable (classement de championnat)
     2) si échec, essaie StageNet (arbre de phase finale / coupe)
     
+    Chaque endpoint est retenté jusqu'à max_retries fois en cas de timeout/erreur
+    réseau (pas en cas de réponse HTTP valide sans 'title' — inutile de réessayer
+    une structure qui ne changera pas).
+    
     cache_key : clé de cache à utiliser (ex: le nom de championnat déjà connu pour le
     match principal, afin de réutiliser le même appel pour tout autre match du jour de
     la même ligue). Si omis, on cache par match_id (utile pour les matchs passés dont
     on ne connaît pas encore le championnat).
+    
+    En cas d'échec total des deux endpoints : si cache_key est fourni (nom de
+    championnat déjà connu via le feed gamesByChamp), on l'utilise comme repli au
+    lieu de renvoyer None — mieux vaut un nom déjà fiable que rien du tout. Sans
+    cache_key (matchs passés), on ne peut pas deviner le championnat : on renvoie None.
     
     Espace chaque requête réseau de 1 à 5 sec (pause_range).
     """
@@ -664,69 +673,62 @@ def get_league_name(match_id, cache_key=None, pause_range=(1, 5)):
         return cached["title"], cached["data"]
     
     print(f"      [get_league_name] CACHE MISS clé='{lookup_key}' | match_id='{match_id}'")
-    league_name, payload_used = None, None
     
-    # 1) StageTTable en premier
-    try:
-        print(f"      [get_league_name] → GET StageTTable?id={match_id}")
-        resp = get_table_data(match_id)
-        time.sleep(random.uniform(*pause_range))
-        print(f"      [get_league_name]   StageTTable HTTP {resp.status_code}")
-        
-        if resp.status_code == 200:
-            payload = resp.json()
-            data = payload.get("data", payload)
-            response_block = data.get("response", {})
-            title = response_block.get("title")
-            
-            if title:
-                league_name, payload_used = title, payload
-                print(f"      [get_league_name]   ✅ title trouvé : {title!r}")
-            else:
-                print(f"      [get_league_name]   ⚠️ HTTP 200 mais pas de 'title'. "
-                      f"Clés de 'data' : {list(data.keys())} | Clés de 'response' : {list(response_block.keys())}")
-        else:
-            body_preview = ""
+    def try_endpoint(fetch_func, label):
+        """Tente un endpoint avec retries sur timeout/erreur réseau. Renvoie (title, payload) ou (None, None)."""
+        for attempt in range(1, max_retries + 1):
+            suffix = f" (tentative {attempt}/{max_retries})" if attempt > 1 else ""
             try:
-                body_preview = json.dumps(resp.json())[:300]
-            except Exception:
-                body_preview = resp.text[:300] if hasattr(resp, "text") else "(pas de corps lisible)"
-            print(f"      [get_league_name]   ❌ Corps de la réponse (300 premiers car.) : {body_preview}")
-    except Exception as e:
-        print(f"      [get_league_name]   ❌ Exception StageTTable : {type(e).__name__}: {e}")
-    
-    # 2) StageNet en repli si StageTTable n'a rien donné
-    if not league_name:
-        try:
-            print(f"      [get_league_name] → GET StageNet?id={match_id} (repli)")
-            resp = get_stage_data(match_id)
-            time.sleep(random.uniform(*pause_range))
-            print(f"      [get_league_name]   StageNet HTTP {resp.status_code}")
-            
-            if resp.status_code == 200:
-                payload = resp.json()
-                data = payload.get("data", payload)
-                response_block = data.get("response", {})
-                title = response_block.get("title")
+                print(f"      [get_league_name] → GET {label}?id={match_id}{suffix}")
+                resp = fetch_func(match_id)
+                time.sleep(random.uniform(*pause_range))
+                print(f"      [get_league_name]   {label} HTTP {resp.status_code}")
                 
-                if title:
-                    league_name, payload_used = title, payload
-                    print(f"      [get_league_name]   ✅ title trouvé : {title!r}")
-                else:
+                if resp.status_code == 200:
+                    payload = resp.json()
+                    data = payload.get("data", payload)
+                    response_block = data.get("response", {})
+                    title = response_block.get("title")
+                    
+                    if title:
+                        print(f"      [get_league_name]   ✅ title trouvé : {title!r}")
+                        return title, payload
+                    
                     print(f"      [get_league_name]   ⚠️ HTTP 200 mais pas de 'title'. "
                           f"Clés de 'data' : {list(data.keys())} | Clés de 'response' : {list(response_block.keys())}")
-            else:
+                    return None, None  # structure vide : pas la peine de réessayer
+                
                 body_preview = ""
                 try:
                     body_preview = json.dumps(resp.json())[:300]
                 except Exception:
                     body_preview = resp.text[:300] if hasattr(resp, "text") else "(pas de corps lisible)"
                 print(f"      [get_league_name]   ❌ Corps de la réponse (300 premiers car.) : {body_preview}")
-        except Exception as e:
-            print(f"      [get_league_name]   ❌ Exception StageNet : {type(e).__name__}: {e}")
+                return None, None  # erreur HTTP franche : pas la peine de réessayer non plus
+            
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+                print(f"      [get_league_name]   ⏱️ {type(e).__name__} sur {label}{suffix} : {e}")
+                if attempt < max_retries:
+                    print(f"      [get_league_name]   🔁 Nouvelle tentative dans {retry_delay}s...")
+                    time.sleep(retry_delay)
+                    continue
+                print(f"      [get_league_name]   ❌ {label} abandonné après {max_retries} tentatives")
+            except Exception as e:
+                print(f"      [get_league_name]   ❌ Exception {label} : {type(e).__name__}: {e}")
+                return None, None
+        return None, None
+    
+    league_name, payload_used = try_endpoint(get_table_data, "StageTTable")
     
     if not league_name:
-        print(f"      [get_league_name] ❌ ÉCHEC TOTAL pour match_id='{match_id}' (StageTTable et StageNet)")
+        league_name, payload_used = try_endpoint(get_stage_data, "StageNet")
+    
+    if not league_name:
+        if cache_key:
+            print(f"      [get_league_name] ⚠️ ÉCHEC TOTAL — repli sur le nom déjà connu : '{cache_key}'")
+            league_name = cache_key
+        else:
+            print(f"      [get_league_name] ❌ ÉCHEC TOTAL pour match_id='{match_id}' (pas de repli possible)")
     
     STAGE_CACHE[lookup_key] = {"title": league_name, "data": payload_used}
     return league_name, payload_used
@@ -959,6 +961,12 @@ def print_first_match_full(match, champ_name):
                 print(f"   ({len(classification_full)} équipes au total — classement complet sauvegardé dans le fichier)")
             else:
                 print(f"   (Arbre de phase finale récupéré — pas de classement disponible pour ce format)")
+        elif league_title:
+            # Échec total de StageTTable/StageNet mais repli sur le nom déjà connu
+            # (cache_key = champ_name du feed gamesByChamp) : pas de classement disponible,
+            # mais on garde au moins le bon nom de championnat.
+            print(f"\n📋 Classement/Stage du championnat : introuvable (StageNet et StageTTable ont échoué) "
+                  f"— nom conservé : '{league_title}'")
         else:
             print(f"\n📋 Classement/Stage du championnat : introuvable (StageNet et StageTTable ont échoué)")
     

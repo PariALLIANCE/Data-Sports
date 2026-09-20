@@ -927,13 +927,14 @@ def print_first_match_full(match, champ_name):
         print(f"   ❌ Erreur HTTP: {odds_resp.status_code}")
     
     # === CLASSEMENT / STAGE DU CHAMPIONNAT (mis en cache par nom de championnat) ===
-    # Utilise stage_id (statisticInfo.stageId), PAS h2h_id (statisticInfo.gameId) :
-    # stageId identifie le championnat/la saison (identique pour tous les matchs de
-    # la même compétition), alors que gameId identifie une paire de confrontation H2H
-    # précise. C'est stageId qu'attendent StageNet/StageTTable.
+    # Pour le match principal : h2h_id en priorité, stage_id en repli si absent
+    # (certains matchs n'ont pas de statisticInfo du tout côté gamesByChamp).
+    # NB : pour les matchs passés/H2H (fetch_leagues_for_games), il n'existe pas de
+    # 'stageId' distinct dans la réponse HeadToHead — seul leur propre 'id' est
+    # disponible, ce qui joue déjà ce rôle. Rien à changer de ce côté-là.
     league_title, league_logo, classification_full = None, None, []
     
-    stage_lookup_id = stage_id or h2h_id  # repli sur h2h_id si stage_id indisponible
+    stage_lookup_id = h2h_id or stage_id
     
     if stage_lookup_id:
         was_cached = champ_name in STAGE_CACHE

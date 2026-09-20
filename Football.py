@@ -1,4 +1,5 @@
 import json
+import os
 import time
 import random
 import ssl
@@ -1114,7 +1115,39 @@ if __name__ == "__main__":
         print(f"🎯 TRAITEMENT COMPLET DE {total_matches} MATCH(S)")
         print("=" * 70)
         
-        output_filename = "games_of_day.json"
+        output_dir = "data/football"
+        os.makedirs(output_dir, exist_ok=True)
+        output_filename = os.path.join(output_dir, "games_of_day.json")
+        history_filename = os.path.join(output_dir, "historique.json")
+        
+        # Si games_of_day.json contient déjà des données d'une exécution précédente,
+        # on les archive dans historique.json avant de les écraser.
+        if os.path.exists(output_filename):
+            try:
+                with open(output_filename, "r", encoding="utf-8") as f:
+                    previous_content = json.load(f)
+                
+                if previous_content and previous_content.get("games"):
+                    if os.path.exists(history_filename):
+                        with open(history_filename, "r", encoding="utf-8") as f:
+                            history = json.load(f)
+                        if not isinstance(history, list):
+                            history = [history]
+                    else:
+                        history = []
+                    
+                    history.append(previous_content)
+                    
+                    with open(history_filename, "w", encoding="utf-8") as f:
+                        json.dump(history, f, indent=2, ensure_ascii=False)
+                    
+                    print(f"📦 Ancien contenu de {output_filename} ({previous_content.get('date', '?')}, "
+                          f"{len(previous_content.get('games', []))} matchs) archivé dans {history_filename}")
+                else:
+                    print(f"ℹ️ {output_filename} existant mais vide, rien à archiver")
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"⚠️ Impossible de lire/archiver l'ancien {output_filename} : {e}")
+        
         all_reports = []
         match_num = 0
         

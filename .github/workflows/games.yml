@@ -2,6 +2,7 @@ name: Football - Analyse quotidienne
 
 on:
   schedule:
+    # 01h30 UTC = 01h30 en Côte d'Ivoire
     - cron: "30 1 * * *"
 
   workflow_dispatch:
@@ -32,17 +33,6 @@ jobs:
           git fetch origin
           git pull --rebase origin "${GITHUB_REF_NAME}"
 
-      - name: Sauvegarder l'ancien games_of_day.json
-        run: |
-          if [ -f data/football/games_of_day.json ]; then
-            cp data/football/games_of_day.json /tmp/games_of_day_old.json
-            echo "ancien_fichier=true" >> "$GITHUB_ENV"
-            echo "Ancien games_of_day.json sauvegardé."
-          else
-            echo "ancien_fichier=false" >> "$GITHUB_ENV"
-            echo "Aucun ancien games_of_day.json."
-          fi
-
       - name: Installer requests
         run: |
           python -m pip install --upgrade pip
@@ -50,86 +40,19 @@ jobs:
 
       - name: Exécuter Football.py
         run: |
-          python Football.py
+          python final.py
 
-      - name: Vérifier si le contenu a changé
+      - name: Vérifier les fichiers générés
         run: |
-          if [ ! -f data/football/games_of_day.json ]; then
-            echo "❌ games_of_day.json n'a pas été généré."
-            exit 1
-          fi
-
-          if [ "$ancien_fichier" = "true" ]; then
-            if cmp -s /tmp/games_of_day_old.json data/football/games_of_day.json; then
-              echo "CONTENU_IDENTIQUE=true" >> "$GITHUB_ENV"
-              echo "ℹ️ Le nouveau games_of_day.json est identique à l'ancien."
-            else
-              echo "CONTENU_IDENTIQUE=false" >> "$GITHUB_ENV"
-              echo "🆕 Le contenu de games_of_day.json a changé."
-            fi
-          else
-            echo "CONTENU_IDENTIQUE=false" >> "$GITHUB_ENV"
-            echo "🆕 Première génération de games_of_day.json."
-          fi
-
-      - name: Archiver l'ancien fichier si le contenu a changé
-        if: env.CONTENU_IDENTIQUE == 'false' && env.ancien_fichier == 'true'
-        run: |
-          mkdir -p data/football
-
-          if [ -f data/football/historique.json ]; then
-            python - <<'PY'
-import json
-
-history_file = "data/football/historique.json"
-
-try:
-    with open(history_file, "r", encoding="utf-8") as f:
-        history = json.load(f)
-
-    if not isinstance(history, list):
-        history = [history]
-
-except (FileNotFoundError, json.JSONDecodeError):
-    history = []
-
-with open("/tmp/games_of_day_old.json", "r", encoding="utf-8") as f:
-    old_data = json.load(f)
-
-history.append(old_data)
-
-with open(history_file, "w", encoding="utf-8") as f:
-    json.dump(history, f, indent=2, ensure_ascii=False)
-
-print("📦 Ancien games_of_day.json ajouté à historique.json")
-
-PY
-  else
-            python - <<'PY'
-import json
-
-with open("/tmp/games_of_day_old.json", "r", encoding="utf-8") as f:
-    old_data = json.load(f)
-
-with open("data/football/historique.json", "w", encoding="utf-8") as f:
-    json.dump([old_data], f, indent=2, ensure_ascii=False)
-
-print("📦 historique.json créé avec l'ancien games_of_day.json")
-
-PY
-          fi
-
-      - name: Vérifier les fichiers
-        run: |
-          echo "📁 Contenu de data/football :"
-          ls -lah data/football/
+          echo "Contenu de data/football :"
+          ls -lah data/football/ || true
 
       - name: Commit et push
         run: |
           git add -A data/football/
 
           if git diff --cached --quiet; then
-            echo "ℹ️ Aucun changement à sauvegarder."
+            echo "Aucune modification à sauvegarder."
             exit 0
           fi
 

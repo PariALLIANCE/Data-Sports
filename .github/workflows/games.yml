@@ -40,7 +40,7 @@ jobs:
 
       - name: Exécuter Football.py
         run: |
-          python final.py
+          python Football.py
 
       - name: Vérifier les fichiers générés
         run: |

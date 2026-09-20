@@ -1,8 +1,8 @@
-name: Football Daily Construction
+name: Football - Analyse quotidienne
 
 on:
   schedule:
-    # 01h30 UTC = 01h30 à Abidjan
+    # 01h30 UTC = 01h30 en Côte d'Ivoire
     - cron: "30 1 * * *"
 
   workflow_dispatch:
@@ -15,56 +15,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Récupérer le dépôt
+      - name: Checkout du dépôt
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
 
-      # Synchronisation AVANT toute modification
-      - name: Pull avec rebase
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git fetch origin main
-          git pull --rebase origin main
-
-      - name: Installer Python
+      - name: Configurer Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      - name: Git pull --rebase avant modification
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+
       - name: Installer les dépendances
         run: |
           python -m pip install --upgrade pip
-          pip install requests urllib3
+          pip install requests
 
-      - name: Vérifier Football.py
+      - name: Exécuter le script Football
         run: |
-          test -f Football.py
-          echo "Football.py trouvé."
+          python final.py
 
-      - name: Exécuter Football.py
+      - name: Vérifier les modifications
         run: |
-          python Football.py
-
-      - name: Vérifier games_of_day.json
-        run: |
-          test -f games_of_day.json
-          ls -lh games_of_day.json
-          python -m json.tool games_of_day.json > /dev/null
-          echo "JSON valide."
+          git status --short
 
       - name: Commit et push
         run: |
-          git add games_of_day.json
+          git add data/football/games_of_day.json
+          git add data/football/historique.json
 
           if git diff --cached --quiet; then
-            echo "Aucune modification à enregistrer."
+            echo "Aucune modification à sauvegarder."
             exit 0
           fi
 
-          git commit -m "Update football data"
-          git push origin main
+          git commit -m "chore: mise à jour des données football"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

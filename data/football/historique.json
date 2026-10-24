@@ -60795,5 +60795,4125 @@
         }
       }
     ]
+  },
+  {
+    "date": "23/10/2026 06:22",
+    "matchs_traites": 1,
+    "matchs_total": 1,
+    "games": [
+      {
+        "champ_name": "Angleterre. Premier League",
+        "league_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/12763.png\">",
+        "match": {
+          "game_id": 760398125,
+          "h2h_id": "6a3512c15e99bd05c63e9854",
+          "stage_id": "6a34c3a75e99bd05c63e703a",
+          "start_ts": 1792782000,
+          "tournament_stage": "Tour 8",
+          "location": "Stade : Portman Road",
+          "location_country": "Angleterre",
+          "weather": {
+            "temperature": "+9°C",
+            "description": "Nuageaux, pluie",
+            "wind": "Vent ONO, m/sec",
+            "pressure": "Pression, mmHg",
+            "humidity": "Humidité, %",
+            "precipitation_chance": "Précipitation, %"
+          },
+          "team1": {
+            "name": "Ipswich Town",
+            "logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">"
+          },
+          "team2": {
+            "name": "Nottingham Forest",
+            "logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">"
+          }
+        },
+        "odds": [
+          {
+            "group_id": 1,
+            "group_name": "1N2",
+            "odds": [
+              {
+                "type_id": 1,
+                "type_name": "Equipe1",
+                "cf": 3.29,
+                "parameter": null
+              },
+              {
+                "type_id": 2,
+                "type_name": "Nul",
+                "cf": 3.575,
+                "parameter": null
+              },
+              {
+                "type_id": 3,
+                "type_name": "Equipe2",
+                "cf": 2.316,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 5557,
+            "group_name": "1N2 2up",
+            "odds": [
+              {
+                "type_id": 16684,
+                "type_name": "Equipe1",
+                "cf": 3.13,
+                "parameter": null
+              },
+              {
+                "type_id": 16685,
+                "type_name": "Nul",
+                "cf": 3.575,
+                "parameter": null
+              },
+              {
+                "type_id": 16686,
+                "type_name": "Equipe2",
+                "cf": 2.204,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 2,
+            "group_name": "Double Chance",
+            "odds": [
+              {
+                "type_id": 4,
+                "type_name": "1X",
+                "cf": 1.684,
+                "parameter": null
+              },
+              {
+                "type_id": 5,
+                "type_name": "12",
+                "cf": 1.34,
+                "parameter": null
+              },
+              {
+                "type_id": 6,
+                "type_name": "2X",
+                "cf": 1.385,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 21,
+            "group_name": "Les deux équipes marquent",
+            "odds": [
+              {
+                "type_id": 180,
+                "type_name": "Oui",
+                "cf": 1.59,
+                "parameter": null
+              },
+              {
+                "type_id": 11273,
+                "type_name": "2 buts - Oui",
+                "cf": 4.34,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 181,
+                "type_name": "Non",
+                "cf": 2.24,
+                "parameter": null
+              },
+              {
+                "type_id": 11274,
+                "type_name": "2 buts - Non",
+                "cf": 1.172,
+                "parameter": 2.0
+              }
+            ]
+          },
+          {
+            "group_id": 4,
+            "group_name": "Total buts",
+            "odds": [
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 1.001,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 1.037,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 1.235,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 1.373,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 1.827,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 2.277,
+                "parameter": 3.0
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 2.796,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 4.355,
+                "parameter": 4.0
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 4.95,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 8.3,
+                "parameter": 5.0
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 8.55,
+                "parameter": 5.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 9.8,
+                "parameter": 6.5
+              },
+              {
+                "type_id": 9,
+                "type_name": "Plus de",
+                "cf": 11.6,
+                "parameter": 7.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 11.6,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 8.95,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 3.945,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 3.15,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 2.137,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.672,
+                "parameter": 3.0
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.444,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.205,
+                "parameter": 4.0
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.157,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.05,
+                "parameter": 5.0
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.041,
+                "parameter": 5.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.021,
+                "parameter": 6.5
+              },
+              {
+                "type_id": 10,
+                "type_name": "Moins de",
+                "cf": 1.001,
+                "parameter": 7.5
+              }
+            ]
+          },
+          {
+            "group_id": 3,
+            "group_name": "Handicap",
+            "odds": [
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 6.16,
+                "parameter": -1.5
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 5.48,
+                "parameter": -1.0
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 2.363,
+                "parameter": null
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 1.346,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 1.227,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 1.067,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 7,
+                "type_name": "Handicap 1",
+                "cf": 1.046,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 1.084,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 1.14,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 1.689,
+                "parameter": null
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 3.305,
+                "parameter": -1.0
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 4.03,
+                "parameter": -1.5
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 7.24,
+                "parameter": -2.0
+              },
+              {
+                "type_id": 8,
+                "type_name": "Handicap 2",
+                "cf": 7.7,
+                "parameter": -2.5
+              }
+            ]
+          },
+          {
+            "group_id": 5,
+            "group_name": "Total domicile",
+            "odds": [
+              {
+                "type_id": 11,
+                "type_name": "+",
+                "cf": 1.31,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 11,
+                "type_name": "+",
+                "cf": 1.59,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 11,
+                "type_name": "+",
+                "cf": 2.4,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 11,
+                "type_name": "+",
+                "cf": 4.6,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 11,
+                "type_name": "+",
+                "cf": 6,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 12,
+                "type_name": "-",
+                "cf": 3.34,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 12,
+                "type_name": "-",
+                "cf": 2.3,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 12,
+                "type_name": "-",
+                "cf": 1.55,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 12,
+                "type_name": "-",
+                "cf": 1.18,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 12,
+                "type_name": "-",
+                "cf": 1.11,
+                "parameter": 2.5
+              }
+            ]
+          },
+          {
+            "group_id": 6,
+            "group_name": "Total extérieur",
+            "odds": [
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 1.21,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 1.37,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 1.99,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 3.3,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 4.4,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 13,
+                "type_name": "+",
+                "cf": 11,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 4.2,
+                "parameter": 0.5
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 3,
+                "parameter": 1.0
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 1.78,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 1.31,
+                "parameter": 2.0
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 1.19,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 14,
+                "type_name": "-",
+                "cf": 1.01,
+                "parameter": 3.5
+              }
+            ]
+          },
+          {
+            "group_id": 29,
+            "group_name": "Equipe1 + Total",
+            "odds": [
+              {
+                "type_id": 196,
+                "type_name": "Equipe1 & Moins de",
+                "cf": 9.6,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 197,
+                "type_name": "Equipe1 & Plus de",
+                "cf": 3.72,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 198,
+                "type_name": "1X & Moins de",
+                "cf": 5.9,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 199,
+                "type_name": "1X & Plus de",
+                "cf": 2.09,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 196,
+                "type_name": "Equipe1 & Moins de",
+                "cf": 6.75,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 197,
+                "type_name": "Equipe1 & Plus de",
+                "cf": 4.5,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 198,
+                "type_name": "1X & Moins de",
+                "cf": 2.89,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 199,
+                "type_name": "1X & Plus de",
+                "cf": 3.26,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 196,
+                "type_name": "Equipe1 & Moins de",
+                "cf": 4.15,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 197,
+                "type_name": "Equipe1 & Plus de",
+                "cf": 7.8,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 198,
+                "type_name": "1X & Moins de",
+                "cf": 2.29,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 199,
+                "type_name": "1X & Plus de",
+                "cf": 4.75,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 196,
+                "type_name": "Equipe1 & Moins de",
+                "cf": 3.55,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 197,
+                "type_name": "Equipe1 & Plus de",
+                "cf": 11,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 198,
+                "type_name": "1X & Moins de",
+                "cf": 1.86,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 199,
+                "type_name": "1X & Plus de",
+                "cf": 9.2,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 196,
+                "type_name": "Equipe1 & Moins de",
+                "cf": 3.2,
+                "parameter": 5.5
+              },
+              {
+                "type_id": 206,
+                "type_name": "Equipe1 & Moins de - Non",
+                "cf": 1.023,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 207,
+                "type_name": "Equipe1 & Plus de - Non",
+                "cf": 1.23,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 208,
+                "type_name": "1X & Moins de - Non",
+                "cf": 1.096,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 209,
+                "type_name": "1X & Plus de - Non",
+                "cf": 1.66,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 206,
+                "type_name": "Equipe1 & Moins de - Non",
+                "cf": 1.071,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 207,
+                "type_name": "Equipe1 & Plus de - Non",
+                "cf": 1.163,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 208,
+                "type_name": "1X & Moins de - Non",
+                "cf": 1.36,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 209,
+                "type_name": "1X & Plus de - Non",
+                "cf": 1.29,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 206,
+                "type_name": "Equipe1 & Moins de - Non",
+                "cf": 1.189,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 207,
+                "type_name": "Equipe1 & Plus de - Non",
+                "cf": 1.05,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 208,
+                "type_name": "1X & Moins de - Non",
+                "cf": 1.55,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 209,
+                "type_name": "1X & Plus de - Non",
+                "cf": 1.15,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 206,
+                "type_name": "Equipe1 & Moins de - Non",
+                "cf": 1.25,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 207,
+                "type_name": "Equipe1 & Plus de - Non",
+                "cf": 1.01,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 208,
+                "type_name": "1X & Moins de - Non",
+                "cf": 1.84,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 209,
+                "type_name": "1X & Plus de - Non",
+                "cf": 1.028,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 206,
+                "type_name": "Equipe1 & Moins de - Non",
+                "cf": 1.32,
+                "parameter": 5.5
+              }
+            ]
+          },
+          {
+            "group_id": 26,
+            "group_name": "Equipe2 + Total",
+            "odds": [
+              {
+                "type_id": 191,
+                "type_name": "Equipe2 & Moins de",
+                "cf": 8.2,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 192,
+                "type_name": "Equipe2 & Plus de",
+                "cf": 2.62,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 193,
+                "type_name": "2X & Moins de",
+                "cf": 5.35,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 194,
+                "type_name": "2X & Plus de",
+                "cf": 1.7,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 191,
+                "type_name": "Equipe2 & Moins de",
+                "cf": 5.35,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 192,
+                "type_name": "Equipe2 & Plus de",
+                "cf": 3.14,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 193,
+                "type_name": "2X & Moins de",
+                "cf": 2.62,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 194,
+                "type_name": "2X & Plus de",
+                "cf": 2.52,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 191,
+                "type_name": "Equipe2 & Moins de",
+                "cf": 3.14,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 192,
+                "type_name": "Equipe2 & Plus de",
+                "cf": 5.35,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 193,
+                "type_name": "2X & Moins de",
+                "cf": 1.96,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 194,
+                "type_name": "2X & Plus de",
+                "cf": 3.64,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 191,
+                "type_name": "Equipe2 & Moins de",
+                "cf": 2.65,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 192,
+                "type_name": "Equipe2 & Plus de",
+                "cf": 8,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 193,
+                "type_name": "2X & Moins de",
+                "cf": 1.58,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 194,
+                "type_name": "2X & Plus de",
+                "cf": 7,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 191,
+                "type_name": "Equipe2 & Moins de",
+                "cf": 2.4,
+                "parameter": 5.5
+              },
+              {
+                "type_id": 211,
+                "type_name": "Equipe2 & Moins de - Non",
+                "cf": 1.042,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 212,
+                "type_name": "Equipe2 & Plus de - Non",
+                "cf": 1.43,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 213,
+                "type_name": "2X & Moins de - Non",
+                "cf": 1.118,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 214,
+                "type_name": "2X & Plus de - Non",
+                "cf": 2.03,
+                "parameter": 1.5
+              },
+              {
+                "type_id": 211,
+                "type_name": "Equipe2 & Moins de - Non",
+                "cf": 1.119,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 212,
+                "type_name": "Equipe2 & Plus de - Non",
+                "cf": 1.31,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 213,
+                "type_name": "2X & Moins de - Non",
+                "cf": 1.43,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 214,
+                "type_name": "2X & Plus de - Non",
+                "cf": 1.46,
+                "parameter": 2.5
+              },
+              {
+                "type_id": 211,
+                "type_name": "Equipe2 & Moins de - Non",
+                "cf": 1.31,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 212,
+                "type_name": "Equipe2 & Plus de - Non",
+                "cf": 1.117,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 213,
+                "type_name": "2X & Moins de - Non",
+                "cf": 1.75,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 214,
+                "type_name": "2X & Plus de - Non",
+                "cf": 1.24,
+                "parameter": 3.5
+              },
+              {
+                "type_id": 211,
+                "type_name": "Equipe2 & Moins de - Non",
+                "cf": 1.42,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 212,
+                "type_name": "Equipe2 & Plus de - Non",
+                "cf": 1.046,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 213,
+                "type_name": "2X & Moins de - Non",
+                "cf": 2.23,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 214,
+                "type_name": "2X & Plus de - Non",
+                "cf": 1.065,
+                "parameter": 4.5
+              },
+              {
+                "type_id": 211,
+                "type_name": "Equipe2 & Moins de - Non",
+                "cf": 1.51,
+                "parameter": 5.5
+              }
+            ]
+          },
+          {
+            "group_id": 22,
+            "group_name": "Total pair",
+            "odds": [
+              {
+                "type_id": 182,
+                "type_name": "Oui",
+                "cf": 1.81,
+                "parameter": null
+              },
+              {
+                "type_id": 183,
+                "type_name": "Non",
+                "cf": 1.89,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 42,
+            "group_name": "But dans chaque mi-temps",
+            "odds": [
+              {
+                "type_id": 478,
+                "type_name": "Oui",
+                "cf": 1.666,
+                "parameter": null
+              },
+              {
+                "type_id": 479,
+                "type_name": "Non",
+                "cf": 2.08,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 58,
+            "group_name": "Equipe1 gagne au moins une mi-temps",
+            "odds": [
+              {
+                "type_id": 504,
+                "type_name": "Oui",
+                "cf": 2.02,
+                "parameter": null
+              },
+              {
+                "type_id": 505,
+                "type_name": "Non",
+                "cf": 1.71,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 59,
+            "group_name": "Equipe2 gagne au moins une mi-temps",
+            "odds": [
+              {
+                "type_id": 506,
+                "type_name": "Oui",
+                "cf": 1.63,
+                "parameter": null
+              },
+              {
+                "type_id": 507,
+                "type_name": "Non",
+                "cf": 2.14,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 62,
+            "group_name": "Nul au moins une mi-temps",
+            "odds": [
+              {
+                "type_id": 516,
+                "type_name": "Oui",
+                "cf": 1.51,
+                "parameter": null
+              },
+              {
+                "type_id": 517,
+                "type_name": "Non",
+                "cf": 2.39,
+                "parameter": null
+              }
+            ]
+          },
+          {
+            "group_id": 66,
+            "group_name": "Penalty accordé",
+            "odds": [
+              {
+                "type_id": 518,
+                "type_name": "Oui",
+                "cf": 3.455,
+                "parameter": null
+              },
+              {
+                "type_id": 519,
+                "type_name": "Non",
+                "cf": 1.203,
+                "parameter": null
+              }
+            ]
+          }
+        ],
+        "classification": [
+          {
+            "#": "1",
+            "Equipe": "Manchester City",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/57060f6368da70fbdfff37cb4b0280a5.png\">",
+            "MJ": "7",
+            "W": "7",
+            "L": "0",
+            "T": "0",
+            "B": "19:7",
+            "Pts": "21",
+            "Formulaire": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "2",
+            "Equipe": "Arsenal",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/08a25897e35d75d7261a8095b9599aad.png\">",
+            "MJ": "7",
+            "W": "6",
+            "L": "1",
+            "T": "0",
+            "B": "11:5",
+            "Pts": "18",
+            "Formulaire": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "3",
+              "1",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "3",
+            "Equipe": "Brighton & Hove Albion",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2026.png\">",
+            "MJ": "7",
+            "W": "5",
+            "L": "1",
+            "T": "1",
+            "B": "23:5",
+            "Pts": "16",
+            "Formulaire": [
+              "1",
+              "3",
+              "2",
+              "1",
+              "1",
+              "1",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "4",
+            "Equipe": "Chelsea",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/4d19a56f7c6e34c48f0f5e0f07bf9ac5.png\">",
+            "MJ": "7",
+            "W": "4",
+            "L": "2",
+            "T": "1",
+            "B": "17:13",
+            "Pts": "13",
+            "Formulaire": [
+              "1",
+              "1",
+              "3",
+              "2",
+              "3",
+              "1",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "5",
+            "Equipe": "Liverpool",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/d3916206204ffc91b0471ff9484066d6.png\">",
+            "MJ": "7",
+            "W": "3",
+            "L": "1",
+            "T": "3",
+            "B": "9:8",
+            "Pts": "12",
+            "Formulaire": [
+              "2",
+              "2",
+              "1",
+              "2",
+              "1",
+              "3",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "6",
+            "Equipe": "Brentford",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/d39e5e934e338e9802b4cbe851da4359.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "1",
+            "T": "4",
+            "B": "13:8",
+            "Pts": "10",
+            "Formulaire": [
+              "1",
+              "2",
+              "2",
+              "2",
+              "1",
+              "2",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "7",
+            "Equipe": "Leeds United",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/8dafff7a4bc7ae83eb47335fae1bd0e9.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "1",
+            "T": "4",
+            "B": "9:6",
+            "Pts": "10",
+            "Formulaire": [
+              "1",
+              "2",
+              "2",
+              "1",
+              "2",
+              "3",
+              "2",
+              "0"
+            ]
+          },
+          {
+            "#": "8",
+            "Equipe": "Everton",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1992.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "1",
+            "T": "4",
+            "B": "8:7",
+            "Pts": "10",
+            "Formulaire": [
+              "1",
+              "2",
+              "2",
+              "2",
+              "1",
+              "2",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "9",
+            "Equipe": "Hull City",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/715c2f5d95d5a5a03bdb4d4e11bbd696.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "2",
+            "T": "3",
+            "B": "8:7",
+            "Pts": "9",
+            "Formulaire": [
+              "1",
+              "1",
+              "2",
+              "2",
+              "3",
+              "2",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "10",
+            "Equipe": "Ipswich Town",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+            "MJ": "7",
+            "W": "3",
+            "L": "4",
+            "T": "0",
+            "B": "11:15",
+            "Pts": "9",
+            "Formulaire": [
+              "1",
+              "3",
+              "3",
+              "1",
+              "3",
+              "1",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "11",
+            "Equipe": "Newcastle United",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/0bf42d98b2c9de5d475be0b765ddb81a.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "3",
+            "T": "2",
+            "B": "10:14",
+            "Pts": "8",
+            "Formulaire": [
+              "2",
+              "1",
+              "2",
+              "3",
+              "1",
+              "3",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "12",
+            "Equipe": "Aston Villa",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1976.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "3",
+            "T": "2",
+            "B": "7:11",
+            "Pts": "8",
+            "Formulaire": [
+              "3",
+              "3",
+              "2",
+              "3",
+              "1",
+              "2",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "13",
+            "Equipe": "Manchester United",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1996.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "2",
+            "T": "4",
+            "B": "10:10",
+            "Pts": "7",
+            "Formulaire": [
+              "3",
+              "1",
+              "2",
+              "3",
+              "2",
+              "2",
+              "2",
+              "0"
+            ]
+          },
+          {
+            "#": "14",
+            "Equipe": "Crystal Palace",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2020.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "4",
+            "T": "1",
+            "B": "9:17",
+            "Pts": "7",
+            "Formulaire": [
+              "3",
+              "3",
+              "1",
+              "3",
+              "2",
+              "1",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "15",
+            "Equipe": "Bournemouth",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/75a114bd51430104bf8ea357f7ce003e.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "3",
+            "T": "3",
+            "B": "9:13",
+            "Pts": "6",
+            "Formulaire": [
+              "3",
+              "2",
+              "2",
+              "2",
+              "3",
+              "3",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "16",
+            "Equipe": "Tottenham Hotspur",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/f43494e928135fba48f87940577011ef.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "3",
+            "T": "3",
+            "B": "6:10",
+            "Pts": "6",
+            "Formulaire": [
+              "3",
+              "3",
+              "2",
+              "2",
+              "3",
+              "2",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "17",
+            "Equipe": "Coventry City",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2074.png\">",
+            "MJ": "7",
+            "W": "2",
+            "L": "5",
+            "T": "0",
+            "B": "6:14",
+            "Pts": "6",
+            "Formulaire": [
+              "3",
+              "3",
+              "3",
+              "3",
+              "1",
+              "1",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "18",
+            "Equipe": "Fulham",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1986.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "4",
+            "T": "2",
+            "B": "7:10",
+            "Pts": "5",
+            "Formulaire": [
+              "3",
+              "3",
+              "3",
+              "2",
+              "2",
+              "3",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "#": "19",
+            "Equipe": "Nottingham Forest",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "4",
+            "T": "2",
+            "B": "5:9",
+            "Pts": "5",
+            "Formulaire": [
+              "3",
+              "2",
+              "2",
+              "1",
+              "3",
+              "3",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "#": "20",
+            "Equipe": "Sunderland",
+            "Logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2004.png\">",
+            "MJ": "7",
+            "W": "1",
+            "L": "5",
+            "T": "1",
+            "B": "6:14",
+            "Pts": "4",
+            "Formulaire": [
+              "3",
+              "1",
+              "2",
+              "3",
+              "3",
+              "3",
+              "3",
+              "0"
+            ]
+          }
+        ],
+        "h2h": {
+          "h2h_id": "6a3512c15e99bd05c63e9854",
+          "team1": "Ipswich Town",
+          "team2": "Nottingham Forest",
+          "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+          "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+          "confrontations": [
+            {
+              "id": "667145d10d8c0bfbf1d8bdeb",
+              "text": "Ipswich Town 2-4 Nottingham Forest (15/03/2025) [ID: 667145d10d8c0bfbf1d8bdeb]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "0.48",
+                    "score2": "1.28"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "56%",
+                    "score2": "44%"
+                  },
+                  {
+                    "title": "Tentatives de but",
+                    "score1": "11",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "4",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "5",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "0",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "6",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "4",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "7",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Goals",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "13",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "4",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "15",
+                    "score2": "22"
+                  },
+                  {
+                    "title": "Score a Header",
+                    "score1": "12",
+                    "score2": "19"
+                  },
+                  {
+                    "title": "Passes",
+                    "score1": "84",
+                    "score2": "78",
+                    "totalDo1": 364,
+                    "totalCanDo1": 432,
+                    "totalDo2": 271,
+                    "totalCanDo2": 346
+                  },
+                  {
+                    "title": "Passes in the final third",
+                    "score1": "67",
+                    "score2": "72",
+                    "totalDo1": 72,
+                    "totalCanDo1": 108,
+                    "totalDo2": 93,
+                    "totalCanDo2": 130
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "17",
+                    "score2": "17",
+                    "totalDo1": 3,
+                    "totalCanDo1": 18,
+                    "totalDo2": 2,
+                    "totalCanDo2": 12
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "80",
+                    "score2": "73",
+                    "totalDo1": 8,
+                    "totalCanDo1": 10,
+                    "totalDo2": 11,
+                    "totalCanDo2": 15
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "19",
+                    "score2": "33"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "4",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "9",
+                    "score2": "9"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "2",
+                    "score2": "4"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "67abfe4e9930a40b3c024376",
+              "text": "Nottingham Forest 2-1 Ipswich Town (03/03/2025) [ID: 67abfe4e9930a40b3c024376]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "1.16",
+                    "score2": "0.72"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "54%",
+                    "score2": "46%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "22",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "4",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "11",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "83",
+                    "score2": "82",
+                    "totalDo1": 464,
+                    "totalCanDo1": 561,
+                    "totalDo2": 404,
+                    "totalCanDo2": 495
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "3",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "12",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "6",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "6",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "16",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Goals",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "36",
+                    "score2": "16"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "4",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "9",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "75",
+                    "score2": "69",
+                    "totalDo1": 185,
+                    "totalCanDo1": 246,
+                    "totalDo2": 94,
+                    "totalCanDo2": 137
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "21",
+                    "score2": "41",
+                    "totalDo1": 9,
+                    "totalCanDo1": 42,
+                    "totalDo2": 9,
+                    "totalCanDo2": 22
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "13",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "64",
+                    "score2": "75",
+                    "totalDo1": 14,
+                    "totalCanDo1": 22,
+                    "totalDo2": 12,
+                    "totalCanDo2": 16
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "23",
+                    "score2": "57"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "4",
+                    "score2": "20"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "3",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Tentatives de but",
+                    "score1": "16",
+                    "score2": "8"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "3 Ekstra-taym",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "4 Pénalty",
+                    "score1": "5",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "2",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Coupe d'Angleterre"
+            },
+            {
+              "id": "667145d00d8c0bfbf1d843a7",
+              "text": "Nottingham Forest 1-0 Ipswich Town (30/11/2024) [ID: 667145d00d8c0bfbf1d843a7]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "1.63",
+                    "score2": "0.63"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "45%",
+                    "score2": "55%"
+                  },
+                  {
+                    "title": "Tentatives de but",
+                    "score1": "12",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "5",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "5",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "2",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "8",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "8",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "4",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "3",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "16",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "3",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "5",
+                    "score2": "16"
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "1",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "19",
+                    "score2": "26"
+                  },
+                  {
+                    "title": "Score a Header",
+                    "score1": "25",
+                    "score2": "19"
+                  },
+                  {
+                    "title": "Passes",
+                    "score1": "76",
+                    "score2": "79",
+                    "totalDo1": 234,
+                    "totalCanDo1": 307,
+                    "totalDo2": 300,
+                    "totalCanDo2": 379
+                  },
+                  {
+                    "title": "Passes in the final third",
+                    "score1": "66",
+                    "score2": "73",
+                    "totalDo1": 85,
+                    "totalCanDo1": 128,
+                    "totalDo2": 69,
+                    "totalCanDo2": 95
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "35",
+                    "score2": "18",
+                    "totalDo1": 7,
+                    "totalCanDo1": 20,
+                    "totalDo2": 3,
+                    "totalCanDo2": 17
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "60",
+                    "score2": "63",
+                    "totalDo1": 12,
+                    "totalCanDo1": 20,
+                    "totalDo2": 10,
+                    "totalCanDo2": 16
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "22",
+                    "score2": "19"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "7",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "0",
+                    "score2": "9"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "1",
+                    "score2": "0"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "5b65b339b3cf6d8f7f21073d",
+              "text": "Ipswich Town 1-1 Nottingham Forest (16/03/2019) [ID: 5b65b339b3cf6d8f7f21073d]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Possession",
+                    "score1": "49%",
+                    "score2": "51%"
+                  },
+                  {
+                    "title": "Tentatives de but",
+                    "score1": "16",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "6",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "6",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "4",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "6",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "4",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "4",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "16",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "0",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Passes",
+                    "score1": "65",
+                    "score2": "68",
+                    "totalDo1": 252,
+                    "totalCanDo1": 390,
+                    "totalDo2": 282,
+                    "totalCanDo2": 415
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "1",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Angleterre. Championship"
+            },
+            {
+              "id": "5b65b339b3cf6d8f7f210848",
+              "text": "Nottingham Forest 2-0 Ipswich Town (01/12/2018) [ID: 5b65b339b3cf6d8f7f210848]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Possession",
+                    "score1": "55%",
+                    "score2": "45%"
+                  },
+                  {
+                    "title": "Tentatives de but",
+                    "score1": "17",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "6",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "6",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "5",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "3",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "2",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "15",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "11",
+                    "score2": "14"
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Passes",
+                    "score1": "76",
+                    "score2": "69",
+                    "totalDo1": 374,
+                    "totalCanDo1": 494,
+                    "totalDo2": 274,
+                    "totalCanDo2": 395
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "2",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "2",
+                    "score2": "0"
+                  }
+                ]
+              },
+              "league": "Angleterre. Championship"
+            },
+            {
+              "id": "5abc97d9494765f3cabaabe0",
+              "text": "Nottingham Forest 2-1 Ipswich Town (14/04/2018) [ID: 5abc97d9494765f3cabaabe0]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": null,
+              "league": "Angleterre. Championship"
+            }
+          ],
+          "last_team1": [
+            {
+              "id": "6a3512bf5e99bd05c63e982a",
+              "text": "Manchester City 3-2 Ipswich Town (17/10/2026) [ID: 6a3512bf5e99bd05c63e982a]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/57060f6368da70fbdfff37cb4b0280a5.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": null,
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512be5e99bd05c63e9807",
+              "text": "Ipswich Town 2-1 Fulham (10/10/2026) [ID: 6a3512be5e99bd05c63e9807]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1986.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "1.14",
+                    "score2": "1.81"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "48%",
+                    "score2": "52%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "11",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "5",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "2",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "2",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "86",
+                    "score2": "83",
+                    "totalDo1": 392,
+                    "totalCanDo1": 456,
+                    "totalDo2": 420,
+                    "totalCanDo2": 504
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "1.79",
+                    "score2": "0.75"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "5",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "1",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "7",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "4",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Headed goals",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "25",
+                    "score2": "22"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "2",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "10",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "44",
+                    "score2": "37",
+                    "totalDo1": 21,
+                    "totalCanDo1": 48,
+                    "totalDo2": 20,
+                    "totalCanDo2": 54
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "76",
+                    "score2": "71",
+                    "totalDo1": 125,
+                    "totalCanDo1": 165,
+                    "totalDo2": 85,
+                    "totalCanDo2": 119
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "21",
+                    "score2": "36",
+                    "totalDo1": 4,
+                    "totalCanDo1": 19,
+                    "totalDo2": 5,
+                    "totalCanDo2": 14
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "1.11",
+                    "score2": "0.83"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "18",
+                    "score2": "20"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "8",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "44",
+                    "score2": "50",
+                    "totalDo1": 8,
+                    "totalCanDo1": 18,
+                    "totalDo2": 9,
+                    "totalCanDo2": 18
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "45",
+                    "score2": "44"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "22",
+                    "score2": "28"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "9",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "3",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "0.75",
+                    "score2": "1.79"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "9",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "1",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "2",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512bc5e99bd05c63e97db",
+              "text": "Everton 1-0 Ipswich Town (19/09/2026) [ID: 6a3512bc5e99bd05c63e97db]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1992.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "2.23",
+                    "score2": "1.44"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "52%",
+                    "score2": "48%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "21",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "2",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "5",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "4",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "84",
+                    "score2": "82",
+                    "totalDo1": 430,
+                    "totalCanDo1": 513,
+                    "totalDo2": 386,
+                    "totalCanDo2": 472
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Cartons rouges",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "1.37",
+                    "score2": "0.53"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "11",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "8",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "13",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "8",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "24",
+                    "score2": "18"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "1",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "12",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "36",
+                    "score2": "35",
+                    "totalDo1": 18,
+                    "totalCanDo1": 50,
+                    "totalDo2": 22,
+                    "totalCanDo2": 62
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "70",
+                    "score2": "64",
+                    "totalDo1": 105,
+                    "totalCanDo1": 151,
+                    "totalDo2": 67,
+                    "totalCanDo2": 104
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "25",
+                    "score2": "23",
+                    "totalDo1": 4,
+                    "totalCanDo1": 16,
+                    "totalDo2": 3,
+                    "totalCanDo2": 13
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "1.38",
+                    "score2": "1.01"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "18",
+                    "score2": "18"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "6",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "86",
+                    "score2": "75",
+                    "totalDo1": 12,
+                    "totalCanDo1": 14,
+                    "totalDo2": 6,
+                    "totalCanDo2": 8
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "45",
+                    "score2": "40"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "30",
+                    "score2": "17"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "10",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "3",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "4",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "0.53",
+                    "score2": "1.37"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "0.53",
+                    "score2": "0.37"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "6",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "1",
+                    "score2": "0"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a9040c27762417de83fd3b3",
+              "text": "Ipswich Town 2-4 Arsenal (15/09/2026) [ID: 6a9040c27762417de83fd3b3]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/08a25897e35d75d7261a8095b9599aad.png\">",
+              "stats": {
+                "full_match": [],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "2",
+                    "score2": "4"
+                  }
+                ]
+              },
+              "league": "Angleterre. Coupe de la Ligue"
+            },
+            {
+              "id": "6a3512bb5e99bd05c63e97c1",
+              "text": "Crystal Palace 2-3 Ipswich Town (12/09/2026) [ID: 6a3512bb5e99bd05c63e97c1]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2020.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": null,
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512b95e99bd05c63e979e",
+              "text": "Ipswich Town 0-2 Liverpool (04/09/2026) [ID: 6a3512b95e99bd05c63e979e]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/d3916206204ffc91b0471ff9484066d6.png\">",
+              "stats": null,
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512b85e99bd05c63e977a",
+              "text": "Manchester United 5-2 Ipswich Town (30/08/2026) [ID: 6a3512b85e99bd05c63e977a]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1996.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "4.56",
+                    "score2": "2.01"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "60%",
+                    "score2": "40%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "33",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "11",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "7",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "8",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "89",
+                    "score2": "83",
+                    "totalDo1": 502,
+                    "totalCanDo1": 561,
+                    "totalDo2": 305,
+                    "totalCanDo2": 369
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "1",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "4.6",
+                    "score2": "2.73"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "10",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "12",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "19",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "14",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "44",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "12",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "56",
+                    "score2": "36",
+                    "totalDo1": 24,
+                    "totalCanDo1": 43,
+                    "totalDo2": 12,
+                    "totalCanDo2": 33
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "80",
+                    "score2": "73",
+                    "totalDo1": 140,
+                    "totalCanDo1": 175,
+                    "totalDo2": 53,
+                    "totalCanDo2": 73
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "33",
+                    "score2": "22",
+                    "totalDo1": 8,
+                    "totalCanDo1": 24,
+                    "totalDo2": 2,
+                    "totalCanDo2": 9
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "1.06",
+                    "score2": "0.75"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "11",
+                    "score2": "21"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "7",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "50",
+                    "score2": "70",
+                    "totalDo1": 11,
+                    "totalCanDo1": 22,
+                    "totalDo2": 7,
+                    "totalCanDo2": 10
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "54",
+                    "score2": "29"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "8",
+                    "score2": "30"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "13",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "3",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "2.73",
+                    "score2": "4.6"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "0.73",
+                    "score2": "0.6"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "2",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "1",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "4",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "5",
+                    "score2": "2"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            }
+          ],
+          "last_team2": [
+            {
+              "id": "6a3512bf5e99bd05c63e9827",
+              "text": "Nottingham Forest 0-1 Arsenal (18/10/2026) [ID: 6a3512bf5e99bd05c63e9827]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/08a25897e35d75d7261a8095b9599aad.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "0.9",
+                    "score2": "1.14"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "26%",
+                    "score2": "74%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "14",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "8",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "71",
+                    "score2": "90",
+                    "totalDo1": 158,
+                    "totalCanDo1": 224,
+                    "totalDo2": 569,
+                    "totalCanDo2": 634
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "0.12",
+                    "score2": "0.19"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "6",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "6",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "8",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "6",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "17",
+                    "score2": "30"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "8",
+                    "score2": "14"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "48",
+                    "score2": "41",
+                    "totalDo1": 30,
+                    "totalCanDo1": 63,
+                    "totalDo2": 15,
+                    "totalCanDo2": 37
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "66",
+                    "score2": "80",
+                    "totalDo1": 35,
+                    "totalCanDo1": 53,
+                    "totalDo2": 167,
+                    "totalCanDo2": 209
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "7",
+                    "score2": "26",
+                    "totalDo1": 1,
+                    "totalCanDo1": 14,
+                    "totalDo2": 7,
+                    "totalCanDo2": 27
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "0.43",
+                    "score2": "1.26"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "12",
+                    "score2": "16"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "14",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "50",
+                    "score2": "22",
+                    "totalDo1": 11,
+                    "totalCanDo1": 22,
+                    "totalDo2": 2,
+                    "totalCanDo2": 9
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "51",
+                    "score2": "49"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "30",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "7",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "0",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "0.19",
+                    "score2": "0.12"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "-0.81",
+                    "score2": "0.12"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "10",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "0",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512be5e99bd05c63e97ff",
+              "text": "Crystal Palace 3-1 Nottingham Forest (11/10/2026) [ID: 6a3512be5e99bd05c63e97ff]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2020.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "2.41",
+                    "score2": "3.34"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "43%",
+                    "score2": "57%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "13",
+                    "score2": "24"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "7",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "5",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "5",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "75",
+                    "score2": "82",
+                    "totalDo1": 290,
+                    "totalCanDo1": 386,
+                    "totalDo2": 407,
+                    "totalCanDo2": 498
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "3.32",
+                    "score2": "2.06"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "4",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "2",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "11",
+                    "score2": "16"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "2",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Headed goals",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "24",
+                    "score2": "43"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "10",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "44",
+                    "score2": "58",
+                    "totalDo1": 24,
+                    "totalCanDo1": 55,
+                    "totalDo2": 30,
+                    "totalCanDo2": 52
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "64",
+                    "score2": "73",
+                    "totalDo1": 70,
+                    "totalCanDo1": 110,
+                    "totalDo2": 104,
+                    "totalCanDo2": 143
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "40",
+                    "score2": "34",
+                    "totalDo1": 6,
+                    "totalCanDo1": 15,
+                    "totalDo2": 10,
+                    "totalCanDo2": 29
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "1.29",
+                    "score2": "1.27"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "12",
+                    "score2": "15"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "11",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "48",
+                    "score2": "54",
+                    "totalDo1": 10,
+                    "totalCanDo1": 21,
+                    "totalDo2": 7,
+                    "totalCanDo2": 13
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "50",
+                    "score2": "48"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "34",
+                    "score2": "19"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "6",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "4",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "2.06",
+                    "score2": "3.32"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "1.06",
+                    "score2": "0.32"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "17",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "1"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "3",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512bc5e99bd05c63e97e5",
+              "text": "Nottingham Forest 0-1 Coventry City (19/09/2026) [ID: 6a3512bc5e99bd05c63e97e5]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2074.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "1.1",
+                    "score2": "0.68"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "62%",
+                    "score2": "38%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "24",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "3",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "1",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "6",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "84",
+                    "score2": "76",
+                    "totalDo1": 427,
+                    "totalCanDo1": 508,
+                    "totalDo2": 236,
+                    "totalCanDo2": 311
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "0.08",
+                    "score2": "0.23"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "9",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "12",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "12",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "12",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "32",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "10",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "52",
+                    "score2": "41",
+                    "totalDo1": 30,
+                    "totalCanDo1": 58,
+                    "totalDo2": 26,
+                    "totalCanDo2": 63
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "78",
+                    "score2": "58",
+                    "totalDo1": 155,
+                    "totalCanDo1": 198,
+                    "totalDo2": 57,
+                    "totalCanDo2": 98
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "28",
+                    "score2": "29",
+                    "totalDo1": 9,
+                    "totalCanDo1": 32,
+                    "totalDo2": 4,
+                    "totalCanDo2": 14
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "1.17",
+                    "score2": "0.43"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "22",
+                    "score2": "13"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "12",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "78",
+                    "score2": "42",
+                    "totalDo1": 7,
+                    "totalCanDo1": 9,
+                    "totalDo2": 5,
+                    "totalCanDo2": 12
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "46",
+                    "score2": "49"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "26",
+                    "score2": "38"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "3",
+                    "score2": "15"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "0.23",
+                    "score2": "0.08"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "-0.77",
+                    "score2": "0.08"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "6",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "0",
+                    "score2": "1"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512bb5e99bd05c63e97bc",
+              "text": "Aston Villa 1-2 Nottingham Forest (12/09/2026) [ID: 6a3512bb5e99bd05c63e97bc]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/1976.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "0.82",
+                    "score2": "2.28"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "54%",
+                    "score2": "46%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "7",
+                    "score2": "22"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "5",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "2",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "6",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "82",
+                    "score2": "86",
+                    "totalDo1": 346,
+                    "totalCanDo1": 421,
+                    "totalDo2": 309,
+                    "totalCanDo2": 360
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "1.28",
+                    "score2": "2.34"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "1",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "1",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "6",
+                    "score2": "14"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "1",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Headed goals",
+                    "score1": "1",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "17",
+                    "score2": "32"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "1",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "0",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "16",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "28",
+                    "score2": "54",
+                    "totalDo1": 11,
+                    "totalCanDo1": 39,
+                    "totalDo2": 20,
+                    "totalCanDo2": 37
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "64",
+                    "score2": "81",
+                    "totalDo1": 82,
+                    "totalCanDo1": 129,
+                    "totalDo2": 88,
+                    "totalCanDo2": 108
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "20",
+                    "score2": "64",
+                    "totalDo1": 3,
+                    "totalCanDo1": 15,
+                    "totalDo2": 9,
+                    "totalCanDo2": 14
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "0.56",
+                    "score2": "2.01"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "23",
+                    "score2": "12"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "11",
+                    "score2": "16"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "35",
+                    "score2": "65",
+                    "totalDo1": 6,
+                    "totalCanDo1": 17,
+                    "totalDo2": 15,
+                    "totalCanDo2": 23
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "47",
+                    "score2": "50"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "13",
+                    "score2": "35"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "7",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "4",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "5",
+                    "score2": "5"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "2.34",
+                    "score2": "1.28"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "0.34",
+                    "score2": "0.28"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "13",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "1",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "1",
+                    "score2": "2"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512b95e99bd05c63e97a1",
+              "text": "Nottingham Forest 0-0 Tottenham Hotspur (05/09/2026) [ID: 6a3512b95e99bd05c63e97a1]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/f43494e928135fba48f87940577011ef.png\">",
+              "stats": {
+                "full_match": [
+                  {
+                    "title": "Buts attendus (xG)",
+                    "score1": "0.92",
+                    "score2": "1.07"
+                  },
+                  {
+                    "title": "Possession",
+                    "score1": "41%",
+                    "score2": "59%"
+                  },
+                  {
+                    "title": "Total shots",
+                    "score1": "12",
+                    "score2": "11"
+                  },
+                  {
+                    "title": "Tirs cadrés",
+                    "score1": "2",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Big Chances",
+                    "score1": "1",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "Corners",
+                    "score1": "2",
+                    "score2": "10"
+                  },
+                  {
+                    "title": "Passes décisives",
+                    "score1": "77",
+                    "score2": "84",
+                    "totalDo1": 239,
+                    "totalCanDo1": 311,
+                    "totalDo2": 382,
+                    "totalCanDo2": 456
+                  },
+                  {
+                    "title": "Cartons jaunes",
+                    "score1": "2",
+                    "score2": "2"
+                  },
+                  {
+                    "title": "xG on target (xGOT)",
+                    "score1": "0.01",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Tirs non cadrés",
+                    "score1": "7",
+                    "score2": "7"
+                  },
+                  {
+                    "title": "Tirs contrés",
+                    "score1": "3",
+                    "score2": "4"
+                  },
+                  {
+                    "title": "Shots from inside the penalty area",
+                    "score1": "5",
+                    "score2": "9"
+                  },
+                  {
+                    "title": "Shots from outside the penalty area",
+                    "score1": "7",
+                    "score2": "3"
+                  },
+                  {
+                    "title": "Hit the woodwork",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Touches in opposition box",
+                    "score1": "12",
+                    "score2": "30"
+                  },
+                  {
+                    "title": "Accurate through passes",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Hors-jeu",
+                    "score1": "2",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "Coups francs",
+                    "score1": "14",
+                    "score2": "22"
+                  },
+                  {
+                    "title": "Passes longues",
+                    "score1": "42",
+                    "score2": "41",
+                    "totalDo1": 23,
+                    "totalCanDo1": 55,
+                    "totalDo2": 25,
+                    "totalCanDo2": 61
+                  },
+                  {
+                    "title": "Passes in final third",
+                    "score1": "64",
+                    "score2": "64",
+                    "totalDo1": 57,
+                    "totalCanDo1": 89,
+                    "totalDo2": 62,
+                    "totalCanDo2": 97
+                  },
+                  {
+                    "title": "Crosses",
+                    "score1": "5",
+                    "score2": "25",
+                    "totalDo1": 1,
+                    "totalCanDo1": 19,
+                    "totalDo2": 6,
+                    "totalCanDo2": 24
+                  },
+                  {
+                    "title": "Expected assists (xA)",
+                    "score1": "0.46",
+                    "score2": "0.67"
+                  },
+                  {
+                    "title": "Touches",
+                    "score1": "15",
+                    "score2": "21"
+                  },
+                  {
+                    "title": "Fautes",
+                    "score1": "22",
+                    "score2": "14"
+                  },
+                  {
+                    "title": "Tacles",
+                    "score1": "54",
+                    "score2": "57",
+                    "totalDo1": 15,
+                    "totalCanDo1": 28,
+                    "totalDo2": 8,
+                    "totalCanDo2": 14
+                  },
+                  {
+                    "title": "Duels won",
+                    "score1": "57",
+                    "score2": "57"
+                  },
+                  {
+                    "title": "Clearances",
+                    "score1": "23",
+                    "score2": "24"
+                  },
+                  {
+                    "title": "Interceptions",
+                    "score1": "6",
+                    "score2": "6"
+                  },
+                  {
+                    "title": "Errors leading to shot",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Errors leading to goal",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Arrêts",
+                    "score1": "0",
+                    "score2": "1"
+                  },
+                  {
+                    "title": "xGOT faced",
+                    "score1": "0",
+                    "score2": "0.01"
+                  },
+                  {
+                    "title": "Goals prevented",
+                    "score1": "0",
+                    "score2": "0.01"
+                  },
+                  {
+                    "title": "Dégagements aux six mètres",
+                    "score1": "6",
+                    "score2": "8"
+                  },
+                  {
+                    "title": "Poteaux et barres transversales",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ],
+                "first_half": [],
+                "scores": [
+                  {
+                    "title": "1 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "2 Mi-temps",
+                    "score1": "0",
+                    "score2": "0"
+                  },
+                  {
+                    "title": "Résultat",
+                    "score1": "0",
+                    "score2": "0"
+                  }
+                ]
+              },
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a3512b85e99bd05c63e9773",
+              "text": "Liverpool 2-2 Nottingham Forest (29/08/2026) [ID: 6a3512b85e99bd05c63e9773]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/d3916206204ffc91b0471ff9484066d6.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "stats": null,
+              "league": "Angleterre. Premier League"
+            },
+            {
+              "id": "6a7b0a907762417de82c4f7e",
+              "text": "Nottingham Forest 0-2 Leeds United (25/08/2026) [ID: 6a7b0a907762417de82c4f7e]",
+              "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">",
+              "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/8dafff7a4bc7ae83eb47335fae1bd0e9.png\">",
+              "stats": null,
+              "league": "Angleterre. Coupe de la Ligue"
+            }
+          ],
+          "next_team1": {
+            "id": "6a3512c35e99bd05c63e987a",
+            "text": "Hull City vs Ipswich Town (31/10/2026) [ID: 6a3512c35e99bd05c63e987a]",
+            "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/715c2f5d95d5a5a03bdb4d4e11bbd696.png\">",
+            "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/2050.png\">"
+          },
+          "next_team2": {
+            "id": "6a3512c25e99bd05c63e986f",
+            "text": "Brentford vs Nottingham Forest (31/10/2026) [ID: 6a3512c25e99bd05c63e986f]",
+            "team1_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/d39e5e934e338e9802b4cbe851da4359.png\">",
+            "team2_logo": "<img src=\"https://vqpi9pfespngna.com/sfiles/logo_teams/449f7ee435140e62e75fb7268da87d8e.png\">"
+          }
+        }
+      }
+    ]
   }
 ]
